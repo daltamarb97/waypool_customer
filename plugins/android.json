@@ -1,0 +1,33 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-googlemaps": {
+      "API_KEY_FOR_ANDROID": "AIzaSyC7wuQ1MQ6t7tZ8Q-qDkDvy-dRhqE65tOM",
+      "PLAY_SERVICES_VERSION": "15.0.1",
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    }
+  },
+  "dependent_plugins": {}
+}

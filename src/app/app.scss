@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800');
+body,
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+strong,
+li,
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.scroll-content {
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+//text color css
+.back-button,
+.text-white {
+    color: #fff;
+}
+
+.text-theme {
+    color: #0fc874;
+}
+
+.text-dark {
+    color: #4c4c4c;
+}
+
+.text-yellow {
+    color: #ffca28;
+}
+
+.text-light {
+    color: #bfbfbf;
+}
+
+.bg-theme {
+    background: #0fc874;
+}
+
+.bg-light {
+    background: #f2f2f2;
+}
+
+.bg-yellow {
+    background: #ffca28;
+}
+
+.bg-white {
+    background: #fff;
+}
+
+.tabs-md .tab-button {
+    border-top: 2px solid #fff;
+}
+
+.tab-button[aria-selected=true],
+.tab-button[aria-selected=true] .tab-button-icon {
+    color: #0fc874 !important;
+    border-color: #0fc874 !important;
+}
+
+.tabbar {
+    background-color: #fff !important;
+}
+
+.back-button-text {
+    display: none;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    height: 40px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+    &.small {
+        font-size: 1.2rem;
+        height: 35px;
+        font-weight: 400;
+        letter-spacing: 0px;
+        text-transform: capitalize;
+        ion-icon {
+            margin-right: auto;
+            font-size: 2rem;
+            margin-left: 5px;
+        }
+        span {
+            margin: auto;
+        }
+    }
+}
+
+.rounded {
+    border-radius: 5px;
+}
+
+//header transparent
+.transparent.header {
+    background: transparent;
+    .toolbar-background {
+        background: transparent;
+        border: none !important;
+    }
+    &::after {
+        display: none;
+    }
+}
+
+.toolbar-title {
+    font-size: 1.65rem !important;
+}
+
+.bg-background-img {
+    background: url(../assets/imgs/background.png) no-repeat;
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+}
+
+.form {
+    background: #f3f3f3;
+    border-radius: 10px;
+    overflow: hidden;
+    .item {
+        border-top: none !important;
+    }
+    .text-input-wp {
+        border: none;
+    }
+    ion-item {
+        padding: 0;
+        background: transparent !important;
+        &:last-child {
+            border-bottom: none !important;
+            .item-inner {
+                border-bottom: none !important;
+            }
+        }
+        .item-inner {
+            padding: 0 !important;
+            .input-wrapper {
+                padding-left: 16px;
+                padding-right: 16px;
+                .label {
+                    font-size: 1rem;
+                    font-weight: 400;
+                }
+                ion-input {
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+    .input-has-focus {
+        box-shadow: none !important;
+        .item-inner {
+            box-shadow: none !important;
+            border-bottom-color: #dedede !important;
+        }
+    }
+}
+
+//green header inner pages
+.header.bg-theme {
+    .toolbar-background {
+        background: #0fc874 !important;
+    }
+    .text-center {
+        text-align: center !important;
+    }
+    .toolbar-title {
+        color: #fff !important;
+    }
+}
+
+//tab css
+ion-segment-button {
+    color: #fff !important;
+    text-transform: unset !important;
+    font-weight: 600 !important;
+    border-color: transparent !important;
+    &.segment-button.segment-activated {
+        border-color: #ffffff !important;
+    }
+}
+
+.fix-btn {
+    z-index: 999;
+}
+
+.space {
+    z-index: -1;
+}

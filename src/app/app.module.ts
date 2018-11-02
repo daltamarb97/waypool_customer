@@ -33,6 +33,21 @@ import { HelpPage } from '../pages/help/help';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SignUpService } from '../services/signup.services';
+import { authenticationService } from '../services/userauthentication.service';
+import { Firebase } from '@ionic-native/firebase';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyDYldaKvN7lRhAOYesOeWhl7Zs7WfTn9ak",
+  authDomain: "waypoolapp-f1349.firebaseapp.com",
+  databaseURL: "https://waypoolapp-f1349.firebaseio.com",
+  projectId: "waypoolapp-f1349",
+  storageBucket: "waypoolapp-f1349.appspot.com",
+  messagingSenderId: "729494621596"
+};
 
 @NgModule({
   declarations: [
@@ -66,7 +81,10 @@ import { GoogleMaps } from '@ionic-native/google-maps';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -102,7 +120,10 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GoogleMaps
+    GoogleMaps,
+    SignUpService,
+    authenticationService,
+    Firebase
   ]
 })
 export class AppModule {}

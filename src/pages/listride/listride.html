@@ -20,16 +20,16 @@
         </ion-col>
 
     </ion-row>
-    <ion-card>
+    <ion-card *ngFor = "let driver of driversAvailable">
         <ion-item>
             <ion-avatar item-start>
                 <img src="assets/imgs/face-1.jpg">
             </ion-avatar>
             <div class="name">
-                <h2>David Johnson
+                <h2>{{driver.name}} {{driver.lastname}}
                     <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
                 </h2>
-                <p>Honda Cvic | White</p>
+                <p>{{driver.carModel}} | {{driver.plateNumber}}</p>
             </div>
             <div class="more">
                 <h2 class="text-light">
@@ -66,7 +66,7 @@
         </ion-card-content>
     </ion-card>
 
-    <ion-card>
+    <!-- <ion-card>
         <ion-item>
             <ion-avatar item-start>
                 <img src="assets/imgs/man2.png">
@@ -156,5 +156,5 @@
                 </ion-col>
             </ion-row>
         </ion-card-content>
-    </ion-card>
+    </ion-card> -->
 </ion-content>

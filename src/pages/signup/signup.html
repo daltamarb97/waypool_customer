@@ -8,9 +8,9 @@
 
 <ion-content class="bg-background-img">
     <div class="logo">
-        <img src="assets/imgs/logo.png" alt="logo">
+        <img src="../../assets/imgs/logo waypool-01.png" alt="logo">
     </div>
-
+    <form [formGroup]="signupGroup" (ngSubmit)="verification()">
     <div class="bg-white login">
         <div class="">
             <ion-row>
@@ -18,37 +18,56 @@
                     <div class="form">
                         <ion-icon name="camera"></ion-icon>
                     </div>
-
                 </ion-col>
                 <ion-col class="name-fild">
                     <ion-list class="form" style="margin-bottom: 0">
                         <ion-item>
-                            <ion-label>First Name</ion-label>
-                            <ion-input type="text" value="Johans" text-right></ion-input>
+                            <ion-label></ion-label>
+                            <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>
                         </ion-item>
                         <ion-item>
-                            <ion-label>Last Name</ion-label>
-                            <ion-input type="text" value="Bittoda" text-right></ion-input>
+                            <ion-label></ion-label>
+                            <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>
                         </ion-item>
                     </ion-list>
                 </ion-col>
             </ion-row>
-            <ion-list class="form">
+            <ion-row>
+                <ion-col class="name-fild-2">
+                    <ion-list class="form">
+                        <ion-item class="editable-email">
+                                <ion-label></ion-label>
+                                    <ion-input type="text" text-right formControlName="email" placeholder= "email"></ion-input>
+                                </ion-item>
+                        </ion-list>
+                </ion-col>
+                <ion-col class="name-fild-2">
+                    <ion-list class="form">
+                        <ion-item class="nonEditable-email">
+                                <ion-input type="email" value="@uninorte.edu.co"  text-right formControlName="fixedemail" [readonly]="isReadonly"></ion-input>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+            <ion-list class="form" style="margin-bottom: 0">
                 <ion-item>
-                    <ion-label>Creat Password</ion-label>
-                    <ion-input type="password" value="*******" text-right></ion-input>
+                    <ion-label floating>contraseña nueva <span style="font-weight: bold; color: red;">(minimo 6 caracteres)</span></ion-label>
+                    <ion-input type="password"  text-right formControlName="password"  minlength="6"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-label>Confirm Password</ion-label>
-                    <ion-input type="password" value="*******" text-right></ion-input>
+                    <ion-label></ion-label>
+                    <ion-input type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-label>Phone Number</ion-label>
-                    <ion-input type="text" value="+91 9876543210" text-right></ion-input>
+                    <ion-label></ion-label>
+                    <ion-input type="text" text-right formControlName="phone" placeholder= "Tú némero de celular"></ion-input>
                 </ion-item>
             </ion-list>
-            <button ion-button full class="bg-theme text-white btn rounded" (click)="verification()">Sign up Now</button>
-            <p text-center>Already registered? <strong class="text-theme" (click)="login()">Sign in</strong></p>
+            <div class="footer-signup">
+                    <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>
+                    <p text-center>¿ya estas registrado? <strong class="text-theme" (click)="login()">Sign in</strong></p>
+            </div>
         </div>
     </div>
+</form>
 </ion-content>

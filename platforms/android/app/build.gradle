@@ -92,6 +92,7 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../cordova-plugin-googlemaps/vroom_customer-tbxml-android.gradle"
+apply from: "../cordova-plugin-firebase/vroom_customer-build.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -263,6 +264,11 @@ dependencies {
     compile "com.google.android.gms:play-services-maps:15.0.1"
     compile "com.google.android.gms:play-services-location:15.0.1"
     compile "com.android.support:support-core-utils:27.+"
+    compile "com.google.android.gms:play-services-tagmanager:+"
+    compile "com.google.firebase:firebase-core:+"
+    compile "com.google.firebase:firebase-messaging:+"
+    compile "com.google.firebase:firebase-config:+"
+    compile "com.google.firebase:firebase-perf:+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

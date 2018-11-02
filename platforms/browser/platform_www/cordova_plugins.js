@@ -341,6 +341,14 @@ module.exports = [
         "id": "cordova-plugin-splashscreen.SplashScreenProxy",
         "pluginId": "cordova-plugin-splashscreen",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-firebase/www/firebase-browser.js",
+        "id": "cordova-plugin-firebase.FirebasePlugin",
+        "pluginId": "cordova-plugin-firebase",
+        "clobbers": [
+            "FirebasePlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -351,7 +359,8 @@ module.exports.metadata =
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-ionic-webview": "1.2.1",
-    "cordova-plugin-ionic-keyboard": "2.1.3"
+    "cordova-plugin-ionic-keyboard": "2.1.3",
+    "cordova-plugin-firebase": "2.0.5"
 }
 // BOTTOM OF METADATA
 });

@@ -7,6 +7,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
 import { FindridePage } from '../pages/findride/findride';
+import { ListridePage } from '../pages/listride/listride';
+
 
 
 @Component({
@@ -17,10 +19,12 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     this.rootPage = FindridePage;
-    // platform.ready().then(() => {
-    //   // Okay, so the platform is ready and our plugins are available.
-    //   // Here you can do any higher level native things you might need
-    // });
+    platform.ready().then(() => {
+       // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need
+    statusBar.styleDefault();
+    splashScreen.hide();
+    });
   }}
       
  

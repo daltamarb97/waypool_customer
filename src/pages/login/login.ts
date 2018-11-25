@@ -25,7 +25,7 @@ export class LoginPage {
     
     logIn(){
         this.authenticationService.loginWithEmail(this.email, this.password).then((data) => {
-            alert("loggeado correctamente");
+            // alert("loggeado correctamente");
             console.log(data);
             this.navCtrl.push(TabsPage);
             this.authenticationService.getStatus;

@@ -1,38 +1,48 @@
 <ion-header class="transparent">
     <ion-navbar>
-        <ion-title><span class="text-white">FIND A RIDE</span></ion-title>
+        <ion-title><span class="text-white">PIDE TU VIAJE</span></ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content class="bg-background-img" padding>
+        
     <ion-card class="search">
+            <ion-item>
+                    <ion-label>¿A donde vas?</ion-label>
+                    <ion-select [(ngModel)]="destinationSelect">
+                      <ion-option>Otro lugar</ion-option>
+                      <ion-option>Universidad del Norte</ion-option>
+                    </ion-select>
+                  </ion-item>
         <ion-card-content>
             <span class="dot bg-theme"></span>
-            <ion-searchbar (ionInput)="getItems($event)" placeholder="Your Location"></ion-searchbar>
-            <ion-icon name="md-locate" class="text-black"></ion-icon>
+            <ion-searchbar [(ngModel)]="autocompleteMyPos.input" (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu ubicación"></ion-searchbar>
+          
+            <ion-list   [hidden]="autocompleteItems.length == 0">
+                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">
+                  {{ item.description }}
+                </ion-item>
+              </ion-list>
+              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->
         </ion-card-content>
         <ion-card-content>
-            <span class="dot bg-yellow"></span>
-            <ion-searchbar (ionInput)="getItems($event)" placeholder="Where to go?"></ion-searchbar>
-            <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>
+            <span class="dot bg-yellow"></span>           
+            <ion-searchbar  [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>
+
+            <ion-list   [hidden]="autocompleteItems2.length == 0">
+            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">
+              {{ item.description }}
+            </ion-item>
+          </ion-list>
+            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->
+
         </ion-card-content>
+        
     </ion-card>
-    <ion-card class="search">
-        <ion-card-content>
-            <ion-icon name="md-calendar"></ion-icon>
-            <ion-searchbar (ionInput)="getItems($event)" placeholder="Date"></ion-searchbar>
-            <span class="text-light search-text">Today?</span>
-        </ion-card-content>
-    </ion-card>
-    <ion-card class="search">
-        <ion-card-content>
-            <ion-icon name="md-time"></ion-icon>
-            <ion-searchbar (ionInput)="getItems($event)" placeholder="Time"></ion-searchbar>
-            <span class="text-light search-text">In Next Hour?</span>
-        </ion-card-content>
-    </ion-card>
+  
+ <div #map id="map"></div>  
+    
+    
+    
     <button (click)="listride()" class="btn rounded bg-white text-theme" style="width: 100%">List</button>
-    <div id="map_canvas"> 
-        <button ion-button (click) ="onButtonClickEvent($event)"> start demo </button>
-    </div>
 </ion-content>

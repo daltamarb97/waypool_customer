@@ -1,20 +1,19 @@
+
+ 
 page-findride {
-    #map_canvas{
-        height: 90%;
-    }
     .search {
         border-radius: 10px;
         margin: 10px 0;
         width: 100%;
         .card-content {
-            display: flex !important;
+            // display: flex;
             align-items: center;
             padding: 5px 15px;
             .searchbar-search-icon {
                 display: none;
             }
             .searchbar-input {
-                padding: 4px 14px !important;
+                padding: 17px  !important;
                 -webkit-box-shadow: none !important;
                 box-shadow: none !important;
                 font-size: 1.25rem;
@@ -27,18 +26,41 @@ page-findride {
             .dot {
                 min-width: 10px;
                 min-height: 10px;
-                display: block;
+                display: flex;
                 border-radius: 50%;
+                width: 10px;
+                margin-bottom: -17px !important;
+                bottom: -10px;
+                position: relative;
+                left: -2px;
+                z-index: 1;
                 &.icons {
-                    width: auto;
                     border-radius: 0;
                 }
-            }
-        }
+            }}
+            .ion-list {
+                margin: 0 ;
+                font-size: 130rem
+              }
+              .item-ios {
+                font-size: 1.25rem
+              }
         span.search-text {
             width: 140px;
             font-size: 1.3rem;
             text-align: right;
-        }
-    }
-}
+        }}
+        .scroll {
+            height: 100%
+          }
+     
+          
+          #map {
+            width: 100%;
+            height: 50%;
+            display: block
+            
+          }   
+          
+        }   
+     

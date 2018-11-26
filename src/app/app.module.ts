@@ -39,6 +39,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SignUpService } from '../services/signup.services';
 import { authenticationService } from '../services/userauthentication.service';
 import { Firebase } from '@ionic-native/firebase';
+import { Geolocation } from '@ionic-native/geolocation';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDYldaKvN7lRhAOYesOeWhl7Zs7WfTn9ak",
@@ -48,6 +49,9 @@ export const firebaseConfig = {
   storageBucket: "waypoolapp-f1349.appspot.com",
   messagingSenderId: "729494621596"
 };
+
+
+
 
 @NgModule({
   declarations: [
@@ -123,7 +127,9 @@ export const firebaseConfig = {
     GoogleMaps,
     SignUpService,
     authenticationService,
-    Firebase
+    Firebase,
+    Geolocation
+
   ]
 })
 export class AppModule {}

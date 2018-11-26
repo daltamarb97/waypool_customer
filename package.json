@@ -65,7 +65,10 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-firebase": {},
-      "cordova-plugin-geolocation": {}
+      "cordova-plugin-geolocation": {
+        "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
+      }
+
     },
     "platforms": [
       "browser",

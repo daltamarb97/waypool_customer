@@ -26617,10 +26617,6 @@ page-filter ion-card-header .check-item .checkbox {
   margin: 15px !important;
 }
 
-page-findride #map_canvas {
-  height: 90%;
-}
-
 page-findride .search {
   border-radius: 10px;
   margin: 10px 0;
@@ -26628,10 +26624,6 @@ page-findride .search {
 }
 
 page-findride .search .card-content {
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -26644,7 +26636,7 @@ page-findride .search .card-content .searchbar-search-icon {
 }
 
 page-findride .search .card-content .searchbar-input {
-  padding: 4px 14px !important;
+  padding: 17px  !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   font-size: 1.25rem;
@@ -26659,19 +26651,46 @@ page-findride .search .card-content .searchbar {
 page-findride .search .card-content .dot {
   min-width: 10px;
   min-height: 10px;
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -10px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
 }
 
 page-findride .search .card-content .dot.icons {
-  width: auto;
   border-radius: 0;
+}
+
+page-findride .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+page-findride .search .item-ios {
+  font-size: 1.25rem;
 }
 
 page-findride .search span.search-text {
   width: 140px;
   font-size: 1.3rem;
   text-align: right;
+}
+
+page-findride .scroll {
+  height: 100%;
+}
+
+page-findride #map {
+  width: 100%;
+  height: 50%;
+  display: block;
 }
 
 page-help p {

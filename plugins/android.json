@@ -30,6 +30,9 @@
     },
     "cordova-plugin-firebase": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     }
   },
   "dependent_plugins": {}

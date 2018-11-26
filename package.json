@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.8",
+    "@types/google-maps": "^3.2.0",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project",
@@ -68,7 +69,6 @@
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
       }
-
     },
     "platforms": [
       "browser",

@@ -128,7 +128,8 @@ export const firebaseConfig = {
     SignUpService,
     authenticationService,
     Firebase,
-    Geolocation
+    Geolocation,
+    
 
   ]
 })

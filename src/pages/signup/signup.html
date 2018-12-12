@@ -44,7 +44,12 @@
                 <ion-col class="name-fild-2">
                     <ion-list class="form">
                         <ion-item class="nonEditable-email">
-                                <ion-input type="email" value="@uninorte.edu.co"  text-right formControlName="fixedemail" [readonly]="isReadonly"></ion-input>
+                                <!-- <ion-input type="email" value="@uninorte.edu.co"  text-right formControlName="fixedemail" [readonly]="isReadonly"></ion-input> -->
+                                <ion-select formControlName="fixedemail" type="email">
+                                    <ion-option value="@uninorte.edu.co">@uninorte.edu.co</ion-option>
+                                    <ion-option value="@uniautonoma.edu.co">@uniautonoma.edu.co</ion-option>
+                                    <ion-option value="@gmail.com">@gmail.com</ion-option>
+                                </ion-select>
                         </ion-item>
                     </ion-list>
                 </ion-col>

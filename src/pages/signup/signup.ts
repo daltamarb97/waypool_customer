@@ -8,6 +8,8 @@ import { SignUpService } from '../../services/signup.services';
 import { AlertController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { authenticationService } from '../../services/userauthentication.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -16,12 +18,14 @@ import { authenticationService } from '../../services/userauthentication.service
   })
   export class SignupPage {
   user:any ={};
-  userId:any = null;
+  userId:any = '';
   userFire:any ={};
   isReadonly = true;
   private signupGroup: FormGroup;
+  userFirebase = firebase.auth().currentUser;
   
-    constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, public SignUpService: SignUpService, public alertCtrl: AlertController, private formBuilder: FormBuilder, private authenticationService: authenticationService) {
+  
+    constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, public SignUpService: SignUpService, public alertCtrl: AlertController, private formBuilder: FormBuilder, private authenticationService: authenticationService, private AngularFireAuth: AngularFireAuth) {
        this.signupGroup = this.formBuilder.group({
            name: ["", Validators.required],
            lastname: ["", Validators.required],
@@ -39,7 +43,8 @@ import { authenticationService } from '../../services/userauthentication.service
       }
        
       verification(){
-          // console.log(this.signupGroup.value);
+        //   console.log(this.userFirebase);
+        //   debugger;
           // let userForEmailVer = firebase.auth().currentUser;
           let userName = this.signupGroup.controls['name'].value;
           let userLastName = this.signupGroup.controls['lastname'].value;
@@ -49,15 +54,29 @@ import { authenticationService } from '../../services/userauthentication.service
           let userPassword = this.signupGroup.controls['password'].value;
           let userPasswordconf = this.signupGroup.controls['passwordconf'].value;
           let userPhone = this.signupGroup.controls['phone'].value;
+          
           this.user = this.signupGroup.value;
           if(userPassword === userPasswordconf){
-              if(!this.user.userId){
-                  this.user.userId = Date.now() ;
-                  console.log(this.user.userId); 
-              };
               this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
-              this.SignUpService.saveUser(this.user);
               this.navCtrl.push(LoginPage);
+
+              //sending email verification and verifying weather email is verified or not
+
+              this.AngularFireAuth.auth.onAuthStateChanged(user => {
+                  if(user){
+                    if(!this.user.userId){
+                        this.user.userId = this.userFirebase.uid; //beware of this
+                        console.log(this.user.userId); //remember to delete this console.log for safety reasons
+                        this.SignUpService.saveUser(this.user);
+                    };
+                      if(user.emailVerified == false){
+                        user.sendEmailVerification();
+                      console.log("verification email has been sent")
+                      }
+;                  }else{
+                      console.log("there is no user");
+                        }
+              });
               
           }else{
               const alert = this.alertCtrl.create({
@@ -67,4 +86,4 @@ import { authenticationService } from '../../services/userauthentication.service
                 });
                 alert.present();
           };   
-      }}
+      }};

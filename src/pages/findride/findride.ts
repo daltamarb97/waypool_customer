@@ -6,7 +6,10 @@ import { ListridePage } from '../listride/listride';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NavController, Platform, ViewController } from 'ionic-angular';
-
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { SignUpService } from '../../services/signup.services';
+import * as firebase from 'firebase';
 
 
 
@@ -40,8 +43,16 @@ export class FindridePage {
   myLatLngDest:any;
   //¿Adonde vas? 
   destinationSelect: any;
+//other variables
+  userFirebase = this.AngularFireAuth.auth.currentUser;
+  // userRef = firebase.database().ref('users');
+  // onTrip = this.userRef.push();
+  // getKey = firebase.database().ref().child('users').push().key;
+  // userDataAd = {
+  //   onTrip: true
+  // };
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone) {
+  constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public afDB: AngularFireDatabase, private AngularFireAuth: AngularFireAuth, private signUpService: SignUpService ) {
     
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -321,13 +332,19 @@ clearMarkers(){
     this.geocodeLatLng(latLng,inputName)
 })
 }
+
+
   listride(){
     // TO DO: IF  (GEOPOSITION !== POSITIONDEST){
 //      NO PERMITIR VIAJE , ES UNA IDEA PERO NO ESTOY 100% DE ACUERDO
     //}
 
-    //this is to go to ListridePage  this.navCtrl.push(ListridePage);
-     
+
+    //change the way users are signing up, so the userId of real time database
+    //is actually the same one of authentication
+   this.navCtrl.push(ListridePage);
+   this.signUpService.turnOnTripOn(this.userFirebase);
+   
   }
   
 

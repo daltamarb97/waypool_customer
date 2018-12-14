@@ -58,27 +58,21 @@ import * as firebase from 'firebase';
           this.user = this.signupGroup.value;
           if(userPassword === userPasswordconf){
               this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
-              this.navCtrl.push(LoginPage);
+              this.navCtrl.push(LoginPage, this.user);
 
               //sending email verification and verifying weather email is verified or not
-
-              this.AngularFireAuth.auth.onAuthStateChanged(user => {
-                  if(user){
-                    if(!this.user.userId){
-                        this.user.userId = this.userFirebase.uid; //beware of this
-                        console.log(this.user.userId); //remember to delete this console.log for safety reasons
-                        this.SignUpService.saveUser(this.user);
-                    };
-                      if(user.emailVerified == false){
-                        user.sendEmailVerification();
-                      console.log("verification email has been sent")
-                      }
-;                  }else{
-                      console.log("there is no user");
-                        }
-              });
-              
-          }else{
+                    // if(!this.user.userId){
+                    //     this.user.userId = this.userFirebase.uid; //beware of this
+                    //     console.log(this.user.userId); //remember to delete this console.log for safety reasons
+                    //     this.SignUpService.saveUser(this.user);
+                    // };
+                    //   if(this.userFirebase.emailVerified == false){
+                    //     this.userFirebase.sendEmailVerification();
+                    //   console.log("verification email has been sent")
+                    //   }else{
+                    //   console.log("there is no user");
+                    //     }
+         }else{
               const alert = this.alertCtrl.create({
                   title: 'Oops!',
                   subTitle: 'las contraseñas no coinciden, intenta de nuevo',

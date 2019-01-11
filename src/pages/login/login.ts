@@ -18,6 +18,7 @@ export class LoginPage {
     password:string = null;
     auth = this.AngularFireAuth.auth;
     receivedUser;
+    
   constructor(public navCtrl: NavController, private authenticationService: authenticationService, public alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public NavParams: NavParams, private SignUpService: SignUpService) {
 
   }
@@ -53,22 +54,7 @@ export class LoginPage {
     
     logIn(){
         this.receivedUser = this.NavParams.data;
-        if(!this.receivedUser.userId){
-             this.receivedUser.userId = this.AngularFireAuth.auth.currentUser.uid; //beware of this
-             console.log(this.receivedUser.userId); //remember to delete this console.log for safety reasons
-             this.SignUpService.saveUser(this.receivedUser);
-         };
-
-         //sending email verification and verifying weather email is verified or not
-         if(this.AngularFireAuth.auth.currentUser.emailVerified == false){
-             this.AngularFireAuth.auth.currentUser.sendEmailVerification();
-             console.log("verification email has been sent")
-           }else{
-             console.log("there is no user");
-             }
-
         this.authenticationService.loginWithEmail(this.email, this.password).then((data) => {
-            // alert("loggeado correctamente");
             console.log(data);
             if(data.user.emailVerified == false){
                 const alert = this.alertCtrl.create({

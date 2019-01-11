@@ -40,6 +40,9 @@ import { SignUpService } from '../services/signup.services';
 import { authenticationService } from '../services/userauthentication.service';
 import { Firebase } from '@ionic-native/firebase';
 import { Geolocation } from '@ionic-native/geolocation';
+import { sendCoordsService } from '../services/sendCoords.service';
+import { geofireService } from '../services/geoFire.service';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDYldaKvN7lRhAOYesOeWhl7Zs7WfTn9ak",
@@ -129,7 +132,8 @@ export const firebaseConfig = {
     authenticationService,
     Firebase,
     Geolocation,
-    
+    sendCoordsService,
+    geofireService
 
   ]
 })

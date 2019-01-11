@@ -3,6 +3,8 @@ import { NavController, ModalController  } from 'ionic-angular';
 
 
 import { ConfirmpopupPage } from '../confirmpopup/confirmpopup';
+import { MyridePage } from '../myride/myride';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-confirmride',
@@ -17,6 +19,7 @@ export class ConfirmridePage {
  confirmpopup(){
     let modal = this.modalCtrl.create(ConfirmpopupPage);
     modal.present();
+    this.navCtrl.push(TabsPage);
  }
 
 }

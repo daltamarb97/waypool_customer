@@ -61,17 +61,37 @@ import * as firebase from 'firebase';
               this.navCtrl.push(LoginPage, this.user);
 
               //sending email verification and verifying weather email is verified or not
-                    // if(!this.user.userId){
-                    //     this.user.userId = this.userFirebase.uid; //beware of this
-                    //     console.log(this.user.userId); //remember to delete this console.log for safety reasons
-                    //     this.SignUpService.saveUser(this.user);
-                    // };
-                    //   if(this.userFirebase.emailVerified == false){
-                    //     this.userFirebase.sendEmailVerification();
-                    //   console.log("verification email has been sent")
-                    //   }else{
-                    //   console.log("there is no user");
-                    //     }
+                    if(!this.user.userId){
+                        this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
+                        if(user){
+                            user.getIdToken().then((token)=>{
+                                this.user.tokenId = token;
+                                console.log(this.user.tokenId);
+                            })   
+                        if(!this.user.userId){
+                            this.user.userId = user.uid;
+                            console.log(this.user.userId);
+                        }
+                        this.SignUpService.saveUser(this.user);
+                    }else{
+                        console.log('there is no user');
+                    }
+                })
+            };
+
+            this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
+                if(user){
+                   if(user.emailVerified == false){
+                        user.sendEmailVerification();
+                      console.log("verification email has been sent")
+                      }else{
+                      console.log("there is no user");
+                        } 
+                }else{
+                    console.log('there is no user');
+                }
+            })
+                
          }else{
               const alert = this.alertCtrl.create({
                   title: 'Oops!',

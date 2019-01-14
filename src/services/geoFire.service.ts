@@ -31,8 +31,8 @@ export class geofireService {
             this.afDB.database.ref('geofire/'+ key).update({
                 name: data[4],
                 lastname: data[3],
-                origin: data[8].origin,
-                destination: data[8].destination
+                // origin: data[8].origin,
+                // destination: data[8].destination
             });
            
            })

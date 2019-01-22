@@ -319,7 +319,7 @@ geocodeLatLng(latLng,inputName) {
           this.SignUpService.turnFindingTrip(this.user);
           this.navCtrl.push(ListridePage);
           this.geofireService.setLocationGeofire( this.user, this.myLatLng.lat, this.myLatLng.lng);
-          this.geofireService.updateInfoGeofire(this.user);
+          // this.geofireService.updateInfoGeofire(this.user);
           
          }
       //TO-DO:1. SI LA PERSONA NO HA COLOCADO UNIVERSIDAD EN ALGUNA DE LAS DOS AUTOCOMPLETADO NO DEJE PASAR

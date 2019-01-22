@@ -2,6 +2,7 @@ import { AngularFireDatabase } from "@angular/fire/database";
 import { Injectable } from "@angular/core";
 import * as GeoFire from 'geofire';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Injectable()
 export class geofireService {
@@ -9,10 +10,10 @@ export class geofireService {
     dbRef;
     geoFire;
     key;
-    
+   
 
-    constructor(public afDB: AngularFireDatabase){
-        
+    constructor(public afDB: AngularFireDatabase, private AngularFireAuth: AngularFireAuth){
+       
     }
 
     setLocationGeofire( key, lat, lng){
@@ -26,17 +27,27 @@ export class geofireService {
            
     }
 
-    updateInfoGeofire(key){
-        this.afDB.list('users/'+ key).valueChanges().subscribe((data)=>{
-            this.afDB.database.ref('geofire/'+ key).update({
-                name: data[4],
-                lastname: data[3],
-                // origin: data[8].origin,
-                // destination: data[8].destination
-            });
-           
-           })
+    getDriversAvailableForUser(userId){
+       return this.afDB.list('/users/' + userId + '/trips/driversListRide/').valueChanges();
     }
+
+   
+    showOnDriver(driverId, userId, origin, destination, name, lastname, phone){
+        this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + userId).set({
+            origin: origin,
+             destination: destination,
+             name: name,
+             lastname: lastname,
+             phone: phone,
+             userId: userId
+        });
+    }
+
+    deleteDriverListRide(userId){
+        this.afDB.database.ref('/users/' + userId + '/trips/driversListRide/').remove();
+        this.afDB.database.ref('/geofire/' + userId).remove();
+    }
+    
             
 
     }

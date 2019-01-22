@@ -7,8 +7,8 @@
                 <img src="assets/imgs/face-1.jpg">
             </ion-avatar>
             <div class="name">
-                <h2>David Johnson</h2>
-                <p>Honda Cvic | White</p>
+                <h2>{{driver.name}} {{driver.lastname}}</h2>
+                <p>{{driver.carModel}} | {{driver.plateNumber}}</p>
             </div>
         </ion-item>
         <ion-card-content>
@@ -47,8 +47,9 @@
                         </div>
                     </ion-col>
                 </ion-row>
-                <button class="btn bg-theme text-white rounded" (click)="goToRide()" style="width: 100%;margin-top: 14px;">confirmar conductor</button>
             </div>
+                <button class="btn bg-theme text-white rounded" (click)="goToRide()" style="width: 100%;margin-top: 14px;">confirmar conductor</button>
+            
         </ion-card-content>
     </ion-card>
 </ion-content>

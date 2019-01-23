@@ -11,8 +11,9 @@ import { MorePage } from '../more/more';
 })
 export class TabsPage {
 
-  tab1Root = MyridePage;
-  tab2Root = ChatsPage;
+  
+  tab1Root = ChatsPage;
+  tab2Root = MyridePage;
   tab3Root = FindridePage;
   tab4Root = WalletPage;
   tab5Root = MorePage;

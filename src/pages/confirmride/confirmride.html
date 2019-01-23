@@ -10,11 +10,11 @@
             <ion-avatar item-start>
                 <img src="assets/imgs/face-1.jpg">
             </ion-avatar>
-            <div class="name">
-                <h2>David Johnson
+            <div *ngFor = "let driver of driversAvailable"  class="name">
+                <h2>{{driver.name}} {{driver.lastname}}
                     <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
                 </h2>
-                <p>Honda Cvic | White</p>
+                <p>{{driver.carModel}} | {{driver.plateNumber}}</p>
             </div>
         </ion-item>
         <ion-card-content>

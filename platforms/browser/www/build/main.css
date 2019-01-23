@@ -4873,10 +4873,6 @@ textarea::-webkit-input-placeholder {
   padding-left: 2px;
 }
 
-textarea:-ms-input-placeholder {
-  padding-left: 2px;
-}
-
 textarea::-ms-input-placeholder {
   padding-left: 2px;
 }
@@ -5041,7 +5037,7 @@ ion-input :focus {
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
@@ -18862,23 +18858,23 @@ button.swiper-pagination-bullet {
 }
 
 .swiper-container-3d .swiper-slide-shadow-left {
-  background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.5)), to(transparent));
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent);
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 
 .swiper-container-3d .swiper-slide-shadow-right {
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(transparent));
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 
 .swiper-container-3d .swiper-slide-shadow-top {
-  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(transparent));
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 
 .swiper-container-3d .swiper-slide-shadow-bottom {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(transparent));
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 
 .swiper-container-coverflow .swiper-wrapper,
@@ -26135,6 +26131,179 @@ page-code ion-item .item-inner .text-input {
   color: #999;
 }
 
+page-confirmnote .close-icon {
+  font-size: 3rem;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+page-confirmnote .card-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 26px !important;
+  padding-right: 26px !important;
+}
+
+page-confirmnote .content {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+page-confirmnote .card {
+  width: 80%;
+  margin: auto;
+  height: 465px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+}
+
+page-confirmnote .card h6 {
+  color: #0fc874;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+page-confirmnote .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+page-confirmnote .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+page-confirmnote .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+page-confirmnote .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+page-confirmnote ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+page-confirmnote ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+page-confirmnote ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  position: relative;
+  color: #252525;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+page-confirmnote ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+page-confirmnote ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+page-confirmnote ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+page-confirmnote ion-card-content .ride-detail::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: #555;
+  position: absolute;
+  left: 5px;
+  bottom: 25px;
+}
+
+page-confirmnote ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+page-confirmnote ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+page-confirmnote ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+page-confirmnote .seats .rate {
+  font-weight: 700;
+  color: #0fc874;
+}
+
+page-confirmnote .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+page-confirmnote .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #0fc874;
+  border-radius: 10px;
+  color: #0fc874;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-confirmnote .seats .seats-tag ion-icon {
+  font-size: 2rem;
+}
+
+page-confirmnote .seats .seats-tag strong {
+  margin: auto;
+  color: #000;
+}
+
 page-confirmpopup .close-icon {
   font-size: 3rem;
   right: 10px;
@@ -26617,10 +26786,6 @@ page-filter ion-card-header .check-item .checkbox {
   margin: 15px !important;
 }
 
-page-findride #map_canvas {
-  height: 90%;
-}
-
 page-findride .search {
   border-radius: 10px;
   margin: 10px 0;
@@ -26628,10 +26793,6 @@ page-findride .search {
 }
 
 page-findride .search .card-content {
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -26644,7 +26805,7 @@ page-findride .search .card-content .searchbar-search-icon {
 }
 
 page-findride .search .card-content .searchbar-input {
-  padding: 4px 14px !important;
+  padding: 17px  !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   font-size: 1.25rem;
@@ -26659,19 +26820,54 @@ page-findride .search .card-content .searchbar {
 page-findride .search .card-content .dot {
   min-width: 10px;
   min-height: 10px;
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -10px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
 }
 
 page-findride .search .card-content .dot.icons {
-  width: auto;
   border-radius: 0;
+}
+
+page-findride .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+page-findride .search .item-ios {
+  font-size: 1.25rem;
 }
 
 page-findride .search span.search-text {
   width: 140px;
   font-size: 1.3rem;
   text-align: right;
+}
+
+page-findride .scroll {
+  height: 100%;
+}
+
+page-findride #map {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 7px;
+}
+
+page-findride .findRideText {
+  text-align: center;
 }
 
 page-help p {
@@ -26814,6 +27010,11 @@ page-listride ion-card-content .full.btn {
   font-size: 1.2rem;
 }
 
+page-listride ion-card-content .ride-detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 page-listride .center-align {
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -26841,6 +27042,15 @@ page-listride .flow-ride h2 {
 
 page-listride .flow-ride img {
   width: 18px;
+}
+
+page-listride .hideLongText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+page-listride .title {
+  overflow: visible;
 }
 
 page-login .option-login {

@@ -1,22 +1,16 @@
 <ion-header class="transparent">
     <ion-navbar>
-        <ion-title><span class="text-white">PIDE TU VIAJE</span></ion-title>
+        <ion-title><span class="text-white findRideText">PIDE TU VIAJE</span></ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content class="bg-background-img" padding>
-        
+    
     <ion-card class="search">
-            <ion-item>
-                    <ion-label>¿A donde vas?</ion-label>
-                    <ion-select [(ngModel)]="destinationSelect">
-                      <ion-option>Otro lugar</ion-option>
-                      <ion-option>Universidad del Norte</ion-option>
-                    </ion-select>
-                  </ion-item>
+          
         <ion-card-content>
             <span class="dot bg-theme"></span>
-            <ion-searchbar [(ngModel)]="autocompleteMyPos.input" (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu ubicación"></ion-searchbar>
+            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>
           
             <ion-list   [hidden]="autocompleteItems.length == 0">
                 <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">
@@ -27,7 +21,7 @@
         </ion-card-content>
         <ion-card-content>
             <span class="dot bg-yellow"></span>           
-            <ion-searchbar  [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>
+           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>
 
             <ion-list   [hidden]="autocompleteItems2.length == 0">
             <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">
@@ -44,10 +38,7 @@
     
     
     
-    <button (click)="listride()" class="btn rounded bg-white text-theme" style="width: 100%">List</button>
+    <button (click)="listride()" class="btn rounded bg-white text-theme" style="width: 100%">Pedir</button>
 
-    <!-- <div id="map_canvas"> 
-        <button ion-button (click) ="onButtonClickEvent($event)"> start demo </button>
-    </div> -->
 
 </ion-content>

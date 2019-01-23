@@ -1,0 +1,39 @@
+<ion-content>
+    <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
+    <ion-card>
+        <h6 class="text-theme">Detalles del Viaje</h6>
+        
+
+        <ion-card-content>
+            <div class="ride-detail">
+                <ion-item >
+                    <ion-label>Nota para tu compañero:</ion-label>
+                
+                  </ion-item>
+                <ion-item>
+                    <div class="form">
+                        <ion-list no-lines>
+                            <ion-item>
+                                <ion-textarea [(ngModel)]="nota" type="text" placeholder="Deja tu nota aquí" ></ion-textarea>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                  </ion-item>
+            </div>
+        </ion-card-content>
+
+        <ion-card-content>
+            <div class="seats">
+                
+                <ion-row style="margin-top: 14px;">
+                    
+                    <ion-col col-8>
+                        <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: .95rem;" (click)="setNoteDriver()">Aceptar Viaje</button>
+                    </ion-col>
+                </ion-row>
+
+
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

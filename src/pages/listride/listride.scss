@@ -102,6 +102,10 @@ page-listride {
             height: 35px;
             font-size: 1.2rem;
         }
+        .ride-detail{
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
     }
     .center-align {
         align-items: center;
@@ -124,5 +128,12 @@ page-listride {
         img {
             width: 18px;
         }
+    }
+    .hideLongText{
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+    .title{
+        overflow: visible;
     }
 }

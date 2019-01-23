@@ -36,10 +36,15 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { SignUpService } from '../services/signup.services';
+import { SignUpService } from '../services/signup.service';
 import { authenticationService } from '../services/userauthentication.service';
 import { Firebase } from '@ionic-native/firebase';
 import { Geolocation } from '@ionic-native/geolocation';
+import { sendCoordsService } from '../services/sendCoords.service';
+import { sendUsersService } from '../services/sendUsers.service';
+import { noteService } from '../services/note.service';
+import { ConfirmNotePage } from '../pages/confirmnote/confirmnote';
+import { CallNumber } from '@ionic-native/call-number';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDYldaKvN7lRhAOYesOeWhl7Zs7WfTn9ak",
@@ -74,6 +79,7 @@ export const firebaseConfig = {
     ConfirmpopupPage,
     RateriderPage,
     ChattingPage,
+    ConfirmNotePage,
     ProfilePage,
     ReviewsPage,
     NotificationPage,
@@ -109,6 +115,7 @@ export const firebaseConfig = {
     RiderprofilePage,
     ConfirmridePage,
     ConfirmpopupPage,
+    ConfirmNotePage,
     RateriderPage,
     ChattingPage,
     ProfilePage,
@@ -129,8 +136,10 @@ export const firebaseConfig = {
     authenticationService,
     Firebase,
     Geolocation,
-    
-
+    sendCoordsService,
+    sendUsersService,
+    noteService,
+    CallNumber
   ]
 })
 export class AppModule {}

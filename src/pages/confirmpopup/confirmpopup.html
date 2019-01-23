@@ -1,23 +1,23 @@
 <ion-content>
     <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
-    <ion-card>
+    <ion-card >
         <h6 class="text-theme">Confirm Ride Request?</h6>
         <ion-item>
             <ion-avatar item-start>
                 <img src="assets/imgs/face-1.jpg">
             </ion-avatar>
-            <div class="name">
-                <h2>David Johnson</h2>
-                <p>Honda Cvic | White</p>
+            <div  class="name">
+                <h2>{{driver.name|titlecase }} {{driver.lastname|titlecase | slice:0:1}}</h2>
+                <p>{{driver.carModel}} | {{driver.plateNumber}}</p>
             </div>
         </ion-item>
         <ion-card-content>
             <div class="ride-detail">
                 <p><small>Pickup Location</small>
-                    <span class="icon-location bg-theme"></span>Washington sq.park New York</p>
+                    <span class="icon-location bg-theme"></span>{{driver.trips.origin}}</p>
                 <p>
                     <small>Drop Location</small>
-                    <span class="icon-location bg-yellow"></span>Harison, east sq.park New York</p>
+                    <span class="icon-location bg-yellow"></span>{{driver.trips.destination}}</p>
             </div>
         </ion-card-content>
 
@@ -37,7 +37,7 @@
             <div class="seats">
                 <ion-row>
                     <ion-col col-4 class="rate">
-                        <small>Est Fare</small> $ 120
+                        <small>Precio</small> $3000
                     </ion-col>
                     <ion-col col-8>
                         <div class="seats-tag">
@@ -47,7 +47,7 @@
                         </div>
                     </ion-col>
                 </ion-row>
-                <button class="btn bg-theme text-white rounded" (click)="confirmpopup()" style="width: 100%;margin-top: 14px;">CONFIRM REQUEST</button>
+                <button class="btn bg-theme text-white rounded" (click)="goToRide()" style="width: 100%;margin-top: 14px;">CONFIRM REQUEST</button>
             </div>
         </ion-card-content>
     </ion-card>

@@ -349,6 +349,14 @@ module.exports = [
         "clobbers": [
             "FirebasePlugin"
         ]
+    },
+    {
+        "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
+        "id": "mx.ferreyra.callnumber.CallNumber",
+        "pluginId": "mx.ferreyra.callnumber",
+        "clobbers": [
+            "call"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -361,7 +369,8 @@ module.exports.metadata =
     "cordova-plugin-ionic-webview": "1.2.1",
     "cordova-plugin-ionic-keyboard": "2.1.3",
     "cordova-plugin-firebase": "2.0.5",
-    "cordova-plugin-geolocation": "4.0.1"
+    "cordova-plugin-geolocation": "4.0.1",
+    "mx.ferreyra.callnumber": "0.0.2"
 }
 // BOTTOM OF METADATA
 });

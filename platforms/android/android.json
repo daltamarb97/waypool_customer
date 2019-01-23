@@ -83,6 +83,10 @@
             {
               "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"CallNumber\"><param name=\"android-package\" value=\"mx.ferreyra.callnumber.CFCallNumber\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -191,6 +195,14 @@
             {
               "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
               "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.CALL_PHONE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
+              "count": 1
             }
           ]
         }
@@ -223,6 +235,9 @@
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     },
     "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "mx.ferreyra.callnumber": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     }
   },
@@ -503,6 +518,14 @@
       "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
       "pluginId": "cordova-plugin-geolocation",
       "runs": true
+    },
+    {
+      "id": "mx.ferreyra.callnumber.CallNumber",
+      "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
+      "pluginId": "mx.ferreyra.callnumber",
+      "clobbers": [
+        "call"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -513,6 +536,7 @@
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-plugin-firebase": "2.0.5",
-    "cordova-plugin-geolocation": "4.0.1"
+    "cordova-plugin-geolocation": "4.0.1",
+    "mx.ferreyra.callnumber": "0.0.2"
   }
 }

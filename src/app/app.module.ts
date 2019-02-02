@@ -42,6 +42,10 @@ import { Firebase } from '@ionic-native/firebase';
 import { Geolocation } from '@ionic-native/geolocation';
 import { sendCoordsService } from '../services/sendCoords.service';
 import { geofireService } from '../services/geoFire.service';
+import { CommonModule } from '@angular/common';
+import { instancesService } from '../services/instances.service';
+  
+
 
 
 export const firebaseConfig = {
@@ -91,7 +95,8 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    CommonModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -133,7 +138,8 @@ export const firebaseConfig = {
     Firebase,
     Geolocation,
     sendCoordsService,
-    geofireService
+    geofireService,
+    instancesService
 
   ]
 })

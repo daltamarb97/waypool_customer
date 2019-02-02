@@ -10,7 +10,7 @@ export class geofireService {
     dbRef;
     geoFire;
     key;
-   
+    user:any;
 
     constructor(public afDB: AngularFireDatabase, private AngularFireAuth: AngularFireAuth){
        
@@ -19,12 +19,29 @@ export class geofireService {
     setLocationGeofire( key, lat, lng){
         this.dbRef = this.afDB.database.ref('geofire/' );
         this.geoFire = new GeoFire(this.dbRef); 
-        this.geoFire.set(key, [lat, lng]).then(function(){
-            console.log('location updated');
-           }, function(error){
-          console.log('error: ' + error)
-           });
+
+        // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
+            // this.user = user;
+            // if(!this.user.onTrip == true){
+                this.geoFire.set(key, [lat, lng]).then(function(){
+                    console.log('location updated');
+                   }, function(error){
+                  console.log('error: ' + error)
+                   });
+            // }
+        // })
            
+    }
+
+    removeKeyGeofire(key){
+        this.dbRef = this.afDB.database.ref('geofire/' );
+        this.geoFire = new GeoFire(this.dbRef); 
+        
+        this.geoFire.remove(key).then(()=>{
+            console.log("Provided key has been removed from GeoFire")
+        }, (error)=>{
+            console.log(error);
+        })
     }
 
     getDriversAvailableForUser(userId){
@@ -39,15 +56,28 @@ export class geofireService {
              name: name,
              lastname: lastname,
              phone: phone,
-             userId: userId
+             userId: userId,
+
         });
     }
 
-    deleteDriverListRide(userId){
-        this.afDB.database.ref('/users/' + userId + '/trips/driversListRide/').remove();
-        this.afDB.database.ref('/geofire/' + userId).remove();
+    deleteUserGeofire(userId){
+        this.afDB.database.ref('/geofire/' + userId).remove().then(()=>{
+            console.log("succesfully removed");
+        }).catch(error =>{
+            console.log(error);
+        })
+        
+        
+    }
+
+    deleteDriverListRide(userId, driverId){
+        this.afDB.database.ref('/users/' + userId + '/trips/driversListRide/' + driverId).remove();
     }
     
+    deleteDriverListRideTotal(userId){
+        this.afDB.database.ref('/users/' + userId + '/trips/driversListRide/').remove();
+    }
             
 
     }

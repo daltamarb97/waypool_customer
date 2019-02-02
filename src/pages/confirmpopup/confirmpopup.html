@@ -14,10 +14,10 @@
         <ion-card-content>
             <div class="ride-detail">
                 <p><small>Pickup Location</small>
-                    <span class="icon-location bg-theme"></span>Washington sq.park New York</p>
+                    <span class="icon-location bg-theme"></span>{{driver.origin}}</p>
                 <p>
                     <small>Drop Location</small>
-                    <span class="icon-location bg-yellow"></span>Harison, east sq.park New York</p>
+                    <span class="icon-location bg-yellow"></span>{{driver.destination}}</p>
             </div>
         </ion-card-content>
 
@@ -48,8 +48,8 @@
                     </ion-col>
                 </ion-row>
             </div>
-                <button class="btn bg-theme text-white rounded" (click)="goToRide()" style="width: 100%;margin-top: 14px;">confirmar conductor</button>
-            
+                <button class="btn bg-theme text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">confirmar conductor</button>
+                <p  text-center *ngIf="hideText">espera que este driver te acepte, si demora mucho presiona la X y escoje otro driver...</p> 
         </ion-card-content>
     </ion-card>
 </ion-content>

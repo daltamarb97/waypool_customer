@@ -11,6 +11,7 @@ import { ConfirmridePage } from '../confirmride/confirmride';
 import { ConfirmpopupPage } from '../confirmpopup/confirmpopup';
 import { geofireService } from '../../services/geoFire.service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-listride',
@@ -19,21 +20,29 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class ListridePage {
   driversAvailable:any = [];
   userId;
+  user:any;
 
   constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, public SignUpService: SignUpService, public modalContrl: ModalController, private geoFireService: geofireService, private AngularFireAuth: AngularFireAuth) {
     this.userId = this.AngularFireAuth.auth.currentUser.uid;
 
-    this.geoFireService.getDriversAvailableForUser(this.userId)
-    .subscribe(drivers=>{
-      if(drivers){
-        this.driversAvailable = drivers;
-      }else{
-        console.log('waiting');
+    this.SignUpService.getMyInfo(this.userId).subscribe(user=>{
+      this.user = user;
+      if(this.user.onTrip == true){
+        this.geoFireService.deleteDriverListRideTotal(this.userId);
+        this.navCtrl.setRoot(TabsPage);
+        
       }
     })
+    
   };
 
-
+ionViewDidLoad(){
+  this.geoFireService.getDriversAvailableForUser(this.userId)
+    .subscribe(drivers=>{
+        this.driversAvailable = drivers;
+        console.log(this.driversAvailable);
+    })
+}
 
  filter(){
     this.navCtrl.push(FilterPage);

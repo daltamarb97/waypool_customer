@@ -316,7 +316,7 @@ geocodeLatLng(latLng,inputName) {
          } else {
        
           this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
-          this.SignUpService.turnFindingTrip(this.user);
+          
           this.navCtrl.push(ListridePage);
           this.geofireService.setLocationGeofire( this.user, this.myLatLng.lat, this.myLatLng.lng);
           // this.geofireService.updateInfoGeofire(this.user);

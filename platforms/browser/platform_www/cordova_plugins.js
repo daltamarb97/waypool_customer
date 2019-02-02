@@ -357,6 +357,20 @@ module.exports = [
         "clobbers": [
             "call"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
+        "id": "cordova-plugin-email-composer.EmailComposer",
+        "pluginId": "cordova-plugin-email-composer",
+        "clobbers": [
+            "cordova.plugins.email"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-email-composer/src/browser/EmailComposerProxy.js",
+        "id": "cordova-plugin-email-composer.EmailComposerProxy",
+        "pluginId": "cordova-plugin-email-composer",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -370,7 +384,8 @@ module.exports.metadata =
     "cordova-plugin-ionic-keyboard": "2.1.3",
     "cordova-plugin-firebase": "2.0.5",
     "cordova-plugin-geolocation": "4.0.1",
-    "mx.ferreyra.callnumber": "0.0.2"
+    "mx.ferreyra.callnumber": "0.0.2",
+    "cordova-plugin-email-composer": "0.9.2"
 }
 // BOTTOM OF METADATA
 });

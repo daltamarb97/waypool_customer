@@ -26,7 +26,7 @@ import { ReviewsPage } from '../pages/reviews/reviews';
 import { NotificationPage } from '../pages/notification/notification';
 import { TermsPage } from '../pages/terms/terms';
 import { EarnPage } from '../pages/earn/earn';
-import { RatevroomPage } from '../pages/ratevroom/ratevroom';
+
 import { HelpPage } from '../pages/help/help';
 
 
@@ -85,8 +85,8 @@ export const firebaseConfig = {
     NotificationPage,
     TermsPage,
     EarnPage,
-    RatevroomPage,
-    RatevroomPage,
+    
+ 
     HelpPage
   ],
   imports: [
@@ -123,8 +123,7 @@ export const firebaseConfig = {
     NotificationPage,
     TermsPage,
     EarnPage,
-    RatevroomPage,
-    RatevroomPage,
+    
     HelpPage
   ],
   providers: [
@@ -139,7 +138,10 @@ export const firebaseConfig = {
     sendCoordsService,
     sendUsersService,
     noteService,
-    CallNumber
+    CallNumber,
+  
+    
+
   ]
 })
 export class AppModule {}

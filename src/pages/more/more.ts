@@ -7,7 +7,6 @@ import { ReviewsPage } from '../reviews/reviews';
 import { NotificationPage } from '../notification/notification';
 import { TermsPage } from '../terms/terms';
 import { EarnPage } from '../earn/earn';
-import { RatevroomPage } from '../ratevroom/ratevroom';
 import { HelpPage } from '../help/help';
 import { LoginPage } from '../login/login';
 
@@ -37,7 +36,7 @@ export class MorePage {
     this.navCtrl.push(EarnPage);
     }
          ratevroom(){
-    this.navCtrl.push(RatevroomPage);
+//     this.navCtrl.push();
     }
          help(){
     this.navCtrl.push(HelpPage);

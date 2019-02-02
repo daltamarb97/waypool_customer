@@ -37,6 +37,7 @@ page-listride {
                 font-size: 1.1rem;
                 color: #777;
                 font-weight: 400;
+                
             }
         }
     }
@@ -47,8 +48,9 @@ page-listride {
             position: relative;
             margin-bottom: 1rem;
             p {
+                display: flex;
                 font-size: 1.2rem;
-                padding-left: 10px;
+                padding-left: 26px;
                 position: relative;
                 color: #777;
                 white-space: nowrap;
@@ -136,4 +138,8 @@ page-listride {
     .title{
         overflow: visible;
     }
+    .text{
+        font-weight: bold
+    }
+
 }

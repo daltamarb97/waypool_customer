@@ -31,10 +31,10 @@
                 <p>{{driver.carModel}} | {{driver.plateNumber}}</p>
             </div>
             <div class="more">
-                <h2 class="text-light">
-                        <ion-col col-2 class="detail-text text-theme">
+                <h2 class=" text text-theme">
+                        
                                 $ {{driver.trips.price}}
-                            </ion-col>
+                          
                 </h2>
                
             </div>
@@ -42,16 +42,14 @@
         <ion-card-content >
             <div  class="ride-detail">
                 <p>
-                    <span class="icon-location bg-theme"></span><span class="time">12:00 am</span>{{driver.trips.origin}}</p>
+                    <span class="icon-location bg-theme"></span>{{driver.trips.origin}}</p>
                 <p> 
-                    <span class="icon-location bg-yellow"></span><span class="time">12:50 am</span>{{driver.trips.destination}}</p>
+                    <span class="icon-location bg-yellow"></span>{{driver.trips.destination}}</p>
             </div>
             <ion-row class="center-align">
 
                 
-                <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                    <button class="btn bg-theme rounded full text-white" (click)="showToastWithCloseButton(this.driver.trips.nota,this.driver.name)">Nota</button>
-                        </ion-col>
+               
                 
                 <ion-col center text-center col-4 text-right style="margin-left: auto;">
                     <button class="btn bg-theme rounded full text-white" (click)="confirmpopup(driver)">Request Ride</button>

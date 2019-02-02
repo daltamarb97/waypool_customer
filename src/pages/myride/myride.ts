@@ -17,11 +17,13 @@ declare var google;
 })
 export class MyridePage {
 
-  @ViewChild('map') mapElement: ElementRef;
+  // @ViewChild('map') mapElement: ElementRef;
   map:any;
   markers:any;
 ride: string = "currentTrip";
-usersOnTrip:any=[];
+pickingUsers:any=[];
+pickedUpUsers:any=[];
+
 driverOnTrip:any=[];
 driver:any;
 
@@ -30,70 +32,53 @@ myLatLng:any;
 userUid=this.AngularFireAuth.auth.currentUser.uid;
 
   constructor(public navCtrl: NavController,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService) {
-    this.driver= this.navParams.get('driver') 
-    this.markers = [];
-  console.log(this.driver)
+    
     this.sendUsersService.getMyDriverOnTrip(this.userUid)
-    .subscribe( driver => {
-      this.driverOnTrip = driver;
-      console.log(this.driverOnTrip)
+        .subscribe( driver => {
+     
+        this.driverOnTrip = driver;
+        console.log(this.driverOnTrip);
+        if(this.driverOnTrip.length == 0){
+          console.log("PRAISE THE SUN")
+        } else {
+          this.gettingUsersOnTrip(driver);
+        }
+        
         })  
-        this.sendUsersService.getUsersOnTrip(this.driver.userId)
-        .subscribe( user => {
-          this.usersOnTrip = user;
-          console.log(this.usersOnTrip)
-            })
+       
+        
+          
        
             
   }
-  
-  ionViewDidLoad(){
-    
-    this.loadMap();
-  }
-  loadMap(){
 
-    // this gets current position and set the camera of the map and put a marker in your location
-       
-       this.geolocation.getCurrentPosition({enableHighAccuracy: true}).then((position) => {
-   
-         let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  
+
+  gettingUsersOnTrip(driver){
     
-         let mapOptions = {
-             center: latLng,
-             zoom: 17,
-             mapTypeId: google.maps.MapTypeId.ROADMAP,
-             
-               zoomControl: false,
-               mapTypeControl: false,
-               scaleControl: false,
-               streetViewControl: true,
-               rotateControl: false,
-               fullscreenControl: false
-             
-           }
-   
-           this.myLatLng = {lat: position.coords.latitude , lng: position.coords.longitude};
-       //creates the map and give options
-         this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-         
-   
-         let marker = new google.maps.Marker({
-           map: this.map,
-           animation: google.maps.Animation.DROP,
-           position: latLng,
-           
-         });
-         this.markers.push(marker);   
-         },(err) => {
-         console.log(err);    
-        });
-        //transform the position of the user into an adress
-       
+      this.sendUsersService.getUsersOnTrip(driver[0].userId)
+          .subscribe(user => {
         
-         
+          this.pickingUsers = user;
+        console.log(this.pickingUsers)
+        
+        })
+
+      this.sendUsersService.getPickedUpUsers(driver[0].userId)
+          .subscribe( user => {
+      
+          this.pickedUpUsers = user;
+        console.log(this.pickedUpUsers)
+            
+        }) 
+ 
+    }
        
-      }
+    
+   
+  
+  
+  
   callUser(number){
     console.log(number)
   this.callNumber.isCallSupported()

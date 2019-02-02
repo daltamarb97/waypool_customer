@@ -38,7 +38,7 @@ export class ConfirmpopupPage {
     this.dismiss();
    
      this.sendUsersService.PushUserListRide(this.driver.userId,this.userUid,this.user);
-     this.navCtrl.push(MyridePage,{driver:this.driver});
+     
      const toast = this.toastCtrl.create({
       message: `Haz escogido a ${this.driver.name} para compartir tu viaje, dirígete a la sección Mi Viaje para saber más.`,
       showCloseButton: true,

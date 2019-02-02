@@ -14,16 +14,20 @@ constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth){
     
     public getUsersOnTrip(userId){
         // Get all the students the driver acepts in myRidePage to be send to the students
-         return  this.afDB.list('/drivers/'+ userId +'/trips/usersOnTrip').valueChanges();
+         return  this.afDB.list('/drivers/'+ userId +'/trips/pickingUsers').valueChanges();
+     }
+     public getPickedUpUsers(userId){
+        // Get all the students the driver acepts in myRidePage to be send to the students
+         return  this.afDB.list('/drivers/'+ userId +'/trips/pickedUpUsers').valueChanges();
      }
 
      public getMyUsersOnTrip(userUid){
         // Get all the students the driver acepts in myRidePage to be send to the students
-         return  this.afDB.list('/users/'+ userUid +'/trips/usersOnTrip').valueChanges();
+         return  this.afDB.list('/users/'+ userUid +'/trips/pickingUsers').valueChanges();
      }   
      public getMyDriverOnTrip(userUid){
         // Get the driver on trip 
-         return  this.afDB.list('/users/'+ userUid +'/trips/usersOnTrip/driver').valueChanges();
+         return  this.afDB.list('/users/'+ userUid +'/trips/pickingUsers/driver/').valueChanges();
      }
     
      public PushUserListRide(DriverUserId,userUid,myUser){
@@ -33,7 +37,7 @@ constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth){
      }
      public cancelTripUser(DriverUserId,userUid){
         //send the user to the driver
-       this.afDB.database.ref('/drivers/'+ DriverUserId +'/trips/usersOnTrip/'+ userUid ).remove();
+       this.afDB.database.ref('/drivers/'+ DriverUserId +'/trips/pickingUsers/'+ userUid ).remove();
        this.afDB.database.ref('/users/'+ userUid +'/trips').remove();
 
 

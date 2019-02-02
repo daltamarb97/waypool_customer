@@ -26304,6 +26304,10 @@ page-confirmnote .seats .seats-tag strong {
   color: #000;
 }
 
+page-confirmnote .textArea {
+  margin: 11px 8px 50px 0;
+}
+
 page-confirmpopup .close-icon {
   font-size: 3rem;
   right: 10px;
@@ -26325,7 +26329,7 @@ page-confirmpopup .content {
 page-confirmpopup .card {
   width: 80%;
   margin: auto;
-  height: 465px;
+  height: 420px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -26418,7 +26422,6 @@ page-confirmpopup ion-card-content .ride-detail::before {
   display: block;
   width: 1px;
   height: 60px;
-  background: #555;
   position: absolute;
   left: 5px;
   bottom: 25px;
@@ -26443,8 +26446,18 @@ page-confirmpopup ion-card-content .full.btn {
 }
 
 page-confirmpopup .seats .rate {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 25px;
   font-weight: 700;
   color: #0fc874;
+  margin: 10px;
 }
 
 page-confirmpopup .seats .rate small {
@@ -26459,6 +26472,10 @@ page-confirmpopup .seats .seats-tag {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border: 1px solid #0fc874;
   border-radius: 10px;
   color: #0fc874;
@@ -26473,8 +26490,24 @@ page-confirmpopup .seats .seats-tag ion-icon {
 }
 
 page-confirmpopup .seats .seats-tag strong {
+  font-size: 24px;
   margin: auto;
   color: #000;
+}
+
+page-confirmpopup .note {
+  white-space: normal !important;
+}
+
+page-confirmpopup .center {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 page-confirmride .card {
@@ -26950,8 +26983,12 @@ page-listride ion-card-content .ride-detail {
 }
 
 page-listride ion-card-content .ride-detail p {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   font-size: 1.2rem;
-  padding-left: 10px;
+  padding-left: 26px;
   position: relative;
   color: #777;
   white-space: nowrap;
@@ -27051,6 +27088,10 @@ page-listride .hideLongText {
 
 page-listride .title {
   overflow: visible;
+}
+
+page-listride .text {
+  font-weight: bold;
 }
 
 page-login .option-login {
@@ -27350,6 +27391,12 @@ page-myride ion-card-content .status img {
 page-myride .col {
   padding-left: 0;
   padding-right: 0;
+}
+
+page-myride .priceDriver {
+  position: absolute;
+  left: 42px;
+  bottom: 5px;
 }
 
 page-notification .item {
@@ -27794,94 +27841,6 @@ page-raterider .card.rate .driver ion-textarea {
 
 page-raterider .card.rate .driver ion-textarea .text-input {
   height: 10rem;
-}
-
-page-ratevroom .card {
-  margin-top: 0px;
-  padding: 30px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  position: relative;
-  overflow: visible;
-}
-
-page-ratevroom .card h1 {
-  font-size: 4rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: #0fc874;
-  font-weight: 600;
-}
-
-page-ratevroom .card h4 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-page-ratevroom .card p {
-  font-size: 1.1rem;
-  color: #bfbfbf;
-}
-
-page-ratevroom .card.slip {
-  margin-bottom: 20px;
-}
-
-page-ratevroom .card.slip::after {
-  content: '';
-  display: block;
-  width: 100%;
-  position: absolute;
-  height: 12px;
-  background: url(../assets/imgs/border-down.jpg);
-  background-repeat: repeat-x;
-  background-size: 15px;
-  left: 0;
-  bottom: -10px;
-}
-
-page-ratevroom .card.rate {
-  padding-top: 10px;
-}
-
-page-ratevroom .card.rate::after {
-  content: '';
-  display: block;
-  width: 100%;
-  position: absolute;
-  height: 12px;
-  background: url(../assets/imgs/border-up.jpg);
-  background-repeat: repeat-x;
-  background-size: 15px;
-  left: 0;
-  top: -6px;
-}
-
-page-ratevroom .card.rate .driver ion-item.item {
-  width: 220px;
-  margin: auto;
-}
-
-page-ratevroom .card.rate .driver ion-item.item .item-inner h2 {
-  font-weight: 500;
-  font-size: 1.3rem;
-}
-
-page-ratevroom .card.rate .driver p.icons {
-  margin-bottom: 2.5rem;
-  margin-top: 1rem;
-}
-
-page-ratevroom .card.rate .driver p.icons ion-icon {
-  font-size: 3.5rem;
-  margin-left: 4px;
-}
-
-page-ratevroom .card.rate .driver ion-textarea {
-  height: 10rem;
-  color: #bfbfbf;
-  font-size: 1.3rem;
 }
 
 page-reviews .card {

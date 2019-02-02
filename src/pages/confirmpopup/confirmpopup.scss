@@ -25,7 +25,7 @@ page-confirmpopup {
         }
         width: 80%;
         margin: auto;
-        height: 465px;
+        height: 420px;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -98,7 +98,7 @@ page-confirmpopup {
                 display: block;
                 width: 1px;
                 height: 60px;
-                background: #555;
+               
                 position: absolute;
                 left: 5px;
                 bottom: 25px;
@@ -124,8 +124,13 @@ page-confirmpopup {
     }
     .seats {
         .rate {
+            display:flex;
+            justify-content: center;
+            font-size: 25px;
             font-weight: 700;
             color: #0fc874;
+            margin: 10px;
+
             small {
                 font-weight: 300;
                 color: #9E9E9E;
@@ -135,6 +140,7 @@ page-confirmpopup {
         .seats-tag {
             padding: 12px;
             display: flex;
+            justify-content: center;
             border: 1px solid #0fc874;
             border-radius: 10px;
             color: #0fc874;
@@ -143,9 +149,17 @@ page-confirmpopup {
                 font-size: 2rem;
             }
             strong {
+                font-size: 24px;
                 margin: auto;
                 color: #000;
             }
         }
+    }
+    .note{
+        white-space: normal!important;
+    }
+    .center{
+        display: flex;
+        justify-content:center
     }
 }

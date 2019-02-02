@@ -12,10 +12,10 @@ export class noteService {
     
 
    
-    public setNote(user,nota){
+    public setNote(user,note){
         
       firebase.database().ref('users/' + user+'/trips').update({
-         nota:nota 
+         note:note 
         
       })
      }

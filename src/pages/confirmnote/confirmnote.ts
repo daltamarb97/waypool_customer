@@ -21,7 +21,7 @@ export class ConfirmNotePage {
   accepted: boolean;
 
   
-  nota:string;
+  note:string;
   userDriverUid=this.AngularFireAuth.auth.currentUser.uid;
 
   constructor(public navCtrl: NavController, public noteService:noteService, public appCtrl: App,public alertCtrl: AlertController,private afDB: AngularFireDatabase,public sendUsersService: sendUsersService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams) {
@@ -29,12 +29,12 @@ export class ConfirmNotePage {
   }
   
     setNoteDriver(){
-      if(this.nota == null || this.nota == ''){
+      if(this.note == null || this.note == ''){
         this.accepted = true;
         this.dismiss(); 
         
       } else {
-        this.noteService.setNote(this.userDriverUid,this.nota)
+        this.noteService.setNote(this.userDriverUid,this.note)
         this.accepted = true;
         this.dismiss();        
       }

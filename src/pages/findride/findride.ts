@@ -9,6 +9,8 @@ import { NavController, Platform, ViewController, AlertController, ModalControll
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ConfirmNotePage } from '../confirmnote/confirmnote';
+import { geofireService } from '../../services/geoFire.service';
+import { SignUpService } from '../../services/signup.services';
 
 
 
@@ -40,7 +42,7 @@ export class FindridePage {
   directionsService: any = null;
   directionsDisplay: any = null;
   bounds: any = null;
-  myLatLng: any;
+  myLatLng:any =[];
   waypoints: any[];
   myLatLngDest:any;
   //¿Adonde vas? 
@@ -53,8 +55,10 @@ export class FindridePage {
   orFirebase:any;
   //para acceder al uid en firebase
   user=this.AngularFireAuth.auth.currentUser.uid;
+  userInfo=this.AngularFireAuth.auth.currentUser;
+  
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation,public modalCtrl: ModalController,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController) {
     
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -103,6 +107,7 @@ export class FindridePage {
     //creates the map and give options
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.myLatLng = {lat: position.coords.latitude , lng: position.coords.longitude};
+  
 
       let marker = new google.maps.Marker({
         map: this.map,
@@ -316,13 +321,17 @@ geocodeLatLng(latLng,inputName) {
          } else {
        
           this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
-         
           this.confirmNote();
+          this.navCtrl.push(ListridePage);
+          this.geofireService.setLocationGeofire( this.user, this.myLatLng.lat, this.myLatLng.lng);
+          // this.geofireService.updateInfoGeofire(this.user);
+          
          }
       //TO-DO:1. SI LA PERSONA NO HA COLOCADO UNIVERSIDAD EN ALGUNA DE LAS DOS AUTOCOMPLETADO NO DEJE PASAR
       // SI LA PERSONA NO SELECCIONA UN LUGAR NO DEJE PASAR 
        }
-    catch {
+    catch(error) {
+      console.log(error)
       this.presentAlert('Error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
       }
     }

@@ -9,6 +9,8 @@ import { TermsPage } from '../terms/terms';
 import { EarnPage } from '../earn/earn';
 import { HelpPage } from '../help/help';
 import { LoginPage } from '../login/login';
+import { authenticationService } from '../../services/userauthentication.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'page-more',
@@ -16,7 +18,7 @@ import { LoginPage } from '../login/login';
 })
 export class MorePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private authenticationService: authenticationService) {
 
   }
   
@@ -41,7 +43,9 @@ export class MorePage {
          help(){
     this.navCtrl.push(HelpPage);
     }
-         login(){
+         logOut(){
+    this.authenticationService.logOut();
+    console.log(firebase.auth().currentUser);
     this.navCtrl.push(LoginPage);
     }
 

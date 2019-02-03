@@ -45,6 +45,12 @@ import { sendUsersService } from '../services/sendUsers.service';
 import { noteService } from '../services/note.service';
 import { ConfirmNotePage } from '../pages/confirmnote/confirmnote';
 import { CallNumber } from '@ionic-native/call-number';
+import { geofireService } from '../services/geoFire.service';
+import { CommonModule } from '@angular/common';
+import { instancesService } from '../services/instances.service';
+  
+
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDYldaKvN7lRhAOYesOeWhl7Zs7WfTn9ak",
@@ -94,7 +100,8 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    CommonModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -139,8 +146,8 @@ export const firebaseConfig = {
     sendUsersService,
     noteService,
     CallNumber,
-  
-    
+    geofireService,
+    instancesService
 
   ]
 })

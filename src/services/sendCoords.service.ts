@@ -1,15 +1,13 @@
 import { AngularFireDatabase } from "@angular/fire/database";
 import { Injectable } from "@angular/core";
 import { UrlSerializer } from "ionic-angular";
+import * as GeoFire from 'geofire';
 
 @Injectable()
 export class sendCoordsService {
 
    
-    constructor(public afDB: AngularFireDatabase){
-       
-        
-    }
+    constructor(public afDB: AngularFireDatabase){    }
     //cant use this because it gets your same adress
     public getDestination(user){
         return  this.afDB.list('/drivers/'+ user +'/trips/destination').valueChanges();

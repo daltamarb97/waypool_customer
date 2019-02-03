@@ -6,6 +6,9 @@ import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { sendUsersService } from '../../services/sendUsers.service';
 import { MyridePage } from '../myride/myride';
+import { geofireService } from '../../services/geoFire.service';
+import { ListridePage } from '../listride/listride';
+import { instancesService } from '../../services/instances.service';
 
 
 @Component({
@@ -13,12 +16,15 @@ import { MyridePage } from '../myride/myride';
   templateUrl: 'confirmpopup.html'
 })
 export class ConfirmpopupPage {
+
   usersOnTrip:any;
   accepted: boolean;
   driver:any;
   user:any;
+  hideButton:boolean = true;
+  hideText:boolean = false;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
-  constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService) {
     
     this.driver= this.navParams.get('driver') 
     console.log(this.driver)
@@ -33,7 +39,22 @@ export class ConfirmpopupPage {
        });
 
   }
+
   goToRide(){    
+    this.SignUpService.getMyInfo(this.userUid)
+    .subscribe(user=>{
+      this.user = user;
+      this.geoFireService.showOnDriver(this.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone);
+      
+      if(this.user.onTrip == true){
+        this.dismiss();
+      } 
+    })
+    this.geoFireService.removeKeyGeofire(this.userUid);
+    this.geoFireService.deleteUserGeofire(this.userUid);
+    this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
+    this.hideButton = !this.hideButton;
+    this.hideText = !this.hideText;
     this.accepted = true;
     this.dismiss();
    
@@ -45,7 +66,9 @@ export class ConfirmpopupPage {
       closeButtonText: 'Ok'
     });
     toast.present();  
+
     }
+
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
   }  

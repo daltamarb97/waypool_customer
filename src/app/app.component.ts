@@ -18,7 +18,8 @@ export class MyApp {
   rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    this.rootPage = LoginPage ;
+    localStorage.removeItem('firebase:previous_websocket_failure');
+    this.rootPage = LoginPage;
     platform.ready().then(() => {
        // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { SignUpService } from '../../services/signup.service';
+import { SignUpService } from '../../services/signup.services';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { sendUsersService } from '../../services/sendUsers.service';

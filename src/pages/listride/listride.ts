@@ -57,12 +57,12 @@ export class ListridePage {
           // this.locationOrigin.push(origin)
           console.log(destinationUser);
         })
-    this.SignUpService.getDrivers()
-      .subscribe(driver => {
-        this.driversAvailable = driver;
-        console.log(this.driversAvailable);
+    // this.SignUpService.getDrivers()
+    //   .subscribe(driver => {
+    //     this.driversAvailable = driver;
+    //     console.log(this.driversAvailable);
         
-      });
+    //   });
 
       this.SignUpService.getMyInfo(this.userUid).subscribe(user=>{
         this.user = user;

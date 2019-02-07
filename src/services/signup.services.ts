@@ -15,7 +15,11 @@ export class SignUpService {
     }
 
     
-
+    public saveDriver(user){
+        //erase this one, it just for testing
+        this.afDB.database.ref('drivers/'+ user.userId).set(user);
+    }
+    
     public getDrivers(){
         return this.afDB.list('/drivers').valueChanges();
     }

@@ -322,7 +322,6 @@ geocodeLatLng(latLng,inputName) {
        
           this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
           this.confirmNote();
-          this.navCtrl.push(ListridePage);
           this.geofireService.setLocationGeofire( this.user, this.myLatLng.lat, this.myLatLng.lng);
           // this.geofireService.updateInfoGeofire(this.user);
           

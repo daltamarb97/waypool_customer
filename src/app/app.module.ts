@@ -36,7 +36,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { SignUpService } from '../services/signup.service';
 import { authenticationService } from '../services/userauthentication.service';
 import { Firebase } from '@ionic-native/firebase';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -48,6 +47,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { geofireService } from '../services/geoFire.service';
 import { CommonModule } from '@angular/common';
 import { instancesService } from '../services/instances.service';
+import { SignUpService } from '../services/signup.services';
   
 
 

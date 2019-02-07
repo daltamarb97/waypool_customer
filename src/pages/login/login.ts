@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/merge4
 import { NavController, AlertController, NavParams } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
@@ -10,13 +6,8 @@ import { TabsPage } from '../tabs/tabs';
 import { FindridePage } from '../findride/findride';
 import { authenticationService } from '../../services/userauthentication.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-<<<<<<< HEAD
-import * as firebase from 'firebase';
-import { SignUpService } from '../../services/signup.service';
-=======
 import { SignUpService } from '../../services/signup.services';
 
->>>>>>> origin/merge4
 
 
 @Component({
@@ -24,56 +15,19 @@ import { SignUpService } from '../../services/signup.services';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/merge4
     email:string = '';
     password:string = null;
     auth = this.AngularFireAuth.auth;
     receivedUser;
-<<<<<<< HEAD
-    // userFirebase = this.AngularFireAuth.auth.currentUser;
-    
-  constructor(public navCtrl: NavController, private authenticationService: authenticationService, public alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private SignUpService: SignUpService ) {
-=======
     
   constructor(public navCtrl: NavController, private authenticationService: authenticationService, public alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public NavParams: NavParams, private SignUpService: SignUpService) {
->>>>>>> origin/merge4
 
 
   }
   
     signup(){
         this.navCtrl.push(SignupPage);
-<<<<<<< HEAD
-
-    };
-
-    resetPassword(email:string){
-        if(this.email == ''){
-            const alert = this.alertCtrl.create({
-                title: 'no hay ningun email',
-                subTitle: 'ingresa un email para resetear tu contraseña',
-                buttons: ['OK']
-              });
-              alert.present();
-              console.log("reset password email hasn't been sent");
-        }else{
-            this.auth.sendPasswordResetEmail(this.email);
-            const alert = this.alertCtrl.create({
-                title: 'revisa tu email',
-                subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
-                buttons: ['OK']
-              });
-              alert.present(); 
-            console.log("reset password email has been sent");
-         }; 
-    };
-    
-    logIn(){      
-        this.receivedUser = this.navParams.data;
-=======
     }
 
     resetPassword(email:string){
@@ -102,7 +56,6 @@ export class LoginPage {
     
     logIn(){
         this.receivedUser = this.NavParams.data;
->>>>>>> origin/merge4
         this.authenticationService.loginWithEmail(this.email, this.password).then((data) => {
             console.log(data);
             if(data.user.emailVerified == false){
@@ -111,7 +64,6 @@ export class LoginPage {
                     subTitle: 'por favor verifica tu email',
                     buttons: ['OK']
                   });
-<<<<<<< HEAD
                   alert.present();  
             }else{
                 let metadata = this.auth.currentUser.metadata;
@@ -126,14 +78,6 @@ export class LoginPage {
                 }
                 this.authenticationService.getStatus;  
             };
-=======
-                  alert.present(); 
-            }else{
-                this.navCtrl.push(TabsPage);
-                this.authenticationService.getStatus;
-            };
-            
->>>>>>> origin/merge4
         }).catch((error) => {
             const alert = this.alertCtrl.create({
                 title: 'Oops!',

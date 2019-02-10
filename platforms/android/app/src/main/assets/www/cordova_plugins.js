@@ -291,6 +291,14 @@ module.exports = [
     "clobbers": [
       "cordova.plugins.email"
     ]
+  },
+  {
+    "id": "cordova-plugin-nativegeocoder.NativeGeocoder",
+    "file": "plugins/cordova-plugin-nativegeocoder/www/NativeGeocoder.js",
+    "pluginId": "cordova-plugin-nativegeocoder",
+    "clobbers": [
+      "nativegeocoder"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -305,7 +313,8 @@ module.exports.metadata =
   "cordova-plugin-firebase": "2.0.5",
   "cordova-plugin-geolocation": "4.0.1",
   "mx.ferreyra.callnumber": "0.0.2",
-  "cordova-plugin-email-composer": "0.9.2"
+  "cordova-plugin-email-composer": "0.9.2",
+  "cordova-plugin-nativegeocoder": "3.1.3"
 };
 // BOTTOM OF METADATA
 });

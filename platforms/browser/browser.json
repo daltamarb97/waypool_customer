@@ -51,6 +51,9 @@
     },
     "cordova-plugin-email-composer": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     }
   },
   "dependent_plugins": {},
@@ -426,6 +429,14 @@
       "id": "cordova-plugin-email-composer.EmailComposerProxy",
       "pluginId": "cordova-plugin-email-composer",
       "runs": true
+    },
+    {
+      "file": "plugins/cordova-plugin-nativegeocoder/www/NativeGeocoder.js",
+      "id": "cordova-plugin-nativegeocoder.NativeGeocoder",
+      "pluginId": "cordova-plugin-nativegeocoder",
+      "clobbers": [
+        "nativegeocoder"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -438,6 +449,7 @@
     "cordova-plugin-firebase": "2.0.5",
     "cordova-plugin-geolocation": "4.0.1",
     "mx.ferreyra.callnumber": "0.0.2",
-    "cordova-plugin-email-composer": "0.9.2"
+    "cordova-plugin-email-composer": "0.9.2",
+    "cordova-plugin-nativegeocoder": "3.1.3"
   }
 }

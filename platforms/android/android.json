@@ -87,6 +87,10 @@
             {
               "xml": "<feature name=\"CallNumber\"><param name=\"android-package\" value=\"mx.ferreyra.callnumber.CFCallNumber\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"NativeGeocoder\"><param name=\"android-package\" value=\"cordova.plugin.nativegeocoder.NativeGeocoder\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -178,11 +182,11 @@
           "/*": [
             {
               "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 1
+              "count": 2
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-              "count": 1
+              "count": 2
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
@@ -252,6 +256,9 @@
     },
     "cordova-plugin-email-composer": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-nativegeocoder": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     }
   },
@@ -548,6 +555,14 @@
       "clobbers": [
         "cordova.plugins.email"
       ]
+    },
+    {
+      "id": "cordova-plugin-nativegeocoder.NativeGeocoder",
+      "file": "plugins/cordova-plugin-nativegeocoder/www/NativeGeocoder.js",
+      "pluginId": "cordova-plugin-nativegeocoder",
+      "clobbers": [
+        "nativegeocoder"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -560,6 +575,7 @@
     "cordova-plugin-firebase": "2.0.5",
     "cordova-plugin-geolocation": "4.0.1",
     "mx.ferreyra.callnumber": "0.0.2",
-    "cordova-plugin-email-composer": "0.9.2"
+    "cordova-plugin-email-composer": "0.9.2",
+    "cordova-plugin-nativegeocoder": "3.1.3"
   }
 }

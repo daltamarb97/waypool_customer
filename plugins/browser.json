@@ -36,6 +36,9 @@
     },
     "cordova-plugin-email-composer": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     }
   },
   "dependent_plugins": {}

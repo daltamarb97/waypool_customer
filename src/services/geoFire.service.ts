@@ -16,8 +16,8 @@ export class geofireService {
        
     }
 
-    setLocationGeofire( key, lat, lng){
-        this.dbRef = this.afDB.database.ref('geofire/' );
+    setLocationGeofireDest( key, lat, lng){
+        this.dbRef = this.afDB.database.ref('geofireDest/' );
         this.geoFire = new GeoFire(this.dbRef); 
 
         // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
@@ -28,6 +28,29 @@ export class geofireService {
                    }, function(error){
                   console.log('error: ' + error)
                    });
+
+                   this.deleteUserGeofireOr(key)
+
+                
+            // }
+        // })
+           
+    }
+
+    setLocationGeofireOr( key, lat, lng){
+        this.dbRef = this.afDB.database.ref('geofireOr/' );
+        this.geoFire = new GeoFire(this.dbRef); 
+
+        // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
+            // this.user = user;
+            // if(!this.user.onTrip == true){
+                this.geoFire.set(key, [lat, lng]).then(function(){
+                    console.log('location updated');
+                   }, function(error){
+                  console.log('error: ' + error)
+                   });
+
+                   this.deleteUserGeofireDest(key)
             // }
         // })
            
@@ -61,8 +84,18 @@ export class geofireService {
         });
     }
 
-    deleteUserGeofire(userId){
-        this.afDB.database.ref('/geofire/' + userId).remove().then(()=>{
+    deleteUserGeofireDest(userId){
+        this.afDB.database.ref('geofireDest/' + userId).remove().then(()=>{
+            console.log("succesfully removed");
+        }).catch(error =>{
+            console.log(error);
+        })
+        
+        
+    }
+
+    deleteUserGeofireOr(userId){
+        this.afDB.database.ref('geofireOr/' + userId).remove().then(()=>{
             console.log("succesfully removed");
         }).catch(error =>{
             console.log(error);

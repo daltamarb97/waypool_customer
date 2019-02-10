@@ -3,7 +3,6 @@ import { Component, ViewChild, ElementRef,NgZone } from '@angular/core';
 import { ListridePage } from '../listride/listride';
 
 
-
 import { Geolocation } from '@ionic-native/geolocation';
 import { NavController, Platform, ViewController, AlertController, ModalController } from 'ionic-angular';
 import { sendCoordsService } from '../../services/sendCoords.service';
@@ -56,7 +55,9 @@ export class FindridePage {
   //para acceder al uid en firebase
   user=this.AngularFireAuth.auth.currentUser.uid;
   userInfo=this.AngularFireAuth.auth.currentUser;
-  
+  //geofire
+  geofire1;
+  geofire2;
 
   constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController) {
     
@@ -233,10 +234,11 @@ selectSearchResultMyDest(item){
   this.geocoder.geocode({'placeId': item.place_id}, (results, status) => {
     if(status === 'OK' && results[0]){
 
-      let position = {
-        latitude: results[0].geometry.location.lat,
-        longitude: results[0].geometry.location.lng
-      };
+      this.myLatLngDest = {
+        lat: results[0].geometry.location.lat(),
+        lng: results[0].geometry.location.lng()
+      }
+
         // let position = new google.maps.LatLng( results[0].geometry.location.lat,
         //  results[0].geometry.location.lng)
 
@@ -305,7 +307,7 @@ geocodeLatLng(latLng,inputName) {
     try {
       this.desFirebase=this.autocompleteMyDest.input
       this.orFirebase=this.autocompleteMyPos.input
-
+      console.log(this.desFirebase[0]);
 
     // intento para hacer que cuando origen y destino sean iguales, no deje pasar a la siguiente vista
     // if ( this.desFirebase == this.orFirebase){
@@ -321,8 +323,15 @@ geocodeLatLng(latLng,inputName) {
          } else {
        
           this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
-          this.confirmNote();
-          this.geofireService.setLocationGeofire( this.user, this.myLatLng.lat, this.myLatLng.lng);
+          
+          this.geofire1 = this.myLatLng;
+          this.geofire2 = this.myLatLngDest;
+
+          this.confirmNote(this.geofire1, this.geofire2);
+         
+
+          // this.geofireService.setLocationGeofire( this.user, this.myLatLng.lat, this.myLatLng.lng);
+
           // this.geofireService.updateInfoGeofire(this.user);
           
          }
@@ -342,8 +351,8 @@ geocodeLatLng(latLng,inputName) {
       });
       alert.present();
     }
-    confirmNote(){
-      let modal = this.modalCtrl.create(ConfirmNotePage);
+    confirmNote(geoFire1, geoFire2){
+      let modal = this.modalCtrl.create(ConfirmNotePage, {geoFire1, geoFire2});
       modal.onDidDismiss(accepted => {
         if(accepted){
           this.navCtrl.push(ListridePage);

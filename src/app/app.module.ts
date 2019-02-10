@@ -48,6 +48,7 @@ import { geofireService } from '../services/geoFire.service';
 import { CommonModule } from '@angular/common';
 import { instancesService } from '../services/instances.service';
 import { SignUpService } from '../services/signup.services';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
   
 
 
@@ -147,7 +148,8 @@ export const firebaseConfig = {
     noteService,
     CallNumber,
     geofireService,
-    instancesService
+    instancesService,
+    NativeGeocoder
 
   ]
 })

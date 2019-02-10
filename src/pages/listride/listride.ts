@@ -66,7 +66,7 @@ export class ListridePage {
 
       this.SignUpService.getMyInfo(this.userUid).subscribe(user=>{
         this.user = user;
-        if(this.user.onTrip == true){
+        if(this.user.trips.onTrip == true){
           this.geoFireService.deleteDriverListRideTotal(this.userUid);
           this.navCtrl.setRoot(TabsPage);
           

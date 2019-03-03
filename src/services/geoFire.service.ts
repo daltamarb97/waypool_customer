@@ -12,11 +12,12 @@ export class geofireService {
     key;
     user:any;
 
+
     constructor(public afDB: AngularFireDatabase, private AngularFireAuth: AngularFireAuth){
        
     }
 
-    setLocationGeofireDest( key, lat, lng){
+    setLocationGeofireDest( key, lat, lng, userId){
         this.dbRef = this.afDB.database.ref('geofireDest/' );
         this.geoFire = new GeoFire(this.dbRef); 
 
@@ -31,13 +32,16 @@ export class geofireService {
 
                    this.deleteUserGeofireOr(key)
 
-                
+                   this.afDB.database.ref('users/' + userId).update({
+                    geofireDest: true,
+                    geofireOr: false
+                })
             // }
         // })
            
     }
 
-    setLocationGeofireOr( key, lat, lng){
+    setLocationGeofireOr( key, lat, lng, userId){
         this.dbRef = this.afDB.database.ref('geofireOr/' );
         this.geoFire = new GeoFire(this.dbRef); 
 
@@ -52,6 +56,10 @@ export class geofireService {
 
                    this.deleteUserGeofireDest(key)
             // }
+            this.afDB.database.ref('users/' + userId).update({
+                geofireOr: true,
+                geofireDest: false
+            })
         // })
            
     }
@@ -100,8 +108,25 @@ export class geofireService {
         }).catch(error =>{
             console.log(error);
         })
-        
-        
+
+    }
+
+
+
+    deleteGeofireOr(){
+        this.afDB.database.ref('geofireOr/').remove().then(()=>{
+            console.log("succesfully removed");
+        }).catch(error =>{
+            console.log(error);
+        })   
+    }
+
+    deleteGeofireDest(){
+        this.afDB.database.ref('geofireDest/').remove().then(()=>{
+            console.log("succesfully removed");
+        }).catch(error =>{
+            console.log(error);
+        })   
     }
 
     deleteDriverListRide(userId, driverId){

@@ -28,6 +28,8 @@ export class ConfirmNotePage {
   geoinfo2;
   buttonColor:string = '#0fc874';
   buttonColor2:string = '#0fc874';
+  clicked1 = false;
+  clicked2 = false;
 
   constructor(public navCtrl: NavController, public noteService:noteService, public appCtrl: App,public alertCtrl: AlertController,private afDB: AngularFireDatabase,public sendUsersService: sendUsersService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams, public geofireService: geofireService) {
       this.geoinfo1 = this.navParams.get('geoFire1');
@@ -51,15 +53,23 @@ export class ConfirmNotePage {
       }; 
       
   setGeoFireDestination(){
-    this.geofireService.setLocationGeofireDest( this.userUid, this.geoinfo2.lat, this.geoinfo2.lng);
+    this.geofireService.setLocationGeofireDest( this.userUid, this.geoinfo2.lat, this.geoinfo2.lng, this.userUid);
     this.buttonColor = '#1AA3E8';
     this.buttonColor2 = '#0fc874';
+    this.clicked1 = true;
+    if(this.clicked2 = true){
+      this.geofireService.deleteUserGeofireOr(this.userUid);
+    }
       }
 
   setGeoFireOrigin(){
-    this.geofireService.setLocationGeofireOr(this.userUid, this.geoinfo1.lat, this.geoinfo1.lng);
+    this.geofireService.setLocationGeofireOr(this.userUid, this.geoinfo1.lat, this.geoinfo1.lng, this.userUid);
     this.buttonColor2 = '#1AA3E8';
     this.buttonColor = '#0fc874';
+    this.clicked2=true;
+    if(this.clicked1 = true){
+      this.geofireService.deleteUserGeofireDest(this.userUid);
+    }
       }
         
   dismiss() {

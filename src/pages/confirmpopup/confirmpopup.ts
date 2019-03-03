@@ -46,17 +46,15 @@ export class ConfirmpopupPage {
       this.user = user;
       this.geoFireService.showOnDriver(this.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone);
       
-      if(this.user.onTrip == true){
+      if(this.user.trips.onTrip == true){
         this.dismiss();
       } 
     })
     this.geoFireService.removeKeyGeofire(this.userUid);
-    this.geoFireService.deleteUserGeofire(this.userUid);
     this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
     this.hideButton = !this.hideButton;
     this.hideText = !this.hideText;
     this.accepted = true;
-    this.dismiss();
    
      this.sendUsersService.PushUserListRide(this.driver.userId,this.userUid,this.user);
      

@@ -92,7 +92,7 @@ export const firebaseConfig = {
     NotificationPage,
     TermsPage,
     EarnPage,
-    
+     
  
     HelpPage
   ],

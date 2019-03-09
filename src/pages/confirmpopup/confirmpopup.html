@@ -8,15 +8,15 @@
             </ion-avatar>
             <div class="name">
                 <h2>{{driver.name|titlecase }} {{driver.lastname|titlecase | slice:0:1}}</h2>
-                <p>{{driver.carModel}} | {{driver.plateNumber}}</p>
+                <p>{{driver.car}}</p>
             </div>
         </ion-item>
         <ion-card-content>
             <div class="ride-detail">
-                <p><small>Pickup Location</small>
+                <p><small>Origen</small>
                     <span class="icon-location bg-theme"></span>{{driver.origin}}</p>
                 <p>
-                    <small>Drop Location</small>
+                    <small>Destino</small>
                     <span class="icon-location bg-yellow"></span>{{driver.destination}}</p>
             </div>
         </ion-card-content>
@@ -39,8 +39,8 @@
                     
                 </ion-row>
             </div>
-                <button class="btn bg-theme text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">confirmar conductor</button>
-                <p  text-center *ngIf="hideText">espera que este driver te acepte, si demora mucho presiona la X y escoje otro driver...</p> 
+                <button class="btn bg-theme text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">CONFIRMAR CONDUCTOR</button>
+                <p  text-center *ngIf="hideText">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> 
         </ion-card-content>
     </ion-card>
 </ion-content>

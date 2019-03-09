@@ -31,6 +31,11 @@ export class ListridePage {
 
   constructor(public navCtrl: NavController,public toastCtrl: ToastController,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
        
+    this.SignUpService.getMyInfo(this.userUid).subscribe(user=>{
+      this.user = user;
+      
+    })
+
         this.sendCoordsService.getOrigin(this.userUid)
         .subscribe( origin => {
           this.locationOrigin = origin;
@@ -64,14 +69,7 @@ export class ListridePage {
         
     //   });
 
-      this.SignUpService.getMyInfo(this.userUid).subscribe(user=>{
-        this.user = user;
-        if(this.user.trips.onTrip == true){
-          this.geoFireService.deleteDriverListRideTotal(this.userUid);
-          this.navCtrl.setRoot(TabsPage);
-          
-        }
-      })
+     
   };
 
 
@@ -108,11 +106,22 @@ ionViewDidLoad(){
   
 }
  confirmpopup(driver){
-       
-  // this.navCtrl.push(ConfirmpopupPage)
-  let modal = this.modalCtrl.create(ConfirmpopupPage,{driver});
-  modal.present();
-  console.log(driver)
+  if(this.user.trips.onTrip == true || this.user.trips.pickedUp == true){
+    // this.geoFireService.deleteDriverListRideTotal(this.userUid);
+    this.geoFireService.deleteDriverListRideTotal(this.userUid);
+    const toast = this.toastCtrl.create({
+      message: `${this.user.name} : No puedes escoger otro conductor mientras estes en un viaje, por favor dirígete a Mi Viaje y cancelalo. `,
+      showCloseButton: true,
+      closeButtonText: 'Ok'
+    });
+    toast.present();
+  } else {
+
+ let modal = this.modalCtrl.create(ConfirmpopupPage,{driver});
+ modal.present();
+ console.log(driver)
+  }
+ 
   }
 }
 

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+
 
 
 @Component({
@@ -8,7 +10,7 @@ import { NavController } from 'ionic-angular';
 })
 export class RateriderPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,private emailComposer: EmailComposer ) {
 
   }
 

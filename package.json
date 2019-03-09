@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "5.2.9",
     "@ionic-native/call-number": "^4.19.0",
     "@ionic-native/core": "^4.5.3",
-    "@ionic-native/email-composer": "^5.0.0",
+    "@ionic-native/email-composer": "^5.1.0",
     "@ionic-native/firebase": "^4.16.0",
     "@ionic-native/geolocation": "^4.17.0",
     "@ionic-native/google-maps": "^4.14.0",
@@ -56,7 +56,7 @@
     "zone.js": "0.8.20"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.2.2",
+    "@ionic/app-scripts": "^3.2.2",
     "@types/google-maps": "^3.2.0",
     "typescript": "~2.6.2"
   },

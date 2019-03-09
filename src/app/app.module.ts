@@ -50,6 +50,10 @@ import { instancesService } from '../services/instances.service';
 import { SignUpService } from '../services/signup.services';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
   
+import { EmailComposerOriginal } from '@ionic-native/email-composer';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { SupportPage } from '../pages/support/support';
+
 
 
 
@@ -86,6 +90,7 @@ export const firebaseConfig = {
     ConfirmpopupPage,
     RateriderPage,
     ChattingPage,
+    SupportPage,
     ConfirmNotePage,
     ProfilePage,
     ReviewsPage,
@@ -115,6 +120,7 @@ export const firebaseConfig = {
     MorePage,
     LoginPage,
     PasswordPage,
+    
     SignupPage,
     VerificationPage,
     CodePage,
@@ -126,6 +132,7 @@ export const firebaseConfig = {
     ConfirmNotePage,
     RateriderPage,
     ChattingPage,
+    SupportPage,
     ProfilePage,
     ReviewsPage,
     NotificationPage,
@@ -144,6 +151,8 @@ export const firebaseConfig = {
     Firebase,
     Geolocation,
     sendCoordsService,
+    EmailComposer,
+    
     sendUsersService,
     noteService,
     CallNumber,

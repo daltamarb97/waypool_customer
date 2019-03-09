@@ -35,13 +35,24 @@ constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth){
         this.afDB.database.ref('/drivers/'+ DriverUserId +'/trips/usersListRide/'+ userUid ).update(myUser);
 
      }
+
+
      public cancelTripUser(DriverUserId,userUid){
-        //send the user to the driver
-       this.afDB.database.ref('/drivers/'+ DriverUserId +'/trips/pickingUsers/'+ userUid ).remove();
-       this.afDB.database.ref('/users/'+ userUid +'/trips').remove();
+//        
+       this.afDB.database.ref('/drivers/'+ DriverUserId +'/trips/pickingUsers/'+ userUid +'/').remove();
+
+       this.afDB.database.ref('/users/'+ userUid +'/trips/pickingUsers').remove();
+
+       this.afDB.database.ref('users/' + userUid+'/trips/onTrip').remove()
+
+       this.afDB.database.ref('users/' + userUid+'/trips/driverListRide').remove()
 
 
     }
    
+    public getRecordTrips(userUid){
+        return  this.afDB.list('/users/'+ userUid +'/recordTrips/').valueChanges();
+    
+       }
 }
 

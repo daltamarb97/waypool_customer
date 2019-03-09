@@ -41,6 +41,9 @@ export class ConfirmNotePage {
   
     setNoteDriver(){
       if(this.note == null || this.note == ''){
+        this.note = 'No hay nota'
+        this.noteService.setNote(this.userUid,this.note)
+
         this.accepted = true;
         this.dismiss(); 
         

@@ -81,7 +81,7 @@ export class geofireService {
 
    
     showOnDriver(driverId, userId, origin, destination, name, lastname, phone){
-        this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + userId).set({
+        this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + userId).update({
             origin: origin,
              destination: destination,
              name: name,

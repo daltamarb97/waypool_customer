@@ -71,7 +71,15 @@ export class ConfirmNotePage {
       this.geofireService.deleteUserGeofireDest(this.userUid);
     }
       }
-        
+  
+  dismissOnClick(){
+    this.viewCtrl.dismiss(this.accepted);
+    if(this.clicked1 == true || this.clicked2 == true){
+      this.geofireService.deleteUserGeofireDest(this.userUid);
+      this.geofireService.deleteUserGeofireOr(this.userUid);
+    }
+  }
+
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
   }  

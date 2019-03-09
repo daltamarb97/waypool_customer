@@ -9,6 +9,7 @@ import { MyridePage } from '../myride/myride';
 import { geofireService } from '../../services/geoFire.service';
 import { ListridePage } from '../listride/listride';
 import { instancesService } from '../../services/instances.service';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class ConfirmpopupPage {
   hideButton:boolean = true;
   hideText:boolean = false;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
+  unsubscribe = new Subject;
   constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService) {
     
     this.driver= this.navParams.get('driver') 
@@ -40,24 +42,22 @@ export class ConfirmpopupPage {
 
   }
 
-  goToRide(){    
-    this.SignUpService.getMyInfo(this.userUid)
+  goToRide(){  
+    
+    this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
     .subscribe(user=>{
-      this.user = user;
-      this.geoFireService.showOnDriver(this.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone);
-      
+      this.user = user; 
+
       if(this.user.trips.onTrip == true){
         this.dismiss();
       } 
     })
+    this.geoFireService.showOnDriver(this.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone);
     this.geoFireService.removeKeyGeofire(this.userUid);
     this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
     this.hideButton = !this.hideButton;
     this.hideText = !this.hideText;
-    this.accepted = true;
-   
-     this.sendUsersService.PushUserListRide(this.driver.userId,this.userUid,this.user);
-     
+    this.accepted = true;  
      const toast = this.toastCtrl.create({
       message: `Haz escogido a ${this.driver.name} para compartir tu viaje, dirígete a la sección Mi Viaje para saber más.`,
       showCloseButton: true,
@@ -69,5 +69,7 @@ export class ConfirmpopupPage {
 
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }  
 }

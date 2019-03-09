@@ -20,7 +20,7 @@ export class ConfirmpopupPage {
   usersOnTrip:any;
   accepted: boolean;
   driver:any;
-  user:any;
+  user:any ={};
   hideButton:boolean = true;
   hideText:boolean = false;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
@@ -44,11 +44,9 @@ export class ConfirmpopupPage {
     this.SignUpService.getMyInfo(this.userUid)
     .subscribe(user=>{
       this.user = user;
-      this.geoFireService.showOnDriver(this.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone);
+      this.geoFireService.showOnDriver(this.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone,this.user.trips.note);
       
-      if(this.user.onTrip == true){
-        this.dismiss();
-      } 
+     
     })
     this.geoFireService.removeKeyGeofire(this.userUid);
     this.geoFireService.deleteUserGeofire(this.userUid);

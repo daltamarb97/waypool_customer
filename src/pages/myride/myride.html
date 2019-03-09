@@ -2,21 +2,13 @@
     <ion-navbar>
         <ion-title class="text-center">MI VIAJE</ion-title>
     </ion-navbar>
-    <div padding-left padding-right>
-        <ion-segment [(ngModel)]="ride">
-            <ion-segment-button value="currentTrip">
-                Compañeros
-            </ion-segment-button>
-            <ion-segment-button value="map">
-                Mapa
-            </ion-segment-button>
-        </ion-segment>
-    </div>
+    
 </ion-header>
 
 <ion-content class="bg-light">
-    <div [ngSwitch]="ride">
-        <ion-list *ngSwitchCase="'currentTrip'">
+
+    <div>
+        <ion-list>
             <ion-card *ngFor = "let user of pickingUsers">
                 <ion-item>
                     <ion-avatar item-start>
@@ -29,7 +21,7 @@
                         
                     </div>                   
                     <div class="more">
-                        <ion-badge color="primary">EN ESPERA</ion-badge>
+                        <ion-badge color="bg-yellow">EN ESPERA</ion-badge>
                            
                         
                         
@@ -50,7 +42,7 @@
                         
                     </div>
                     <div class="more">
-                        <ion-badge color="secondary">RECOGIDO</ion-badge>                      
+                        <ion-badge color="bg-theme">RECOGIDO</ion-badge>                      
                         
 
                     </div>
@@ -69,7 +61,7 @@
                         <h2>{{driver.name|titlecase}} {{driver.lastname |titlecase | slice:0:1}}
                             <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
                         </h2>
-                        <p>{{driver.carModel}} | {{driver.plateNumber}}</p>
+                        <p>{{driver.car}}</p>
                     </div>
                     <div class="more">
                         <h2 class="text-theme" class="priceDriver">$ {{driver.price}}
@@ -81,9 +73,9 @@
                     <div class="status"><img src="assets/imgs/approve.png"></div>
                     <div class="ride-detail">
                         <p>
-                            <span class="icon-location bg-theme"></span><span class="time">  </span>Origen: {{driver.origin}}</p>
+                            <span class="icon-location bg-theme"></span>{{driver.origin}}</p>
                         <p>
-                            <span class="icon-location bg-yellow"></span><span class="time">  </span>Destino: {{driver.destination}}</p>
+                            <span class="icon-location bg-yellow"></span>{{driver.destination}}</p>
                     </div>
                     <ion-row>
                         <ion-col class="detail-text">
@@ -95,15 +87,13 @@
                         <ion-col center text-center>
                             <button class="btn bg-theme rounded full text-white" (click)="callUser(driver.phone)" ><ion-icon name="ios-call" class="text-white"></ion-icon></button>
                         </ion-col>
-                        <ion-col center text-center>
-                            <button class="btn bg-theme rounded full text-white" (click)="chatting()">Chat</button>
-                        </ion-col>
+                   
                     </ion-row>
                 </ion-card-content>
             </ion-card>    
 
-            <button class="btn bg-theme text-white rounded" (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>
-            
+            <button  class="btn bg-theme text-white rounded" (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>
+
         </ion-list>
 
         <!-- <div *ngSwitchCase="'map'">

@@ -25703,7 +25703,7 @@ li,
 }
 
 .text-theme {
-  color: #0fc874;
+  color: #3fb1df;
 }
 
 .text-dark {
@@ -25719,7 +25719,7 @@ li,
 }
 
 .bg-theme {
-  background: #0fc874;
+  background: #3fb1df;
 }
 
 .bg-light {
@@ -25734,14 +25734,18 @@ li,
   background: #fff;
 }
 
+.bg-red {
+  background: #a71717;
+}
+
 .tabs-md .tab-button {
   border-top: 2px solid #fff;
 }
 
 .tab-button[aria-selected=true],
 .tab-button[aria-selected=true] .tab-button-icon {
-  color: #0fc874 !important;
-  border-color: #0fc874 !important;
+  color: #3fb1df !important;
+  border-color: #3fb1df !important;
 }
 
 .tabbar {
@@ -25865,7 +25869,7 @@ li,
 }
 
 .header.bg-theme .toolbar-background {
-  background: #0fc874 !important;
+  background: #3fb1df !important;
 }
 
 .header.bg-theme .text-center {
@@ -26339,7 +26343,7 @@ page-confirmpopup .card {
 }
 
 page-confirmpopup .card h6 {
-  color: #0fc874;
+  color: #3fb1df;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 500;
@@ -26456,7 +26460,7 @@ page-confirmpopup .seats .rate {
   justify-content: center;
   font-size: 25px;
   font-weight: 700;
-  color: #0fc874;
+  color: #3fb1df;
   margin: 10px;
 }
 
@@ -26476,9 +26480,9 @@ page-confirmpopup .seats .seats-tag {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border: 1px solid #0fc874;
+  border: 1px solid #3fb1df;
   border-radius: 10px;
-  color: #0fc874;
+  color: #3fb1df;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -26896,7 +26900,7 @@ page-findride #map {
   position: absolute;
   display: block;
   left: 0px;
-  top: 7px;
+  top: 0px;
 }
 
 page-findride .findRideText {
@@ -27211,7 +27215,7 @@ page-more ion-item .more p {
 
 page-more ion-item p {
   font-size: 1rem !important;
-  color: #0fc874 !important;
+  color: #3fb1df !important;
   font-weight: 400;
 }
 
@@ -27235,7 +27239,19 @@ page-more button ion-avatar ion-icon {
   right: 0;
   bottom: 0;
   margin: auto;
-  color: #0fc874;
+  color: #3fb1df;
+}
+
+page-more .love {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #4d5853;
 }
 
 page-myride #map {
@@ -27278,7 +27294,7 @@ page-myride .card ion-item .more {
 page-myride .card ion-item .more h2 {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #0fc874;
+  color: #3fb1df;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27310,7 +27326,7 @@ page-myride ion-card-content .ride-detail {
 
 page-myride ion-card-content .ride-detail p {
   font-size: 1.2rem;
-  padding-left: 10px;
+  padding-left: 20px;
   position: relative;
   color: #777;
   white-space: nowrap;
@@ -28270,6 +28286,94 @@ page-signup .name-fild {
   padding-right: 0;
 }
 
+page-support .card {
+  margin-top: 0px;
+  padding: 30px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  position: relative;
+  overflow: visible;
+}
+
+page-support .card h1 {
+  font-size: 4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #3fb1df;
+  font-weight: 600;
+}
+
+page-support .card h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+page-support .card p {
+  font-size: 1.1rem;
+  color: #bfbfbf;
+}
+
+page-support .card.slip {
+  margin-bottom: 20px;
+}
+
+page-support .card.slip::after {
+  content: '';
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 12px;
+  background: url(../assets/imgs/border-down.jpg);
+  background-repeat: repeat-x;
+  background-size: 15px;
+  left: 0;
+  bottom: -10px;
+}
+
+page-support .card.rate {
+  padding-top: 10px;
+}
+
+page-support .card.rate::after {
+  content: '';
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 12px;
+  background: url(../assets/imgs/border-up.jpg);
+  background-repeat: repeat-x;
+  background-size: 15px;
+  left: 0;
+  top: -6px;
+}
+
+page-support .card.rate .driver ion-item.item {
+  width: 220px;
+  margin: auto;
+}
+
+page-support .card.rate .driver ion-item.item .item-inner h2 {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+page-support .card.rate .driver p.icons {
+  margin-bottom: 2.5rem;
+  margin-top: 1rem;
+}
+
+page-support .card.rate .driver p.icons ion-icon {
+  font-size: 3.5rem;
+  margin-left: 4px;
+}
+
+page-support .card.rate .driver ion-textarea {
+  height: 10rem;
+  color: #bfbfbf;
+  font-size: 1.3rem;
+}
+
 page-terms .bg-background-img {
   background-position-y: -140px;
 }
@@ -28364,13 +28468,12 @@ page-wallet .card {
   margin-left: 0;
   margin-right: 0;
   width: 100%;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  margin-top: 6px;
   margin-bottom: 5px;
 }
 
 page-wallet .card ion-item .name {
-  width: calc(100% - 90px);
+  width: calc(100% - 70px);
   display: inline-block;
 }
 
@@ -28379,30 +28482,99 @@ page-wallet .card ion-item .name h2 {
   font-weight: 600;
 }
 
-page-wallet .card ion-item .name h2 small {
+page-wallet .card ion-item .name h2 ion-icon {
   margin-left: 5px;
-  color: #dfdfdf;
 }
 
 page-wallet .card ion-item .more {
-  width: 80px;
+  width: 65px;
   display: inline-block;
+}
+
+page-wallet .card ion-item .more .badge {
+  position: absolute;
+  right: 21px;
+  top: 19px;
+  background-color: #3fb1df;
 }
 
 page-wallet .card ion-item .more h2 {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #0fc874;
+  color: #3fb1df;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-page-wallet .card ion-item .more p {
-  font-size: 1rem;
-  color: #4c4c4c;
-  font-weight: 500;
+page-wallet .card ion-item .more h2 ion-icon {
+  margin-left: 5px;
+  font-size: 2rem;
+  margin-left: auto;
+  color: #222;
 }
 
 page-wallet .card ion-item p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #777;
   font-weight: 400;
+}
+
+page-wallet ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+page-wallet ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+page-wallet ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 43px;
+  position: relative;
+  color: #777;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+page-wallet ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+}
+
+page-wallet ion-card-content .ride-detail::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: #555;
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+page-wallet .love {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #4d5853;
 }

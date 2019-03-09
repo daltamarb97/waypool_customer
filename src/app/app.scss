@@ -28,7 +28,7 @@ li,
 }
 
 .text-theme {
-    color: #0fc874;
+    color: #3fb1df;
 }
 
 .text-dark {
@@ -44,7 +44,7 @@ li,
 }
 
 .bg-theme {
-    background: #0fc874;
+    background: #3fb1df;
 }
 
 .bg-light {
@@ -58,6 +58,9 @@ li,
 .bg-white {
     background: #fff;
 }
+.bg-red {
+    background: rgb(167, 23, 23);
+}
 
 .tabs-md .tab-button {
     border-top: 2px solid #fff;
@@ -65,8 +68,8 @@ li,
 
 .tab-button[aria-selected=true],
 .tab-button[aria-selected=true] .tab-button-icon {
-    color: #0fc874 !important;
-    border-color: #0fc874 !important;
+    color: #3fb1df !important;
+    border-color: #3fb1df !important;
 }
 
 .tabbar {
@@ -174,7 +177,7 @@ li,
 //green header inner pages
 .header.bg-theme {
     .toolbar-background {
-        background: #0fc874 !important;
+        background: #3fb1df !important;
     }
     .text-center {
         text-align: center !important;

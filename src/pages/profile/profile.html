@@ -1,6 +1,6 @@
 <ion-header class="bg-theme">
     <ion-navbar>
-        <ion-title>MY PROFILE</ion-title>
+        <ion-title>MI PERFIL</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -10,56 +10,48 @@
             <img src="assets/imgs/man3.png">
         </ion-avatar>
         <div class="name">
-            <h2>David Johnson
+            <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}
             </h2>
-            <p>Edit Profile</p>
+            
         </div>
-        <div class="more">
-            <h2>
-                <ion-icon name="ios-star"></ion-icon>
-                <ion-icon name="ios-star"></ion-icon>
-                <ion-icon name="ios-star"></ion-icon>
-                <ion-icon name="ios-star"></ion-icon>
-                <ion-icon name="ios-star"></ion-icon>
-            </h2>
-            <p>(53 Reviews)</p>
-        </div>
+        
     </ion-item>
-    <div class="tabs bg-white">
-        <ion-segment [(ngModel)]="myprofile">
-            <ion-segment-button value="about">
-                About
-            </ion-segment-button>
-            <ion-segment-button value="reviews">
-                Reviews
-            </ion-segment-button>
-        </ion-segment>
-    </div>
+    
     <div [ngSwitch]="myprofile">
         <ion-list *ngSwitchCase="'about'">
+              
+                     
             <div class="bg-white" padding>
+                    <p>Sólo podrás cambiar la información de tu número telefónico.</p>
+
                 <ion-list no-lines class="form-list">
                     <ion-item>
-                        <ion-label floating>Your Name</ion-label>
-                        <ion-input type="text" value="Johan Bitoda" readonly></ion-input>
+                        <ion-label floating >Nombre</ion-label>
+                        <ion-input type="text" [(ngModel)]="user.name" readonly></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-label floating>Phone Number</ion-label>
-                        <ion-input type="text" value="+91 964 148 6000" readonly></ion-input>
+                        <ion-label floating >Apellido</ion-label>
+                        <ion-input type="text" [(ngModel)]="user.lastname" readonly></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-label floating>Email Address</ion-label>
-                        <ion-input type="text" value="johanbittoda@email.com" readonly></ion-input>
+                        <ion-label floating>Número Telefónico</ion-label>
+                        <ion-input type="text" [(ngModel)]="user.phone"></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-label floating>Profession</ion-label>
-                        <ion-input type="text" value="Senior Architechat Alex Designs." readonly></ion-input>
+                        <ion-label floating>Email Universitario</ion-label>
+                        <ion-input type="text"  [(ngModel)]="user.email"  readonly></ion-input>
                     </ion-item>
+
+
                 </ion-list>
             </div>
             <div padding-top padding-left padding-right text-center>
                 <p>
-                    <button class="btn text-theme rounded bg-white" style="width: 100%">CHANGE PASSWORD</button>
+                    <button class="btn text-theme rounded bg-white" style="width: 100%;margin-bottom: 8px;" (click)="saveChanges()">Guardar Cambios</button>
+
+                    <button class="btn text-theme rounded bg-white" style="width: 100%;    margin-bottom: 8px;">Cambiar Contraseña</button>
+                    <button class="btn text-white rounded bg-red" style="width: 100%;    margin-bottom: 8px;" (click)="deleteAccount()">Eliminar Cuenta</button>
+              
                 </p>
 
             </div>

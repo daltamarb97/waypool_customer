@@ -27,6 +27,13 @@ export class SignUpService {
     public getMyInfo(userId){
         return this.afDB.object('users/'+ userId).valueChanges();
         }
-
-   
+public getMyInfoForProfile(userId){
+            return this.afDB.object('users/'+ userId).valueChanges();
+            }
+   public saveInfoProfile(userUid,phone){
+    this.afDB.database.ref('/users/'+ userUid).update({
+        phone:phone
+        
+});
+   }
 }

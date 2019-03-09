@@ -1,0 +1,42 @@
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title>Soporte</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-card class="slip">
+        <div text-center>
+            <h1 class="text-theme">{{typeOfSituation}}</h1>
+            <p class="text-light">{{today | date}}
+            </p>
+           
+            <h4 class="text-dark">{{info}}</h4>
+        </div>
+    </ion-card>
+    <ion-card class="rate">
+        <div text-center>
+            
+            <div class="driver">
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="assets/imgs/face-1.jpg">
+                    </ion-avatar>
+                    <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}
+                        <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                    </h2>
+            
+                </ion-item>
+                
+                <div class="form">
+                    <ion-list no-lines>
+                        <ion-item>
+                            <ion-textarea [(ngModel)]="experience" type="text" placeholder="¡Escríbenos con detalle!"></ion-textarea>
+                        </ion-item>
+                    </ion-list>
+                </div>
+                <p padding-top><button class="btn text-white bg-theme rounded" style="width: 100%;">ENVIAR</button></p>
+            </div>
+        </div>
+    </ion-card>
+</ion-content>

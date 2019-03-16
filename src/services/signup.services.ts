@@ -12,6 +12,8 @@ export class SignUpService {
 
     public saveUser(user){
         this.afDB.database.ref('users/'+ user.userId).update(user);
+        this.afDB.database.ref('drivers/'+ user.userId).update(user);
+
     }
 
     

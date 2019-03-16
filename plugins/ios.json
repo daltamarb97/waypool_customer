@@ -1,0 +1,56 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-email-composer": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-googlemaps": {
+      "API_KEY_FOR_IOS": "AIzaSyC7wuQ1MQ6t7tZ8Q-qDkDvy-dRhqE65tOM",
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "Use geocoder service",
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    }
+  },
+  "dependent_plugins": {
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    }
+  }
+}

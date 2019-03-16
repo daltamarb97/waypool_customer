@@ -4,28 +4,32 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="bg-background-img">
+<ion-content>
     <div class="logo">
         <img src="../../assets/imgs/logo waypool-01.png" alt="logo">
     </div>
 
     <div class="bg-white login">
         <div class="">
+         <form [formGroup]="loginGroup" (ngSubmit)="logIn()">
             <ion-list class="form">
                 <ion-item>
                     <ion-label></ion-label>
-                    <ion-input type="email"  text-right [(ngModel)]="email" placeholder= "email universitario"></ion-input>
+                    <ion-input type="email"  text-right  formControlName="email" placeholder= "email universitario"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label></ion-label>
-                    <ion-input type="password" text-right  [(ngModel)]="password" placeholder= "Tú contraseña"></ion-input>
+                    <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>
                 </ion-item>
             </ion-list>
-            <button ion-button full class="bg-theme text-white btn rounded" (click)="logIn()">ENTRAR</button>
+            <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!loginGroup.valid">ENTRAR</button>
+        </form>
+
             <ion-row style="padding-top: 30px;">
                 <ion-col (click)="signup()"><small>¿eres nuevo? <strong class="text-theme">Sign up</strong></small></ion-col>
                 <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme">contraseña?</strong></small></ion-col>
             </ion-row>
+           
             <!-- <p text-center class="option-login"><span>OR CONTINUE WITH</span></p>
             <ion-row>
                 <ion-col col-6><button ion-button full class="bg-blue text-white btn rounded small"><img src="assets/imgs/fb_white.png">

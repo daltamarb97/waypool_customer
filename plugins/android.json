@@ -10,6 +10,16 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     },
+    "cordova-plugin-email-composer": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
     "cordova-plugin-googlemaps": {
       "API_KEY_FOR_ANDROID": "AIzaSyC7wuQ1MQ6t7tZ8Q-qDkDvy-dRhqE65tOM",
       "PLAY_SERVICES_VERSION": "15.0.1",
@@ -22,28 +32,25 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     },
+    "cordova-plugin-nativegeocoder": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     },
-    "cordova-plugin-firebase": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
-    },
     "mx.ferreyra.callnumber": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
-    },
-    "cordova-plugin-email-composer": {
-      "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
-    },
-    "cordova-plugin-nativegeocoder": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    }
+  }
 }

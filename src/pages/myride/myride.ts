@@ -82,18 +82,22 @@ userUid=this.AngularFireAuth.auth.currentUser.uid;
   
   
   callUser(number){
-    console.log(number)
-  this.callNumber.isCallSupported()
-.then((response) => {
-if (response == true) {
-  this.callNumber.callNumber(number, true)
-  .then(res => console.log('Launched dialer!', res)) //si no es necesario esta promesa, eliminarla
-  .catch(err => console.log('Error launching dialer', err));
-}
-else {
-    console.log('error')
-      }
-  });
+//     console.log(number)
+//   this.callNumber.isCallSupported()
+// .then((response) => {
+// if (response == true) {
+//   this.callNumber.callNumber(number, true)
+//   .then(res => console.log('Launched dialer!', res)) //si no es necesario esta promesa, eliminarla
+//   .catch(err => console.log('Error launching dialer', err));
+// }
+// else {
+//     console.log('error')
+//       }
+//   });
+
+this.callNumber.callNumber('3104270534', true)
+.then(res => console.log('Launched dialer!', res))
+.catch(err => console.log('Error launching dialer', err));
 }
 raterider(){
 this.navCtrl.push(RateriderPage);

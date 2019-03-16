@@ -357,7 +357,10 @@ geocodeLatLng(latLng,inputName) {
           this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
           
           this.geofire1 = this.myLatLng;
-          this.geofire2 = this.myLatLngDest;
+          this.geofire2 = {
+          lat: this.myLatLngDest.lat(),
+          lng: this.myLatLngDest.lng()
+        };
 
           this.confirmNote(this.geofire1, this.geofire2);
          

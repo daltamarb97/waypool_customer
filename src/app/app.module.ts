@@ -53,6 +53,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { EmailComposerOriginal } from '@ionic-native/email-composer';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { SupportPage } from '../pages/support/support';
+import { sendFeedbackService } from '../services/sendFeedback.service';
 
 
 
@@ -158,7 +159,8 @@ export const firebaseConfig = {
     CallNumber,
     geofireService,
     instancesService,
-    NativeGeocoder
+    NativeGeocoder,
+    sendFeedbackService
 
   ]
 })

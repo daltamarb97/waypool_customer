@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, ToastController } from 'ionic-angular';
+import { NavController, ModalController, ToastController, IonicPage } from 'ionic-angular';
 
-import { FilterPage } from '../filter/filter';
-import { RiderprofilePage } from '../riderprofile/riderprofile';
-import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import { Firebase } from '@ionic-native/firebase';
 import { sendCoordsService } from '../../services/sendCoords.service';
-import * as firebase from 'firebase';
 import { SignUpService } from '../../services/signup.services';
-import { ConfirmridePage } from '../confirmride/confirmride';
 import { ConfirmpopupPage } from '../confirmpopup/confirmpopup';
 import { geofireService } from '../../services/geoFire.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { TabsPage } from '../tabs/tabs';
+@IonicPage()
 
 @Component({
   selector: 'page-listride',
@@ -82,9 +76,7 @@ ionViewDidLoad(){
     })
 }
 
- filter(){
-    this.navCtrl.push(FilterPage);
- }
+
  
  showToastWithCloseButton(noteDriver,nameDriver) {
    if(noteDriver == ''|| noteDriver == null) {
@@ -117,11 +109,20 @@ ionViewDidLoad(){
     toast.present();
   } else {
 
- let modal = this.modalCtrl.create(ConfirmpopupPage,{driver});
+ let modal = this.modalCtrl.create('ConfirmpopupPage',{driver});
  modal.present();
  console.log(driver)
   }
  
+  }
+  help(){
+    const toast = this.toastCtrl.create({
+      message: 'Aquí te saldrán los estudiantes con carro, escoge con cuál quieres compartir tu viaje y espera a que te acepte para poder comunicarte con el.',
+      showCloseButton:true,
+      closeButtonText: 'OK',
+      position:'top'
+         });
+    toast.present();
   }
 }
 

@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, AlertController, NavParams, IonicPage } from 'ionic-angular';
 
-import { SignupPage } from '../signup/signup';
-import { TabsPage } from '../tabs/tabs';
-import { FindridePage } from '../findride/findride';
+
 import { authenticationService } from '../../services/userauthentication.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SignUpService } from '../../services/signup.services';
 
 
+@IonicPage()
 
 @Component({
   selector: 'page-login',
@@ -27,7 +26,7 @@ export class LoginPage {
   }
   
     signup(){
-        this.navCtrl.push(SignupPage);
+        this.navCtrl.push('SignupPage');
     }
 
     resetPassword(email:string){
@@ -71,10 +70,10 @@ export class LoginPage {
                     console.log(metadata.creationTime);
                     console.log(metadata.lastSignInTime);
 
-                    this.navCtrl.push(TabsPage);//aqui va registration car, no tabspge
+                    this.navCtrl.push('TabsPage');//aqui va registration car, no tabspge
 
                 }else{
-                    this.navCtrl.push(TabsPage);
+                    this.navCtrl.push('TabsPage');
                 }
                 this.authenticationService.getStatus;  
             };

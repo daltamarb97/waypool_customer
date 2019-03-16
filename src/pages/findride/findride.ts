@@ -4,7 +4,7 @@ import { ListridePage } from '../listride/listride';
 
 
 import { Geolocation } from '@ionic-native/geolocation';
-import { NavController, Platform, ViewController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage } from 'ionic-angular';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ConfirmNotePage } from '../confirmnote/confirmnote';
@@ -16,6 +16,7 @@ import { SignUpService } from '../../services/signup.services';
 
  
 declare var google;
+@IonicPage()
 
 @Component({
   selector: 'page-findride',
@@ -44,6 +45,7 @@ export class FindridePage {
   myLatLng:any =[];
   waypoints: any[];
   myLatLngDest:any;
+  positionDest:any;
   //¿Adonde vas? 
   destinationSelect: any;
   //firebase 
@@ -127,7 +129,11 @@ export class FindridePage {
         map: this.map,
         animation: google.maps.Animation.DROP,
         position: latLng,
-        draggable:true
+        draggable:true, 
+         icon: {         url: "/assets/imgs/marker-origin.png",
+        scaledSize: new google.maps.Size(90, 90)    
+
+      }
       });
       this.markers.push(this.markerGeolocation);
       
@@ -215,7 +221,7 @@ updateSearchResultsMyPos(){
     this.autocompleteItems=[];
   
     this.clearMarkers();
-  
+    this.autocompleteMyDest.input=''
     this.geocoder.geocode({'placeId': item.place_id}, (results, status) => {
       if(status === 'OK' && results[0]){
         
@@ -226,14 +232,21 @@ updateSearchResultsMyPos(){
           this.markerGeolocation = new google.maps.Marker({
           position: results[0].geometry.location,
           map: this.map,
-          draggable: true
+          draggable: true,
+          animation: google.maps.Animation.DROP,
+          icon: {         url: "/assets/imgs/marker-origin.png",
+          scaledSize: new google.maps.Size(90, 90)    
+  
+        },
+
         });
         this.dragMarkerOr(this.markerGeolocation,this.autocompleteMyPos)
         this.markers.push( this.markerGeolocation);
         this.map.setCenter(results[0].geometry.location);
         this.autocompleteMyPos.input=[item.description]
-  
-      }
+        this.directionsDisplay.setMap(null);
+
+      } 
     })
     
     
@@ -243,6 +256,9 @@ updateSearchResultsMyPos(){
   
   selectSearchResultMyDest(item){
     this.autocompleteItems2=[];
+    if(this.markerDest!==undefined){
+      this.markerDest.setMap(null)
+    }
     this.geocoder.geocode({'placeId': item.place_id}, (results, status) => {
       if(status === 'OK' && results[0]){
   
@@ -256,7 +272,13 @@ updateSearchResultsMyPos(){
          this.markerDest = new google.maps.Marker({
           position: results[0].geometry.location,
           map: this.map,
-          draggable:true       
+          draggable:true,
+          animation: google.maps.Animation.DROP,
+
+          icon: {         url: "/assets/imgs/marker-destination2.png",
+          scaledSize: new google.maps.Size(90, 90)    
+  
+        }       
         });
         console.log(position)
         this.map.fitBounds(this.bounds);     
@@ -384,10 +406,10 @@ geocodeLatLng(latLng,inputName) {
       alert.present();
     }
     confirmNote(geoFire1, geoFire2){
-      let modal = this.modalCtrl.create(ConfirmNotePage, {geoFire1, geoFire2});
+      let modal = this.modalCtrl.create('ConfirmNotePage', {geoFire1, geoFire2});
       modal.onDidDismiss(accepted => {
         if(accepted){
-          this.navCtrl.push(ListridePage);
+          this.navCtrl.push('ListridePage');
       }
       })
    modal.present();

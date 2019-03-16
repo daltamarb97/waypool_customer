@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, ViewController, NavParams, ToastController, IonicPage } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SignUpService } from '../../services/signup.services';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { sendUsersService } from '../../services/sendUsers.service';
-import { MyridePage } from '../myride/myride';
 import { geofireService } from '../../services/geoFire.service';
-import { ListridePage } from '../listride/listride';
 import { instancesService } from '../../services/instances.service';
 import { Subject } from 'rxjs';
 
+@IonicPage()
 
 @Component({
   selector: 'page-confirmpopup',

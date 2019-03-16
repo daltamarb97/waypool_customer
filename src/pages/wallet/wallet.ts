@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ToastController } from 'ionic-angular';
+import { NavController, AlertController, ToastController, IonicPage } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { sendCoordsService } from '../../services/sendCoords.service';
-import { SignUpService } from '../../services/signup.services';
 import { sendUsersService } from '../../services/sendUsers.service';
+@IonicPage()
 
 @Component({
   selector: 'page-wallet',

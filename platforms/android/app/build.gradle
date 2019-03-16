@@ -270,6 +270,7 @@ dependencies {
     compile "com.google.firebase:firebase-config:+"
     compile "com.google.firebase:firebase-perf:+"
     compile "com.android.support:support-v4:27.+"
+    compile "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 

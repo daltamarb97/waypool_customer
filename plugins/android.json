@@ -43,7 +43,14 @@
     },
     "cordova-plugin-nativegeocoder": {
       "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    },
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+    }
+  }
 }

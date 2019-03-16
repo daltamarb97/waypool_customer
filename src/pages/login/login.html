@@ -1,10 +1,9 @@
 <ion-header class="transparent">
     <ion-navbar>
-        <ion-title><span class="text-white">SIGN IN</span></ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content class="bg-background-img">
+<ion-content>
     <div class="logo">
         <img src="../../assets/imgs/logo waypool-01.png" alt="logo">
     </div>
@@ -21,9 +20,9 @@
                     <ion-input type="password" text-right  [(ngModel)]="password" placeholder= "Tú contraseña"></ion-input>
                 </ion-item>
             </ion-list>
-            <button ion-button full class="bg-theme text-white btn rounded" (click)="logIn()">ENTRAR</button>
+            <button ion-button full class="bg-theme text-white btn rounded" (click)="logIn()">Iniciar Sésion</button>
             <ion-row style="padding-top: 30px;">
-                <ion-col (click)="signup()"><small>¿eres nuevo? <strong class="text-theme">Sign up</strong></small></ion-col>
+                <ion-col (click)="signup()"><small>¿Eres nuevo? <strong class="text-theme">¡Regístrate!</strong></small></ion-col>
                 <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme">contraseña?</strong></small></ion-col>
             </ion-row>
             <!-- <p text-center class="option-login"><span>OR CONTINUE WITH</span></p>

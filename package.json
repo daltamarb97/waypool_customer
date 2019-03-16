@@ -27,6 +27,7 @@
     "@ionic-native/firebase": "^4.16.0",
     "@ionic-native/geolocation": "^4.17.0",
     "@ionic-native/google-maps": "^4.14.0",
+    "@ionic-native/http": "^5.2.0",
     "@ionic-native/native-geocoder": "^5.0.0",
     "@ionic-native/splash-screen": "4.5.3",
     "@ionic-native/status-bar": "4.5.3",
@@ -35,8 +36,10 @@
     "call-number": "1.0.1",
     "cordova-android": "7.0.0",
     "cordova-browser": "5.0.4",
+    "cordova-plugin-advanced-http": "2.0.5",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-email-composer": "0.9.2",
+    "cordova-plugin-file": "6.0.1",
     "cordova-plugin-firebase": "^2.0.5",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-googlemaps": "^2.4.4",
@@ -80,7 +83,8 @@
       "cordova-plugin-email-composer": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
-      "cordova-plugin-nativegeocoder": {}
+      "cordova-plugin-nativegeocoder": {},
+      "cordova-plugin-advanced-http": {}
     },
     "platforms": [
       "browser",

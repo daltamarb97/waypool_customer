@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { SignUpService } from '../../services/signup.services';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { authenticationService } from '../../services/userauthentication.service';
 
+@IonicPage()
 
 @Component({
   selector: 'page-support',

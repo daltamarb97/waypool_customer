@@ -5,9 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //import { TabsPage } from '../pages/tabs/tabs';
 //import { AboutPage } from '../pages/about/about';
-import { LoginPage } from '../pages/login/login';
-import { FindridePage } from '../pages/findride/findride';
-import { ListridePage } from '../pages/listride/listride';
+
 
 
 
@@ -15,11 +13,10 @@ import { ListridePage } from '../pages/listride/listride';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any;
-
+  rootPage:any = 'LoginPage';
+  
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    localStorage.removeItem('firebase:previous_websocket_failure');
-    this.rootPage = LoginPage;
+    
     platform.ready().then(() => {
        // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need

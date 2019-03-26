@@ -7,7 +7,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 
 @Injectable()
 export class sendUsersService {
-
+userDriver;
 constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth){
               
     }
@@ -37,7 +37,7 @@ constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth){
      }
 
 
-     public cancelTripUser(DriverUserId,userUid){
+     public cancelTripUserOr(DriverUserId,userUid){
 //        
        this.afDB.database.ref('/drivers/'+ DriverUserId +'/trips/pickingUsers/'+ userUid +'/').remove();
 
@@ -45,10 +45,26 @@ constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth){
 
        this.afDB.database.ref('users/' + userUid+'/trips/onTrip').remove()
 
-       this.afDB.database.ref('users/' + userUid+'/trips/driverListRide').remove()
+       this.afDB.database.ref('users/' + userUid+'/trips/driverListRide').remove();
 
+       this.afDB.database.ref('geofireOr/'+userUid).remove();
 
     }
+
+
+    public cancelTripUserDest(DriverUserId,userUid){
+        //        
+               this.afDB.database.ref('/drivers/'+ DriverUserId +'/trips/pickingUsers/'+ userUid +'/').remove();
+        
+               this.afDB.database.ref('/users/'+ userUid +'/trips/pickingUsers').remove();
+        
+               this.afDB.database.ref('users/' + userUid+'/trips/onTrip').remove()
+        
+               this.afDB.database.ref('users/' + userUid+'/trips/driverListRide').remove();
+        
+               this.afDB.database.ref('geofireDest/'+userUid).remove();
+        
+            }
    
     public getRecordTrips(userUid){
         return  this.afDB.list('/users/'+ userUid +'/recordTrips/').valueChanges();

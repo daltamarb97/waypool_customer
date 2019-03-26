@@ -16,16 +16,17 @@ page-confirmnote{
     }
     .card {
         h6 {
-            color: #0fc874;
+            color: #000000;
             text-align: center;
-            font-size: 1.5rem;
-            font-weight: 500;
+            font-size: 1.8rem;
+            font-weight: 800;
             margin-top: 15px;
             margin-bottom: 10px;
+
         }
         width: 80%;
         margin: auto;
-        height: 465px;
+        height: 550px;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -57,6 +58,12 @@ page-confirmnote{
         .ride-detail {
             position: relative;
             margin-bottom: 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            font-weight: 800;
+
+            
             p {
                 font-size: 1.2rem;
                 padding-left: 10px;
@@ -93,16 +100,7 @@ page-confirmnote{
                     color: #9E9E9E;
                 }
             }
-            &::before {
-                content: '';
-                display: block;
-                width: 1px;
-                height: 60px;
-                background: #555;
-                position: absolute;
-                left: 5px;
-                bottom: 25px;
-            }
+           
             &.no-before {
                 &::before {
                     display: none;
@@ -123,7 +121,9 @@ page-confirmnote{
         }
     }
     .seats {
-        
+        .text-theme{
+            font-size: 200px
+                }
         .rate {
             font-weight: 700;
             color: #0fc874;
@@ -152,4 +152,12 @@ page-confirmnote{
     .textArea{
         margin: 11px 8px 50px 0;
     }
+    .form{
+        height:80px
+    }
+    .btn{
+        margin-bottom: 10px
+    }
+
+    
 }

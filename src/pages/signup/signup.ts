@@ -2,9 +2,8 @@
 import { Component, ViewChild } from '@angular/core';
 
 
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { VerificationPage } from '../verification/verification';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -17,6 +16,7 @@ import * as firebase from 'firebase';
 
 
 
+@IonicPage()
 
 @Component({
   selector: 'page-signup',
@@ -42,8 +42,6 @@ export class SignupPage {
         password: ["", Validators.required],
         passwordconf: ["", Validators.required],
         phone: ["", Validators.required],
-        carModel: ["", Validators.required],
-        plateNumber: ["", Validators.required]
         
     })
   }
@@ -67,12 +65,11 @@ export class SignupPage {
           let userPassword = this.signupGroup.controls['password'].value;
           let userPasswordconf = this.signupGroup.controls['passwordconf'].value;
           let userPhone = this.signupGroup.controls['phone'].value;
-          let userCarModel = this.signupGroup.controls['carModel'].value;
-          let userPlateNumber = this.signupGroup.controls['plateNumber'].value;
+
           this.user = this.signupGroup.value;
           if(userPassword === userPasswordconf){
             this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
-            this.navCtrl.push(LoginPage, this.user);
+            this.navCtrl.push('LoginPage', this.user);
         
             if(!this.user.userId){
                 this.AngularFireAuth.auth.onAuthStateChanged((user)=>{

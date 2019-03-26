@@ -7,50 +7,59 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
+    },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-email-composer": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-firebase": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-googlemaps": {
       "API_KEY_FOR_ANDROID": "AIzaSyC7wuQ1MQ6t7tZ8Q-qDkDvy-dRhqE65tOM",
       "PLAY_SERVICES_VERSION": "15.0.1",
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-nativegeocoder": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "mx.ferreyra.callnumber": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     }
   },
   "dependent_plugins": {
     "com.googlemaps.ios": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     },
     "cordova-plugin-add-swift-support": {
-      "PACKAGE_NAME": "com.verbosetech.vroom_customer"
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.verbosetech.vroomcustomer"
     }
   }
 }

@@ -36,8 +36,7 @@ page-login {
         position: relative;
         img {
             position: absolute;
-            width: 144px;
-            height: 144px;
+          
             margin: auto;
             top: 0;
             left: 0;
@@ -48,6 +47,11 @@ page-login {
     .bg-background-img {
         background-position-y: -100px;
     }
+
+    .my-checkbox {
+        width: 10px;
+    }
+    
     button {
         img {
             width: 24px;

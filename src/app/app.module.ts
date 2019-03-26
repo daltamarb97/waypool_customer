@@ -3,31 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { TabsPage } from '../pages/tabs/tabs';
-import { MyridePage } from '../pages/myride/myride';
-import { ChatsPage } from '../pages/chats/chats';
-import { FindridePage } from '../pages/findride/findride';
-import { WalletPage } from '../pages/wallet/wallet';
-import { MorePage } from '../pages/more/more';
-import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
-import { PasswordPage } from '../pages/password/password';
-import { VerificationPage } from '../pages/verification/verification';
-import { CodePage } from '../pages/code/code';
-import { ListridePage } from '../pages/listride/listride';
-import { FilterPage } from '../pages/filter/filter';
-import { RiderprofilePage } from '../pages/riderprofile/riderprofile';
-import { ConfirmridePage } from '../pages/confirmride/confirmride';
-import { ConfirmpopupPage } from '../pages/confirmpopup/confirmpopup';
-import { RateriderPage } from '../pages/raterider/raterider';
-import { ChattingPage } from '../pages/chatting/chatting';
-import { ProfilePage } from '../pages/profile/profile';
-import { ReviewsPage } from '../pages/reviews/reviews';
-import { NotificationPage } from '../pages/notification/notification';
-import { TermsPage } from '../pages/terms/terms';
-import { EarnPage } from '../pages/earn/earn';
-
-import { HelpPage } from '../pages/help/help';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -42,7 +17,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { sendCoordsService } from '../services/sendCoords.service';
 import { sendUsersService } from '../services/sendUsers.service';
 import { noteService } from '../services/note.service';
-import { ConfirmNotePage } from '../pages/confirmnote/confirmnote';
 import { CallNumber } from '@ionic-native/call-number';
 import { geofireService } from '../services/geoFire.service';
 import { CommonModule } from '@angular/common';
@@ -50,11 +24,10 @@ import { instancesService } from '../services/instances.service';
 import { SignUpService } from '../services/signup.services';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
   
-import { EmailComposerOriginal } from '@ionic-native/email-composer';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { SupportPage } from '../pages/support/support';
 import { sendFeedbackService } from '../services/sendFeedback.service';
-
+import { IonicStorageModule } from '@ionic/storage';
 
 
 
@@ -72,35 +45,9 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    TabsPage,
-    MyridePage,
-    ChatsPage,
-    FindridePage,
-    WalletPage,
-    MorePage,
-    LoginPage,
-    PasswordPage,
-    SignupPage,
-    VerificationPage,
-    CodePage,
-    ListridePage,
-    FilterPage,
-    RiderprofilePage,
-    ConfirmridePage,
-    ConfirmpopupPage,
-    RateriderPage,
-    ChattingPage,
-    SupportPage,
-    ConfirmNotePage,
-    ProfilePage,
-    ReviewsPage,
-    NotificationPage,
-    TermsPage,
-    EarnPage,
-     
- 
-    HelpPage
+    MyApp
+  
+
   ],
   imports: [
     BrowserModule,
@@ -108,39 +55,14 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    CommonModule
+    CommonModule,
+    IonicStorageModule.forRoot()
   ],
+ 
+  
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    TabsPage,
-    MyridePage,
-    ChatsPage,
-    FindridePage,
-    WalletPage,
-    MorePage,
-    LoginPage,
-    PasswordPage,
-    
-    SignupPage,
-    VerificationPage,
-    CodePage,
-    ListridePage,
-    FilterPage,
-    RiderprofilePage,
-    ConfirmridePage,
-    ConfirmpopupPage,
-    ConfirmNotePage,
-    RateriderPage,
-    ChattingPage,
-    SupportPage,
-    ProfilePage,
-    ReviewsPage,
-    NotificationPage,
-    TermsPage,
-    EarnPage,
-    
-    HelpPage
+    MyApp
   ],
   providers: [
     StatusBar,

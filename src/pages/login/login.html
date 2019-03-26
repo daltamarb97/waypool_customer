@@ -1,12 +1,11 @@
 <ion-header class="transparent">
     <ion-navbar>
-        <ion-title><span class="text-white">SIGN IN</span></ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
     <div class="logo">
-        <img src="../../assets/imgs/logo waypool-01.png" alt="logo">
+        <img src="assets/imgs/logo waypool-01.png" alt="logo">
     </div>
 
     <div class="bg-white login">
@@ -23,20 +22,15 @@
                 </ion-item>
             </ion-list>
             <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!loginGroup.valid">ENTRAR</button>
-        </form>
+            <br>
+         </form>
 
             <ion-row style="padding-top: 30px;">
-                <ion-col (click)="signup()"><small>¿eres nuevo? <strong class="text-theme">Sign up</strong></small></ion-col>
+                <ion-col (click)="signup()"><small>¿Eres nuevo? <strong class="text-theme">¡Regístrate!</strong></small></ion-col>
                 <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme">contraseña?</strong></small></ion-col>
             </ion-row>
            
-            <!-- <p text-center class="option-login"><span>OR CONTINUE WITH</span></p>
-            <ion-row>
-                <ion-col col-6><button ion-button full class="bg-blue text-white btn rounded small"><img src="assets/imgs/fb_white.png">
-                    <span>Facebook</span></button></ion-col>
-                <ion-col col-6><button ion-button full class="bg-white text-dark btn rounded small"><img src="assets/imgs/google.png">
-                    <span>Google&nbsp;&nbsp;</span></button></ion-col>
-            </ion-row> -->
+
         </div>
     </div>
 </ion-content>

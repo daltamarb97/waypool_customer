@@ -12,7 +12,7 @@
             <ion-card *ngFor = "let user of pickingUsers">
                 <ion-item>
                     <ion-avatar item-start>
-                        <img src="assets/imgs/face-1.jpg">
+                        <img src="assets/imgs/userPicture.png">
                     </ion-avatar>
                     <div class="name">
                         <h2>{{user.name | titlecase}} {{user.lastname |titlecase | slice:0:1}}
@@ -33,7 +33,7 @@
             <ion-card *ngFor = "let user of pickedUpUsers">
                 <ion-item>
                     <ion-avatar item-start>
-                        <img src="assets/imgs/face-1.jpg">
+                        <img src="assets/imgs/userPicture.png">
                     </ion-avatar>
                     <div class="name">
                         <h2>{{user.name | titlecase}} {{user.lastname |titlecase | slice:0:1}}
@@ -55,7 +55,7 @@
             <ion-card *ngFor = "let driver of driverOnTrip">
                 <ion-item>
                     <ion-avatar item-start>
-                        <img src="assets/imgs/face-1.jpg">
+                        <img src="assets/imgs/userPicture.png">
                     </ion-avatar>
                     <div class="name">
                         <h2>{{driver.name|titlecase}} {{driver.lastname |titlecase | slice:0:1}}
@@ -70,7 +70,7 @@
                    
                 </ion-item>
                 <ion-card-content>
-                    <div class="status"><img src="assets/imgs/approve.png"></div>
+                    <div class="status"><img src="assets/imgs/driverEtiquette.png"></div>
                     <div class="ride-detail">
                         <p>
                             <span class="icon-location bg-theme"></span>{{driver.origin}}</p>
@@ -85,14 +85,14 @@
                             
                         </ion-col>
                         <ion-col center text-center>
-                            <button class="btn bg-theme rounded full text-white" (click)="callUser(driver.phone)" ><ion-icon name="ios-call" class="text-white"></ion-icon></button>
+                            <button class="btn bg-theme rounded full text-white text-bold" (click)="callUser(driver.phone)" ><ion-icon name="ios-call" class="text-white"></ion-icon> LLAMAR</button>
                         </ion-col>
                    
                     </ion-row>
                 </ion-card-content>
             </ion-card>    
 
-            <button  class="btn bg-theme text-white rounded" (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>
+            <button  class="btn bg-theme text-white rounded"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>
 
         </ion-list>
 

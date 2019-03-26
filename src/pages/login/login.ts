@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, AlertController, NavParams, IonicPage, Platform } from 'ionic-angular';
 
-import { SignupPage } from '../signup/signup';
-import { TabsPage } from '../tabs/tabs';
-import { FindridePage } from '../findride/findride';
+
 import { authenticationService } from '../../services/userauthentication.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SignUpService } from '../../services/signup.services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { TabsPage } from '../tabs/tabs';
 
 
+@IonicPage()
 
 @Component({
   selector: 'page-login',
@@ -22,21 +22,36 @@ export class LoginPage {
     auth = this.AngularFireAuth.auth;
     receivedUser;
     private loginGroup: FormGroup;
-    
-  constructor(public navCtrl: NavController, private authenticationService: authenticationService, public alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public NavParams: NavParams, private SignUpService: SignUpService, private formBuilder: FormBuilder) {
+  
+  constructor(public navCtrl: NavController, private authenticationService: authenticationService, public alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public NavParams: NavParams, private SignUpService: SignUpService, private formBuilder: FormBuilder, public platform: Platform) {
     this.loginGroup = this.formBuilder.group({
         email: ["", Validators.required],
         password: ["", Validators.required]
     })
 
   }
-  
-    signup(){
-        this.navCtrl.push(SignupPage);
-    }
+
+  ionViewDidLoad(){
+    this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
+        if(user){
+            this.navCtrl.setRoot('TabsPage')
+        }else{
+            console.log('there is no user');
+        }
+    })
+    
+   
+
+  }
+
+
+  signup(){
+    this.navCtrl.push('SignupPage');
+
+};
 
     resetPassword(email:string){
-                    if(this.email == ''){
+                    if(this.loginGroup.controls['email'].value == ''){
                         const alert = this.alertCtrl.create({
                             title: 'no hay ningun email',
                             subTitle: 'ingresa un email para resetear tu contraseña',
@@ -45,7 +60,7 @@ export class LoginPage {
                           alert.present();
                           console.log("reset password email hasn't been sent");
                     }else{
-                        this.auth.sendPasswordResetEmail(this.email);
+                        this.auth.sendPasswordResetEmail(this.loginGroup.controls['email'].value);
                         const alert = this.alertCtrl.create({
                             title: 'revisa tu email',
                             subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
@@ -78,10 +93,10 @@ export class LoginPage {
                         console.log(metadata.creationTime);
                         console.log(metadata.lastSignInTime);
     
-                        this.navCtrl.push(TabsPage);//aqui va registration car, no tabspge
+                        this.navCtrl.push('TabsPage');//aqui va registration car, no tabspge
     
                     }else{
-                        this.navCtrl.push(TabsPage);
+                        this.navCtrl.push('TabsPage');
                     }
                     this.authenticationService.getStatus;  
                 };
@@ -94,7 +109,8 @@ export class LoginPage {
                   alert.present();
                 console.log(error);
             });
-        
+
+            localStorage.setItem('currentUser', 'user');
         
     }
 }

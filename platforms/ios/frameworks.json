@@ -1,8 +1,7 @@
 {
-    "MessageUI.framework": 1,
-    "CoreLocation.framework": 3,
     "Accelerate.framework": 1,
     "CoreData.framework": 1,
+    "CoreLocation.framework": 3,
     "CoreTelephony.framework": 1,
     "CoreText.framework": 1,
     "CoreImage.framework": 1,
@@ -12,7 +11,9 @@
     "libz.tbd": 2,
     "OpenGLES.framework": 1,
     "QuartzCore.framework": 1,
-    "SystemConfiguration.framework": 1,
+    "SystemConfiguration.framework": 2,
     "UIKit.framework": 1,
+    "Security.framework": 1,
+    "MessageUI.framework": 1,
     "WebKit.framework": 1
 }

@@ -29,6 +29,18 @@ export class SignUpService {
     public getMyInfo(userId){
         return this.afDB.object('users/'+ userId).valueChanges();
         }
+
+        public getInfoDriver(userDriverId){
+            return this.afDB.object('drivers/'+ userDriverId).valueChanges();
+            }
+    
+
+
+    public  deleteAccount(userId){
+        this.afDB.database.ref('/users/'+userId).remove();
+        this.afDB.database.ref('/drivers/'+userId).remove();
+
+        } 
 public getMyInfoForProfile(userId){
             return this.afDB.object('users/'+ userId).valueChanges();
             }

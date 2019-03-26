@@ -4,7 +4,7 @@ import { ListridePage } from '../listride/listride';
 
 
 import { Geolocation } from '@ionic-native/geolocation';
-import { NavController, Platform, ViewController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage } from 'ionic-angular';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ConfirmNotePage } from '../confirmnote/confirmnote';
@@ -16,6 +16,7 @@ import { SignUpService } from '../../services/signup.services';
 
  
 declare var google;
+@IonicPage()
 
 @Component({
   selector: 'page-findride',
@@ -44,6 +45,7 @@ export class FindridePage {
   myLatLng:any =[];
   waypoints: any[];
   myLatLngDest:any;
+  positionDest:any;
   //¿Adonde vas? 
   destinationSelect: any;
   //firebase 
@@ -57,6 +59,7 @@ export class FindridePage {
   //para acceder al uid en firebase
   user=this.AngularFireAuth.auth.currentUser.uid;
   userInfo=this.AngularFireAuth.auth.currentUser;
+  userInfoForOntrip:any;
   //geofire
   geofire1;
   geofire2;
@@ -80,7 +83,12 @@ export class FindridePage {
     
     this.markers = [];
     // initialize the plugin
- 
+
+    this.SignUpService.getMyInfo(this.user).subscribe(user=>{
+      this.userInfoForOntrip = user;
+    })
+
+
   }
  
   ionViewDidLoad(){
@@ -127,7 +135,11 @@ export class FindridePage {
         map: this.map,
         animation: google.maps.Animation.DROP,
         position: latLng,
-        draggable:true
+        draggable:true, 
+         icon: {         url: "assets/imgs/marker-origin.png",
+        scaledSize: new google.maps.Size(90, 90)    
+
+      }
       });
       this.markers.push(this.markerGeolocation);
       
@@ -215,7 +227,7 @@ updateSearchResultsMyPos(){
     this.autocompleteItems=[];
   
     this.clearMarkers();
-  
+    this.autocompleteMyDest.input=''
     this.geocoder.geocode({'placeId': item.place_id}, (results, status) => {
       if(status === 'OK' && results[0]){
         
@@ -226,14 +238,21 @@ updateSearchResultsMyPos(){
           this.markerGeolocation = new google.maps.Marker({
           position: results[0].geometry.location,
           map: this.map,
-          draggable: true
+          draggable: true,
+          animation: google.maps.Animation.DROP,
+          icon: {         url: "assets/imgs/marker-origin.png",
+          scaledSize: new google.maps.Size(90, 90)    
+  
+        },
+
         });
         this.dragMarkerOr(this.markerGeolocation,this.autocompleteMyPos)
         this.markers.push( this.markerGeolocation);
         this.map.setCenter(results[0].geometry.location);
         this.autocompleteMyPos.input=[item.description]
-  
-      }
+        this.directionsDisplay.setMap(null);
+
+      } 
     })
     
     
@@ -243,6 +262,9 @@ updateSearchResultsMyPos(){
   
   selectSearchResultMyDest(item){
     this.autocompleteItems2=[];
+    if(this.markerDest!==undefined){
+      this.markerDest.setMap(null)
+    }
     this.geocoder.geocode({'placeId': item.place_id}, (results, status) => {
       if(status === 'OK' && results[0]){
   
@@ -256,7 +278,13 @@ updateSearchResultsMyPos(){
          this.markerDest = new google.maps.Marker({
           position: results[0].geometry.location,
           map: this.map,
-          draggable:true       
+          draggable:true,
+          animation: google.maps.Animation.DROP,
+
+          icon: {         url: "assets/imgs/marker-destination2.png",
+          scaledSize: new google.maps.Size(90, 90)    
+  
+        }       
         });
         console.log(position)
         this.map.fitBounds(this.bounds);     
@@ -332,21 +360,49 @@ geocodeLatLng(latLng,inputName) {
 
 
   listride(){
-    // TO DO: IF  (GEOPOSITION !== POSITIONDEST){
-//      NO PERMITIR VIAJE , ES UNA IDEA PERO NO ESTOY 100% DE ACUERDO
-    //}
-    
+  if(this.userInfoForOntrip.trips){
+    if(this.userInfoForOntrip.trips.onTrip == true){
+      let alert = this.alertCtrl.create({
+        title: 'Estas actualmente en un viaje',
+        subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
+        buttons: ['OK']
+      });
+      alert.present();
+    }else{
+      try {
+        this.desFirebase=this.autocompleteMyDest.input
+        this.orFirebase=this.autocompleteMyPos.input
+        console.log(this.desFirebase[0]);
+      if(this.autocompleteMyDest.input ==''|| this.autocompleteMyPos.input==''){
+            this.presentAlert('No tienes toda la informacion','Por favor asegura que tu origen y destino sean correctos','Ok');
+            this.clearMarkers();
+            this.directionsDisplay.setDirections({routes: []});
+            // AQUI
+           } else {
+         
+            this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
+            
+            this.geofire1 = this.myLatLng;
+            this.geofire2 = {
+            lat: this.myLatLngDest.lat(),
+            lng: this.myLatLngDest.lng()
+          };
+  
+            this.confirmNote(this.geofire1, this.geofire2);
+           
+           }
+ 
+         }
+      catch(error) {
+        console.log(error)
+        this.presentAlert('Error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+        }
+    }
+  }else{
     try {
       this.desFirebase=this.autocompleteMyDest.input
       this.orFirebase=this.autocompleteMyPos.input
       console.log(this.desFirebase[0]);
-
-    // intento para hacer que cuando origen y destino sean iguales, no deje pasar a la siguiente vista
-    // if ( this.desFirebase == this.orFirebase){
-    //   this.presentAlert('UUUUUUUUUUUUUUUU','u','u');
-    //  } else {
-    //    alert('UUUUUU')
-    //  }
     if(this.autocompleteMyDest.input ==''|| this.autocompleteMyPos.input==''){
           this.presentAlert('No tienes toda la informacion','Por favor asegura que tu origen y destino sean correctos','Ok');
           this.clearMarkers();
@@ -364,20 +420,18 @@ geocodeLatLng(latLng,inputName) {
 
           this.confirmNote(this.geofire1, this.geofire2);
          
-
-          // this.geofireService.setLocationGeofire( this.user, this.myLatLng.lat, this.myLatLng.lng);
-
-          // this.geofireService.updateInfoGeofire(this.user);
-          
          }
-      //TO-DO:1. SI LA PERSONA NO HA COLOCADO UNIVERSIDAD EN ALGUNA DE LAS DOS AUTOCOMPLETADO NO DEJE PASAR
-      // SI LA PERSONA NO SELECCIONA UN LUGAR NO DEJE PASAR 
+
        }
     catch(error) {
       console.log(error)
       this.presentAlert('Error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
       }
-    }
+  }
+  
+}
+
+
     presentAlert(title,text,button) {
       let alert = this.alertCtrl.create({
         title: title,
@@ -387,10 +441,10 @@ geocodeLatLng(latLng,inputName) {
       alert.present();
     }
     confirmNote(geoFire1, geoFire2){
-      let modal = this.modalCtrl.create(ConfirmNotePage, {geoFire1, geoFire2});
+      let modal = this.modalCtrl.create('ConfirmNotePage', {geoFire1, geoFire2});
       modal.onDidDismiss(accepted => {
         if(accepted){
-          this.navCtrl.push(ListridePage);
+          this.navCtrl.push('ListridePage');
       }
       })
    modal.present();

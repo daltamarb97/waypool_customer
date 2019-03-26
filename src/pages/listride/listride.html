@@ -1,5 +1,5 @@
 <ion-header class="bg-theme">
-    <ion-navbar hideBackButton>
+    <ion-navbar >
 
         <ion-title class="Title">ESCOGE TU COMPAÑERO
         </ion-title>
@@ -13,17 +13,21 @@
 
         </ion-col>
         <ion-col col-2 text-center>
-            <img src="assets/imgs/arrow.jpg">
+            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">
         </ion-col>
         <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>
             <h2>Destino</h2> {{destinationUser}}
         </ion-col>
 
     </ion-row>
+    <div class="iconHelp">
+        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>
+
+    </div>
     <ion-card *ngFor = "let driver of driversAvailable">
         <ion-item>
             <ion-avatar item-start>
-                <img src="assets/imgs/face-1.jpg">
+                <img src="assets/imgs/userPicture.png">
             </ion-avatar>
             <div class="name">
                 <h2>{{driver.name| titlecase}} {{driver.lastname | titlecase | slice:0:1}}
@@ -51,7 +55,7 @@
                
                 
                 <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                    <button class="btn bg-theme rounded full text-white" (click)="confirmpopup(driver)">Request Ride</button>
+                    <button class="btn bg-theme rounded full text-white" (click)="confirmpopup(driver)">Confirmar</button>
                         </ion-col>
             </ion-row>
         </ion-card-content>

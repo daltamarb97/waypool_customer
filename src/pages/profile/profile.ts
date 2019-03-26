@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ToastController, ModalController } from 'ionic-angular';
+import { NavController, AlertController, ToastController, ModalController, IonicPage } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { authenticationService } from '../../services/userauthentication.service';
 import { SignUpService } from '../../services/signup.services';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { LoginPage } from '../login/login';
 
+@IonicPage()
 
 @Component({
   selector: 'page-profile',
@@ -17,7 +16,7 @@ name:string;
 lastname:string;
 phone:string;
 email:string;
-
+emailUser = this.AngularFireAuth.auth.currentUser.email;
 userUid=this.AngularFireAuth.auth.currentUser.uid;
 user:any={};
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,public toastCtrl: ToastController,public alertCtrl:AlertController, public AngularFireAuth:AngularFireAuth,private authenticationService: authenticationService,public SignupService:SignUpService) {  
@@ -37,7 +36,7 @@ user:any={};
     deleteAccount(){
       let alert = this.alertCtrl.create({
         title: 'Eliminar Cuenta',
-        message: `¿Estas segur@ que deseas eliminar esta cuenta?`,
+        message: `¿Estas segur@ que deseas eliminar esta cuenta? si tienes cuenta en WAYPOOL DRIVER también se eliminará`,
         buttons: [
           {
             text: 'Cancelar',
@@ -51,8 +50,13 @@ user:any={};
             handler: () => {
              
               
-              // this.SignupService.deleteAccount(this.userUid) TO-DO:QUITARLE EL COMENTARIO
-              // this.navCtrl.setRoot(LoginPage)
+              this.SignupService.deleteAccount(this.userUid) 
+              this.AngularFireAuth.auth.currentUser.delete().then(()=>{
+                console.log('user has been deleted');
+              }).catch((error)=>{
+                console.log('error:', error)
+              })
+              this.navCtrl.setRoot('LoginPage')
 
               const toast = this.toastCtrl.create({
                 message: `Acabas de eliminar esta cuenta, si deseas volver a ser parte de la comunidad por favor regístrate de nuevo`,
@@ -72,8 +76,21 @@ user:any={};
   showInfoProfile(user){
     this.name = user.name;
     this.lastname = user.lastname;
-    this.phone = user.phone;
+
     this.email = user.email;
+  }
+
+  changePassword(){
+    this.AngularFireAuth.auth.sendPasswordResetEmail(this.emailUser).then(()=>{
+      let alert = this.alertCtrl.create({
+        title: 'Revisa tu email',
+        subTitle: 'te enviamos un correo donde podras reestablecer tu contraseña',
+        buttons: ['OK']
+      });
+      alert.present();
+    }).catch((error)=>{
+      console.log(error);
+    })
   }
  
   

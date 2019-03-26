@@ -6,12 +6,9 @@
 
 
 
-<ion-content class="bg-background-img">
-    <div class="logo">
-        <img src="../../assets/imgs/logo waypool-01.png" alt="logo">
-    </div>
+<ion-content>
     <form [formGroup]="signupGroup" (ngSubmit)="verification()">
-    <div class="bg-white login">
+    <div>
         <div class="">
             <ion-row>
                 <ion-col class="name-fild">
@@ -42,6 +39,7 @@
                                 <!-- <ion-input type="email" value="@uninorte.edu.co"  text-right formControlName="fixedemail" [readonly]="isReadonly"></ion-input> -->
                                 <ion-select formControlName="fixedemail" type="email">
                                     <ion-option value="@uninorte.edu.co">@uninorte.edu.co</ion-option>
+
                                 </ion-select>
                         </ion-item>
                     </ion-list>
@@ -58,7 +56,7 @@
                 </ion-item>
                 <ion-item>
                     <ion-label></ion-label>
-                    <ion-input type="text" text-right formControlName="phone" placeholder= "Tú némero de celular"></ion-input>
+                    <ion-input type="text" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>
                 </ion-item>
             </ion-list>
             <div class="footer-signup">

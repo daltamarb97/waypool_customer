@@ -26688,6 +26688,10 @@ page-login .bg-background-img {
   background-position-y: -100px;
 }
 
+page-login .my-checkbox {
+  width: 10px;
+}
+
 page-login button img {
   width: 24px;
 }
@@ -27258,6 +27262,105 @@ page-profile .form-list .item.item-input-has-value .label {
   font-size: 1.3rem;
   margin-top: 8px;
   margin-bottom: -4px;
+}
+
+page-ratetrip .love {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+page-ratetrip .card {
+  margin-top: 0px;
+  padding: 30px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  position: relative;
+  overflow: visible;
+}
+
+page-ratetrip .card h1 {
+  font-size: 4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #3fb1df;
+  font-weight: 600;
+}
+
+page-ratetrip .card h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+page-ratetrip .card p {
+  font-size: 1.1rem;
+  color: #bfbfbf;
+}
+
+page-ratetrip .card.slip {
+  margin-bottom: 20px;
+}
+
+page-ratetrip .card.slip::after {
+  content: '';
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 12px;
+  background: url(../assets/imgs/border-down.jpg);
+  background-repeat: repeat-x;
+  background-size: 15px;
+  left: 0;
+  bottom: -10px;
+}
+
+page-ratetrip .card.rate {
+  padding-top: 10px;
+}
+
+page-ratetrip .card.rate::after {
+  content: '';
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 12px;
+  background: url(../assets/imgs/border-up.jpg);
+  background-repeat: repeat-x;
+  background-size: 15px;
+  left: 0;
+  top: -6px;
+}
+
+page-ratetrip .card.rate .driver ion-item.item {
+  width: 220px;
+  margin: auto;
+}
+
+page-ratetrip .card.rate .driver ion-item.item .item-inner h2 {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+page-ratetrip .card.rate .driver p.icons {
+  margin-bottom: 2.5rem;
+  margin-top: 1rem;
+}
+
+page-ratetrip .card.rate .driver p.icons ion-icon {
+  font-size: 3.5rem;
+  margin-left: 4px;
+}
+
+page-ratetrip .card.rate .driver ion-textarea {
+  height: 10rem;
+  color: #bfbfbf;
+  font-size: 1.3rem;
 }
 
 page-signup .login {

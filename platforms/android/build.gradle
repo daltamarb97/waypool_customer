@@ -26,6 +26,7 @@ buildscript {
         maven {
             url "https://maven.google.com"
         }
+        google()
     }
 
     // Switch the Android Gradle plugin version requirement depending on the
@@ -33,7 +34,7 @@ buildscript {
     // http://tools.android.com/tech-docs/new-build-system/version-compatibility
     // and https://issues.apache.org/jira/browse/CB-8143
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+    classpath 'com.android.tools.build:gradle:3.1.4'
         classpath 'com.google.gms:google-services:4.1.0' // google-services dependency from cordova-plugin-firebase
         classpath 'io.fabric.tools:gradle:1.25.4' // fabric dependency from cordova-plugin-firebase
     }
@@ -257,8 +258,10 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
-    debugCompile(project(path: "CordovaLib", configuration: "debug"))
-    releaseCompile(project(path: "CordovaLib", configuration: "release"))
+    // debugCompile(project(path: "CordovaLib", configuration: "debug"))
+    // releaseCompile(project(path: "CordovaLib", configuration: "release"))
+    compile project(':CordovaLib')
+
     compile "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
     compile "com.android.support:support-v4:27.+"
     compile "com.google.android.gms:play-services-tagmanager:+"

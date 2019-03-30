@@ -4,7 +4,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "2436h",
-      "filename" : "Default-2436h.png",
+      "filename" : "WhatsApp Image 2019-03-22 at 1.41.19 PM (1).jpeg",
       "minimum-system-version" : "11.0",
       "orientation" : "portrait",
       "scale" : "3x"
@@ -13,7 +13,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "2436h",
-      "filename" : "Default-Landscape-2436h.png",
+      "filename" : "WhatsApp Image 2019-03-22 at 1.36.13 PM (1) (1) (1).jpeg",
       "minimum-system-version" : "11.0",
       "orientation" : "landscape",
       "scale" : "3x"
@@ -125,7 +125,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
-      "filename" : "Default@2x_iphone-1.png",
+      "filename" : "Default2x_iphone (1).png",
       "extent" : "full-screen",
       "scale" : "1x"
     },
@@ -138,7 +138,7 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
-      "filename" : "Default-Landscape~ipad.png",
+      "filename" : "Default-Landscape2x_ipad (1).png",
       "extent" : "full-screen",
       "scale" : "1x"
     },
@@ -151,7 +151,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
-      "filename" : "Default-Portrait@2x~ipad.png",
+      "filename" : "Default2x_iphone (2).png",
       "extent" : "full-screen",
       "scale" : "2x"
     },
@@ -164,7 +164,7 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
-      "filename" : "Default-Landscape@2x~ipad.png",
+      "filename" : "Default-Landscape2x_ipad (1) (1).png",
       "extent" : "full-screen",
       "scale" : "2x"
     }

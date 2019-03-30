@@ -7,7 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { SignUpService } from '../../services/signup.services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TabsPage } from '../tabs/tabs';
-
+import * as firebase from 'firebase';
 
 @IonicPage()
 
@@ -31,18 +31,7 @@ export class LoginPage {
 
   }
 
-  ionViewDidLoad(){
-    this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
-        if(user){
-            this.navCtrl.setRoot('TabsPage')
-        }else{
-            console.log('there is no user');
-        }
-    })
-    
-   
 
-  }
 
 
   signup(){

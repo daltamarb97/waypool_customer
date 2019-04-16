@@ -78,14 +78,12 @@
                             <span class="icon-location bg-yellow"></span>{{driver.destination}}</p>
                     </div>
                     <ion-row>
-                        <ion-col class="detail-text">
-                            
-                        </ion-col>
-                        <ion-col class="detail-text">
-                            
+                    
+                        <ion-col center text-center>
+                            <button class="btn bg-theme rounded full text-white text-bold" (click)="chatDriver(driver)" ><ion-icon name="md-chatboxes" class="text-white"></ion-icon> </button>
                         </ion-col>
                         <ion-col center text-center>
-                            <button class="btn bg-theme rounded full text-white text-bold" (click)="callUser(driver.phone)" ><ion-icon name="ios-call" class="text-white"></ion-icon> LLAMAR</button>
+                            <button class="btn bg-theme rounded full text-white text-bold" (click)="callUser(driver.phone)" ><ion-icon name="ios-call" class="text-white"></ion-icon> </button>
                         </ion-col>
                    
                     </ion-row>

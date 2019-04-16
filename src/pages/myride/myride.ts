@@ -58,7 +58,9 @@ userUid=this.AngularFireAuth.auth.currentUser.uid;
                
   }
 
-  
+  chatDriver(driver){
+    this.navCtrl.push('ChattingPage',{driver:driver})
+  }
 
   gettingUsersOnTrip(driver){
   

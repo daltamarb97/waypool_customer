@@ -1,6 +1,6 @@
 <ion-header class="transparent">
     <ion-navbar>
-        <ion-title><span class="text-white">SIGN UP</span></ion-title>
+        <ion-title><span class="text-white">REGÍSTRATE</span></ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -39,7 +39,6 @@
                                 <!-- <ion-input type="email" value="@uninorte.edu.co"  text-right formControlName="fixedemail" [readonly]="isReadonly"></ion-input> -->
                                 <ion-select formControlName="fixedemail" type="email">
                                     <ion-option value="@uninorte.edu.co">@uninorte.edu.co</ion-option>
-
                                 </ion-select>
                         </ion-item>
                     </ion-list>
@@ -47,8 +46,8 @@
             </ion-row>
             <ion-list class="form" style="margin-bottom: 0">
                 <ion-item>
-                    <ion-label floating>contraseña nueva <span style="font-weight: bold; color: red;">(minimo 6 caracteres)</span></ion-label>
-                    <ion-input type="password"  text-right formControlName="password"  minlength="6"></ion-input>
+                    <ion-label  fixed><span style="font-weight: bold; color: red;">(mínimo 6 caracteres)</span></ion-label>
+                    <ion-input type="password"  text-right formControlName="password" placeholder= "crea tu contraseña" minlength="6"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label></ion-label>
@@ -61,7 +60,7 @@
             </ion-list>
             <div class="footer-signup">
                     <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>
-                    <p text-center>¿ya estas registrado? <strong class="text-theme" (click)="login()">Sign in</strong></p>
+                    <p text-center>¿ya estas registrado? <strong class="text-theme" (click)="login()">Inicia sesión</strong></p>
             </div>
         </div>
     </div>

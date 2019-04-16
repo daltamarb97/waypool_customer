@@ -28,11 +28,7 @@ export class sendCoordsService {
             destination: dest,
             
     });
-    this.afDB.database.ref('/users/'+ user+'/trips/recordTrips').push({
-        origin: or,
-        destination: dest,
-        
-    });
+
     }
 
     public deleteOnTripFinal(userId){

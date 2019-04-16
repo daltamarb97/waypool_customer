@@ -25,9 +25,9 @@ import { SignUpService } from '../services/signup.services';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
   
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
-import { SupportPage } from '../pages/support/support';
 import { sendFeedbackService } from '../services/sendFeedback.service';
 import { IonicStorageModule } from '@ionic/storage';
+import { chatsService } from '../services/chat.service';
 
 
 
@@ -82,7 +82,8 @@ export const firebaseConfig = {
     geofireService,
     instancesService,
     NativeGeocoder,
-    sendFeedbackService
+    sendFeedbackService,
+    chatsService
 
   ]
 })

@@ -78,11 +78,28 @@ export class geofireService {
     getDriversAvailableForUser(userId){
        return this.afDB.list('/users/' + userId + '/trips/driversListRide/').valueChanges();
     }
-
-   
-    showOnDriver(driverId, userId, origin, destination, name, lastname, phone, note){
-        this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + userId).update({
-            origin: origin,
+        // OLD
+    // showOnDriver(driverId, userId, origin, destination, name, lastname, phone, note){
+    //     this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + userId).update({
+    //         origin: origin,
+    //          destination: destination,
+    //          name: name,
+    //          lastname: lastname,
+    //          phone: phone,
+    //          userId: userId,
+    //          note:note,
+    //     });
+    // }
+    pushToMyReserve(keyReserve,driverId,userId){
+        this.afDB.database.ref('/users/' + userId +'/myReserves/'+ keyReserve).update({
+            keyReserve: keyReserve,
+            driverId: driverId,
+            
+        });
+    }
+    joinReserve(keyReserve,driverId, userId, origin, destination, name, lastname, phone, note){
+        this.afDB.database.ref('/reserves/' + driverId +'/'+keyReserve+ '/pendingUsers/' + userId).update({
+             origin: origin,
              destination: destination,
              name: name,
              lastname: lastname,
@@ -91,7 +108,6 @@ export class geofireService {
              note:note,
         });
     }
-
     deleteUserGeofireDest(userId){
         this.afDB.database.ref('geofireDest/' + userId).remove().then(()=>{
             console.log("succesfully removed");

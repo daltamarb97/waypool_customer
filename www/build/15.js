@@ -1,14 +1,14 @@
 webpackJsonp([15],{
 
-/***/ 586:
+/***/ 592:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChattingPageModule", function() { return ChattingPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HelpPageModule", function() { return HelpPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chatting__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__help__ = __webpack_require__(613);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,39 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ChattingPageModule = /** @class */ (function () {
-    function ChattingPageModule() {
+var HelpPageModule = /** @class */ (function () {
+    function HelpPageModule() {
     }
-    ChattingPageModule = __decorate([
+    HelpPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */],
+                __WEBPACK_IMPORTED_MODULE_2__help__["a" /* HelpPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__help__["a" /* HelpPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */]
+                __WEBPACK_IMPORTED_MODULE_2__help__["a" /* HelpPage */]
             ]
         })
-    ], ChattingPageModule);
-    return ChattingPageModule;
+    ], HelpPageModule);
+    return HelpPageModule;
 }());
 
-//# sourceMappingURL=chatting.module.js.map
+//# sourceMappingURL=help.module.js.map
 
 /***/ }),
 
-/***/ 604:
+/***/ 613:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChattingPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelpPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_chat_service__ = __webpack_require__(335);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,37 +59,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-var ChattingPage = /** @class */ (function () {
-    function ChattingPage(navCtrl, chatsService, navParams, AngularFireAuth) {
-        var _this = this;
+var HelpPage = /** @class */ (function () {
+    function HelpPage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.chatsService = chatsService;
-        this.navParams = navParams;
-        this.AngularFireAuth = AngularFireAuth;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.chats = [];
-        this.driver = this.navParams.get('driver');
-        this.chatsService.getChats(this.driver.userId, this.userUid)
-            .subscribe(function (chat) {
-            _this.chats = chat;
-            console.log(_this.chats);
-        });
     }
-    ChattingPage.prototype.sendMessage = function () {
-        this.chatsService.pushMessageUser(this.driver.userId, this.userUid, this.message);
+    HelpPage.prototype.suggestion = function () {
+        this.typeOfSituation = 'Sugerencia';
+        this.info = 'Amamos las sugerencias ya que nos permiten mejorar cada vez más la aplicación, ¡Gracias de parte de todo el equipo de Waypool!';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
     };
-    ChattingPage = __decorate([
+    HelpPage.prototype.myAccount = function () {
+        this.typeOfSituation = 'Mi Cuenta';
+        this.info = 'Escríbenos cualquier cosa relacionada con tu cuenta';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    };
+    HelpPage.prototype.trip = function () {
+        this.typeOfSituation = 'Viaje';
+        this.info = '¿Haz tenido algún problema en algún viaje? ¡coloca el ID de tu viaje al comenzar el mensaje y con gusto te ayudaremos! ';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    };
+    HelpPage.prototype.bug = function () {
+        this.typeOfSituation = 'Problema con la App';
+        this.info = ' Muchas gracias por informarnos de estos problemas que ayudan a mejorar la usabilidad de la App cada día mas';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    };
+    HelpPage.prototype.paymentProblem = function () {
+        this.typeOfSituation = 'Problema de Pago';
+        this.info = '¿Haz tenido algún tipo de problema relacionado con la tarjeta con tu tarjeta de crédito? Descríbenos con detalle y nos comunicamos contigo lo más pronto posible';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    };
+    HelpPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-chatting',template:/*ion-inline-start:"C:\waypool\waypool_costumer\src\pages\chatting\chatting.html"*/'<ion-header class="bg-theme">\n\n    <ion-navbar>\n\n        <ion-item>\n\n            <ion-avatar item-start>\n\n                <img src="assets/imgs/face-1.jpg">\n\n            </ion-avatar>\n\n            <h2><span class="text-white">{{driver.name |titlecase}} {{driver.lastname | slice:0:1 | titlecase}}</span>\n\n                <ion-icon name="md-more" end-item item-end class="text-white"></ion-icon>\n\n            </h2>\n\n        </ion-item>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="chat-bg">\n\n    <div *ngFor="let chat of chats">\n\n            <div  class="cb" >        \n\n                    <div>                        \n\n                         <div *ngIf="userUid === chat.uid" class="chat chat-left bg-theme text-white" text-left padding float-right>\n\n                            <!-- its driver message -->\n\n                             <p>{{chat.message}}</p>       \n\n                       </div>                       \n\n                   </div>                    \n\n                </div>\n\n                <div class="cb">            \n\n                    <div>   \n\n                        <div *ngIf="chat.uid === driver.userId" class="chat chat-right bg-white text-dark" text-right padding float-left>  \n\n                         <!-- its user message -->                          \n\n                             <p>{{chat.message}}</p>                            \n\n                         </div>\n\n                    </div>                  \n\n                </div>\n\n    </div>\n\n    \n\n    <div class="fixed-bottom">\n\n        <ion-list inset>\n\n            <ion-item>\n\n                <ion-icon name="md-add" class="circle-icon" item-start></ion-icon>\n\n                <ion-input type="text" placeholder="Escribe tu mensaje" [(ngModel)]="message"></ion-input>\n\n                <ion-icon name="md-send" class="text-theme" item-end (click)="sendMessage()"></ion-icon>\n\n            </ion-item>\n\n        </ion-list>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\waypool\waypool_costumer\src\pages\chatting\chatting.html"*/
+            selector: 'page-help',template:/*ion-inline-start:"D:\Users\Daniel\waypool\waypooltest\w_costumer_test\src\pages\help\help.html"*/'<ion-header class="bg-theme">\n\n    <ion-navbar>\n\n        <ion-title>SOPORTE</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bg-light">\n\n    <p class="textHelp" padding>¡Escoje tu situación y escríbenos con mucho detalle para poder ayudarte lo más pronto posible!. También puedes escribirnos a waypooltec@gmail.com</p>\n\n    <ion-card (click)="suggestion()">\n\n        <ion-card-header>\n\n            <h1><strong>Sugerencia</strong>\n\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n\n            </h1>\n\n        </ion-card-header>\n\n        <ion-card-content class="text">\n\n            Ayúdanos a mejorar el servicio  \n\n        </ion-card-content>\n\n    </ion-card>\n\n    <ion-card (click)="trip()">\n\n        <ion-card-header>\n\n            <h1><strong>Viaje</strong>\n\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n\n            </h1>\n\n        </ion-card-header>\n\n        <ion-card-content class="text">\n\n            Escríbenos cualquier sugerencia/quejas con respecto a algún viaje\n\n        </ion-card-content>\n\n    </ion-card>\n\n    <ion-card (click)="bug()">\n\n        <ion-card-header>\n\n            <h1><strong>Problema con la App</strong>\n\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n\n            </h1>\n\n        </ion-card-header>\n\n        <ion-card-content class="text">\n\n        Escríbenos cualquier problema que tengas con la App \n\n        </ion-card-content>\n\n    </ion-card>\n\n    <ion-card (click)="myAccount()">\n\n        <ion-card-header>\n\n            <h1><strong>Mi Cuenta</strong>\n\n                <ion-icon name="ios-arrow-down-outline" class="text"></ion-icon>\n\n            </h1>\n\n        </ion-card-header>\n\n        <ion-card-content class="text">\n\n        ¿Tienes alguna pregunta acerca de tu cuenta? ¡Escríbenos!.\n\n        </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Users\Daniel\waypool\waypooltest\w_costumer_test\src\pages\help\help.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__services_chat_service__["a" /* chatsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
-    ], ChattingPage);
-    return ChattingPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
+    ], HelpPage);
+    return HelpPage;
 }());
 
-//# sourceMappingURL=chatting.js.map
+//# sourceMappingURL=help.js.map
 
 /***/ })
 

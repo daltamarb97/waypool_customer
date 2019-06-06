@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content padding class="chat-bg">
-    <div *ngFor="let chat of chats">
+    <div class="chatbox"*ngFor="let chat of chats">
             <div  class="cb" >        
                     <div>                        
                          <div *ngIf="userUid === chat.uid" class="chat chat-left bg-theme text-white" text-left padding float-right>
@@ -30,14 +30,19 @@
                     </div>                  
                 </div>
     </div>
-    
-    <div class="fixed-bottom">
-        <ion-list inset>
-            <ion-item>
-                <ion-icon name="md-add" class="circle-icon" item-start></ion-icon>
-                <ion-input type="text" placeholder="Escribe tu mensaje" [(ngModel)]="message"></ion-input>
-                <ion-icon name="md-send" class="text-theme" item-end (click)="sendMessage()"></ion-icon>
-            </ion-item>
-        </ion-list>
-    </div>
+   
+   
 </ion-content>
+<ion-footer class="fixed-bottom">
+        
+                <ion-list inset>
+                    <ion-item>
+                        <ion-input type="text" placeholder="Escribe tu mensaje" [(ngModel)]="message" autofocus (keyup.enter)="sendMessage()"></ion-input>
+                  
+                       <button class="text-theme" item-right (click)="sendMessage()"> <ion-icon name="md-send" ></ion-icon></button>
+                    </ion-item>
+                </ion-list>
+            
+      
+  
+</ion-footer> 

@@ -7,17 +7,17 @@
                 <img src="assets/imgs/userPicture.png">
             </ion-avatar>
             <div class="name">
-                <h2>{{driver.name|titlecase }} {{driver.lastname|titlecase | slice:0:1}}</h2>
-                <p>{{driver.car}}</p>
+                <h2>{{reserve.driver.name|titlecase }} {{reserve.driver.lastname|titlecase | slice:0:1}}</h2>
+                <p>{{reserve.car}}</p>
             </div>
         </ion-item>
         <ion-card-content>
             <div class="ride-detail">
                 <p><small>Origen</small>
-                    <span class="icon-location bg-theme"></span>{{driver.origin}}</p>
+                    <span class="icon-location bg-theme"></span>{{reserve.orReserve}}</p>
                 <p>
                     <small>Destino</small>
-                    <span class="icon-location bg-yellow"></span>{{driver.destination}}</p>
+                    <span class="icon-location bg-yellow"></span>{{reserve.destReserve}}</p>
             </div>
         </ion-card-content>
 
@@ -25,7 +25,7 @@
             <div class="ride-detail no-before" >
                 <p><small>Nota:<span class="text-theme" float-right></span></small>
                     <ion-icon name="md-calendar" class="icon-location"></ion-icon>
-                   {{driver.note}}</p>
+                   {{reserve.note}}</p>
                
             </div>
         </ion-card-content>
@@ -33,7 +33,7 @@
         <ion-card-content>
             <div class="seats">
                 <ion-row class="center">
-                    <div class="rate"> $ {{driver.price}}</div>
+                    <div class="rate"> $ {{reserve.price}}</div>
                         
                    
                     

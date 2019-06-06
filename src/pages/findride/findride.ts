@@ -447,10 +447,15 @@ geocodeLatLng(latLng,inputName) {
       });
       alert.present();
     }
+    
+  goToMyReserves(){
+    this.navCtrl.push('ReservetripPage');
+  }
     confirmNote(geoFire1, geoFire2){
       let modal = this.modalCtrl.create('ConfirmNotePage', {geoFire1, geoFire2});
       modal.onDidDismiss(accepted => {
         if(accepted){
+          
           this.navCtrl.push('ListridePage');
       }
       })

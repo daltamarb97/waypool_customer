@@ -1,14 +1,14 @@
 webpackJsonp([7],{
 
-/***/ 598:
+/***/ 602:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SupportPageModule", function() { return SupportPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPageModule", function() { return TabsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__support__ = __webpack_require__(615);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs__ = __webpack_require__(622);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,42 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SupportPageModule = /** @class */ (function () {
-    function SupportPageModule() {
+var TabsPageModule = /** @class */ (function () {
+    function TabsPageModule() {
     }
-    SupportPageModule = __decorate([
+    TabsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__support__["a" /* SupportPage */],
+                __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__support__["a" /* SupportPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__support__["a" /* SupportPage */]
+                __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]
             ]
         })
-    ], SupportPageModule);
-    return SupportPageModule;
+    ], TabsPageModule);
+    return TabsPageModule;
 }());
 
-//# sourceMappingURL=support.module.js.map
+//# sourceMappingURL=tabs.module.js.map
 
 /***/ }),
 
-/***/ 615:
+/***/ 622:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SupportPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_signup_services__ = __webpack_require__(328);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_email_composer_ngx__ = __webpack_require__(339);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__ = __webpack_require__(330);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendFeedback_service__ = __webpack_require__(334);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,46 +57,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
-
-
-
-
-
-var SupportPage = /** @class */ (function () {
-    function SupportPage(navCtrl, navParams, AngularFireAuth, emailComposer, authenticationService, SignupService, sendfeedback) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.AngularFireAuth = AngularFireAuth;
-        this.emailComposer = emailComposer;
-        this.authenticationService = authenticationService;
-        this.SignupService = SignupService;
-        this.sendfeedback = sendfeedback;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.user = {};
-        this.typeOfSituation = this.navParams.get('typeOfSituation');
-        this.info = this.navParams.get('info');
-        this.today = Date.now();
-        this.SignupService.getMyInfoForProfile(this.userUid).subscribe(function (user) {
-            _this.user = user;
-            console.log(_this.user);
-        });
+var TabsPage = /** @class */ (function () {
+    function TabsPage() {
+        this.tab1Root = 'FindridePage';
+        this.tab2Root = 'MyridePage';
+        this.tab3Root = 'WalletPage';
+        this.tab4Root = 'MorePage';
     }
-    SupportPage.prototype.sendEmail = function () {
-        this.sendfeedback.sendFeedback(this.typeOfSituation, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
-        this.navCtrl.pop();
-    };
-    SupportPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-support',template:/*ion-inline-start:"C:\waypool\waypool_costumer\src\pages\support\support.html"*/'<ion-header class="bg-theme">\n\n    <ion-navbar>\n\n        <ion-title>Soporte</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bg-light">\n\n    <ion-card class="slip">\n\n        <div text-center>\n\n            <h1 class="text-theme">{{typeOfSituation}}</h1>\n\n            <p class="text-light">{{today | date}}\n\n            </p>\n\n           \n\n            <h4 class="text-dark">{{info}}</h4>\n\n        </div>\n\n    </ion-card>\n\n    <ion-card class="rate">\n\n        <div text-center>\n\n            \n\n            <div class="driver">\n\n                <ion-item>\n\n                    <ion-avatar item-start>\n\n                        <img src="assets/imgs/userPicture.png">\n\n                    </ion-avatar>\n\n                    <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n\n                        <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                    </h2>\n\n            \n\n                </ion-item>\n\n                \n\n                <div class="form">\n\n                    <ion-list no-lines>\n\n                        <ion-item>\n\n                            <ion-textarea [(ngModel)]="experience" type="text" placeholder="¡Escríbenos con detalle!"></ion-textarea>\n\n                        </ion-item>\n\n                    </ion-list>\n\n                </div>\n\n                <p><button class="btn text-white bg-theme rounded" style="width: 100%;" (click)="sendEmail()" >ENVIAR</button></p>\n\n            </div>\n\n        </div>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\waypool\waypool_costumer\src\pages\support\support.html"*/
+    TabsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Users\Daniel\waypool\waypooltest\w_costumer_test\src\pages\tabs\tabs.html"*/'<ion-tabs tabsHideOnSubPages="false">\n\n        <ion-tab [root]="tab1Root" tabTitle="Pedir Viaje" tabIcon="md-search" tabsHideOnSubPages="false"></ion-tab>\n\n\n\n    <ion-tab [root]="tab2Root" tabTitle="Mi Viaje" tabIcon="md-car" tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab3Root" tabTitle="Historial" tabIcon="md-card" tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab4Root" tabTitle="Perfil" tabIcon="md-person" tabsHideOnSubPages="false"></ion-tab>\n\n</ion-tabs>\n\n '/*ion-inline-end:"D:\Users\Daniel\waypool\waypooltest\w_costumer_test\src\pages\tabs\tabs.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__ionic_native_email_composer_ngx__["a" /* EmailComposer */], __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_2__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_6__services_sendFeedback_service__["a" /* sendFeedbackService */]])
-    ], SupportPage);
-    return SupportPage;
+        __metadata("design:paramtypes", [])
+    ], TabsPage);
+    return TabsPage;
 }());
 
-//# sourceMappingURL=support.js.map
+//# sourceMappingURL=tabs.js.map
 
 /***/ })
 

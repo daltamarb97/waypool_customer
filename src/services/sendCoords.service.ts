@@ -30,7 +30,7 @@ export class sendCoordsService {
     });
 
     }
-
+   
     public deleteOnTripFinal(userId){
             this.afDB.database.ref('/users/'+ userId + '/onTripFinal' ).remove();
     }

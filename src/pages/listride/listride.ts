@@ -7,6 +7,7 @@ import { SignUpService } from '../../services/signup.services';
 import { ConfirmpopupPage } from '../confirmpopup/confirmpopup';
 import { geofireService } from '../../services/geoFire.service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { reservesService } from '../../services/reserves.service';
 @IonicPage()
 
 @Component({
@@ -14,7 +15,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'listride.html'
 })
 export class ListridePage {
-  driversAvailable:any = [];
+  reservesAvailable:any = [];
 
   locationOrigin:any =[];
   locationOriginUser:any =[];
@@ -22,8 +23,8 @@ export class ListridePage {
   locationDestinationUser:any =[];
   user:any;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
-
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
+  test:any;
+  constructor(public navCtrl: NavController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
        
     this.SignUpService.getMyInfo(this.userUid).subscribe(user=>{
       this.user = user;
@@ -62,23 +63,37 @@ export class ListridePage {
     //     console.log(this.driversAvailable);
         
     //   });
+    this.sendCoordsService.getDestinationUser(this.userUid)
+    .subscribe( destinationUser => {
+      this.locationDestinationUser = destinationUser;
+      // this.locationOrigin.push(origin)
+      console.log(destinationUser);
+    })
 
+    this.reservesService.getReserves(this.userUid)
+    //cambiar en merge
+      .subscribe(reserves => {
+        this.reservesAvailable = reserves;
+        console.log(this.reservesAvailable);
+    
+      });
      
   };
 
 
 
 ionViewDidLoad(){
-  this.geoFireService.getDriversAvailableForUser(this.userUid)
-    .subscribe(drivers=>{
-        this.driversAvailable = drivers;
-        console.log(this.driversAvailable);
-    })
+  // this.geoFireService.getDriversAvailableForUser(this.userUid)
+  //   .subscribe(drivers=>{
+  //       this.driversAvailable = drivers;
+  //       console.log(this.driversAvailable);
+  //   })
 }
 
 
  
  showToastWithCloseButton(noteDriver,nameDriver) {
+   //useless thing
    if(noteDriver == ''|| noteDriver == null) {
     const toast = this.toastCtrl.create({
       message: `${nameDriver}: No hay nota`,
@@ -97,27 +112,32 @@ ionViewDidLoad(){
    }
   
 }
- confirmpopup(driver){
-  if(this.user.trips.onTrip == true || this.user.trips.pickedUp == true){
-    // this.geoFireService.deleteDriverListRideTotal(this.userUid);
-    this.geoFireService.deleteDriverListRideTotal(this.userUid);
-    const toast = this.toastCtrl.create({
-      message: `${this.user.name} : No puedes escoger otro conductor mientras estes en un viaje, por favor dirígete a Mi Viaje y cancelalo. `,
-      showCloseButton: true,
-      closeButtonText: 'Ok'
-    });
-    toast.present();
-  } else {
+ confirmpopup(reserve,keyArray:string,driverUserId){
+   //mutacion: tiene q mutar o eliminarse
+//   if(this.user.trips.onTrip == true || this.user.trips.pickedUp == true){
+//     // this.geoFireService.deleteDriverListRideTotal(this.userUid);
+//     this.geoFireService.deleteDriverListRideTotal(this.userUid);
+//     const toast = this.toastCtrl.create({
+//       message: `${this.user.name} : No puedes escoger otro conductor mientras estes en un viaje, por favor dirígete a Mi Viaje y cancelalo. `,
+//       showCloseButton: true,
+//       closeButtonText: 'Ok'
+//     });
+//     toast.present();
+//   } else {
 
- let modal = this.modalCtrl.create('ConfirmpopupPage',{driver});
+//  let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve,keyArray});
+//  modal.present();
+//  console.log(reserve)
+//   }
+  let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve});
  modal.present();
- console.log(driver)
-  }
- 
+ console.log(reserve)
+ console.log(keyArray)
+ console.log(keyArray)
   }
   help(){
     const toast = this.toastCtrl.create({
-      message: 'Aquí te saldrán los estudiantes con carro, escoge con cuál quieres compartir tu viaje y espera a que te acepte para poder comunicarte con el.',
+      message: 'Estos son los conductores que se van a tu misma zona. Podrás ver sus horas en las que se van y unirte en su viaje',
       showCloseButton:true,
       closeButtonText: 'OK',
       position:'top'

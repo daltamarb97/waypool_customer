@@ -136,7 +136,7 @@ page-listride {
         text-overflow:ellipsis;
     }
     .title{
-        overflow: visible;
+        overflow:visible !important;
     }
     .text{
         font-weight: bold
@@ -146,5 +146,8 @@ page-listride {
         font-weight: 1000;
         display: flex;
         justify-content: center;
+    }
+    .black-text{
+        color: black;
     }
 }

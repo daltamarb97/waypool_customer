@@ -7,7 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { sendUsersService } from '../../services/sendUsers.service';
 import { geofireService } from '../../services/geoFire.service';
 import { instancesService } from '../../services/instances.service';
-import { Subject } from 'rxjs';
+import { Subject, onErrorResumeNext } from 'rxjs';
 
 @IonicPage()
 
@@ -19,7 +19,7 @@ export class ConfirmpopupPage {
 
   usersOnTrip:any;
   accepted: boolean;
-  driver:any;
+  reserve:any;
   user:any ={};
   hideButton:boolean = true;
   hideText:boolean = false;
@@ -27,8 +27,8 @@ export class ConfirmpopupPage {
   unsubscribe = new Subject;
   constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService) {
     
-    this.driver= this.navParams.get('driver') 
-    console.log(this.driver)
+    this.reserve= this.navParams.get('reserve') 
+    console.log(this.reserve)
 
     
         
@@ -46,34 +46,42 @@ export class ConfirmpopupPage {
     this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
     .subscribe(user=>{
       this.user = user; 
+      // OLD
+      // if(this.user.trips.onTrip == true){
+      //   this.dismiss();
+      // } 
 
-      if(this.user.trips.onTrip == true){
-        this.dismiss();
-      } 
-
-      if(this.user.trips.onTrip == false){
-        this.dismiss();
-      } 
+      // if(this.user.trips.onTrip == false){
+      //   this.dismiss();
+      // } 
 
     })
-    this.geoFireService.showOnDriver(this.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
+    
+    this.geoFireService.joinReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
+    this.geoFireService.pushToMyReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
+
     this.geoFireService.removeKeyGeofire(this.userUid);
-    this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
+    //OLD
+    // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
+    // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
     this.hideButton = !this.hideButton;
     this.hideText = !this.hideText;
     this.accepted = true;  
      const toast = this.toastCtrl.create({
-      message: `Haz escogido a ${this.driver.name} para compartir tu viaje, dirígete a la sección Mi Viaje para saber más.`,
+      message: `Haz reservado con ${this.reserve.driver.name} para compartir tu viaje a las ${this.reserve.timeLeaving}, entra en Mis reservas para ver más.`,
       showCloseButton: true,
       closeButtonText: 'Ok'
     });
     toast.present();  
-
+    this.dismiss();
     }
 
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
     this.unsubscribe.next();
     this.unsubscribe.complete();
+    
+    // this.navCtrl.pop();
+
   }  
 }

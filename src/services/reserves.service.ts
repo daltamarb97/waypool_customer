@@ -14,12 +14,12 @@ export class reservesService {
 
     public getMyReservesUser(userUid){
         // 
-        return  this.afDB.list('/users/'+ userUid+'/myReserves').valueChanges();
+        return  this.afDB.list('/users/'+ userUid+'/availableReserves').valueChanges();
 
     }
     public getReserves(userUid){
         // get reserves from my driver (wrong)
-        return  this.afDB.list('/reserves/'+ userUid).valueChanges();
+        return  this.afDB.list('/users/'+ userUid+'/availableReserves').valueChanges();
 
     }
     public getMyReserves(driverUserUid,reserveId){

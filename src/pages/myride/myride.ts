@@ -59,7 +59,8 @@ info:any;
                //check if the info of the reserve is null       
              if(info === undefined || info === null){
                
-              console.log("jajaja")
+              console.log("jajaja");
+              this.trip = null;
              }else{
               this.info = info;
               console.log(this.info);

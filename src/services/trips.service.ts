@@ -34,5 +34,9 @@ export class TripsService {
     public getPickedUpUsers(keyTrip,driverId){
       //get trip in Trip's node
       return  this.afDB.list('/trips/'+driverId+'/'+ keyTrip+'/pickedUpUsers').valueChanges();
-  } 
+    } 
+    public getLastMinuteTripsDEMO(driverId){
+        return  this.afDB.list('/trips/'+driverId).valueChanges();
+
+    }
 }

@@ -13,7 +13,9 @@
             <h2>Mi Origen:</h2> {{origin}}
 
         </ion-col>
-      
+        <ion-col col-2 text-center>
+            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">
+        </ion-col>
         <ion-col *ngFor = "let destination of locationDestination" class="hideLongText" col-5>
             <h2>Mi Destino:</h2> {{destination}}
         </ion-col>
@@ -35,12 +37,11 @@
                             </h2>
                         </div>
                         
-                        <div class="more">
-                              
+                        <div class="more">                              
                                         <h2 class="text text-theme">                        
                                             $ {{reserve.price}}                          
-                                        </h2>                        
-                                 
+                                        </h2>                
+                   
                         </div>
                     </ion-item>
                     <ion-card-content>

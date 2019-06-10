@@ -42,13 +42,20 @@ export class ReservetripPage{
     this.reservesService.getMyReservesUser(this.userUid)
     .subscribe( myReservesId => {
       //get all reserves id (reserve push key, driverUid) of my user node
-      this.myReservesId = myReservesId;
-     
+      this.myReservesId = myReservesId;     
       console.log(this.myReservesId);
       this.getReserves();
-
     })    
-  
+
+    this.sendCoordsService.getOriginUser(this.userUid)
+    .subscribe( originUser => {
+      this.locationOrigin = originUser;      
+    });
+    
+    this.sendCoordsService.getDestinationUser(this.userUid)
+        .subscribe( destinationUser => {
+          this.locationDestination = destinationUser;
+        });
   }
 
   ionViewDidLoad(){

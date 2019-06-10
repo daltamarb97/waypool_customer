@@ -78,7 +78,11 @@
                             <span class="icon-location bg-yellow"></span>{{trip.driver.destination}}</p>
                     </div>
                     <ion-row>
-                
+                        <ion-col center text-center col-6 text-right style="margin-left: auto;">
+                            <h2 class="text text-theme">                        
+                                Hora de partida: {{trip.startHour}}                          
+                            </h2>                    
+                        </ion-col>  
                         <ion-col class="detail-text">
                             <button class="btn bg-theme rounded full text-white text-bold" (click)="chatDriver(trip.driver)" ><ion-icon name="md-chatboxes" class="text-white"></ion-icon> </button>
                         </ion-col>

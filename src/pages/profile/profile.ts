@@ -15,7 +15,8 @@ myprofile: string = "about";
 name:string;
 lastname:string;
 phone:string;
-email:string;
+// email:string;
+emailComplete:string;
 emailUser = this.AngularFireAuth.auth.currentUser.email;
 userUid=this.AngularFireAuth.auth.currentUser.uid;
 user:any={};
@@ -29,9 +30,56 @@ user:any={};
     })
   }
   saveChanges(){
-    this.SignupService.saveInfoProfile(this.userUid,this.phone);
-    console.log("lologre")
-    }
+    if(this.phone == null && this.user.about == null && this.user.url == null){
+      
+      this.toastConfirmation();
+      this.navCtrl.pop();
+    }else if(this.phone == null && this.user.about == null && this.user.url != null){
+      this.SignupService.saveInfoProfileUrl(this.userUid,this.user.url);
+      this.toastConfirmation();
+      this.navCtrl.pop();
+    }else if(this.phone == null && this.user.about != null && this.user.url == null){
+      this.SignupService.saveInfoProfileAbout(this.userUid,this.user.about);
+      this.toastConfirmation();
+      this.navCtrl.pop();
+    }else if(this.phone != null && this.user.about == null && this.user.url == null){
+      this.SignupService.saveInfoProfilePhone(this.userUid,this.phone);
+      this.toastConfirmation();
+      this.navCtrl.pop();
+    }else if(this.phone != null && this.user.about != null && this.user.url == null){
+      this.SignupService.saveInfoProfilePhone(this.userUid,this.phone);
+      this.SignupService.saveInfoProfileAbout(this.userUid,this.user.about);
+      this.toastConfirmation();
+      this.navCtrl.pop();
+    }else if(this.phone != null && this.user.about == null && this.user.url != null){
+      this.SignupService.saveInfoProfilePhone(this.userUid,this.phone);
+      this.SignupService.saveInfoProfileUrl(this.userUid,this.user.url);
+      this.toastConfirmation();
+      this.navCtrl.pop();
+    }else if(this.phone == null && this.user.about != null && this.user.url != null){
+      this.SignupService.saveInfoProfileAbout(this.userUid,this.user.about);
+      this.SignupService.saveInfoProfileUrl(this.userUid,this.user.url);
+      this.toastConfirmation();
+      this.navCtrl.pop(); 
+    }else if(this.phone != null && this.user.about != null && this.user.url != null){
+      this.SignupService.saveInfoProfileAbout(this.userUid,this.user.about);
+      this.SignupService.saveInfoProfileUrl(this.userUid,this.user.url);
+      this.SignupService.saveInfoProfilePhone(this.userUid, this.phone);
+      this.toastConfirmation();
+      this.navCtrl.pop();
+    }else{
+      console.log('go to the f*cking hell');
+    } 
+  }
+
+  toastConfirmation(){
+    let toast = this.toastCtrl.create({
+      message: 'Información actualizada',
+      duration: 1000,
+      position: 'bottom'
+    })
+    toast.present();
+  }
 
     deleteAccount(){
       let alert = this.alertCtrl.create({
@@ -77,7 +125,8 @@ user:any={};
     this.name = user.name;
     this.lastname = user.lastname;
 
-    this.email = user.email;
+    this.emailComplete = user.email+user.fixedemail;
+    console.log(this.emailComplete);
   }
 
   changePassword(){

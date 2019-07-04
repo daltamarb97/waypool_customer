@@ -8,6 +8,7 @@ import { ConfirmpopupPage } from '../confirmpopup/confirmpopup';
 import { geofireService } from '../../services/geoFire.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { reservesService } from '../../services/reserves.service';
+import { TripsService } from '../../services/trips.service';
 @IonicPage()
 
 @Component({
@@ -16,71 +17,69 @@ import { reservesService } from '../../services/reserves.service';
 })
 export class ListridePage {
   reservesAvailable:any = [];
-
-  locationOrigin:any =[];
-  locationOriginUser:any =[];
-  locationDestination:any =[];
+  initiatedTrips:any = [];
   locationDestinationUser:any =[];
+  locationOriginUser:any =[];
   user:any;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
   test:any;
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
+  reserve:any;
+  myReservesId: any;
+  constructor(public navCtrl: NavController,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
        
     this.SignUpService.getMyInfo(this.userUid).subscribe(user=>{
-      this.user = user;
-      
+      this.user = user;   
     })
 
-        this.sendCoordsService.getOrigin(this.userUid)
-        .subscribe( origin => {
-          this.locationOrigin = origin;
-          // this.locationOrigin.push(origin)
-          console.log(origin);
-        })
-        this.sendCoordsService.getOriginUser(this.userUid)
-        .subscribe( originUser => {
-          this.locationOriginUser = originUser;
-          // this.locationOrigin.push(origin)
-          console.log(originUser);
-        })
-      
-      this.sendCoordsService.getDestination(this.userUid)
-        .subscribe( destination => {
-          this.locationDestination = destination;
-          // this.locationOrigin.push(origin)
-          console.log(destination);
-        })
+    this.sendCoordsService.getOriginUser(this.userUid)
+    .subscribe( originUser => {
+      this.locationOriginUser = originUser;
+      // this.locationOrigin.push(origin)
+      console.log(originUser);
+    });
 
-        this.sendCoordsService.getDestinationUser(this.userUid)
+
+    this.sendCoordsService.getDestinationUser(this.userUid)
         .subscribe( destinationUser => {
           this.locationDestinationUser = destinationUser;
           // this.locationOrigin.push(origin)
           console.log(destinationUser);
-        })
-    // this.SignUpService.getDrivers()
-    //   .subscribe(driver => {
-    //     this.driversAvailable = driver;
-    //     console.log(this.driversAvailable);
-        
-    //   });
-    this.sendCoordsService.getDestinationUser(this.userUid)
-    .subscribe( destinationUser => {
-      this.locationDestinationUser = destinationUser;
-      // this.locationOrigin.push(origin)
-      console.log(destinationUser);
-    })
+        });
 
-    this.reservesService.getReserves(this.userUid)
-    //cambiar en merge
+
+    this.reservesService.getMyReservesUser(this.userUid)
       .subscribe(reserves => {
-        this.reservesAvailable = reserves;
-        console.log(this.reservesAvailable);
-    
+        this.myReservesId = reserves;
+        console.log(this.myReservesId);
+        this.reservesAvailable = [];            
+         this.getReserves();
       });
      
-  };
+  // NO SE QUE ES ESTO (JUAN DAVID ESCRIBIO ESTO)
+  // this.TripsService.getLastMinuteTripsDEMO(this.userUid)
+  // //cambiar en merge
+  //   .subscribe(reserves => {
+  //     this.initiatedTrips = reserves;
+  //     console.log(this.initiatedTrips);
+  
+  //   });
+   
+  }
 
+  getReserves(){
+    //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
+    this.myReservesId.forEach(reserve => {
+      this.reservesService.getMyReserves(reserve.driverId,reserve.keyReserve)
+      .subscribe( info => {
+            this.reserve = info;   
+            this.reservesAvailable.push(this.reserve)
+            console.log(this.reservesAvailable);
+          // arreglar problema de que aparece varias veces la misma reserva
+      })  
+    })
 
+  
+  }
 
 ionViewDidLoad(){
   // this.geoFireService.getDriversAvailableForUser(this.userUid)
@@ -134,7 +133,10 @@ ionViewDidLoad(){
  console.log(reserve)
  console.log(keyArray)
  console.log(keyArray)
+
   }
+
+
   help(){
     const toast = this.toastCtrl.create({
       message: 'Estos son los conductores que se van a tu misma zona. Podrás ver sus horas en las que se van y unirte en su viaje',
@@ -145,5 +147,3 @@ ionViewDidLoad(){
     toast.present();
   }
 }
-
-

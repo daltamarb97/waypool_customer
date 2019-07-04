@@ -14,6 +14,12 @@ export class reservesService {
 
     public getMyReservesUser(userUid){
         // 
+        return  this.afDB.list('/users/'+ userUid+'/availableReserves').valueChanges();
+
+    }
+
+    public getMyReservesSelected(userUid){
+        // 
         return  this.afDB.list('/users/'+ userUid+'/myReserves').valueChanges();
 
     }

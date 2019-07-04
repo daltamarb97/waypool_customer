@@ -22,7 +22,6 @@
               
                      
             <div class="bg-white" padding>
-                    <p>Sólo podrás cambiar la información de tu número telefónico.</p>
 
                 <ion-list no-lines class="form-list">
                     <ion-item>
@@ -35,17 +34,23 @@
                     </ion-item>
                     <ion-item>
                         <ion-label floating>Número Telefónico Actual</ion-label>
-                        <ion-input type="number"  [(ngModel)]="user.phone" readonly></ion-input>
+                        <ion-input type="number"  [(ngModel)]="user.phone" ></ion-input>
                     </ion-item>
                     <ion-item>
-    
-                        <ion-label floating>Número Telefónico Nuevo</ion-label>
-
-                        <ion-input type="number"  [(ngModel)]="phone"></ion-input>
+                        <ion-label stacked>Número Telefónico Nuevo</ion-label>
+                        <ion-input type="number" placeholder="modifica aqui tu número" [(ngModel)]="phone"></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-label floating>Email Universitario</ion-label>
-                        <ion-input type="text"  [(ngModel)]="user.email"  readonly></ion-input>
+                        <ion-label floating>Email</ion-label>
+                        <ion-input type="text"  [(ngModel)]="emailComplete"  readonly></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked >Sobre mi</ion-label>
+                        <ion-textarea placeholder="tu carrera, pasiones, skills"  [(ngModel)]="user.about"></ion-textarea>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>URL de interés</ion-label>
+                        <ion-input type="text" placeholder="¿qué quieres que vean sobre ti?" [(ngModel)]="user.url" ></ion-input>
                     </ion-item>
 
 

@@ -4,13 +4,16 @@ import { ListridePage } from '../listride/listride';
 
 
 import { Geolocation } from '@ionic-native/geolocation';
-import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage } from 'ionic-angular';
+import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage, App } from 'ionic-angular';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ConfirmNotePage } from '../confirmnote/confirmnote';
 import { geofireService } from '../../services/geoFire.service';
 import { SignUpService } from '../../services/signup.services';
 import * as firebase from 'firebase';
+import { AngularFireDatabase } from 'angularfire2/database';
+import * as GeoFire from 'geofire';
+import { identifierModuleUrl } from '@angular/compiler';
 
 
 
@@ -59,13 +62,26 @@ export class FindridePage {
   markerGeolocation:any;
   //para acceder al uid en firebase
   user=this.AngularFireAuth.auth.currentUser.uid;
-  userInfo=this.AngularFireAuth.auth.currentUser;
   userInfoForOntrip:any;
   //geofire
   geofire1;
   geofire2;
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController) {
+  locationUniversity:any ={};
+
+  //variables for geoquery
+  geocoordinatesDest:any ={};
+  geocoordinatesOr:any ={};
+  userInfo:any;
+
+
+  //variables for geoquey university
+  dbRef;
+  geoFire;
+  geoqueryU;
+  geofireOriginConfirmed:boolean = false;
+
+ constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase) {
     
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -89,6 +105,11 @@ export class FindridePage {
       this.userInfoForOntrip = user;
     })
 
+     // set geofire key of university to avoid asking users to put where they are going
+     this.geofireService.getLocationUniversity().subscribe(location=>{
+      this.locationUniversity = location;
+      this.geofireService.setLocationUniversity("some_key", this.locationUniversity.lat, this.locationUniversity.lng);
+    })
 
   }
  
@@ -100,12 +121,6 @@ export class FindridePage {
   loadMap(){
 
  // this gets current position and set the camera of the map and put a marker in your location
- const alert = this.alertCtrl.create({
-  title: 'Permiso de uso de tu geolocalización',
-  subTitle: 'Se usará tu geolocalización para hacer posible nuestro servicio de conexión con otros usuarios. Asi como mejorar nuestro sosporte e historial. ',
-  buttons: ['OK']
-});
-alert.present();
 
     this.geolocation.getCurrentPosition({enableHighAccuracy: true}).then((position) => {
 
@@ -303,7 +318,7 @@ updateSearchResultsMyPos(){
         this.directionsDisplay.setMap(this.map);
         this.myLatLngDest=results[0].geometry.location
         this.calculateRoute(this.markerGeolocation.position,results[0].geometry.location);
-       
+        
        
       }
     })
@@ -387,19 +402,53 @@ geocodeLatLng(latLng,inputName) {
             // AQUI
            } else {
          
-            this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
-            
-            this.geofire1 = this.myLatLng;
-            this.geofire2 = {
-            lat: this.myLatLngDest.lat(),
-            lng: this.myLatLngDest.lng()
-          };
-  
-            this.confirmNote(this.geofire1, this.geofire2);
+             //turn on geoquery university to determine wether the user is in university
+        this.setGeofireUniversity(0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.user);
+      
+
+
+        // test: geoqueryU on listride() of findride.ts
+        this.geoqueryU.on("key_entered", function(key){
+          this.afDB.database.ref('/users/' + this.user ).update({
+            geofireOrigin: true
+          }).then(()=>{
+            this.afDB.database.ref('/users/'+ this.user +'/trips').update({
+              origin: this.orFirebase,
+              destination: this.desFirebase        
+          }).then(()=>{
+              this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
+                if(status==='OK'){
+                  this.geocoordinatesOr={
+                    lat:results[0].geometry.location.lat(),
+                    lng: results[0].geometry.location.lng()
+                  }
+                }
+                    // turn geofire On
+                  this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  console.log('executed geofire Or');          
+                })
+
+                this.geofireOriginConfirmed = true;
            
-           }
+          })
+          })
+          console.log(key + ' detected')
+        }.bind(this))
+
+        setTimeout(()=>{
+          if(!this.geofireOriginConfirmed == true){
+            this.geocoderDestinationCase();
+
+          }else{
+            this.geofireOriginConfirmed = false;
+          }
+        },1000)
+   
+        this.goListRide();
+          
+      }
  
-         }
+    }
       catch(error) {
         console.log(error)
         this.presentAlert('Error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
@@ -417,17 +466,50 @@ geocodeLatLng(latLng,inputName) {
           // AQUI
          } else {
        
-          this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
-          
-          this.geofire1 = this.myLatLng;
-          this.geofire2 = {
-          lat: this.myLatLngDest.lat(),
-          lng: this.myLatLngDest.lng()
-        };
+              //turn on geoquery university to determine wether the user is in university
+        this.setGeofireUniversity(0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.user);
+      
 
-          this.confirmNote(this.geofire1, this.geofire2);
-         
-         }
+
+        // test: geoqueryU on listride() of findride.ts
+        this.geoqueryU.on("key_entered", function(key){
+          this.afDB.database.ref('/users/' + this.user ).update({
+            geofireOrigin: true
+          }).then(()=>{
+            this.afDB.database.ref('/users/'+ this.user +'/trips').update({
+              origin: this.orFirebase,
+              destination: this.desFirebase        
+          }).then(()=>{
+              this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
+                if(status==='OK'){
+                  this.geocoordinatesOr={
+                    lat:results[0].geometry.location.lat(),
+                    lng: results[0].geometry.location.lng()
+                  }
+                }
+                    // turn geofire On
+                  this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  console.log('executed geofire Or');          
+                })
+
+                this.geofireOriginConfirmed = true;
+           
+          })
+          })
+          console.log(key + ' detected')
+        }.bind(this))
+
+        setTimeout(()=>{
+          if(!this.geofireOriginConfirmed == true){
+            this.geocoderDestinationCase();
+
+          }else{
+            this.geofireOriginConfirmed = false;
+          }
+        },1000)
+   
+        this.goListRide();
+        }
 
        }
     catch(error) {
@@ -437,6 +519,23 @@ geocodeLatLng(latLng,inputName) {
   }
   
 }
+
+  //this function will be triguered in listride() after 2 seconds listride() is triguered in order to let the promise finish
+    geocoderDestinationCase(){
+       if(!this.geofireOriginConfirmed == true ){
+              this.geocoder.geocode({'address': this.desFirebase[0]}, (results, status)=>{
+                if(status==='OK'){
+                  this.geocoordinatesDest={
+                    lat:results[0].geometry.location.lat(),
+                    lng: results[0].geometry.location.lng()
+                  }
+                }
+                    // turn geofire On
+                  this.geofireService.setLocationGeofireDest(this.user, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user)
+                  console.log('executed geofire Dest');          
+                })
+            }
+    }
 
 
     presentAlert(title,text,button) {
@@ -449,20 +548,34 @@ geocodeLatLng(latLng,inputName) {
     }
     
   goToMyReserves(){
-    this.navCtrl.push('ReservetripPage');
+    this.app.getRootNav().push('ReservetripPage');
   }
-    confirmNote(geoFire1, geoFire2){
-      let modal = this.modalCtrl.create('ConfirmNotePage', {geoFire1, geoFire2});
+  
+    goListRide(){
+      let modal = this.modalCtrl.create('ConfirmNotePage')
       modal.onDidDismiss(accepted => {
         if(accepted){
-          
-          this.navCtrl.push('ListridePage');
-      }
+          this.app.getRootNav().push('ListridePage');
+        }
       })
    modal.present();
-   }
-   
-  }
+  }  
+
+    // set geoquery that determines if the person is in university
+setGeofireUniversity( radius:number, lat, lng, userId):void{ 
+  
+  this.dbRef = this.afDB.database.ref('geofireUniversity/' );
+  this.geoFire = new GeoFire(this.dbRef); 
+
+  this.geoqueryU = this.geoFire.query({
+    center: [lat, lng],
+    radius: radius
+  })
+
+console.log('geoquery university added');
+}
+
+}
   
 
 

@@ -2,11 +2,12 @@ import { AngularFireDatabase } from "@angular/fire/database";
 import { Injectable } from "@angular/core";
 import * as firebase from 'firebase';
 import { animateChild } from "@angular/core/src/animation/dsl";
+import { AlertController, ToastController } from "ionic-angular";
 
 @Injectable()
 export class SignUpService {
 
-    constructor(public afDB: AngularFireDatabase){
+    constructor(public afDB: AngularFireDatabase, public toastCtrl: ToastController){
 
     }
 
@@ -26,7 +27,7 @@ export class SignUpService {
         return this.afDB.list('/drivers').valueChanges();
     }
 
-    public getMyInfo(userId){
+     getMyInfo(userId){
         return this.afDB.object('users/'+ userId).valueChanges();
         }
 
@@ -44,10 +45,39 @@ export class SignUpService {
 public getMyInfoForProfile(userId){
             return this.afDB.object('users/'+ userId).valueChanges();
             }
-   public saveInfoProfile(userUid,phone){
+
+
+   public saveInfoProfile(userUid,phone, about){
     this.afDB.database.ref('/users/'+ userUid).update({
-        phone:phone
+        phone:phone,
+        about: about
         
-});
+        }).then(()=>{
+            console.log('changed info');
+        }).catch((err)=>{
+            console.log('this is the error: ' + err);
+        })
    }
+
+   public saveInfoProfileUrl(userUid,url){
+    //permite configurar la información del perfil
+ this.afDB.database.ref('/users/'+ userUid).update({
+     url:url
+     });
+ }
+
+ public saveInfoProfileAbout(userUid,about){
+    //permite configurar la información del perfil
+ this.afDB.database.ref('/users/'+ userUid).update({
+     about:about 
+     });
+ }
+
+ public saveInfoProfilePhone(userUid,phone){
+    //permite configurar la información del perfil
+ this.afDB.database.ref('/users/'+ userUid).update({
+     phone:phone
+     });
+ }
+
 }

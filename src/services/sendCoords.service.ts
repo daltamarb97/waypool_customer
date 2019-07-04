@@ -12,6 +12,9 @@ export class sendCoordsService {
     public getDestination(user){
         return  this.afDB.list('/drivers/'+ user +'/trips/destination').valueChanges();
     } 
+    public getPendingUsers(driverUid,pushKey){
+        return  this.afDB.list('/reserves/'+ driverUid +'/'+pushKey+'/pendingUsers').valueChanges();
+    }
     public getOrigin(user){
         return  this.afDB.list('/drivers/'+ user +'/trips/origin').valueChanges();
     } 

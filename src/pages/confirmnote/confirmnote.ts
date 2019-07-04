@@ -22,25 +22,17 @@ export class ConfirmNotePage {
   
   note:string;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
-  geoinfo1;
-  geoinfo2;
-  buttonColor:string = '#3fb1df';
-  buttonColor2:string = '#3fb1df'; 
-  buttonColor3:string = '#3fb1df';
-  buttonColor4:string = '#3fb1df';
-  clicked1 = false;
-  clicked2 = false;
-  clicked3 = false;
-  clicked4 = false;
 
 
   constructor(public navCtrl: NavController, public noteService:noteService, public appCtrl: App,public alertCtrl: AlertController,private afDB: AngularFireDatabase,public sendUsersService: sendUsersService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams, public geofireService: geofireService) {
-      this.geoinfo1 = this.navParams.get('geoFire1');
-      console.log(this.geoinfo1);
-      
-      this.geoinfo2 = this.navParams.get('geoFire2');
-      console.log(this.geoinfo2)
+
+     
   }
+
+  ionViewDidEnter(){
+    this.geofireService.cancelGeoqueryUniversity();
+    this.geofireService.cancelGeofireOrigin(this.userUid);
+   }
   
     setNoteDriver(){
       if(this.note == null || this.note == ''){
@@ -57,73 +49,9 @@ export class ConfirmNotePage {
       }
         
       }; 
-      
-  setGeoFireDestination(){
-    this.geofireService.setLocationGeofireDest( this.userUid, this.geoinfo2.lat, this.geoinfo2.lng, this.userUid);
-    this.buttonColor = '#0fc874';
-    this.buttonColor2 = '#3fb1df';
-    this.buttonColor3 = '#3fb1df';
-    this.buttonColor4 = '#3fb1df';
-    this.clicked1 = true;
-    if(this.clicked2 == true || this.clicked3 == true || this.clicked4 == true){
-      this.geofireService.deleteUserGeofireOr(this.userUid);
-      this.clicked2 = false;
-      this.clicked3 = false;
-      this.clicked4 = false;
-
-    }
-      }
-
-  setGeoFireOrigin(){
-    this.geofireService.setLocationGeofireOr(this.userUid, this.geoinfo1.lat, this.geoinfo1.lng, this.userUid);
-    this.buttonColor2 = '#0fc874';
-    this.buttonColor = '#3fb1df';
-    this.buttonColor3 = '#3fb1df';
-    this.buttonColor4 = '#3fb1df';
-
-    this.clicked2=true;
-    if(this.clicked1 == true){
-      this.geofireService.deleteUserGeofireDest(this.userUid);
-      this.clicked1 = false;
-    }
-      }
-
-      setGeoFireOrigin2(){
-        this.geofireService.setLocationGeofireOr(this.userUid, this.geoinfo1.lat, this.geoinfo1.lng, this.userUid);
-    this.buttonColor2 = '#3fb1df';
-    this.buttonColor = '#3fb1df';
-    this.buttonColor3 = '#0fc874';
-    this.buttonColor4 = '#3fb1df';
-
-    this.clicked3=true;
-    if(this.clicked1 == true){
-      this.geofireService.deleteUserGeofireDest(this.userUid);
-      this.clicked1 = false;
-
-    }
-      }
-
-      setGeoFireOrigin3(){
-        this.geofireService.setLocationGeofireOr(this.userUid, this.geoinfo1.lat, this.geoinfo1.lng, this.userUid);
-    this.buttonColor2 = '#3fb1df';
-    this.buttonColor = '#3fb1df';
-    this.buttonColor3 = '#3fb1df';
-    this.buttonColor4 = '#0fc874';
-
-    this.clicked4=true;
-    if(this.clicked1 == true){
-      this.geofireService.deleteUserGeofireDest(this.userUid);
-      this.clicked1 = false;
-
-    }
-      }
   
   dismissOnClick(){
     this.viewCtrl.dismiss(this.accepted);
-    if(this.clicked1 == true || this.clicked2 == true){
-      this.geofireService.deleteUserGeofireDest(this.userUid);
-      this.geofireService.deleteUserGeofireOr(this.userUid);
-    }
   }
 
   dismiss() {

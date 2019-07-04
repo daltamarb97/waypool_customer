@@ -1,0 +1,47 @@
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title>PERFIL</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="bg-light" *ngFor = "let passenger of passengerArray">
+  <ion-row>
+      <ion-item>
+              <div class="name">
+                      <h1> 
+                          {{passenger.name |titlecase}} {{passenger.lastname |titlecase}}
+                      </h1>
+                      
+                  </div>
+      </ion-item>
+   
+  </ion-row>
+    
+    <div class="textBox">
+        <ion-list>   
+            <div class="bg-white" padding>
+                <ion-list no-lines>
+                    <ion-item>
+                        <ion-label stacked>Número Telefónico</ion-label>
+                        <ion-input type="text" [(ngModel)]="passenger.phone" readonly></ion-input>
+                      </ion-item>
+                      <!-- PROBLEM WITH DISPLAYING THE EMAIL -->
+                    <!-- <ion-item>
+                        <ion-label stacked>Email</ion-label>
+                        <ion-input type="text" [(ngModel)]="emailComplete" readonly></ion-input>                        <ion-input type="text" [(ngModel)]="user.name" readonly></ion-input>
+                    </ion-item> -->
+                    <ion-item>
+                        <ion-label stacked >Sobre {{passenger.name}}</ion-label>
+                        <ion-input type="text" [(ngModel)]="passenger.about" readonly></ion-input>
+                      </ion-item>
+                    <ion-item>
+                        <ion-label stacked>URL de interés</ion-label>
+                        <ion-input type="text" [(ngModel)]="passenger.url" readonly></ion-input>
+                    </ion-item>
+                   
+                </ion-list>
+            </div>
+        </ion-list>
+    </div>
+  </ion-content>
+  

@@ -39,12 +39,12 @@ export class ReservetripPage{
   constructor(public navCtrl: NavController,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController) {
     
    
-    this.reservesService.getMyReservesUser(this.userUid)
+    this.reservesService.getMyReservesSelected(this.userUid)
     .subscribe( myReservesId => {
       //get all reserves id (reserve push key, driverUid) of my user node
       this.myReservesId = myReservesId;
-     
       console.log(this.myReservesId);
+      this.myReserves = [];
       this.getReserves();
 
     })    
@@ -59,10 +59,9 @@ export class ReservetripPage{
         this.myReservesId.forEach(reserve => {
         this.reservesService.getMyReserves(reserve.driverId,reserve.keyReserve)
         .subscribe( info => {
-              this.reserve = info;             
+              this.reserve = info;  
               this.myReserves.push(this.reserve);
               console.log(this.myReserves);
-            // arreglar problema de que aparece varias veces la misma reserva
         })  
       })
     
@@ -87,6 +86,11 @@ export class ReservetripPage{
       position:'top'
          });
     toast.present();
+  }
+
+  seePassengers(reserveKey, driver){
+    let modal = this.modalCtrl.create('ConfirmReservationPage',{reserveKey:reserveKey, driver:driver});
+    modal.present();
   }
 }
 

@@ -41,6 +41,8 @@ export class ConfirmpopupPage {
 
   }
 
+
+
   goToRide(){  
     
     this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
@@ -54,13 +56,14 @@ export class ConfirmpopupPage {
       // if(this.user.trips.onTrip == false){
       //   this.dismiss();
       // } 
-
+      
     })
-    
-    this.geoFireService.joinReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
+    console.log(this.user.about);
+    this.geoFireService.joinReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note, this.user.about, this.user.email, this.user.fixedemail);
     this.geoFireService.pushToMyReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
-
-    this.geoFireService.removeKeyGeofire(this.userUid);
+    this.geoFireService.deleteReserveFromAvailableReserves(this.userUid, this.reserve.keyTrip);
+        //deprecated
+    // this.geoFireService.removeKeyGeofire(this.userUid);
     //OLD
     // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
     // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
@@ -68,7 +71,7 @@ export class ConfirmpopupPage {
     this.hideText = !this.hideText;
     this.accepted = true;  
      const toast = this.toastCtrl.create({
-      message: `Haz reservado con ${this.reserve.driver.name} para compartir tu viaje a las ${this.reserve.timeLeaving}, entra en Mis reservas para ver más.`,
+      message: `Haz reservado con ${this.reserve.driver.name} para compartir tu viaje a las ${this.reserve.startHour}, entra en Mis reservas para ver más.`,
       showCloseButton: true,
       closeButtonText: 'Ok'
     });

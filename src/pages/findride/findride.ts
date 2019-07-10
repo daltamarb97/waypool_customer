@@ -4,7 +4,7 @@ import { ListridePage } from '../listride/listride';
 
 
 import { Geolocation } from '@ionic-native/geolocation';
-import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage, App } from 'ionic-angular';
+import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage, App, ToastController } from 'ionic-angular';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ConfirmNotePage } from '../confirmnote/confirmnote';
@@ -14,7 +14,8 @@ import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as GeoFire from 'geofire';
 import { identifierModuleUrl } from '@angular/compiler';
-
+import { FmcProvider } from '../../providers/fmc/fmc';
+import { tap } from 'rxjs/operators';
 
 
 
@@ -81,7 +82,7 @@ export class FindridePage {
   geoqueryU;
   geofireOriginConfirmed:boolean = false;
 
- constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase) {
+ constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private fcmProvider: FmcProvider, public toastCtrl: ToastController) {
     
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -116,6 +117,18 @@ export class FindridePage {
   ionViewDidLoad(){
    
     this.loadMap();
+
+    this.fcmProvider.getToken();
+
+    this.fcmProvider.listenToNotifications().pipe(
+      tap(msg => {
+        const toast = this.toastCtrl.create({
+          message: 'new Notification',
+          duration: 3000
+        });
+        toast.present();
+      })
+    ).subscribe();
   }
  
   loadMap(){

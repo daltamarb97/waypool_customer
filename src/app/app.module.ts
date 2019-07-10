@@ -30,6 +30,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { chatsService } from '../services/chat.service';
 import { reservesService } from '../services/reserves.service';
 import { TripsService } from '../services/trips.service';
+import { FmcProvider } from '../providers/fmc/fmc';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 
 
@@ -87,7 +89,9 @@ export const firebaseConfig = {
     sendFeedbackService,
     chatsService,
     reservesService,
-    TripsService
+    TripsService,
+    FmcProvider,
+    AngularFirestore
 
   ]
 })

@@ -258,10 +258,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
-    // debugCompile(project(path: "CordovaLib", configuration: "debug"))
-    // releaseCompile(project(path: "CordovaLib", configuration: "release"))
+    //debugCompile(project(path: "CordovaLib", configuration: "debug"))
+    //releaseCompile(project(path: "CordovaLib", configuration: "release"))
     compile project(':CordovaLib')
-
     compile "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
     compile "com.android.support:support-v4:27.+"
     compile "com.google.android.gms:play-services-tagmanager:+"

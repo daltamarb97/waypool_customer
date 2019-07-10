@@ -1,39 +1,44 @@
 {
   "project_info": {
-    "project_number": "123",
-    "firebase_url": "https://cordova-plugin-firebase.firebaseio.com",
-    "project_id": "cordova-plugin-firebase",
-    "storage_bucket": "cordova-plugin-firebase.appspot.com"
+    "project_number": "1009109452629",
+    "firebase_url": "https://waypoooldemo.firebaseio.com",
+    "project_id": "waypoooldemo",
+    "storage_bucket": "waypoooldemo.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:123:android:123",
+        "mobilesdk_app_id": "1:1009109452629:android:9c03708824c1dcd6",
         "android_client_info": {
-          "package_name": "com.github.cordova_plugin_firebase"
+          "package_name": "com.waypoolsas.waypool"
         }
       },
       "oauth_client": [
         {
-          "client_id": "123.apps.googleusercontent.com",
+          "client_id": "1009109452629-qnlukqrv5e7m6tol0nuv5n9esaufa7lq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "123"
+          "current_key": "AIzaSyDXmRUIbB38RrIwpVMf1icUhcfNR5UW8qw"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009109452629-qnlukqrv5e7m6tol0nuv5n9esaufa7lq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1009109452629-n4rdmhdut7kmpltoggc3ikrmuin44him.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.waypoolsas.waypool"
+              }
+            }
+          ]
         }
       }
     }

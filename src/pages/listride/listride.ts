@@ -81,13 +81,7 @@ export class ListridePage {
   
   }
 
-ionViewDidLoad(){
-  // this.geoFireService.getDriversAvailableForUser(this.userUid)
-  //   .subscribe(drivers=>{
-  //       this.driversAvailable = drivers;
-  //       console.log(this.driversAvailable);
-  //   })
-}
+
 
 
  
@@ -134,6 +128,12 @@ ionViewDidLoad(){
  console.log(keyArray)
  console.log(keyArray)
 
+  }
+
+  // the key of each user has to be removed after listride is exited
+  ionViewDidLeave(){
+    this.geoFireService.deleteUserGeofireDest(this.userUid);
+    this.geoFireService.deleteUserGeofireOr(this.userUid);
   }
 
 

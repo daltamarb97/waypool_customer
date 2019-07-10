@@ -32,7 +32,7 @@
                             <img src="assets/imgs/userPicture.png">
                         </ion-avatar>
                         <div class="name">
-                            <h2>Inicio de viaje: {{reserve.timeLeaving |titlecase}} 
+                            <h2>Inicio de viaje: {{reserve.startHour |titlecase}} 
             
                             </h2>
                         </div>
@@ -47,9 +47,9 @@
                     <ion-card-content>
                         <div class="ride-detail">
                             <p  >
-                                <span class="icon-location bg-theme"></span>{{reserve.orReserve}}</p>
+                                <span class="icon-location bg-theme"></span>{{reserve.origin}}</p>
                             <p > 
-                                <span class="icon-location bg-yellow"></span>{{reserve.destReserve}}</p>
+                                <span class="icon-location bg-yellow"></span>{{reserve.destination}}</p>
                         </div>
                         <ion-row class="center-align">
                             <!-- <ion-col col-3 class="detail-text text-theme">
@@ -64,6 +64,9 @@
                                     </h2>
                                     
                                 </div>
+                            </ion-col>
+                            <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                                <button class="btn bg-theme rounded full text-white" (click)="cancelReserve(reserve.driver.userId,reserve.keyTrip)" >Cancelar</button>
                             </ion-col>
                             <ion-col center text-center col-4 text-right style="margin-left: auto;">
                                 <button class="btn bg-theme rounded full text-white" >Ver pasajeros</button>

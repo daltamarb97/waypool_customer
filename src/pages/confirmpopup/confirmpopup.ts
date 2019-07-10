@@ -68,7 +68,7 @@ export class ConfirmpopupPage {
     this.hideText = !this.hideText;
     this.accepted = true;  
      const toast = this.toastCtrl.create({
-      message: `Haz reservado con ${this.reserve.driver.name} para compartir tu viaje a las ${this.reserve.timeLeaving}, entra en Mis reservas para ver más.`,
+      message: `Haz reservado con ${this.reserve.driver.name} para compartir tu viaje a las ${this.reserve.startHour}, entra en Mis reservas para ver más.`,
       showCloseButton: true,
       closeButtonText: 'Ok'
     });

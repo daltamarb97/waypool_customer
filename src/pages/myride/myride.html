@@ -93,8 +93,8 @@
                     </ion-row>
                 </ion-card-content>
             </ion-card>    
-
-            <button  class="btn bg-theme text-white rounded"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>
+           
+            <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>
 
         </ion-list>
 

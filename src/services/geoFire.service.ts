@@ -13,6 +13,13 @@ export class geofireService {
     user:any;
     geoqueryU:any;
 
+    proofToCancelDest:any;
+    proofToCancelOr:any; 
+    
+    geoquery1:any;
+    geoquery2:any;
+    driverOnNodeOr:any;
+    driverOnNodeDest:any;
     constructor(public afDB: AngularFireDatabase, private AngularFireAuth: AngularFireAuth){
        
     }
@@ -41,27 +48,128 @@ export class geofireService {
            
     }
 
-    setLocationGeofireOr( key, lat, lng, userId){
-        this.dbRef = this.afDB.database.ref('geofireOr/' );
-        this.geoFire = new GeoFire(this.dbRef); 
+    // setLocationGeofireOr( key, lat, lng, userId){
+    //     this.dbRef = this.afDB.database.ref('geofireOr/' );
+    //     this.geoFire = new GeoFire(this.dbRef); 
 
-        // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-            // this.user = user;
-            // if(!this.user.onTrip == true){
-                this.geoFire.set(key, [lat, lng]).then(function(){
-                    console.log('location updated');
-                   }, function(error){
-                  console.log('error: ' + error)
-                   });
+    //     // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
+    //         // this.user = user;
+    //         // if(!this.user.onTrip == true){
+    //             this.geoFire.set(key, [lat, lng]).then(function(){
+    //                 console.log('location updated');
+    //                }, function(error){
+    //               console.log('error: ' + error)
+    //                });
 
-            // }
-            this.afDB.database.ref('users/' + userId).update({
-                geofireOr: true,
-                geofireDest: false
-            })
-        // })
+    //         // }
+    //         this.afDB.database.ref('users/' + userId).update({
+    //             geofireOr: true,
+    //             geofireDest: false
+    //         })
+    //     // })
            
-    }
+    // }
+
+
+
+    setGeofireOr( radius:number, lat, lng, userId):void{ 
+  this.dbRef = this.afDB.database.ref('geofireOr/' );
+  this.geoFire = new GeoFire(this.dbRef); 
+
+  this.geoquery2 = this.geoFire.query({
+    center: [lat, lng],
+    radius: radius
+  })
+
+  this.keyEnteredOr( userId);
+  this.keyExitedOr( userId);
+
+  console.log('geoquery or added');
+
+
+}
+
+//JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
+keyEnteredOr( userId){
+    this.geoquery2.on("key_entered", function(key, location, distance){
+     console.log(key);
+        //get reserveKey from geofireOr node
+
+        this.afDB.list('/geofireOr/'+ key).valueChanges().subscribe((driverOnNode)=>{
+            this.driverOnNodeOr = driverOnNode;
+        })
+
+     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeOr.keyReserve).update({
+      driverId: key,
+      keyReserve: this.driverOnNodeOr.keyReserve
+     })
+  
+     this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ key + '/' + this.driverOnNodeOr.keyReserve).push({
+      userId: userId
+  
+    })
+         
+   }.bind(this))
+  }
+  
+  
+  keyExitedOr( userId){
+   
+   this.geoquery2.on("key_exited", function(key){
+    this.afDB.list('/geofireOr/'+ key).valueChanges().subscribe((driverOnNode)=>{
+        this.driverOnNodeOr = driverOnNode;
+    })
+     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeOr.keyReserve).remove()
+   }.bind(this))
+  }
+
+
+  setGeofireDest( radius:number, lat, lng, userId):void{ 
+  this.dbRef = this.afDB.database.ref('geofireDest/' );
+  this.geoFire = new GeoFire(this.dbRef); 
+
+  this.geoquery1 = this.geoFire.query({
+    center: [lat, lng],
+    radius: radius
+  })
+
+  
+  this.keyEnteredDest( userId);
+  this.keyExitedDest(userId);
+
+console.log('geoquery dest added');
+}
+
+keyEnteredDest( userId,  ){
+    this.geoquery1.on("key_entered", function(key, location, distance){
+     console.log(key);
+
+     this.afDB.list('/geofireDesr/'+ key).valueChanges().subscribe((driverOnNode)=>{
+        this.driverOnNodeDest = driverOnNode;
+    })
+
+       this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeDest.reserveKey).update({
+        driverId: key,
+        keyReserve: this.driverOnNodeDest.reserveKey
+       })
+       console.log('keyentered here');
+    
+     
+     
+   }.bind(this))
+ }
+ 
+ 
+ keyExitedDest(userId){
+   
+   this.geoquery1.on("key_exited", function(key){
+    this.afDB.list('/geofireDesr/'+ key).valueChanges().subscribe((driverOnNode)=>{
+        this.driverOnNodeDest = driverOnNode;
+    })
+     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeDest.reserveKey).remove()
+   }.bind(this))
+ }
+
 
     removeKeyGeofire(key){
         this.dbRef = this.afDB.database.ref('geofire/' );

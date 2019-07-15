@@ -37,24 +37,38 @@ export class ReservetripPage{
   reserve:any;
 
   constructor(public navCtrl: NavController,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController) {
-    
+
    
     this.reservesService.getMyReservesSelected(this.userUid)
     .subscribe( myReservesId => {
+
+      console.log(this.myReserves)
+
       //get all reserves id (reserve push key, driverUid) of my user node
-      this.myReservesId = myReservesId;
+      this.myReservesId = myReservesId;   
+      
       console.log(this.myReservesId);
       this.myReserves = [];
       this.getReserves();
-
     })    
-  
+
+    this.sendCoordsService.getOriginUser(this.userUid)
+    .subscribe( originUser => {
+      this.locationOrigin = originUser;      
+    });
+    
+    this.sendCoordsService.getDestinationUser(this.userUid)
+        .subscribe( destinationUser => {
+          this.locationDestination = destinationUser;
+        });
   }
 
   ionViewDidLoad(){
     
   }
     getReserves(){
+      this.myReserves = []; //erase all of reserves 
+
       //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
         this.myReservesId.forEach(reserve => {
         this.reservesService.getMyReserves(reserve.driverId,reserve.keyReserve)
@@ -64,11 +78,15 @@ export class ReservetripPage{
               console.log(this.myReserves);
         })  
       })
-    
+
     }
   
   
-
+cancelReserve(driverUid,keyTrip){
+  this.reservesService.cancelReserve(this.userUid,driverUid,keyTrip);
+  this.reservesService.eliminateKeyUser(this.userUid,keyTrip);
+  // Hacer el boton de cancelar , para la reserva y probar q vuelva a salir en listride
+}
  
   // confirmreserve(reserveKey,driverUid){
   //      //TODAVÍA NO

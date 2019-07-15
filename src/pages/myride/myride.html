@@ -78,7 +78,11 @@
                             <span class="icon-location bg-yellow"></span>{{trip.driver.destination}}</p>
                     </div>
                     <ion-row>
-                
+                        <ion-col center text-center col-6 text-right style="margin-left: auto;">
+                            <h2 class="text text-theme">                        
+                                Hora de partida: {{trip.startHour}}                          
+                            </h2>                    
+                        </ion-col>  
                         <ion-col class="detail-text">
                             <button class="btn bg-theme rounded full text-white text-bold" (click)="chatDriver(trip.driver)" ><ion-icon name="md-chatboxes" class="text-white"></ion-icon> </button>
                         </ion-col>
@@ -89,8 +93,8 @@
                     </ion-row>
                 </ion-card-content>
             </ion-card>    
-
-            <button  class="btn bg-theme text-white rounded"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>
+           
+            <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>
 
         </ion-list>
 

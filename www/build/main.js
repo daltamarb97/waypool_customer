@@ -1,4 +1,4 @@
-webpackJsonp([19],{
+webpackJsonp([20],{
 
 /***/ 223:
 /***/ (function(module, exports) {
@@ -23,79 +23,83 @@ webpackEmptyAsyncContext.id = 223;
 var map = {
 	"../pages/chatting/chatting.module": [
 		588,
-		18
+		19
 	],
 	"../pages/confirm-reservation/confirm-reservation.module": [
 		589,
-		17
+		18
 	],
 	"../pages/confirmnote/confirmnote.module": [
+		592,
+		5
+	],
+	"../pages/confirmpopup/confirmpopup.module": [
 		590,
 		4
 	],
-	"../pages/confirmpopup/confirmpopup.module": [
+	"../pages/confirmtrip/confirmtrip.module": [
 		591,
 		3
 	],
 	"../pages/findride/findride.module": [
-		606,
+		607,
 		2
 	],
 	"../pages/help/help.module": [
-		592,
-		16
+		593,
+		17
 	],
 	"../pages/listride/listride.module": [
-		593,
+		594,
 		1
 	],
 	"../pages/login/login.module": [
-		594,
-		15
+		595,
+		16
 	],
 	"../pages/more/more.module": [
-		595,
-		14
+		597,
+		15
 	],
 	"../pages/myride/myride.module": [
 		596,
-		13
+		14
 	],
 	"../pages/profile/profile.module": [
-		597,
-		12
+		598,
+		13
 	],
 	"../pages/public-profile/public-profile.module": [
-		598,
-		11
+		599,
+		12
 	],
 	"../pages/ratetrip/ratetrip.module": [
-		599,
-		10
+		600,
+		11
 	],
 	"../pages/reservetrip/reservetrip.module": [
-		600,
-		9
+		601,
+		10
 	],
 	"../pages/signup/signup.module": [
 		602,
 		0
 	],
 	"../pages/support/support.module": [
-		601,
-		8
+		603,
+		9
 	],
 	"../pages/tabs/tabs.module": [
-		603,
-		7
+		604,
+		8
 	],
 	"../pages/terms/terms.module": [
-		604,
-		6
+		605,
+		7
 	],
 	"../pages/wallet/wallet.module": [
-		605,
-		5
+		606,
+		6
 	]
 };
 function webpackAsyncContext(req) {
@@ -340,52 +344,6 @@ var sendUsersService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return authenticationService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var authenticationService = /** @class */ (function () {
-    function authenticationService(angularFireAuth) {
-        this.angularFireAuth = angularFireAuth;
-    }
-    authenticationService.prototype.loginWithEmail = function (email, password) {
-        return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
-    };
-    authenticationService.prototype.registerWithEmail = function (email, password) {
-        return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password);
-    };
-    authenticationService.prototype.getStatus = function () {
-        return this.angularFireAuth.authState;
-    };
-    authenticationService.prototype.logOut = function () {
-        return this.angularFireAuth.auth.signOut();
-    };
-    authenticationService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["AngularFireAuth"]])
-    ], authenticationService);
-    return authenticationService;
-}());
-
-//# sourceMappingURL=userauthentication.service.js.map
-
-/***/ }),
-
-/***/ 332:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return geofireService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
@@ -430,23 +388,95 @@ var geofireService = /** @class */ (function () {
         // }
         // })
     };
-    geofireService.prototype.setLocationGeofireOr = function (key, lat, lng, userId) {
+    // setLocationGeofireOr( key, lat, lng, userId){
+    //     this.dbRef = this.afDB.database.ref('geofireOr/' );
+    //     this.geoFire = new GeoFire(this.dbRef); 
+    //     // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
+    //         // this.user = user;
+    //         // if(!this.user.onTrip == true){
+    //             this.geoFire.set(key, [lat, lng]).then(function(){
+    //                 console.log('location updated');
+    //                }, function(error){
+    //               console.log('error: ' + error)
+    //                });
+    //         // }
+    //         this.afDB.database.ref('users/' + userId).update({
+    //             geofireOr: true,
+    //             geofireDest: false
+    //         })
+    //     // })
+    // }
+    geofireService.prototype.setGeofireOr = function (radius, lat, lng, userId) {
         this.dbRef = this.afDB.database.ref('geofireOr/');
         this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
-        // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-        // this.user = user;
-        // if(!this.user.onTrip == true){
-        this.geoFire.set(key, [lat, lng]).then(function () {
-            console.log('location updated');
-        }, function (error) {
-            console.log('error: ' + error);
+        this.geoquery2 = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
         });
-        // }
-        this.afDB.database.ref('users/' + userId).update({
-            geofireOr: true,
-            geofireDest: false
+        this.keyEnteredOr(userId);
+        this.keyExitedOr(userId);
+        console.log('geoquery or added');
+    };
+    //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
+    geofireService.prototype.keyEnteredOr = function (userId) {
+        this.geoquery2.on("key_entered", function (key, location, distance) {
+            var _this = this;
+            console.log(key);
+            //get reserveKey from geofireOr node
+            this.afDB.list('/geofireOr/' + key).valueChanges().subscribe(function (driverOnNode) {
+                _this.driverOnNodeOr = driverOnNode;
+            });
+            this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeOr.keyReserve).update({
+                driverId: key,
+                keyReserve: this.driverOnNodeOr.keyReserve
+            });
+            this.afDB.database.ref('/reservesInfoInCaseOfCancelling/' + key + '/' + this.driverOnNodeOr.keyReserve).push({
+                userId: userId
+            });
+        }.bind(this));
+    };
+    geofireService.prototype.keyExitedOr = function (userId) {
+        this.geoquery2.on("key_exited", function (key) {
+            var _this = this;
+            this.afDB.list('/geofireOr/' + key).valueChanges().subscribe(function (driverOnNode) {
+                _this.driverOnNodeOr = driverOnNode;
+            });
+            this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeOr.keyReserve).remove();
+        }.bind(this));
+    };
+    geofireService.prototype.setGeofireDest = function (radius, lat, lng, userId) {
+        this.dbRef = this.afDB.database.ref('geofireDest/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoquery1 = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
         });
-        // })
+        this.keyEnteredDest(userId);
+        this.keyExitedDest(userId);
+        console.log('geoquery dest added');
+    };
+    geofireService.prototype.keyEnteredDest = function (userId) {
+        this.geoquery1.on("key_entered", function (key, location, distance) {
+            var _this = this;
+            console.log(key);
+            this.afDB.list('/geofireDesr/' + key).valueChanges().subscribe(function (driverOnNode) {
+                _this.driverOnNodeDest = driverOnNode;
+            });
+            this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeDest.reserveKey).update({
+                driverId: key,
+                keyReserve: this.driverOnNodeDest.reserveKey
+            });
+            console.log('keyentered here');
+        }.bind(this));
+    };
+    geofireService.prototype.keyExitedDest = function (userId) {
+        this.geoquery1.on("key_exited", function (key) {
+            var _this = this;
+            this.afDB.list('/geofireDesr/' + key).valueChanges().subscribe(function (driverOnNode) {
+                _this.driverOnNodeDest = driverOnNode;
+            });
+            this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeDest.reserveKey).remove();
+        }.bind(this));
     };
     geofireService.prototype.removeKeyGeofire = function (key) {
         this.dbRef = this.afDB.database.ref('geofire/');
@@ -583,12 +613,59 @@ var geofireService = /** @class */ (function () {
     };
     geofireService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]) === "function" && _b || Object])
     ], geofireService);
     return geofireService;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=geoFire.service.js.map
+
+/***/ }),
+
+/***/ 332:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return authenticationService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var authenticationService = /** @class */ (function () {
+    function authenticationService(angularFireAuth) {
+        this.angularFireAuth = angularFireAuth;
+    }
+    authenticationService.prototype.loginWithEmail = function (email, password) {
+        return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
+    };
+    authenticationService.prototype.registerWithEmail = function (email, password) {
+        return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password);
+    };
+    authenticationService.prototype.getStatus = function () {
+        return this.angularFireAuth.authState;
+    };
+    authenticationService.prototype.logOut = function () {
+        return this.angularFireAuth.auth.signOut();
+    };
+    authenticationService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["AngularFireAuth"]])
+    ], authenticationService);
+    return authenticationService;
+}());
+
+//# sourceMappingURL=userauthentication.service.js.map
 
 /***/ }),
 
@@ -641,55 +718,6 @@ var instancesService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return reservesService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var reservesService = /** @class */ (function () {
-    function reservesService(afDB) {
-        this.afDB = afDB;
-    }
-    reservesService.prototype.getMyReservesUser = function (userUid) {
-        // 
-        return this.afDB.list('/users/' + userUid + '/availableReserves').valueChanges();
-    };
-    reservesService.prototype.getMyReservesSelected = function (userUid) {
-        // 
-        return this.afDB.list('/users/' + userUid + '/myReserves').valueChanges();
-    };
-    reservesService.prototype.getReserves = function (userUid) {
-        // get reserves from my driver (wrong)
-        return this.afDB.list('/reserves/' + userUid).valueChanges();
-    };
-    reservesService.prototype.getMyReserves = function (driverUserUid, reserveId) {
-        //get reserves inside reserves node
-        return this.afDB.object('/reserves/' + driverUserUid + '/' + reserveId + '/').valueChanges();
-    };
-    reservesService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
-    ], reservesService);
-    return reservesService;
-}());
-
-//# sourceMappingURL=reserves.service.js.map
-
-/***/ }),
-
-/***/ 335:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TripsService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
@@ -717,7 +745,7 @@ var TripsService = /** @class */ (function () {
         return this.afDB.list('/reserves/' + userUid).valueChanges();
     };
     TripsService.prototype.getMyReserves = function (reserveId, driverId) {
-        //get reserves inside reserves node
+        //get reserves inside trip's node
         return this.afDB.object('/trips/' + driverId + '/' + reserveId + '/').valueChanges();
     };
     TripsService.prototype.getPendingUsers = function (keyTrip, driverId) {
@@ -728,6 +756,33 @@ var TripsService = /** @class */ (function () {
         //get trip in Trip's node
         return this.afDB.list('/trips/' + driverId + '/' + keyTrip + '/pickedUpUsers').valueChanges();
     };
+    TripsService.prototype.getLastMinuteTripsDEMO = function (driverId) {
+        return this.afDB.list('/trips/' + driverId).valueChanges();
+    };
+    TripsService.prototype.saveTripOnRecords = function (userUid, trip) {
+        //save trip in recordTrips
+        this.afDB.database.ref('/users/' + userUid + '/recordTrips/' + trip.keyTrip).update(trip);
+    };
+    TripsService.prototype.joinTrip = function (keyTrip, driverId, userId, origin, destination, name, lastname, phone, note) {
+        this.afDB.database.ref('/trips/' + driverId + '/' + keyTrip + '/lastMinuteUsers/' + userId).update({
+            origin: origin,
+            destination: destination,
+            name: name,
+            lastname: lastname,
+            phone: phone,
+            userId: userId,
+            note: note,
+        });
+    };
+    TripsService.prototype.cancelTrip = function (userUid, driverUid, tripId) {
+        //eliminate user from reserve in reserve's node        
+        this.afDB.database.ref('/trips/' + driverUid + '/' + tripId + '/pendingUsers/' + userUid).remove();
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+    };
+    TripsService.prototype.eliminateKeyUser = function (userUid, reserveId) {
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+        this.afDB.database.ref('/users/' + userUid + '/myReserves/' + reserveId).remove();
+    };
     TripsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
@@ -736,6 +791,64 @@ var TripsService = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=trips.service.js.map
+
+/***/ }),
+
+/***/ 335:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return reservesService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var reservesService = /** @class */ (function () {
+    function reservesService(afDB) {
+        this.afDB = afDB;
+    }
+    reservesService.prototype.getMyReservesUser = function (userUid) {
+        //         return  this.afDB.list('/users/'+ userUid+'/availableReserves').valueChanges();
+        return this.afDB.list('/users/' + userUid + '/myReserves').valueChanges();
+    };
+    reservesService.prototype.getMyReservesSelected = function (userUid) {
+        // 
+        return this.afDB.list('/users/' + userUid + '/myReserves').valueChanges();
+    };
+    reservesService.prototype.getReserves = function (userUid) {
+        //get reserves of the geofire
+        return this.afDB.list('/users/' + userUid + '/availableReserves').valueChanges();
+    };
+    reservesService.prototype.getMyReserves = function (driverUserUid, reserveId) {
+        //get reserves inside reserves node
+        return this.afDB.object('/reserves/' + driverUserUid + '/' + reserveId + '/').valueChanges();
+    };
+    reservesService.prototype.cancelReserve = function (userUid, driverUid, reserveId) {
+        //eliminate user from reserve in reserve's node        
+        this.afDB.database.ref('/reserves/' + driverUid + '/' + reserveId + '/pendingUsers/' + userUid).remove();
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+    };
+    reservesService.prototype.eliminateKeyUser = function (userUid, reserveId) {
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+        this.afDB.database.ref('/users/' + userUid + '/myReserves/' + reserveId).remove();
+    };
+    reservesService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
+    ], reservesService);
+    return reservesService;
+}());
+
+//# sourceMappingURL=reserves.service.js.map
 
 /***/ }),
 
@@ -903,14 +1016,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_fire_database__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_fire_auth__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_userauthentication_service__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_userauthentication_service__ = __webpack_require__(332);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_firebase__ = __webpack_require__(582);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geolocation__ = __webpack_require__(336);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_sendCoords_service__ = __webpack_require__(329);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_sendUsers_service__ = __webpack_require__(330);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_note_service__ = __webpack_require__(340);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_call_number__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_geoFire_service__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_geoFire_service__ = __webpack_require__(331);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_common__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_instances_service__ = __webpack_require__(333);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_signup_services__ = __webpack_require__(328);
@@ -919,8 +1032,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_sendFeedback_service__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_storage__ = __webpack_require__(584);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_chat_service__ = __webpack_require__(338);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_reserves_service__ = __webpack_require__(334);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_trips_service__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_reserves_service__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_trips_service__ = __webpack_require__(334);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -977,19 +1090,20 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { loadChildren: '../pages/chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule', name: 'ConfirmReservationPage', segment: 'confirm-reservation', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/public-profile/public-profile.module#PublicProfilePageModule', name: 'PublicProfilePage', segment: 'public-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },

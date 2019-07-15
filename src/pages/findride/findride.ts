@@ -424,7 +424,8 @@ geocodeLatLng(latLng,inputName) {
                   }
                 }
                     // turn geofire On
-                  this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  // this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  // this.geofireService.setGeofireOr( 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
                   console.log('executed geofire Or');          
                 })
 
@@ -488,13 +489,15 @@ geocodeLatLng(latLng,inputName) {
                   }
                 }
                     // turn geofire On
-                  this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  // this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  // this.geofireService.setGeofireOr( 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
                   console.log('executed geofire Or');          
                 })
 
                 this.geofireOriginConfirmed = true;
            
           })
+          console.log('directions set')
           })
           console.log(key + ' detected')
         }.bind(this))
@@ -531,7 +534,8 @@ geocodeLatLng(latLng,inputName) {
                   }
                 }
                     // turn geofire On
-                  this.geofireService.setLocationGeofireDest(this.user, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user)
+                  // this.geofireService.setLocationGeofireDest(this.user, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user)
+                  // this.geofireService.setGeofireDest(2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user)
                   console.log('executed geofire Dest');          
                 })
             }

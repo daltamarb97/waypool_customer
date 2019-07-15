@@ -31,10 +31,12 @@ user:any;
 myReservesId:any = [];
 trip:any;
 userUid=this.AngularFireAuth.auth.currentUser.uid;
-driverExist:boolean 
+driverExist:boolean =false;
 info:any;
+onTrip: boolean = false;
+cancelReserves: any = [];
   constructor(public navCtrl: NavController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App) {
-  
+    
         this.TripsService.getMyReservesUser(this.userUid)
         .subscribe( myReservesId => {
           //get all reserves id (reserve push key, driverUid) of my user node
@@ -45,42 +47,66 @@ info:any;
           this.getTrip();
     
         })    
-               
+             
   }
   getTrip(){    
     this.myReservesId.forEach(reserve => {
         //compare every reserveId User have and see if matches in Trip's node
         if(reserve.keyReserve === undefined || reserve.keyReserve === null){
           // if reserve doesn't exist do nothing
+          this.driverExist=false;
+
         } else {
           //check if reserve exist inside node trips
-          this.TripsService.getMyReserves(reserve.keyReserve,reserve.driverId)
-             .subscribe( info => {      
-               //check if the info of the reserve is null       
-             if(info === undefined || info === null){
-               
-              console.log("jajaja")
-             }else{
-              this.info = info;
-              console.log(this.info);
-              console.log(info);
+              this.TripsService.getMyReserves(reserve.keyReserve,reserve.driverId)
+                .subscribe( info => {      
+                  //check if the info of the reserve is null       
+                if(info === undefined || info === null){
+                  
+                    this.driverExist=false;
+                    this.onTrip = false;
+                }else{
+                    this.info = info;
+                  
+                  //if matches get trip
+                  if(reserve.keyReserve === this.info.keyTrip){          
+                      this.onTrip = true;
+                      this.trip= info;   
+                      this.getPendingAndPickedUpUsers(this.trip.keyTrip,this.trip.driver.userId);
+                      this.driverExist = true;
+                      if(this.trip.saveTrip === true){
+                        //check if trip has to be saved 
+                        this.TripsService.saveTripOnRecords(this.userUid,this.trip);
+                        this.driverExist = false;     
 
-              if(reserve.keyReserve === this.info.keyTrip){
-                          //if matches get trip
-                          
-               this.trip= info
-               
-               this.getPendingAndPickedUpUsers(this.trip.keyTrip,this.trip.driver.userId)
-               this.driverExist = true
-             }else{
-               // do nothing because the key of your reserve is not in trip's node
-             }
-                // do nothing because your trip doesn't exist
-
-             }
+                      } 
+                      this.trip.cancelReserves = this.cancelReserves;
+                      
+                    
+                      this.trip.cancelReserves.forEach(cancelReserve => {
+                        //if driver cancel you, eliminate your keyReserve of your array
+                        if(this.cancelReserves === cancelReserve.userId){
+                          this.driverExist = false;
+                          this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
+                          this.navCtrl.setRoot(this.navCtrl.getActive().component);
+                          const toast = this.toastCtrl.create({
+                            message: `El conductor te ha cancelado de su viaje`,
+                            showCloseButton: true,
+                            closeButtonText: 'Ok'
+                          });
+                          toast.present();
+                          console.log('YEAHHHHHHHHHHHHHHHHHH')
+                        }
+                        
+                      });
+                      }else{
+                        // do nothing because the key of your reserve is not in trip's node
+                        }
+                    // do nothing because your trip doesn't exist
+                }
                 
                 
-               
+                 
                   })          
         }   
 
@@ -93,21 +119,19 @@ info:any;
         this.pendingUsers = user;
         console.log(this.pendingUsers);          
     });
-
-
-
-
     this.TripsService.getPickedUpUsers(keyTrip,driverId)
     .subscribe( user => {    
       this.pickedUpUsers = user;
+     
+     
       console.log(this.pickedUpUsers);      
     });
   }
-  chatDriver(driver){
+chatDriver(driver){
     this.navCtrl.push('ChattingPage',{driver:driver})
-  }    
+}    
     
-  callUser(number){
+callUser(number){
     console.log(number)
 
 
@@ -126,52 +150,61 @@ this.callNumber.callNumber(number, true)
 }
 
     cancelTrip(){
-      
-      if (this.user.trips.pickedUp == true){
-
-        const toast = this.toastCtrl.create({
-          message: `${this.user.name} : No puedes cancelar ya que tu compañero ya te recogió, si esto no es verdad, por favor saca un screenshot de Mi Viaje al correo waypooltec@gmail.com`,
-          showCloseButton: true,
-          closeButtonText: 'Ok'
-        });
-        toast.present();
-
-      } else if(this.user.trips.pickedUp !== true){
-        let alert = this.alertCtrl.create({
-          title: 'Cancelar Viaje',
-          message: `¿Estas seguro que deseas cancelar?`,
-          buttons: [
-            {
-              text: 'No',
-              role: 'cancel',
-              handler: () => {
-             
-              }
-            },
-            { 
-              text: 'Si',
-              handler: () => {
-                  if(this.driverOnTrip[0]){
-                    //juandavid
-                    if(this.user.geofireOr == true){
-                      this.sendUsersService.cancelTripUserOr(this.driverOnTrip[0].userId,this.userUid)
-                    }else if(this.user.geofireDest == true){
-                      this.sendUsersService.cancelTripUserDest(this.driverOnTrip[0].userId,this.userUid)
-                    }
-                  }else{
-                    const alert = this.alertCtrl.create({
-                      title: 'no estas en un',
-                      subTitle: 'no estas en ningún viaje en este momento, ve al inicio para q vivas la experiencia',
-                      buttons: ['OK']
-                    });
-                    alert.present(); 
-                }
-              }
+      let alert = this.alertCtrl.create({
+        title: 'Cancelar Viaje',
+        message: `¿Estas seguro que deseas cancelar?`,
+        buttons: [
+          {
+            text: 'No',
+            role: 'cancel',
+            handler: () => {
+            //do nothing
             }
-          ]
-        });
-        alert.present();
-        
-      }
+          },
+          { 
+            text: 'Si',
+            handler: () => {
+              if(this.pickedUpUsers.length === 0 || this.pickedUpUsers === undefined || this.pickedUpUsers === null) {
+                this.TripsService.cancelTrip(this.userUid,this.trip.driver.userId,this.trip.keyTrip);
+                this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
+                this.navCtrl.setRoot(this.navCtrl.getActive().component);
+
+                console.log(this.trip.keyTrip);
+                this.driverExist = false;
+                this.onTrip=false;
+                console.log(this.driverExist);
+              }
+              this.pickedUpUsers.forEach(pickedUser => {
+                // if user is in the pickedUpUsers array, it should not be able to cancel, because its already pickedUp.
+                if( pickedUser.userId === this.userUid){
+                  //dont cancel
+                  const toast = this.toastCtrl.create({
+                    message: `${pickedUser.name} : No puedes cancelar ya que tu compañero ya te recogió, si esto no es verdad, por favor saca un screenshot de Mi Viaje al correo waypooltec@gmail.com`,
+                    showCloseButton: true,
+                    closeButtonText: 'Ok'
+                  });
+                  toast.present();
+                }else{
+                  // desaparecer driver de el html y hacer condicionales del last minute this.user, buscar setTimeOut y una barra de tiempo para eliminarlo
+                 
+                  this.driverExist = false;
+                  this.onTrip=false;
+
+                  this.TripsService.cancelTrip(this.userUid,this.trip.driver.userId,this.trip.keyTrip);
+                  this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
+                  console.log(this.trip.keyTrip);
+                  this.navCtrl.setRoot(this.navCtrl.getActive().component);
+
+
+                }
+              })
+            }
+          }
+        ]
+      });
+      alert.present();
+     
+     
+
     }
   }

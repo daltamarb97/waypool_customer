@@ -407,7 +407,8 @@ var FindridePage = /** @class */ (function () {
                                             };
                                         }
                                         // turn geofire On
-                                        _this.geofireService.setLocationGeofireOr(_this.user, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.user);
+                                        // this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                                        _this.geofireService.setGeofireOr(2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.user);
                                         console.log('executed geofire Or');
                                     });
                                     _this.geofireOriginConfirmed = true;

@@ -93,21 +93,23 @@ export class geofireService {
 keyEnteredOr( userId){
     this.geoquery2.on("key_entered", function(key, location, distance){
      console.log(key);
-        //get reserveKey from geofireOr node
 
-        this.afDB.list('/geofireOr/'+ key).valueChanges().subscribe((driverOnNode)=>{
-            this.driverOnNodeOr = driverOnNode;
-        })
-
-     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeOr.keyReserve).update({
-      driverId: key,
-      keyReserve: this.driverOnNodeOr.keyReserve
+      this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+      keyReserve: key
+     }).then(()=>{
+       //get driverId from geofireOr node
+        this.getIdFromGeofireOrNode(key).subscribe(driver =>{
+             this.driverOnNodeOr = driver;
+             this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+                 driverId: this.driverOnNodeOr.driverId
+             })
+        })  
      })
+
+    //  this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ this.driverOnNodeOr.keyReserve + '/' + key).push({
+    //   userId: userId
   
-     this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ key + '/' + this.driverOnNodeOr.keyReserve).push({
-      userId: userId
-  
-    })
+    // })
          
    }.bind(this))
   }
@@ -116,11 +118,12 @@ keyEnteredOr( userId){
   keyExitedOr( userId){
    
    this.geoquery2.on("key_exited", function(key){
-    this.afDB.list('/geofireOr/'+ key).valueChanges().subscribe((driverOnNode)=>{
-        this.driverOnNodeOr = driverOnNode;
-    })
-     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeOr.keyReserve).remove()
+     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
+  }
+
+  getIdFromGeofireOrNode(key){
+      return this.afDB.object('/geofireOr/'+ key).valueChanges();
   }
 
 
@@ -144,13 +147,13 @@ keyEnteredDest( userId,  ){
     this.geoquery1.on("key_entered", function(key, location, distance){
      console.log(key);
 
-     this.afDB.list('/geofireDesr/'+ key).valueChanges().subscribe((driverOnNode)=>{
+     this.afDB.list('/geofireDest/'+ key).valueChanges().subscribe((driverOnNode)=>{
         this.driverOnNodeDest = driverOnNode;
     })
 
-       this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeDest.reserveKey).update({
-        driverId: key,
-        keyReserve: this.driverOnNodeDest.reserveKey
+       this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+        driverId: this.driverOnNodeDest.driverId,
+        keyReserve: key
        })
        console.log('keyentered here');
     
@@ -163,10 +166,7 @@ keyEnteredDest( userId,  ){
  keyExitedDest(userId){
    
    this.geoquery1.on("key_exited", function(key){
-    this.afDB.list('/geofireDesr/'+ key).valueChanges().subscribe((driverOnNode)=>{
-        this.driverOnNodeDest = driverOnNode;
-    })
-     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + this.driverOnNodeDest.reserveKey).remove()
+     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
  }
 

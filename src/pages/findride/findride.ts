@@ -81,6 +81,8 @@ export class FindridePage {
   geoqueryU;
   geofireOriginConfirmed:boolean = false;
 
+
+  driverOnNodeOr:any;
  constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase) {
     
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -425,8 +427,8 @@ geocodeLatLng(latLng,inputName) {
                 }
                     // turn geofire On
                   // this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
-                  // this.geofireService.setGeofireOr( 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
-                  console.log('executed geofire Or');          
+                  this.geofireService.setGeofireOr( 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  console.log('executed geofire Or');  
                 })
 
                 this.geofireOriginConfirmed = true;
@@ -490,7 +492,7 @@ geocodeLatLng(latLng,inputName) {
                 }
                     // turn geofire On
                   // this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
-                  // this.geofireService.setGeofireOr( 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  this.geofireService.setGeofireOr( 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
                   console.log('executed geofire Or');          
                 })
 
@@ -535,9 +537,12 @@ geocodeLatLng(latLng,inputName) {
                 }
                     // turn geofire On
                   // this.geofireService.setLocationGeofireDest(this.user, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user)
-                  // this.geofireService.setGeofireDest(2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user)
-                  console.log('executed geofire Dest');          
+                  this.geofireService.setGeofireDest(2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user);
+                  
+                  console.log('executed geofire Dest');  
+                          
                 })
+
             }
     }
 

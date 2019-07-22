@@ -18,6 +18,8 @@ export class geofireService {
     
     geoquery1:any;
     geoquery2:any;
+    geoquery2LMU:any;
+    geoquery1LMU:any;
     driverOnNodeOr:any;
     driverOnNodeDest:any;
     constructor(public afDB: AngularFireDatabase, private AngularFireAuth: AngularFireAuth){
@@ -126,6 +128,10 @@ keyEnteredOr( userId){
       return this.afDB.object('/geofireOr/'+ key).valueChanges();
   }
 
+  getIdFromGeofireOrTripNode(key){
+    return this.afDB.object('/geofireOrTrip/'+ key).valueChanges();
+}
+
 
   setGeofireDest( radius:number, lat, lng, userId):void{ 
   this.dbRef = this.afDB.database.ref('geofireDest/' );
@@ -170,6 +176,110 @@ keyEnteredDest( userId,  ){
    }.bind(this))
  }
 
+
+ setGeofireOrLMU( radius:number, lat, lng, userId):void{ 
+    this.dbRef = this.afDB.database.ref('geofireOrTrip/' );
+    this.geoFire = new GeoFire(this.dbRef); 
+  
+    this.geoquery2LMU = this.geoFire.query({
+      center: [lat, lng],
+      radius: radius
+    })
+  
+    this.keyEnteredOrLMU( userId);
+    this.keyExitedOrLMU( userId);
+  
+    console.log('geoquery or added');
+  
+  
+  }
+
+
+  keyEnteredOrLMU( userId){
+    this.geoquery2LMU.on("key_entered", function(key, location, distance){
+     console.log(key);
+
+      this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+      keyReserve: key,
+      LMU: true
+     }).then(()=>{
+       //get driverId from geofireOr node
+        this.getIdFromGeofireOrTripNode(key).subscribe(driver =>{
+             this.driverOnNodeOr = driver;
+             this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+                 driverId: this.driverOnNodeOr.driverId
+             })
+        })  
+     })
+
+    //  this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ this.driverOnNodeOr.keyReserve + '/' + key).push({
+    //   userId: userId
+  
+    // })
+         
+   }.bind(this))
+  }
+  
+  
+  keyExitedOrLMU( userId){
+   
+   this.geoquery2LMU.on("key_exited", function(key){
+     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).remove()
+   }.bind(this))
+  }
+
+
+
+  setGeofireDestLMU( radius:number, lat, lng, userId):void{ 
+    this.dbRef = this.afDB.database.ref('geofireDestTrip/' );
+    this.geoFire = new GeoFire(this.dbRef); 
+  
+    this.geoquery1LMU = this.geoFire.query({
+      center: [lat, lng],
+      radius: radius
+    })
+  
+    this.keyEnteredDestLMU( userId);
+    this.keyExitedDestLMU( userId);
+  
+    console.log('geoquery or added');
+  
+  
+  }
+
+
+  keyEnteredDestLMU( userId){
+    this.geoquery1LMU.on("key_entered", function(key, location, distance){
+     console.log(key);
+
+      this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+      keyReserve: key,
+      LMU: true
+     }).then(()=>{
+       //get driverId from geofireOr node
+        this.getIdFromGeofireOrTripNode(key).subscribe(driver =>{
+             this.driverOnNodeDest = driver;
+             this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+                 driverId: this.driverOnNodeDest.driverId
+             })
+        })  
+     })
+
+    //  this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ this.driverOnNodeOr.keyReserve + '/' + key).push({
+    //   userId: userId
+  
+    // })
+         
+   }.bind(this))
+  }
+  
+  
+  keyExitedDestLMU( userId){
+   
+   this.geoquery1LMU.on("key_exited", function(key){
+     this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).remove()
+   }.bind(this))
+  }
 
     removeKeyGeofire(key){
         this.dbRef = this.afDB.database.ref('geofire/' );
@@ -288,6 +398,12 @@ setLocationUniversity( key, lat, lng){
       }, function(error){
       console.log('error: ' + error)
     });
+  }
+
+  deleteGeofireUniversity(){
+      this.afDB.database.ref('geofireUniversity/').remove().then(()=>{
+          console.log('geofireUniversity node has been deleted');
+      })
   }
 
 //   // set geoquery that determines if the person is in university

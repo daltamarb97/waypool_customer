@@ -26,6 +26,7 @@ export class ListridePage {
   reserve:any;
   ReservesGeofire: any =[];
   tripsReserved:any =[];
+  reserveLMU:any;
   constructor(public navCtrl: NavController,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
     this.SignUpService.getMyInfo(this.userUid).subscribe(user=>{
@@ -61,14 +62,16 @@ export class ListridePage {
       });
      
     
-  this.TripsService.getLastMinuteTripsDEMO(this.userUid)
-  //cambiar en merge
-    .subscribe(reserves => {
+  // this.TripsService.getLastMinuteTripsDEMO(this.userUid)
+  // //cambiar en merge
+  //   .subscribe(reserves => {
       
-      this.initiatedTrips = reserves;
-      console.log(this.initiatedTrips);
+  //     this.initiatedTrips = reserves;
+  //     console.log(this.initiatedTrips);
   
-    });
+  //   });
+
+
    
   }
 getMyReserves(){
@@ -89,7 +92,8 @@ getMyReserves(){
     
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
       this.ReservesGeofire.forEach(reserveGeofire => {
-      this.reservesService.getMyReserves(reserveGeofire.driverId,reserveGeofire.keyReserve)
+        
+          this.reservesService.getMyReserves(reserveGeofire.driverId,reserveGeofire.keyReserve)
       .subscribe( info => {        
             this.reserve = info;    
             console.log(info);
@@ -100,10 +104,11 @@ getMyReserves(){
            }else{
             console.log("hello");        
             if(this.tripsReserved.length === 0){
-              this.reservesAvailable.push(this.reserve); 
-              console.log(this.reservesAvailable);
+             
+                this.reservesAvailable.push(this.reserve); 
+                console.log(this.reservesAvailable);
+                console.log("A");        
 
-              console.log("A");        
      
             } else {
               console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA") 
@@ -112,25 +117,31 @@ getMyReserves(){
                   if(reserve.keyReserve === this.reserve.keyTrip){
                     console.log("not-hello");        
                   }else {
-                    this.reservesAvailable.push(this.reserve);  
-                    console.log(this.reservesAvailable);
-                   
-
-                    console.log("A");        
-                        
-
+          
+                      this.reservesAvailable.push(this.reserve);  
+                      console.log(this.reservesAvailable);
+                     
+  
+                      console.log("A"); 
+                    
+                               
                   }           
               });
             }
            } 
-           
-          
-        
+
             
           // arreglar problema de que aparece varias veces la misma reserva
-      })  
-    })
-  
+      })
+      if(reserveGeofire.LMU == true){
+        this.TripsService.getLastMinuteTripsDEMO(reserveGeofire.driverId).subscribe((reserveLMU)=>{
+          this.reserveLMU = reserveLMU[0];
+          this.initiatedTrips.push(this.reserveLMU);
+          console.log(this.initiatedTrips);
+
+        })
+      }
+    })  
   }
 
   

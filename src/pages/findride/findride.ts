@@ -411,29 +411,24 @@ geocodeLatLng(latLng,inputName) {
 
         // test: geoqueryU on listride() of findride.ts
         this.geoqueryU.on("key_entered", function(key){
-          this.afDB.database.ref('/users/' + this.user ).update({
-            geofireOrigin: true
-          }).then(()=>{
             this.afDB.database.ref('/users/'+ this.user +'/trips').update({
               origin: this.orFirebase,
               destination: this.desFirebase        
           }).then(()=>{
-              this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
-                if(status==='OK'){
-                  this.geocoordinatesOr={
-                    lat:results[0].geometry.location.lat(),
-                    lng: results[0].geometry.location.lng()
-                  }
+            this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
+              if(status==='OK'){
+                this.geocoordinatesOr={
+                  lat:results[0].geometry.location.lat(),
+                  lng: results[0].geometry.location.lng()
                 }
-                    // turn geofire On
-                  // this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
-                  this.geofireService.setGeofireOr( 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
-                  console.log('executed geofire Or');  
-                })
-
+              }
+                  // turn geofire On
+                this.geofireService.setGeofireOr( 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                this.geofireService.setGeofireOrLMU(2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                console.log('executed geofire Or');  
+              })
                 this.geofireOriginConfirmed = true;
            
-          })
           })
           console.log(key + ' detected')
         }.bind(this))
@@ -444,8 +439,9 @@ geocodeLatLng(latLng,inputName) {
 
           }else{
             this.geofireOriginConfirmed = false;
+            console.log('ORIGIN HAS BEEN EXECUTED');
           }
-        },1000)
+        },1500)
    
         this.goListRide();
           
@@ -493,6 +489,7 @@ geocodeLatLng(latLng,inputName) {
                     // turn geofire On
                   // this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
                   this.geofireService.setGeofireOr( 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  this.geofireService.setGeofireOrLMU(2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
                   console.log('executed geofire Or');          
                 })
 
@@ -525,9 +522,7 @@ geocodeLatLng(latLng,inputName) {
   
 }
 
-  //this function will be triguered in listride() after 2 seconds listride() is triguered in order to let the promise finish
     geocoderDestinationCase(){
-       if(!this.geofireOriginConfirmed == true ){
               this.geocoder.geocode({'address': this.desFirebase[0]}, (results, status)=>{
                 if(status==='OK'){
                   this.geocoordinatesDest={
@@ -538,12 +533,10 @@ geocodeLatLng(latLng,inputName) {
                     // turn geofire On
                   // this.geofireService.setLocationGeofireDest(this.user, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user)
                   this.geofireService.setGeofireDest(2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user);
-                  
+                  this.geofireService.setGeofireDestLMU(2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user);
                   console.log('executed geofire Dest');  
                           
-                })
-
-            }
+                })      
     }
 
 
@@ -583,6 +576,7 @@ setGeofireUniversity( radius:number, lat, lng, userId):void{
 
 console.log('geoquery university added');
 }
+
 
 }
   

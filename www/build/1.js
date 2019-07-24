@@ -189,6 +189,7 @@ var ListridePage = /** @class */ (function () {
                 }
                 // arreglar problema de que aparece varias veces la misma reserva
             });
+            //// ELIMINAR NODO QUE LEE LMU CUANDO FINALICE VIAJE (MERGE)
             if (reserveGeofire.LMU == true) {
                 _this.TripsService.getLastMinuteTripsDEMO(reserveGeofire.driverId).subscribe(function (reserveLMU) {
                     _this.reserveLMU = reserveLMU[0];

@@ -405,6 +405,7 @@ var FindridePage = /** @class */ (function () {
                                     }
                                     // turn geofire On
                                     _this.geofireService.setGeofireOr(2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.user);
+                                    _this.geofireService.setGeofireOrLMU(2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.user);
                                     console.log('executed geofire Or');
                                 });
                                 _this.geofireOriginConfirmed = true;
@@ -463,6 +464,7 @@ var FindridePage = /** @class */ (function () {
                                     // turn geofire On
                                     // this.geofireService.setLocationGeofireOr(this.user, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
                                     _this.geofireService.setGeofireOr(2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.user);
+                                    _this.geofireService.setGeofireOrLMU(2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.user);
                                     console.log('executed geofire Or');
                                 });
                                 _this.geofireOriginConfirmed = true;
@@ -488,7 +490,6 @@ var FindridePage = /** @class */ (function () {
             }
         }
     };
-    //this function will be triguered in listride() after 2 seconds listride() is triguered in order to let the promise finish
     FindridePage.prototype.geocoderDestinationCase = function () {
         var _this = this;
         this.geocoder.geocode({ 'address': this.desFirebase[0] }, function (results, status) {
@@ -501,6 +502,7 @@ var FindridePage = /** @class */ (function () {
             // turn geofire On
             // this.geofireService.setLocationGeofireDest(this.user, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user)
             _this.geofireService.setGeofireDest(2, _this.geocoordinatesDest.lat, _this.geocoordinatesDest.lng, _this.user);
+            _this.geofireService.setGeofireDestLMU(2, _this.geocoordinatesDest.lat, _this.geocoordinatesDest.lng, _this.user);
             console.log('executed geofire Dest');
         });
     };

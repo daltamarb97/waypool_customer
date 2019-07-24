@@ -133,6 +133,10 @@ getMyReserves(){
             
           // arreglar problema de que aparece varias veces la misma reserva
       })
+
+      //// ELIMINAR NODO QUE LEE LMU CUANDO FINALICE VIAJE (MERGE)
+
+
       if(reserveGeofire.LMU == true){
         this.TripsService.getLastMinuteTripsDEMO(reserveGeofire.driverId).subscribe((reserveLMU)=>{
           this.reserveLMU = reserveLMU[0];

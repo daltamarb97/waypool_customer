@@ -54,19 +54,19 @@ var map = {
 		1
 	],
 	"../pages/login/login.module": [
-		596,
+		595,
 		16
 	],
 	"../pages/more/more.module": [
-		595,
+		596,
 		15
 	],
 	"../pages/myride/myride.module": [
-		598,
+		597,
 		14
 	],
 	"../pages/profile/profile.module": [
-		597,
+		598,
 		13
 	],
 	"../pages/public-profile/public-profile.module": [
@@ -94,11 +94,11 @@ var map = {
 		8
 	],
 	"../pages/terms/terms.module": [
-		605,
+		606,
 		7
 	],
 	"../pages/wallet/wallet.module": [
-		606,
+		605,
 		6
 	]
 };
@@ -446,6 +446,9 @@ var geofireService = /** @class */ (function () {
     geofireService.prototype.getIdFromGeofireOrNode = function (key) {
         return this.afDB.object('/geofireOr/' + key).valueChanges();
     };
+    geofireService.prototype.getIdFromGeofireOrTripNode = function (key) {
+        return this.afDB.object('/geofireOrTrip/' + key).valueChanges();
+    };
     geofireService.prototype.setGeofireDest = function (radius, lat, lng, userId) {
         this.dbRef = this.afDB.database.ref('geofireDest/');
         this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
@@ -473,6 +476,80 @@ var geofireService = /** @class */ (function () {
     };
     geofireService.prototype.keyExitedDest = function (userId) {
         this.geoquery1.on("key_exited", function (key) {
+            this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).remove();
+        }.bind(this));
+    };
+    geofireService.prototype.setGeofireOrLMU = function (radius, lat, lng, userId) {
+        this.dbRef = this.afDB.database.ref('geofireOrTrip/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoquery2LMU = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
+        });
+        this.keyEnteredOrLMU(userId);
+        this.keyExitedOrLMU(userId);
+        console.log('geoquery or added');
+    };
+    geofireService.prototype.keyEnteredOrLMU = function (userId) {
+        this.geoquery2LMU.on("key_entered", function (key, location, distance) {
+            var _this = this;
+            console.log(key);
+            this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+                keyReserve: key,
+                LMU: true
+            }).then(function () {
+                //get driverId from geofireOr node
+                _this.getIdFromGeofireOrTripNode(key).subscribe(function (driver) {
+                    _this.driverOnNodeOr = driver;
+                    _this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+                        driverId: _this.driverOnNodeOr.driverId
+                    });
+                });
+            });
+            //  this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ this.driverOnNodeOr.keyReserve + '/' + key).push({
+            //   userId: userId
+            // })
+        }.bind(this));
+    };
+    geofireService.prototype.keyExitedOrLMU = function (userId) {
+        this.geoquery2LMU.on("key_exited", function (key) {
+            this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).remove();
+        }.bind(this));
+    };
+    geofireService.prototype.setGeofireDestLMU = function (radius, lat, lng, userId) {
+        this.dbRef = this.afDB.database.ref('geofireDestTrip/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoquery1LMU = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
+        });
+        this.keyEnteredDestLMU(userId);
+        this.keyExitedDestLMU(userId);
+        console.log('geoquery or added');
+    };
+    geofireService.prototype.keyEnteredDestLMU = function (userId) {
+        this.geoquery1LMU.on("key_entered", function (key, location, distance) {
+            var _this = this;
+            console.log(key);
+            this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+                keyReserve: key,
+                LMU: true
+            }).then(function () {
+                //get driverId from geofireOr node
+                _this.getIdFromGeofireOrTripNode(key).subscribe(function (driver) {
+                    _this.driverOnNodeDest = driver;
+                    _this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).update({
+                        driverId: _this.driverOnNodeDest.driverId
+                    });
+                });
+            });
+            //  this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ this.driverOnNodeOr.keyReserve + '/' + key).push({
+            //   userId: userId
+            // })
+        }.bind(this));
+    };
+    geofireService.prototype.keyExitedDestLMU = function (userId) {
+        this.geoquery1LMU.on("key_exited", function (key) {
             this.afDB.database.ref('/users/' + userId + '/availableReserves/' + key).remove();
         }.bind(this));
     };
@@ -1097,18 +1174,18 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/public-profile/public-profile.module#PublicProfilePageModule', name: 'PublicProfilePage', segment: 'public-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/findride/findride.module#FindridePageModule', name: 'FindridePage', segment: 'findride', priority: 'low', defaultHistory: [] }
                     ]
                 }),

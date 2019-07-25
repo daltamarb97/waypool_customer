@@ -1,0 +1,45 @@
+<ion-content>
+
+    <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
+    <ion-card>
+         <img src="assets/imgs/compaes.png" width="100px" style="display:inline-block" height="150px"/>
+
+       <ion-item  *ngFor="let passenger of passengers" >
+          <ion-avatar item-start>
+             <img src="assets/imgs/userPicture.png">
+          </ion-avatar>
+          <div class="passenger">
+            <div  class="name">
+                  <h2 (click) = 'showProfilePassegner(passenger)'>{{passenger.name |titlecase}} {{passenger.lastname  |titlecase | slice:0:1}}.</h2>
+                  <h5>{{passenger.about | slice:0:19}}...</h5>
+            </div>
+           
+          </div>
+          
+        
+       </ion-item>
+   
+       <ion-card-content>
+          <div class="ride-detail no-before">
+             <p>             Estos son tus compañeros que se han unido a tu viaje, puedes iniciar viaje 
+               
+              
+             </p>
+             
+          </div>
+       </ion-card-content>
+       <ion-card-content>
+          <div class="seats">
+             
+             <ion-row style="margin-top: 14px;   display: flex;
+             justify-content: center">
+                            <button class="btn bg-red rounded full text-white cancelbutton" (click)="cancelReserve()">Cancelar viaje</button>
+
+                
+             </ion-row>
+          </div>
+       </ion-card-content>
+      
+    </ion-card>
+
+ </ion-content>

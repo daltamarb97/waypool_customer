@@ -28,6 +28,11 @@ export class reservesService {
         return  this.afDB.object('/reserves/'+ driverUserUid +'/'+ reserveId+'/').valueChanges();
 
     }
+    public getPendingUsers(driverUserUid,reserveId){
+        //get reserves inside reserves node
+        return  this.afDB.list('/reserves/'+ driverUserUid +'/'+ reserveId+'/pendingUsers').valueChanges();
+
+    }
     public cancelReserve(userUid,driverUid,reserveId){
         //eliminate user from reserve in reserve's node        
       this.afDB.database.ref('/reserves/'+ driverUid +'/'+ reserveId+'/pendingUsers/'+userUid).remove();

@@ -1,0 +1,30 @@
+<ion-content>
+    <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
+    <ion-card>
+            <img src="assets/imgs/cancelacion.png" width="100px" style="display:inline-block" height="150px"/>
+
+        <h6 class="hot-title">Usuario de último minuto</h6>
+        <!-- <h5 class="text-hot">Este usuario desea irse contigo</h5> -->
+        <ion-item>
+            
+            <div class="name">
+                <h2>Se ha cancelado el viaje debido a que no hay nadie a quién recoger</h2>
+                <h2>Es posible que hayas eliminado el único usuario que estaba en tu viaje o te hayan cancelado</h2>
+
+            </div>
+        </ion-item>
+       
+
+
+        <ion-card-content>
+            <ion-row>
+                <ion-col>
+                    <button class="btn bg-white text-hot rounded" (click)="dismiss()"  style="width: 100%;margin-top: 14px;">OK</button>
+
+                </ion-col>
+               
+            </ion-row>
+
+        </ion-card-content>
+    </ion-card>
+</ion-content>

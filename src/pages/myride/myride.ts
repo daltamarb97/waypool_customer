@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, ToastController, IonicPage, AlertController, App } from 'ionic-angular';
+import { NavController, NavParams, ToastController, IonicPage, AlertController, App, ModalController } from 'ionic-angular';
 import { ElementRef } from '@angular/core';
 
 import { sendUsersService } from '../../services/sendUsers.service';
@@ -35,7 +35,7 @@ driverExist:boolean =false;
 info:any;
 onTrip: boolean = false;
 cancelReserves: any = [];
-  constructor(public navCtrl: NavController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App) {
+  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App) {
     
         this.TripsService.getMyReservesUser(this.userUid)
         .subscribe( myReservesId => {
@@ -78,10 +78,8 @@ cancelReserves: any = [];
                         //check if trip has to be saved 
                         this.TripsService.saveTripOnRecords(this.userUid,this.trip);
                         this.driverExist = false;     
-
                       } 
-                      this.trip.cancelReserves = this.cancelReserves;
-                      
+                      this.trip.cancelReserves = this.cancelReserves;                   
                     
                       this.trip.cancelReserves.forEach(cancelReserve => {
                         //if driver cancel you, eliminate your keyReserve of your array
@@ -89,13 +87,8 @@ cancelReserves: any = [];
                           this.driverExist = false;
                           this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
                           this.navCtrl.setRoot(this.navCtrl.getActive().component);
-                          const toast = this.toastCtrl.create({
-                            message: `El conductor te ha cancelado de su viaje`,
-                            showCloseButton: true,
-                            closeButtonText: 'Ok'
-                          });
-                          toast.present();
-                          console.log('YEAHHHHHHHHHHHHHHHHHH')
+                          let modal = this.modalCtrl.create('CanceltripPage');
+                          modal.present();
                         }
                         
                       });
@@ -121,9 +114,7 @@ cancelReserves: any = [];
     });
     this.TripsService.getPickedUpUsers(keyTrip,driverId)
     .subscribe( user => {    
-      this.pickedUpUsers = user;
-     
-     
+      this.pickedUpUsers = user;   
       console.log(this.pickedUpUsers);      
     });
   }
@@ -132,9 +123,7 @@ chatDriver(driver){
 }    
     
 callUser(number){
-    console.log(number)
-
-
+    console.log(number);
 this.callNumber.callNumber(number, true)
 .then(res => console.log('Launched dialer!', res))
 .catch((err) => {
@@ -168,16 +157,13 @@ this.callNumber.callNumber(number, true)
                 this.TripsService.cancelTrip(this.userUid,this.trip.driver.userId,this.trip.keyTrip);
                 this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
                 this.navCtrl.setRoot(this.navCtrl.getActive().component);
-
-                console.log(this.trip.keyTrip);
                 this.driverExist = false;
                 this.onTrip=false;
-                console.log(this.driverExist);
               }
               this.pickedUpUsers.forEach(pickedUser => {
                 // if user is in the pickedUpUsers array, it should not be able to cancel, because its already pickedUp.
                 if( pickedUser.userId === this.userUid){
-                  //dont cancel
+                  //don't cancel
                   const toast = this.toastCtrl.create({
                     message: `${pickedUser.name} : No puedes cancelar ya que tu compañero ya te recogió, si esto no es verdad, por favor saca un screenshot de Mi Viaje al correo waypooltec@gmail.com`,
                     showCloseButton: true,
@@ -189,13 +175,10 @@ this.callNumber.callNumber(number, true)
                  
                   this.driverExist = false;
                   this.onTrip=false;
-
                   this.TripsService.cancelTrip(this.userUid,this.trip.driver.userId,this.trip.keyTrip);
                   this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
                   console.log(this.trip.keyTrip);
                   this.navCtrl.setRoot(this.navCtrl.getActive().component);
-
-
                 }
               })
             }

@@ -75,7 +75,10 @@ export class ConfirmpopupPage {
     toast.present();  
     this.dismiss();
     }
+    dismissX(){
+      this.viewCtrl.dismiss();
 
+    }
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
     this.unsubscribe.next();

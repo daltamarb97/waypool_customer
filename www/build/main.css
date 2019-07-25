@@ -25907,6 +25907,215 @@ ion-segment-button.segment-button.segment-activated {
   z-index: -1;
 }
 
+page-canceltrip .close-icon {
+  font-size: 3rem;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+page-canceltrip .card-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 26px !important;
+  padding-right: 26px !important;
+}
+
+page-canceltrip .content {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+page-canceltrip .card {
+  border-style: outset;
+  border-width: 5px;
+  border-color: #F3705A;
+  width: 80%;
+  margin: auto;
+  height: 420px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+}
+
+page-canceltrip .card h6 {
+  color: #3fb1df;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+page-canceltrip .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+page-canceltrip .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+page-canceltrip .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+page-canceltrip .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+page-canceltrip ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+page-canceltrip ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+page-canceltrip ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  position: relative;
+  color: #252525;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+page-canceltrip ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+page-canceltrip ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+page-canceltrip ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+page-canceltrip ion-card-content .ride-detail::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 60px;
+  position: absolute;
+  left: 5px;
+  bottom: 25px;
+}
+
+page-canceltrip ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+page-canceltrip ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+page-canceltrip ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+page-canceltrip .seats .rate {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3fb1df;
+  margin: 10px;
+}
+
+page-canceltrip .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+page-canceltrip .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border: 1px solid #3fb1df;
+  border-radius: 10px;
+  color: #3fb1df;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-canceltrip .seats .seats-tag ion-icon {
+  font-size: 2rem;
+}
+
+page-canceltrip .seats .seats-tag strong {
+  font-size: 24px;
+  margin: auto;
+  color: #000;
+}
+
+page-canceltrip .note {
+  white-space: normal !important;
+}
+
+page-canceltrip .center {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+page-canceltrip .hot-title {
+  color: #F3705A;
+}
+
 page-chatting .cb {
   clear: both;
 }
@@ -27821,6 +28030,201 @@ page-ratetrip .card.rate .driver ion-textarea {
   height: 10rem;
   color: #bfbfbf;
   font-size: 1.3rem;
+}
+
+page-reserveinfo .close-icon {
+  font-size: 3rem;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+page-reserveinfo .card-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 26px !important;
+  padding-right: 26px !important;
+}
+
+page-reserveinfo .content {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+page-reserveinfo .card {
+  width: 80%;
+  margin: auto;
+  height: 465px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+}
+
+page-reserveinfo .card h6 {
+  color: #0fc874;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+page-reserveinfo .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+page-reserveinfo .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+page-reserveinfo .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+page-reserveinfo .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+page-reserveinfo ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+page-reserveinfo ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+page-reserveinfo ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  position: relative;
+  color: #252525;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+page-reserveinfo ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+page-reserveinfo ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+page-reserveinfo ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+page-reserveinfo ion-card-content .ride-detail::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: #555;
+  position: absolute;
+  left: 5px;
+  bottom: 25px;
+}
+
+page-reserveinfo ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+page-reserveinfo ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+page-reserveinfo ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+page-reserveinfo .seats .rate {
+  font-weight: 700;
+  color: #0fc874;
+}
+
+page-reserveinfo .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+page-reserveinfo .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #0fc874;
+  border-radius: 10px;
+  color: #0fc874;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-reserveinfo .seats .seats-tag ion-icon {
+  font-size: 2rem;
+}
+
+page-reserveinfo .seats .seats-tag strong {
+  margin: auto;
+  color: #000;
+}
+
+page-reserveinfo .passenger {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+page-reserveinfo .imgHeader {
+  height: 200px;
+}
+
+page-reserveinfo .cancelbutton {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 page-reservetrip .card {

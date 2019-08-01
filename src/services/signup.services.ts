@@ -7,14 +7,19 @@ import { AlertController, ToastController } from "ionic-angular";
 @Injectable()
 export class SignUpService {
 
+    userUniversity:any;
     constructor(public afDB: AngularFireDatabase, public toastCtrl: ToastController){
 
     }
 
-    public saveUser(user){
-        this.afDB.database.ref('users/'+ user.userId).update(user);
-        this.afDB.database.ref('drivers/'+ user.userId).update(user);
+    public saveUser(user, university){
+        this.afDB.database.ref(university + '/users/'+ user.userId).update(user);
+        this.afDB.database.ref(university + '/drivers/'+ user.userId).update(user);
 
+    }
+
+    public getUniversities(){
+       return this.afDB.list('universities/').valueChanges()
     }
 
     

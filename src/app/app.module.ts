@@ -7,7 +7,7 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { GoogleMaps } from '@ionic-native/google-maps';
+import { GoogleMaps, Environment } from '@ionic-native/google-maps';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -31,6 +31,7 @@ import { chatsService } from '../services/chat.service';
 import { reservesService } from '../services/reserves.service';
 import { TripsService } from '../services/trips.service';
 
+import { environmentService } from '../services/environment.service';
 
 
 export const firebaseConfig = {
@@ -40,10 +41,7 @@ export const firebaseConfig = {
   projectId: "waypoooldemo",
   storageBucket: "waypoooldemo.appspot.com",
   messagingSenderId: "1009109452629"
-};
-
-
-
+}
 
 @NgModule({
   declarations: [
@@ -87,7 +85,9 @@ export const firebaseConfig = {
     sendFeedbackService,
     chatsService,
     reservesService,
-    TripsService
+    TripsService,
+    environmentService
+    
 
   ]
 })

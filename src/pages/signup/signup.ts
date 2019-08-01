@@ -15,7 +15,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 
 
-
 @IonicPage()
 
 @Component({
@@ -30,10 +29,16 @@ export class SignupPage {
     userId:any = '';
     isReadonly = true;
     private signupGroup: FormGroup;
+    fixedemail:any;
 
-    // userFirebase = this.AngularFireAuth.auth.currentUser;
-
+    //variables linked among them 
+    emailVar:any;
+    universityVar:any;
+    universities = [];
+    showReadonly:boolean = true;
   constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams) {
+
+
     this.signupGroup = this.formBuilder.group({
         name: ["", Validators.required],
         lastname: ["", Validators.required],
@@ -42,9 +47,36 @@ export class SignupPage {
         password: ["", Validators.required],
         passwordconf: ["", Validators.required],
         phone: ["", Validators.required],
+        university: ["", Validators.required]
         
     })
+
+    this.SignUpService.getUniversities().subscribe((universities)=>{
+        this.universities = universities;
+        console.log(this.universities);
+    })
+
+
   }
+
+ onChange(){
+        this.showReadonly = true;
+        if(this.showReadonly == true){
+                var count = this.universities.length;
+                for(var i=0; i<count; i++){
+                    if(this.universities[i].name == this.universityVar){
+                      if(this.universities[i].email == undefined){
+                                this.showReadonly = false;
+                            }else{
+                                this.emailVar = this.universities[i].email
+                            }
+                        }
+                    }
+            }
+            
+        }
+
+
     scrolling(){
         this.content.scrollTo(30, 0);
     };
@@ -65,8 +97,13 @@ export class SignupPage {
           let userPassword = this.signupGroup.controls['password'].value;
           let userPasswordconf = this.signupGroup.controls['passwordconf'].value;
           let userPhone = this.signupGroup.controls['phone'].value;
-
+          let userUniversity = this.signupGroup.controls['university'].value;
           this.user = this.signupGroup.value;
+          
+
+          this.SignUpService.userUniversity = userUniversity;
+            
+
           if(userPassword === userPasswordconf){
             this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
             this.navCtrl.push('LoginPage', this.user);
@@ -76,13 +113,11 @@ export class SignupPage {
                     if(user){
                                user.getIdToken().then((token)=>{
                                this.user.tokenId = token;
-                               console.log(this.user.tokenId);
                             })
                          if(!this.user.userId){
                             this.user.userId = user.uid;
-                            console.log(this.user.userId); //remember to delete this console.log for safety reasons
                         }
-                        this.SignUpService.saveUser(this.user);
+                        this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
                     }else{
                         console.log('there is no user');
                     }

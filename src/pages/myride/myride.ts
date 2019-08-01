@@ -8,6 +8,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { Geolocation } from '@ionic-native/geolocation';
 import { SignUpService } from '../../services/signup.services';
 import { TripsService } from '../../services/trips.service';
+import { environmentService } from '../../services/environment.service';
 
 
 @IonicPage()
@@ -35,8 +36,8 @@ driverExist:boolean =false;
 info:any;
 onTrip: boolean = false;
 cancelReserves: any = [];
-  constructor(public navCtrl: NavController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App) {
-    
+  constructor(public navCtrl: NavController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private environmentService: environmentService) {
+
         this.TripsService.getMyReservesUser(this.userUid)
         .subscribe( myReservesId => {
           //get all reserves id (reserve push key, driverUid) of my user node
@@ -47,7 +48,8 @@ cancelReserves: any = [];
           this.getTrip();
     
         })    
-             
+         
+        console.log(this.SignUpService.userUniversity);
   }
   getTrip(){    
     this.myReservesId.forEach(reserve => {

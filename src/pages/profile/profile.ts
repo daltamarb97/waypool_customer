@@ -21,7 +21,7 @@ emailUser = this.AngularFireAuth.auth.currentUser.email;
 userUid=this.AngularFireAuth.auth.currentUser.uid;
 user:any={};
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,public toastCtrl: ToastController,public alertCtrl:AlertController, public AngularFireAuth:AngularFireAuth,private authenticationService: authenticationService,public SignupService:SignUpService) {  
-    this.SignupService.getMyInfoForProfile(this.userUid).subscribe(user=>{
+    this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).subscribe(user=>{
       this.user= user;
       
         console.log(this.user)
@@ -35,36 +35,36 @@ user:any={};
       this.toastConfirmation();
       this.navCtrl.pop();
     }else if(this.phone == null && this.user.about == null && this.user.url != null){
-      this.SignupService.saveInfoProfileUrl(this.userUid,this.user.url);
+      this.SignupService.saveInfoProfileUrl(this.SignupService.userUniversity, this.userUid,this.user.url);
       this.toastConfirmation();
       this.navCtrl.pop();
     }else if(this.phone == null && this.user.about != null && this.user.url == null){
-      this.SignupService.saveInfoProfileAbout(this.userUid,this.user.about);
+      this.SignupService.saveInfoProfileAbout(this.SignupService.userUniversity, this.userUid,this.user.about);
       this.toastConfirmation();
       this.navCtrl.pop();
     }else if(this.phone != null && this.user.about == null && this.user.url == null){
-      this.SignupService.saveInfoProfilePhone(this.userUid,this.phone);
+      this.SignupService.saveInfoProfilePhone(this.SignupService.userUniversity, this.userUid,this.phone);
       this.toastConfirmation();
       this.navCtrl.pop();
     }else if(this.phone != null && this.user.about != null && this.user.url == null){
-      this.SignupService.saveInfoProfilePhone(this.userUid,this.phone);
-      this.SignupService.saveInfoProfileAbout(this.userUid,this.user.about);
+      this.SignupService.saveInfoProfilePhone(this.SignupService.userUniversity, this.userUid,this.phone);
+      this.SignupService.saveInfoProfileAbout(this.SignupService.userUniversity, this.userUid,this.user.about);
       this.toastConfirmation();
       this.navCtrl.pop();
     }else if(this.phone != null && this.user.about == null && this.user.url != null){
-      this.SignupService.saveInfoProfilePhone(this.userUid,this.phone);
-      this.SignupService.saveInfoProfileUrl(this.userUid,this.user.url);
+      this.SignupService.saveInfoProfilePhone(this.SignupService.userUniversity, this.userUid,this.phone);
+      this.SignupService.saveInfoProfileUrl(this.SignupService.userUniversity, this.userUid,this.user.url);
       this.toastConfirmation();
       this.navCtrl.pop();
     }else if(this.phone == null && this.user.about != null && this.user.url != null){
-      this.SignupService.saveInfoProfileAbout(this.userUid,this.user.about);
-      this.SignupService.saveInfoProfileUrl(this.userUid,this.user.url);
+      this.SignupService.saveInfoProfileAbout(this.SignupService.userUniversity, this.userUid,this.user.about);
+      this.SignupService.saveInfoProfileUrl(this.SignupService.userUniversity, this.userUid,this.user.url);
       this.toastConfirmation();
       this.navCtrl.pop(); 
     }else if(this.phone != null && this.user.about != null && this.user.url != null){
-      this.SignupService.saveInfoProfileAbout(this.userUid,this.user.about);
-      this.SignupService.saveInfoProfileUrl(this.userUid,this.user.url);
-      this.SignupService.saveInfoProfilePhone(this.userUid, this.phone);
+      this.SignupService.saveInfoProfileAbout(this.SignupService.userUniversity, this.userUid,this.user.about);
+      this.SignupService.saveInfoProfileUrl(this.SignupService.userUniversity, this.userUid,this.user.url);
+      this.SignupService.saveInfoProfilePhone(this.SignupService.userUniversity, this.userUid, this.phone);
       this.toastConfirmation();
       this.navCtrl.pop();
     }else{
@@ -98,7 +98,7 @@ user:any={};
             handler: () => {
              
               
-              this.SignupService.deleteAccount(this.userUid) 
+              this.SignupService.deleteAccount(this.SignupService.userUniversity, this.userUid) 
               this.AngularFireAuth.auth.currentUser.delete().then(()=>{
                 console.log('user has been deleted');
               }).catch((error)=>{

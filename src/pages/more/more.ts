@@ -22,7 +22,7 @@ export class MorePage {
      user:any={};
      
   constructor(public navCtrl: NavController, public AngularFireAuth:AngularFireAuth,private authenticationService: authenticationService,public SignupService:SignUpService, public app: App) {
-     this.SignupService.getMyInfoForProfile(this.userUid).subscribe(user=>{
+     this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).subscribe(user=>{
           this.user= user;
             console.log(this.user)
         })

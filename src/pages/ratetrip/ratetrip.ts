@@ -26,7 +26,7 @@ title = 'calificacion de viaje';
 navBar: Navbar;
   constructor(private navCtrl: NavController,public navParams: NavParams, public sendfeedback:sendFeedbackService, public signUpService: SignUpService, public sendCoordsService: sendCoordsService, public angularFireAuth: AngularFireAuth) {
     this.today = Date.now();
-    this.signUpService.getMyInfo(this.userUid).subscribe(user=>{
+    this.signUpService.getMyInfo(this.signUpService.userUniversity, this.userUid).subscribe(user=>{
       this.user = user;
     })  
     this.userDriver= this.navParams.get('userDriver')   
@@ -35,11 +35,11 @@ navBar: Navbar;
 
   
   sendInfo() {
-    this.sendfeedback.sendFeedback(this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
-    this.sendCoordsService.deleteOnTripFinal(this.userUid);
+    this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+    this.sendCoordsService.deleteOnTripFinal(this.signUpService.userUniversity, this.userUid);
   }
 
   ionViewWillLeave(){
-    this.sendCoordsService.deleteOnTripFinal(this.userUid);
+    this.sendCoordsService.deleteOnTripFinal(this.signUpService.userUniversity, this.userUid);
   }
 }

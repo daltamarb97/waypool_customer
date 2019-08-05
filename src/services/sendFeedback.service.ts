@@ -9,8 +9,8 @@ constructor(public afDB: AngularFireDatabase){
               
     }
     
-   public sendFeedback(title, info, name, lastname, number, userId){
-       this.afDB.database.ref('feedback/' + title +'/users-drivers/'+ userId).set({
+   public sendFeedback(university, title, info, name, lastname, number, userId){
+       this.afDB.database.ref(university + 'feedback/' + title +'/users-drivers/'+ userId).set({
            info: info,
            name: name,
            lastname: lastname,

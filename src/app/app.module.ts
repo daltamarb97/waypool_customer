@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, NavController } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 
@@ -32,6 +32,7 @@ import { reservesService } from '../services/reserves.service';
 import { TripsService } from '../services/trips.service';
 
 import { environmentService } from '../services/environment.service';
+import { ConfirmUniversityPage } from '../pages/confirm-university/confirm-university';
 
 
 export const firebaseConfig = {
@@ -86,7 +87,8 @@ export const firebaseConfig = {
     chatsService,
     reservesService,
     TripsService,
-    environmentService
+    environmentService,
+    ConfirmUniversityPage
     
 
   ]

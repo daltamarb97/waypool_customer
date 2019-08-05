@@ -36,6 +36,7 @@ export class SignupPage {
     universityVar:any;
     universities = [];
     showReadonly:boolean = true;
+    onlyEmail:any;
   constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams) {
 
 
@@ -87,66 +88,141 @@ export class SignupPage {
     }
      
     verification(){
+        if(this.showReadonly == true){
+                //creating user on firebase
+            let userName = this.signupGroup.controls['name'].value;
+            let userLastName = this.signupGroup.controls['lastname'].value;
+            let userEmail = this.signupGroup.controls['email'].value 
+            let userFixedemail = this.signupGroup.controls['fixedemail'].value;
+            let userEmailComplete = userEmail + userFixedemail;
+            let userPassword = this.signupGroup.controls['password'].value;
+            let userPhone = this.signupGroup.controls['phone'].value;
+            let userUniversity = this.signupGroup.controls['university'].value;
+            // saving data in variable
+            this.user = {
+                name: userName,
+                lastname: userLastName,
+                email: userEmailComplete,
+                phone: userPhone,
+                university: userUniversity
+            };
+            this.SignUpService.userUniversity = userUniversity;
+                
 
-          //creating user on firebase
-          let userName = this.signupGroup.controls['name'].value;
-          let userLastName = this.signupGroup.controls['lastname'].value;
-          let userEmail = this.signupGroup.controls['email'].value 
-          let userFixedemail = this.signupGroup.controls['fixedemail'].value;
-          let userEmailComplete = userEmail + userFixedemail;
-          let userPassword = this.signupGroup.controls['password'].value;
-          let userPasswordconf = this.signupGroup.controls['passwordconf'].value;
-          let userPhone = this.signupGroup.controls['phone'].value;
-          let userUniversity = this.signupGroup.controls['university'].value;
-          this.user = this.signupGroup.value;
-          
-
-          this.SignUpService.userUniversity = userUniversity;
+            if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
+                this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
+                this.navCtrl.push('LoginPage', this.user);
             
+                if(!this.user.userId){
+                    this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
+                        if(user){
+                                user.getIdToken().then((token)=>{
+                                this.user.tokenId = token;
+                                })
+                            if(!this.user.userId){
+                                this.user.userId = user.uid;
+                            }
+                            this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
+                        }else{
+                            console.log('there is no user');
+                        }
+                    })
+                };
 
-          if(userPassword === userPasswordconf){
-            this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
-            this.navCtrl.push('LoginPage', this.user);
-        
-            if(!this.user.userId){
+                // sending email verification and verifying weather email is verified or not
                 this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
                     if(user){
-                               user.getIdToken().then((token)=>{
-                               this.user.tokenId = token;
-                            })
-                         if(!this.user.userId){
-                            this.user.userId = user.uid;
+                        if(user.emailVerified == false){
+                            user.sendEmailVerification();
+                        console.log("verification email has been sent");
+                        }else{
+                            console.log("verification email has not been sent or the email is already verifyied");
                         }
-                        this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
                     }else{
                         console.log('there is no user');
                     }
-                })
-            };
+                })  
 
-            // sending email verification and verifying weather email is verified or not
-            this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
-                if(user){
-                    if(user.emailVerified == false){
-                        user.sendEmailVerification();
-                    console.log("verification email has been sent");
-                    }else{
-                        console.log("verification email has not been sent or the email is already verifyied");
-                    }
+                
+            }else{
+                const alert = this.alertCtrl.create({
+                    title: 'Oops!',
+                    subTitle: 'las contraseñas no coinciden, intenta de nuevo',
+                    buttons: ['OK']
+                });
+                alert.present();
+            }
+        }else if(this.showReadonly === false){
+                //creating user on firebase
+                let userName = this.signupGroup.controls['name'].value;
+                let userLastName = this.signupGroup.controls['lastname'].value;
+                let userEmail = this.signupGroup.controls['email'].value 
+                let userEmailComplete = userEmail;
+                let userPassword = this.signupGroup.controls['password'].value;
+                let userPhone = this.signupGroup.controls['phone'].value;
+                let userUniversity = this.signupGroup.controls['university'].value;
+                // saving data in variable
+                this.user = {
+                    name: userName,
+                    lastname: userLastName,
+                    email: userEmail,
+                    phone: userPhone,
+                    university: userUniversity
+                };
+    
+                this.SignUpService.userUniversity = userUniversity;
+                    
+    
+                if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
+                    this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
+                    this.navCtrl.push('LoginPage', this.user);
+                
+                    if(!this.user.userId){
+                        this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
+                            if(user){
+                                    user.getIdToken().then((token)=>{
+                                    this.user.tokenId = token;
+                                    })
+                                if(!this.user.userId){
+                                    this.user.userId = user.uid;
+                                }
+                                this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
+                            }else{
+                                console.log('there is no user');
+                            }
+                        })
+                    };
+    
+                    // sending email verification and verifying weather email is verified or not
+                    this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
+                        if(user){
+                            if(user.emailVerified == false){
+                                user.sendEmailVerification();
+                            console.log("verification email has been sent");
+                            }else{
+                                console.log("verification email has not been sent or the email is already verifyied");
+                            }
+                        }else{
+                            console.log('there is no user');
+                        }
+                    })  
+    
+                    
                 }else{
-                    console.log('there is no user');
+                    const alert = this.alertCtrl.create({
+                        title: 'Oops!',
+                        subTitle: 'las contraseñas no coinciden, intenta de nuevo',
+                        buttons: ['OK']
+                    });
+                    alert.present();
                 }
-            })  
 
-               
-        }else{
-            const alert = this.alertCtrl.create({
-                title: 'Oops!',
-                subTitle: 'las contraseñas no coinciden, intenta de nuevo',
-                buttons: ['OK']
-              });
-              alert.present();
         }
+
+          
+          
+
+         
 
 
     }

@@ -44,7 +44,7 @@ export class ConfirmReservationPage {
 	  this.driverId = this.driver.userId;
 	
 
-	  this.sendCoordsService.getPendingUsers(this.driverId,this.reserveKey).takeUntil(this.unsubscribe)
+	  this.sendCoordsService.getPendingUsers(this.SignUpService.userUniversity, this.driverId,this.reserveKey).takeUntil(this.unsubscribe)
         .subscribe( passengers => {
 			this.passengers = passengers;			
 			console.log(this.passengers);

@@ -38,7 +38,7 @@ onTrip: boolean = false;
 cancelReserves: any = [];
   constructor(public navCtrl: NavController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private environmentService: environmentService) {
 
-        this.TripsService.getMyReservesUser(this.userUid)
+        this.TripsService.getMyReservesUser(this.SignUpService.userUniversity,  this.userUid)
         .subscribe( myReservesId => {
           //get all reserves id (reserve push key, driverUid) of my user node
           this.myReservesId = myReservesId;
@@ -60,7 +60,7 @@ cancelReserves: any = [];
 
         } else {
           //check if reserve exist inside node trips
-              this.TripsService.getMyReserves(reserve.keyReserve,reserve.driverId)
+              this.TripsService.getMyReserves(this.SignUpService.userUniversity, reserve.keyReserve,reserve.driverId)
                 .subscribe( info => {      
                   //check if the info of the reserve is null       
                 if(info === undefined || info === null){
@@ -78,7 +78,7 @@ cancelReserves: any = [];
                       this.driverExist = true;
                       if(this.trip.saveTrip === true){
                         //check if trip has to be saved 
-                        this.TripsService.saveTripOnRecords(this.userUid,this.trip);
+                        this.TripsService.saveTripOnRecords(this.SignUpService.userUniversity, this.userUid,this.trip);
                         this.driverExist = false;     
 
                       } 
@@ -89,7 +89,7 @@ cancelReserves: any = [];
                         //if driver cancel you, eliminate your keyReserve of your array
                         if(this.cancelReserves === cancelReserve.userId){
                           this.driverExist = false;
-                          this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
+                          this.TripsService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,this.trip.keyTrip);
                           this.navCtrl.setRoot(this.navCtrl.getActive().component);
                           const toast = this.toastCtrl.create({
                             message: `El conductor te ha cancelado de su viaje`,
@@ -116,12 +116,12 @@ cancelReserves: any = [];
       
   }
   getPendingAndPickedUpUsers(keyTrip,driverId){
-    this.TripsService.getPendingUsers(keyTrip,driverId)
+    this.TripsService.getPendingUsers(this.SignUpService.userUniversity, keyTrip,driverId)
     .subscribe( user => {      
         this.pendingUsers = user;
         console.log(this.pendingUsers);          
     });
-    this.TripsService.getPickedUpUsers(keyTrip,driverId)
+    this.TripsService.getPickedUpUsers(this.SignUpService.userUniversity, keyTrip,driverId)
     .subscribe( user => {    
       this.pickedUpUsers = user;
      
@@ -167,8 +167,8 @@ this.callNumber.callNumber(number, true)
             text: 'Si',
             handler: () => {
               if(this.pickedUpUsers.length === 0 || this.pickedUpUsers === undefined || this.pickedUpUsers === null) {
-                this.TripsService.cancelTrip(this.userUid,this.trip.driver.userId,this.trip.keyTrip);
-                this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
+                this.TripsService.cancelTrip(this.SignUpService.userUniversity, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
+                this.TripsService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,this.trip.keyTrip);
                 this.navCtrl.setRoot(this.navCtrl.getActive().component);
 
                 console.log(this.trip.keyTrip);
@@ -192,8 +192,8 @@ this.callNumber.callNumber(number, true)
                   this.driverExist = false;
                   this.onTrip=false;
 
-                  this.TripsService.cancelTrip(this.userUid,this.trip.driver.userId,this.trip.keyTrip);
-                  this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
+                  this.TripsService.cancelTrip(this.SignUpService.userUniversity, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
+                  this.TripsService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,this.trip.keyTrip);
                   console.log(this.trip.keyTrip);
                   this.navCtrl.setRoot(this.navCtrl.getActive().component);
 

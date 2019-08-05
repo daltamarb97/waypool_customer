@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 637:
+/***/ 649:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListridePageModule", function() { return ListridePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupPageModule", function() { return SignupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listride__ = __webpack_require__(658);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(671);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,59 +18,166 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ListridePageModule = /** @class */ (function () {
-    function ListridePageModule() {
+var SignupPageModule = /** @class */ (function () {
+    function SignupPageModule() {
     }
-    ListridePageModule = __decorate([
+    SignupPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__listride__["a" /* ListridePage */],
+                __WEBPACK_IMPORTED_MODULE_2__signup__["a" /* SignupPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__listride__["a" /* ListridePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__signup__["a" /* SignupPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__listride__["a" /* ListridePage */]
+                __WEBPACK_IMPORTED_MODULE_2__signup__["a" /* SignupPage */]
             ]
         })
-    ], ListridePageModule);
-    return ListridePageModule;
+    ], SignupPageModule);
+    return SignupPageModule;
 }());
 
-//# sourceMappingURL=listride.module.js.map
+//# sourceMappingURL=signup.module.js.map
 
 /***/ }),
 
-/***/ 650:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(28));
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi93cmFwcGVyL3NyYy9kYXRhYmFzZS9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7OztBQUFBLDRDQUF1QyJ9
-
-/***/ }),
-
-/***/ 658:
+/***/ 653:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListridePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(650);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(340);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(343);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_reserves_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_trips_service__ = __webpack_require__(346);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(34);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var LoginPage = /** @class */ (function () {
+    function LoginPage(navCtrl, authenticationService, alertCtrl, AngularFireAuth, NavParams, SignUpService, formBuilder, platform) {
+        this.navCtrl = navCtrl;
+        this.authenticationService = authenticationService;
+        this.alertCtrl = alertCtrl;
+        this.AngularFireAuth = AngularFireAuth;
+        this.NavParams = NavParams;
+        this.SignUpService = SignUpService;
+        this.formBuilder = formBuilder;
+        this.platform = platform;
+        this.email = '';
+        this.auth = this.AngularFireAuth.auth;
+        this.loginGroup = this.formBuilder.group({
+            email: ["", __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            password: ["", __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required]
+        });
+    }
+    LoginPage.prototype.signup = function () {
+        this.navCtrl.push('SignupPage');
+    };
+    ;
+    LoginPage.prototype.resetPassword = function (email) {
+        if (this.loginGroup.controls['email'].value == '') {
+            var alert_1 = this.alertCtrl.create({
+                title: 'no hay ningun email',
+                subTitle: 'ingresa un email para resetear tu contraseña',
+                buttons: ['OK']
+            });
+            alert_1.present();
+            console.log("reset password email hasn't been sent");
+        }
+        else {
+            this.auth.sendPasswordResetEmail(this.loginGroup.controls['email'].value);
+            var alert_2 = this.alertCtrl.create({
+                title: 'revisa tu email',
+                subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
+                buttons: ['OK']
+            });
+            alert_2.present();
+            console.log("reset password email has been sent");
+        }
+        ;
+    };
+    ;
+    LoginPage.prototype.logIn = function () {
+        var _this = this;
+        this.receivedUser = this.NavParams.data;
+        var email = this.loginGroup.controls['email'].value;
+        var password = this.loginGroup.controls['password'].value;
+        this.authenticationService.loginWithEmail(email, password).then(function (data) {
+            console.log(data);
+            if (data.user.emailVerified == false) {
+                var alert_3 = _this.alertCtrl.create({
+                    title: 'Oops!',
+                    subTitle: 'por favor verifica tu email',
+                    buttons: ['OK']
+                });
+                alert_3.present();
+            }
+            else {
+                var metadata = _this.auth.currentUser.metadata;
+                if (metadata.creationTime == metadata.lastSignInTime) {
+                    console.log(metadata.creationTime);
+                    console.log(metadata.lastSignInTime);
+                    _this.navCtrl.push('TabsPage'); //aqui va registration car, no tabspge
+                }
+                else {
+                    _this.navCtrl.push('TabsPage');
+                }
+                _this.authenticationService.getStatus;
+            }
+            ;
+        }).catch(function (error) {
+            var alert = _this.alertCtrl.create({
+                title: 'Oops!',
+                subTitle: 'El usuario o la contraseña están incorrectas',
+                buttons: ['OK']
+            });
+            alert.present();
+            console.log(error);
+        });
+        localStorage.setItem('currentUser', 'user');
+    };
+    LoginPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-login',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/login/login.html"*/'<ion-header class="transparent">\n    <ion-navbar>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="logo">\n        <img src="assets/imgs/logo waypool-01.png" alt="logo">\n    </div>\n\n    <div class="bg-white login">\n        <div class="">\n         <form [formGroup]="loginGroup" (ngSubmit)="logIn()">\n            <ion-list class="form">\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="email"  text-right  formControlName="email" placeholder= "email universitario"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>\n                </ion-item>\n            </ion-list>\n            <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!loginGroup.valid">ENTRAR</button>\n            <br>\n         </form>\n\n            <ion-row style="padding-top: 30px;">\n                <ion-col (click)="signup()"><small>¿Eres nuevo? <strong class="text-theme">¡Regístrate!</strong></small></ion-col>\n                <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme">contraseña?</strong></small></ion-col>\n            </ion-row>\n           \n\n        </div>\n    </div>\n</ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/login/login.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]])
+    ], LoginPage);
+    return LoginPage;
+}());
+
+//# sourceMappingURL=login.js.map
+
+/***/ }),
+
+/***/ 671:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(653);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -89,167 +196,207 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ListridePage = /** @class */ (function () {
-    function ListridePage(navCtrl, TripsService, toastCtrl, reservesService, AngularFireAuth, afDB, SignUpService, sendCoordsService, modalCtrl, geoFireService) {
+
+var SignupPage = /** @class */ (function () {
+    function SignupPage(navCtrl, afDB, formBuilder, authenticationService, SignUpService, alertCtrl, AngularFireAuth, navParams) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.TripsService = TripsService;
-        this.toastCtrl = toastCtrl;
-        this.reservesService = reservesService;
-        this.AngularFireAuth = AngularFireAuth;
         this.afDB = afDB;
+        this.formBuilder = formBuilder;
+        this.authenticationService = authenticationService;
         this.SignUpService = SignUpService;
-        this.sendCoordsService = sendCoordsService;
-        this.modalCtrl = modalCtrl;
-        this.geoFireService = geoFireService;
-        this.reservesAvailable = [];
-        this.initiatedTrips = [];
-        this.locationDestinationUser = [];
-        this.locationOriginUser = [];
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.ReservesGeofire = [];
-        this.tripsReserved = [];
-        console.log("AQUI EMPIEZA");
-        this.SignUpService.getMyInfo(this.userUid).subscribe(function (user) {
-            _this.user = user;
+        this.alertCtrl = alertCtrl;
+        this.AngularFireAuth = AngularFireAuth;
+        this.navParams = navParams;
+        this.user = {};
+        this.tokenId = '';
+        this.userId = '';
+        this.isReadonly = true;
+        this.universities = [];
+        this.showReadonly = true;
+        this.signupGroup = this.formBuilder.group({
+            name: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
+            lastname: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
+            email: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
+            fixedemail: [""],
+            password: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
+            passwordconf: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
+            phone: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
+            university: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required]
         });
-        this.sendCoordsService.getOriginUser(this.userUid)
-            .subscribe(function (originUser) {
-            _this.locationOriginUser = originUser;
-            // this.locationOrigin.push(origin)
-            console.log(originUser);
+        this.SignUpService.getUniversities().subscribe(function (universities) {
+            _this.universities = universities;
+            console.log(_this.universities);
         });
-        this.sendCoordsService.getDestinationUser(this.userUid)
-            .subscribe(function (destinationUser) {
-            _this.locationDestinationUser = destinationUser;
-            // this.locationOrigin.push(origin)
-            console.log(destinationUser);
-        });
-        this.reservesService.getMyReservesUser(this.userUid)
-            .subscribe(function (tripsReserved) {
-            _this.tripsReserved = tripsReserved;
-            console.log(_this.tripsReserved);
-        });
-        this.reservesService.getReserves(this.userUid)
-            .subscribe(function (reserves) {
-            _this.ReservesGeofire = reserves;
-            console.log(_this.ReservesGeofire);
-            _this.getMyReserves();
-        });
-        // this.TripsService.getLastMinuteTripsDEMO(this.userUid)
-        // //cambiar en merge
-        //   .subscribe(reserves => {
-        //     this.initiatedTrips = reserves;
-        //     console.log(this.initiatedTrips);
-        //   });
     }
-    ListridePage.prototype.getMyReserves = function () {
-        var _this = this;
-        this.reservesService.getMyReservesUser(this.userUid)
-            .subscribe(function (tripsReserved) {
-            _this.tripsReserved = tripsReserved;
-            console.log(_this.tripsReserved);
-            _this.getAvailableReserves();
-        });
-    };
-    ListridePage.prototype.getAvailableReserves = function () {
-        //bring reserves that i have entered to hide them in listride
-        var _this = this;
-        //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
-        this.ReservesGeofire.forEach(function (reserveGeofire) {
-            _this.reservesService.getMyReserves(reserveGeofire.driverId, reserveGeofire.keyReserve)
-                .subscribe(function (info) {
-                _this.reserve = info;
-                console.log(info);
-                if (_this.reserve === undefined || _this.reserve === null) {
-                    // reserve doesn't exist
-                    console.log("hello");
-                }
-                else {
-                    console.log("hello");
-                    if (_this.tripsReserved.length === 0) {
-                        _this.reservesAvailable.push(_this.reserve);
-                        console.log(_this.reservesAvailable);
-                        console.log("A");
+    SignupPage.prototype.onChange = function () {
+        this.showReadonly = true;
+        if (this.showReadonly == true) {
+            var count = this.universities.length;
+            for (var i = 0; i < count; i++) {
+                if (this.universities[i].name == this.universityVar) {
+                    if (this.universities[i].email == undefined) {
+                        this.showReadonly = false;
                     }
                     else {
-                        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                        _this.tripsReserved.forEach(function (reserve) {
-                            console.log(reserve);
-                            if (reserve.keyReserve === _this.reserve.keyTrip) {
-                                console.log("not-hello");
-                            }
-                            else {
-                                _this.reservesAvailable.push(_this.reserve);
-                                console.log(_this.reservesAvailable);
-                                console.log("A");
-                            }
-                        });
+                        this.emailVar = this.universities[i].email;
                     }
                 }
-                // arreglar problema de que aparece varias veces la misma reserva
-            });
-            //// ELIMINAR NODO QUE LEE LMU CUANDO FINALICE VIAJE (MERGE)
-            if (reserveGeofire.LMU == true) {
-                _this.TripsService.getLastMinuteTripsDEMO(reserveGeofire.driverId).subscribe(function (reserveLMU) {
-                    _this.reserveLMU = reserveLMU[0];
-                    _this.initiatedTrips.push(_this.reserveLMU);
-                    console.log(_this.initiatedTrips);
+            }
+        }
+    };
+    SignupPage.prototype.scrolling = function () {
+        this.content.scrollTo(30, 0);
+    };
+    ;
+    SignupPage.prototype.login = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__login_login__["a" /* LoginPage */]);
+    };
+    SignupPage.prototype.verification = function () {
+        var _this = this;
+        if (this.showReadonly == true) {
+            //creating user on firebase
+            var userName = this.signupGroup.controls['name'].value;
+            var userLastName = this.signupGroup.controls['lastname'].value;
+            var userEmail = this.signupGroup.controls['email'].value;
+            var userFixedemail = this.signupGroup.controls['fixedemail'].value;
+            var userEmailComplete = userEmail + userFixedemail;
+            var userPassword = this.signupGroup.controls['password'].value;
+            var userPhone = this.signupGroup.controls['phone'].value;
+            var userUniversity = this.signupGroup.controls['university'].value;
+            // saving data in variable
+            this.user = {
+                name: userName,
+                lastname: userLastName,
+                email: userEmailComplete,
+                phone: userPhone,
+                university: userUniversity
+            };
+            this.SignUpService.userUniversity = userUniversity;
+            if (this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value) {
+                this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
+                this.navCtrl.push('LoginPage', this.user);
+                if (!this.user.userId) {
+                    this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
+                        if (user) {
+                            user.getIdToken().then(function (token) {
+                                _this.user.tokenId = token;
+                            });
+                            if (!_this.user.userId) {
+                                _this.user.userId = user.uid;
+                            }
+                            _this.SignUpService.saveUser(_this.user, _this.SignUpService.userUniversity);
+                        }
+                        else {
+                            console.log('there is no user');
+                        }
+                    });
+                }
+                ;
+                // sending email verification and verifying weather email is verified or not
+                this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
+                    if (user) {
+                        if (user.emailVerified == false) {
+                            user.sendEmailVerification();
+                            console.log("verification email has been sent");
+                        }
+                        else {
+                            console.log("verification email has not been sent or the email is already verifyied");
+                        }
+                    }
+                    else {
+                        console.log('there is no user');
+                    }
                 });
             }
-        });
+            else {
+                var alert = this.alertCtrl.create({
+                    title: 'Oops!',
+                    subTitle: 'las contraseñas no coinciden, intenta de nuevo',
+                    buttons: ['OK']
+                });
+                alert.present();
+            }
+        }
+        else if (this.showReadonly === false) {
+            //creating user on firebase
+            var userName = this.signupGroup.controls['name'].value;
+            var userLastName = this.signupGroup.controls['lastname'].value;
+            var userEmail = this.signupGroup.controls['email'].value;
+            var userEmailComplete = userEmail;
+            var userPassword = this.signupGroup.controls['password'].value;
+            var userPhone = this.signupGroup.controls['phone'].value;
+            var userUniversity = this.signupGroup.controls['university'].value;
+            // saving data in variable
+            this.user = {
+                name: userName,
+                lastname: userLastName,
+                email: userEmail,
+                phone: userPhone,
+                university: userUniversity
+            };
+            this.SignUpService.userUniversity = userUniversity;
+            if (this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value) {
+                this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
+                this.navCtrl.push('LoginPage', this.user);
+                if (!this.user.userId) {
+                    this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
+                        if (user) {
+                            user.getIdToken().then(function (token) {
+                                _this.user.tokenId = token;
+                            });
+                            if (!_this.user.userId) {
+                                _this.user.userId = user.uid;
+                            }
+                            _this.SignUpService.saveUser(_this.user, _this.SignUpService.userUniversity);
+                        }
+                        else {
+                            console.log('there is no user');
+                        }
+                    });
+                }
+                ;
+                // sending email verification and verifying weather email is verified or not
+                this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
+                    if (user) {
+                        if (user.emailVerified == false) {
+                            user.sendEmailVerification();
+                            console.log("verification email has been sent");
+                        }
+                        else {
+                            console.log("verification email has not been sent or the email is already verifyied");
+                        }
+                    }
+                    else {
+                        console.log('there is no user');
+                    }
+                });
+            }
+            else {
+                var alert = this.alertCtrl.create({
+                    title: 'Oops!',
+                    subTitle: 'las contraseñas no coinciden, intenta de nuevo',
+                    buttons: ['OK']
+                });
+                alert.present();
+            }
+        }
     };
-    ListridePage.prototype.ionViewDidLoad = function () {
-        // this.geoFireService.getDriversAvailableForUser(this.userUid)
-        //   .subscribe(drivers=>{
-        //       this.driversAvailable = drivers;
-        //       console.log(this.driversAvailable);
-        //   })
-    };
-    ListridePage.prototype.confirmpopup = function (reserve, keyArray, driverUserId) {
-        //mutacion: tiene q mutar o eliminarse
-        //   if(this.user.trips.onTrip == true || this.user.trips.pickedUp == true){
-        //     // this.geoFireService.deleteDriverListRideTotal(this.userUid);
-        //     this.geoFireService.deleteDriverListRideTotal(this.userUid);
-        //     const toast = this.toastCtrl.create({
-        //       message: `${this.user.name} : No puedes escoger otro conductor mientras estes en un viaje, por favor dirígete a Mi Viaje y cancelalo. `,
-        //       showCloseButton: true,
-        //       closeButtonText: 'Ok'
-        //     });
-        //     toast.present();
-        //   } else {
-        //  let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve,keyArray});
-        //  modal.present();
-        //  console.log(reserve)
-        //   }
-        var modal = this.modalCtrl.create('ConfirmpopupPage', { reserve: reserve });
-        modal.present();
-        //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
-    };
-    ListridePage.prototype.enterTrip = function (trip) {
-        var modal = this.modalCtrl.create('ConfirmtripPage', { trip: trip });
-        modal.present();
-        //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
-    };
-    ListridePage.prototype.help = function () {
-        var toast = this.toastCtrl.create({
-            message: 'Estos son los conductores que se van a tu misma zona. Podrás ver sus horas en las que se van y unirte en su viaje',
-            showCloseButton: true,
-            closeButtonText: 'OK',
-            position: 'top'
-        });
-        toast.present();
-    };
-    ListridePage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Content */]),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Content */]) === "function" && _a || Object)
+    ], SignupPage.prototype, "content", void 0);
+    SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-listride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/listride/listride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar >\n\n        <ion-title class="Title">ESCOGE TU COMPAÑERO\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light" class="hideLongText">\n    <ion-row class="center-align bg-white flow-ride">\n        <ion-col *ngFor = "let originUser of locationOriginUser"  class="hideLongText" col-5>\n            <h2>Origen</h2> {{originUser}}\n\n        </ion-col>\n        <ion-col col-2 text-center>\n            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">\n        </ion-col>\n        <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>\n            <h2>Destino</h2> {{destinationUser}}\n        </ion-col>\n\n    </ion-row>\n    <div class="iconHelp">\n        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>\n\n    </div>\n    <ion-card *ngFor = "let trip of initiatedTrips">\n        <ion-item>\n            <ion-avatar item-start>\n                <img class="animated infinite pulse" src="assets/imgs/flame.png">\n            </ion-avatar>\n           \n            <div class="name">\n               \n                <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase | slice:0:1}}\n                    <ion-icon name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                </h2>\n                <p>{{trip.car}}</p>\n            </div>\n            <div class="more">\n                <h2 class="text text-hot">                        \n                 $ {{trip.price}}                          \n                </h2>\n               \n            </div>\n        </ion-item>\n        <ion-card-content >\n            <div  class="ride-detail">\n                <p>\n                    <span class="icon-location bg-theme"></span>{{trip.origin}}</p>\n                <p>\n                    <span class="icon-location bg-yellow"></span>{{trip.destination}}</p>\n            </div>\n            <ion-row class="center-align">  \n                <ion-col center text-center col-6 text-right style="margin-left: auto;">\n                        <h2 class="text text-hot animated infinite pulse">                        \n                                Viaje en curso                         \n                             </h2>  \n                                       \n                </ion-col>                \n                \n                <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                    <button class="btn bg-hot rounded full text-white" (click)="enterTrip(trip)">Unirme</button>\n                        </ion-col>\n            </ion-row>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor = "let reserve of reservesAvailable">\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n           \n            <div class="name">\n                \n                <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase | slice:0:1}} \n                    <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                </h2>\n                <p>{{reserve.car}}</p>\n            </div>\n            <div class="more">\n                <h2 class="text text-theme">                        \n                    $ {{reserve.price}}                          \n                </h2>\n               \n            </div>\n        </ion-item>\n        <ion-card-content >\n            <div  class="ride-detail">\n                <p>\n                    <span class="icon-location bg-theme"></span>{{reserve.origin}}</p>\n                <p>\n                    <span class="icon-location bg-yellow"></span>{{reserve.destination}}</p>\n            </div>\n            <ion-row class="center-align">  \n                <ion-col center text-center col-6 text-right style="margin-left: auto;">\n                    \n                    <h2 class="text text-theme">                        \n                        Hora de partida: {{reserve.startHour}}                          \n                    </h2>                    \n                </ion-col>                \n                \n                <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                    <button class="btn bg-theme rounded full text-white" (click)="confirmpopup(reserve)">Unirme</button>\n                        </ion-col>\n            </ion-row>\n        </ion-card-content>\n    </ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/listride/listride.html"*/
+            selector: 'page-signup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/signup/signup.html"*/'<ion-header class="transparent">\n    <ion-navbar>\n        <ion-title><span class="text-white">REGÍSTRATE</span></ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n\n<ion-content>\n    <form [formGroup]="signupGroup" (ngSubmit)="verification()">\n    <div>\n        <div class="">\n                <ion-row>\n                        <ion-col class="name-fild">\n                            <ion-list class="form" style="margin-bottom: 0">\n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>\n                                </ion-item>\n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>\n                                </ion-item>\n                                <ion-item>\n                                    <ion-label  text-right >selecciona tu universidad</ion-label>\n                                        <ion-select (ionChange)="onChange()" [(ngModel)]="universityVar" formControlName="university">\n                                            <ion-option *ngFor="let uni of universities">{{uni.name}}</ion-option>\n                                        </ion-select>\n                                </ion-item>\n                            </ion-list>\n                        </ion-col>\n                    </ion-row>\n                    <div [ngSwitch]="showReadonly">\n                            <ion-row *ngSwitchCase=true>\n                                    <ion-col class="name-fild-2">\n                                        <ion-list class="form">\n                                            <ion-item class="editable-email">\n                                                    <ion-label></ion-label>\n                                                        <ion-input type="text" text-right formControlName="email" placeholder= "email"></ion-input>\n                                                    </ion-item>\n                                            </ion-list>\n                                    </ion-col>\n                                    <ion-col class="name-fild-2">\n                                        <ion-list class="form">\n                                            <ion-item class="nonEditable-email">\n                                                    <ion-input readonly [(ngModel)]=\'emailVar\' formControlName="fixedemail"></ion-input>\n                                                </ion-item>\n                                        </ion-list>\n                                    </ion-col>\n                                </ion-row>\n            \n            \n            \n                                <ion-row *ngSwitchCase=false >\n                                        <ion-col class="name-fild-2">\n                                            <ion-list class="form">\n                                                <ion-item class="editable-email">\n                                                        <ion-label></ion-label>\n                                                            <ion-input type="text" text-right [(ngModel)]=\'onlyEmail\' formControlName="email" placeholder= "email"></ion-input>\n                                                        </ion-item>\n                                                </ion-list>\n                                        </ion-col>\n                                    </ion-row>\n                    </div>\n\n            <ion-list class="form" style="margin-bottom: 0">\n                <ion-item>\n                    <ion-label  fixed><span style="font-weight: bold; color: red;">(mínimo 6 caracteres)</span></ion-label>\n                    <ion-input type="password"  text-right formControlName="password" placeholder= "crea tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="text" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>\n                </ion-item>\n            </ion-list>\n            <div class="footer-signup">\n                    <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>\n                    <p text-center>¿ya estas registrado? <strong class="text-theme" (click)="login()">Inicia sesión</strong></p>\n            </div>\n        </div>\n    </div>\n</form>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/signup/signup.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_8__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */]])
-    ], ListridePage);
-    return ListridePage;
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["AngularFireDatabase"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__["a" /* authenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__["a" /* authenticationService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__["AngularFireAuth"]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _j || Object])
+    ], SignupPage);
+    return SignupPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
-//# sourceMappingURL=listride.js.map
+//# sourceMappingURL=signup.js.map
 
 /***/ })
 

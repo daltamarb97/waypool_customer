@@ -66,8 +66,8 @@ constructor(public afDB: AngularFireDatabase, private afAuth: AngularFireAuth){
         
             }
    
-    public getRecordTrips(userUid){
-        return  this.afDB.list('/users/'+ userUid +'/recordTrips/').valueChanges();
+    public getRecordTrips(university, userUid){
+        return  this.afDB.list(university + '/users/'+ userUid +'/recordTrips/').valueChanges();
     
        }
 }

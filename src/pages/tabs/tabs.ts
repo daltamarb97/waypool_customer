@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 
 import { IonicPage } from 'ionic-angular';
+
 @IonicPage()
 
 @Component({
@@ -16,6 +17,16 @@ export class TabsPage {
   tab4Root = 'MorePage';
 
   constructor() {
-
+    // this.goConfirmUniversity();
   }
+
+//   goConfirmUniversity(){
+//     let modal = this.modalCtrl.create('ConfirmUniversityPage')
+//     modal.onDidDismiss(accepted => {
+//       if(accepted){
+//         modal.dismiss();
+//       }
+//     })
+//  modal.present();
+// } 
 }

@@ -33,7 +33,7 @@ export class ConfirmpopupPage {
     
         
        //get the info of the driver 
-       this.SignUpService.getMyInfo(this.userUid)
+       this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
          console.log(this.user);          
@@ -45,7 +45,7 @@ export class ConfirmpopupPage {
 
   goToRide(){  
     
-    this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
+    this.SignUpService.getMyInfo(this.SignUpService.userUniversity,this.userUid).takeUntil(this.unsubscribe)
     .subscribe(user=>{
       this.user = user; 
       // OLD
@@ -59,9 +59,9 @@ export class ConfirmpopupPage {
       
     })
     console.log(this.user.about);
-    this.geoFireService.joinReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note, this.user.about, this.user.email, this.user.fixedemail);
-    this.geoFireService.pushToMyReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
-    this.geoFireService.deleteReserveFromAvailableReserves(this.userUid, this.reserve.keyTrip);
+    this.geoFireService.joinReserve(this.SignUpService.userUniversity, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note, this.user.about, this.user.email, this.user.fixedemail);
+    this.geoFireService.pushToMyReserve(this.SignUpService.userUniversity,this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
+    this.geoFireService.deleteReserveFromAvailableReserves(this.SignUpService.userUniversity, this.userUid, this.reserve.keyTrip);
         //deprecated
     // this.geoFireService.removeKeyGeofire(this.userUid);
     //OLD

@@ -1,0 +1,30 @@
+<ion-content>
+    <ion-card>
+    <h6 class="text-theme">¿CUÁL ES TU UNIVERSIDAD?</h6>
+    <ion-card-content>
+        <ion-list>
+            <ion-item>
+              <ion-label>escoge tu universidad </ion-label>
+              <ion-select (ionChange)="onChange()" okText="Ok" cancelText="Cancel" [(ngModel)]= 'universityChosen'>
+                <ion-option  *ngFor="let uni of universities"  name="fieldName" ngDefaultControl>{{uni.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+          
+          </ion-list>
+    </ion-card-content>
+
+    <ion-card-content>
+        <div >
+            
+            <ion-row style="margin-top: 14px;justify-content: center">
+                
+                <ion-col col-8>
+                    <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.5rem;" (click)="goToFindaride()">Continuar</button>
+                </ion-col>
+            </ion-row>
+
+
+        </div>
+    </ion-card-content>
+    </ion-card>
+</ion-content>

@@ -27,13 +27,13 @@ export class SupportPage {
     this.info = this.navParams.get('info')
 
     this.today = Date.now();
-    this.SignupService.getMyInfoForProfile(this.userUid).subscribe(user=>{
+    this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).subscribe(user=>{
       this.user= user;
         console.log(this.user)
     })
   }
     sendEmail() {
-      this.sendfeedback.sendFeedback(this.typeOfSituation, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+      this.sendfeedback.sendFeedback(this.SignupService.userUniversity, this.typeOfSituation, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
       this.navCtrl.pop();
     }
 

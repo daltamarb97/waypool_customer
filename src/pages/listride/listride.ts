@@ -29,23 +29,23 @@ export class ListridePage {
   reserveLMU:any;
   constructor(public navCtrl: NavController,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
-    this.SignUpService.getMyInfo(this.userUid).subscribe(user=>{
+    this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid).subscribe(user=>{
       this.user = user;   
     })
     
-    this.sendCoordsService.getOriginUser(this.userUid)
+    this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid)
     .subscribe( originUser => {
       this.locationOriginUser = originUser;
       // this.locationOrigin.push(origin)
       console.log(originUser);
     });
-    this.sendCoordsService.getDestinationUser(this.userUid)
+    this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid)
         .subscribe( destinationUser => {
           this.locationDestinationUser = destinationUser;
           // this.locationOrigin.push(origin)
           console.log(destinationUser);
         });
-        this.reservesService.getMyReservesUser(this.userUid)
+        this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid)
         .subscribe( tripsReserved => {
           
   
@@ -53,7 +53,7 @@ export class ListridePage {
           console.log(this.tripsReserved);
   
         }) 
-    this.reservesService.getReserves(this.userUid)    
+    this.reservesService.getReserves(this.SignUpService.userUniversity, this.userUid)    
       .subscribe(reserves => {
       
         this.ReservesGeofire = reserves;
@@ -75,7 +75,7 @@ export class ListridePage {
    
   }
 getMyReserves(){
-  this.reservesService.getMyReservesUser(this.userUid)
+  this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid)
   .subscribe( tripsReserved => {
     
 
@@ -93,7 +93,7 @@ getMyReserves(){
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
       this.ReservesGeofire.forEach(reserveGeofire => {
         
-          this.reservesService.getMyReserves(reserveGeofire.driverId,reserveGeofire.keyReserve)
+          this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserveGeofire.driverId,reserveGeofire.keyReserve)
       .subscribe( info => {        
             this.reserve = info;    
             console.log(info);
@@ -138,7 +138,7 @@ getMyReserves(){
 
 
       if(reserveGeofire.LMU == true){
-        this.TripsService.getLastMinuteTripsDEMO(reserveGeofire.driverId).subscribe((reserveLMU)=>{
+        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userUniversity, reserveGeofire.driverId).subscribe((reserveLMU)=>{
           this.reserveLMU = reserveLMU[0];
           this.initiatedTrips.push(this.reserveLMU);
           console.log(this.initiatedTrips);

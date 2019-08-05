@@ -32,8 +32,8 @@ export class SignUpService {
         return this.afDB.list('/drivers').valueChanges();
     }
 
-     getMyInfo(userId){
-        return this.afDB.object('users/'+ userId).valueChanges();
+     getMyInfo(userId, university){
+        return this.afDB.object(university + '/users/'+ userId).valueChanges();
         }
 
         public getInfoDriver(userDriverId){
@@ -42,13 +42,13 @@ export class SignUpService {
     
 
 
-    public  deleteAccount(userId){
-        this.afDB.database.ref('/users/'+userId).remove();
-        this.afDB.database.ref('/drivers/'+userId).remove();
+    public  deleteAccount(university, userId){
+        this.afDB.database.ref(university + '/users/'+userId).remove();
+        this.afDB.database.ref(university + '/drivers/'+userId).remove();
 
         } 
-public getMyInfoForProfile(userId){
-            return this.afDB.object('users/'+ userId).valueChanges();
+public getMyInfoForProfile(university, userId){
+            return this.afDB.object(university + '/users/'+ userId).valueChanges();
             }
 
 
@@ -64,23 +64,23 @@ public getMyInfoForProfile(userId){
         })
    }
 
-   public saveInfoProfileUrl(userUid,url){
+   public saveInfoProfileUrl(university, userUid,url){
     //permite configurar la información del perfil
- this.afDB.database.ref('/users/'+ userUid).update({
+ this.afDB.database.ref(university + '/users/'+ userUid).update({
      url:url
      });
  }
 
- public saveInfoProfileAbout(userUid,about){
+ public saveInfoProfileAbout(university, userUid,about){
     //permite configurar la información del perfil
- this.afDB.database.ref('/users/'+ userUid).update({
+ this.afDB.database.ref(university + '/users/'+ userUid).update({
      about:about 
      });
  }
 
- public saveInfoProfilePhone(userUid,phone){
+ public saveInfoProfilePhone(university, userUid,phone){
     //permite configurar la información del perfil
- this.afDB.database.ref('/users/'+ userUid).update({
+ this.afDB.database.ref(university + '/users/'+ userUid).update({
      phone:phone
      });
  }

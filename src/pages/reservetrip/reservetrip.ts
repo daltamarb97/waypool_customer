@@ -39,7 +39,7 @@ export class ReservetripPage{
   constructor(public navCtrl: NavController,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController) {
 
    
-    this.reservesService.getMyReservesSelected(this.userUid)
+    this.reservesService.getMyReservesSelected(this.SignUpService.userUniversity, this.userUid)
     .subscribe( myReservesId => {
 
       console.log(this.myReserves)
@@ -52,12 +52,12 @@ export class ReservetripPage{
       this.getReserves();
     })    
 
-    this.sendCoordsService.getOriginUser(this.userUid)
+    this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid)
     .subscribe( originUser => {
       this.locationOrigin = originUser;      
     });
     
-    this.sendCoordsService.getDestinationUser(this.userUid)
+    this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid)
         .subscribe( destinationUser => {
           this.locationDestination = destinationUser;
         });
@@ -71,7 +71,7 @@ export class ReservetripPage{
 
       //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
         this.myReservesId.forEach(reserve => {
-        this.reservesService.getMyReserves(reserve.driverId,reserve.keyReserve)
+        this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserve.driverId,reserve.keyReserve)
         .subscribe( info => {
               this.reserve = info;  
               this.myReserves.push(this.reserve);
@@ -83,8 +83,8 @@ export class ReservetripPage{
   
   
 cancelReserve(driverUid,keyTrip){
-  this.reservesService.cancelReserve(this.userUid,driverUid,keyTrip);
-  this.reservesService.eliminateKeyUser(this.userUid,keyTrip);
+  this.reservesService.cancelReserve(this.SignUpService.userUniversity, this.userUid,driverUid,keyTrip);
+  this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,keyTrip);
   // Hacer el boton de cancelar , para la reserva y probar q vuelva a salir en listride
 }
  

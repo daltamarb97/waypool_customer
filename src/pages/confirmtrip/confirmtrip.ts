@@ -35,7 +35,7 @@ export class ConfirmtripPage {
     
         
        //get the info of the driver 
-       this.SignUpService.getMyInfo(this.userUid)
+       this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
          console.log(this.user);          
@@ -45,7 +45,7 @@ export class ConfirmtripPage {
 
   goToRide(){  
     
-    this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
+    this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe(user=>{
       this.user = user; 
       // OLD
@@ -60,7 +60,7 @@ export class ConfirmtripPage {
     })
     
     this.TripsService.joinTrip(this.trip.keyTrip,this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
-    this.geoFireService.pushToMyReserve(this.trip.keyTrip,this.trip.driver.userId, this.userUid);
+    this.geoFireService.pushToMyReserve(this.SignUpService.userUniversity, this.trip.keyTrip,this.trip.driver.userId, this.userUid);
 
     // this.geoFireService.removeKeyGeofire(this.userUid);
     //OLD

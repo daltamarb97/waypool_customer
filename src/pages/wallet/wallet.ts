@@ -3,6 +3,7 @@ import { NavController, AlertController, ToastController, IonicPage } from 'ioni
 import { AngularFireAuth } from 'angularfire2/auth';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { sendUsersService } from '../../services/sendUsers.service';
+import { SignUpService } from '../../services/signup.services';
 @IonicPage()
 
 @Component({
@@ -14,8 +15,8 @@ export class WalletPage {
   recordTrips:any=[];
   price:any;
   
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController,public sendUsersService:sendUsersService,public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth) {
-    this.sendUsersService.getRecordTrips(this.userUid)
+  constructor(public navCtrl: NavController,public toastCtrl: ToastController,public sendUsersService:sendUsersService,public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public signUpServices: SignUpService) {
+    this.sendUsersService.getRecordTrips(this.signUpServices.userUniversity, this.userUid)
     .subscribe( user => {
     
       this.recordTrips = user;

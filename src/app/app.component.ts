@@ -37,8 +37,11 @@ export class MyApp {
     splashScreen.hide();
     firebase.auth().onAuthStateChanged((user)=>{
       if(user){
-        this.rootPage = 'TabsPage';
-
+        if(user.emailVerified == false){
+          this.rootPage = 'LoginPage';
+        }else{
+          this.rootPage = 'TabsPage';
+        }
       }else{
         this.rootPage = 'LoginPage';
       }

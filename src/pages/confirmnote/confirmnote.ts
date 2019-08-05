@@ -29,21 +29,17 @@ export class ConfirmNotePage {
      
   }
 
-  ionViewDidEnter(){
-    this.geofireService.cancelGeoqueryUniversity();
-    this.geofireService.cancelGeofireOrigin(this.userUid);
-   }
   
     setNoteDriver(){
       if(this.note == null || this.note == ''){
         this.note = 'No hay nota'
-        this.noteService.setNote(this.userUid,this.note)
+        this.noteService.setNote(this.SignUpService.userUniversity, this.userUid,this.note)
 
         this.accepted = true;
         this.dismiss(); 
         
       } else {
-        this.noteService.setNote(this.userUid,this.note)
+        this.noteService.setNote(this.SignUpService.userUniversity, this.userUid,this.note)
         this.accepted = true;
         this.dismiss();        
       }

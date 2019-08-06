@@ -110,7 +110,16 @@ export class SignupPage {
                 
 
             if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
-                this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
+                this.authenticationService.registerWithEmail(userEmailComplete, userPassword).catch((error)=>{
+                    if(error.code === "auth/email-already-in-use"){
+                        const alert = this.alertCtrl.create({
+                            title: 'ya existe una cuenta con este correo',
+                            subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
+                            buttons: ['OK']
+                          });
+                          alert.present(); 
+                    }
+                })
                 this.navCtrl.push('LoginPage', this.user);
             
                 if(!this.user.userId){
@@ -174,7 +183,16 @@ export class SignupPage {
                     
     
                 if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
-                    this.authenticationService.registerWithEmail(userEmailComplete, userPassword);
+                    this.authenticationService.registerWithEmail(userEmailComplete, userPassword).catch((error)=>{
+                        if(error.code === "auth/email-already-in-use"){
+                            const alert = this.alertCtrl.create({
+                                title: 'ya existe una cuenta con este correo',
+                                subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
+                                buttons: ['OK']
+                              });
+                              alert.present(); 
+                        }
+                    })
                     this.navCtrl.push('LoginPage', this.user);
                 
                     if(!this.user.userId){

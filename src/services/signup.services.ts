@@ -7,6 +7,7 @@ import { AlertController, ToastController } from "ionic-angular";
 @Injectable()
 export class SignUpService {
 
+    //gloabl variable for university identifaction
     userUniversity:any;
     constructor(public afDB: AngularFireDatabase, public toastCtrl: ToastController){
 

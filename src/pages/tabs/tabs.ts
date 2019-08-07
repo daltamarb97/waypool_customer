@@ -10,7 +10,6 @@ import { IonicPage } from 'ionic-angular';
 export class TabsPage {
 
   tab1Root = 'FindridePage';
-  tab2Root = 'MyridePage';
   
   tab3Root = 'WalletPage';
   tab4Root = 'MorePage';

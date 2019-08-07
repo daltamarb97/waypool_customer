@@ -22,7 +22,7 @@ export class geofireService {
         this.geoFire = new GeoFire(this.dbRef); 
 
         // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-            // this.user = user;
+            this.user = userId;
             // if(!this.user.onTrip == true){
                 this.geoFire.set(key, [lat, lng]).then(function(){
                     console.log('location updated');
@@ -93,8 +93,13 @@ export class geofireService {
     pushToMyReserve(keyReserve,driverId,userId){
         this.afDB.database.ref('/users/' + userId +'/myReserves/'+ keyReserve).update({
             keyReserve: keyReserve,
-            driverId: driverId,
-            
+            driverId: driverId            
+        });
+    }
+    saveKey(keyReserve,driverId,userId){
+        this.afDB.database.ref('/users/' + userId +'/keyTrip/').set({
+            keyTrip: keyReserve,
+            driverId: driverId            
         });
     }
     joinReserve(keyReserve,driverId, userId, origin, destination, name, lastname, phone, note){

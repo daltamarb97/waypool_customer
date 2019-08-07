@@ -38,6 +38,7 @@ export class ReservetripPage{
   myReserves:any =[];
   reserve:any;
   pendingUsers:any = [];
+  onTrip:any;
 
   constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController) {   
     this.reservesService.getMyReservesUser(this.userUid)
@@ -53,11 +54,18 @@ export class ReservetripPage{
     .subscribe( originUser => {
       this.locationOrigin = originUser;      
     })
+    this.reservesService.getOnTrip(this.userUid)
+    .subscribe( onTrip => {
+       this.onTrip = onTrip;   
+       console.log(this.onTrip);
     
+   
+    })
     this.sendCoordsService.getDestinationUser(this.userUid)
         .subscribe( destinationUser => {
           this.locationDestination = destinationUser;
     })
+   
   }
 
   ionViewDidLoad(){
@@ -71,74 +79,59 @@ export class ReservetripPage{
         this.reservesService.getMyReserves(reserve.driverId,reserve.keyReserve)
         .subscribe( info => {
               this.reserve = info;   
-              this.pendingUsers = [];
-            
-              console.log(this.pendingUsers);
-              console.log(this.myReserves);
-              console.log(this.reserve);
-              //check if reserve hasn't been canceled
-              console.log("mirar desde aqui");
-
+              this.pendingUsers = [];           
+              
+              //check if the reserve was eliminated due to the initiation of the trip
               if(this.reserve === undefined || this.reserve === null){
-                //this means the driver cancel the reserves,the user has to eliminate the key
-                console.log("aqui estoy yoooooo");
-                this.reservesService.eliminateKeyUser(this.userUid,reserve.keyTrip);
-                let modal = this.modalCtrl.create('CanceltripPage');
-                modal.onDidDismiss(accepted => {
-                  if(accepted){
-                    // this.navCtrl.push('ListridePage');
-                    this.navCtrl.setRoot(this.navCtrl.getActive().component);
-                  }
-                })
-                console.log("4");
-              }else{
-                  //check if the driver sabotage the trip eliminating anyone
-                if(this.reserve.pendingUsers === undefined || this.reserve.pendingUsers === null ){
+                  if(this.onTrip === true){
+                  //just erase key and dont show cancelation
                   this.reservesService.eliminateKeyUser(this.userUid,reserve.keyTrip);
-                  let modal = this.modalCtrl.create('CanceltripPage');
-                  modal.onDidDismiss(accepted => {
-                    if(accepted){
-                      // this.navCtrl.push('ListridePage');
-                      this.navCtrl.setRoot(this.navCtrl.getActive().component);
-                    }
-                  })
-                  console.log("3");
-                }else{
-                  this.reservesService.getPendingUsers(this.userUid,this.reserve.keyTrip)
-                  .subscribe( pendingUsers => {
-                    this.pendingUsers = pendingUsers;
-                    console.log(pendingUsers);
-                    this.pendingUsers.forEach( user => {
-                      // check if the user hasn't been eliminated from the reserve by the driver
-                      if(user.userId === this.userUid){
-                          //do nothing because the user is in the trip
-                          this.myReserves.push(this.reserve);
-                          console.log("1")
-                      } else {
-                        // eliminate key because the driver has eliminated the user
-                        console.log("2")  
+                    console.log("exitoso")
+                  }else{
+                    //this means the driver cancel the reserves,the user has to eliminate the key
+                    this.eliminateReserve(this.userUid,reserve.keyTrip);                  
+
+                  }
+              
+
+              
+              }else{
+               
+                      //check if the driver sabotage the trip eliminating anyone
+                    if(this.reserve.pendingUsers == null || this.reserve.pendingUsers == undefined){
+                      if(this.onTrip === true){
                         this.reservesService.eliminateKeyUser(this.userUid,reserve.keyTrip);
-                        let modal = this.modalCtrl.create('CanceltripPage');
-                        modal.onDidDismiss(accepted => {
-                          if(accepted){
-                            // this.navCtrl.push('ListridePage');
-                            this.navCtrl.setRoot(this.navCtrl.getActive().component);
-                          }
-                        })
-                    
-                        modal.present();
+                        console.log("exitoso")
+
+                      }else{
+                        this.eliminateReserve(this.userUid,reserve.keyTrip);
+                      }
+                     
+                    }else{
+                      
+                      this.reservesService.getPendingUsers(this.userUid,this.reserve.keyTrip)
+                      .subscribe( pendingUsers => {
+                        this.pendingUsers = pendingUsers;
+                        this.pendingUsers.forEach( user => {
+                          // check if the user hasn't been eliminated from the reserve by the driver
+                          if(user.userId === this.userUid){
+                              //do nothing because the user is in the trip
+                              this.myReserves.push(this.reserve);                             
+                          } else {
+                            // eliminate key because the driver has eliminated the user
+                            this.eliminateReserve(this.userUid,reserve.keyTrip);                        
                       }
                     })
                   })
                   
                 }                
-              }
+              
             // arreglar problema de que aparece varias veces la misma reserva
-        })  
+        }})
       })
 
     }
-  
+    
 tripDetails(keyTrip,driverUid){
   let modal = this.modalCtrl.create('ReserveinfoPage',{reserveKey:keyTrip,driverUid:driverUid});
   modal.present();
@@ -150,7 +143,11 @@ tripDetails(keyTrip,driverUid){
 
   
   // }
-  
+  eliminateReserve(userUid,keyReserve){
+    this.reservesService.eliminateKeyUser(userUid,keyReserve);
+    let modal = this.modalCtrl.create('CanceltripPage');                                             
+    modal.present();
+  }
   help(){
     const toast = this.toastCtrl.create({
       message: 'Aquí te saldrán las personas que quieren irse contigo',

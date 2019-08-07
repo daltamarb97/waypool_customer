@@ -17,9 +17,9 @@ page-canceltrip{
         background: rgba(0, 0, 0, .5) !important;
     }
     .card {
-        border-style: outset;
+        border-style: solid;
         border-width: 5px;
-        border-color: #F3705A;
+        border-color: #960707;
         h6 {
             color: #3fb1df;
             text-align: center;
@@ -30,7 +30,7 @@ page-canceltrip{
         }
         width: 80%;
         margin: auto;
-        height: 420px;
+        height: 300px;
         position: absolute;
         top: 0;
         bottom: 0;

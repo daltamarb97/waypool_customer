@@ -11,7 +11,12 @@ export class reservesService {
 
        }
        
-
+       public setOnTrip(userUid){        
+      this.afDB.database.ref('/users/'+userUid).update({
+          onTrip:true
+        });
+ 
+     }
     public getMyReservesUser(userUid){
         //get reserves of that i have enter
         return  this.afDB.list('/users/'+ userUid+'/myReserves').valueChanges();
@@ -21,6 +26,11 @@ export class reservesService {
     public getReserves(userUid){
         //get reserves of the geofire
         return  this.afDB.list('/users/'+ userUid+'/availableReserves').valueChanges();
+
+    }
+    public getOnTrip(userUid){
+        //get reserves of the geofire
+        return  this.afDB.object('/users/'+ userUid+'/onTrip').valueChanges();
 
     }
     public getMyReserves(driverUserUid,reserveId){
@@ -37,7 +47,6 @@ export class reservesService {
         //eliminate user from reserve in reserve's node        
       this.afDB.database.ref('/reserves/'+ driverUid +'/'+ reserveId+'/pendingUsers/'+userUid).remove();
         //eliminate keyTrip from user's node to eliminate access to that reserve
- 
 
      }
      public eliminateKeyUser(userUid,reserveId){    
@@ -45,5 +54,6 @@ export class reservesService {
     this.afDB.database.ref('/users/'+userUid+'/myReserves/'+ reserveId).remove();
 
    }
+   
      
 }

@@ -1,6 +1,6 @@
 webpackJsonp([18],{
 
-/***/ 608:
+/***/ 607:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FindridePageModule", function() { return FindridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__findride__ = __webpack_require__(631);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__findride__ = __webpack_require__(630);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var FindridePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 631:
+/***/ 630:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54,6 +54,7 @@ var FindridePageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(332);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(328);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_trips_service__ = __webpack_require__(334);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,12 +71,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var FindridePage = /** @class */ (function () {
-    function FindridePage(navCtrl, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, geofireService, SignUpService, modalCtrl) {
+    function FindridePage(navCtrl, geolocation, zone, TripsService, sendCoordsService, AngularFireAuth, alertCtrl, geofireService, SignUpService, modalCtrl) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.geolocation = geolocation;
         this.zone = zone;
+        this.TripsService = TripsService;
         this.sendCoordsService = sendCoordsService;
         this.AngularFireAuth = AngularFireAuth;
         this.alertCtrl = alertCtrl;
@@ -91,7 +94,7 @@ var FindridePage = /** @class */ (function () {
         this.trip = {};
         this.tripId = null;
         //para acceder al uid en firebase
-        this.user = this.AngularFireAuth.auth.currentUser.uid;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
         this.userInfo = this.AngularFireAuth.auth.currentUser;
         this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
         this.geocoder = new google.maps.Geocoder;
@@ -106,8 +109,30 @@ var FindridePage = /** @class */ (function () {
         this.bounds = new google.maps.LatLngBounds();
         this.markers = [];
         // initialize the plugin
-        this.SignUpService.getMyInfo(this.user).subscribe(function (user) {
-            _this.userInfoForOntrip = user;
+        this.SignUpService.getMyInfo(this.userUid).subscribe(function (user) {
+            _this.user = user;
+            //  this.keyTrip = this.user.keyTrip
+            console.log(_this.user);
+        });
+        this.TripsService.getOnTrip(this.userUid).subscribe(function (onTrip) {
+            _this.onTrip = onTrip;
+            console.log(onTrip);
+            console.log(_this.onTrip);
+            // go to trip      
+            if (_this.onTrip === true) {
+                _this.TripsService.getKeyTrip(_this.userUid).subscribe(function (keyTrip) {
+                    _this.keyTrip = keyTrip;
+                    console.log(_this.keyTrip);
+                    if (_this.keyTrip !== undefined && _this.keyTrip !== null) {
+                        console.log('hola');
+                        var modal = _this.modalCtrl.create('MyridePage');
+                        modal.present();
+                    }
+                    else {
+                        console.log("es undefined");
+                    }
+                });
+            }
         });
     }
     FindridePage.prototype.ionViewDidLoad = function () {
@@ -340,8 +365,8 @@ var FindridePage = /** @class */ (function () {
         });
     };
     FindridePage.prototype.listride = function () {
-        if (this.userInfoForOntrip.trips) {
-            if (this.userInfoForOntrip.trips.onTrip == true) {
+        if (this.user.trips) {
+            if (this.user.trips.onTrip == true) {
                 var alert_1 = this.alertCtrl.create({
                     title: 'Estas actualmente en un viaje',
                     subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
@@ -361,7 +386,7 @@ var FindridePage = /** @class */ (function () {
                         // AQUI
                     }
                     else {
-                        this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
+                        this.sendCoordsService.pushCoordinatesUsers(this.userUid, this.desFirebase, this.orFirebase);
                         this.geofire1 = this.myLatLng;
                         this.geofire2 = {
                             lat: this.myLatLngDest.lat(),
@@ -388,7 +413,7 @@ var FindridePage = /** @class */ (function () {
                     // AQUI
                 }
                 else {
-                    this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
+                    this.sendCoordsService.pushCoordinatesUsers(this.userUid, this.desFirebase, this.orFirebase);
                     this.geofire1 = this.myLatLng;
                     this.geofire2 = {
                         lat: this.myLatLngDest.lat(),
@@ -430,9 +455,9 @@ var FindridePage = /** @class */ (function () {
     ], FindridePage.prototype, "mapElement", void 0);
     FindridePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-findride',template:/*ion-inline-start:"C:\Users\daniel altamar\Documents\waypoolApp\customer-test\waypool_costumer\src\pages\findride\findride.html"*/'<ion-header class="bg-theme">\n\n    <ion-navbar>\n\n        <ion-title><span class="text-white findRideText">PIDE TU VIAJE</span></ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content  padding>\n\n    \n\n    <ion-card class="search">\n\n          \n\n        <ion-card-content>\n\n            <span class="dot bg-theme"></span>\n\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n\n          \n\n            <ion-list   [hidden]="autocompleteItems.length == 0">\n\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n\n                  {{ item.description }}\n\n                </ion-item>\n\n              </ion-list>\n\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n        </ion-card-content>\n\n        <ion-card-content>\n\n            <span class="dot bg-yellow"></span>           \n\n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n\n              {{ item.description }}\n\n            </ion-item>\n\n          </ion-list>\n\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n\n\n        </ion-card-content>\n\n        \n\n    </ion-card>\n\n  \n\n <div #map id="map"></div>  \n\n    \n\n    \n\n  <button (click)="listride()" class="btn rounded bg-theme text-white" style="width: 100%">Pedir</button>\n\n\n\n  <div class="btn-footer">\n\n    <button class="btn rounded bg-theme text-white" style="width: 100%" (click)="goToMyReserves()" >Mis Reservas</button>\n\n</div>\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\daniel altamar\Documents\waypoolApp\customer-test\waypool_costumer\src\pages\findride\findride.html"*/
+            selector: 'page-findride',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\test\waypool_customer\waypool_costumer\src\pages\findride\findride.html"*/'<ion-header class="bg-theme">\n\n    <ion-navbar>\n\n        <ion-title><span class="text-white findRideText">PIDE TU VIAJE</span></ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content  padding>\n\n    \n\n    <ion-card class="search">\n\n          \n\n        <ion-card-content>\n\n            <span class="dot bg-theme"></span>\n\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n\n          \n\n            <ion-list   [hidden]="autocompleteItems.length == 0">\n\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n\n                  {{ item.description }}\n\n                </ion-item>\n\n              </ion-list>\n\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n        </ion-card-content>\n\n        <ion-card-content>\n\n            <span class="dot bg-yellow"></span>           \n\n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n\n              {{ item.description }}\n\n            </ion-item>\n\n          </ion-list>\n\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n\n\n        </ion-card-content>\n\n        \n\n    </ion-card>\n\n  \n\n <div #map id="map"></div>  \n\n    \n\n    \n\n  <button (click)="listride()" class="btn rounded bg-theme text-white" style="width: 100%">Pedir</button>\n\n\n\n  <div class="btn-footer">\n\n    <button class="btn rounded bg-theme text-white" style="width: 100%" (click)="goToMyReserves()" >Mis Reservas</button>\n\n</div>\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\test\waypool_customer\waypool_costumer\src\pages\findride\findride.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_7__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */]])
     ], FindridePage);
     return FindridePage;
 }());

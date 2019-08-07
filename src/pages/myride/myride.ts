@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ɵConsole } from '@angular/core';
 import { NavController, NavParams, ToastController, IonicPage, AlertController, App, ModalController } from 'ionic-angular';
 import { ElementRef } from '@angular/core';
 
@@ -8,6 +8,8 @@ import { CallNumber } from '@ionic-native/call-number';
 import { Geolocation } from '@ionic-native/geolocation';
 import { SignUpService } from '../../services/signup.services';
 import { TripsService } from '../../services/trips.service';
+
+import { Subject } from 'rxjs';
 
 
 @IonicPage()
@@ -28,91 +30,179 @@ driverOnTrip:any=[];
 driver:any;
 myLatLng:any;
 user:any;
+info:any;
 myReservesId:any = [];
 trip:any;
 userUid=this.AngularFireAuth.auth.currentUser.uid;
-driverExist:boolean =false;
-info:any;
-onTrip: boolean = false;
 cancelReserves: any = [];
+myTripReserve:any;
+keyTrip:any;
+tripState:any;
+cancelUsers:any = [];
+driverExist:boolean = false;
+onTrip: boolean = false;
+onTripInstance:any;
+unsubscribe = new Subject;
+
   constructor(public navCtrl: NavController,public modalCtrl: ModalController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App) {
-    
-        this.TripsService.getMyReservesUser(this.userUid)
-        .subscribe( myReservesId => {
-          //get all reserves id (reserve push key, driverUid) of my user node
-          this.myReservesId = myReservesId;
-         
-          console.log(this.myReservesId);
-          
-          this.getTrip();
-    
-        })    
-             
-  }
-  getTrip(){    
-    this.myReservesId.forEach(reserve => {
-        //compare every reserveId User have and see if matches in Trip's node
-        if(reserve.keyReserve === undefined || reserve.keyReserve === null){
-          // if reserve doesn't exist do nothing
-          this.driverExist=false;
+    // this.TripsService.getOnTrip(this.userUid).subscribe(onTrip=>{
+    //   this.onTripInstance=onTrip;
+    //   console.log(onTrip)
+    //   console.log(this.onTrip)
+    //   // go to trip      
+    //   if (this.onTripInstance === true) {
+       
+    //   }else{
+    //     this.unSubscribeServices();     
+    //     console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 
-        } else {
-          //check if reserve exist inside node trips
-              this.TripsService.getMyReserves(reserve.keyReserve,reserve.driverId)
-                .subscribe( info => {      
-                  //check if the info of the reserve is null       
-                if(info === undefined || info === null){
-                  
-                    this.driverExist=false;
-                    this.onTrip = false;
-                }else{
-                    this.info = info;
-                  
-                  //if matches get trip
-                  if(reserve.keyReserve === this.info.keyTrip){          
-                      this.onTrip = true;
-                      this.trip= info;   
-                      this.getPendingAndPickedUpUsers(this.trip.keyTrip,this.trip.driver.userId);
-                      this.driverExist = true;
-                      if(this.trip.saveTrip === true){
-                        //check if trip has to be saved 
-                        this.TripsService.saveTripOnRecords(this.userUid,this.trip);
-                        this.driverExist = false;     
-                      } 
-                      this.trip.cancelReserves = this.cancelReserves;                   
-                    
-                      this.trip.cancelReserves.forEach(cancelReserve => {
-                        //if driver cancel you, eliminate your keyReserve of your array
-                        if(this.cancelReserves === cancelReserve.userId){
-                          this.driverExist = false;
-                          this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
-                          this.navCtrl.setRoot(this.navCtrl.getActive().component);
-                          let modal = this.modalCtrl.create('CanceltripPage');
-                          modal.present();
-                        }
-                        
-                      });
-                      }else{
-                        // do nothing because the key of your reserve is not in trip's node
-                        }
-                    // do nothing because your trip doesn't exist
-                }
-                
-                
-                 
-                  })          
-        }   
+    //     this.navCtrl.pop();
+    //     this.unsubscribe.next();
+    //     this.unsubscribe.complete();
 
-      })  
+    //   } 
+    // })
+    this.TripsService.getKeyTrip(this.userUid).takeUntil(this.unsubscribe)
+    .subscribe(  keys => {      
+        this.keyTrip =  keys; 
+        console.log(this.keyTrip.keyTrip);
       
+           if(this.keyTrip === undefined || this.keyTrip === null){
+            this.unSubscribeServices();          
+            console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+
+            this.driverExist = false;
+            this.onTrip = false;
+            this.navCtrl.pop();
+       
+            console.log("existo")
+
+           }else{
+            this.getTrip(this.keyTrip.keyTrip,this.keyTrip.driverId);
+            this.TripsService.eraseReserve(this.userUid,this.keyTrip.keyTrip);
+
+           }
+
+          //get trip without searching         
+          
+
+          //check if its lastMinuteUser or not
+          // if(){
+
+          // }
+    
+    })    
   }
+ 
+  
+   
+  getTrip(keyTrip,driverId){
+    console.log(this.trip)   
+    this.getTripState(keyTrip,driverId);
+
+    console.log(this.keyTrip) 
+     
+      this.TripsService.getTrip(keyTrip,driverId).takeUntil(this.unsubscribe)
+      .subscribe( info => {      
+        //check if the info of the reserve is null  
+        if(this.keyTrip.keyTrip === undefined || this.keyTrip.keyTrip=== null){
+          this.driverExist = false;
+          this.onTrip = false;
+          console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+
+          console.log("existo")
+
+        }else{                               
+        this.trip = info;          
+        console.log(this.trip);
+        this.getPendingAndPickedUpUsers(keyTrip,driverId);
+        this.driverExist=true;
+        this.onTrip=true; 
+      } 
+      })               
+        
+        
+  }
+  getTripState(keyTrip,driverId){
+    this.TripsService.getTripState(keyTrip,driverId).takeUntil(this.unsubscribe)
+    .subscribe( tripState => {      
+        this.tripState = tripState;
+        console.log(this.tripState);
+        console.log("estoy activado!!!")
+        if(this.tripState === null || this.tripState === undefined){
+          this.unSubscribeServices();          
+          console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+
+          console.log("existo")
+          this.navCtrl.pop();
+
+        }else{
+          //check if trip has to be saved 
+          if(this.tripState.saveTrip === true){
+            
+            this.TripsService.saveTripOnRecords(this.userUid,this.trip);     
+            console.log("me active")
+            this.unSubscribeServices();       
+            this.TripsService.eliminatingOnTrip(this.userUid);
+            this.TripsService.eliminateKeyTrip(this.userUid);
+            this.navCtrl.pop();
+            this.navCtrl.push('RatetripPage',{trip:this.trip})
+            console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+
+          }   
+          if(this.tripState.canceledTrip === true){
+          //check if trip was canceled by driver                         
+          this.unSubscribeServices();         
+          console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+
+          this.TripsService.eliminatingOnTrip(this.userUid);
+          this.TripsService.eliminateKeyTrip(this.userUid);
+            let modal = this.modalCtrl.create('CanceltripPage');
+            modal.present();  
+            console.log("me cancelaron el viaje")
+
+            this.navCtrl.pop();
+          } 
+          this.TripsService.getCancelUsers(keyTrip,driverId)
+          .subscribe( cancelUsers => {      
+              this.cancelUsers = cancelUsers;          
+              this.cancelUsers.forEach(cancelUser => {
+                console.log("2paso")
+
+                  if(this.userUid === cancelUser.userId){
+                    console.log("3paso")
+                    this.unSubscribeServices();          
+                    this.TripsService.eliminatingOnTrip(this.userUid);
+                    this.TripsService.eliminateKeyTrip(this.userUid);
+                    console.log("me eliminaron")
+                    console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+
+                    this.navCtrl.pop();
+                    let modal = this.modalCtrl.create('CanceltripPage');
+                    modal.present();
+                    }                        
+                });  
+    
+})
+        }
+        
+         
+         
+      })
+  }
+  unSubscribeServices(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
+             
+  // }
   getPendingAndPickedUpUsers(keyTrip,driverId){
-    this.TripsService.getPendingUsers(keyTrip,driverId)
+    this.TripsService.getPendingUsers(keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {      
         this.pendingUsers = user;
         console.log(this.pendingUsers);          
     });
-    this.TripsService.getPickedUpUsers(keyTrip,driverId)
+    this.TripsService.getPickedUpUsers(keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {    
       this.pickedUpUsers = user;   
       console.log(this.pickedUpUsers);      
@@ -154,11 +244,13 @@ this.callNumber.callNumber(number, true)
             text: 'Si',
             handler: () => {
               if(this.pickedUpUsers.length === 0 || this.pickedUpUsers === undefined || this.pickedUpUsers === null) {
+                this.unSubscribeServices();          
                 this.TripsService.cancelTrip(this.userUid,this.trip.driver.userId,this.trip.keyTrip);
-                this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
-                this.navCtrl.setRoot(this.navCtrl.getActive().component);
-                this.driverExist = false;
-                this.onTrip=false;
+                this.TripsService.eliminateKeyTrip(this.userUid);
+                this.TripsService.eliminatingOnTrip(this.userUid);               
+                this.navCtrl.pop();
+                console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+
               }
               this.pickedUpUsers.forEach(pickedUser => {
                 // if user is in the pickedUpUsers array, it should not be able to cancel, because its already pickedUp.
@@ -170,15 +262,12 @@ this.callNumber.callNumber(number, true)
                     closeButtonText: 'Ok'
                   });
                   toast.present();
-                }else{
-                  // desaparecer driver de el html y hacer condicionales del last minute this.user, buscar setTimeOut y una barra de tiempo para eliminarlo
-                 
-                  this.driverExist = false;
-                  this.onTrip=false;
+                }else{           
                   this.TripsService.cancelTrip(this.userUid,this.trip.driver.userId,this.trip.keyTrip);
-                  this.TripsService.eliminateKeyUser(this.userUid,this.trip.keyTrip);
+                  this.TripsService.eliminateKeyTrip(this.userUid);
                   console.log(this.trip.keyTrip);
-                  this.navCtrl.setRoot(this.navCtrl.getActive().component);
+                  this.navCtrl.pop();
+
                 }
               })
             }
@@ -191,3 +280,63 @@ this.callNumber.callNumber(number, true)
 
     }
   }
+   // getLastMinuteTrip(keyTrip,driverId){           
+  //         //get reserve exist inside node trips
+  //             console.log('1');         
+  //             console.log(keyTrip);         
+  //             console.log(driverId);         
+  //             console.log(this.myTripReserve);          
+
+  //             this.TripsService.getMyReserves(keyTrip,driverId)
+  //               .subscribe( info => {      
+  //                 //check if the info of the reserve is null       
+  //               if(info === undefined || info === null){                  
+  //                   this.driverExist=false;
+  //                   this.onTrip = false;
+  //               }else{
+  //                   this.info = info;       
+  //                   console.log('1');          
+           
+  //                     this.onTrip = true;
+  //                     this.trip= info;  
+  //                     this.trip.cancelReserves = this.cancelReserves;
+  //                     console.log('1');
+  //                         this.trip.cancelReserves.forEach(cancelReserve => {
+  //                       //if driver cancel you, eliminate your keyReserve of your array
+  //                       if(this.cancelReserves === cancelReserve.userId){
+  //                         this.driverExist = false;
+  //                         this.TripsService.eliminatingOnTrip(this.userUid);
+  //                         this.TripsService.eliminateKeyLMU(this.userUid);  
+  //                         this.navCtrl.setRoot(this.navCtrl.getActive().component);
+  //                         let modal = this.modalCtrl.create('CanceltripPage');
+  //                         modal.present();
+  //                       }                        
+  //                     }); 
+  //                     this.getPendingAndPickedUpUsers(this.trip.keyTrip,this.trip.driver.userId);
+  //                     this.driverExist = true;
+  //                     if(this.trip.saveTrip === true){
+  //                       //check if trip has to be saved for records 
+  //                       this.TripsService.saveTripOnRecords(this.userUid,this.trip);
+  //                       this.driverExist = false;   
+  //                       this.onTrip=false;  
+  //                       this.TripsService.eliminatingOnTrip(this.userUid);
+
+  //                     } 
+
+  //                     this.trip.cancelReserves = this.cancelReserves;
+  //                     console.log('1');
+  //                         this.trip.cancelReserves.forEach(cancelReserve => {
+  //                       //if driver cancel you, eliminate your keyReserve of your array
+  //                       if(this.cancelReserves === cancelReserve.userId){
+  //                         this.driverExist = false;
+  //                         this.TripsService.eliminatingOnTrip(this.userUid);
+  //                         this.TripsService.eliminateKeyLMU(this.userUid);  
+  //                         this.navCtrl.setRoot(this.navCtrl.getActive().component);
+  //                         let modal = this.modalCtrl.create('CanceltripPage');
+  //                         modal.present();
+  //                       }                        
+  //                     });
+                     
+  //                   // do nothing because your trip doesn't exist
+  //               }         
+  //           })       

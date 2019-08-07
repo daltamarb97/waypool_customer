@@ -18,12 +18,12 @@ export class MyApp {
   
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     firebase.initializeApp({
-      apiKey: "AIzaSyAPagXvglCXnK3neJwU50EiZnJPmdd__PM",
-      authDomain: "waypoooldemo.firebaseapp.com",
-      databaseURL: "https://waypoooldemo.firebaseio.com",
-      projectId: "waypoooldemo",
-      storageBucket: "waypoooldemo.appspot.com",
-      messagingSenderId: "1009109452629"
+      apiKey: "AIzaSyDrNPJBT1eVEFvZDfIfwnuD3ivJo7hVw2M",
+      authDomain: "securityrules-93b35.firebaseapp.com",
+      databaseURL: "https://securityrules-93b35.firebaseio.com",
+      projectId: "securityrules-93b35",
+      storageBucket: "",
+      messagingSenderId: "181111098326"
       });
     platform.ready().then(() => { 
     statusBar.styleDefault();

@@ -15,7 +15,6 @@
       ".write": false
     }
   }
-  
   // Only authenticated users can access/write data
   
   {
@@ -135,3 +134,173 @@
        }
      }
   }
+  {
+    // esto hace que solo los usuarios con el dominio gmail puedan escribir
+    "rules": {
+      ".read": "auth != null",
+      "gmailUsers": {
+        "$uid": {
+          ".write": "auth.token.email_verified == true && 
+                     auth.token.email.matches(/.*@gmail.com$/)"
+        }
+      }
+    }
+  }
+  //ejercicio real mark-01, funciona en simulador con estas condiciones
+  read
+  userId: 1Pub5e2T6NVtbMITmqiYBEPwCyq2 
+  path: /reserves/1Pub5e2T6NVtbMITmqiYBEPwCyq2/pendingUsers
+  {
+    /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+    "rules": {
+       ".read": false,
+        ".write": false,
+      "geofire": {
+        ".indexOn": "g"
+        },
+      "reserves":{
+        "$driverUid":{
+          ".read":" root.child('drivers/'+auth.uid+'/onTrip/').val() == true" 
+      }   
+    }
+  }
+  }
+  
+
+
+// esto me va a permitir que los usuarios lean solo las reservas donde ellos estan
+  {
+    /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+    "rules": {
+       ".read":false,
+        ".write": false,
+      "geofire": {
+        ".indexOn": "g"
+        },
+      "reserves":{
+        "$driverUid":{
+          ".read":"auth.uid === $driverUid && root.child('drivers/'+auth.uid+'/onTrip/').val() === true",
+        	"$keyTrip":{              
+          	".read":"root.child('reserves').child('$driverUid').child('$keyTrip').child('pendingUsers').hasChild(auth.uid)" 
+     		 }           
+      }      
+    }
+ 	 }
+  }
+
+
+mark-03
+  {
+    /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+    "rules": {
+     "users": {
+         "$uid": {
+           //User app: los usuarios solo podrán leer y escribir los datos dentro de su nodo
+           ".read": "$uid === auth.uid",
+           ".write": "$uid === auth.uid",
+           "availableReserves":{
+             // el driver solo podrá escribir reserve si esta autenticado y si su instancia writeReserves = true
+              ".write": "auth != null && root.child('drivers/'+auth.uid+'/writeReserves/').val() === true"
+           }
+         }
+       }
+      "drivers": {
+         "$uid": {
+            //Driver app: los usuarios solo podrán leer y escribir los datos dentro de su nodo
+           ".read": "$uid === auth.uid",
+           ".write": "$uid === auth.uid"
+         }
+       }
+      "geofire": {
+        ".indexOn": "g"
+        },
+      "reserves":{
+        "$driverUid":{
+            //Driver app: solo los drivers podrán leer sus propias reservas
+            ".read":"auth.uid === $driverUid && root.child('drivers/'+auth.uid+'/onTrip/').val() === true",
+        	"$keyTrip":{  
+            //User app: solo los usuarios que estan dentro de un viaje pueden leer la reserva
+          	".read":"root.child('reserves').child($driverUid).child($keyTrip).child('pendingUsers').hasChild(auth.uid) && root.child('reserves').child($driverUid).child($keyTrip).child('lastMinuteUser').hasChild(auth.uid) && root.child('reserves').child($driverUid).child($keyTrip).child('pickedUpUsers').hasChild(auth.uid) " 
+
+          } 
+                    
+      }      
+    }
+ 	 }
+  }
+  mark-04 
+  { 
+    /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+        "rules": {
+         "users": {       
+             "$userUid": {
+               //User app: los usuarios solo podrán leer y escribir los datos dentro de su nodo
+               ".read": "$userUid === auth.uid",
+               ".write": "$userUid === auth.uid",
+             
+             }
+           },
+          "drivers": {      
+             "$uid": {
+                //Driver app: los usuarios solo podrán leer y escribir los datos dentro de su nodo
+               ".read": "$uid === auth.uid",
+               ".write": "$uid === auth.uid"
+             }
+           },
+          "geofire": {
+            ".indexOn": "g",
+               ".read": true,
+               ".write": true
+               // el driver solo podrá escribir reserve si esta autenticado y si su instancia writeReserves = true
+                
+              //PENDIENTE: ".write": "auth != null && root.child('drivers/'+auth.uid+'/readReserves/').val() === true"
+            },
+          "reserves":{
+            "$driverUid":{           
+                //Driver app: solo los drivers podrán leer y escribir sus propias reservas            
+              ".read":"auth.uid === $driverUid && root.child('drivers/'+auth.uid+'/onReserve/').val() === true",
+              ".write":"auth.uid === $driverUid && root.child('drivers/'+auth.uid+'/onReserve/').val() === true",
+    
+              "$keyTrip":{  
+                GRAN DUDA: los users deberian solo poder leer un viaje si tienen ese viaje en myReserves? esto dañaría algún proceso?
+    
+                //User app: solo los usuarios que estan dentro de un viaje pueden leer la reserva y los que estan en availableReserves          	
+                ".read":"root.child('reserves').child($driverUid).child($keyTrip).child('pendingUsers').hasChild(auth.uid) || root.child('reserves').child($driverUid).child($keyTrip).child('lastMinuteUser').hasChild(auth.uid) || root.child('reserves').child($driverUid).child($keyTrip).child('pickedUpUsers').hasChild(auth.uid) || root.child('users').child(auth.uid).child('availableReserves').hasChild($keyTrip)", 
+                 "pendingUsers":{
+                  "$userUid":{
+                    //User app: solo los users podrán escribir en su propio nodo dentro de pendingUsers
+                    
+                  ".write": "$userUid === auth.uid && root.child('users/'+auth.uid+'/onReserve/').val() === true "
+                    probar esto mañana que enteoría no deja delete ni update osea solo deja crear
+                    // ".write": "!data.exists() || !newData.exists()"
+                  }
+                }
+              }           
+          }      
+        }
+           probar lo de firebase del provider de google sugerencia q esta en mi gmail
+           "trips":{
+             TODAVÍA EN PROCESO
+            "$driverUid":{           
+                //Driver app: solo los drivers podrán leer y escribir sus propias reservas            
+              ".read":"auth.uid === $driverUid && root.child('drivers/'+auth.uid+'/onTrip/').val() === true",
+              ".write":"auth.uid === $driverUid && root.child('drivers/'+auth.uid+'/onTrip/').val() === true",
+    
+              "$keyTrip":{  
+                GRAN DUDA: los users deberian solo poder leer un viaje si tienen ese viaje en myReserves? esto dañaría algún proceso?
+                //User app: solo los usuarios que estan dentro de un viaje pueden leer la reserva y los que estan en availableReserves          	
+                ".read":"root.child('trips').child($driverUid).child($keyTrip).child('pendingUsers').hasChild(auth.uid) || root.child('trips').child($driverUid).child($keyTrip).child('lastMinuteUser').hasChild(auth.uid) || root.child('trips').child($driverUid).child($keyTrip).child('pickedUpUsers').hasChild(auth.uid) || root.child('users').child(auth.uid).child('availableReserves').hasChild($keyTrip)", 
+                 "pendingUsers":{
+                  "$userUid":{
+                    //User app: solo los users podrán escribir en su propio nodo dentro de pendingUsers
+                    
+                  ".write": "$userUid === auth.uid && root.child('users/'+auth.uid+'/onTrip/').val() === true "
+                    //probar esto mañana
+                    // ".write": "!data.exists() || !newData.exists()"
+                  }
+                }
+              }           
+          }      
+        }  
+        }
+      }

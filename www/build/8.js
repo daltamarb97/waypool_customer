@@ -60,12 +60,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var TabsPage = /** @class */ (function () {
     function TabsPage() {
         this.tab1Root = 'FindridePage';
-        this.tab2Root = 'MyridePage';
         this.tab3Root = 'WalletPage';
         this.tab4Root = 'MorePage';
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\daniel altamar\Documents\waypoolApp\customer-test\waypool_costumer\src\pages\tabs\tabs.html"*/'<ion-tabs tabsHideOnSubPages="false">\n\n        <ion-tab [root]="tab1Root" tabTitle="Pedir Viaje" tabIcon="md-search" tabsHideOnSubPages="false"></ion-tab>\n\n\n\n    <ion-tab [root]="tab2Root" tabTitle="Mi Viaje" tabIcon="md-car" tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab3Root" tabTitle="Historial" tabIcon="md-card" tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab4Root" tabTitle="Perfil" tabIcon="md-person" tabsHideOnSubPages="false"></ion-tab>\n\n</ion-tabs>\n\n '/*ion-inline-end:"C:\Users\daniel altamar\Documents\waypoolApp\customer-test\waypool_costumer\src\pages\tabs\tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\test\waypool_customer\waypool_costumer\src\pages\tabs\tabs.html"*/'<ion-tabs tabsHideOnSubPages="false" [selectedIndex]="1">\n\n\n\n    <ion-tab [root]="tab3Root" tabTitle="Historial" tabIcon="md-card" tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab1Root" tabTitle="Pedir Viaje" tabIcon="md-car" tabsHideOnSubPages="false"></ion-tab>\n\n\n\n    <ion-tab [root]="tab4Root" tabTitle="Perfil" tabIcon="md-person" tabsHideOnSubPages="false"></ion-tab>\n\n</ion-tabs>\n\n '/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\test\waypool_customer\waypool_costumer\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);

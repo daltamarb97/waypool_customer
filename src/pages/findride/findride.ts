@@ -11,6 +11,7 @@ import { ConfirmNotePage } from '../confirmnote/confirmnote';
 import { geofireService } from '../../services/geoFire.service';
 import { SignUpService } from '../../services/signup.services';
 import * as firebase from 'firebase';
+import { TripsService } from '../../services/trips.service';
 
 
 
@@ -58,14 +59,15 @@ export class FindridePage {
   markerDest:any;
   markerGeolocation:any;
   //para acceder al uid en firebase
-  user=this.AngularFireAuth.auth.currentUser.uid;
+  userUid=this.AngularFireAuth.auth.currentUser.uid;
   userInfo=this.AngularFireAuth.auth.currentUser;
-  userInfoForOntrip:any;
+  user:any;
   //geofire
   geofire1;
   geofire2;
-
-  constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController) {
+  onTrip:any;
+  keyTrip:any;
+  constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone,public TripsService:TripsService, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController) {
     
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -85,11 +87,34 @@ export class FindridePage {
     this.markers = [];
     // initialize the plugin
 
-    this.SignUpService.getMyInfo(this.user).subscribe(user=>{
-      this.userInfoForOntrip = user;
+    this.SignUpService.getMyInfo(this.userUid).subscribe(user=>{
+      this.user = user;
+      //  this.keyTrip = this.user.keyTrip
+      console.log(this.user)
+     
     })
 
-
+    this.TripsService.getOnTrip(this.userUid).subscribe(onTrip=>{
+      this.onTrip=onTrip;
+      console.log(onTrip)
+      console.log(this.onTrip)
+      // go to trip      
+      if (this.onTrip === true) {
+        this.TripsService.getKeyTrip(this.userUid).subscribe(keyTrip=>{
+          this.keyTrip=keyTrip;
+          console.log(this.keyTrip)
+          if(this.keyTrip !== undefined && this.keyTrip !== null){
+            console.log('hola')
+            let modal = this.modalCtrl.create('MyridePage');
+            modal.present();
+            
+          }else{
+            console.log("es undefined");
+          }
+        })        
+      } 
+    })
+   
   }
  
   ionViewDidLoad(){
@@ -367,8 +392,8 @@ geocodeLatLng(latLng,inputName) {
 
 
   listride(){
-  if(this.userInfoForOntrip.trips){
-    if(this.userInfoForOntrip.trips.onTrip == true){
+  if(this.user.trips){
+    if(this.user.trips.onTrip == true){
       let alert = this.alertCtrl.create({
         title: 'Estas actualmente en un viaje',
         subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
@@ -387,7 +412,7 @@ geocodeLatLng(latLng,inputName) {
             // AQUI
            } else {
          
-            this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
+            this.sendCoordsService.pushCoordinatesUsers(this.userUid, this.desFirebase, this.orFirebase);
             
             this.geofire1 = this.myLatLng;
             this.geofire2 = {
@@ -417,7 +442,7 @@ geocodeLatLng(latLng,inputName) {
           // AQUI
          } else {
        
-          this.sendCoordsService.pushCoordinatesUsers(this.user, this.desFirebase, this.orFirebase);
+          this.sendCoordsService.pushCoordinatesUsers(this.userUid, this.desFirebase, this.orFirebase);
           
           this.geofire1 = this.myLatLng;
           this.geofire2 = {

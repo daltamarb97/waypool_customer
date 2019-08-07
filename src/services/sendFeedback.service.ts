@@ -10,7 +10,7 @@ constructor(public afDB: AngularFireDatabase){
     }
     
    public sendFeedback(title, info, name, lastname, number, userId){
-       this.afDB.database.ref('feedback/' + title +'/users-drivers/'+ userId).set({
+       this.afDB.database.ref('feedbackUsers/' + title +'/users/'+ userId).update({
            info: info,
            name: name,
            lastname: lastname,

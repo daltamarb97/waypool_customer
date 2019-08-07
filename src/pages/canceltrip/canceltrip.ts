@@ -21,8 +21,5 @@ export class CanceltripPage {
 
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
-
-
-
-  }  
+    }  
 }

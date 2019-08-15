@@ -74,7 +74,7 @@ export class FindridePage {
   geocoordinatesDest:any ={};
   geocoordinatesOr:any ={};
   userInfo:any;
-
+  universityInfo:any;
 
   //variables for geoquey university
   dbRef;
@@ -102,10 +102,7 @@ export class FindridePage {
     this.markers = [];
     // initialize the plugin
 
-    this.SignUpService.getMyInfo(this.user).subscribe(user=>{
-      this.userInfoForOntrip = user;
-    })
-
+    
      // set geofire key of university to avoid asking users to put where they are going
      this.geofireService.getLocationUniversity().subscribe(location=>{
       this.locationUniversity = location;
@@ -118,17 +115,43 @@ export class FindridePage {
    
     this.loadMap();
 
-    this.fcmProvider.getToken();
+    this.SignUpService.getMyInfo(this.user).subscribe(user => {
+      this.userInfoForOntrip = user
+    })
 
-    this.fcmProvider.listenToNotifications().pipe(
-      tap(msg => {
-        const toast = this.toastCtrl.create({
-          message: 'new Notification',
-          duration: 3000
-        });
-        toast.present();
-      })
-    ).subscribe();
+    // change this for global variable
+    this.SignUpService.getUniversities('uninorte').subscribe(uni => {
+      this.universityInfo = uni;
+
+      if(this.universityInfo.email == undefined){
+        
+        if(this.userInfoForOntrip.documents){
+          if(this.userInfoForOntrip.documents.carne == undefined || this.userInfoForOntrip.documents.id == undefined){
+            let modal = this.modalCtrl.create('VerificationImagesPage');
+            modal.present();
+          }else{
+
+          }
+        }else if(!this.universityInfo.documents) {
+          console.log('no hay docs')
+          let modal = this.modalCtrl.create('VerificationImagesPage');
+            modal.present();
+        } 
+      }else{
+
+      }
+    })
+    // this.fcmProvider.getToken();
+
+    // this.fcmProvider.listenToNotifications().pipe(
+    //   tap(msg => {
+    //     const toast = this.toastCtrl.create({
+    //       message: 'new Notification',
+    //       duration: 3000
+    //     });
+    //     toast.present();
+    //   })
+    // ).subscribe();
   }
  
   loadMap(){

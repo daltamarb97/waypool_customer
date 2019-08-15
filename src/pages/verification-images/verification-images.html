@@ -1,0 +1,35 @@
+<ion-header class="bg-theme">
+    <ion-navbar >
+        <ion-title>VERIFÍCATE 
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding-right padding-left>
+    <p text-center padding-top margin-top>{{description}}</p>
+    <h2 text-center>{{namePicture}}</h2>
+
+    <ion-row>
+        <ion-col col-4 text-center>
+            <img  [src]="picToViewCarne" (click)="changeNamePicture1()">
+        </ion-col>
+        <ion-col col-4 text-center>
+            <img   [src]="picToViewId" (click)="changeNamePicture2()">
+        </ion-col>
+    </ion-row>
+
+    <div text-center class="verifiy">
+        <img [src]="picToView">
+    </div>
+    <ion-row>
+        <ion-col>
+            <p padding-top class="btn-box" *ngIf = 'showCarne'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraCarne()">Subir Foto</button></p>
+            <p padding-top class="btn-box" *ngIf = 'showId'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraId()">Subir Foto</button></p>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <p padding-top class="skipText"  (click)="skipVerification()"> No me quiero verificar ahora </p>
+        </ion-col>
+    </ion-row>
+</ion-content>

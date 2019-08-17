@@ -12,6 +12,7 @@ import { geofireService } from '../../services/geoFire.service';
 import { SignUpService } from '../../services/signup.services';
 import * as firebase from 'firebase';
 import { TripsService } from '../../services/trips.service';
+import { Subject } from 'rxjs';
 
 
 
@@ -67,8 +68,10 @@ export class FindridePage {
   geofire2;
   onTrip:any;
   keyTrip:any;
+ 
+  unsubscribe = new Subject;
+
   constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone,public TripsService:TripsService, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController) {
-    
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
 
@@ -94,27 +97,22 @@ export class FindridePage {
      
     })
 
-    this.TripsService.getOnTrip(this.userUid).subscribe(onTrip=>{
-      this.onTrip=onTrip;
-      console.log(onTrip)
-      console.log(this.onTrip)
-      // go to trip      
-      if (this.onTrip === true) {
-        this.TripsService.getKeyTrip(this.userUid).subscribe(keyTrip=>{
-          this.keyTrip=keyTrip;
-          console.log(this.keyTrip)
-          if(this.keyTrip !== undefined && this.keyTrip !== null){
-            console.log('hola')
-            let modal = this.modalCtrl.create('MyridePage');
-            modal.present();
-            
-          }else{
-            console.log("es undefined");
-          }
-        })        
-      } 
+    this.TripsService.getOnTrip(this.userUid)
+    .subscribe(onTrip=>{
+      this.onTrip =onTrip;
+      console.log('ONTRIP')
+      // if(this.onTrip ===true){
+      //   elem.setAttribute("style", "color:red; border: 1px solid blue;");
+
+      //   // let button:any = document.getElementsByClassName('onlineButton') as HTMLCollectionOf<HTMLElement>;
+      //   console.log("works")
+
+      //   // if (button.length != 0) {
+      //   //   console.log("works")
+      //   //   button[0].style.transform = "background: rgba(0, 0, 0, .5) !important";
+      //   // }
+      // }
     })
-   
   }
  
   ionViewDidLoad(){
@@ -328,8 +326,6 @@ updateSearchResultsMyPos(){
         this.directionsDisplay.setMap(this.map);
         this.myLatLngDest=results[0].geometry.location
         this.calculateRoute(this.markerGeolocation.position,results[0].geometry.location);
-       
-       
       }
     })
     
@@ -419,15 +415,25 @@ geocodeLatLng(latLng,inputName) {
             lat: this.myLatLngDest.lat(),
             lng: this.myLatLngDest.lng()
           };
-  
+          console.log("AQUIIIIIIIIIIIIIII")
+                console.log(this.geofire2.lat);
+                
+          console.log("soy yo")
+
             this.confirmNote(this.geofire1, this.geofire2);
            
            }
  
          }
       catch(error) {
-        console.log(error)
-        this.presentAlert('Error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+        console.log("soy yo")
+        if(this.geofire2 === null || this.geofire2 === undefined ){
+          //this is to tell the user to select a place before publishing a trip
+          this.presentAlert('Información Incompleta','no puedes publicar un viaje sin antes seleccionar un lugar de la lista.','Ok') 
+        }else {
+          this.presentAlert('Hay un error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+
+        }
         }
     }
   }else{
@@ -441,7 +447,8 @@ geocodeLatLng(latLng,inputName) {
           this.directionsDisplay.setDirections({routes: []});
           // AQUI
          } else {
-       
+          console.log("soy yo")
+
           this.sendCoordsService.pushCoordinatesUsers(this.userUid, this.desFirebase, this.orFirebase);
           
           this.geofire1 = this.myLatLng;
@@ -449,6 +456,8 @@ geocodeLatLng(latLng,inputName) {
           lat: this.myLatLngDest.lat(),
           lng: this.myLatLngDest.lng()
         };
+        console.log(this.geofire2.lat);
+        console.log("soy yo")
 
           this.confirmNote(this.geofire1, this.geofire2);
          
@@ -456,8 +465,15 @@ geocodeLatLng(latLng,inputName) {
 
        }
     catch(error) {
-      console.log(error)
-      this.presentAlert('Error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+      console.log("soy yo")
+
+      if(this.geofire2 === null || this.geofire2=== undefined ){
+        //this is to tell the user to select a place before publishing a trip
+        this.presentAlert('Información Incompleta','no puedes publicar un viaje sin antes seleccionar un lugar de la lista.','Ok') 
+      }else {
+        this.presentAlert('Hay un error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+
+      }
       }
   }
   
@@ -476,6 +492,19 @@ geocodeLatLng(latLng,inputName) {
   goToMyReserves(){
     this.navCtrl.push('ReservetripPage');
   }
+  goToTrip(){
+      // go to trip      
+      if (this.onTrip === true) {
+            console.log('DISPARADOR')
+            let modal = this.modalCtrl.create('MyridePage');                      
+            modal.present();
+          }else{
+            console.log("es undefined");
+          }
+           
+      } 
+    
+  
     confirmNote(geoFire1, geoFire2){
       let modal = this.modalCtrl.create('ConfirmNotePage', {geoFire1, geoFire2});
       modal.onDidDismiss(accepted => {
@@ -486,7 +515,10 @@ geocodeLatLng(latLng,inputName) {
       })
    modal.present();
    }
-   
+   unSubscribeServices(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }   
   }
   
 

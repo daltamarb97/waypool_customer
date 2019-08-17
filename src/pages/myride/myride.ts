@@ -45,23 +45,14 @@ onTripInstance:any;
 unsubscribe = new Subject;
 
   constructor(public navCtrl: NavController,public modalCtrl: ModalController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App) {
-    // this.TripsService.getOnTrip(this.userUid).subscribe(onTrip=>{
-    //   this.onTripInstance=onTrip;
-    //   console.log(onTrip)
-    //   console.log(this.onTrip)
-    //   // go to trip      
-    //   if (this.onTripInstance === true) {
-       
-    //   }else{
-    //     this.unSubscribeServices();     
-    //     console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-
-    //     this.navCtrl.pop();
-    //     this.unsubscribe.next();
-    //     this.unsubscribe.complete();
-
-    //   } 
-    // })
+    // this.TripsService.getOnTrip(this.userUid).takeUntil(this.unsubscribe)
+    //   .subscribe(onTrip =>{
+    //     this.onTripInstance = onTrip
+    //     if(this.onTripInstance === false){
+    //       this.navCtrl.pop();
+    //       this.unSubscribeServices();
+    //     }
+    //   })
     this.TripsService.getKeyTrip(this.userUid).takeUntil(this.unsubscribe)
     .subscribe(  keys => {      
         this.keyTrip =  keys; 
@@ -129,14 +120,7 @@ unsubscribe = new Subject;
         this.tripState = tripState;
         console.log(this.tripState);
         console.log("estoy activado!!!")
-        if(this.tripState === null || this.tripState === undefined){
-          this.unSubscribeServices();          
-          console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-
-          console.log("existo")
-          this.navCtrl.pop();
-
-        }else{
+        
           //check if trip has to be saved 
           if(this.tripState.saveTrip === true){
             
@@ -183,8 +167,8 @@ unsubscribe = new Subject;
                     }                        
                 });  
     
-})
-        }
+            })
+        
         
          
          
@@ -193,9 +177,8 @@ unsubscribe = new Subject;
   unSubscribeServices(){
     this.unsubscribe.next();
     this.unsubscribe.complete();
-  }
-             
-  // }
+  }             
+
   getPendingAndPickedUpUsers(keyTrip,driverId){
     this.TripsService.getPendingUsers(keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {      
@@ -218,8 +201,8 @@ this.callNumber.callNumber(number, true)
 .then(res => console.log('Launched dialer!', res))
 .catch((err) => {
   const alert = this.alertCtrl.create({
-    title: 'error de llamada',
-    subTitle: 'hubo un error en la llamada, si persiste el probelma envianos un correo a waypooltec@gmail.com',
+    title: 'Error de llamada',
+    subTitle: 'Hubo un error en la llamada, si persiste el problema envianos un correo a waypooltec@gmail.com',
     buttons: ['OK']
   });
   alert.present(); 
@@ -249,8 +232,6 @@ this.callNumber.callNumber(number, true)
                 this.TripsService.eliminateKeyTrip(this.userUid);
                 this.TripsService.eliminatingOnTrip(this.userUid);               
                 this.navCtrl.pop();
-                console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-
               }
               this.pickedUpUsers.forEach(pickedUser => {
                 // if user is in the pickedUpUsers array, it should not be able to cancel, because its already pickedUp.

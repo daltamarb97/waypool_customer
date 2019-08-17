@@ -25,25 +25,20 @@
         <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>
     </div>
 
-    <ion-card *ngFor = "let reserve of myReserves">
-        
+    <ion-card *ngFor = "let reserve of myReserves">  
                 <ion-item>
                         <ion-avatar item-start>
                             <img src="assets/imgs/userPicture.png">
                         </ion-avatar>
                         <div class="name">
                             <h2>Inicio de viaje: {{reserve.startHour |titlecase}} 
-            
                             </h2>
                         </div>
                         
                         <div class="more"> 
                                 <h2 class="text text-theme">                        
                                         $ {{reserve.price}}                          
-                                    </h2>  
-                            
-                                                      
-                   
+                                    </h2> 
                         </div>
                     </ion-item>
                     <ion-card-content>
@@ -76,9 +71,7 @@
                             </ion-col>
                         </ion-row>
                     </ion-card-content>
-               
-        
-        
+                
     </ion-card>
    
 </ion-content>

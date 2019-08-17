@@ -10,7 +10,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 // import { sendUsersService } from '../../services/sendUsers.service';
 // import { Geofence } from '@ionic-native/geofence';
 
-import {  Subscription } from 'rxjs';
+import {  Subscription, Subject } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { instancesService } from '../../services/instances.service';
 import { sendUsersService } from '../../services/sendUsers.service';
@@ -39,8 +39,13 @@ export class ReservetripPage{
   reserve:any;
   pendingUsers:any = [];
   onTrip:any;
-
+  unsubscribe = new Subject;
   constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController) {   
+    this.reservesService.getOnTrip(this.userUid).takeUntil(this.unsubscribe)
+    .subscribe( onTrip => {
+       this.onTrip = onTrip;   
+       console.log(this.onTrip);  
+    })
     this.reservesService.getMyReservesUser(this.userUid)
     .subscribe( myReservesId => {
       console.log(this.myReserves);
@@ -54,109 +59,106 @@ export class ReservetripPage{
     .subscribe( originUser => {
       this.locationOrigin = originUser;      
     })
-    this.reservesService.getOnTrip(this.userUid)
-    .subscribe( onTrip => {
-       this.onTrip = onTrip;   
-       console.log(this.onTrip);
     
-   
-    })
     this.sendCoordsService.getDestinationUser(this.userUid)
         .subscribe( destinationUser => {
           this.locationDestination = destinationUser;
     })
-   
+    
   }
-
+arreglar animate css
   ionViewDidLoad(){
     
   }
-    getReserves(){
-      this.myReserves=  []; //erase all of reserves 
+  getReserves() {
+    this.myReserves = []; //erase all of reserves 
 
-      //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
-        this.myReservesId.forEach(reserve => {
-        this.reservesService.getMyReserves(reserve.driverId,reserve.keyReserve)
-        .subscribe( info => {
-              this.reserve = info;   
-              this.pendingUsers = [];           
-              
-              //check if the reserve was eliminated due to the initiation of the trip
-              if(this.reserve === undefined || this.reserve === null){
+    //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
+    this.myReservesId.forEach(reserve => {
+        this.reservesService.getMyReserves(reserve.driverId, reserve.keyReserve).takeUntil(this.unsubscribe)
+            .subscribe(info => {
+                this.reserve = info;
+                console.log(this.reserve)
+                this.pendingUsers = []; 
+                if(reserve === undefined || reserve === null){
                   if(this.onTrip === true){
-                  //just erase key and dont show cancelation
-                  this.reservesService.eliminateKeyUser(this.userUid,reserve.keyTrip);
-                    console.log("exitoso")
+                    console.log("me borre");
+                    this.unSubscribeServices();
+                    this.reservesService.eliminateKeyUser(this.userUid,reserve.keyReserve);
+                    this.navCtrl.pop();
                   }else{
-                    //this means the driver cancel the reserves,the user has to eliminate the key
-                    this.eliminateReserve(this.userUid,reserve.keyTrip);                  
-
-                  }
-              
-
-              
-              }else{
-               
-                      //check if the driver sabotage the trip eliminating anyone
-                    if(this.reserve.pendingUsers == null || this.reserve.pendingUsers == undefined){
-                      if(this.onTrip === true){
-                        this.reservesService.eliminateKeyUser(this.userUid,reserve.keyTrip);
-                        console.log("exitoso")
-
-                      }else{
-                        this.eliminateReserve(this.userUid,reserve.keyTrip);
+                    // the driver cancel or eliminated the reserve
+                    console.log("cai en el vacío")
+                  } 
+                }else{
+                  console.log(this.reserve.keyTrip)
+                  this.reservesService.getPendingUsers(this.userUid, this.reserve.keyTrip).takeUntil(this.unsubscribe)
+                  .subscribe(pendingUsers => {
+                      this.pendingUsers = pendingUsers;                      
+                      if (this.pendingUsers.length === 0) {
+                        // check if driver has initiated trip
+                        
+                        this.unSubscribeServices()
+                        this.reservesService.eliminateKeyUser(this.userUid,reserve.keyReserve);
+                        this.navCtrl.pop();
+                        console.log("me borre"); 
+                      } else {
+                          this.pendingUsers.forEach(user => {
+                              // check if the user hasn't been eliminated from the reserve by the driver
+                              if (user.userId === this.userUid) {
+                                  //do nothing because the user is in the trip
+                                  this.myReserves.push(this.reserve);
+                              } else {
+                                  // eliminate key because the driver has eliminated the user
+                                  console.log("me borre");
+                                  this.eliminateReserve(this.userUid, reserve.keyTrip);
+                              }
+                          })
                       }
-                     
-                    }else{
-                      
-                      this.reservesService.getPendingUsers(this.userUid,this.reserve.keyTrip)
-                      .subscribe( pendingUsers => {
-                        this.pendingUsers = pendingUsers;
-                        this.pendingUsers.forEach( user => {
-                          // check if the user hasn't been eliminated from the reserve by the driver
-                          if(user.userId === this.userUid){
-                              //do nothing because the user is in the trip
-                              this.myReserves.push(this.reserve);                             
-                          } else {
-                            // eliminate key because the driver has eliminated the user
-                            this.eliminateReserve(this.userUid,reserve.keyTrip);                        
-                      }
-                    })
+
                   })
+                }              
                   
-                }                
-              
-            // arreglar problema de que aparece varias veces la misma reserva
-        }})
-      })
+                
+                
 
-    }
-    
-tripDetails(keyTrip,driverUid){
-  let modal = this.modalCtrl.create('ReserveinfoPage',{reserveKey:keyTrip,driverUid:driverUid});
-  modal.present();
+            })
+    })
 }
 
- 
-  // confirmreserve(reserveKey,driverUid){
-  //      //TODAVÍA NO
-
-  
-  // }
-  eliminateReserve(userUid,keyReserve){
-    this.reservesService.eliminateKeyUser(userUid,keyReserve);
-    let modal = this.modalCtrl.create('CanceltripPage');                                             
+tripDetails(keyTrip, driverUid) {
+    let modal = this.modalCtrl.create('ReserveinfoPage', {
+        reserveKey: keyTrip,
+        driverUid: driverUid
+    });
     modal.present();
-  }
-  help(){
+}
+
+
+// confirmreserve(reserveKey,driverUid){
+//      //TODAVÍA NO
+
+
+// }
+eliminateReserve(userUid, keyReserve) {
+    this.unSubscribeServices();
+    this.reservesService.eliminateKeyUser(userUid, keyReserve);
+    let modal = this.modalCtrl.create('CanceltripPage');
+    modal.present();
+}
+unSubscribeServices(){
+  this.unsubscribe.next();
+  this.unsubscribe.complete();
+}     
+help() {
     const toast = this.toastCtrl.create({
-      message: 'Aquí te saldrán las personas que quieren irse contigo',
-      showCloseButton:true,
-      closeButtonText: 'OK',
-      position:'top'
-         });
+        message: 'Aquí te saldrán las personas que quieren irse contigo',
+        showCloseButton: true,
+        closeButtonText: 'OK',
+        position: 'top'
+    });
     toast.present();
-  }
+}
 }
 
 

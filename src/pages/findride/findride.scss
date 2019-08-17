@@ -70,5 +70,27 @@ page-findride {
             text-align: center;
           }
           
-        
+          .rowOfButtons{
+            display: flex;
+            flex-direction:row; 
+          }
+          .btn-left{
+            margin-right: 5px;
+            width: 49%;
+
+          }
+          .btn-right{
+          
+            width: 49%;
+          }
+          // .btn-footer{
+          //   width: 100% !important;
+          //   position: fixed !important;
+          //   bottom: 0px !important;
+          //   left: 0px !important;
+          //   height: 51px !important;
+          // }
+          .content {
+            background: rgba(0, 0, 0, .5) !important;
+        }
         }   

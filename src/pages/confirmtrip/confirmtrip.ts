@@ -48,7 +48,7 @@ export class ConfirmtripPage {
     this.TripsService.joinTrip(this.trip.keyTrip,this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
     this.geoFireService.saveKey(this.trip.keyTrip,this.trip.driver.userId, this.userUid);
     this.reservesService.setOnTrip(this.userUid);
-
+    this.navCtrl.push('MyridePage');
     // this.geoFireService.removeKeyGeofire(this.userUid);
     //OLD
     // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
@@ -64,6 +64,7 @@ export class ConfirmtripPage {
     this.viewCtrl.dismiss(this.accepted);
     this.unsubscribe.next();
     this.unsubscribe.complete();
+
     
     // this.navCtrl.pop();
 

@@ -19,7 +19,7 @@
             <ion-row style="margin-top: 14px;justify-content: center">
                 
                 <ion-col col-8>
-                    <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.5rem;" (click)="goToFindaride()">Continuar</button>
+                    <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.5rem;" *ngIf='showButton' (click)="goToFindaride()">Continuar</button>
                 </ion-col>
             </ion-row>
 

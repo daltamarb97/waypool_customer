@@ -1,11 +1,38 @@
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 
-exports.lowerCase = functions.database.ref('users/{userId}')
-    .onWrite(event => {
-        const messageValue = event.data.val();
+admin.initializeApp(functions.config().firebase);
 
-        const toUpperCase = messageValue.body.toUpperCase();
+exports.welcomeMessage = functions.database.ref('/users/{userId}')
+    .onCreate(async event =>{
 
-        return event.data.ref.child('about2').set(toUpperCase);
+        const data = event.val();
+
+        const userId = data.userId
+
+        const payload = {
+            notification: {
+                title: 'welcome message',
+                body: 'you have a new subscriber'
+            }
+        }
+
+        const db = admin.firestore()
+        const devicesRef = db.collection('devices').where('userId', '==', userId)
+
+        const devices = await devicesRef.get()
+
+        const tokens = []
+
+        devices.forEach(result=>{
+            const token = result.data().token;
+
+            tokens.push(token)
+        })
+
+        return admin.messaging().sendToDevice(tokens, payload);
+     
 
     })
+
+

@@ -16,6 +16,7 @@ export class ConfirmUniversityPage {
   readyToStart:boolean;
   userId:any;
   user:any;
+  showButton:boolean = false;
   constructor(private signUpService: SignUpService, public viewCtrl: ViewController, private angularFireAuth: AngularFireAuth, public alertCtrl: AlertController) {
     this.signUpService.getUniversities().subscribe(universities => {
       this.universities = universities;
@@ -27,17 +28,20 @@ export class ConfirmUniversityPage {
   }
 
   onChange(){
+    this.showButton = false;
     this.signUpService.userUniversity = this.universityChosen;
+
     this.signUpService.getMyInfo(this.userId, this.signUpService.userUniversity).subscribe(user =>{
       this.user = user;
+    })
+
+    setTimeout(()=>{
       if(this.user == null){
         this.alertUni();
-      }else if(this.user.university !== this.signUpService.userUniversity){
-        this.alertUni();
       }else{
-        
+        this.showButton = true;
       }
-    })
+    }, 500)
     
   }
 

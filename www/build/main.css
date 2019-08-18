@@ -4873,6 +4873,10 @@ textarea::-webkit-input-placeholder {
   padding-left: 2px;
 }
 
+textarea::-moz-placeholder {
+  padding-left: 2px;
+}
+
 textarea::-ms-input-placeholder {
   padding-left: 2px;
 }
@@ -28754,6 +28758,66 @@ page-terms .logo img {
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+page-verification-images p {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-top: 3rem !important;
+}
+
+page-verification-images h2 {
+  margin-top: 0;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 70px;
+}
+
+page-verification-images h2::before {
+  content: '';
+  width: 131px;
+  height: 3px;
+  margin: 0 auto;
+  background: #0fc874;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+page-verification-images img {
+  width: 70%;
+}
+
+page-verification-images .skipText {
+  color: red;
+  padding-left: 63px;
+}
+
+page-verification-images .verifiy {
+  margin-top: 60px;
+}
+
+page-verification-images .verifiy img {
+  width: 50%;
+}
+
+page-verification-images .btn-box {
+  position: inherit;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+page-verification-images .btn-box button {
+  margin: 0 auto;
+}
+
+page-verification-images .buttonLight {
+  color: light;
 }
 
 page-wallet ion-header p {

@@ -1,0 +1,351 @@
+webpackJsonp([15],{
+
+<<<<<<< HEAD:www/build/15.js
+/***/ 648:
+=======
+/***/ 612:
+>>>>>>> 68b1290f0c9f58081c65c242d3591eca1a010687:platforms/android/assets/www/build/15.js
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyridePageModule", function() { return MyridePageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+<<<<<<< HEAD:www/build/15.js
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myride__ = __webpack_require__(670);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(626);
+>>>>>>> 68b1290f0c9f58081c65c242d3591eca1a010687:platforms/android/assets/www/build/15.js
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var MyridePageModule = /** @class */ (function () {
+    function MyridePageModule() {
+    }
+    MyridePageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__myride__["a" /* MyridePage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__myride__["a" /* MyridePage */]),
+            ],
+            exports: [
+                __WEBPACK_IMPORTED_MODULE_2__myride__["a" /* MyridePage */]
+            ]
+        })
+    ], MyridePageModule);
+    return MyridePageModule;
+}());
+
+//# sourceMappingURL=myride.module.js.map
+
+/***/ }),
+
+<<<<<<< HEAD:www/build/15.js
+/***/ 670:
+=======
+/***/ 626:
+>>>>>>> 68b1290f0c9f58081c65c242d3591eca1a010687:platforms/android/assets/www/build/15.js
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyridePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+<<<<<<< HEAD:www/build/15.js
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sendUsers_service__ = __webpack_require__(342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_trips_service__ = __webpack_require__(346);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_environment_service__ = __webpack_require__(350);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_fmc_fmc__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators__ = __webpack_require__(17);
+>>>>>>> 68b1290f0c9f58081c65c242d3591eca1a010687:platforms/android/assets/www/build/15.js
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+<<<<<<< HEAD:www/build/15.js
+
+var MyridePage = /** @class */ (function () {
+    function MyridePage(navCtrl, alertCtrl, TripsService, toastCtrl, SignUpService, geolocation, navParams, AngularFireAuth, callNumber, sendUsersService, app, environmentService) {
+        var _this = this;
+=======
+var LoginPage = /** @class */ (function () {
+    function LoginPage(navCtrl, authenticationService, alertCtrl, AngularFireAuth, NavParams, SignUpService, formBuilder, platform, fcmProvider, toastCtrl) {
+>>>>>>> 68b1290f0c9f58081c65c242d3591eca1a010687:platforms/android/assets/www/build/15.js
+        this.navCtrl = navCtrl;
+        this.alertCtrl = alertCtrl;
+        this.TripsService = TripsService;
+        this.toastCtrl = toastCtrl;
+        this.SignUpService = SignUpService;
+<<<<<<< HEAD:www/build/15.js
+        this.geolocation = geolocation;
+        this.navParams = navParams;
+        this.AngularFireAuth = AngularFireAuth;
+        this.callNumber = callNumber;
+        this.sendUsersService = sendUsersService;
+        this.app = app;
+        this.environmentService = environmentService;
+        this.pendingUsers = [];
+        this.pickedUpUsers = [];
+        this.driverOnTrip = [];
+        this.myReservesId = [];
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.driverExist = false;
+        this.onTrip = false;
+        this.cancelReserves = [];
+        this.TripsService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid)
+            .subscribe(function (myReservesId) {
+            //get all reserves id (reserve push key, driverUid) of my user node
+            _this.myReservesId = myReservesId;
+            console.log(_this.myReservesId);
+            _this.getTrip();
+=======
+        this.formBuilder = formBuilder;
+        this.platform = platform;
+        this.fcmProvider = fcmProvider;
+        this.toastCtrl = toastCtrl;
+        this.email = '';
+        this.auth = this.AngularFireAuth.auth;
+        this.loginGroup = this.formBuilder.group({
+            email: ["", __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            password: ["", __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required]
+>>>>>>> 68b1290f0c9f58081c65c242d3591eca1a010687:platforms/android/assets/www/build/15.js
+        });
+        console.log(this.SignUpService.userUniversity);
+    }
+<<<<<<< HEAD:www/build/15.js
+    MyridePage.prototype.getTrip = function () {
+=======
+    LoginPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.fcmProvider.getToken();
+        this.fcmProvider.listenToNotifications().pipe(Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["tap"])(function (msg) {
+            var toast = _this.toastCtrl.create({
+                message: 'new Notification',
+                duration: 3000
+            });
+            toast.present();
+        })).subscribe();
+    };
+    LoginPage.prototype.signup = function () {
+        this.navCtrl.push('SignupPage');
+    };
+    ;
+    LoginPage.prototype.resetPassword = function (email) {
+        if (this.loginGroup.controls['email'].value == '') {
+            var alert_1 = this.alertCtrl.create({
+                title: 'no hay ningun email',
+                subTitle: 'ingresa un email para resetear tu contraseña',
+                buttons: ['OK']
+            });
+            alert_1.present();
+            console.log("reset password email hasn't been sent");
+        }
+        else {
+            this.auth.sendPasswordResetEmail(this.loginGroup.controls['email'].value);
+            var alert_2 = this.alertCtrl.create({
+                title: 'revisa tu email',
+                subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
+                buttons: ['OK']
+            });
+            alert_2.present();
+            console.log("reset password email has been sent");
+        }
+        ;
+    };
+    ;
+    LoginPage.prototype.logIn = function () {
+>>>>>>> 68b1290f0c9f58081c65c242d3591eca1a010687:platforms/android/assets/www/build/15.js
+        var _this = this;
+        this.myReservesId.forEach(function (reserve) {
+            //compare every reserveId User have and see if matches in Trip's node
+            if (reserve.keyReserve === undefined || reserve.keyReserve === null) {
+                // if reserve doesn't exist do nothing
+                _this.driverExist = false;
+            }
+            else {
+                //check if reserve exist inside node trips
+                _this.TripsService.getMyReserves(_this.SignUpService.userUniversity, reserve.keyReserve, reserve.driverId)
+                    .subscribe(function (info) {
+                    //check if the info of the reserve is null       
+                    if (info === undefined || info === null) {
+                        _this.driverExist = false;
+                        _this.onTrip = false;
+                    }
+                    else {
+                        _this.info = info;
+                        //if matches get trip
+                        if (reserve.keyReserve === _this.info.keyTrip) {
+                            _this.onTrip = true;
+                            _this.trip = info;
+                            _this.getPendingAndPickedUpUsers(_this.trip.keyTrip, _this.trip.driver.userId);
+                            _this.driverExist = true;
+                            if (_this.trip.saveTrip === true) {
+                                //check if trip has to be saved 
+                                _this.TripsService.saveTripOnRecords(_this.SignUpService.userUniversity, _this.userUid, _this.trip);
+                                _this.driverExist = false;
+                            }
+                            _this.trip.cancelReserves = _this.cancelReserves;
+                            _this.trip.cancelReserves.forEach(function (cancelReserve) {
+                                //if driver cancel you, eliminate your keyReserve of your array
+                                if (_this.cancelReserves === cancelReserve.userId) {
+                                    _this.driverExist = false;
+                                    _this.TripsService.eliminateKeyUser(_this.SignUpService.userUniversity, _this.userUid, _this.trip.keyTrip);
+                                    _this.navCtrl.setRoot(_this.navCtrl.getActive().component);
+                                    var toast = _this.toastCtrl.create({
+                                        message: "El conductor te ha cancelado de su viaje",
+                                        showCloseButton: true,
+                                        closeButtonText: 'Ok'
+                                    });
+                                    toast.present();
+                                    console.log('YEAHHHHHHHHHHHHHHHHHH');
+                                }
+                            });
+                        }
+                        else {
+                            // do nothing because the key of your reserve is not in trip's node
+                        }
+                        // do nothing because your trip doesn't exist
+                    }
+                });
+            }
+        });
+    };
+    MyridePage.prototype.getPendingAndPickedUpUsers = function (keyTrip, driverId) {
+        var _this = this;
+        this.TripsService.getPendingUsers(this.SignUpService.userUniversity, keyTrip, driverId)
+            .subscribe(function (user) {
+            _this.pendingUsers = user;
+            console.log(_this.pendingUsers);
+        });
+        this.TripsService.getPickedUpUsers(this.SignUpService.userUniversity, keyTrip, driverId)
+            .subscribe(function (user) {
+            _this.pickedUpUsers = user;
+            console.log(_this.pickedUpUsers);
+        });
+    };
+    MyridePage.prototype.chatDriver = function (driver) {
+        this.navCtrl.push('ChattingPage', { driver: driver });
+    };
+    MyridePage.prototype.callUser = function (number) {
+        var _this = this;
+        console.log(number);
+        this.callNumber.callNumber(number, true)
+            .then(function (res) { return console.log('Launched dialer!', res); })
+            .catch(function (err) {
+            var alert = _this.alertCtrl.create({
+                title: 'error de llamada',
+                subTitle: 'hubo un error en la llamada, si persiste el probelma envianos un correo a waypooltec@gmail.com',
+                buttons: ['OK']
+            });
+            alert.present();
+            console.log('Error launching dialer', err);
+        });
+    };
+    MyridePage.prototype.cancelTrip = function () {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            title: 'Cancelar Viaje',
+            message: "\u00BFEstas seguro que deseas cancelar?",
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    handler: function () {
+                        //do nothing
+                    }
+                },
+                {
+                    text: 'Si',
+                    handler: function () {
+                        if (_this.pickedUpUsers.length === 0 || _this.pickedUpUsers === undefined || _this.pickedUpUsers === null) {
+                            _this.TripsService.cancelTrip(_this.SignUpService.userUniversity, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
+                            _this.TripsService.eliminateKeyUser(_this.SignUpService.userUniversity, _this.userUid, _this.trip.keyTrip);
+                            _this.navCtrl.setRoot(_this.navCtrl.getActive().component);
+                            console.log(_this.trip.keyTrip);
+                            _this.driverExist = false;
+                            _this.onTrip = false;
+                            console.log(_this.driverExist);
+                        }
+                        _this.pickedUpUsers.forEach(function (pickedUser) {
+                            // if user is in the pickedUpUsers array, it should not be able to cancel, because its already pickedUp.
+                            if (pickedUser.userId === _this.userUid) {
+                                //dont cancel
+                                var toast = _this.toastCtrl.create({
+                                    message: pickedUser.name + " : No puedes cancelar ya que tu compa\u00F1ero ya te recogi\u00F3, si esto no es verdad, por favor saca un screenshot de Mi Viaje al correo waypooltec@gmail.com",
+                                    showCloseButton: true,
+                                    closeButtonText: 'Ok'
+                                });
+                                toast.present();
+                            }
+                            else {
+                                // desaparecer driver de el html y hacer condicionales del last minute this.user, buscar setTimeOut y una barra de tiempo para eliminarlo
+                                _this.driverExist = false;
+                                _this.onTrip = false;
+                                _this.TripsService.cancelTrip(_this.SignUpService.userUniversity, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
+                                _this.TripsService.eliminateKeyUser(_this.SignUpService.userUniversity, _this.userUid, _this.trip.keyTrip);
+                                console.log(_this.trip.keyTrip);
+                                _this.navCtrl.setRoot(_this.navCtrl.getActive().component);
+                            }
+                        });
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
+    MyridePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-myride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/myride/myride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title class="text-center">MI VIAJE</ion-title>\n    </ion-navbar>\n    \n</ion-header>\n\n<ion-content class="bg-light">\n\n    <div>\n        <ion-list>\n            <ion-card *ngFor = "let user of pendingUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{user.name | titlecase}} {{user.lastname |titlecase | slice:0:1}}\n                            <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                        </h2>\n                        \n                    </div>                   \n                    <div class="more">\n                        <ion-badge color="bg-yellow">EN ESPERA</ion-badge>\n                           \n                        \n                        \n\n                    </div>\n                </ion-item>\n                \n            </ion-card>\n            <ion-card *ngFor = "let user of pickedUpUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{user.name | titlecase}} {{user.lastname |titlecase | slice:0:1}}\n                            <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                        </h2>\n                        \n                    </div>\n                    <div class="more">\n                        <ion-badge color="bg-theme">RECOGIDO</ion-badge>                      \n                        \n\n                    </div>\n                   \n                </ion-item>\n                \n            </ion-card>\n\n            <!-- repilica -->\n            <ion-card *ngIf="driverExist">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{trip.driver.name|titlecase}} {{trip.driver.lastname |titlecase | slice:0:1}}\n                            <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                        </h2>\n                        <p>{{trip.driver.car}}</p>\n                    </div>\n                    <div class="more">\n                        <h2 class="text-theme" class="priceDriver">$ {{trip.driver.price}}\n                        </h2>\n                    </div>                \n                   \n                </ion-item>\n                <ion-card-content>\n                    <div class="status"><img src="assets/imgs/driverEtiquette.png"></div>\n                    <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{trip.driver.origin}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{trip.driver.destination}}</p>\n                    </div>\n                    <ion-row>\n                        <ion-col center text-center col-6 text-right style="margin-left: auto;">\n                            <h2 class="text text-theme">                        \n                                Hora de partida: {{trip.startHour}}                          \n                            </h2>                    \n                        </ion-col>  \n                        <ion-col class="detail-text">\n                            <button class="btn bg-theme rounded full text-white text-bold" (click)="chatDriver(trip.driver)" ><ion-icon name="md-chatboxes" class="text-white"></ion-icon> </button>\n                        </ion-col>\n                        <ion-col class="detail-text">\n                            <button class="btn bg-theme rounded full text-white text-bold" (click)="callUser(trip.driver.phone)" ><ion-icon name="ios-call" class="text-white"></ion-icon> </button>\n                        </ion-col>\n                   \n                    </ion-row>\n                </ion-card-content>\n            </ion-card>    \n           \n            <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>\n\n        </ion-list>\n\n        <!-- <div *ngSwitchCase="\'map\'">\n           <div #map id="map" ></div>\n        </div> -->\n             \n\n        \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/myride/myride.html"*/
+        }),
+<<<<<<< HEAD:www/build/15.js
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_7__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_2__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_8__services_environment_service__["a" /* environmentService */]])
+    ], MyridePage);
+    return MyridePage;
+=======
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__providers_fmc_fmc__["a" /* FmcProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
+    ], LoginPage);
+    return LoginPage;
+>>>>>>> 68b1290f0c9f58081c65c242d3591eca1a010687:platforms/android/assets/www/build/15.js
+}());
+
+//# sourceMappingURL=myride.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=15.js.map

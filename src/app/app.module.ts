@@ -30,6 +30,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { chatsService } from '../services/chat.service';
 import { reservesService } from '../services/reserves.service';
 import { TripsService } from '../services/trips.service';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 import { environmentService } from '../services/environment.service';
 import { ConfirmUniversityPage } from '../pages/confirm-university/confirm-university';

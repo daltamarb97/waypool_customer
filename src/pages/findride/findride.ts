@@ -4,7 +4,7 @@ import { ListridePage } from '../listride/listride';
 
 
 import { Geolocation } from '@ionic-native/geolocation';
-import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage, App } from 'ionic-angular';
+import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage, App, ToastController } from 'ionic-angular';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ConfirmNotePage } from '../confirmnote/confirmnote';
@@ -74,6 +74,7 @@ export class FindridePage {
   geocoordinatesDest:any ={};
   geocoordinatesOr:any ={};
   userInfo:any;
+  universityInfo:any;
 
   //variables for geoquey university
   dbRef;
@@ -128,6 +129,28 @@ export class FindridePage {
     modal.present();
   }
     this.loadMap();
+
+    this.SignUpService.getUniversities(this.SignUpService.userUniversity).subscribe(uni => {
+      this.universityInfo = uni;
+
+      if(this.universityInfo.email == undefined){
+        
+        if(this.userInfoForOntrip.documents){
+          if(this.userInfoForOntrip.documents.carne == undefined || this.userInfoForOntrip.documents.id == undefined){
+            let modal = this.modalCtrl.create('VerificationImagesPage');
+            modal.present();
+          }else{
+
+          }
+        }else if(!this.universityInfo.documents) {
+          console.log('no hay docs')
+          let modal = this.modalCtrl.create('VerificationImagesPage');
+            modal.present();
+        } 
+      }else{
+
+      }
+    })
   }
  
   loadMap(){

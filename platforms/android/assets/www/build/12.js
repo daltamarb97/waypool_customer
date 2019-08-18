@@ -1,14 +1,14 @@
 webpackJsonp([12],{
 
-/***/ 589:
+/***/ 615:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(601);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(635);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,41 +18,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = /** @class */ (function () {
-    function LoginPageModule() {
+var ProfilePageModule = /** @class */ (function () {
+    function ProfilePageModule() {
     }
-    LoginPageModule = __decorate([
+    ProfilePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]
             ]
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], ProfilePageModule);
+    return ProfilePageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=profile.module.js.map
 
 /***/ }),
 
-/***/ 601:
+/***/ 635:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__ = __webpack_require__(330);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(328);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_userauthentication_service__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(337);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,100 +66,146 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, authenticationService, alertCtrl, AngularFireAuth, NavParams, SignUpService, formBuilder, platform) {
+var ProfilePage = /** @class */ (function () {
+    function ProfilePage(navCtrl, modalCtrl, toastCtrl, alertCtrl, AngularFireAuth, authenticationService, SignupService) {
+        var _this = this;
         this.navCtrl = navCtrl;
-        this.authenticationService = authenticationService;
+        this.modalCtrl = modalCtrl;
+        this.toastCtrl = toastCtrl;
         this.alertCtrl = alertCtrl;
         this.AngularFireAuth = AngularFireAuth;
-        this.NavParams = NavParams;
-        this.SignUpService = SignUpService;
-        this.formBuilder = formBuilder;
-        this.platform = platform;
-        this.email = '';
-        this.auth = this.AngularFireAuth.auth;
-        this.loginGroup = this.formBuilder.group({
-            email: ["", __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
-            password: ["", __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required]
+        this.authenticationService = authenticationService;
+        this.SignupService = SignupService;
+        this.myprofile = "about";
+        this.emailUser = this.AngularFireAuth.auth.currentUser.email;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.user = {};
+        this.SignupService.getMyInfoForProfile(this.userUid).subscribe(function (user) {
+            _this.user = user;
+            console.log(_this.user);
+            _this.showInfoProfile(user);
         });
     }
-    LoginPage.prototype.signup = function () {
-        this.navCtrl.push('SignupPage');
-    };
-    ;
-    LoginPage.prototype.resetPassword = function (email) {
-        if (this.loginGroup.controls['email'].value == '') {
-            var alert_1 = this.alertCtrl.create({
-                title: 'no hay ningun email',
-                subTitle: 'ingresa un email para resetear tu contraseña',
-                buttons: ['OK']
-            });
-            alert_1.present();
-            console.log("reset password email hasn't been sent");
+    ProfilePage.prototype.saveChanges = function () {
+        if (this.phone == null && this.user.about == null && this.user.url == null) {
+            this.toastConfirmation();
+            this.navCtrl.pop();
+        }
+        else if (this.phone == null && this.user.about == null && this.user.url != null) {
+            this.SignupService.saveInfoProfileUrl(this.userUid, this.user.url);
+            this.toastConfirmation();
+            this.navCtrl.pop();
+        }
+        else if (this.phone == null && this.user.about != null && this.user.url == null) {
+            this.SignupService.saveInfoProfileAbout(this.userUid, this.user.about);
+            this.toastConfirmation();
+            this.navCtrl.pop();
+        }
+        else if (this.phone != null && this.user.about == null && this.user.url == null) {
+            this.SignupService.saveInfoProfilePhone(this.userUid, this.phone);
+            this.toastConfirmation();
+            this.navCtrl.pop();
+        }
+        else if (this.phone != null && this.user.about != null && this.user.url == null) {
+            this.SignupService.saveInfoProfilePhone(this.userUid, this.phone);
+            this.SignupService.saveInfoProfileAbout(this.userUid, this.user.about);
+            this.toastConfirmation();
+            this.navCtrl.pop();
+        }
+        else if (this.phone != null && this.user.about == null && this.user.url != null) {
+            this.SignupService.saveInfoProfilePhone(this.userUid, this.phone);
+            this.SignupService.saveInfoProfileUrl(this.userUid, this.user.url);
+            this.toastConfirmation();
+            this.navCtrl.pop();
+        }
+        else if (this.phone == null && this.user.about != null && this.user.url != null) {
+            this.SignupService.saveInfoProfileAbout(this.userUid, this.user.about);
+            this.SignupService.saveInfoProfileUrl(this.userUid, this.user.url);
+            this.toastConfirmation();
+            this.navCtrl.pop();
+        }
+        else if (this.phone != null && this.user.about != null && this.user.url != null) {
+            this.SignupService.saveInfoProfileAbout(this.userUid, this.user.about);
+            this.SignupService.saveInfoProfileUrl(this.userUid, this.user.url);
+            this.SignupService.saveInfoProfilePhone(this.userUid, this.phone);
+            this.toastConfirmation();
+            this.navCtrl.pop();
         }
         else {
-            this.auth.sendPasswordResetEmail(this.loginGroup.controls['email'].value);
-            var alert_2 = this.alertCtrl.create({
-                title: 'revisa tu email',
-                subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
-                buttons: ['OK']
-            });
-            alert_2.present();
-            console.log("reset password email has been sent");
+            console.log('go to the f*cking hell');
         }
-        ;
     };
-    ;
-    LoginPage.prototype.logIn = function () {
+    ProfilePage.prototype.toastConfirmation = function () {
+        var toast = this.toastCtrl.create({
+            message: 'Información actualizada',
+            duration: 1000,
+            position: 'bottom'
+        });
+        toast.present();
+    };
+    ProfilePage.prototype.deleteAccount = function () {
         var _this = this;
-        this.receivedUser = this.NavParams.data;
-        var email = this.loginGroup.controls['email'].value;
-        var password = this.loginGroup.controls['password'].value;
-        this.authenticationService.loginWithEmail(email, password).then(function (data) {
-            console.log(data);
-            if (data.user.emailVerified == false) {
-                var alert_3 = _this.alertCtrl.create({
-                    title: 'Oops!',
-                    subTitle: 'por favor verifica tu email',
-                    buttons: ['OK']
-                });
-                alert_3.present();
-            }
-            else {
-                var metadata = _this.auth.currentUser.metadata;
-                if (metadata.creationTime == metadata.lastSignInTime) {
-                    console.log(metadata.creationTime);
-                    console.log(metadata.lastSignInTime);
-                    _this.navCtrl.push('TabsPage'); //aqui va registration car, no tabspge
+        var alert = this.alertCtrl.create({
+            title: 'Eliminar Cuenta',
+            message: "\u00BFEstas segur@ que deseas eliminar esta cuenta? si tienes cuenta en WAYPOOL DRIVER tambi\u00E9n se eliminar\u00E1",
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    role: 'cancel',
+                    handler: function () {
+                    }
+                },
+                {
+                    text: 'Eliminar',
+                    handler: function () {
+                        _this.SignupService.deleteAccount(_this.userUid);
+                        _this.AngularFireAuth.auth.currentUser.delete().then(function () {
+                            console.log('user has been deleted');
+                        }).catch(function (error) {
+                            console.log('error:', error);
+                        });
+                        _this.navCtrl.setRoot('LoginPage');
+                        var toast = _this.toastCtrl.create({
+                            message: "Acabas de eliminar esta cuenta, si deseas volver a ser parte de la comunidad por favor reg\u00EDstrate de nuevo",
+                            showCloseButton: true,
+                            closeButtonText: 'Ok'
+                        });
+                        toast.present();
+                    }
                 }
-                else {
-                    _this.navCtrl.push('TabsPage');
-                }
-                _this.authenticationService.getStatus;
-            }
-            ;
-        }).catch(function (error) {
+            ]
+        });
+        alert.present();
+    };
+    ProfilePage.prototype.showInfoProfile = function (user) {
+        this.name = user.name;
+        this.lastname = user.lastname;
+        this.emailComplete = user.email + user.fixedemail;
+        console.log(this.emailComplete);
+    };
+    ProfilePage.prototype.changePassword = function () {
+        var _this = this;
+        this.AngularFireAuth.auth.sendPasswordResetEmail(this.emailUser).then(function () {
             var alert = _this.alertCtrl.create({
-                title: 'Oops!',
-                subTitle: 'El usuario o la contraseña están incorrectas',
+                title: 'Revisa tu email',
+                subTitle: 'te enviamos un correo donde podras reestablecer tu contraseña',
                 buttons: ['OK']
             });
             alert.present();
+        }).catch(function (error) {
             console.log(error);
         });
-        localStorage.setItem('currentUser', 'user');
     };
-    LoginPage = __decorate([
+    ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_customer/src/pages/login/login.html"*/'<ion-header class="transparent">\n    <ion-navbar>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="logo">\n        <img src="assets/imgs/logo waypool-01.png" alt="logo">\n    </div>\n\n    <div class="bg-white login">\n        <div class="">\n         <form [formGroup]="loginGroup" (ngSubmit)="logIn()">\n            <ion-list class="form">\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="email"  text-right  formControlName="email" placeholder= "email universitario"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>\n                </ion-item>\n            </ion-list>\n            <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!loginGroup.valid">ENTRAR</button>\n            <br>\n         </form>\n\n            <ion-row style="padding-top: 30px;">\n                <ion-col (click)="signup()"><small>¿Eres nuevo? <strong class="text-theme">¡Regístrate!</strong></small></ion-col>\n                <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme">contraseña?</strong></small></ion-col>\n            </ion-row>\n           \n\n        </div>\n    </div>\n</ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_customer/src/pages/login/login.html"*/
+            selector: 'page-profile',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/profile/profile.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title>MI PERFIL</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n    <ion-item style="position: relative;z-index: 2;">\n        <ion-avatar item-start>\n            <img src="assets/imgs/userPicture.png">\n        </ion-avatar>\n        <div class="name">\n            <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n            </h2>\n            \n        </div>\n        \n    </ion-item>\n    \n    <div >\n        <ion-list >\n              \n                     \n            <div class="bg-white" padding>\n\n                <ion-list no-lines class="form-list">\n                    <ion-item>\n                        <ion-label floating >Nombre</ion-label>\n                        <ion-input type="text" [(ngModel)]="user.name" readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating >Apellido</ion-label>\n                        <ion-input type="text" [(ngModel)]="user.lastname" readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>Número Telefónico Actual</ion-label>\n                        <ion-input type="number"  [(ngModel)]="user.phone" ></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label stacked>Número Telefónico Nuevo</ion-label>\n                        <ion-input type="number" placeholder="modifica aqui tu número" [(ngModel)]="phone"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>Email</ion-label>\n                        <ion-input type="text"  [(ngModel)]="emailComplete"  readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label stacked >Sobre mi</ion-label>\n                        <ion-textarea placeholder="tu carrera, pasiones, skills"  [(ngModel)]="user.about"></ion-textarea>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label stacked>URL de interés</ion-label>\n                        <ion-input type="text" placeholder="¿qué quieres que vean sobre ti?" [(ngModel)]="user.url" ></ion-input>\n                    </ion-item>\n\n\n                </ion-list>\n            </div>\n            <div padding-top padding-left padding-right text-center>\n                <p>\n                    <button class="btn text-theme rounded bg-white" style="width: 100%;margin-bottom: 8px;" (click)="saveChanges()">Guardar Cambios</button>\n\n                    <button class="btn text-theme rounded bg-white" style="width: 100%;    margin-bottom: 8px;" (click)="changePassword()" >Cambiar Contraseña</button>\n                    <button class="btn text-white rounded bg-red" style="width: 100%;    margin-bottom: 8px;" (click)="deleteAccount()">Eliminar Cuenta</button>\n              \n                </p>\n\n            </div>\n        </ion-list>\n        \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/profile/profile.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]])
-    ], LoginPage);
-    return LoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_3__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */]])
+    ], ProfilePage);
+    return ProfilePage;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=profile.js.map
 
 /***/ })
 

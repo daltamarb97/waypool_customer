@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, NavParams, IonicPage, Platform } from 'ionic-angular';
+import { NavController, AlertController, NavParams, IonicPage, Platform, ToastController } from 'ionic-angular';
 
 
 import { authenticationService } from '../../services/userauthentication.service';
@@ -8,6 +8,8 @@ import { SignUpService } from '../../services/signup.services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TabsPage } from '../tabs/tabs';
 import * as firebase from 'firebase';
+import { tap } from 'rxjs/operators';
+
 
 @IonicPage()
 
@@ -23,7 +25,7 @@ export class LoginPage {
     receivedUser;
     private loginGroup: FormGroup;
   
-  constructor(public navCtrl: NavController, private authenticationService: authenticationService, public alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public NavParams: NavParams, private SignUpService: SignUpService, private formBuilder: FormBuilder, public platform: Platform) {
+  constructor(public navCtrl: NavController, private authenticationService: authenticationService, public alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public NavParams: NavParams, private SignUpService: SignUpService, private formBuilder: FormBuilder, public platform: Platform, public toastCtrl: ToastController) {
     this.loginGroup = this.formBuilder.group({
         email: ["", Validators.required],
         password: ["", Validators.required]

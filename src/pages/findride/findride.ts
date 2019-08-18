@@ -125,32 +125,33 @@ export class FindridePage {
             this.userInfoForOntrip = user;
           })
       }
+      this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).subscribe(uni => {
+        this.universityInfo = uni;
+  
+        if(this.universityInfo.email == undefined){
+          
+          if(this.userInfoForOntrip.documents){
+            if(this.userInfoForOntrip.documents.carne == undefined || this.userInfoForOntrip.documents.id == undefined){
+              let modal = this.modalCtrl.create('VerificationImagesPage');
+              modal.present();
+            }else{
+  
+            }
+          }else if(!this.universityInfo.documents) {
+            console.log('no hay docs')
+            let modal = this.modalCtrl.create('VerificationImagesPage');
+              modal.present();
+          } 
+        }else{
+  
+        }
+      })
     })
     modal.present();
   }
     this.loadMap();
 
-    this.SignUpService.getUniversities(this.SignUpService.userUniversity).subscribe(uni => {
-      this.universityInfo = uni;
-
-      if(this.universityInfo.email == undefined){
-        
-        if(this.userInfoForOntrip.documents){
-          if(this.userInfoForOntrip.documents.carne == undefined || this.userInfoForOntrip.documents.id == undefined){
-            let modal = this.modalCtrl.create('VerificationImagesPage');
-            modal.present();
-          }else{
-
-          }
-        }else if(!this.universityInfo.documents) {
-          console.log('no hay docs')
-          let modal = this.modalCtrl.create('VerificationImagesPage');
-            modal.present();
-        } 
-      }else{
-
-      }
-    })
+    
   }
  
   loadMap(){

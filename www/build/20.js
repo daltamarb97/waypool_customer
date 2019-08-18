@@ -1,14 +1,14 @@
 webpackJsonp([20],{
 
-/***/ 633:
+/***/ 635:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChattingPageModule", function() { return ChattingPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmReservationPageModule", function() { return ConfirmReservationPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chatting__ = __webpack_require__(657);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirm_reservation__ = __webpack_require__(659);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,39 +18,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ChattingPageModule = /** @class */ (function () {
-    function ChattingPageModule() {
+var ConfirmReservationPageModule = /** @class */ (function () {
+    function ConfirmReservationPageModule() {
     }
-    ChattingPageModule = __decorate([
+    ConfirmReservationPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */],
+                __WEBPACK_IMPORTED_MODULE_2__confirm_reservation__["a" /* ConfirmReservationPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirm_reservation__["a" /* ConfirmReservationPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */]
+                __WEBPACK_IMPORTED_MODULE_2__confirm_reservation__["a" /* ConfirmReservationPage */]
             ]
         })
-    ], ChattingPageModule);
-    return ChattingPageModule;
+    ], ConfirmReservationPageModule);
+    return ConfirmReservationPageModule;
 }());
 
-//# sourceMappingURL=chatting.module.js.map
+//# sourceMappingURL=confirm-reservation.module.js.map
 
 /***/ }),
 
-/***/ 657:
+/***/ 659:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChattingPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmReservationPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_chat_service__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendUsers_service__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_geoFire_service__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_instances_service__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,51 +68,71 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+// import { AngularFireDatabase } from 'angularfire2/database';
 
-var ChattingPage = /** @class */ (function () {
-    function ChattingPage(navCtrl, chatsService, navParams, AngularFireAuth) {
+
+// import { RidetodayPage } from '../ridetoday/ridetoday';
+// import { MyridePage } from '../myride/myride';
+// import { TabsPage } from '../tabs/tabs';
+
+
+
+
+var ConfirmReservationPage = /** @class */ (function () {
+    function ConfirmReservationPage(navCtrl, sendUsersService, SignUpService, sendCoordsService, modalCtrl, AngularFireAuth, viewCtrl, navParams, geoFireService, instances, toastCtrl, alertCtrl, app) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.chatsService = chatsService;
-        this.navParams = navParams;
+        this.sendUsersService = sendUsersService;
+        this.SignUpService = SignUpService;
+        this.sendCoordsService = sendCoordsService;
+        this.modalCtrl = modalCtrl;
         this.AngularFireAuth = AngularFireAuth;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.chats = [];
+        this.viewCtrl = viewCtrl;
+        this.navParams = navParams;
+        this.geoFireService = geoFireService;
+        this.instances = instances;
+        this.toastCtrl = toastCtrl;
+        this.alertCtrl = alertCtrl;
+        this.app = app;
+        this.userDriverUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.infoUser = {};
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_8_rxjs__["Subject"];
+        this.reserves = [];
+        this.passengers = [];
+        this.reserveKey = this.navParams.get('reserveKey');
         this.driver = this.navParams.get('driver');
-        this.chatsService.getChats(this.driver.userId, this.userUid)
-            .subscribe(function (chat) {
-            _this.chats = chat;
-            console.log(_this.chats);
-            _this.scrollToBottom();
+        console.log(this.driver);
+        this.driverId = this.driver.userId;
+        this.sendCoordsService.getPendingUsers(this.SignUpService.userUniversity, this.driverId, this.reserveKey).takeUntil(this.unsubscribe)
+            .subscribe(function (passengers) {
+            _this.passengers = passengers;
+            console.log(_this.passengers);
+            _this.passengers.push(_this.driver);
         });
     }
-    ChattingPage.prototype.scrollToBottom = function () {
-        var _this = this;
-        setTimeout(function () {
-            if (_this.content.scrollToBottom) {
-                _this.content.scrollToBottom();
-            }
-        }, 400);
+    // pending to make this logic of steping out from reserve being user 
+    ConfirmReservationPage.prototype.cancelReserve = function () {
     };
-    ChattingPage.prototype.sendMessage = function () {
-        this.chatsService.pushMessageUser(this.driver.userId, this.userUid, this.message);
-        this.message = '';
-        this.scrollToBottom();
+    ConfirmReservationPage.prototype.showProfilePassenger = function (passenger) {
+        this.app.getRootNav().push('PublicProfilePage', { passenger: passenger });
+        this.accepted = true;
+        this.dismiss();
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Content */])
-    ], ChattingPage.prototype, "content", void 0);
-    ChattingPage = __decorate([
+    ConfirmReservationPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss(this.accepted);
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    };
+    ConfirmReservationPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-chatting',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/chatting/chatting.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/face-1.jpg">\n            </ion-avatar>\n            <h2><span class="text-white">{{driver.name |titlecase}} {{driver.lastname | slice:0:1 | titlecase}}</span>\n                <ion-icon name="md-more" end-item item-end class="text-white"></ion-icon>\n            </h2>\n        </ion-item>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding class="chat-bg">\n    <div class="chatbox"*ngFor="let chat of chats">\n            <div  class="cb" >        \n                    <div>                        \n                         <div *ngIf="userUid === chat.uid" class="chat chat-left bg-theme text-white" text-left padding float-right>\n                            <!-- its driver message -->\n                             <p>{{chat.message}}</p>       \n                       </div>                       \n                   </div>                    \n                </div>\n                <div class="cb">            \n                    <div>   \n                        <div *ngIf="chat.uid === driver.userId" class="chat chat-right bg-white text-dark" text-right padding float-left>  \n                         <!-- its user message -->                          \n                             <p>{{chat.message}}</p>                            \n                         </div>\n                    </div>                  \n                </div>\n    </div>\n   \n   \n</ion-content>\n<ion-footer class="fixed-bottom">\n        \n                <ion-list inset>\n                    <ion-item>\n                        <ion-input type="text" placeholder="Escribe tu mensaje" [(ngModel)]="message" autofocus (keyup.enter)="sendMessage()"></ion-input>\n                  \n                       <button class="text-theme" item-right (click)="sendMessage()"> <ion-icon name="md-send" ></ion-icon></button>\n                    </ion-item>\n                </ion-list>\n            \n      \n  \n</ion-footer> '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/chatting/chatting.html"*/
+            selector: 'page-confirm-reservation',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirm-reservation/confirm-reservation.html"*/'<ion-content>\n  <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>\n  <ion-card>\n     <h6 class="text-theme">Tus compañeros de viaje</h6>\n     <ion-item  *ngFor="let passenger of passengers" >\n        <ion-avatar item-start>\n           <img src="assets/imgs/userPicture.png">\n        </ion-avatar>\n        <div class="passenger">\n          <div  class="name">\n                <h2 (click)=\'showProfilePassenger(passenger)\'>{{passenger.name |titlecase}} {{passenger.lastname  |titlecase | slice:0:1}}.</h2>\n                <h5>{{passenger.about | slice:0:25}}...</h5>\n\n          </div>\n        </div>\n        \n      \n     </ion-item>\n \n     <ion-card-content>\n        <div class="ride-detail no-before">\n           <p>\n              Estos son tus compañeros que se han unido a tu viaje, que tengas un excelente viaje \n             \n            \n           </p>\n           \n        </div>\n     </ion-card-content>\n     <ion-card-content>\n        <div class="seats">\n           \n           <ion-row style="margin-top: 14px;   display: flex;\n           justify-content: center">\n              \n              <ion-col col-8>\n                <!-- here, the user should be able just to step out from the reserve -->\n                 <button class="btn bg-red text-white rounded" style="width: 100%;font-size: .95rem;"(click)="cancelReserve()">Salir de este Viaje</button>\n              </ion-col>\n           </ion-row>\n        </div>\n     </ion-card-content>\n  </ion-card>\n</ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirm-reservation/confirm-reservation.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__services_chat_service__["a" /* chatsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
-    ], ChattingPage);
-    return ChattingPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_6__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_7__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */]])
+    ], ConfirmReservationPage);
+    return ConfirmReservationPage;
 }());
 
-//# sourceMappingURL=chatting.js.map
+//# sourceMappingURL=confirm-reservation.js.map
 
 /***/ })
 

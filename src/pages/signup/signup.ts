@@ -103,7 +103,7 @@ export class SignupPage {
                 name: userName,
                 lastname: userLastName,
                 email: userEmailComplete,
-                phone: userPhone,
+                phone: '+57'+userPhone,
                 university: userUniversity
             };
             this.SignUpService.userUniversity = userUniversity;
@@ -120,7 +120,6 @@ export class SignupPage {
                           alert.present(); 
                     }
                 })
-                this.navCtrl.push('LoginPage', this.user);
             
                 if(!this.user.userId){
                     this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
@@ -132,6 +131,8 @@ export class SignupPage {
                                 this.user.userId = user.uid;
                             }
                             this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
+                            
+                            this.sendVerificationCode(this.user.userId);
                         }else{
                             console.log('there is no user');
                         }
@@ -175,7 +176,7 @@ export class SignupPage {
                     name: userName,
                     lastname: userLastName,
                     email: userEmail,
-                    phone: userPhone,
+                    phone: '+57'+userPhone,
                     university: userUniversity
                 };
     
@@ -193,7 +194,6 @@ export class SignupPage {
                               alert.present(); 
                         }
                     })
-                    this.navCtrl.push('LoginPage', this.user);
                 
                     if(!this.user.userId){
                         this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
@@ -205,6 +205,8 @@ export class SignupPage {
                                     this.user.userId = user.uid;
                                 }
                                 this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
+                                //send text message with code
+                                this.sendVerificationCode(this.user.userId);
                             }else{
                                 console.log('there is no user');
                             }
@@ -244,5 +246,10 @@ export class SignupPage {
 
 
     }
+
+
+    sendVerificationCode(userId){
+        this.navCtrl.push('VerificationNumberPage', {userId: userId});
+}
 
 }

@@ -54,6 +54,7 @@
     <plugin name="cordova-plugin-firebase" spec="^2.0.5" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
+        <variable name="cordova-plugin-camera" value="[object Object]" />
     </plugin>
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
     <plugin name="cordova-plugin-email-composer" spec="0.9.2">

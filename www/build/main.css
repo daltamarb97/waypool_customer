@@ -28820,6 +28820,46 @@ page-verification-images .buttonLight {
   color: light;
 }
 
+page-verification-number .login {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  padding: 25px;
+  padding-bottom: 0;
+  height: 355px;
+}
+
+page-verification-number .logo {
+  margin: 0% auto;
+  height: calc(50vh - 70px);
+  position: relative;
+}
+
+page-verification-number .logo img {
+  position: absolute;
+  width: 144px;
+  height: 144px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+page-verification-number .bg-background-img {
+  background-position-y: -100px;
+}
+
+page-verification-number .text-input {
+  text-align: center !important;
+  font-size: 2rem;
+  letter-spacing: 1rem;
+}
+
+page-verification-number .resendingButton {
+  color: #0fc874;
+}
+
 page-wallet ion-header p {
   margin-bottom: 0;
 }

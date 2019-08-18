@@ -23,6 +23,10 @@ export class SignUpService {
        return this.afDB.list('universities/').valueChanges()
     }
 
+    public getInfoUniversity(university){
+        return this.afDB.object('/universities/' + university).valueChanges()
+     }
+
     
     public saveDriver(user){
         //erase this one, it just for testing
@@ -30,30 +34,23 @@ export class SignUpService {
     }
     
 
-     //PENDING UNIVERSITY VARIABLE
-     public pushDocsCarne(userId){
-        this.afDB.database.ref('drivers/'+userId+'/documents').update({
+     public pushDocsCarne(university, userId){
+        this.afDB.database.ref(university + '/drivers/'+userId+'/documents').update({
             carne: false
         })
 
-        this.afDB.database.ref('users/'+userId+'/documents').update({
+        this.afDB.database.ref(university + '/users/'+userId+'/documents').update({
             carne: false
         })
      }
 
 
-     //DELETE THIS FUNCTION AFTER MERGE/PC READY
-     public getUniversities(university){
-         return this.afDB.object('/universities/' + university).valueChanges();
-     }
-
-
-    public pushDocsId(userId){
-        this.afDB.database.ref('drivers/'+userId+'/documents').update({
+    public pushDocsId(university, userId){
+        this.afDB.database.ref(university + '/drivers/'+userId+'/documents').update({
             id: false
         })
 
-        this.afDB.database.ref('users/'+userId+'/documents').update({
+        this.afDB.database.ref(university + '/users/'+userId+'/documents').update({
             id: false
         })
      }

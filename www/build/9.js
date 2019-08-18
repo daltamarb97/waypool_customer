@@ -1,14 +1,14 @@
 webpackJsonp([9],{
 
-/***/ 648:
+/***/ 644:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPageModule", function() { return TabsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PublicProfilePageModule", function() { return PublicProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs__ = __webpack_require__(670);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__public_profile__ = __webpack_require__(666);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TabsPageModule = /** @class */ (function () {
-    function TabsPageModule() {
+var PublicProfilePageModule = /** @class */ (function () {
+    function PublicProfilePageModule() {
     }
-    TabsPageModule = __decorate([
+    PublicProfilePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__public_profile__["a" /* PublicProfilePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__public_profile__["a" /* PublicProfilePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]
+                __WEBPACK_IMPORTED_MODULE_2__public_profile__["a" /* PublicProfilePage */]
             ]
         })
-    ], TabsPageModule);
-    return TabsPageModule;
+    ], PublicProfilePageModule);
+    return PublicProfilePageModule;
 }());
 
-//# sourceMappingURL=tabs.module.js.map
+//# sourceMappingURL=public-profile.module.js.map
 
 /***/ }),
 
-/***/ 670:
+/***/ 666:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PublicProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,23 +58,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var TabsPage = /** @class */ (function () {
-    function TabsPage() {
-        this.tab1Root = 'FindridePage';
-        this.tab2Root = 'MyridePage';
-        this.tab3Root = 'WalletPage';
-        this.tab4Root = 'MorePage';
-        // this.goConfirmUniversity();
+
+/**
+ * Generated class for the PublicProfilePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var PublicProfilePage = /** @class */ (function () {
+    function PublicProfilePage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.passengerArray = [];
+        this.passenger = this.navParams.get('passenger');
+        console.log(this.passenger);
+        this.passengerArray.push(this.passenger);
+        this.emailComplete = this.passenger.email + this.passenger.fixedemail;
     }
-    TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/tabs/tabs.html"*/'<ion-tabs tabsHideOnSubPages="false">\n        <ion-tab [root]="tab1Root" tabTitle="Pedir Viaje" tabIcon="md-search" tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab2Root" tabTitle="Mi Viaje" tabIcon="md-car" tabsHideOnSubPages="false"></ion-tab>\n    <ion-tab [root]="tab3Root" tabTitle="Historial" tabIcon="md-card" tabsHideOnSubPages="false"></ion-tab>\n    <ion-tab [root]="tab4Root" tabTitle="Perfil" tabIcon="md-person" tabsHideOnSubPages="false"></ion-tab>\n</ion-tabs>\n '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/tabs/tabs.html"*/
+    PublicProfilePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-public-profile',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/public-profile/public-profile.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title>PERFIL</ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  <ion-content class="bg-light" *ngFor = "let passenger of passengerArray">\n  <ion-row>\n      <ion-item>\n              <div class="name">\n                      <h1> \n                          {{passenger.name |titlecase}} {{passenger.lastname |titlecase}}\n                      </h1>\n                      \n                  </div>\n      </ion-item>\n   \n  </ion-row>\n    \n    <div class="textBox">\n        <ion-list>   \n            <div class="bg-white" padding>\n                <ion-list no-lines>\n                    <ion-item>\n                        <ion-label stacked>Número Telefónico</ion-label>\n                        <ion-input type="text" [(ngModel)]="passenger.phone" readonly></ion-input>\n                      </ion-item>\n                      <!-- PROBLEM WITH DISPLAYING THE EMAIL -->\n                    <!-- <ion-item>\n                        <ion-label stacked>Email</ion-label>\n                        <ion-input type="text" [(ngModel)]="emailComplete" readonly></ion-input>                        <ion-input type="text" [(ngModel)]="user.name" readonly></ion-input>\n                    </ion-item> -->\n                    <ion-item>\n                        <ion-label stacked >Sobre {{passenger.name}}</ion-label>\n                        <ion-input type="text" [(ngModel)]="passenger.about" readonly></ion-input>\n                      </ion-item>\n                    <ion-item>\n                        <ion-label stacked>URL de interés</ion-label>\n                        <ion-input type="text" [(ngModel)]="passenger.url" readonly></ion-input>\n                    </ion-item>\n                   \n                </ion-list>\n            </div>\n        </ion-list>\n    </div>\n  </ion-content>\n  '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/public-profile/public-profile.html"*/,
         }),
-        __metadata("design:paramtypes", [])
-    ], TabsPage);
-    return TabsPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], PublicProfilePage);
+    return PublicProfilePage;
 }());
 
-//# sourceMappingURL=tabs.js.map
+//# sourceMappingURL=public-profile.js.map
 
 /***/ })
 

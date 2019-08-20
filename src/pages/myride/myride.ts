@@ -43,7 +43,7 @@ driverExist:boolean = false;
 onTrip: boolean = false;
 onTripInstance:any;
 unsubscribe = new Subject;
-
+itsMe:boolean = false;
   constructor(public navCtrl: NavController,public modalCtrl: ModalController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App) {
     // this.TripsService.getOnTrip(this.userUid).takeUntil(this.unsubscribe)
     //   .subscribe(onTrip =>{
@@ -82,7 +82,8 @@ unsubscribe = new Subject;
 
           // }
     
-    })    
+    })  
+      
   }
  
   
@@ -109,6 +110,7 @@ unsubscribe = new Subject;
         this.getPendingAndPickedUpUsers(keyTrip,driverId);
         this.driverExist=true;
         this.onTrip=true; 
+       
       } 
       })               
         
@@ -183,18 +185,27 @@ unsubscribe = new Subject;
     this.TripsService.getPendingUsers(keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {      
         this.pendingUsers = user;
+        this.recognizedMyName(this.pendingUsers);
         console.log(this.pendingUsers);          
     });
     this.TripsService.getPickedUpUsers(keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {    
       this.pickedUpUsers = user;   
+      this.recognizedMyName(this.pickedUpUsers);
+
       console.log(this.pickedUpUsers);      
     });
   }
 chatDriver(driver){
     this.navCtrl.push('ChattingPage',{driver:driver})
 }    
-    
+recognizedMyName(users){
+  users.forEach(user => {
+      if(this.userUid === user.userId){
+        this.itsMe = true;
+      }
+  });
+}
 callUser(number){
     console.log(number);
 this.callNumber.callNumber(number, true)

@@ -52,7 +52,7 @@ export class FindridePage {
   //¿Adonde vas? 
   destinationSelect: any;
   //firebase 
-  trip:any = {};
+  trip:any;
   // tripIdFirebase = this.AngularFireAuth.auth.currentUser;
   desFirebase:any;
   tripId:any = null;
@@ -96,25 +96,52 @@ export class FindridePage {
       console.log(this.user)
      
     })
+    //search keyTrip
+    this.TripsService.getKeyTrip(this.userUid)
+    .subscribe(keyTrip=>{
+      this.keyTrip =keyTrip;
+      console.log(this.keyTrip)
+      //if key its deleted don't show VIAJE EN CURSO  
+      if(this.keyTrip === undefined || this.keyTrip === null){
+       this.onTrip=false;
+        this.TripsService.eliminateKeyTrip(this.userUid);
+        this.TripsService.eliminatingOnTrip(this.userUid);
+        console.log("llegue adonde era")
+      }else{
+        //confirm that trip exist and get it
+        this.getTrip();
+      }
+     
+    })
+  } // END OF CONSTRUCTOR
+  getTrip(){
+    this.TripsService.getTrip(this.keyTrip.keyTrip,this.keyTrip.driverId)
+      .subscribe(trip=>{
+        this.trip = trip
+        console.log(this.trip)
+        //if there is no trip, eliminate key
+        if(this.trip === null || this.trip === undefined){
+        console.log("borre")
+          
+          this.TripsService.eliminateKeyTrip(this.userUid);
+          this.TripsService.eliminatingOnTrip(this.userUid);
 
+        }else{
+          this.getOnTrip();
+        }
+      })
+     
+  } 
+
+
+  getOnTrip(){
     this.TripsService.getOnTrip(this.userUid)
     .subscribe(onTrip=>{
       this.onTrip =onTrip;
       console.log('ONTRIP')
-      // if(this.onTrip ===true){
-      //   elem.setAttribute("style", "color:red; border: 1px solid blue;");
-
-      //   // let button:any = document.getElementsByClassName('onlineButton') as HTMLCollectionOf<HTMLElement>;
-      //   console.log("works")
-
-      //   // if (button.length != 0) {
-      //   //   console.log("works")
-      //   //   button[0].style.transform = "background: rgba(0, 0, 0, .5) !important";
-      //   // }
-      // }
+     
     })
   }
- 
   ionViewDidLoad(){
    
     this.loadMap();

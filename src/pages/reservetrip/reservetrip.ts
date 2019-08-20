@@ -66,7 +66,6 @@ export class ReservetripPage{
     })
     
   }
-arreglar animate css
   ionViewDidLoad(){
     
   }
@@ -79,39 +78,43 @@ arreglar animate css
             .subscribe(info => {
                 this.reserve = info;
                 console.log(this.reserve)
-                this.pendingUsers = []; 
+                this.pendingUsers = [];                         console.log("1")
+
                 if(reserve === undefined || reserve === null){
                   if(this.onTrip === true){
                     console.log("me borre");
                     this.unSubscribeServices();
                     this.reservesService.eliminateKeyUser(this.userUid,reserve.keyReserve);
                     this.navCtrl.pop();
+                    console.log("1")
+
                   }else{
                     // the driver cancel or eliminated the reserve
                     console.log("cai en el vacío")
                   } 
                 }else{
                   console.log(this.reserve.keyTrip)
-                  this.reservesService.getPendingUsers(this.userUid, this.reserve.keyTrip).takeUntil(this.unsubscribe)
+                  this.reservesService.getPendingUsers(this.userUid, reserve.keyReserve).takeUntil(this.unsubscribe)
                   .subscribe(pendingUsers => {
                       this.pendingUsers = pendingUsers;                      
                       if (this.pendingUsers.length === 0) {
                         // check if driver has initiated trip
-                        
+                        console.log("1")
                         this.unSubscribeServices()
                         this.reservesService.eliminateKeyUser(this.userUid,reserve.keyReserve);
-                        this.navCtrl.pop();
                         console.log("me borre"); 
                       } else {
                           this.pendingUsers.forEach(user => {
                               // check if the user hasn't been eliminated from the reserve by the driver
                               if (user.userId === this.userUid) {
                                   //do nothing because the user is in the trip
-                                  this.myReserves.push(this.reserve);
+                                  this.myReserves.push(info);
+                                  console.log("1")
+
                               } else {
                                   // eliminate key because the driver has eliminated the user
                                   console.log("me borre");
-                                  this.eliminateReserve(this.userUid, reserve.keyTrip);
+                                  this.eliminateReserve(this.userUid, reserve.keyReserve);
                               }
                           })
                       }

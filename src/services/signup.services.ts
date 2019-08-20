@@ -61,9 +61,11 @@ export class SignUpService {
         return this.afDB.list('/drivers').valueChanges();
     }
 
-     getMyInfo(userId, university){
+     public getMyInfo(userId, university){
         return this.afDB.object(university + '/users/'+ userId).valueChanges();
         }
+
+
 
         public getInfoDriver(userDriverId){
             return this.afDB.object('drivers/'+ userDriverId).valueChanges();

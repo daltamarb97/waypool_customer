@@ -39,8 +39,12 @@ exports.sendCodeToUserCreatedUSERS = functions.database.ref(`{university}/users/
             to: phoneNumber,
             channel: 'sms'
         }
-
-        return client.verify.services('VA8ff48292f53b52d13635dda53d946922').verifications.create(infoOfSMS)
+        if(snap.val().createdBy === 'costumer'){
+            return client.verify.services('VA8ff48292f53b52d13635dda53d946922').verifications.create(infoOfSMS)
+        }else if(snap.val().createdBy === 'driver'){
+            return null;
+        }
+        return null;
     })
     .then(verification => console.log(verification.sid, 'success'))
     .catch(error => console.log(error))

@@ -30,9 +30,11 @@ export class ConfirmUniversityPage {
   onChange(){
     this.showButton = false;
     this.signUpService.userUniversity = this.universityChosen;
-
+    console.log(this.signUpService.userUniversity);
     this.signUpService.getMyInfo(this.userId, this.signUpService.userUniversity).subscribe(user =>{
       this.user = user;
+      console.log(this.userId);
+      console.log(user);
     })
 
     setTimeout(()=>{

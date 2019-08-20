@@ -185,13 +185,13 @@ itsMe:boolean = false;
     this.TripsService.getPendingUsers(keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {      
         this.pendingUsers = user;
-        this.recognizedMyName(this.pendingUsers);
+        this.recognizedMyNamePendingUsers(this.pendingUsers,keyTrip,driverId);
         console.log(this.pendingUsers);          
     });
     this.TripsService.getPickedUpUsers(keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {    
       this.pickedUpUsers = user;   
-      this.recognizedMyName(this.pickedUpUsers);
+      this.recognizedMyNamePickedUpUsers(this.pickedUpUsers,keyTrip,driverId);
 
       console.log(this.pickedUpUsers);      
     });
@@ -199,10 +199,17 @@ itsMe:boolean = false;
 chatDriver(driver){
     this.navCtrl.push('ChattingPage',{driver:driver})
 }    
-recognizedMyName(users){
+recognizedMyNamePendingUsers(users,keyTrip,driverId){
   users.forEach(user => {
       if(this.userUid === user.userId){
-        this.itsMe = true;
+        this.TripsService.pushItsMePendingUsers(this.userUid,keyTrip,driverId)
+      }
+  });
+}
+recognizedMyNamePickedUpUsers(users,keyTrip,driverId){
+  users.forEach(user => {
+      if(this.userUid === user.userId){
+        this.TripsService.pushItsMePickedUpUsers(this.userUid,keyTrip,driverId)
       }
   });
 }

@@ -26,7 +26,7 @@ var map = {
 		20
 	],
 	"../pages/chatting/chatting.module": [
-		589,
+		592,
 		19
 	],
 	"../pages/confirmnote/confirmnote.module": [
@@ -34,23 +34,23 @@ var map = {
 		5
 	],
 	"../pages/confirmpopup/confirmpopup.module": [
-		591,
+		605,
 		4
 	],
 	"../pages/confirmreserve/confirmreserve.module": [
-		592,
+		589,
 		3
 	],
 	"../pages/confirmtrip/confirmtrip.module": [
-		593,
+		608,
 		2
 	],
 	"../pages/findride/findride.module": [
-		608,
+		607,
 		18
 	],
 	"../pages/help/help.module": [
-		594,
+		591,
 		17
 	],
 	"../pages/listride/listride.module": [
@@ -58,51 +58,51 @@ var map = {
 		1
 	],
 	"../pages/login/login.module": [
-		596,
+		593,
 		16
 	],
 	"../pages/more/more.module": [
-		597,
+		594,
 		15
 	],
 	"../pages/myride/myride.module": [
-		607,
+		606,
 		14
 	],
 	"../pages/profile/profile.module": [
-		598,
+		596,
 		13
 	],
 	"../pages/ratetrip/ratetrip.module": [
-		599,
+		597,
 		12
 	],
 	"../pages/reserveinfo/reserveinfo.module": [
-		600,
+		599,
 		11
 	],
 	"../pages/reservetrip/reservetrip.module": [
-		601,
+		598,
 		10
 	],
 	"../pages/signup/signup.module": [
-		602,
+		600,
 		0
 	],
 	"../pages/support/support.module": [
-		603,
+		601,
 		9
 	],
 	"../pages/tabs/tabs.module": [
-		604,
+		602,
 		8
 	],
 	"../pages/terms/terms.module": [
-		605,
+		603,
 		7
 	],
 	"../pages/wallet/wallet.module": [
-		606,
+		604,
 		6
 	]
 };
@@ -365,6 +365,51 @@ var authenticationService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return instancesService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var instancesService = /** @class */ (function () {
+    function instancesService(afDB) {
+        this.afDB = afDB;
+    }
+    instancesService.prototype.showOnDriverInstance = function (driverId, user) {
+        this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + user).update({
+            showDriver: true
+        }, function (error) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log("everything successful");
+            }
+        });
+    };
+    instancesService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
+    ], instancesService);
+    return instancesService;
+}());
+
+//# sourceMappingURL=instances.service.js.map
+
+/***/ }),
+
+/***/ 333:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return geofireService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
@@ -520,160 +565,7 @@ var geofireService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 333:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return instancesService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var instancesService = /** @class */ (function () {
-    function instancesService(afDB) {
-        this.afDB = afDB;
-    }
-    instancesService.prototype.showOnDriverInstance = function (driverId, user) {
-        this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + user).update({
-            showDriver: true
-        }, function (error) {
-            if (error) {
-                console.log(error);
-            }
-            else {
-                console.log("everything successful");
-            }
-        });
-    };
-    instancesService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
-    ], instancesService);
-    return instancesService;
-}());
-
-//# sourceMappingURL=instances.service.js.map
-
-/***/ }),
-
 /***/ 334:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TripsService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var TripsService = /** @class */ (function () {
-    function TripsService(afDB) {
-        this.afDB = afDB;
-    }
-    TripsService.prototype.getOnTrip = function (userUid) {
-        return this.afDB.object('/users/' + userUid + '/onTrip/onTrip').valueChanges();
-    };
-    TripsService.prototype.getMyReservesUser = function (userUid) {
-        return this.afDB.list('/users/' + userUid + '/myReserves').valueChanges();
-    };
-    TripsService.prototype.getKeyTrip = function (userUid) {
-        return this.afDB.object('/users/' + userUid + '/keyTrip').valueChanges();
-    };
-    TripsService.prototype.getTripState = function (reserveId, driverId) {
-        return this.afDB.object('/tripsState/' + driverId + '/' + reserveId + '/').valueChanges();
-    };
-    TripsService.prototype.getReserves = function (userUid) {
-        // get reserves from my driver (wrong)
-        return this.afDB.list('/reserves/' + userUid).valueChanges();
-    };
-    TripsService.prototype.getTrip = function (reserveId, driverId) {
-        //get reserves inside trip's node
-        return this.afDB.object('/trips/' + driverId + '/' + reserveId + '/').valueChanges();
-    };
-    TripsService.prototype.getPendingUsers = function (keyTrip, driverId) {
-        return this.afDB.list('/trips/' + driverId + '/' + keyTrip + '/pendingUsers').valueChanges();
-    };
-    TripsService.prototype.getCancelUsers = function (keyTrip, driverId) {
-        return this.afDB.list('/tripsState/' + driverId + '/' + keyTrip + '/cancelUsers').valueChanges();
-    };
-    TripsService.prototype.getPickedUpUsers = function (keyTrip, driverId) {
-        return this.afDB.list('/trips/' + driverId + '/' + keyTrip + '/pickedUpUsers').valueChanges();
-    };
-    TripsService.prototype.getLastMinuteTripsDEMO = function (driverId) {
-        return this.afDB.list('/trips/' + driverId).valueChanges();
-    };
-    TripsService.prototype.saveKeyTrip = function (userUid, keyTrip, driverId) {
-        this.afDB.database.ref('/users/' + userUid + '/keyTrip').update({
-            keyTrip: keyTrip,
-            driverId: driverId
-        });
-    };
-    TripsService.prototype.updateTripState = function (userUid, keyTrip, driverId) {
-        this.afDB.database.ref('/tripsState/' + driverId + '/' + keyTrip + '/UserCancelation/' + userUid).update({
-            userUid: userUid
-        });
-    };
-    TripsService.prototype.saveTripOnRecords = function (userUid, trip) {
-        //save trip in recordTrips
-        this.afDB.database.ref('/users/' + userUid + '/recordTrips/' + trip.keyTrip).update(trip);
-    };
-    TripsService.prototype.joinTrip = function (keyTrip, driverId, userId, origin, destination, name, lastname, phone, note) {
-        this.afDB.database.ref('/trips/' + driverId + '/' + keyTrip + '/lastMinuteUsers/' + userId).update({
-            origin: origin,
-            destination: destination,
-            name: name,
-            lastname: lastname,
-            phone: phone,
-            userId: userId,
-            note: note,
-        });
-    };
-    TripsService.prototype.cancelTrip = function (userUid, driverUid, tripId) {
-        //eliminate user from reserve in reserve's node        
-        this.afDB.database.ref('/trips/' + driverUid + '/' + tripId + '/pendingUsers/' + userUid).remove();
-        //eliminate keyTrip from user's node to eliminate access to that reserve
-    };
-    TripsService.prototype.eliminateKeyTrip = function (userUid) {
-        //eliminate keyTrip from user's node to eliminate access to that reserve
-        this.afDB.database.ref('/users/' + userUid + '/keyTrip/').remove();
-    };
-    TripsService.prototype.eraseReserve = function (userUid, reserveId) {
-        //eliminate keyTrip from user's node to eliminate access to that reserve
-        this.afDB.database.ref('/users/' + userUid + '/myReserves/' + reserveId).remove();
-    };
-    TripsService.prototype.eliminatingOnTrip = function (userUid) {
-        //eliminate keyTrip from tripsReserve node 
-        this.afDB.database.ref('/users/' + userUid + '/onTrip').remove();
-    };
-    TripsService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
-    ], TripsService);
-    return TripsService;
-}());
-
-//# sourceMappingURL=trips.service.js.map
-
-/***/ }),
-
-/***/ 335:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -740,6 +632,125 @@ var reservesService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 335:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TripsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TripsService = /** @class */ (function () {
+    function TripsService(afDB) {
+        this.afDB = afDB;
+    }
+    TripsService.prototype.getOnTrip = function (userUid) {
+        return this.afDB.object('/users/' + userUid + '/onTrip/onTrip').valueChanges();
+    };
+    TripsService.prototype.getMyReservesUser = function (userUid) {
+        return this.afDB.list('/users/' + userUid + '/myReserves').valueChanges();
+    };
+    TripsService.prototype.getKeyTrip = function (userUid) {
+        return this.afDB.object('/users/' + userUid + '/keyTrip').valueChanges();
+    };
+    TripsService.prototype.getTripState = function (reserveId, driverId) {
+        return this.afDB.object('/tripsState/' + driverId + '/' + reserveId + '/').valueChanges();
+    };
+    TripsService.prototype.getReserves = function (userUid) {
+        // get reserves from my driver (wrong)
+        return this.afDB.list('/reserves/' + userUid).valueChanges();
+    };
+    TripsService.prototype.getTrip = function (reserveId, driverId) {
+        //get reserves inside trip's node
+        return this.afDB.object('/trips/' + driverId + '/' + reserveId + '/').valueChanges();
+    };
+    TripsService.prototype.getPendingUsers = function (keyTrip, driverId) {
+        return this.afDB.list('/trips/' + driverId + '/' + keyTrip + '/pendingUsers').valueChanges();
+    };
+    TripsService.prototype.getCancelUsers = function (keyTrip, driverId) {
+        return this.afDB.list('/tripsState/' + driverId + '/' + keyTrip + '/cancelUsers').valueChanges();
+    };
+    TripsService.prototype.getPickedUpUsers = function (keyTrip, driverId) {
+        return this.afDB.list('/trips/' + driverId + '/' + keyTrip + '/pickedUpUsers').valueChanges();
+    };
+    TripsService.prototype.getLastMinuteTripsDEMO = function (driverId) {
+        return this.afDB.list('/trips/' + driverId).valueChanges();
+    };
+    TripsService.prototype.saveKeyTrip = function (userUid, keyTrip, driverId) {
+        this.afDB.database.ref('/users/' + userUid + '/keyTrip').update({
+            keyTrip: keyTrip,
+            driverId: driverId
+        });
+    };
+    TripsService.prototype.updateTripState = function (userUid, keyTrip, driverId) {
+        this.afDB.database.ref('/tripsState/' + driverId + '/' + keyTrip + '/UserCancelation/' + userUid).update({
+            userUid: userUid
+        });
+    };
+    TripsService.prototype.pushItsMePendingUsers = function (userUid, keyTrip, driverId) {
+        this.afDB.database.ref('/trips/' + driverId + '/' + keyTrip + '/pendingUsers/' + userUid).update({
+            itsMe: true
+        });
+    };
+    TripsService.prototype.pushItsMePickedUpUsers = function (userUid, keyTrip, driverId) {
+        this.afDB.database.ref('/trips/' + driverId + '/' + keyTrip + '/pickedUpUsers/' + userUid).update({
+            itsMe: true
+        });
+    };
+    TripsService.prototype.saveTripOnRecords = function (userUid, trip) {
+        //save trip in recordTrips
+        this.afDB.database.ref('/users/' + userUid + '/recordTrips/' + trip.keyTrip).update(trip);
+    };
+    TripsService.prototype.joinTrip = function (keyTrip, driverId, userId, origin, destination, name, lastname, phone, note) {
+        this.afDB.database.ref('/trips/' + driverId + '/' + keyTrip + '/lastMinuteUsers/' + userId).update({
+            origin: origin,
+            destination: destination,
+            name: name,
+            lastname: lastname,
+            phone: phone,
+            userId: userId,
+            note: note,
+        });
+    };
+    TripsService.prototype.cancelTrip = function (userUid, driverUid, tripId) {
+        //eliminate user from reserve in reserve's node        
+        this.afDB.database.ref('/trips/' + driverUid + '/' + tripId + '/pendingUsers/' + userUid).remove();
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+    };
+    TripsService.prototype.eliminateKeyTrip = function (userUid) {
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+        this.afDB.database.ref('/users/' + userUid + '/keyTrip/').remove();
+    };
+    TripsService.prototype.eraseReserve = function (userUid, reserveId) {
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+        this.afDB.database.ref('/users/' + userUid + '/myReserves/' + reserveId).remove();
+    };
+    TripsService.prototype.eliminatingOnTrip = function (userUid) {
+        //eliminate keyTrip from tripsReserve node 
+        this.afDB.database.ref('/users/' + userUid + '/onTrip').remove();
+    };
+    TripsService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object])
+    ], TripsService);
+    return TripsService;
+    var _a;
+}());
+
+//# sourceMappingURL=trips.service.js.map
+
+/***/ }),
+
 /***/ 336:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -782,6 +793,51 @@ var sendFeedbackService = /** @class */ (function () {
 /***/ }),
 
 /***/ 338:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return noteService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var noteService = /** @class */ (function () {
+    function noteService(afDB, AngularFireAuth) {
+        this.afDB = afDB;
+        this.AngularFireAuth = AngularFireAuth;
+    }
+    noteService.prototype.setNote = function (user, note) {
+        __WEBPACK_IMPORTED_MODULE_3_firebase__["database"]().ref('users/' + user + '/trips').update({
+            note: note
+        });
+    };
+    noteService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
+    ], noteService);
+    return noteService;
+}());
+
+//# sourceMappingURL=note.service.js.map
+
+/***/ }),
+
+/***/ 339:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -829,51 +885,6 @@ var chatsService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 339:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return noteService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var noteService = /** @class */ (function () {
-    function noteService(afDB, AngularFireAuth) {
-        this.afDB = afDB;
-        this.AngularFireAuth = AngularFireAuth;
-    }
-    noteService.prototype.setNote = function (user, note) {
-        __WEBPACK_IMPORTED_MODULE_3_firebase__["database"]().ref('users/' + user + '/trips').update({
-            note: note
-        });
-    };
-    noteService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
-    ], noteService);
-    return noteService;
-}());
-
-//# sourceMappingURL=note.service.js.map
-
-/***/ }),
-
 /***/ 342:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -909,19 +920,19 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geolocation__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_sendCoords_service__ = __webpack_require__(329);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_sendUsers_service__ = __webpack_require__(330);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_note_service__ = __webpack_require__(339);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_note_service__ = __webpack_require__(338);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_call_number__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_geoFire_service__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_geoFire_service__ = __webpack_require__(333);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_common__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_instances_service__ = __webpack_require__(333);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_instances_service__ = __webpack_require__(332);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_signup_services__ = __webpack_require__(328);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_native_geocoder_ngx__ = __webpack_require__(583);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_email_composer_ngx__ = __webpack_require__(340);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_sendFeedback_service__ = __webpack_require__(336);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_storage__ = __webpack_require__(584);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_chat_service__ = __webpack_require__(338);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_reserves_service__ = __webpack_require__(335);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_trips_service__ = __webpack_require__(334);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_chat_service__ = __webpack_require__(339);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_reserves_service__ = __webpack_require__(334);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_trips_service__ = __webpack_require__(335);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -977,26 +988,26 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/canceltrip/canceltrip.module#CanceltripPageModule', name: 'CanceltripPage', segment: 'canceltrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmreserve/confirmreserve.module#ConfirmreservationPageModule', name: 'ConfirmreservationPage', segment: 'confirmreserve', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/reserveinfo/reserveinfo.module#ConfirmreservationPageModule', name: 'ReserveinfoPage', segment: 'reserveinfo', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/reserveinfo/reserveinfo.module#ConfirmreservationPageModule', name: 'ReserveinfoPage', segment: 'reserveinfo', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/findride/findride.module#FindridePageModule', name: 'FindridePage', segment: 'findride', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/findride/findride.module#FindridePageModule', name: 'FindridePage', segment: 'findride', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_7__angular_fire__["a" /* AngularFireModule */].initializeApp(firebaseConfig),

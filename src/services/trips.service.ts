@@ -65,6 +65,19 @@ export class TripsService {
         userUid:userUid
       });
     }
+    public pushItsMePendingUsers(userUid,keyTrip,driverId){
+      this.afDB.database.ref('/trips/'+driverId+'/'+ keyTrip+'/pendingUsers/'+userUid).update({
+        
+        itsMe:true
+      });
+    }
+  
+    public pushItsMePickedUpUsers(userUid,keyTrip,driverId){
+      this.afDB.database.ref('/trips/'+driverId+'/'+ keyTrip+'/pickedUpUsers/'+userUid).update({
+        
+        itsMe:true
+      });
+    }
       public saveTripOnRecords(userUid,trip){
         //save trip in recordTrips
         

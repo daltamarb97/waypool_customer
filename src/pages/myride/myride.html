@@ -37,7 +37,7 @@
                         <img src="assets/imgs/userPicture.png">
                     </ion-avatar>
                     <div class="name">
-                        <h2 *ngIf="itsMe; else itsNotMeBlock " style="font-size:1.5rem; "> Yo
+                        <h2 *ngIf="user.itsMe; else itsNotMeBlock " style="font-size:1.5rem; "> Yo
                             <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>
                         </h2>
                         <ng-template #itsNotMeBlock >
@@ -48,9 +48,7 @@
                         
                     </div>
                     <div class="more">
-                        <ion-badge class="bg-green">RECOGIDO</ion-badge>                      
-                        
-
+                        <ion-badge class="bg-green">RECOGIDO</ion-badge>  
                     </div>
                    
                 </ion-item>

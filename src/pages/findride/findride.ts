@@ -15,6 +15,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import * as GeoFire from 'geofire';
 import { identifierModuleUrl } from '@angular/compiler';
 import { environmentService } from '../../services/environment.service';
+import { TripsService } from '../../services/trips.service';
+import { Subject } from 'rxjs';
 
 
 
@@ -54,7 +56,7 @@ export class FindridePage {
   //¿Adonde vas? 
   destinationSelect: any;
   //firebase 
-  trip:any = {};
+  trip:any;
   // tripIdFirebase = this.AngularFireAuth.auth.currentUser;
   desFirebase:any;
   tripId:any = null;
@@ -62,13 +64,14 @@ export class FindridePage {
   markerDest:any;
   markerGeolocation:any;
   //para acceder al uid en firebase
-  user=this.AngularFireAuth.auth.currentUser.uid;
   userInfoForOntrip:any;
   //geofire
   geofire1;
   geofire2;
   university:any;
   locationUniversity:any ={};
+  onTrip:any;
+  keyTrip:any;
 
   //variables for geoquery
   geocoordinatesDest:any ={};
@@ -81,10 +84,14 @@ export class FindridePage {
   geoFire;
   geoqueryU;
   geofireOriginConfirmed:boolean = false;
+  userUid=this.AngularFireAuth.auth.currentUser.uid;
+  user:any;
+
+ 
 
 
   driverOnNodeOr:any;
- constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private environmentService: environmentService) {
+ constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -103,17 +110,73 @@ export class FindridePage {
     
     this.markers = [];
     // initialize the plugin
-
-    
-
-  }
  
+    
+  } // END OF CONSTRUCTOR
+
+
+  getTrip(){
+    this.TripsService.getTrip(this.SignUpService.userUniversity, this.keyTrip.keyTrip,this.keyTrip.driverId)
+      .subscribe(trip=>{
+        this.trip = trip
+        console.log(this.trip)
+        //if there is no trip, eliminate key
+        if(this.trip === null || this.trip === undefined){
+        console.log("borre")
+          
+          this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+          this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+
+        }else{
+          this.getOnTrip();
+        }
+      })
+     
+  } 
+
+
+  getOnTrip(){
+    this.TripsService.getOnTrip(this.userUid)
+    .subscribe(onTrip=>{
+      this.onTrip =onTrip;
+      console.log('ONTRIP')
+     
+    })
+  }
+
+  
   ionViewDidLoad(){
     
    if(this.SignUpService.userUniversity == undefined){
     let modal = this.modalCtrl.create('ConfirmUniversityPage');
     modal.onDidDismiss(readyToStart => {
       if(readyToStart){
+        
+        //search keyTrip
+    this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid)
+    .subscribe(keyTrip=>{
+      this.keyTrip =keyTrip;
+      console.log(this.keyTrip)
+      //if key its deleted don't show VIAJE EN CURSO  
+      if(this.keyTrip === undefined || this.keyTrip === null){
+       this.onTrip=false;
+        this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+        this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+        console.log("llegue adonde era")
+      }else{
+        //confirm that trip exist and get it
+        this.getTrip();
+      }
+     
+    })
+
+        console.log(this.SignUpService.userUniversity);
+        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
+          this.user = user;
+          //  this.keyTrip = this.user.keyTrip
+          console.log(this.user)
+         
+        })
         // set geofire key of university to avoid asking users to put where they are going
         this.geofireService.getLocationUniversity(this.SignUpService.userUniversity).subscribe(university=>{
             this.university = university;
@@ -121,7 +184,7 @@ export class FindridePage {
             this.geofireService.setLocationUniversity(this.SignUpService.userUniversity, "some_key", this.locationUniversity.lat, this.locationUniversity.lng);
           })
 
-          this.SignUpService.getMyInfo(this.user, this.SignUpService.userUniversity).subscribe(user=>{
+          this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
             this.userInfoForOntrip = user;
           })
       }
@@ -354,8 +417,6 @@ updateSearchResultsMyPos(){
         this.directionsDisplay.setMap(this.map);
         this.myLatLngDest=results[0].geometry.location
         this.calculateRoute(this.markerGeolocation.position,results[0].geometry.location);
-        
-       
       }
     })
     
@@ -418,8 +479,8 @@ geocodeLatLng(latLng,inputName) {
 
 
   listride(){
-  if(this.userInfoForOntrip.trips){
-    if(this.userInfoForOntrip.trips.onTrip == true){
+  if(this.user.trips){
+    if(this.user.trips.onTrip == true){
       let alert = this.alertCtrl.create({
         title: 'Estas actualmente en un viaje',
         subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
@@ -439,13 +500,13 @@ geocodeLatLng(latLng,inputName) {
            } else {
          
              //turn on geoquery university to determine wether the user is in university
-        this.setGeofireUniversity(this.SignUpService.userUniversity ,0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.user);
+        this.setGeofireUniversity(this.SignUpService.userUniversity ,0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
       
 
 
         // test: geoqueryU on listride() of findride.ts
         this.geoqueryU.on("key_entered", function(key){
-            this.afDB.database.ref(this.SignUpService.userUniversity + '/users/'+ this.user +'/trips').update({
+            this.afDB.database.ref(this.SignUpService.userUniversity + '/users/'+ this.userUid +'/trips').update({
               origin: this.orFirebase,
               destination: this.desFirebase        
           }).then(()=>{
@@ -457,8 +518,8 @@ geocodeLatLng(latLng,inputName) {
                 }
               }
                   // turn geofire On
-                this.geofireService.setGeofireOr(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
-                this.geofireService.setGeofireOrLMU(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                this.geofireService.setGeofireOr(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
+                this.geofireService.setGeofireOrLMU(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
                 console.log('executed geofire Or');  
               })
                 this.geofireOriginConfirmed = true;
@@ -477,14 +538,21 @@ geocodeLatLng(latLng,inputName) {
           }
         },1500)
    
-        this.goListRide();
+        this.confirmNote();
+        console.log("se ejecuto")
           
       }
  
     }
       catch(error) {
-        console.log(error)
-        this.presentAlert('Error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+        console.log("soy yo")
+        if(this.geofire2 === null || this.geofire2 === undefined ){
+          //this is to tell the user to select a place before publishing a trip
+          this.presentAlert('Información Incompleta','no puedes publicar un viaje sin antes seleccionar un lugar de la lista.','Ok') 
+        }else {
+          this.presentAlert('Hay un error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+
+        }
         }
     }
   }else{
@@ -500,16 +568,16 @@ geocodeLatLng(latLng,inputName) {
          } else {
        
               //turn on geoquery university to determine wether the user is in university
-        this.setGeofireUniversity(this.SignUpService.userUniversity ,0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.user);
+        this.setGeofireUniversity(this.SignUpService.userUniversity ,0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
       
 
 
         // test: geoqueryU on listride() of findride.ts
         this.geoqueryU.on("key_entered", function(key){
-          this.afDB.database.ref(this.SignUpService.userUniversity + '/users/' + this.user ).update({
+          this.afDB.database.ref(this.SignUpService.userUniversity + '/users/' + this.userUid ).update({
             geofireOrigin: true
           }).then(()=>{
-            this.afDB.database.ref(this.SignUpService.userUniversity + '/users/'+ this.user +'/trips').update({
+            this.afDB.database.ref(this.SignUpService.userUniversity + '/users/'+ this.userUid +'/trips').update({
               origin: this.orFirebase,
               destination: this.desFirebase        
           }).then(()=>{
@@ -521,8 +589,8 @@ geocodeLatLng(latLng,inputName) {
                   }
                 }
                     // turn geofire On
-                  this.geofireService.setGeofireOr(this.SignUpService.userUniversity,  2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
-                  this.geofireService.setGeofireOrLMU(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.user)
+                  this.geofireService.setGeofireOr(this.SignUpService.userUniversity,  2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
+                  this.geofireService.setGeofireOrLMU(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
                   console.log('executed geofire Or');          
                 })
 
@@ -543,13 +611,21 @@ geocodeLatLng(latLng,inputName) {
           }
         },1000)
    
-        this.goListRide();
+        this.confirmNote();
+        console.log("se ejecuto")
         }
 
        }
     catch(error) {
-      console.log(error)
-      this.presentAlert('Error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+      console.log("soy yo")
+
+      if(this.geofire2 === null || this.geofire2=== undefined ){
+        //this is to tell the user to select a place before publishing a trip
+        this.presentAlert('Información Incompleta','no puedes publicar un viaje sin antes seleccionar un lugar de la lista.','Ok') 
+      }else {
+        this.presentAlert('Hay un error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+
+      }
       }
   }
   
@@ -564,8 +640,8 @@ geocodeLatLng(latLng,inputName) {
                   }
                 }
                     // turn geofire On
-                  this.geofireService.setGeofireDest(this.SignUpService.userUniversity , 2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user);
-                  this.geofireService.setGeofireDestLMU(this.SignUpService.userUniversity ,2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.user);
+                  this.geofireService.setGeofireDest(this.SignUpService.userUniversity , 2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.userUid);
+                  this.geofireService.setGeofireDestLMU(this.SignUpService.userUniversity ,2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.userUid);
                   console.log('executed geofire Dest');  
                           
                 })      
@@ -584,9 +660,21 @@ geocodeLatLng(latLng,inputName) {
   goToMyReserves(){
     this.app.getRootNav().push('ReservetripPage');
   }
+  goToTrip(){
+      // go to trip      
+      if (this.onTrip === true) {
+            console.log('DISPARADOR')
+            let modal = this.modalCtrl.create('MyridePage');                      
+            modal.present();
+          }else{
+            console.log("es undefined");
+          }
+           
+      } 
+    
   
-    goListRide(){
-      let modal = this.modalCtrl.create('ConfirmNotePage')
+    confirmNote(){
+      let modal = this.modalCtrl.create('ConfirmNotePage');
       modal.onDidDismiss(accepted => {
         if(accepted){
           this.app.getRootNav().push('ListridePage');
@@ -595,22 +683,25 @@ geocodeLatLng(latLng,inputName) {
    modal.present();
   }  
 
-    // set geoquery that determines if the person is in university
-setGeofireUniversity(university, radius:number, lat, lng, userId):void{ 
+        // set geoquery that determines if the person is in university
+    setGeofireUniversity(university, radius:number, lat, lng, userId):void{ 
+      
+      this.dbRef = this.afDB.database.ref(university + '/geofireUniversity/' );
+      this.geoFire = new GeoFire(this.dbRef); 
+
+      this.geoqueryU = this.geoFire.query({
+        center: [lat, lng],
+        radius: radius
+      })
+
+    console.log('geoquery university added');
+    }
+      
+
+}
+   
+    
   
-  this.dbRef = this.afDB.database.ref(university + '/geofireUniversity/' );
-  this.geoFire = new GeoFire(this.dbRef); 
-
-  this.geoqueryU = this.geoFire.query({
-    center: [lat, lng],
-    radius: radius
-  })
-
-console.log('geoquery university added');
-}
-
-
-}
   
 
 

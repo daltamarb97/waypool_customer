@@ -26,7 +26,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
   
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { sendFeedbackService } from '../services/sendFeedback.service';
-import { IonicStorageModule } from '@ionic/storage';
+// import { IonicStorageModule } from '@ionic/storage';
 import { chatsService } from '../services/chat.service';
 import { reservesService } from '../services/reserves.service';
 import { TripsService } from '../services/trips.service';
@@ -48,8 +48,6 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp
-  
-
   ],
   imports: [
     BrowserModule,
@@ -58,7 +56,6 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     CommonModule,
-    IonicStorageModule.forRoot()
   ],
  
   

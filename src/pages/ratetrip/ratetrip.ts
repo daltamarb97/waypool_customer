@@ -21,7 +21,7 @@ userUid:any = this.angularFireAuth.auth.currentUser.uid;
 user:any={};
 driver:any={};
 experience:string;
-userDriver:any;
+trip:any;
 title = 'calificacion de viaje';
 navBar: Navbar;
   constructor(private navCtrl: NavController,public navParams: NavParams, public sendfeedback:sendFeedbackService, public signUpService: SignUpService, public sendCoordsService: sendCoordsService, public angularFireAuth: AngularFireAuth) {
@@ -29,17 +29,15 @@ navBar: Navbar;
     this.signUpService.getMyInfo(this.signUpService.userUniversity, this.userUid).subscribe(user=>{
       this.user = user;
     })  
-    this.userDriver= this.navParams.get('userDriver')   
-    console.log(this.userDriver);
+    this.trip = this.navParams.get('trip')   
+    console.log(this.trip);
   }
 
   
   sendInfo() {
     this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
-    this.sendCoordsService.deleteOnTripFinal(this.signUpService.userUniversity, this.userUid);
   }
 
   ionViewWillLeave(){
-    this.sendCoordsService.deleteOnTripFinal(this.signUpService.userUniversity, this.userUid);
   }
 }

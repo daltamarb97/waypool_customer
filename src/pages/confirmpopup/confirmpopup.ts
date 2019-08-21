@@ -33,11 +33,12 @@ export class ConfirmpopupPage {
     
         
        //get the info of the driver 
-       this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid)
+       this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userUniversity)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
          console.log(this.user);          
        });
+
 
   }
 
@@ -45,9 +46,10 @@ export class ConfirmpopupPage {
 
   goToRide(){  
     
-    this.SignUpService.getMyInfo(this.SignUpService.userUniversity,this.userUid).takeUntil(this.unsubscribe)
+    this.SignUpService.getMyInfo(this.userUid , this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
     .subscribe(user=>{
       this.user = user; 
+      console.log(this.user)
       // OLD
       // if(this.user.trips.onTrip == true){
       //   this.dismiss();
@@ -56,12 +58,18 @@ export class ConfirmpopupPage {
       // if(this.user.trips.onTrip == false){
       //   this.dismiss();
       // } 
+      console.log(this.user.about);
+    if(this.user.about === null){
+      this.user.about = ' ';
+    }
+
+    
       
     })
-    console.log(this.user.about);
-    this.geoFireService.joinReserve(this.SignUpService.userUniversity, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note, this.user.about, this.user.email, this.user.fixedemail);
+    console.log(this.reserve.keyTrip
+    )
+    this.geoFireService.joinReserve(this.SignUpService.userUniversity, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note, this.user.about);
     this.geoFireService.pushToMyReserve(this.SignUpService.userUniversity,this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
-    this.geoFireService.deleteReserveFromAvailableReserves(this.SignUpService.userUniversity, this.userUid, this.reserve.keyTrip);
         //deprecated
     // this.geoFireService.removeKeyGeofire(this.userUid);
     //OLD
@@ -78,7 +86,10 @@ export class ConfirmpopupPage {
     toast.present();  
     this.dismiss();
     }
+    dismissX(){
+      this.viewCtrl.dismiss();
 
+    }
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
     this.unsubscribe.next();

@@ -70,5 +70,19 @@ page-findride {
             text-align: center;
           }
           
+          .rowOfButtons{
+            display: flex;
+            flex-direction:row; 
+          }
+          .btn-left{
+            margin-right: 5px;
+            width: 49%;
+
+          }
+          .btn-right{
+          
+            width: 49%;
+          }
+        
         
         }   

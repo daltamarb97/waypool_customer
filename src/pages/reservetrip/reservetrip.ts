@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, AlertController, ToastController, IonicPage } from 'ionic-angular';
+import { NavController, ModalController, AlertController, ToastController, IonicPage, App } from 'ionic-angular';
 
 // import { RiderprofilePage } from '../riderprofile/riderprofile';
 // import { Observable } from 'rxjs';
@@ -10,12 +10,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 // import { sendUsersService } from '../../services/sendUsers.service';
 // import { Geofence } from '@ionic-native/geofence';
 
-import {  Subscription } from 'rxjs';
+import {  Subscription, Subject } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { instancesService } from '../../services/instances.service';
 import { sendUsersService } from '../../services/sendUsers.service';
 import { reservesService } from '../../services/reserves.service';
 import { SignUpService } from '../../services/signup.services';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @IonicPage()
 @Component({
@@ -35,18 +37,20 @@ export class ReservetripPage{
   myReservesId:any=[];
   myReserves:any =[];
   reserve:any;
-
-  constructor(public navCtrl: NavController,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController) {
-
-   
-    this.reservesService.getMyReservesSelected(this.SignUpService.userUniversity, this.userUid)
+  pendingUsers:any = [];
+  onTrip:any;
+  unsubscribe = new Subject;
+  constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController) {   
+    this.reservesService.getOnTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    .subscribe( onTrip => {
+       this.onTrip = onTrip;   
+       console.log(this.onTrip);  
+    })
+    this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid)
     .subscribe( myReservesId => {
-
-      console.log(this.myReserves)
-
+      console.log(this.myReserves);
       //get all reserves id (reserve push key, driverUid) of my user node
-      this.myReservesId = myReservesId;   
-      
+      this.myReservesId = myReservesId;
       console.log(this.myReservesId);
       this.myReserves = [];
       this.getReserves();
@@ -55,61 +59,114 @@ export class ReservetripPage{
     this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid)
     .subscribe( originUser => {
       this.locationOrigin = originUser;      
-    });
+    })
     
     this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid)
         .subscribe( destinationUser => {
           this.locationDestination = destinationUser;
-        });
+    })
+    
   }
-
   ionViewDidLoad(){
     
   }
-    getReserves(){
-      this.myReserves = []; //erase all of reserves 
+  getReserves() {
+    this.myReserves = []; //erase all of reserves 
 
-      //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
-        this.myReservesId.forEach(reserve => {
-        this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserve.driverId,reserve.keyReserve)
-        .subscribe( info => {
-              this.reserve = info;  
-              this.myReserves.push(this.reserve);
-              console.log(this.myReserves);
-        })  
-      })
+    //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
+    this.myReservesId.forEach(reserve => {
+        this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserve.driverId, reserve.keyReserve).takeUntil(this.unsubscribe)
+            .subscribe(info => {
+                this.reserve = info;
+                console.log(this.reserve)
+                this.pendingUsers = [];                         console.log("1")
 
-    }
-  
-  
-cancelReserve(driverUid,keyTrip){
-  this.reservesService.cancelReserve(this.SignUpService.userUniversity, this.userUid,driverUid,keyTrip);
-  this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,keyTrip);
-  // Hacer el boton de cancelar , para la reserva y probar q vuelva a salir en listride
+                if(reserve === undefined || reserve === null){
+                  if(this.onTrip === true){
+                    console.log("me borre");
+                    this.unSubscribeServices();
+                    this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,reserve.keyReserve);
+                    this.navCtrl.pop();
+                    console.log("1")
+
+                  }else{
+                    // the driver cancel or eliminated the reserve
+                    console.log("cai en el vacío")
+                  } 
+                }else{
+                  console.log(this.reserve.keyTrip)
+                  console.log(reserve.keyReserve)
+
+                  this.reservesService.getPendingUsers(this.SignUpService.userUniversity, reserve.driverId, reserve.keyReserve).takeUntil(this.unsubscribe)
+                  .subscribe(pendingUsers => {
+                      this.pendingUsers = pendingUsers;  
+                      console.log(this.pendingUsers);
+                      console.log(pendingUsers);
+                      if (this.pendingUsers.length === 0) {
+                        // check if driver has initiated trip
+                        console.log("1")
+                        this.unSubscribeServices()
+                        this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity,this.userUid,reserve.keyReserve);
+                        console.log("me borre"); 
+                      } else {
+                          this.pendingUsers.forEach(user => {
+                              // check if the user hasn't been eliminated from the reserve by the driver
+                              if (user.userId === this.userUid) {
+                                  //do nothing because the user is in the trip
+                                  this.myReserves.push(info);
+                                  console.log("1")
+
+                              } else {
+                                  // eliminate key because the driver has eliminated the user
+                                  console.log("me borre");
+                                  this.eliminateReserve(this.userUid, reserve.keyReserve);
+                              }
+                          })
+                      }
+
+                  })
+                }              
+                  
+                
+                
+
+            })
+    })
 }
- 
-  // confirmreserve(reserveKey,driverUid){
-  //      //TODAVÍA NO
-        
-  //   let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserveKey,driver:driverUid}); isabella daniel te amo 
-  //   modal.present();
-  
-  // }
-  
-  help(){
-    const toast = this.toastCtrl.create({
-      message: 'Aquí te saldrán las personas que quieren irse contigo',
-      showCloseButton:true,
-      closeButtonText: 'OK',
-      position:'top'
-         });
-    toast.present();
-  }
 
-  seePassengers(reserveKey, driver){
-    let modal = this.modalCtrl.create('ConfirmReservationPage',{reserveKey:reserveKey, driver:driver});
+tripDetails(keyTrip, driverUid) {
+    let modal = this.modalCtrl.create('ReserveinfoPage', {
+        reserveKey: keyTrip,
+        driverUid: driverUid
+    });
     modal.present();
-  }
+}
+
+
+// confirmreserve(reserveKey,driverUid){
+//      //TODAVÍA NO
+
+
+// }
+eliminateReserve(userUid, keyReserve) {
+    this.unSubscribeServices();
+    this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, userUid, keyReserve);
+    let modal = this.modalCtrl.create('CanceltripPage');
+    modal.present();
+}
+unSubscribeServices(){
+  this.unsubscribe.next();
+  this.unsubscribe.complete();
+}     
+help() {
+    const toast = this.toastCtrl.create({
+        message: 'Aquí te saldrán las personas que quieren irse contigo',
+        showCloseButton: true,
+        closeButtonText: 'OK',
+        position: 'top'
+    });
+    toast.present();
+}
 }
 
 

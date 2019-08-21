@@ -31,7 +31,7 @@ export class geofireService {
         this.geoFire = new GeoFire(this.dbRef); 
 
         // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-            // this.user = user;
+            this.user = userId;
             // if(!this.user.onTrip == true){
                 this.geoFire.set(key, [lat, lng]).then(function(){
                     console.log('location updated');
@@ -100,7 +100,7 @@ keyEnteredOr( userId, university ){
       keyReserve: key
      }).then(()=>{
        //get driverId from geofireOr node
-        this.getIdFromGeofireOrNode(key).subscribe(driver =>{
+        this.getIdFromGeofireOrNode(university, key).subscribe(driver =>{
              this.driverOnNodeOr = driver;
              this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
                  driverId: this.driverOnNodeOr.driverId
@@ -124,8 +124,8 @@ keyEnteredOr( userId, university ){
    }.bind(this))
   }
 
-  getIdFromGeofireOrNode(key){
-      return this.afDB.object('/geofireOr/'+ key).valueChanges();
+  getIdFromGeofireOrNode(university, key){
+      return this.afDB.object(university + '/geofireOr/'+ key).valueChanges();
   }
 
   getIdFromGeofireOrTripNode(key){
@@ -310,14 +310,17 @@ keyEnteredDest( userId, university ){
     pushToMyReserve(university, keyReserve,driverId,userId){
         this.afDB.database.ref(university +'/users/' + userId +'/myReserves/'+ keyReserve).update({
             keyReserve: keyReserve,
-            driverId: driverId,
-            
-        }).catch((err)=>{
-            console.log(err)
-        })
+            driverId: driverId            
+        });
+    }
+    saveKey(university, keyReserve,driverId,userId){
+        this.afDB.database.ref(university +'/users/' + userId +'/keyTrip/').set({
+            keyTrip: keyReserve,
+            driverId: driverId            
+        });
     }
 
-    joinReserve(university, keyReserve,driverId, userId, origin, destination, name, lastname, phone, note, about, email, fixedemail){
+    joinReserve(university, keyReserve,driverId, userId, origin, destination, name, lastname, phone, note, about){
         this.afDB.database.ref(university + '/reserves/' + driverId +'/'+keyReserve+ '/pendingUsers/' + userId).update({
              origin: origin,
              destination: destination,
@@ -327,8 +330,7 @@ keyEnteredDest( userId, university ){
              userId: userId,
              note:note,
              about: about,
-             email: email,
-             fixedemail: fixedemail
+        
         }).catch((err)=>{
             console.log(err)
         })

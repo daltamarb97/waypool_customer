@@ -25,23 +25,20 @@
         <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>
     </div>
 
-    <ion-card *ngFor = "let reserve of myReserves">
-        
+    <ion-card *ngFor = "let reserve of myReserves">  
                 <ion-item>
                         <ion-avatar item-start>
                             <img src="assets/imgs/userPicture.png">
                         </ion-avatar>
                         <div class="name">
                             <h2>Inicio de viaje: {{reserve.startHour |titlecase}} 
-            
                             </h2>
                         </div>
                         
-                        <div class="more">                              
-                                        <h2 class="text text-theme">                        
-                                            $ {{reserve.price}}                          
-                                        </h2>                
-                   
+                        <div class="more"> 
+                                <h2 class="text text-theme">                        
+                                        $ {{reserve.price}}                          
+                                    </h2> 
                         </div>
                     </ion-item>
                     <ion-card-content>
@@ -66,14 +63,15 @@
                                 </div>
                             </ion-col>
                             <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                <button class="btn bg-theme rounded full text-white" (click)='seePassengers(reserve.keyTrip, reserve.driver)' >Ver pasajeros</button>
-                                <button class="btn bg-theme rounded full text-white" (click)="cancelReserve(reserve.driver.userId,reserve.keyTrip)" >Cancelar</button>
+                                   
+                                      
+                            </ion-col>
+                            <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                                <button class="btn bg-theme rounded full text-white" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>
                             </ion-col>
                         </ion-row>
                     </ion-card-content>
-               
-        
-        
+                
     </ion-card>
    
 </ion-content>

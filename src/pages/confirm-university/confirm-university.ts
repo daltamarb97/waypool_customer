@@ -3,6 +3,7 @@ import { IonicPage, ViewController, AlertController } from 'ionic-angular';
 import { SignUpService } from '../../services/signup.services';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Subject } from 'rxjs';
 
 
 @IonicPage()
@@ -17,8 +18,11 @@ export class ConfirmUniversityPage {
   userId:any;
   user:any;
   showButton:boolean = false;
+  unsubscribe = new Subject;
+
   constructor(private signUpService: SignUpService, public viewCtrl: ViewController, private angularFireAuth: AngularFireAuth, public alertCtrl: AlertController) {
-    this.signUpService.getUniversities().subscribe(universities => {
+    this.signUpService.getUniversities().takeUntil(this.unsubscribe)
+    .subscribe(universities => {
       this.universities = universities;
       console.log(this.universities);
     })
@@ -31,7 +35,8 @@ export class ConfirmUniversityPage {
     this.showButton = false;
     this.signUpService.userUniversity = this.universityChosen;
     console.log(this.signUpService.userUniversity);
-    this.signUpService.getMyInfo(this.userId, this.signUpService.userUniversity).subscribe(user =>{
+    this.signUpService.getMyInfo(this.userId, this.signUpService.userUniversity).takeUntil(this.unsubscribe)
+    .subscribe(user =>{
       this.user = user;
       console.log(this.userId);
       console.log(user);
@@ -59,6 +64,8 @@ export class ConfirmUniversityPage {
   goToFindaride(){
     this.readyToStart = true;
     this.viewCtrl.dismiss(this.readyToStart);
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
 

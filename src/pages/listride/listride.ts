@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, ToastController, IonicPage } from 'ionic-angular';
+import { NavController, ModalController, ToastController, IonicPage, App } from 'ionic-angular';
 
 import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { sendCoordsService } from '../../services/sendCoords.service';
@@ -27,7 +27,8 @@ export class ListridePage {
   ReservesGeofire: any =[];
   tripsReserved:any =[];
   reserveLMU:any;
-  constructor(public navCtrl: NavController,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
+
+  constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
     this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid).subscribe(user=>{
       this.user = user;   
@@ -59,6 +60,7 @@ export class ListridePage {
         this.ReservesGeofire = reserves;
         console.log(this.ReservesGeofire);
         this.getMyReserves();
+        this.getAvailableReserves();
       });
      
     
@@ -82,7 +84,7 @@ getMyReserves(){
     this.tripsReserved = tripsReserved
     
     console.log(this.tripsReserved);
-    this.getAvailableReserves();
+   
   }) 
 }
   getAvailableReserves(){
@@ -102,7 +104,7 @@ getMyReserves(){
               console.log("hello");        
 
            }else{
-            console.log("hello");        
+            console.log("not-undefined");        
             if(this.tripsReserved.length === 0){
              
                 this.reservesAvailable.push(this.reserve); 
@@ -111,22 +113,23 @@ getMyReserves(){
 
      
             } else {
-              console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA") 
-              this.tripsReserved.forEach(reserve => {
-                console.log(reserve)            
-                  if(reserve.keyReserve === this.reserve.keyTrip){
-                    console.log("not-hello");        
-                  }else {
-          
-                      this.reservesAvailable.push(this.reserve);  
-                      console.log(this.reservesAvailable);
-                     
-  
-                      console.log("A"); 
-                    
-                               
-                  }           
-              });
+              this.reservesAvailable.push(this.reserve); 
+
+              // console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA") 
+              // this.tripsReserved.forEach(reserve => {
+              //   console.log(reserve)            
+              //     if(reserve.keyReserve == this.reserve.keyTrip){
+              //       console.log("not-hello");        
+              //     }else {
+                 
+              //       console.log(this.reservesAvailable);
+                   
+
+              //       console.log("Aavg");   
+                        
+
+              //     }           
+              // });
             }
            } 
 
@@ -176,14 +179,27 @@ ionViewDidLoad(){
 //  modal.present();
 //  console.log(reserve)
 //   }
-  let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve});
- modal.present();
+let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve});
+modal.onDidDismiss(accepted => {
+    if(accepted){
+     this.navCtrl.pop();
+     this.navCtrl.push('ReservetripPage');
+    }
+  })
+modal.present();
  //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
   }
   enterTrip(trip){
+ 
    
    let modal = this.modalCtrl.create('ConfirmtripPage',{trip:trip});
-  modal.present();
+   modal.onDidDismiss(accepted => {
+    if(accepted){
+      // this.navCtrl.push('ListridePage');
+     this.navCtrl.pop();
+    }
+  })
+modal.present();
   //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
    }
   help(){

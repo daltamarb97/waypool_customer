@@ -108,10 +108,7 @@ keyEnteredOr( userId, university ){
         })  
      })
 
-    //  this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ this.driverOnNodeOr.keyReserve + '/' + key).push({
-    //   userId: userId
-  
-    // })
+
          
    }.bind(this))
   }
@@ -128,8 +125,17 @@ keyEnteredOr( userId, university ){
       return this.afDB.object(university + '/geofireOr/'+ key).valueChanges();
   }
 
-  getIdFromGeofireOrTripNode(key){
-    return this.afDB.object('/geofireOrTrip/'+ key).valueChanges();
+
+  getIdFromGeofireDestNode(university, key){
+    return this.afDB.object(university + '/geofireDest/'+ key).valueChanges();
+}
+
+  getIdFromGeofireOrTripNode(university, key){
+    return this.afDB.object(university + '/geofireOrTrip/'+ key).valueChanges();
+}
+
+getIdFromGeofireDestTripNode(university, key){
+    return this.afDB.object(university + '/geofireDestTrip/'+ key).valueChanges();
 }
 
 
@@ -158,12 +164,16 @@ keyEnteredDest( userId, university ){
     })
 
        this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
-        driverId: this.driverOnNodeDest.driverId,
         keyReserve: key
+       }).then(()=> {
+           this.getIdFromGeofireDestNode(university, key).subscribe(driver => {
+            this.driverOnNodeDest = driver;
+            this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
+                driverId: this.driverOnNodeDest.driverId
+            })
+           })
        })
        console.log('keyentered here');
-    
-     
      
    }.bind(this))
  }
@@ -204,7 +214,7 @@ keyEnteredDest( userId, university ){
       LMU: true
      }).then(()=>{
        //get driverId from geofireOr node
-        this.getIdFromGeofireOrTripNode(key).subscribe(driver =>{
+        this.getIdFromGeofireOrTripNode(university, key).subscribe(driver =>{
              this.driverOnNodeOr = driver;
              this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
                  driverId: this.driverOnNodeOr.driverId
@@ -257,7 +267,7 @@ keyEnteredDest( userId, university ){
       LMU: true
      }).then(()=>{
        //get driverId from geofireOr node
-        this.getIdFromGeofireOrTripNode(key).subscribe(driver =>{
+        this.getIdFromGeofireDestTripNode(university, key).subscribe(driver =>{
              this.driverOnNodeDest = driver;
              this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
                  driverId: this.driverOnNodeDest.driverId
@@ -320,7 +330,7 @@ keyEnteredDest( userId, university ){
         });
     }
 
-    joinReserve(university, keyReserve,driverId, userId, origin, destination, name, lastname, phone, note, about){
+    joinReserve(university, keyReserve,driverId, userId, origin, destination, name, lastname, phone, note, verifiedPerson){
         this.afDB.database.ref(university + '/reserves/' + driverId +'/'+keyReserve+ '/pendingUsers/' + userId).update({
              origin: origin,
              destination: destination,
@@ -329,9 +339,16 @@ keyEnteredDest( userId, university ){
              phone: phone,
              userId: userId,
              note:note,
-             about: about,
-        
+             verifiedPerson: verifiedPerson        
         }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+
+    deleteAvailableReserve(university, userId, keyReserve){
+        this.afDB.database.ref(university + '/users/'+ userId + '/availableReserves/' + keyReserve).remove()
+        .catch((err)=>{
             console.log(err)
         })
     }

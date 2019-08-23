@@ -20,7 +20,7 @@
                         </h2>
                         <ng-template #itsNotMeBlock >
                             <h2 >{{user.name | titlecase}} {{user.lastname |titlecase | slice:0:1}}
-                                <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                                <ion-icon *ngIf='user.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
                             </h2>
                         </ng-template>
                         
@@ -42,7 +42,7 @@
                         </h2>
                         <ng-template #itsNotMeBlock >
                             <h2 >{{user.name | titlecase}} {{user.lastname |titlecase | slice:0:1}}
-                                <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>
+                                <ion-icon *ngIf='user.verifiedPerson' name="ios-checkmark-circle" class="text-green"></ion-icon>
                             </h2>
                         </ng-template>
                         
@@ -63,7 +63,7 @@
                     </ion-avatar>
                     <div class="name">
                         <h2>{{trip.driver.name|titlecase}} {{trip.driver.lastname |titlecase | slice:0:1}}
-                            <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                            <ion-icon *ngIf='trip.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
                         </h2>
                         <p>{{trip.driver.car}}</p>
                     </div>
@@ -90,7 +90,7 @@
                        
                             <ion-col class="detail-text">
                                 <button class="btn bg-green rounded full text-white" style="    width: 44px;
-                                font-size: 21px;" (click)="callUser(user.phone)"><ion-icon name="ios-call" class="text-white"></ion-icon></button>
+                                font-size: 21px;" (click)="callUser(trip.driver.phone)"><ion-icon name="ios-call" class="text-white"></ion-icon></button>
 
                             </ion-col>
                       

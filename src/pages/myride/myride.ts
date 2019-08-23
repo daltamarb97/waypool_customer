@@ -118,7 +118,7 @@ itsMe:boolean = false;
         
   }
   getTripState(keyTrip,driverId){
-    this.TripsService.getTripState(keyTrip,driverId).takeUntil(this.unsubscribe)
+    this.TripsService.getTripState(this.SignUpService.userUniversity, keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( tripState => {      
         this.tripState = tripState;
         console.log(this.tripState);

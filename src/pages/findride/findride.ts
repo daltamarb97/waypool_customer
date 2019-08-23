@@ -17,6 +17,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 import { environmentService } from '../../services/environment.service';
 import { TripsService } from '../../services/trips.service';
 import { Subject } from 'rxjs';
+import { instancesService } from '../../services/instances.service';
 
 
 
@@ -70,7 +71,7 @@ export class FindridePage {
   geofire2;
   university:any;
   locationUniversity:any ={};
-  onTrip:any;
+  onTrip:boolean = false;
   keyTrip:any;
 
   //variables for geoquery
@@ -91,7 +92,7 @@ export class FindridePage {
 
 
   driverOnNodeOr:any;
- constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService) {
+ constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -136,9 +137,10 @@ export class FindridePage {
 
 
   getOnTrip(){
-    this.TripsService.getOnTrip(this.userUid)
+    this.TripsService.getOnTrip(this.SignUpService.userUniversity, this.userUid)
     .subscribe(onTrip=>{
       this.onTrip =onTrip;
+      console.log(this.onTrip);
       console.log('ONTRIP')
      
     })
@@ -188,17 +190,17 @@ export class FindridePage {
             this.userInfoForOntrip = user;
           })
       }
+
       this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).subscribe(uni => {
         this.universityInfo = uni;
-  
+        
         if(this.universityInfo.email == undefined){
-          
           if(this.userInfoForOntrip.documents){
-            if(this.userInfoForOntrip.documents.carne == undefined || this.userInfoForOntrip.documents.id == undefined){
+            if(this.userInfoForOntrip.documents.carne === undefined || this.userInfoForOntrip.documents.id === undefined){
               let modal = this.modalCtrl.create('VerificationImagesPage');
               modal.present();
-            }else{
-  
+            }else if(this.userInfoForOntrip.documents.carne === true || this.userInfoForOntrip.documents.id === true){
+              this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
             }
           }else if(!this.universityInfo.documents) {
             console.log('no hay docs')
@@ -206,7 +208,7 @@ export class FindridePage {
               modal.present();
           } 
         }else{
-  
+          this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
         }
       })
     })
@@ -459,6 +461,8 @@ clearMarkers(){
       }
   })
   }
+
+
 geocodeLatLng(latLng,inputName) {
 
   this.geocoder.geocode({'location': latLng}, (results, status) => {
@@ -604,7 +608,12 @@ geocodeLatLng(latLng,inputName) {
 
         setTimeout(()=>{
           if(!this.geofireOriginConfirmed == true){
+            this.afDB.database.ref(this.SignUpService.userUniversity + '/users/'+ this.userUid +'/trips').update({
+              origin: this.orFirebase,
+              destination: this.desFirebase        
+          }).then(() => {
             this.geocoderDestinationCase();
+            })
 
           }else{
             this.geofireOriginConfirmed = false;
@@ -660,6 +669,8 @@ geocodeLatLng(latLng,inputName) {
   goToMyReserves(){
     this.app.getRootNav().push('ReservetripPage');
   }
+
+
   goToTrip(){
       // go to trip      
       if (this.onTrip === true) {

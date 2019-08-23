@@ -4,7 +4,6 @@ import { NavController, ModalController, ToastController, IonicPage, App } from 
 import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { SignUpService } from '../../services/signup.services';
-import { ConfirmpopupPage } from '../confirmpopup/confirmpopup';
 import { geofireService } from '../../services/geoFire.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { reservesService } from '../../services/reserves.service';
@@ -27,11 +26,13 @@ export class ListridePage {
   ReservesGeofire: any =[];
   tripsReserved:any =[];
   reserveLMU:any;
+  // verified:boolean = false;
 
   constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
-    this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid).subscribe(user=>{
+    this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
       this.user = user;   
+      
     })
     
     this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid)
@@ -56,26 +57,18 @@ export class ListridePage {
         }) 
     this.reservesService.getReserves(this.SignUpService.userUniversity, this.userUid)    
       .subscribe(reserves => {
-      
+        this.reservesAvailable = [];
         this.ReservesGeofire = reserves;
         console.log(this.ReservesGeofire);
         this.getMyReserves();
         this.getAvailableReserves();
       });
      
-    
-  // this.TripsService.getLastMinuteTripsDEMO(this.userUid)
-  // //cambiar en merge
-  //   .subscribe(reserves => {
-      
-  //     this.initiatedTrips = reserves;
-  //     console.log(this.initiatedTrips);
   
-  //   });
-
-
-   
   }
+
+
+  
 getMyReserves(){
   this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid)
   .subscribe( tripsReserved => {
@@ -91,10 +84,11 @@ getMyReserves(){
     
     //bring reserves that i have entered to hide them in listride
    
-    
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
       this.ReservesGeofire.forEach(reserveGeofire => {
-        
+        console.log(this.SignUpService.userUniversity);
+        console.log(reserveGeofire);
+
           this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserveGeofire.driverId,reserveGeofire.keyReserve)
       .subscribe( info => {        
             this.reserve = info;    
@@ -106,7 +100,7 @@ getMyReserves(){
            }else{
             console.log("not-undefined");        
             if(this.tripsReserved.length === 0){
-             
+                
                 this.reservesAvailable.push(this.reserve); 
                 console.log(this.reservesAvailable);
                 console.log("A");        
@@ -114,22 +108,6 @@ getMyReserves(){
      
             } else {
               this.reservesAvailable.push(this.reserve); 
-
-              // console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA") 
-              // this.tripsReserved.forEach(reserve => {
-              //   console.log(reserve)            
-              //     if(reserve.keyReserve == this.reserve.keyTrip){
-              //       console.log("not-hello");        
-              //     }else {
-                 
-              //       console.log(this.reservesAvailable);
-                   
-
-              //       console.log("Aavg");   
-                        
-
-              //     }           
-              // });
             }
            } 
 
@@ -161,6 +139,8 @@ ionViewDidLoad(){
 }
 
 
+
+
  
  confirmpopup(reserve,keyArray:string,driverUserId){
    //mutacion: tiene q mutar o eliminarse
@@ -189,19 +169,22 @@ modal.onDidDismiss(accepted => {
 modal.present();
  //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
   }
+
+
   enterTrip(trip){
- 
-   
+
    let modal = this.modalCtrl.create('ConfirmtripPage',{trip:trip});
    modal.onDidDismiss(accepted => {
     if(accepted){
-      // this.navCtrl.push('ListridePage');
      this.navCtrl.pop();
     }
   })
 modal.present();
   //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
    }
+
+
+
   help(){
     const toast = this.toastCtrl.create({
       message: 'Estos son los conductores que se van a tu misma zona. Podrás ver sus horas en las que se van y unirte en su viaje',

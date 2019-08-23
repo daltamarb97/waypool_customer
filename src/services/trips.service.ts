@@ -11,8 +11,8 @@ export class TripsService {
 
        }
        
-       public getOnTrip(userUid){
-        return  this.afDB.object('/users/'+ userUid+'/onTrip/onTrip').valueChanges();
+       public getOnTrip(university, userUid){
+        return  this.afDB.object(university + '/users/'+ userUid+'/onTrip').valueChanges();
        }
 
     public getMyReservesUser(university, userUid){
@@ -25,8 +25,8 @@ export class TripsService {
       return  this.afDB.object(university + '/users/'+ userUid+'/keyTrip').valueChanges();
 
   }
-    public getTripState(reserveId,driverId){
-    return  this.afDB.object('/tripsState/'+driverId+'/'+reserveId+'/').valueChanges();
+    public getTripState(university, reserveId,driverId){
+    return  this.afDB.object(university + '/tripsState/'+driverId+'/'+reserveId+'/').valueChanges();
 
   }
     public getReserves(userUid){

@@ -20,4 +20,10 @@ public showOnDriverInstance(driverId, user){
     })
 }
 
+public isVerified(university, userId){
+    this.afDB.database.ref(university + '/users/' + userId).update({
+        verifiedPerson: true
+    })
+}
+
 }

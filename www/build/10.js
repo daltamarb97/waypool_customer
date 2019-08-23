@@ -82,7 +82,7 @@ var RatetripPage = /** @class */ (function () {
         this.driver = {};
         this.title = 'calificacion de viaje';
         this.today = Date.now();
-        this.signUpService.getMyInfo(this.signUpService.userUniversity, this.userUid).subscribe(function (user) {
+        this.signUpService.getMyInfo(this.userUid, this.signUpService.userUniversity).subscribe(function (user) {
             _this.user = user;
         });
         this.trip = this.navParams.get('trip');

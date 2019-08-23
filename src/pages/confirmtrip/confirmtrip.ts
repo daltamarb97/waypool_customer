@@ -36,7 +36,7 @@ export class ConfirmtripPage {
     
         
        //get the info of the driver 
-       this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid)
+       this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
          console.log(this.user);          
@@ -64,6 +64,7 @@ export class ConfirmtripPage {
     this.viewCtrl.dismiss(this.accepted);
     this.unsubscribe.next();
     this.unsubscribe.complete();
+
 
     
     // this.navCtrl.pop();

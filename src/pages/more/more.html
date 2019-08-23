@@ -12,7 +12,7 @@
                     </ion-avatar>
                     <div class="name">
                         <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}
-                            <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                            <ion-icon *ngIf = 'verified' name="ios-checkmark-circle" class="text-theme"></ion-icon>
                         </h2>
                         <p (click)="profile()">Editar Perfil</p>
                     </div>

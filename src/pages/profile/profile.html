@@ -12,7 +12,9 @@
         <div class="name">
             <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}
             </h2>
-            
+            <p *ngIf='user.verifiedPerson' class="text-theme">VERIFICADO
+                <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+            </p>
         </div>
         
     </ion-item>

@@ -26,53 +26,6 @@ export class geofireService {
        
     }
 
-    setLocationGeofireDest( key, lat, lng, userId){
-        this.dbRef = this.afDB.database.ref('geofireDest/' );
-        this.geoFire = new GeoFire(this.dbRef); 
-
-        // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-            this.user = userId;
-            // if(!this.user.onTrip == true){
-                this.geoFire.set(key, [lat, lng]).then(function(){
-                    console.log('location updated');
-                   }, function(error){
-                  console.log('error: ' + error)
-                   });
-
-                   this.deleteUserGeofireOr(key)
-
-                   this.afDB.database.ref('users/' + userId).update({
-                    geofireDest: true,
-                    geofireOr: false
-                })
-            // }
-        // })
-           
-    }
-
-    // setLocationGeofireOr( key, lat, lng, userId){
-    //     this.dbRef = this.afDB.database.ref('geofireOr/' );
-    //     this.geoFire = new GeoFire(this.dbRef); 
-
-    //     // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-    //         // this.user = user;
-    //         // if(!this.user.onTrip == true){
-    //             this.geoFire.set(key, [lat, lng]).then(function(){
-    //                 console.log('location updated');
-    //                }, function(error){
-    //               console.log('error: ' + error)
-    //                });
-
-    //         // }
-    //         this.afDB.database.ref('users/' + userId).update({
-    //             geofireOr: true,
-    //             geofireDest: false
-    //         })
-    //     // })
-           
-    // }
-
-
 
     setGeofireOr(university, radius:number, lat, lng, userId):void{ 
   this.dbRef = this.afDB.database.ref(university + '/geofireOr/' );
@@ -89,6 +42,11 @@ export class geofireService {
   console.log('geoquery or added');
 
 
+}
+
+
+cancelGeofireOr(){
+    this.geoquery2.cancel();
 }
 
 //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
@@ -155,6 +113,10 @@ getIdFromGeofireDestTripNode(university, key){
 console.log('geoquery dest added');
 }
 
+cancelGeofireDest(){
+    this.geoquery1.cancel();
+}
+
 keyEnteredDest( userId, university ){
     this.geoquery1.on("key_entered", function(key, location, distance){
      console.log(key);
@@ -203,6 +165,12 @@ keyEnteredDest( userId, university ){
   
   
   }
+
+  cancelGeofireOrLMU(){
+    this.geoquery2LMU.cancel();
+}
+
+
 
 
   keyEnteredOrLMU( userId, university ){
@@ -256,6 +224,12 @@ keyEnteredDest( userId, university ){
   
   
   }
+
+  cancelGeofireDestLMU(){
+    this.geoquery1LMU.cancel();
+}
+
+
 
 
   keyEnteredDestLMU( userId, university){

@@ -90,7 +90,8 @@ getMyReserves(){
         console.log(reserveGeofire);
 
           this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserveGeofire.driverId,reserveGeofire.keyReserve)
-      .subscribe( info => {        
+      .subscribe( info => {  
+        // this.reservesAvailable = [];      
             this.reserve = info;    
             console.log(info);
             if(this.reserve=== undefined || this.reserve === null){
@@ -120,6 +121,7 @@ getMyReserves(){
 
       if(reserveGeofire.LMU == true){
         this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userUniversity, reserveGeofire.driverId).subscribe((reserveLMU)=>{
+          this.initiatedTrips = [];
           this.reserveLMU = reserveLMU[0];
           this.initiatedTrips.push(this.reserveLMU);
           console.log(this.initiatedTrips);

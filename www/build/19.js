@@ -98,10 +98,11 @@ var ConfirmtripPage = /** @class */ (function () {
         this.geoFireService = geoFireService;
         this.instances = instances;
         this.user = {};
-        this.hideButton = true;
-        this.hideText = false;
+        this.button = true;
+        this.text = false;
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
+        this.myRideActivation = false;
         this.trip = this.navParams.get('trip');
         console.log(this.reserve);
         //get the info of the driver 
@@ -110,30 +111,61 @@ var ConfirmtripPage = /** @class */ (function () {
             _this.user = myUserInfo;
             console.log(_this.user);
         });
+        this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userUniversity)
+            .subscribe(function (usersInPendingusers) {
+            _this.usersInPending = usersInPendingusers;
+            _this.usersInPending.forEach(function (user) {
+                if (user.userId === _this.userUid) {
+                    _this.accepted = true;
+                    _this.navCtrl.push('MyridePage');
+                }
+            });
+        });
     }
     ConfirmtripPage.prototype.goToRide = function () {
         this.TripsService.joinTrip(this.SignUpService.userUniversity, this.trip.keyTrip, this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
         this.geoFireService.saveKey(this.SignUpService.userUniversity, this.trip.keyTrip, this.trip.driver.userId, this.userUid);
         this.reservesService.setOnTrip(this.SignUpService.userUniversity, this.userUid);
-        this.navCtrl.push('MyridePage');
+        // this.navCtrl.push('MyridePage');
         // this.geoFireService.removeKeyGeofire(this.userUid);
         //OLD
         // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
         // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
-        this.hideButton = !this.hideButton;
-        this.hideText = !this.hideText;
-        this.accepted = true;
-        this.dismiss();
+        this.button = false;
+        this.text = true;
+        // this.accepted = true; 
+        // this.dismiss();
+        // this.TripsService.checkIfAcceptedInLMU(this.SignUpService.userUniversity, this.trip.driver.userId, this.trip.keyTrip, this.userUid)
+        // .subscribe(userInLMU => {
+        //   this.userInLMU = userInLMU;
+        //   console.log(this.userInLMU);
+        //   if(this.userInLMU === null){
+        //     this.accepted = true;
+        //     this.navCtrl.push('MyridePage');
+        //   }
+        // })
     };
     ConfirmtripPage.prototype.dismiss = function () {
         this.viewCtrl.dismiss(this.accepted);
         this.unsubscribe.next();
         this.unsubscribe.complete();
-        // this.navCtrl.pop();
+        if (this.trip.type === 'origin') {
+            this.geoFireService.cancelGeofireOr();
+            this.geoFireService.cancelGeofireOrLMU();
+        }
+        else if (this.trip.type === 'destination') {
+            this.geoFireService.cancelGeofireDest();
+            this.geoFireService.cancelGeofireDestLMU();
+        }
+    };
+    ConfirmtripPage.prototype.dismissByClick = function () {
+        this.viewCtrl.dismiss(this.accepted);
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     };
     ConfirmtripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirmtrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirmtrip/confirmtrip.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>\n    <ion-card>\n        <h6 class="text-hot hot">Viaje Iniciado </h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{trip.driver.name|titlecase }} {{trip.driver.lastname|titlecase | slice:0:1}}</h2>\n                <p>{{trip.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen del viaje</small>\n                    <span class="icon-location bg-hot"></span>{{trip.origin}}</p>\n                <p>\n                    <small>Destino del viaje</small>\n                    <span class="icon-location bg-yellow"></span>{{trip.destination}}</p>\n            </div>\n        </ion-card-content>\n\n        <ion-card-content>\n            <div class="ride-detail no-before" >\n                <p><small>Nota:<span class="text-theme" float-right></span></small>\n                    <ion-icon name="md-calendar" class="icon-location"></ion-icon>\n                   {{trip.note}}</p>\n               \n            </div>\n        </ion-card-content>\n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{trip.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-hot text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">Enviar Solicitud </button>\n                <p  text-center *ngIf="hideText">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirmtrip/confirmtrip.html"*/
+            selector: 'page-confirmtrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirmtrip/confirmtrip.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissByClick()"></ion-icon>\n    <ion-card>\n        <h6 class="text-hot hot">Viaje Iniciado </h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{trip.driver.name|titlecase }} {{trip.driver.lastname|titlecase | slice:0:1}}</h2>\n                <p>{{trip.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen del viaje</small>\n                    <span class="icon-location bg-hot"></span>{{trip.origin}}</p>\n                <p>\n                    <small>Destino del viaje</small>\n                    <span class="icon-location bg-yellow"></span>{{trip.destination}}</p>\n            </div>\n        </ion-card-content>\n\n        <ion-card-content>\n            <div class="ride-detail no-before" >\n                <p><small>Nota:<span class="text-theme" float-right></span></small>\n                    <ion-icon name="md-calendar" class="icon-location"></ion-icon>\n                   {{trip.note}}</p>\n               \n            </div>\n        </ion-card-content>\n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{trip.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-hot text-white rounded" (click)="goToRide()" *ngIf="button" style="width: 100%;margin-top: 14px;">Enviar Solicitud </button>\n                <p  text-center *ngIf="text">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirmtrip/confirmtrip.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_10__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */]])
     ], ConfirmtripPage);

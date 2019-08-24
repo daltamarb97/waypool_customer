@@ -74,8 +74,17 @@
                 </ion-item>
                 <ion-item>
                     <ion-label></ion-label>
-                    <ion-input type="text" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>
+                    <ion-input type="number" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>
                 </ion-item>
+                <ion-item>
+                    <ion-label>Por favor lee y acepta nuestros términos y condiciones</ion-label>
+                    <ion-checkbox formControlName="isChecked" ></ion-checkbox>
+                </ion-item>
+                <ion-item>
+                    <p>Ver <a href="https://waypooltech.wordpress.com/">términos y condiciones</a></p>
+                </ion-item>
+                
+
             </ion-list>
             <div class="footer-signup">
                     <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>

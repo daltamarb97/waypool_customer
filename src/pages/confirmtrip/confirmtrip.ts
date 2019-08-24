@@ -23,11 +23,14 @@ export class ConfirmtripPage {
   accepted: boolean;
   reserve:any;
   user:any ={};
-  hideButton:boolean = true;
-  hideText:boolean = false;
+  button:boolean = true;
+  text:boolean = false;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
   unsubscribe = new Subject;
   trip:any;
+  userInLMU:any;
+  usersInPending:any;
+  myRideActivation:boolean = false;
   constructor(public navCtrl: NavController,public reservesService:reservesService, public sendUsersService:sendUsersService,public TripsService:TripsService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService) {
     
     this.trip= this.navParams.get('trip') 
@@ -42,32 +45,69 @@ export class ConfirmtripPage {
          console.log(this.user);          
        });
 
+       this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userUniversity)
+       .subscribe(usersInPendingusers => {
+        this.usersInPending = usersInPendingusers
+        this.usersInPending.forEach(user => {
+          if(user.userId === this.userUid){
+            this.accepted = true;
+            this.navCtrl.push('MyridePage');
+            
+          }
+        });
+       })
+
+
   }
 
   goToRide(){   
     this.TripsService.joinTrip(this.SignUpService.userUniversity, this.trip.keyTrip,this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
     this.geoFireService.saveKey(this.SignUpService.userUniversity,this.trip.keyTrip,this.trip.driver.userId, this.userUid);
     this.reservesService.setOnTrip(this.SignUpService.userUniversity,this.userUid);
-    this.navCtrl.push('MyridePage');
+    // this.navCtrl.push('MyridePage');
     // this.geoFireService.removeKeyGeofire(this.userUid);
     //OLD
     // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
     // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
-    this.hideButton = !this.hideButton;
-    this.hideText = !this.hideText;
-    this.accepted = true; 
+    this.button = false;
+    this.text = true;
+    // this.accepted = true; 
    
-    this.dismiss();
+    // this.dismiss();
+
+
+        // this.TripsService.checkIfAcceptedInLMU(this.SignUpService.userUniversity, this.trip.driver.userId, this.trip.keyTrip, this.userUid)
+        // .subscribe(userInLMU => {
+        //   this.userInLMU = userInLMU;
+        //   console.log(this.userInLMU);
+        //   if(this.userInLMU === null){
+        //     this.accepted = true;
+        //     this.navCtrl.push('MyridePage');
+
+        //   }
+        // })
     }
 
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
     this.unsubscribe.next();
     this.unsubscribe.complete();
-
-
-    
-    // this.navCtrl.pop();
-
+    if(this.trip.type === 'origin'){
+      this.geoFireService.cancelGeofireOr();
+      this.geoFireService.cancelGeofireOrLMU();
+    }else if(this.trip.type === 'destination'){
+      this.geoFireService.cancelGeofireDest();
+      this.geoFireService.cancelGeofireDestLMU();
+    }
   }  
+
+
+  dismissByClick(){
+    this.viewCtrl.dismiss(this.accepted);
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
+
+
+
 }

@@ -144,6 +144,7 @@ var ListridePage = /** @class */ (function () {
             console.log(reserveGeofire);
             _this.reservesService.getMyReserves(_this.SignUpService.userUniversity, reserveGeofire.driverId, reserveGeofire.keyReserve)
                 .subscribe(function (info) {
+                // this.reservesAvailable = [];      
                 _this.reserve = info;
                 console.log(info);
                 if (_this.reserve === undefined || _this.reserve === null) {
@@ -166,6 +167,7 @@ var ListridePage = /** @class */ (function () {
             //// ELIMINAR NODO QUE LEE LMU CUANDO FINALICE VIAJE (MERGE)
             if (reserveGeofire.LMU == true) {
                 _this.TripsService.getLastMinuteTripsDEMO(_this.SignUpService.userUniversity, reserveGeofire.driverId).subscribe(function (reserveLMU) {
+                    _this.initiatedTrips = [];
                     _this.reserveLMU = reserveLMU[0];
                     _this.initiatedTrips.push(_this.reserveLMU);
                     console.log(_this.initiatedTrips);

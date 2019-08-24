@@ -48,7 +48,8 @@ export class SignupPage {
         password: ["", Validators.required],
         passwordconf: ["", Validators.required],
         phone: ["", Validators.required],
-        university: ["", Validators.required]
+        university: ["", Validators.required],
+        isChecked:[true, Validators.required]
         
     })
 
@@ -88,7 +89,16 @@ export class SignupPage {
     }
      
     verification(){
-        if(this.showReadonly == true){
+    
+        if(!this.signupGroup.controls['isChecked'].value === true ){
+            const alert = this.alertCtrl.create({
+                title: 'No aceptaste nuestros términos y condiciones',
+                subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
+                buttons: ['OK']
+              });
+              alert.present(); 
+        }else{
+            if(this.showReadonly == true){
                 //creating user on firebase
             let userName = this.signupGroup.controls['name'].value;
             let userLastName = this.signupGroup.controls['lastname'].value;
@@ -240,13 +250,7 @@ export class SignupPage {
                 }
 
         }
-
-          
-          
-
-         
-
-
+        }
     }
 
 

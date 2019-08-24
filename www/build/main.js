@@ -61,6 +61,9 @@ var SignUpService = /** @class */ (function () {
     SignUpService.prototype.getMyInfo = function (userId, university) {
         return this.afDB.object(university + '/users/' + userId).valueChanges();
     };
+    SignUpService.prototype.checkMyReserves = function (university, userId) {
+        return this.afDB.list(university + '/users/' + userId + '/myReserves').valueChanges();
+    };
     SignUpService.prototype.getInfoDriver = function (userDriverId) {
         return this.afDB.object('drivers/' + userDriverId).valueChanges();
     };
@@ -184,15 +187,15 @@ var map = {
 		14
 	],
 	"../pages/myride/myride.module": [
-		654,
+		655,
 		13
 	],
 	"../pages/profile/profile.module": [
-		643,
+		644,
 		12
 	],
 	"../pages/public-profile/public-profile.module": [
-		644,
+		643,
 		11
 	],
 	"../pages/ratetrip/ratetrip.module": [
@@ -208,23 +211,23 @@ var map = {
 		8
 	],
 	"../pages/signup/signup.module": [
-		655,
+		654,
 		0
 	],
 	"../pages/support/support.module": [
-		648,
+		649,
 		7
 	],
 	"../pages/tabs/tabs.module": [
-		649,
+		648,
 		6
 	],
 	"../pages/terms/terms.module": [
-		650,
+		651,
 		5
 	],
 	"../pages/verification-images/verification-images.module": [
-		651,
+		650,
 		2
 	],
 	"../pages/verification-number/verification-number.module": [
@@ -280,6 +283,9 @@ var sendCoordsService = /** @class */ (function () {
     };
     sendCoordsService.prototype.getPendingUsers = function (driverUid, pushKey, university) {
         return this.afDB.list(university + '/reserves/' + driverUid + '/' + pushKey + '/pendingUsers').valueChanges();
+    };
+    sendCoordsService.prototype.getPendingUsersInTrips = function (driverUid, pushKey, university) {
+        return this.afDB.list(university + '/trips/' + driverUid + '/' + pushKey + '/pendingUsers').valueChanges();
     };
     sendCoordsService.prototype.getOrigin = function (user) {
         return this.afDB.list('/drivers/' + user + '/trips/origin').valueChanges();
@@ -534,43 +540,6 @@ var geofireService = /** @class */ (function () {
         this.afDB = afDB;
         this.AngularFireAuth = AngularFireAuth;
     }
-    geofireService.prototype.setLocationGeofireDest = function (key, lat, lng, userId) {
-        this.dbRef = this.afDB.database.ref('geofireDest/');
-        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
-        // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-        this.user = userId;
-        // if(!this.user.onTrip == true){
-        this.geoFire.set(key, [lat, lng]).then(function () {
-            console.log('location updated');
-        }, function (error) {
-            console.log('error: ' + error);
-        });
-        this.deleteUserGeofireOr(key);
-        this.afDB.database.ref('users/' + userId).update({
-            geofireDest: true,
-            geofireOr: false
-        });
-        // }
-        // })
-    };
-    // setLocationGeofireOr( key, lat, lng, userId){
-    //     this.dbRef = this.afDB.database.ref('geofireOr/' );
-    //     this.geoFire = new GeoFire(this.dbRef); 
-    //     // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-    //         // this.user = user;
-    //         // if(!this.user.onTrip == true){
-    //             this.geoFire.set(key, [lat, lng]).then(function(){
-    //                 console.log('location updated');
-    //                }, function(error){
-    //               console.log('error: ' + error)
-    //                });
-    //         // }
-    //         this.afDB.database.ref('users/' + userId).update({
-    //             geofireOr: true,
-    //             geofireDest: false
-    //         })
-    //     // })
-    // }
     geofireService.prototype.setGeofireOr = function (university, radius, lat, lng, userId) {
         this.dbRef = this.afDB.database.ref(university + '/geofireOr/');
         this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
@@ -581,6 +550,9 @@ var geofireService = /** @class */ (function () {
         this.keyEnteredOr(userId, university);
         this.keyExitedOr(userId, university);
         console.log('geoquery or added');
+    };
+    geofireService.prototype.cancelGeofireOr = function () {
+        this.geoquery2.cancel();
     };
     //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
     geofireService.prototype.keyEnteredOr = function (userId, university) {
@@ -628,6 +600,9 @@ var geofireService = /** @class */ (function () {
         this.keyExitedDest(userId, university);
         console.log('geoquery dest added');
     };
+    geofireService.prototype.cancelGeofireDest = function () {
+        this.geoquery1.cancel();
+    };
     geofireService.prototype.keyEnteredDest = function (userId, university) {
         this.geoquery1.on("key_entered", function (key, location, distance) {
             var _this = this;
@@ -663,6 +638,9 @@ var geofireService = /** @class */ (function () {
         this.keyEnteredOrLMU(userId, university);
         this.keyExitedOrLMU(userId, university);
         console.log('geoquery or added');
+    };
+    geofireService.prototype.cancelGeofireOrLMU = function () {
+        this.geoquery2LMU.cancel();
     };
     geofireService.prototype.keyEnteredOrLMU = function (userId, university) {
         this.geoquery2LMU.on("key_entered", function (key, location, distance) {
@@ -700,6 +678,9 @@ var geofireService = /** @class */ (function () {
         this.keyEnteredDestLMU(userId, university);
         this.keyExitedDestLMU(userId, university);
         console.log('geoquery or added');
+    };
+    geofireService.prototype.cancelGeofireDestLMU = function () {
+        this.geoquery1LMU.cancel();
     };
     geofireService.prototype.keyEnteredDestLMU = function (userId, university) {
         this.geoquery1LMU.on("key_entered", function (key, location, distance) {
@@ -840,10 +821,9 @@ var geofireService = /** @class */ (function () {
     };
     geofireService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]])
     ], geofireService);
     return geofireService;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=geoFire.service.js.map
@@ -943,6 +923,9 @@ var TripsService = /** @class */ (function () {
             userId: userId,
             note: note,
         });
+    };
+    TripsService.prototype.checkIfAcceptedInLMU = function (university, driverId, keyTrip, userId) {
+        return this.afDB.object(university + '/trips/' + driverId + '/' + keyTrip + '/lastMinuteUsers/' + userId).valueChanges();
     };
     TripsService.prototype.cancelTrip = function (university, userUid, driverUid, tripId) {
         //eliminate user from reserve in reserve's node        
@@ -1215,10 +1198,9 @@ var ConfirmUniversityPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-confirm-university',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirm-university/confirm-university.html"*/'<ion-content>\n    <ion-card>\n    <h6 class="text-theme">¿CUÁL ES TU UNIVERSIDAD?</h6>\n    <ion-card-content>\n        <ion-list>\n            <ion-item>\n              <ion-label>escoge tu universidad </ion-label>\n              <ion-select (ionChange)="onChange()" okText="Ok" cancelText="Cancel" [(ngModel)]= \'universityChosen\'>\n                <ion-option  *ngFor="let uni of universities"  name="fieldName" ngDefaultControl>{{uni.name}}</ion-option>\n              </ion-select>\n            </ion-item>\n          \n          </ion-list>\n    </ion-card-content>\n\n    <ion-card-content>\n        <div >\n            \n            <ion-row style="margin-top: 14px;justify-content: center">\n                \n                <ion-col col-8>\n                    <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.5rem;" *ngIf=\'showButton\' (click)="goToFindaride()">Continuar</button>\n                </ion-col>\n            </ion-row>\n\n\n        </div>\n    </ion-card-content>\n    </ion-card>\n</ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirm-university/confirm-university.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_signup_services__["a" /* SignUpService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["AngularFireAuth"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], ConfirmUniversityPage);
     return ConfirmUniversityPage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=confirm-university.js.map
@@ -1387,19 +1369,19 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/public-profile/public-profile.module#PublicProfilePageModule', name: 'PublicProfilePage', segment: 'public-profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reserveinfo/reserveinfo.module#ConfirmreservationPageModule', name: 'ReserveinfoPage', segment: 'reserveinfo', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-images/verification-images.module#VerificationImagesPageModule', name: 'VerificationImagesPage', segment: 'verification-images', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/findride/findride.module#FindridePageModule', name: 'FindridePage', segment: 'findride', priority: 'low', defaultHistory: [] }
                     ]
                 }),

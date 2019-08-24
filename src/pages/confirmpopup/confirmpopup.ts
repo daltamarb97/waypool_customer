@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController, NavParams, ToastController, IonicPage } from 'ionic-angular';
+import { NavController, ViewController, NavParams, ToastController, IonicPage, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SignUpService } from '../../services/signup.services';
 import { sendCoordsService } from '../../services/sendCoords.service';
@@ -25,7 +25,8 @@ export class ConfirmpopupPage {
   hideText:boolean = false;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
   unsubscribe = new Subject;
-  constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService) {
+  reservesWhereIam:any;
+  constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService, public alertCtrl: AlertController) {
     
     this.reserve= this.navParams.get('reserve') 
     console.log(this.reserve)
@@ -40,13 +41,28 @@ export class ConfirmpopupPage {
        });
 
 
+       // function to get in how many reserves I am
+       this.SignUpService.checkMyReserves(this.SignUpService.userUniversity, this.userUid)
+       .subscribe( reserves => {
+        this.reservesWhereIam = reserves;
+        console.log(this.reservesWhereIam);
+       })
+
+
   }
 
 
 
   goToRide(){  
-    
-    this.SignUpService.getMyInfo(this.userUid , this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
+    if(this.reservesWhereIam.length >= 5){
+      let alert = this.alertCtrl.create({
+        title: 'limite de reservas por un dia',
+        subTitle: 'Ya excediste el limite de reservas por un dia ',
+        buttons: ['OK']
+      });
+      alert.present();
+    }else {
+      this.SignUpService.getMyInfo(this.userUid , this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
     .subscribe(user=>{
       this.user = user; 
       console.log(this.user)
@@ -74,10 +90,16 @@ export class ConfirmpopupPage {
     toast.present();  
     this.dismiss();
     }
+   }
+
+
+
     dismissX(){
       this.viewCtrl.dismiss();
 
     }
+
+
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
     this.unsubscribe.next();

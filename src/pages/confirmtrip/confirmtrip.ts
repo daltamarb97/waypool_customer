@@ -23,12 +23,15 @@ export class ConfirmtripPage {
   accepted: boolean;
   reserve:any;
   user:any ={};
-  hideButton:boolean = true;
-  hideText:boolean = false;
+  button:boolean = true;
+  text:boolean = false;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
   unsubscribe = new Subject;
   trip:any;
-  constructor(public navCtrl: NavController, private app: App,public reservesService:reservesService, public sendUsersService:sendUsersService,public TripsService:TripsService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService) {
+  userInLMU:any;
+  usersInPending:any;
+  myRideActivation:boolean = false;
+  constructor(public navCtrl: NavController,public reservesService:reservesService, public sendUsersService:sendUsersService,public TripsService:TripsService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService) {
     
     this.trip= this.navParams.get('trip') 
     console.log(this.reserve)
@@ -36,11 +39,24 @@ export class ConfirmtripPage {
     
         
        //get the info of the driver 
-       this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userUniversity)
+       this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
          console.log(this.user);          
        });
+
+       this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userUniversity)
+       .subscribe(usersInPendingusers => {
+        this.usersInPending = usersInPendingusers
+        this.usersInPending.forEach(user => {
+          if(user.userId === this.userUid){
+            this.accepted = true;
+            this.navCtrl.push('MyridePage');
+            
+          }
+        });
+       })
+
 
   }
   
@@ -52,11 +68,23 @@ export class ConfirmtripPage {
     //OLD
     // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
     // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
-    this.hideButton = !this.hideButton;
-    this.hideText = !this.hideText;
-    this.accepted = true; 
+    this.button = false;
+    this.text = true;
+    // this.accepted = true; 
    
-    this.dismiss();
+    // this.dismiss();
+
+
+        // this.TripsService.checkIfAcceptedInLMU(this.SignUpService.userUniversity, this.trip.driver.userId, this.trip.keyTrip, this.userUid)
+        // .subscribe(userInLMU => {
+        //   this.userInLMU = userInLMU;
+        //   console.log(this.userInLMU);
+        //   if(this.userInLMU === null){
+        //     this.accepted = true;
+        //     this.navCtrl.push('MyridePage');
+
+        //   }
+        // })
     }
 
     dismissX(){
@@ -67,8 +95,17 @@ export class ConfirmtripPage {
     this.viewCtrl.dismiss(this.accepted);
     this.unsubscribe.next();
     this.unsubscribe.complete();
-    
-    // this.navCtrl.pop();
+    if(this.trip.type === 'origin'){
+      this.geoFireService.cancelGeofireOr();
+      this.geoFireService.cancelGeofireOrLMU();
+    }else if(this.trip.type === 'destination'){
+      this.geoFireService.cancelGeofireDest();
+      this.geoFireService.cancelGeofireDestLMU();
+    }
+  }  
 
-  } 
+
+
+
+
 }

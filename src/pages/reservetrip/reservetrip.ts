@@ -96,7 +96,7 @@ export class ReservetripPage{
                     console.log("cai en el vacío")
                   } 
                 }else{
-                  console.log(this.reserve.keyTrip)
+                //   console.log(this.reserve.keyTrip)
                   console.log(reserve.keyReserve)
 
                   this.reservesService.confirmMyExistenceInPendingUsers(this.SignUpService.userUniversity, reserve.driverId, reserve.keyReserve, this.userUid).takeUntil(this.unsubscribe)

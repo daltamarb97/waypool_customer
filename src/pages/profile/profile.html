@@ -12,7 +12,9 @@
         <div class="name">
             <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}
             </h2>
-            
+            <p *ngIf='user.verifiedPerson' class="text-theme">VERIFICADO
+                <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+            </p>
         </div>
         
     </ion-item>
@@ -34,7 +36,7 @@
                     </ion-item>
                     <ion-item>
                         <ion-label floating>Número Telefónico Actual</ion-label>
-                        <ion-input type="number"  [(ngModel)]="user.phone" ></ion-input>
+                        <ion-input type="number"  [(ngModel)]="user.phone" readonly></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label stacked>Número Telefónico Nuevo</ion-label>

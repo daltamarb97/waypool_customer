@@ -66,6 +66,11 @@ export class SignUpService {
         }
 
 
+        public checkMyReserves(university, userId){
+            return this.afDB.list(university + '/users/'+ userId + '/myReserves').valueChanges();
+            }
+
+
 
         public getInfoDriver(userDriverId){
             return this.afDB.object('drivers/'+ userDriverId).valueChanges();

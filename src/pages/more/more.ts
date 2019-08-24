@@ -20,11 +20,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class MorePage {
      userUid=this.AngularFireAuth.auth.currentUser.uid;
      user:any={};
-     
+     verified:boolean = false;
   constructor(public navCtrl: NavController, public AngularFireAuth:AngularFireAuth,private authenticationService: authenticationService,public SignupService:SignUpService, public app: App) {
      this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).subscribe(user=>{
           this.user= user;
             console.log(this.user)
+          if(this.user.verifiedPerson === true){
+            this.verified = true;
+          }
         })
   }
   

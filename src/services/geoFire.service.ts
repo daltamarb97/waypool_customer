@@ -26,53 +26,6 @@ export class geofireService {
        
     }
 
-    setLocationGeofireDest( key, lat, lng, userId){
-        this.dbRef = this.afDB.database.ref('geofireDest/' );
-        this.geoFire = new GeoFire(this.dbRef); 
-
-        // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-            this.user = userId;
-            // if(!this.user.onTrip == true){
-                this.geoFire.set(key, [lat, lng]).then(function(){
-                    console.log('location updated');
-                   }, function(error){
-                  console.log('error: ' + error)
-                   });
-
-                   this.deleteUserGeofireOr(key)
-
-                   this.afDB.database.ref('users/' + userId).update({
-                    geofireDest: true,
-                    geofireOr: false
-                })
-            // }
-        // })
-           
-    }
-
-    // setLocationGeofireOr( key, lat, lng, userId){
-    //     this.dbRef = this.afDB.database.ref('geofireOr/' );
-    //     this.geoFire = new GeoFire(this.dbRef); 
-
-    //     // this.afDB.list('/users/' + key).valueChanges().subscribe(user=>{
-    //         // this.user = user;
-    //         // if(!this.user.onTrip == true){
-    //             this.geoFire.set(key, [lat, lng]).then(function(){
-    //                 console.log('location updated');
-    //                }, function(error){
-    //               console.log('error: ' + error)
-    //                });
-
-    //         // }
-    //         this.afDB.database.ref('users/' + userId).update({
-    //             geofireOr: true,
-    //             geofireDest: false
-    //         })
-    //     // })
-           
-    // }
-
-
 
     setGeofireOr(university, radius:number, lat, lng, userId):void{ 
   this.dbRef = this.afDB.database.ref(university + '/geofireOr/' );
@@ -89,6 +42,11 @@ export class geofireService {
   console.log('geoquery or added');
 
 
+}
+
+
+cancelGeofireOr(){
+    this.geoquery2.cancel();
 }
 
 //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
@@ -108,10 +66,7 @@ keyEnteredOr( userId, university ){
         })  
      })
 
-    //  this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ this.driverOnNodeOr.keyReserve + '/' + key).push({
-    //   userId: userId
-  
-    // })
+
          
    }.bind(this))
   }
@@ -127,6 +82,11 @@ keyEnteredOr( userId, university ){
   getIdFromGeofireOrNode(university, key){
       return this.afDB.object(university + '/geofireOr/'+ key).valueChanges();
   }
+
+
+  getIdFromGeofireDestNode(university, key){
+    return this.afDB.object(university + '/geofireDest/'+ key).valueChanges();
+}
 
   getIdFromGeofireOrTripNode(university, key){
     return this.afDB.object(university + '/geofireOrTrip/'+ key).valueChanges();
@@ -153,6 +113,10 @@ getIdFromGeofireDestTripNode(university, key){
 console.log('geoquery dest added');
 }
 
+cancelGeofireDest(){
+    this.geoquery1.cancel();
+}
+
 keyEnteredDest( userId, university ){
     this.geoquery1.on("key_entered", function(key, location, distance){
      console.log(key);
@@ -162,12 +126,16 @@ keyEnteredDest( userId, university ){
     })
 
        this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
-        driverId: this.driverOnNodeDest.driverId,
         keyReserve: key
+       }).then(()=> {
+           this.getIdFromGeofireDestNode(university, key).subscribe(driver => {
+            this.driverOnNodeDest = driver;
+            this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
+                driverId: this.driverOnNodeDest.driverId
+            })
+           })
        })
        console.log('keyentered here');
-    
-     
      
    }.bind(this))
  }
@@ -197,6 +165,12 @@ keyEnteredDest( userId, university ){
   
   
   }
+
+  cancelGeofireOrLMU(){
+    this.geoquery2LMU.cancel();
+}
+
+
 
 
   keyEnteredOrLMU( userId, university ){
@@ -250,6 +224,12 @@ keyEnteredDest( userId, university ){
   
   
   }
+
+  cancelGeofireDestLMU(){
+    this.geoquery1LMU.cancel();
+}
+
+
 
 
   keyEnteredDestLMU( userId, university){
@@ -324,7 +304,7 @@ keyEnteredDest( userId, university ){
         });
     }
 
-    joinReserve(university, keyReserve,driverId, userId, origin, destination, name, lastname, phone, note){
+    joinReserve(university, keyReserve,driverId, userId, origin, destination, name, lastname, phone, note, verifiedPerson){
         this.afDB.database.ref(university + '/reserves/' + driverId +'/'+keyReserve+ '/pendingUsers/' + userId).update({
              origin: origin,
              destination: destination,
@@ -332,8 +312,17 @@ keyEnteredDest( userId, university ){
              lastname: lastname,
              phone: phone,
              userId: userId,
-             note:note        
+             note:note,
+             verifiedPerson: verifiedPerson        
         }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+
+    deleteAvailableReserve(university, userId, keyReserve){
+        this.afDB.database.ref(university + '/users/'+ userId + '/availableReserves/' + keyReserve).remove()
+        .catch((err)=>{
             console.log(err)
         })
     }

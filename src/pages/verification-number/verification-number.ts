@@ -22,7 +22,7 @@ export class VerificationNumberPage {
     console.log(this.userId);
     console.log(this.signUpService.userUniversity);
 
-    this.signUpService.getMyInfo(this.signUpService.userUniversity, this.userId).subscribe(user => {
+    this.signUpService.getMyInfo(this.userId, this.signUpService.userUniversity).subscribe(user => {
       this.userInfo = user;
       console.log(this.userInfo);
     })

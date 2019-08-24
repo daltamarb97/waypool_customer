@@ -51,7 +51,7 @@ var VerificationNumberPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__ = __webpack_require__(342);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -80,7 +80,7 @@ var VerificationNumberPage = /** @class */ (function () {
         this.userId = this.navParams.get('userId');
         console.log(this.userId);
         console.log(this.signUpService.userUniversity);
-        this.signUpService.getMyInfo(this.signUpService.userUniversity, this.userId).subscribe(function (user) {
+        this.signUpService.getMyInfo(this.userId, this.signUpService.userUniversity).subscribe(function (user) {
             _this.userInfo = user;
             console.log(_this.userInfo);
         });

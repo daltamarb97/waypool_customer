@@ -16,8 +16,9 @@
                                   <!-- <h5>{{passenger.about | slice:0:19 }}...</h5> -->
                                   <ng-template #itsNotMeBlock >
                           
-                                       <h2>{{passenger.name |titlecase}} {{passenger.lastname  |titlecase | slice:0:1}}.</h2>
-                                       <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>  
+                                       <h2>{{passenger.name |titlecase}} {{passenger.lastname  |titlecase | slice:0:1}}. 
+                                          <ion-icon  *ngIf='passenger.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                                       </h2>
       
                                        <!-- <h5>{{passenger.about | slice:0:19}}...</h5> -->
                                

@@ -99,6 +99,10 @@ export class TripsService {
              note:note,
         });
     }
+
+    checkIfAcceptedInLMU(university, driverId, keyTrip, userId){
+      return this.afDB.object(university + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).valueChanges();
+    }
     public cancelTrip(university, userUid,driverUid,tripId){
         //eliminate user from reserve in reserve's node        
       this.afDB.database.ref(university + '/trips/'+ driverUid +'/'+ tripId+'/pendingUsers/'+userUid).remove();

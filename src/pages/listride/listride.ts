@@ -4,7 +4,6 @@ import { NavController, ModalController, ToastController, IonicPage, App } from 
 import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { SignUpService } from '../../services/signup.services';
-import { ConfirmpopupPage } from '../confirmpopup/confirmpopup';
 import { geofireService } from '../../services/geoFire.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { reservesService } from '../../services/reserves.service';
@@ -32,8 +31,9 @@ export class ListridePage {
 pendingUsers:any = [];
   constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
-    this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid).subscribe(user=>{
+    this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
       this.user = user;   
+      
     })
     
     this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid)
@@ -66,23 +66,18 @@ pendingUsers:any = [];
         this.getAvailableReserves();
       });
      
-    
-  // this.TripsService.getLastMinuteTripsDEMO(this.userUid)
-  // //cambiar en merge
-  //   .subscribe(reserves => {
-      
-  //     this.initiatedTrips = reserves;
-  //     console.log(this.initiatedTrips);
   
-  //   });
+  }
 
 
    
-  }
+  
+
   ionViewDidLeave(){
     console.log("me active")
     this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
   }
+
 getMyReserves(){
   this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
   .subscribe( tripsReserved => {
@@ -98,7 +93,6 @@ getMyReserves(){
     
     //bring reserves that i have entered to hide them in listride
    
-    
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
       this.ReservesGeofire.forEach(reserveGeofire => {
           this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserveGeofire.driverId,reserveGeofire.keyReserve).takeUntil(this.unsubscribe)
@@ -121,11 +115,11 @@ getMyReserves(){
 
 
       if(reserveGeofire.LMU == true){
-        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userUniversity, reserveGeofire.driverId).takeUntil(this.unsubscribe)
-          .subscribe((reserveLMU)=>{
-            this.reserveLMU = reserveLMU[0];
-            this.initiatedTrips.push(this.reserveLMU);
-            console.log(this.initiatedTrips);
+        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userUniversity, reserveGeofire.driverId).subscribe((reserveLMU)=>{
+          this.initiatedTrips = [];
+          this.reserveLMU = reserveLMU[0];
+          this.initiatedTrips.push(this.reserveLMU);
+          console.log(this.initiatedTrips);
 
         })
       }
@@ -140,6 +134,8 @@ ionViewDidLoad(){
   //       console.log(this.driversAvailable);
   //   })
 }
+
+
 
 
  
@@ -196,9 +192,10 @@ ionViewDidLoad(){
 
  //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
   }
+
+
   enterTrip(trip){
- 
-   
+
    let modal = this.modalCtrl.create('ConfirmtripPage',{trip:trip});
    modal.onDidDismiss(accepted => {
     if(accepted){

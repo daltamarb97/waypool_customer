@@ -49,6 +49,12 @@ export class reservesService {
         return  this.afDB.list(university + '/reserves/'+ driverUserUid +'/'+ reserveId+'/pendingUsers').valueChanges();
 
     }
+    public confirmMyExistenceInPendingUsers(university, driverUserUid,reserveId,userUid){
+        //get reserves inside reserves node
+        return  this.afDB.object(university + '/reserves/'+ driverUserUid +'/'+ reserveId+'/pendingUsers/'+userUid).valueChanges();
+
+    }
+
     public cancelReserve(university, userUid,driverUid,reserveId){
         //eliminate user from reserve in reserve's node        
       this.afDB.database.ref(university + '/reserves/'+ driverUid +'/'+ reserveId+'/pendingUsers/'+userUid).remove();

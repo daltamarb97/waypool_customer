@@ -16,8 +16,6 @@ import { SignUpService } from '../services/signup.services';
 export class MyApp {
   rootPage:any;
   userUniversity:any;
-
-
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private signUpServ: SignUpService) {
     this.userUniversity = this.signUpServ.userUniversity;
     console.log(this.userUniversity);

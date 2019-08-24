@@ -9,6 +9,7 @@ import { geofireService } from '../../services/geoFire.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { reservesService } from '../../services/reserves.service';
 import { TripsService } from '../../services/trips.service';
+import { Subject } from 'rxjs';
 @IonicPage()
 
 @Component({
@@ -27,7 +28,8 @@ export class ListridePage {
   ReservesGeofire: any =[];
   tripsReserved:any =[];
   reserveLMU:any;
-
+  unsubscribe = new Subject;
+pendingUsers:any = [];
   constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
     this.SignUpService.getMyInfo(this.SignUpService.userUniversity, this.userUid).subscribe(user=>{
@@ -46,7 +48,7 @@ export class ListridePage {
           // this.locationOrigin.push(origin)
           console.log(destinationUser);
         });
-        this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid)
+        this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
         .subscribe( tripsReserved => {
           
   
@@ -54,9 +56,10 @@ export class ListridePage {
           console.log(this.tripsReserved);
   
         }) 
-    this.reservesService.getReserves(this.SignUpService.userUniversity, this.userUid)    
+        
+    this.reservesService.getReserves(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)    
       .subscribe(reserves => {
-      
+        this.reservesAvailable = [];
         this.ReservesGeofire = reserves;
         console.log(this.ReservesGeofire);
         this.getMyReserves();
@@ -76,8 +79,12 @@ export class ListridePage {
 
    
   }
+  ionViewDidLeave(){
+    console.log("me active")
+    this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
+  }
 getMyReserves(){
-  this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid)
+  this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
   .subscribe( tripsReserved => {
     
 
@@ -94,43 +101,16 @@ getMyReserves(){
     
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
       this.ReservesGeofire.forEach(reserveGeofire => {
-        
-          this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserveGeofire.driverId,reserveGeofire.keyReserve)
+          this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserveGeofire.driverId,reserveGeofire.keyReserve).takeUntil(this.unsubscribe)
       .subscribe( info => {        
-            this.reserve = info;    
+            this.reserve = info;
+                
             console.log(info);
             if(this.reserve=== undefined || this.reserve === null){
               // reserve doesn't exist
-              console.log("hello");        
-
+              console.log("hello"); 
            }else{
-            console.log("not-undefined");        
-            if(this.tripsReserved.length === 0){
-             
-                this.reservesAvailable.push(this.reserve); 
-                console.log(this.reservesAvailable);
-                console.log("A");        
-
-     
-            } else {
-              this.reservesAvailable.push(this.reserve); 
-
-              // console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA") 
-              // this.tripsReserved.forEach(reserve => {
-              //   console.log(reserve)            
-              //     if(reserve.keyReserve == this.reserve.keyTrip){
-              //       console.log("not-hello");        
-              //     }else {
-                 
-              //       console.log(this.reservesAvailable);
-                   
-
-              //       console.log("Aavg");   
-                        
-
-              //     }           
-              // });
-            }
+            this.reservesAvailable.push(this.reserve);
            } 
 
             
@@ -141,10 +121,11 @@ getMyReserves(){
 
 
       if(reserveGeofire.LMU == true){
-        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userUniversity, reserveGeofire.driverId).subscribe((reserveLMU)=>{
-          this.reserveLMU = reserveLMU[0];
-          this.initiatedTrips.push(this.reserveLMU);
-          console.log(this.initiatedTrips);
+        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userUniversity, reserveGeofire.driverId).takeUntil(this.unsubscribe)
+          .subscribe((reserveLMU)=>{
+            this.reserveLMU = reserveLMU[0];
+            this.initiatedTrips.push(this.reserveLMU);
+            console.log(this.initiatedTrips);
 
         })
       }
@@ -162,31 +143,57 @@ ionViewDidLoad(){
 
 
  
- confirmpopup(reserve,keyArray:string,driverUserId){
-   //mutacion: tiene q mutar o eliminarse
-//   if(this.user.trips.onTrip == true || this.user.trips.pickedUp == true){
-//     // this.geoFireService.deleteDriverListRideTotal(this.userUid);
-//     this.geoFireService.deleteDriverListRideTotal(this.userUid);
-//     const toast = this.toastCtrl.create({
-//       message: `${this.user.name} : No puedes escoger otro conductor mientras estes en un viaje, por favor dirígete a Mi Viaje y cancelalo. `,
-//       showCloseButton: true,
-//       closeButtonText: 'Ok'
-//     });
-//     toast.present();
-//   } else {
-
-//  let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve,keyArray});
-//  modal.present();
-//  console.log(reserve)
-//   }
-let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve});
-modal.onDidDismiss(accepted => {
-    if(accepted){
-     this.navCtrl.pop();
-     this.navCtrl.push('ReservetripPage');
+ confirmpopup(reserve){
+   this.reservesService.getPendingUsers(this.SignUpService.userUniversity,reserve.driver.userId,reserve.keyTrip).takeUntil(this.unsubscribe)
+    .subscribe(pendingUsers=>{
+      this.pendingUsers = pendingUsers
+      console.log(pendingUsers);
+     
+      
+    })
+    if( this.pendingUsers === undefined||this.pendingUsers === null){
+      //there is no one in the trip
+      let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve});
+    modal.onDidDismiss(accepted => {
+        if(accepted){
+          this.unSubscribeServices();
+         this.navCtrl.pop();
+         this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
+    
+         this.navCtrl.push('ReservetripPage');
+        }
+      })
+    modal.present();
+    console.log('no hay nadie')
+    
+    }else if (this.pendingUsers.length >= 4){
+      //the trip is full 
+      const toast = this.toastCtrl.create({
+        message: 'Este viaje ya tiene 4 personas reservadas, porfavor selecciona otro',
+        showCloseButton:true,
+        closeButtonText: 'OK',
+        position:'bottom'
+           });
+      toast.present();
+      console.log('menor de 4')
+    
+    }else{
+      console.log(this.pendingUsers.length)
+      //its less of 4 people
+      let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve});
+    modal.onDidDismiss(accepted => {
+        if(accepted){
+          this.unSubscribeServices();
+         this.navCtrl.pop();
+         this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
+    
+         this.navCtrl.push('ReservetripPage');
+        }
+      })
+    modal.present();
+    console.log('else')
     }
-  })
-modal.present();
+
  //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
   }
   enterTrip(trip){
@@ -195,13 +202,21 @@ modal.present();
    let modal = this.modalCtrl.create('ConfirmtripPage',{trip:trip});
    modal.onDidDismiss(accepted => {
     if(accepted){
-      // this.navCtrl.push('ListridePage');
+      this.unSubscribeServices();
      this.navCtrl.pop();
+     this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
+     this.app.getRootNav().push('MyridePage');
+
     }
   })
 modal.present();
   //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
    }
+   unSubscribeServices(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }             
+
   help(){
     const toast = this.toastCtrl.create({
       message: 'Estos son los conductores que se van a tu misma zona. Podrás ver sus horas en las que se van y unirte en su viaje',

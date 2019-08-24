@@ -118,7 +118,7 @@ itsMe:boolean = false;
         
   }
   getTripState(keyTrip,driverId){
-    this.TripsService.getTripState(keyTrip,driverId).takeUntil(this.unsubscribe)
+    this.TripsService.getTripState(this.SignUpService.userUniversity,keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( tripState => {      
         this.tripState = tripState;
         console.log(this.tripState);
@@ -186,13 +186,11 @@ itsMe:boolean = false;
     this.TripsService.getPendingUsers(this.SignUpService.userUniversity, keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {      
         this.pendingUsers = user;
-        this.recognizedMyNamePendingUsers(this.pendingUsers,keyTrip,driverId);
         console.log(this.pendingUsers);          
     });
     this.TripsService.getPickedUpUsers(this.SignUpService.userUniversity, keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {    
       this.pickedUpUsers = user;   
-      this.recognizedMyNamePickedUpUsers(this.pickedUpUsers,keyTrip,driverId);
 
       console.log(this.pickedUpUsers);      
     });
@@ -201,19 +199,21 @@ chatDriver(driver){
     this.navCtrl.push('ChattingPage',{driver:driver})
 }    
 recognizedMyNamePendingUsers(users,keyTrip,driverId){
-  users.forEach(user => {
+  if(keyTrip === null ||keyTrip === undefined  ){
+    
+  }else{
+    users.forEach(user => {
+    
       if(this.userUid === user.userId){
         this.TripsService.pushItsMePendingUsers(this.SignUpService.userUniversity, this.userUid,keyTrip,driverId)
       }
   });
+  }
+
 }
-recognizedMyNamePickedUpUsers(users,keyTrip,driverId){
-  users.forEach(user => {
-      if(this.userUid === user.userId){
-        this.TripsService.pushItsMePickedUpUsers(this.SignUpService.userUniversity, this.userUid,keyTrip,driverId)
-      }
-  });
-}
+
+ 
+
 callUser(number){
     console.log(number);
 this.callNumber.callNumber(number, true)

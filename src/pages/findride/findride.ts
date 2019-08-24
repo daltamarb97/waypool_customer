@@ -136,10 +136,10 @@ export class FindridePage {
 
 
   getOnTrip(){
-    this.TripsService.getOnTrip(this.userUid)
+    this.TripsService.getOnTrip(this.SignUpService.userUniversity,this.userUid)
     .subscribe(onTrip=>{
       this.onTrip =onTrip;
-      console.log('ONTRIP')
+      console.log(this.onTrip)
      
     })
   }
@@ -169,7 +169,6 @@ export class FindridePage {
       }
      
     })
-
         console.log(this.SignUpService.userUniversity);
         this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
           this.user = user;
@@ -184,9 +183,6 @@ export class FindridePage {
             this.geofireService.setLocationUniversity(this.SignUpService.userUniversity, "some_key", this.locationUniversity.lat, this.locationUniversity.lng);
           })
 
-          this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
-            this.userInfoForOntrip = user;
-          })
       }
       this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).subscribe(uni => {
         this.universityInfo = uni;

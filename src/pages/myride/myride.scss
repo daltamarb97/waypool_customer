@@ -136,9 +136,15 @@ page-myride {
     position: absolute;
     left: 42px;
     bottom: 5px;
+    font-size: 1.6rem !important;
     }
     .text-bold{
         font-weight: bolder
     }
-   
+    .important{
+        margin: 14px;
+        
+        text-align: left;
+        color: #4d5853;
+    } 
 }

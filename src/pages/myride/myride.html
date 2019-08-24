@@ -1,11 +1,12 @@
 <ion-header class="bg-theme">
-    <ion-navbar>
+    <ion-navbar hideBackButton="true">
         <ion-title class="text-center">MI VIAJE</ion-title>
     </ion-navbar>
     
 </ion-header>
 
 <ion-content class="bg-light">
+    <p class="important">¡IMPORTANTE!: No cierres la app mientras estas haciendo un viaje. </p> 
 
     <div>
         <ion-list>
@@ -15,7 +16,7 @@
                         <img src="assets/imgs/userPicture.png">
                     </ion-avatar>
                     <div class="name">
-                        <h2 *ngIf="itsMe; else itsNotMeBlock "> Yo
+                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock "> Yo
                             <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
                         </h2>
                         <ng-template #itsNotMeBlock >
@@ -37,7 +38,7 @@
                         <img src="assets/imgs/userPicture.png">
                     </ion-avatar>
                     <div class="name">
-                        <h2 *ngIf="user.itsMe; else itsNotMeBlock " style="font-size:1.5rem; "> Yo
+                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock " style="font-size:1.5rem; "> Yo
                             <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>
                         </h2>
                         <ng-template #itsNotMeBlock >

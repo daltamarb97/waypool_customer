@@ -59,16 +59,15 @@ export class ConfirmpopupPage {
       //   this.dismiss();
       // } 
       console.log(this.user.about);
-    if(this.user.about === null){
+    if(this.user.about === null || this.user.about===undefined){
       this.user.about = ' ';
     }
 
     
       
     })
-    console.log(this.reserve.keyTrip
-    )
-    this.geoFireService.joinReserve(this.SignUpService.userUniversity, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note, this.user.about);
+    console.log(this.reserve.keyTrip)
+    this.geoFireService.joinReserve(this.SignUpService.userUniversity, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
     this.geoFireService.pushToMyReserve(this.SignUpService.userUniversity,this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
         //deprecated
     // this.geoFireService.removeKeyGeofire(this.userUid);

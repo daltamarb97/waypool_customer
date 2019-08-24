@@ -25738,12 +25738,16 @@ li,
   background: #3fb1df;
 }
 
+.bg-darkblue {
+  background: #0081ad;
+}
+
 .bg-light {
   background: #f2f2f2;
 }
 
 .bg-yellow {
-  background: #ffca28;
+  background: #ecbb25;
 }
 
 .bg-hot {
@@ -26456,7 +26460,7 @@ page-confirm-university .content {
 page-confirm-university .card {
   width: 80%;
   margin: auto;
-  height: 420px;
+  height: 170px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -26658,7 +26662,7 @@ page-confirmnote .content {
 page-confirmnote .card {
   width: 80%;
   margin: auto;
-  height: 550px;
+  height: 270px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -28044,10 +28048,17 @@ page-myride .priceDriver {
   position: absolute;
   left: 42px;
   bottom: 5px;
+  font-size: 1.6rem !important;
 }
 
 page-myride .text-bold {
   font-weight: bolder;
+}
+
+page-myride .important {
+  margin: 14px;
+  text-align: left;
+  color: #4d5853;
 }
 
 page-profile ion-item {
@@ -28799,8 +28810,8 @@ page-ratetrip .card.rate .driver p.icons ion-icon {
 
 page-ratetrip .card.rate .driver ion-textarea {
   height: 10rem;
-  color: #bfbfbf;
-  font-size: 1.3rem;
+  color: #001127;
+  font-size: 1.5rem;
 }
 
 page-reserveinfo .close-icon {

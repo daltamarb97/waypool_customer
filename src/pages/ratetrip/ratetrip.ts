@@ -26,8 +26,9 @@ title = 'calificacion de viaje';
 navBar: Navbar;
   constructor(private navCtrl: NavController,public navParams: NavParams, public sendfeedback:sendFeedbackService, public signUpService: SignUpService, public sendCoordsService: sendCoordsService, public angularFireAuth: AngularFireAuth) {
     this.today = Date.now();
-    this.signUpService.getMyInfo(this.signUpService.userUniversity, this.userUid).subscribe(user=>{
+    this.signUpService.getMyInfo( this.userUid,this.signUpService.userUniversity).subscribe(user=>{
       this.user = user;
+      console.log(this.user)
     })  
     this.trip = this.navParams.get('trip')   
     console.log(this.trip);

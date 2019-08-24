@@ -40,13 +40,14 @@ export class ReservetripPage{
   pendingUsers:any = [];
   onTrip:any;
   unsubscribe = new Subject;
+  pendingUser:any;
   constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController) {   
-    this.reservesService.getOnTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    this.reservesService.getOnTrip(this.SignUpService.userUniversity, this.userUid)
     .subscribe( onTrip => {
        this.onTrip = onTrip;   
        console.log(this.onTrip);  
     })
-    this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid)
+    this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( myReservesId => {
       console.log(this.myReserves);
       //get all reserves id (reserve push key, driverUid) of my user node
@@ -83,6 +84,7 @@ export class ReservetripPage{
 
                 if(reserve === undefined || reserve === null){
                   if(this.onTrip === true){
+                    // i think doesnt work, just in case lets leave it here
                     console.log("me borre");
                     this.unSubscribeServices();
                     this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,reserve.keyReserve);
@@ -97,32 +99,43 @@ export class ReservetripPage{
                   console.log(this.reserve.keyTrip)
                   console.log(reserve.keyReserve)
 
-                  this.reservesService.getPendingUsers(this.SignUpService.userUniversity, reserve.driverId, reserve.keyReserve).takeUntil(this.unsubscribe)
-                  .subscribe(pendingUsers => {
-                      this.pendingUsers = pendingUsers;  
-                      console.log(this.pendingUsers);
-                      console.log(pendingUsers);
-                      if (this.pendingUsers.length === 0) {
-                        // check if driver has initiated trip
-                        console.log("1")
-                        this.unSubscribeServices()
-                        this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity,this.userUid,reserve.keyReserve);
-                        console.log("me borre"); 
-                      } else {
-                          this.pendingUsers.forEach(user => {
-                              // check if the user hasn't been eliminated from the reserve by the driver
-                              if (user.userId === this.userUid) {
-                                  //do nothing because the user is in the trip
-                                  this.myReserves.push(info);
-                                  console.log("1")
+                  this.reservesService.confirmMyExistenceInPendingUsers(this.SignUpService.userUniversity, reserve.driverId, reserve.keyReserve, this.userUid).takeUntil(this.unsubscribe)
+                  .subscribe(pendingUser => {
+                      this.pendingUser = pendingUser;  
+                      console.log(this.pendingUser);
+                      console.log(pendingUser);
 
-                              } else {
-                                  // eliminate key because the driver has eliminated the user
-                                  console.log("me borre");
-                                  this.eliminateReserve(this.userUid, reserve.keyReserve);
-                              }
-                          })
+                      if(this.pendingUser === undefined || this.pendingUser === null ){
+                        //  eliminate key because the driver has eliminated the user
+                        console.log("me borre");
+                        this.unSubscribeServices();
+                        this.eliminateReserve(this.userUid, reserve.keyReserve);
+                        // this.myReserves=[];
+                            
+                      }else{
+                          //  do nothing because the user is in the trip
+                          this.myReserves.push(info);
+                          console.log("1")
                       }
+                      // if (this.pendingUsers.length === 0) {
+                      //   // check if driver has initiated trip
+                      //   console.log("1")
+                      //   this.unSubscribeServices()
+                      //   this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity,this.userUid,reserve.keyReserve);
+                      //   console.log("me borre"); 
+                      // } else {
+                      //     this.pendingUsers.forEach(user => {
+                      //         // check if the user hasn't been eliminated from the reserve by the driver
+                      //         if (user.userId === this.userUid) {
+                      //            
+
+                      //         } else {
+                      //             // eliminate key because the driver has eliminated the user
+                      //             console.log("me borre");
+                      //             this.eliminateReserve(this.userUid, reserve.keyReserve);
+                      //         }
+                      //     })
+                      // }
 
                   })
                 }              
@@ -152,6 +165,7 @@ eliminateReserve(userUid, keyReserve) {
     this.unSubscribeServices();
     this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, userUid, keyReserve);
     let modal = this.modalCtrl.create('CanceltripPage');
+    // this.navCtrl.setRoot('FindridePage');
     modal.present();
 }
 unSubscribeServices(){

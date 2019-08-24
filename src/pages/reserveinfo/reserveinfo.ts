@@ -44,6 +44,7 @@ export class ReserveinfoPage {
         .subscribe( users => {
 			this.passengers = users;			
 			console.log(this.passengers);
+
 			if(this.passengers.length === 0){
 				this.dismiss();
 			}

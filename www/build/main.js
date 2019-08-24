@@ -561,8 +561,11 @@ var geofireService = /** @class */ (function () {
     geofireService.prototype.getIdFromGeofireOrNode = function (university, key) {
         return this.afDB.object(university + '/geofireOr/' + key).valueChanges();
     };
-    geofireService.prototype.getIdFromGeofireOrTripNode = function (key) {
-        return this.afDB.object('/geofireOrTrip/' + key).valueChanges();
+    geofireService.prototype.getIdFromGeofireOrTripNode = function (university, key) {
+        return this.afDB.object(university + '/geofireOrTrip/' + key).valueChanges();
+    };
+    geofireService.prototype.getIdFromGeofireDestTripNode = function (university, key) {
+        return this.afDB.object(university + '/geofireDestTrip/' + key).valueChanges();
     };
     geofireService.prototype.setGeofireDest = function (university, radius, lat, lng, userId) {
         this.dbRef = this.afDB.database.ref(university + '/geofireDest/');
@@ -614,7 +617,7 @@ var geofireService = /** @class */ (function () {
                 LMU: true
             }).then(function () {
                 //get driverId from geofireOr node
-                _this.getIdFromGeofireOrTripNode(key).subscribe(function (driver) {
+                _this.getIdFromGeofireOrTripNode(university, key).subscribe(function (driver) {
                     _this.driverOnNodeOr = driver;
                     _this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
                         driverId: _this.driverOnNodeOr.driverId
@@ -651,7 +654,7 @@ var geofireService = /** @class */ (function () {
                 LMU: true
             }).then(function () {
                 //get driverId from geofireOr node
-                _this.getIdFromGeofireOrTripNode(key).subscribe(function (driver) {
+                _this.getIdFromGeofireDestTripNode(university, key).subscribe(function (driver) {
                     _this.driverOnNodeDest = driver;
                     _this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
                         driverId: _this.driverOnNodeDest.driverId
@@ -704,7 +707,7 @@ var geofireService = /** @class */ (function () {
             driverId: driverId
         });
     };
-    geofireService.prototype.joinReserve = function (university, keyReserve, driverId, userId, origin, destination, name, lastname, phone, note, about) {
+    geofireService.prototype.joinReserve = function (university, keyReserve, driverId, userId, origin, destination, name, lastname, phone, note) {
         this.afDB.database.ref(university + '/reserves/' + driverId + '/' + keyReserve + '/pendingUsers/' + userId).update({
             origin: origin,
             destination: destination,
@@ -712,8 +715,7 @@ var geofireService = /** @class */ (function () {
             lastname: lastname,
             phone: phone,
             userId: userId,
-            note: note,
-            about: about,
+            note: note
         }).catch(function (err) {
             console.log(err);
         });
@@ -851,8 +853,8 @@ var TripsService = /** @class */ (function () {
     function TripsService(afDB) {
         this.afDB = afDB;
     }
-    TripsService.prototype.getOnTrip = function (userUid) {
-        return this.afDB.object('/users/' + userUid + '/onTrip/onTrip').valueChanges();
+    TripsService.prototype.getOnTrip = function (university, userUid) {
+        return this.afDB.object(university + '/users/' + userUid + '/onTrip/').valueChanges();
     };
     TripsService.prototype.getMyReservesUser = function (university, userUid) {
         // 
@@ -861,8 +863,8 @@ var TripsService = /** @class */ (function () {
     TripsService.prototype.getKeyTrip = function (university, userUid) {
         return this.afDB.object(university + '/users/' + userUid + '/keyTrip').valueChanges();
     };
-    TripsService.prototype.getTripState = function (reserveId, driverId) {
-        return this.afDB.object('/tripsState/' + driverId + '/' + reserveId + '/').valueChanges();
+    TripsService.prototype.getTripState = function (university, reserveId, driverId) {
+        return this.afDB.object(university + '/tripsState/' + driverId + '/' + reserveId + '/').valueChanges();
     };
     TripsService.prototype.getReserves = function (userUid) {
         // get reserves from my driver (wrong)
@@ -936,6 +938,10 @@ var TripsService = /** @class */ (function () {
         //eliminate keyTrip from user's node to eliminate access to that reserve
         this.afDB.database.ref(university + '/users/' + userUid + '/keyTrip/').remove();
     };
+    TripsService.prototype.eliminateAvailableUsers = function (university, userUid) {
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+        this.afDB.database.ref(university + '/users/' + userUid + '/availableReserves/').remove();
+    };
     TripsService.prototype.eraseReserve = function (university, userUid, reserveId) {
         //eliminate keyTrip from user's node to eliminate access to that reserve
         this.afDB.database.ref(university + '/users/' + userUid + '/myReserves/' + reserveId).remove();
@@ -1006,6 +1012,10 @@ var reservesService = /** @class */ (function () {
         //get reserves inside reserves node
         return this.afDB.list(university + '/reserves/' + driverUserUid + '/' + reserveId + '/pendingUsers').valueChanges();
     };
+    reservesService.prototype.confirmMyExistenceInPendingUsers = function (university, driverUserUid, reserveId, userUid) {
+        //get reserves inside reserves node
+        return this.afDB.object(university + '/reserves/' + driverUserUid + '/' + reserveId + '/pendingUsers/' + userUid).valueChanges();
+    };
     reservesService.prototype.cancelReserve = function (university, userUid, driverUid, reserveId) {
         //eliminate user from reserve in reserve's node        
         this.afDB.database.ref(university + '/reserves/' + driverUid + '/' + reserveId + '/pendingUsers/' + userUid).remove();
@@ -1017,9 +1027,10 @@ var reservesService = /** @class */ (function () {
     };
     reservesService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object])
     ], reservesService);
     return reservesService;
+    var _a;
 }());
 
 //# sourceMappingURL=reserves.service.js.map
@@ -1192,7 +1203,7 @@ var ConfirmUniversityPage = /** @class */ (function () {
     };
     ConfirmUniversityPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirm-university',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirm-university/confirm-university.html"*/'<ion-content>\n    <ion-card>\n    <h6 class="text-theme">¿CUÁL ES TU UNIVERSIDAD?</h6>\n    <ion-card-content>\n        <ion-list>\n            <ion-item>\n              <ion-label>escoge tu universidad </ion-label>\n              <ion-select (ionChange)="onChange()" okText="Ok" cancelText="Cancel" [(ngModel)]= \'universityChosen\'>\n                <ion-option  *ngFor="let uni of universities"  name="fieldName" ngDefaultControl>{{uni.name}}</ion-option>\n              </ion-select>\n            </ion-item>\n          \n          </ion-list>\n    </ion-card-content>\n\n    <ion-card-content>\n        <div >\n            \n            <ion-row style="margin-top: 14px;justify-content: center">\n                \n                <ion-col col-8>\n                    <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.5rem;" *ngIf=\'showButton\' (click)="goToFindaride()">Continuar</button>\n                </ion-col>\n            </ion-row>\n\n\n        </div>\n    </ion-card-content>\n    </ion-card>\n</ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/confirm-university/confirm-university.html"*/,
+            selector: 'page-confirm-university',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\merge\waypool_costumer\src\pages\confirm-university\confirm-university.html"*/'<ion-content>\n\n    <ion-card>\n\n    <h6 class="text-theme">¿CUÁL ES TU UNIVERSIDAD?</h6>\n\n    <ion-card-content>\n\n        <ion-list>\n\n            <ion-item>\n\n              <ion-label>escoge tu universidad </ion-label>\n\n              <ion-select (ionChange)="onChange()" okText="Ok" cancelText="Cancel" [(ngModel)]= \'universityChosen\'>\n\n                <ion-option  *ngFor="let uni of universities"  name="fieldName" ngDefaultControl>{{uni.name}}</ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n          \n\n          </ion-list>\n\n    </ion-card-content>\n\n\n\n    <ion-card-content>\n\n        <div >\n\n            \n\n            <ion-row style="margin-top: 14px;justify-content: center">\n\n                \n\n                <ion-col col-8>\n\n                    <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.5rem;" *ngIf=\'showButton\' (click)="goToFindaride()">Continuar</button>\n\n                </ion-col>\n\n            </ion-row>\n\n\n\n\n\n        </div>\n\n    </ion-card-content>\n\n    </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\merge\waypool_costumer\src\pages\confirm-university\confirm-university.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], ConfirmUniversityPage);
@@ -1483,11 +1494,12 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/app/app.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\merge\waypool_costumer\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\merge\waypool_costumer\src\app\app.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */]) === "function" && _d || Object])
     ], MyApp);
     return MyApp;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=app.component.js.map

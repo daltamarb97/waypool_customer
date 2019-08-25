@@ -46,7 +46,11 @@ export class geofireService {
 
 
 cancelGeofireOr(){
+    if(this.geoquery2){
     this.geoquery2.cancel();
+    }else{
+    console.log('no hay geoqueryOr');
+    }
 }
 
 //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
@@ -114,7 +118,11 @@ console.log('geoquery dest added');
 }
 
 cancelGeofireDest(){
-    this.geoquery1.cancel();
+    if(this.geoquery1){
+        this.geoquery1.cancel();
+    }else{
+        console.log('no hay geoqueryDest')
+    }
 }
 
 keyEnteredDest( userId, university ){
@@ -167,7 +175,11 @@ keyEnteredDest( userId, university ){
   }
 
   cancelGeofireOrLMU(){
-    this.geoquery2LMU.cancel();
+    if(this.geoquery2LMU){
+        this.geoquery2LMU.cancel();
+    }else{
+        console.log('no hay geoqueryOr LMU')
+    }
 }
 
 
@@ -226,7 +238,11 @@ keyEnteredDest( userId, university ){
   }
 
   cancelGeofireDestLMU(){
+    if(this.geoquery1LMU){
     this.geoquery1LMU.cancel();
+    }else{
+        console.log('no hay geoqueryDestLMU');
+    }
 }
 
 
@@ -397,52 +413,6 @@ setLocationUniversity(university, key, lat, lng){
       this.afDB.database.ref('geofireUniversity/').remove().then(()=>{
           console.log('geofireUniversity node has been deleted');
       })
-  }
-
-//   // set geoquery that determines if the person is in university
-// setGeofireUniversity( radius:number, lat, lng, userId):void{ 
-  
-//     this.dbRef = this.afDB.database.ref('geofireUniversity/' );
-//     this.geoFire = new GeoFire(this.dbRef); 
-  
-//     this.geoqueryU = this.geoFire.query({
-//       center: [lat, lng],
-//       radius: radius
-//     })
-  
-//     this.keyEnteredUniversity(userId);
-  
-//   console.log('geoquery university added');
-//   }
-  
-//   keyEnteredUniversity(userId){
-//     this.geoqueryU.on("key_entered", function(key){
-//      this.afDB.database.ref('/users/' + userId ).update({
-//        geofireOrigin: true
-//      }).then(()=>{
-//        console.log('geofireOrigin = true');
-//      })
-//      console.log(key + ' detected')
-//    }.bind(this))
-  
-//   }
-  
-//   cancelGeoqueryUniversity(){
-//     if(this.geoqueryU){
-//       this.geoqueryU.cancel()
-//       console.log('geoqueryU deleted');
-  
-//     }else{
-//       console.log('dont uni query')
-//     }
-    
-//   }
-
-//   public cancelGeofireOrigin(userId, university){
-//     this.afDB.database.ref(university + '/users/' + userId + '/geofireOrigin').remove().then(()=>{
-//       console.log('geofireOrigin deleted');
-//     })
-//   }
-            
+  }            
 
     }

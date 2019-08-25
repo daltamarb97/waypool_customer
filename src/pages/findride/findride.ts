@@ -112,7 +112,69 @@ export class FindridePage {
     this.markers = [];
     // initialize the plugin
  
-    
+    if(this.SignUpService.userUniversity == undefined){
+      let modal = this.modalCtrl.create('ConfirmUniversityPage');
+      modal.onDidDismiss(readyToStart => {
+        if(readyToStart){
+          
+          //search keyTrip
+      this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid)
+      .subscribe(keyTrip=>{
+        this.keyTrip =keyTrip;
+        console.log(this.keyTrip)
+        //if key its deleted don't show VIAJE EN CURSO  
+        if(this.keyTrip === undefined || this.keyTrip === null){
+         this.onTrip=false;
+          this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+          this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+          console.log("llegue adonde era")
+        }else{
+          //confirm that trip exist and get it
+          this.getTrip();
+        }
+       
+      })
+          console.log(this.SignUpService.userUniversity);
+          this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
+            this.user = user;
+            //  this.keyTrip = this.user.keyTrip
+            console.log(this.user)
+          })
+          // set geofire key of university to avoid asking users to put where they are going
+          this.geofireService.getLocationUniversity(this.SignUpService.userUniversity).subscribe(university=>{
+              this.university = university;
+              this.locationUniversity = this.university.location;
+              this.geofireService.setLocationUniversity(this.SignUpService.userUniversity, "some_key", this.locationUniversity.lat, this.locationUniversity.lng);
+            })
+  
+        }
+  
+        this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).subscribe(uni => {
+          this.universityInfo = uni;
+          
+          if(this.universityInfo.email == undefined){
+            if(this.userInfoForOntrip.documents){
+              if(this.userInfoForOntrip.documents.carne === undefined || this.userInfoForOntrip.documents.id === undefined){
+                let modal = this.modalCtrl.create('VerificationImagesPage');
+                modal.present();
+              }else if(this.userInfoForOntrip.documents.carne === true || this.userInfoForOntrip.documents.id === true){
+                this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
+              }
+            }else if(!this.universityInfo.documents) {
+              console.log('no hay docs')
+              let modal = this.modalCtrl.create('VerificationImagesPage');
+                modal.present();
+            } 
+          }else{
+            this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
+          }
+        })
+      })
+      modal.present();
+    }
+
+
+
   } // END OF CONSTRUCTOR
 
 
@@ -140,6 +202,12 @@ export class FindridePage {
     this.TripsService.getOnTrip(this.SignUpService.userUniversity, this.userUid)
     .subscribe(onTrip=>{
       this.onTrip =onTrip;
+      if(this.onTrip === true){
+        this.geofireService.cancelGeofireDest();
+              this.geofireService.cancelGeofireOr();
+              this.geofireService.cancelGeofireDestLMU();
+              this.geofireService.cancelGeofireOrLMU();
+      }
       console.log(this.onTrip);
       console.log('ONTRIP')
      
@@ -149,67 +217,7 @@ export class FindridePage {
   
   ionViewDidLoad(){
     
-   if(this.SignUpService.userUniversity == undefined){
-    let modal = this.modalCtrl.create('ConfirmUniversityPage');
-    modal.onDidDismiss(readyToStart => {
-      if(readyToStart){
-        
-        //search keyTrip
-    this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid)
-    .subscribe(keyTrip=>{
-      this.keyTrip =keyTrip;
-      console.log(this.keyTrip)
-      //if key its deleted don't show VIAJE EN CURSO  
-      if(this.keyTrip === undefined || this.keyTrip === null){
-       this.onTrip=false;
-        this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-        this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-        console.log("llegue adonde era")
-      }else{
-        //confirm that trip exist and get it
-        this.getTrip();
-      }
-     
-    })
-        console.log(this.SignUpService.userUniversity);
-        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
-          this.user = user;
-          //  this.keyTrip = this.user.keyTrip
-          console.log(this.user)
-         
-        })
-        // set geofire key of university to avoid asking users to put where they are going
-        this.geofireService.getLocationUniversity(this.SignUpService.userUniversity).subscribe(university=>{
-            this.university = university;
-            this.locationUniversity = this.university.location;
-            this.geofireService.setLocationUniversity(this.SignUpService.userUniversity, "some_key", this.locationUniversity.lat, this.locationUniversity.lng);
-          })
-
-      }
-
-      this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).subscribe(uni => {
-        this.universityInfo = uni;
-        
-        if(this.universityInfo.email == undefined){
-          if(this.userInfoForOntrip.documents){
-            if(this.userInfoForOntrip.documents.carne === undefined || this.userInfoForOntrip.documents.id === undefined){
-              let modal = this.modalCtrl.create('VerificationImagesPage');
-              modal.present();
-            }else if(this.userInfoForOntrip.documents.carne === true || this.userInfoForOntrip.documents.id === true){
-              this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
-            }
-          }else if(!this.universityInfo.documents) {
-            console.log('no hay docs')
-            let modal = this.modalCtrl.create('VerificationImagesPage');
-              modal.present();
-          } 
-        }else{
-          this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
-        }
-      })
-    })
-    modal.present();
-  }
+   
     this.loadMap();
 
     
@@ -480,7 +488,7 @@ geocodeLatLng(latLng,inputName) {
 
   listride(){
   if(this.user.trips){
-    if(this.user.trips.onTrip == true){
+    if(this.user.onTrip == true){
       let alert = this.alertCtrl.create({
         title: 'Estas actualmente en un viaje',
         subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',

@@ -34,7 +34,7 @@ export class ConfirmpopupPage {
     
         
        //get the info of the driver 
-       this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userUniversity)
+       this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
          console.log(this.user);          
@@ -42,7 +42,7 @@ export class ConfirmpopupPage {
 
 
        // function to get in how many reserves I am
-       this.SignUpService.checkMyReserves(this.SignUpService.userUniversity, this.userUid)
+       this.SignUpService.checkMyReserves(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
        .subscribe( reserves => {
         this.reservesWhereIam = reserves;
         console.log(this.reservesWhereIam);
@@ -66,14 +66,6 @@ export class ConfirmpopupPage {
     .subscribe(user=>{
       this.user = user; 
       console.log(this.user)
-      // OLD
-      // if(this.user.trips.onTrip == true){
-      //   this.dismiss();
-      // } 
-
-      // if(this.user.trips.onTrip == false){
-      //   this.dismiss();
-      // } 
       
     })
     console.log(this.reserve.keyTrip )
@@ -107,4 +99,10 @@ export class ConfirmpopupPage {
     // this.navCtrl.pop();
 
   }  
+
+
+  ionViewDidLeave(){
+    this.unsubscribe.next();
+     this.unsubscribe.complete();
+  }
 }

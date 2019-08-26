@@ -70,4 +70,9 @@ export class ConfirmReservationPage {
 		this.unsubscribe.complete();
 	}
 
+	ionViewDidLeave(){
+    this.unsubscribe.next();
+     this.unsubscribe.complete();
+  }
+
 }

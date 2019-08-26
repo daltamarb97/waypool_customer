@@ -88,6 +88,7 @@ export class FindridePage {
   userUid=this.AngularFireAuth.auth.currentUser.uid;
   user:any;
 
+  unsubscribe = new Subject;
  
 
 
@@ -135,13 +136,13 @@ export class FindridePage {
        
       })
           console.log(this.SignUpService.userUniversity);
-          this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
+          this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(user=>{
             this.user = user;
             //  this.keyTrip = this.user.keyTrip
             console.log(this.user)
           })
           // set geofire key of university to avoid asking users to put where they are going
-          this.geofireService.getLocationUniversity(this.SignUpService.userUniversity).subscribe(university=>{
+          this.geofireService.getLocationUniversity(this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(university=>{
               this.university = university;
               this.locationUniversity = this.university.location;
               this.geofireService.setLocationUniversity(this.SignUpService.userUniversity, "some_key", this.locationUniversity.lat, this.locationUniversity.lng);
@@ -149,7 +150,7 @@ export class FindridePage {
   
         }
   
-        this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).subscribe(uni => {
+        this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(uni => {
           this.universityInfo = uni;
           
           if(this.universityInfo.email == undefined){
@@ -179,7 +180,7 @@ export class FindridePage {
 
 
   getTrip(){
-    this.TripsService.getTrip(this.SignUpService.userUniversity, this.keyTrip.keyTrip,this.keyTrip.driverId)
+    this.TripsService.getTrip(this.SignUpService.userUniversity, this.keyTrip.keyTrip,this.keyTrip.driverId).takeUntil(this.unsubscribe)
       .subscribe(trip=>{
         this.trip = trip
         console.log(this.trip)
@@ -203,10 +204,11 @@ export class FindridePage {
     .subscribe(onTrip=>{
       this.onTrip =onTrip;
       if(this.onTrip === true){
-        this.geofireService.cancelGeofireDest();
+              this.geofireService.cancelGeofireDest();
               this.geofireService.cancelGeofireOr();
               this.geofireService.cancelGeofireDestLMU();
               this.geofireService.cancelGeofireOrLMU();
+
       }
       console.log(this.onTrip);
       console.log('ONTRIP')
@@ -526,9 +528,14 @@ geocodeLatLng(latLng,inputName) {
                 }
               }
                   // turn geofire On
-                this.geofireService.setGeofireOr(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
-                this.geofireService.setGeofireOrLMU(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
-                console.log('executed geofire Or');  
+                  if(this.user.onTrip === true){
+                    console.log('geofireOr hasnt been activated due ontrip')
+                  }else{ 
+                    this.geofireService.setGeofireOr(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid);
+                    this.geofireService.setGeofireOrLMU(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid);
+                    console.log('executed geofire Or');  
+    
+                  }
               })
                 this.geofireOriginConfirmed = true;
            
@@ -596,10 +603,16 @@ geocodeLatLng(latLng,inputName) {
                     lng: results[0].geometry.location.lng()
                   }
                 }
-                    // turn geofire On
-                  this.geofireService.setGeofireOr(this.SignUpService.userUniversity,  2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
-                  this.geofireService.setGeofireOrLMU(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
-                  console.log('executed geofire Or');          
+                   // turn geofire On
+                  if(this.user.onTrip === true){
+                    console.log('geofireOr hasnt been activated due ontrip')
+                  }else{ 
+                    console.log('AQUI ESTA EL ERROR 2');
+                    this.geofireService.setGeofireOr(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
+                    this.geofireService.setGeofireOrLMU(this.SignUpService.userUniversity, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
+                    console.log('executed geofire Or');  
+    
+                  }          
                 })
 
                 this.geofireOriginConfirmed = true;
@@ -651,12 +664,16 @@ geocodeLatLng(latLng,inputName) {
                     lat:results[0].geometry.location.lat(),
                     lng: results[0].geometry.location.lng()
                   }
-                }
-                    // turn geofire On
+              }     
+                  // turn geofire On
+                  if(this.user.onTrip === true){
+                    console.log('geofireDest hasnt been activated due ontrip')
+                  }else{ 
                   this.geofireService.setGeofireDest(this.SignUpService.userUniversity , 2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.userUid);
                   this.geofireService.setGeofireDestLMU(this.SignUpService.userUniversity ,2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.userUid);
                   console.log('executed geofire Dest');  
-                          
+    
+                  }
                 })      
     }
 
@@ -710,6 +727,11 @@ geocodeLatLng(latLng,inputName) {
       })
 
     console.log('geoquery university added');
+    }
+
+    ionViewDidLeave(){
+      this.unsubscribe.next();
+       this.unsubscribe.complete();
     }
       
 

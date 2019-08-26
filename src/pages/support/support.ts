@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { authenticationService } from '../../services/userauthentication.service';
 import { sendFeedbackService } from '../../services/sendFeedback.service';
+import { Subject } from 'rxjs';
 
 @IonicPage()
 
@@ -22,12 +23,13 @@ export class SupportPage {
   email:any;
   experience:string;
 
+  unsubscribe = new Subject;
     constructor(public navCtrl: NavController,public navParams: NavParams, public AngularFireAuth:AngularFireAuth,private emailComposer: EmailComposer,private authenticationService: authenticationService,public SignupService:SignUpService, public sendfeedback: sendFeedbackService) {
     this.typeOfSituation = this.navParams.get('typeOfSituation')
     this.info = this.navParams.get('info')
 
     this.today = Date.now();
-    this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).subscribe(user=>{
+    this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user= user;
         console.log(this.user)
     })

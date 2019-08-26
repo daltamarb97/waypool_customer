@@ -3,6 +3,7 @@ import { NavController, AlertController, ToastController, ModalController, Ionic
 import { AngularFireAuth } from 'angularfire2/auth';
 import { authenticationService } from '../../services/userauthentication.service';
 import { SignUpService } from '../../services/signup.services';
+import { Subject } from 'rxjs';
 
 @IonicPage()
 
@@ -20,8 +21,9 @@ emailComplete:string;
 emailUser = this.AngularFireAuth.auth.currentUser.email;
 userUid=this.AngularFireAuth.auth.currentUser.uid;
 user:any={};
+unsubscribe = new Subject
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,public toastCtrl: ToastController,public alertCtrl:AlertController, public AngularFireAuth:AngularFireAuth,private authenticationService: authenticationService,public SignupService:SignUpService) {  
-    this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).subscribe(user=>{
+    this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user= user;
       
         console.log(this.user)
@@ -142,6 +144,11 @@ user:any={};
     })
   }
  
+  ionViewDidLeave(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+
+  }
   
 
 }

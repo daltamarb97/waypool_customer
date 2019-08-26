@@ -3,6 +3,9 @@ import { Injectable } from "@angular/core";
 import * as GeoFire from 'geofire';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AngularFireAuth } from "angularfire2/auth";
+import { reservesService } from "./reserves.service";
+import { SignUpService } from "./signup.services";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class geofireService {
@@ -22,12 +25,14 @@ export class geofireService {
     geoquery1LMU:any;
     driverOnNodeOr:any;
     driverOnNodeDest:any;
-    constructor(public afDB: AngularFireDatabase, private AngularFireAuth: AngularFireAuth){
-       
+    keyenteredOr:any;
+    keyexitedOr:any;
+
+    constructor(public afDB: AngularFireDatabase, private AngularFireAuth: AngularFireAuth, public reservesService: reservesService, private signUpServices: SignUpService){
     }
 
 
-    setGeofireOr(university, radius:number, lat, lng, userId):void{ 
+    setGeofireOr(university, radius:number, lat, lng, userId ):void{ 
   this.dbRef = this.afDB.database.ref(university + '/geofireOr/' );
   this.geoFire = new GeoFire(this.dbRef); 
 
@@ -35,9 +40,11 @@ export class geofireService {
     center: [lat, lng],
     radius: radius
   })
-
-  this.keyEnteredOr( userId, university );
-  this.keyExitedOr( userId, university );
+ 
+    this.keyEnteredOr( userId, university );
+    this.keyExitedOr( userId, university );
+  
+  
 
   console.log('geoquery or added');
 
@@ -53,52 +60,43 @@ cancelGeofireOr(){
     }
 }
 
+
 //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
 keyEnteredOr( userId, university ){
-    this.geoquery2.on("key_entered", function(key, location, distance){
+    this.keyenteredOr = this.geoquery2.on("key_entered", function(key, location, distance){
      console.log(key);
 
       this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
       keyReserve: key
      }).then(()=>{
        //get driverId from geofireOr node
-        this.getIdFromGeofireOrNode(university, key).subscribe(driver =>{
-             this.driverOnNodeOr = driver;
-             this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
-                 driverId: this.driverOnNodeOr.driverId
-             })
-        })  
+       
+        return this.afDB.database.ref(university + '/geofireOr/'+ key).once('value').then((snap) => {
+            this.driverOnNodeOr = snap.val();
+
+            this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
+                driverId: this.driverOnNodeOr.driverId
+    
+            })  
+        })
+
      })
 
 
          
    }.bind(this))
   }
-  
+
+
   
   keyExitedOr( userId, university ){
    
-   this.geoquery2.on("key_exited", function(key){
+   this.keyexitedOr = this.geoquery2.on("key_exited", function(key){
      this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
   }
 
-  getIdFromGeofireOrNode(university, key){
-      return this.afDB.object(university + '/geofireOr/'+ key).valueChanges();
-  }
 
-
-  getIdFromGeofireDestNode(university, key){
-    return this.afDB.object(university + '/geofireDest/'+ key).valueChanges();
-}
-
-  getIdFromGeofireOrTripNode(university, key){
-    return this.afDB.object(university + '/geofireOrTrip/'+ key).valueChanges();
-}
-
-getIdFromGeofireDestTripNode(university, key){
-    return this.afDB.object(university + '/geofireDestTrip/'+ key).valueChanges();
-}
 
 
   setGeofireDest(university, radius:number, lat, lng, userId):void{ 
@@ -136,12 +134,14 @@ keyEnteredDest( userId, university ){
        this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
         keyReserve: key
        }).then(()=> {
-           this.getIdFromGeofireDestNode(university, key).subscribe(driver => {
-            this.driverOnNodeDest = driver;
+           return this.afDB.database.ref(university + '/geofireDest/'+ key).once('value').then((snap) => {
+            this.driverOnNodeDest = snap.val();
+
             this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
                 driverId: this.driverOnNodeDest.driverId
-            })
-           })
+    
+            })  
+        })
        })
        console.log('keyentered here');
      
@@ -194,12 +194,14 @@ keyEnteredDest( userId, university ){
       LMU: true
      }).then(()=>{
        //get driverId from geofireOr node
-        this.getIdFromGeofireOrTripNode(university, key).subscribe(driver =>{
-             this.driverOnNodeOr = driver;
-             this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
-                 driverId: this.driverOnNodeOr.driverId
-             })
-        })  
+        return this.afDB.database.ref(university + '/geofireOrTrip/'+ key).once('value').then((snap) => {
+            this.driverOnNodeOr = snap.val();
+
+            this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
+                driverId: this.driverOnNodeOr.driverId
+    
+            })  
+        })
      })
 
     //  this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ this.driverOnNodeOr.keyReserve + '/' + key).push({
@@ -257,18 +259,17 @@ keyEnteredDest( userId, university ){
       LMU: true
      }).then(()=>{
        //get driverId from geofireOr node
-        this.getIdFromGeofireDestTripNode(university, key).subscribe(driver =>{
-             this.driverOnNodeDest = driver;
-             this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
-                 driverId: this.driverOnNodeDest.driverId
-             })
-        })  
+       return this.afDB.database.ref(university + '/geofireDestTrip/'+ key).once('value').then((snap) => {
+        this.driverOnNodeDest = snap.val();
+
+        this.afDB.database.ref(university + '/users/' + userId + '/availableReserves/' + key).update({
+            driverId: this.driverOnNodeDest.driverId
+
+            })  
+        })
      })
 
-    //  this.afDB.database.ref('/reservesInfoInCaseOfCancelling/'+ this.driverOnNodeOr.keyReserve + '/' + key).push({
-    //   userId: userId
-  
-    // })
+
          
    }.bind(this))
   }

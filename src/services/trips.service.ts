@@ -120,6 +120,12 @@ export class TripsService {
       this.afDB.database.ref(university + '/users/'+userUid+'/keyTrip/').remove();
   
      } 
+
+     public eliminateAvailableReserves(university, userUid){    
+      //eliminate keyTrip from user's node to eliminate access to that reserve
+    this.afDB.database.ref(university + '/users/'+userUid+'/availableReserves/').remove();
+
+   } 
      
      public eliminateAvailableUsers(university, userUid){    
       //eliminate keyTrip from user's node to eliminate access to that reserve

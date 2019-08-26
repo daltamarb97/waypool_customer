@@ -7,6 +7,7 @@ import { sendFeedbackService } from '../../services/sendFeedback.service';
 import { SignUpService } from '../../services/signup.services';
 import { sendUsersService } from '../../services/sendUsers.service';
 import { sendCoordsService } from '../../services/sendCoords.service';
+import { Subject } from 'rxjs';
 @IonicPage()
 
 @Component({
@@ -24,9 +25,10 @@ experience:string;
 trip:any;
 title = 'calificacion de viaje';
 navBar: Navbar;
+unsubscribe = new Subject;
   constructor(private navCtrl: NavController,public navParams: NavParams, public sendfeedback:sendFeedbackService, public signUpService: SignUpService, public sendCoordsService: sendCoordsService, public angularFireAuth: AngularFireAuth, public alertCtrl: AlertController) {
     this.today = Date.now();
-    this.signUpService.getMyInfo( this.userUid,this.signUpService.userUniversity).subscribe(user=>{
+    this.signUpService.getMyInfo( this.userUid,this.signUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user = user;
       console.log(this.user)
     })  
@@ -44,7 +46,8 @@ navBar: Navbar;
           {
             text: 'Si',
             handler: () => {
-            this.navCtrl.setRoot('FindridePage');
+              this.navCtrl.pop();
+              this.navCtrl.push('TabsPage');
            }
           },
           {
@@ -56,9 +59,15 @@ navBar: Navbar;
       alert.present();
     }else{
       this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+      this.navCtrl.pop();
+      this.navCtrl.push('TabsPage');
+
     }
   }
 
-  ionViewWillLeave(){
+  ionViewDidLeave(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+
   }
 }

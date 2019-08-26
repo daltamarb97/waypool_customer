@@ -11,6 +11,7 @@ import { TripsService } from '../../services/trips.service';
 import { environmentService } from '../../services/environment.service';
 
 import { Subject } from 'rxjs';
+import { reservesService } from '../../services/reserves.service';
 
 
 @IonicPage()
@@ -26,7 +27,7 @@ map:any;
 markers:any;
 pendingUsers:any=[];
 pickedUpUsers:any=[];
-
+pickedUp:any;
 driverOnTrip:any=[];
 driver:any;
 myLatLng:any;
@@ -45,15 +46,9 @@ onTrip: boolean = false;
 onTripInstance:any;
 unsubscribe = new Subject;
 itsMe:boolean = false;
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App) {
-    // this.TripsService.getOnTrip(this.userUid).takeUntil(this.unsubscribe)
-    //   .subscribe(onTrip =>{
-    //     this.onTripInstance = onTrip
-    //     if(this.onTripInstance === false){
-    //       this.navCtrl.pop();
-    //       this.unSubscribeServices();
-    //     }
-    //   })
+
+  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private reservesService: reservesService) {
+
     this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe(  keys => {      
         this.keyTrip =  keys; 
@@ -132,6 +127,8 @@ itsMe:boolean = false;
             this.unSubscribeServices();       
             this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
             this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+            this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+
             this.navCtrl.pop();
             this.navCtrl.push('RatetripPage',{trip:this.trip})
             console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
@@ -144,13 +141,15 @@ itsMe:boolean = false;
 
           this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
           this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+          this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+
             let modal = this.modalCtrl.create('CanceltripPage');
             modal.present();  
             console.log("me cancelaron el viaje")
 
             this.navCtrl.pop();
           } 
-          this.TripsService.getCancelUsers(this.SignUpService.userUniversity, keyTrip,driverId)
+          this.TripsService.getCancelUsers(this.SignUpService.userUniversity, keyTrip,driverId).takeUntil(this.unsubscribe)
           .subscribe( cancelUsers => {      
               this.cancelUsers = cancelUsers;          
               this.cancelUsers.forEach(cancelUser => {
@@ -161,6 +160,8 @@ itsMe:boolean = false;
                     this.unSubscribeServices();          
                     this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity,this.userUid);
                     this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+                    this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+
                     console.log("me eliminaron")
                     console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 
@@ -180,7 +181,12 @@ itsMe:boolean = false;
   unSubscribeServices(){
     this.unsubscribe.next();
     this.unsubscribe.complete();
-  }             
+  }       
+  
+  ionViewDidLeave(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
 
   getPendingAndPickedUpUsers(keyTrip,driverId){
     this.TripsService.getPendingUsers(this.SignUpService.userUniversity, keyTrip,driverId).takeUntil(this.unsubscribe)
@@ -249,27 +255,36 @@ this.callNumber.callNumber(number, true)
                 this.unSubscribeServices();          
                 this.TripsService.cancelTrip(this.SignUpService.userUniversity, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
                 this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-                this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);               
+                this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid); 
+                this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);              
                 this.navCtrl.pop();
               }
-              this.pickedUpUsers.forEach(pickedUser => {
-                // if user is in the pickedUpUsers array, it should not be able to cancel, because its already pickedUp.
-                if( pickedUser.userId === this.userUid){
-                  //don't cancel
-                  const toast = this.toastCtrl.create({
-                    message: `${pickedUser.name} : No puedes cancelar ya que tu compañero ya te recogió, si esto no es verdad, por favor saca un screenshot de Mi Viaje al correo waypooltec@gmail.com`,
-                    showCloseButton: true,
-                    closeButtonText: 'Ok'
-                  });
-                  toast.present();
-                }else{           
-                  this.TripsService.cancelTrip(this.SignUpService.userUniversity, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
-                  this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-                  console.log(this.trip.keyTrip);
-                  this.navCtrl.pop();
 
-                }
-              })
+              this.reservesService.confirmMyExistenceInPickedupUsers(this.SignUpService.userUniversity, this.trip.driver.userId, this.trip.keyTrip, this.userUid).takeUntil(this.unsubscribe)
+                  .subscribe(pickedUp => {
+                      this.pickedUp = pickedUp;  
+                      console.log(this.pickedUp);
+                      console.log(pickedUp);
+
+                      if(this.pickedUp === undefined || this.pickedUp === null ){
+
+                        this.TripsService.cancelTrip(this.SignUpService.userUniversity, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
+                        this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+                        this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+                        console.log(this.trip.keyTrip);
+                        this.navCtrl.pop();
+                            
+                      }else{
+                        //don't cancel
+                          const toast = this.toastCtrl.create({
+                          message: `${this.pickedUp.name} : No puedes cancelar ya que tu compañero ya te recogió, si esto no es verdad, por favor saca un screenshot de Mi Viaje y mándalo al correo waypooltec@gmail.com`,
+                          showCloseButton: true,
+                          closeButtonText: 'Ok'
+                            });
+                          toast.present();
+                      }
+
+                  })
             }
           }
         ]

@@ -11,6 +11,7 @@ import { authenticationService } from '../../services/userauthentication.service
 import * as firebase from 'firebase';
 import { SignUpService } from '../../services/signup.services';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Subject } from 'rxjs';
 @IonicPage()
 
 @Component({
@@ -21,8 +22,9 @@ export class MorePage {
      userUid=this.AngularFireAuth.auth.currentUser.uid;
      user:any={};
      verified:boolean = false;
+     unsubscribe = new Subject;
   constructor(public navCtrl: NavController, public AngularFireAuth:AngularFireAuth,private authenticationService: authenticationService,public SignupService:SignUpService, public app: App) {
-     this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).subscribe(user=>{
+     this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
           this.user= user;
             console.log(this.user)
           if(this.user.verifiedPerson === true){
@@ -48,6 +50,11 @@ export class MorePage {
     this.authenticationService.logOut();
     console.log(firebase.auth().currentUser);
     this.app.getRootNav().push('LoginPage');
+    }
+
+    ionViewDidLeave(){
+      this.unsubscribe.next();
+       this.unsubscribe.complete();
     }
 
 }

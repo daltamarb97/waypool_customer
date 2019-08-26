@@ -18,6 +18,8 @@ import { reservesService } from '../../services/reserves.service';
 import { SignUpService } from '../../services/signup.services';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { geofireService } from '../../services/geoFire.service';
+import { take } from 'rxjs/operators';
 
 @IonicPage()
 @Component({
@@ -41,23 +43,27 @@ export class ReservetripPage{
   onTrip:any;
   unsubscribe = new Subject;
   pendingUser:any;
-  constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController) {   
-    this.reservesService.getOnTrip(this.SignUpService.userUniversity, this.userUid)
+  
+  constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
+    this.reservesService.getOnTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( onTrip => {
        this.onTrip = onTrip;   
        console.log(this.onTrip);  
     })
     
 
-    this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid)
+    this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( originUser => {
       this.locationOrigin = originUser;      
     })
     
-    this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid)
+    this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
         .subscribe( destinationUser => {
           this.locationDestination = destinationUser;
     })
+
+
+   
     
   }
   ionViewDidLoad(){
@@ -69,8 +75,12 @@ export class ReservetripPage{
       console.log(this.myReservesId);
       this.myReserves = [];
       this.getReserves();
-    })   
+    }) 
+    
   }
+
+
+
   getReserves() {
     this.myReserves = []; //erase all of reserves 
 
@@ -85,8 +95,8 @@ export class ReservetripPage{
                 if(reserve === undefined || reserve === null){
                   if(this.onTrip === true){
                     // i think doesnt work, just in case lets leave it here
-                    console.log("me borre");
                     this.unSubscribeServices();
+                    console.log("me borre");
                     this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,reserve.keyReserve);
                     this.navCtrl.pop();
                     console.log("1")
@@ -108,13 +118,20 @@ export class ReservetripPage{
                       if(this.pendingUser === undefined || this.pendingUser === null ){
 
                         if(this.onTrip === true){
+                          this.unSubscribeServices();
+                          console.log('fue aqui 2');
+                          this.geofireService.cancelGeofireDest();
+                          this.geofireService.cancelGeofireOr();
+                          this.geofireService.cancelGeofireDestLMU();
+                          this.geofireService.cancelGeofireOrLMU();
+                          this.app.getRootNav().push('MyridePage');
                           //  do nothing because the user is in the trip
-          
                           console.log("in a trip")
                         }else{
                         //  eliminate key because the driver has eliminated the user
                         console.log("me borre");
                         this.unSubscribeServices();
+                        console.log('fue aqui');
                         this.eliminateReserve(this.userUid, reserve.keyReserve);
                         // this.myReserves=[];
                         }
@@ -137,7 +154,7 @@ tripDetails(keyTrip, driverUid) {
     let modal = this.modalCtrl.create('ReserveinfoPage', {
         reserveKey: keyTrip,
         driverUid: driverUid
-    });
+    })
     modal.present();
 }
 
@@ -167,6 +184,14 @@ help() {
     });
     toast.present();
 }
+
+
+ionViewDidLeave(){
+  this.unsubscribe.next();
+  this.unsubscribe.complete();
+
+}
+
 }
 
 

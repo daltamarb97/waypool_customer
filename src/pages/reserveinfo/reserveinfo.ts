@@ -56,8 +56,11 @@ export class ReserveinfoPage {
 cancelReserve(){
 	this.reservesService.cancelReserve(this.signUpService.userUniversity, this.userUid,this.driverUid,this.reserveKey);
 	this.reservesService.eliminateKeyUser(this.signUpService.userUniversity, this.userUid,this.reserveKey);
-	// Hacer el boton de cancelar , para la reserva y probar q vuelva a salir en listride
+	this.app.getRootNav().push('ListridePage');
+
   }
+
+
 		 showProfilePassegner(passenger){
 			this.app.getRootNav().push('PublicProfilePage', {passenger: passenger});
 			this.accepted = true;
@@ -70,4 +73,11 @@ cancelReserve(){
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
 	}
+
+
+	ionViewDidLeave(){
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
+	
+	  }
 }

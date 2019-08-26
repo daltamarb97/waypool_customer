@@ -2,7 +2,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, App } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -13,6 +13,7 @@ import { AlertController } from 'ionic-angular';
 import { Content } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
+import { Subject } from 'rxjs';
 
 
 @IonicPage()
@@ -37,7 +38,9 @@ export class SignupPage {
     universities = [];
     showReadonly:boolean = true;
     onlyEmail:any;
-  constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams) {
+
+    unsubscribe = new Subject;
+  constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private app: App) {
 
 
     this.signupGroup = this.formBuilder.group({
@@ -53,7 +56,7 @@ export class SignupPage {
         
     })
 
-    this.SignUpService.getUniversities().subscribe((universities)=>{
+    this.SignUpService.getUniversities().takeUntil(this.unsubscribe).subscribe((universities)=>{
         this.universities = universities;
         console.log(this.universities);
     })
@@ -143,7 +146,9 @@ export class SignupPage {
                             }
                             this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
                             
-                            this.sendVerificationCode(this.user.userId);
+                            // this.sendVerificationCode(this.user.userId);
+                            this.app.getRootNav().push('LoginPage');
+
                         }else{
                             console.log('there is no user');
                         }
@@ -218,7 +223,9 @@ export class SignupPage {
                                 }
                                 this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
                                 //send text message with code
-                                this.sendVerificationCode(this.user.userId);
+                                // this.sendVerificationCode(this.user.userId);
+                                this.app.getRootNav().push('LoginPage');
+
                             }else{
                                 console.log('there is no user');
                             }
@@ -257,5 +264,11 @@ export class SignupPage {
     sendVerificationCode(userId){
         this.navCtrl.push('VerificationNumberPage', {userId: userId});
 }
+
+ionViewDidLeave(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+
+  }
 
 }

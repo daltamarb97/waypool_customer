@@ -19,13 +19,4 @@ export class TabsPage {
     // this.goConfirmUniversity();
   }
 
-//   goConfirmUniversity(){
-//     let modal = this.modalCtrl.create('ConfirmUniversityPage')
-//     modal.onDidDismiss(accepted => {
-//       if(accepted){
-//         modal.dismiss();
-//       }
-//     })
-//  modal.present();
-// } 
 }

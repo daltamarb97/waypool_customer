@@ -39,13 +39,13 @@ export class ConfirmtripPage {
     
         
        //get the info of the driver 
-       this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity)
+       this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
          console.log(this.user);          
        });
 
-       this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userUniversity)
+       this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
        .subscribe(usersInPendingusers => {
         this.usersInPending = usersInPendingusers
         this.usersInPending.forEach(user => {
@@ -70,21 +70,7 @@ export class ConfirmtripPage {
     // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
     this.button = false;
     this.text = true;
-    // this.accepted = true; 
    
-    // this.dismiss();
-
-
-        // this.TripsService.checkIfAcceptedInLMU(this.SignUpService.userUniversity, this.trip.driver.userId, this.trip.keyTrip, this.userUid)
-        // .subscribe(userInLMU => {
-        //   this.userInLMU = userInLMU;
-        //   console.log(this.userInLMU);
-        //   if(this.userInLMU === null){
-        //     this.accepted = true;
-        //     this.navCtrl.push('MyridePage');
-
-        //   }
-        // })
     }
 
     dismissX(){
@@ -105,6 +91,10 @@ export class ConfirmtripPage {
   }  
 
 
+  ionViewDidLeave(){
+    this.unsubscribe.next();
+     this.unsubscribe.complete();
+  }
 
 
 

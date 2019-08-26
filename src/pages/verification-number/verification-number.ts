@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import { SignUpService } from '../../services/signup.services';
 import { authenticationService } from '../../services/userauthentication.service';
+import { Subject } from 'rxjs';
 
 
 @IonicPage()
@@ -17,12 +18,13 @@ export class VerificationNumberPage {
   confText:any;
   userId:any;
   userInfo:any;
+  unsubscribe = new Subject;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private authenticationService: authenticationService, public alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public signUpService: SignUpService, public app: App) {
     this.userId = this.navParams.get('userId')
     console.log(this.userId);
     console.log(this.signUpService.userUniversity);
 
-    this.signUpService.getMyInfo(this.userId, this.signUpService.userUniversity).subscribe(user => {
+    this.signUpService.getMyInfo(this.userId, this.signUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(user => {
       this.userInfo = user;
       console.log(this.userInfo);
     })
@@ -54,6 +56,12 @@ export class VerificationNumberPage {
   resendCode(){
     this.authenticationService.deleteverificationCodeApproval(this.signUpService.userUniversity, this.userId);
     this.authenticationService.resendVerificationCode(this.signUpService.userUniversity, this.userId);
+  }
+
+  ionViewDidLeave(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+
   }
 
      

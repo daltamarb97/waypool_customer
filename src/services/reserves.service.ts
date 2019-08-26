@@ -55,6 +55,12 @@ export class reservesService {
 
     }
 
+    public confirmMyExistenceInPickedupUsers(university, driverId,keyTrip, userId){
+        //get reserves inside reserves node
+        return  this.afDB.object(university + '/trips/'+driverId+'/'+ keyTrip+'/pickedUpUsers/' + userId).valueChanges();
+
+    }
+
     public cancelReserve(university, userUid,driverUid,reserveId){
         //eliminate user from reserve in reserve's node        
       this.afDB.database.ref(university + '/reserves/'+ driverUid +'/'+ reserveId+'/pendingUsers/'+userUid).remove();

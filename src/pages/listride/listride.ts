@@ -31,18 +31,18 @@ export class ListridePage {
 pendingUsers:any = [];
   constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
-    this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).subscribe(user=>{
+    this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user = user;   
       
     })
     
-    this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid)
+    this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( originUser => {
       this.locationOriginUser = originUser;
       // this.locationOrigin.push(origin)
       console.log(originUser);
     });
-    this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid)
+    this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
         .subscribe( destinationUser => {
           this.locationDestinationUser = destinationUser;
           // this.locationOrigin.push(origin)
@@ -223,4 +223,6 @@ modal.present();
          });
     toast.present();
   }
+
+  
 }

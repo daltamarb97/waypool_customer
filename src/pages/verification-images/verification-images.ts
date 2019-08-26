@@ -5,6 +5,7 @@ import { Camera, CameraOptions, CameraOriginal } from '@ionic-native/camera';
 import { storage } from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SignUpService } from '../../services/signup.services';
+import { Subject } from 'rxjs';
 
 
 @IonicPage()
@@ -34,6 +35,7 @@ export class VerificationImagesPage {
   cameraPicCarne:boolean = false;
   cameraPicId:boolean = false;
 
+  unsubscribe = new Subject;
 
   options:CameraOptions = {
     quality: 100,
@@ -44,7 +46,8 @@ export class VerificationImagesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private camera: CameraOriginal, public AngularFireauth: AngularFireAuth, public alertCtrl: AlertController, public SignUpService:SignUpService) {
     this.user =  this.AngularFireauth.auth.currentUser.uid;
 
-    this.SignUpService.getMyInfo(this.user, this.SignUpService.userUniversity).subscribe(user=>{
+    this.SignUpService.getMyInfo(this.user, this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
+    .subscribe(user=>{
       this.userInfo = user
       if(this.userInfo.documents){
         if(this.userInfo.documents.license == true ){
@@ -203,6 +206,13 @@ export class VerificationImagesPage {
     this.showCarne = false;
  
   };
+
+
+  ionViewDidLeave(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+
+  }
 
 
 

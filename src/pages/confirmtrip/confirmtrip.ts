@@ -51,7 +51,8 @@ export class ConfirmtripPage {
         this.usersInPending.forEach(user => {
           if(user.userId === this.userUid){
             this.accepted = true;
-            this.navCtrl.push('MyridePage');
+            this.dismiss();
+            
             
           }
         });
@@ -60,17 +61,16 @@ export class ConfirmtripPage {
 
   }
   
-  goToRide(){   
-    this.TripsService.joinTrip(this.SignUpService.userUniversity, this.trip.keyTrip,this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
+  goToRide(){  
     this.geoFireService.saveKey(this.SignUpService.userUniversity,this.trip.keyTrip,this.trip.driver.userId, this.userUid);
-    this.reservesService.setOnTrip(this.SignUpService.userUniversity,this.userUid);
+    this.reservesService.setOnTrip(this.SignUpService.userUniversity,this.userUid); 
+    this.TripsService.joinTrip(this.SignUpService.userUniversity, this.trip.keyTrip,this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note);
     // this.geoFireService.removeKeyGeofire(this.userUid);
     //OLD
     // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
     // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
     this.button = false;
     this.text = true;
-   
     }
 
     dismissX(){

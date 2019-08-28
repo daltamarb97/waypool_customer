@@ -94,32 +94,8 @@ var RatetripPage = /** @class */ (function () {
         console.log(this.trip);
     }
     RatetripPage.prototype.sendInfo = function () {
-        var _this = this;
-        if (this.experience === undefined || this.experience === null) {
-            var alert_1 = this.alertCtrl.create({
-                title: '¿Deseas saltarte este paso? :(',
-                subTitle: 'Tú opinón es muy importante para nosotros y siempre es tenida en cuenta',
-                buttons: [
-                    {
-                        text: 'Si',
-                        handler: function () {
-                            _this.navCtrl.pop();
-                            _this.navCtrl.push('TabsPage');
-                        }
-                    },
-                    {
-                        text: '¡Dejar comentario!',
-                        role: 'cancel'
-                    }
-                ]
-            });
-            alert_1.present();
-        }
-        else {
-            this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
-            this.navCtrl.pop();
-            this.navCtrl.push('TabsPage');
-        }
+        this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+        this.navCtrl.setRoot('TabsPage');
     };
     RatetripPage.prototype.ionViewDidLeave = function () {
         this.unsubscribe.next();
@@ -129,9 +105,10 @@ var RatetripPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-ratetrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/ratetrip/ratetrip.html"*/'<ion-header class="bg-theme">\n  <ion-navbar>\n      <ion-title>Viaje Finalizado</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n  <ion-card class="slip">\n      <div text-center>\n          <h4 class="text-dark">¡Esperamos que hayas tenido un excelente viaje!</h4>\n          <p class="text-light">{{today | date}}\n\n      </p>\n          <h4 class="text-dark">el precio que pagaste por este viaje fue de:</h4>\n          <h1 class="text-theme">$ {{trip.price}}</h1>\n      </div>\n  </ion-card>\n  <ion-card class="rate">\n      <div text-center>\n              <h4 class="text-dark">Cuéntanos {{user.name}} como ha sido la experiencia con Waypool</h4>\n\n         \n          <div class="driver">\n              \n              <div class="form">\n                  <ion-list no-lines>\n                      <ion-item>\n                          <ion-textarea [(ngModel)]="experience" type="text" placeholder="Déjanos tu sugerencia" ></ion-textarea>\n                      </ion-item>\n                  </ion-list>\n              </div>\n\n\n              <p padding-top><button (click)="sendInfo()" class="btn text-white bg-theme rounded" style="width: 100%;">ENVIAR</button></p>\n          </div>\n      </div>\n  </ion-card>\n  <p class="love">Desarrollado con <ion-icon name="heart"></ion-icon> para universitarios</p> \n\n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/ratetrip/ratetrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__services_sendFeedback_service__["a" /* sendFeedbackService */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_sendFeedback_service__["a" /* sendFeedbackService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_sendFeedback_service__["a" /* sendFeedbackService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__["a" /* sendCoordsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__["a" /* sendCoordsService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _g || Object])
     ], RatetripPage);
     return RatetripPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=ratetrip.js.map

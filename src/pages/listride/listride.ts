@@ -74,6 +74,8 @@ pendingUsers:any = [];
   
 
   ionViewDidLeave(){
+    this.unSubscribeServices();
+
     console.log("me active")
     this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
   }
@@ -115,9 +117,10 @@ getMyReserves(){
 
 
       if(reserveGeofire.LMU == true){
-        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userUniversity, reserveGeofire.driverId).subscribe((reserveLMU)=>{
+        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userUniversity, reserveGeofire.driverId, reserveGeofire.keyReserve).subscribe((reserveLMU)=>{
           this.initiatedTrips = [];
-          this.reserveLMU = reserveLMU[0];
+          this.reserveLMU = reserveLMU;
+          console.log(this.reserveLMU);
           this.initiatedTrips.push(this.reserveLMU);
           console.log(this.initiatedTrips);
 
@@ -202,7 +205,7 @@ ionViewDidLoad(){
       this.unSubscribeServices();
      this.navCtrl.pop();
      this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
-     this.app.getRootNav().push('MyridePage');
+     this.navCtrl.push('MyridePage');
 
     }
   })

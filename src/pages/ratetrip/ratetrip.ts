@@ -38,31 +38,8 @@ unsubscribe = new Subject;
 
   
   sendInfo() {
-    if(this.experience === undefined || this.experience === null){
-      let alert = this.alertCtrl.create({
-        title: '¿Deseas saltarte este paso? :(',
-        subTitle: 'Tú opinón es muy importante para nosotros y siempre es tenida en cuenta',
-        buttons: [
-          {
-            text: 'Si',
-            handler: () => {
-              this.navCtrl.pop();
-              this.navCtrl.push('TabsPage');
-           }
-          },
-          {
-            text: '¡Dejar comentario!',
-            role: 'cancel'
-          }
-        ]
-      });
-      alert.present();
-    }else{
       this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
-      this.navCtrl.pop();
-      this.navCtrl.push('TabsPage');
-
-    }
+      this.navCtrl.setRoot('TabsPage');
   }
 
   ionViewDidLeave(){

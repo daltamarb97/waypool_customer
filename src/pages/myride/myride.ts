@@ -12,6 +12,7 @@ import { environmentService } from '../../services/environment.service';
 
 import { Subject } from 'rxjs';
 import { reservesService } from '../../services/reserves.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 @IonicPage()
@@ -45,9 +46,8 @@ driverExist:boolean = false;
 onTrip: boolean = false;
 onTripInstance:any;
 unsubscribe = new Subject;
-itsMe:boolean = false;
-
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private reservesService: reservesService) {
+cancelUser:any;
+  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private reservesService: reservesService, private afDB: AngularFireDatabase) {
 
     this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe(  keys => {      
@@ -78,15 +78,62 @@ itsMe:boolean = false;
 
           // }
     
-    })  
+    })
+    this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
+      .subscribe(info => {
+        this.user = info
+        console.log("estado mal")
+        // here starts the conditionals for the trip
+        if(this.user.cancelTrip === undefined || this.user.cancelTrip === null){
+
+        }else{
+          this.unSubscribeServices();         
+          console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+
+          this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+          this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+          this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+          this.navCtrl.setRoot('TabsPage');
+
+            let modal = this.modalCtrl.create('CanceltripPage');
+            modal.present();  
+            console.log("me cancelaron el viaje")
+            setTimeout(() => {
+              this.TripsService.eliminatingCancelTrip(this.SignUpService.userUniversity,this.userUid);
+              console.log("me cancele");
+              
+            }, 2000);
+        }
+        if(this.user.saveTrip === undefined || this.user.saveTrip === null){
+
+        }else{
       
+          this.TripsService.saveTripOnRecords(this.SignUpService.userUniversity, this.userUid,this.trip);     
+          console.log("me active")
+          this.unSubscribeServices();       
+          this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+          this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+          this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+          setTimeout(() => {
+            this.TripsService.eliminatingSaveTrip(this.SignUpService.userUniversity,this.userUid);
+            console.log("no deje pruebas");
+            
+          }, 2000);
+          this.navCtrl.setRoot('TabsPage');
+          this.navCtrl.push('RatetripPage',{trip:this.trip})
+          console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+        
+        }
+
+      });
+
   }
  
   
    
   getTrip(keyTrip,driverId){
     console.log(this.trip)   
-    this.getTripState(keyTrip,driverId);
+    // this.getTripState(keyTrip,driverId);
 
     console.log(this.keyTrip) 
      
@@ -112,72 +159,74 @@ itsMe:boolean = false;
         
         
   }
-  getTripState(keyTrip,driverId){
-    this.TripsService.getTripState(this.SignUpService.userUniversity,keyTrip,driverId).takeUntil(this.unsubscribe)
-    .subscribe( tripState => {      
-        this.tripState = tripState;
-        console.log(this.tripState);
-        console.log("estoy activado!!!")
+  // getTripState(keyTrip,driverId){
+  //   this.TripsService.getTripState(this.SignUpService.userUniversity,keyTrip,driverId).takeUntil(this.unsubscribe)
+  //   .subscribe( tripState => {      
+  //       this.tripState = tripState;
+  //       console.log(this.tripState);
+  //       console.log("estoy activado!!!")
         
-          //check if trip has to be saved 
-          if(this.tripState.saveTrip === true){
+  //         //check if trip has to be saved 
+  //         if(this.tripState.saveTrip === true){
             
-            this.TripsService.saveTripOnRecords(this.SignUpService.userUniversity, this.userUid,this.trip);     
-            console.log("me active")
-            this.unSubscribeServices();       
-            this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-            this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-            this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+  //           this.TripsService.saveTripOnRecords(this.SignUpService.userUniversity, this.userUid,this.trip);     
+  //           console.log("me active")
+  //           this.unSubscribeServices();       
+  //           this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+  //           this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+  //           this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
 
-            this.navCtrl.pop();
-            this.navCtrl.push('RatetripPage',{trip:this.trip})
-            console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+  //           this.navCtrl.pop();
+  //           this.navCtrl.push('RatetripPage',{trip:this.trip})
+  //           console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 
-          }   
-          if(this.tripState.canceledTrip === true){
-          //check if trip was canceled by driver                         
-          this.unSubscribeServices();         
-          console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+  //         }   
+  //         if(this.tripState.canceledTrip === true){
+  //         //check if trip was canceled by driver                         
+  //         this.unSubscribeServices();         
+  //         console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 
-          this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-          this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-          this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+  //         this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+  //         this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+  //         this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
 
-            let modal = this.modalCtrl.create('CanceltripPage');
-            modal.present();  
-            console.log("me cancelaron el viaje")
+  //           let modal = this.modalCtrl.create('CanceltripPage');
+  //           modal.present();  
+  //           console.log("me cancelaron el viaje")
 
-            this.navCtrl.pop();
-          } 
-          this.TripsService.getCancelUsers(this.SignUpService.userUniversity, keyTrip,driverId).takeUntil(this.unsubscribe)
-          .subscribe( cancelUsers => {      
-              this.cancelUsers = cancelUsers;          
-              this.cancelUsers.forEach(cancelUser => {
-                console.log("2paso")
+  //           this.navCtrl.pop();
+  //         } 
 
-                  if(this.userUid === cancelUser.userId){
-                    console.log("3paso")
-                    this.unSubscribeServices();          
-                    this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity,this.userUid);
-                    this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-                    this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
 
-                    console.log("me eliminaron")
-                    console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+  //         this.afDB.database.ref(this.SignUpService.userUniversity + '/tripsState/'+ driverId +'/'+ keyTrip+ '/cancelUsers/'+this.userUid)
+  //         .once('value').then((snapshot) => {
+  //           this.cancelUser = snapshot.val();
+            
+  //             console.log("2paso")
 
-                    this.navCtrl.pop();
-                    let modal = this.modalCtrl.create('CanceltripPage');
-                    modal.present();
-                    }                        
-                });  
-    
-            })
-        
-        
-         
-         
-      })
-  }
+  //               if(this.cancelUser === undefined || this.cancelUser === null){
+                
+  //                 }else{
+  //                   console.log("3paso")
+  //                   this.unSubscribeServices();          
+  //                   this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity,this.userUid);
+  //                   this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+  //                   this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+  
+  //                   console.log("me eliminaron")
+  //                   console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+  
+  //                   this.navCtrl.pop();
+  //                   let modal = this.modalCtrl.create('CanceltripPage');
+  //                   modal.present();
+  //                 }                        
+               
+            
+  //         })   
+  //     })
+  // }
+
+
   unSubscribeServices(){
     this.unsubscribe.next();
     this.unsubscribe.complete();
@@ -204,19 +253,7 @@ itsMe:boolean = false;
 chatDriver(driver){
     this.navCtrl.push('ChattingPage',{driver:driver})
 }    
-recognizedMyNamePendingUsers(users,keyTrip,driverId){
-  if(keyTrip === null ||keyTrip === undefined  ){
-    
-  }else{
-    users.forEach(user => {
-    
-      if(this.userUid === user.userId){
-        this.TripsService.pushItsMePendingUsers(this.SignUpService.userUniversity, this.userUid,keyTrip,driverId)
-      }
-  });
-  }
 
-}
 
  
 

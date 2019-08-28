@@ -52,8 +52,8 @@ export class TripsService {
       return  this.afDB.list(university + '/tripsState/'+driverId+'/'+ keyTrip+'/cancelUsers').valueChanges();
   }
     
-    public getLastMinuteTripsDEMO(university, driverId){
-        return  this.afDB.list(university + '/trips/'+driverId).valueChanges();
+    public getLastMinuteTripsDEMO(university, driverId, keyTrip){
+        return  this.afDB.object(university + '/trips/'+driverId+'/'+ keyTrip).valueChanges();
 
     }
     public saveKeyTrip(university, userUid,keyTrip,driverId){            
@@ -145,6 +145,15 @@ export class TripsService {
   this.afDB.database.ref(university + '/users/'+userUid+'/onTrip').remove();
 
  }
+ public eliminatingSaveTrip(university, userUid){    
+ 
+this.afDB.database.ref(university + '/users/'+userUid+'/saveTrip').remove();
 
+}
+public eliminatingCancelTrip(university, userUid){    
+ 
+  this.afDB.database.ref(university + '/users/'+userUid+'/cancelTrip').remove();
+  
+  }
       
 }

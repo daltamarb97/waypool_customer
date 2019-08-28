@@ -172,6 +172,57 @@ export class FindridePage {
         })
       })
       modal.present();
+    }else{
+          //search keyTrip
+          this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid)
+          .subscribe(keyTrip=>{
+            this.keyTrip =keyTrip;
+            console.log(this.keyTrip)
+            //if key its deleted don't show VIAJE EN CURSO  
+            if(this.keyTrip === undefined || this.keyTrip === null){
+             this.onTrip=false;
+              this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+              this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+              console.log("llegue adonde era")
+            }else{
+              //confirm that trip exist and get it
+              this.getTrip();
+            }
+           
+          })
+              console.log(this.SignUpService.userUniversity);
+              this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(user=>{
+                this.user = user;
+                //  this.keyTrip = this.user.keyTrip
+                console.log(this.user)
+              })
+              // set geofire key of university to avoid asking users to put where they are going
+              this.geofireService.getLocationUniversity(this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(university=>{
+                  this.university = university;
+                  this.locationUniversity = this.university.location;
+                  this.geofireService.setLocationUniversity(this.SignUpService.userUniversity, "some_key", this.locationUniversity.lat, this.locationUniversity.lng);
+                })
+
+                this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(uni => {
+                  this.universityInfo = uni;
+                  
+                  if(this.universityInfo.email == undefined){
+                    if(this.userInfoForOntrip.documents){
+                      if(this.userInfoForOntrip.documents.carne === undefined || this.userInfoForOntrip.documents.id === undefined){
+                        let modal = this.modalCtrl.create('VerificationImagesPage');
+                        modal.present();
+                      }else if(this.userInfoForOntrip.documents.carne === true || this.userInfoForOntrip.documents.id === true){
+                        this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
+                      }
+                    }else if(!this.universityInfo.documents) {
+                      console.log('no hay docs')
+                      let modal = this.modalCtrl.create('VerificationImagesPage');
+                        modal.present();
+                    } 
+                  }else{
+                    this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
+                  }
+                })    
     }
 
 
@@ -180,21 +231,20 @@ export class FindridePage {
 
 
   getTrip(){
-    this.TripsService.getTrip(this.SignUpService.userUniversity, this.keyTrip.keyTrip,this.keyTrip.driverId).takeUntil(this.unsubscribe)
-      .subscribe(trip=>{
-        this.trip = trip
-        console.log(this.trip)
-        //if there is no trip, eliminate key
-        if(this.trip === null || this.trip === undefined){
-        console.log("borre")
-          
-          this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-          this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
 
-        }else{
-          this.getOnTrip();
-        }
-      })
+    this.afDB.database.ref(this.SignUpService.userUniversity + '/trips/'+ this.keyTrip.driverId +'/'+ this.keyTrip.keyTrip)
+    .once('value').then((snapshot) => {
+      let trip = snapshot.val();
+      console.log(trip);
+
+      if(trip === null || trip === undefined){
+        console.log("borre");
+        this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+        this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+      }else{
+        this.getOnTrip();
+      }
+    })
      
   } 
 

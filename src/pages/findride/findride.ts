@@ -18,6 +18,7 @@ import { environmentService } from '../../services/environment.service';
 import { TripsService } from '../../services/trips.service';
 import { Subject } from 'rxjs';
 import { instancesService } from '../../services/instances.service';
+import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 
 
 
@@ -93,7 +94,7 @@ export class FindridePage {
 
 
   driverOnNodeOr:any;
- constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService) {
+ constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private diagnostic:Diagnostic ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -112,7 +113,8 @@ export class FindridePage {
     
     this.markers = [];
     // initialize the plugin
- 
+  
+    console.log(this.SignUpService.userUniversity);
     if(this.SignUpService.userUniversity == undefined){
       let modal = this.modalCtrl.create('ConfirmUniversityPage');
       modal.onDidDismiss(readyToStart => {
@@ -269,8 +271,10 @@ export class FindridePage {
   
   ionViewDidLoad(){
     
-   
     this.loadMap();
+  //  this.diagnostic.isLocationEnabled().then((enable)=>{
+  //    console.log(enable);
+  //  })
 
     
   }

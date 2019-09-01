@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.waypoolsas.waypool" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.waypoolsas.waypooluser" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Waypool</name>
     <description>carsharing app</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -18,10 +18,11 @@
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="2000" />
+    <preference name="SplashScreenDelay" value="3000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="orientation" value="portrait" />
     <platform name="android">
+        <resource-file src="google-services.json" />
         <allow-intent href="market:*" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi/icon.png" />
         <icon density="hdpi" src="resources/android/icon/drawable-hdpi/icon.png" />
@@ -39,23 +40,23 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <config-file parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
+        <string>Usado para conectarte con otros usuarios de Waypool</string>
+    </config-file>
+    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+        <string>Necesitamos acceso a tu camara para que nos puedas enviar tus fotos de documentos</string>
+    </edit-config>
     <engine name="browser" spec="5.0.4" />
-    <engine name="android" spec="6.3.0" />
     <engine name="ios" spec="4.5.5" />
     <plugin name="cordova-plugin-googlemaps" spec="^2.4.4">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyC7wuQ1MQ6t7tZ8Q-qDkDvy-dRhqE65tOM" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyC7wuQ1MQ6t7tZ8Q-qDkDvy-dRhqE65tOM" />
     </plugin>
-    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.2.1" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.3" />
     <plugin name="cordova-plugin-firebase" spec="^2.0.5" />
-    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
-        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
-        <variable name="cordova-plugin-camera" value="[object Object]" />
-    </plugin>
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
     <plugin name="cordova-plugin-email-composer" spec="0.9.2">
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
@@ -63,4 +64,12 @@
     <plugin name="cordova-plugin-nativegeocoder" spec="^3.1.3" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.5" />
     <plugin name="cordova-sqlite-storage" spec="^3.2.0" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.4" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.2" />
+    <plugin name="cordova.plugins.diagnostic" spec="^5.0.0">
+        <variable name="ANDROID_SUPPORT_VERSION" value="28.+" />
+    </plugin>
+    <plugin name="cordova-android-support-gradle-release" spec="^3.0.1">
+        <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
+    </plugin>
 </widget>

@@ -15,19 +15,8 @@ import { SignUpService } from '../services/signup.services';
 })
 export class MyApp {
   rootPage:any;
-  userUniversity:any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private signUpServ: SignUpService) {
-    this.userUniversity = this.signUpServ.userUniversity;
-    console.log(this.userUniversity);
-    // firebase.initializeApp({
-    //     apiKey: "AIzaSyAPagXvglCXnK3neJwU50EiZnJPmdd__PM",
-    //     authDomain: "waypoooldemo.firebaseapp.com",
-    //     databaseURL: "https://waypoooldemo.firebaseio.com",
-    //     projectId: "waypoooldemo",
-    //     storageBucket: "waypoooldemo.appspot.com",
-    //     messagingSenderId: "1009109452629"
-    // })
-    
+   
     
 
     platform.ready().then(() => { 

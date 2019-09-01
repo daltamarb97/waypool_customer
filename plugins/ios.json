@@ -19,9 +19,6 @@
     "cordova-plugin-firebase": {
       "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
     "cordova-plugin-googlemaps": {
       "API_KEY_FOR_IOS": "AIzaSyC7wuQ1MQ6t7tZ8Q-qDkDvy-dRhqE65tOM",
       "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
@@ -41,13 +38,22 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
     "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
+    },
+    "cordova-android-support-gradle-release": {
       "PACKAGE_NAME": "com.waypoolsas.waypool"
     }
   },

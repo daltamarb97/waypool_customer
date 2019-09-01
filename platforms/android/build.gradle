@@ -22,11 +22,9 @@ apply plugin: 'com.android.application'
 buildscript {
     repositories {
         jcenter()
-        maven { url 'https://maven.fabric.io/public' } // Fabrics Maven repository from cordova-plugin-firebase
         maven {
             url "https://maven.google.com"
         }
-        google()
     }
 
     // Switch the Android Gradle plugin version requirement depending on the
@@ -34,9 +32,7 @@ buildscript {
     // http://tools.android.com/tech-docs/new-build-system/version-compatibility
     // and https://issues.apache.org/jira/browse/CB-8143
     dependencies {
-    classpath 'com.android.tools.build:gradle:3.1.4'
-        classpath 'com.google.gms:google-services:4.1.0' // google-services dependency from cordova-plugin-firebase
-        classpath 'io.fabric.tools:gradle:1.25.4' // fabric dependency from cordova-plugin-firebase
+        classpath 'com.android.tools.build:gradle:2.2.3'
     }
 }
 
@@ -44,7 +40,6 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        google() // Google's Maven repository from cordova-plugin-firebase
         maven {
             url "https://maven.google.com"
         }
@@ -97,8 +92,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "cordova-plugin-firebase/vroomcustomer-build.gradle"
-apply from: "cordova-plugin-googlemaps/vroomcustomer-tbxml-android.gradle"
+apply from: "cordova-android-support-gradle-release/waypooluser-cordova-android-support-gradle-release.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -258,19 +252,10 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
-    //debugCompile(project(path: "CordovaLib", configuration: "debug"))
-    //releaseCompile(project(path: "CordovaLib", configuration: "release"))
-    compile project(':CordovaLib')
-    compile "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
-    compile "com.android.support:support-v4:27.+"
-    compile "com.google.android.gms:play-services-tagmanager:+"
-    compile "com.google.firebase:firebase-core:+"
-    compile "com.google.firebase:firebase-messaging:+"
-    compile "com.google.firebase:firebase-config:+"
-    compile "com.google.firebase:firebase-perf:+"
-    compile "com.google.android.gms:play-services-maps:15.0.1"
-    compile "com.google.android.gms:play-services-location:15.0.1"
-    compile "com.android.support:support-core-utils:27.+"
+    debugCompile(project(path: "CordovaLib", configuration: "debug"))
+    releaseCompile(project(path: "CordovaLib", configuration: "release"))
+    compile  "com.android.support:support-v4:27.+"
+    compile  "com.android.support:appcompat-v7:27.+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

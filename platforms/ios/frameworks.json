@@ -1,7 +1,7 @@
 {
     "Accelerate.framework": 1,
     "CoreData.framework": 1,
-    "CoreLocation.framework": 3,
+    "CoreLocation.framework": 4,
     "CoreTelephony.framework": 1,
     "CoreText.framework": 1,
     "CoreImage.framework": 1,
@@ -15,5 +15,13 @@
     "UIKit.framework": 1,
     "Security.framework": 1,
     "MessageUI.framework": 1,
-    "WebKit.framework": 1
+    "WebKit.framework": 1,
+    "CoreBluetooth.framework": 1,
+    "Photos.framework": 1,
+    "AVFoundation.framework": 2,
+    "UserNotifications.framework": 1,
+    "Contacts.framework": 1,
+    "AddressBook.framework": 1,
+    "EventKit.framework": 2,
+    "CoreMotion.framework": 1
 }

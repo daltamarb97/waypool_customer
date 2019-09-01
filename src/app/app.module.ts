@@ -25,6 +25,8 @@ import { SignUpService } from '../services/signup.services';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
   
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Diagnostic } from '@ionic-native/diagnostic/ngx';
+
 import { sendFeedbackService } from '../services/sendFeedback.service';
 // import { IonicStorageModule } from '@ionic/storage';
 import { chatsService } from '../services/chat.service';
@@ -37,12 +39,12 @@ import { ConfirmUniversityPage } from '../pages/confirm-university/confirm-unive
 
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAPagXvglCXnK3neJwU50EiZnJPmdd__PM",
-  authDomain: "waypoooldemo.firebaseapp.com",
-  databaseURL: "https://waypoooldemo.firebaseio.com",
-  projectId: "waypoooldemo",
-  storageBucket: "waypoooldemo.appspot.com",
-  messagingSenderId: "1009109452629"
+  apiKey: "AIzaSyB7Py2pOZEUJD2Ar34a-8z-rReiDtsikxw",
+  authDomain: "waypool-511be.firebaseapp.com",
+  databaseURL: "https://waypool-511be.firebaseio.com",
+  projectId: "waypool-511be",
+  storageBucket: "",
+  messagingSenderId: "904521954579"
 }
 
 @NgModule({
@@ -74,7 +76,7 @@ export const firebaseConfig = {
     Geolocation,
     sendCoordsService,
     EmailComposer,
-    
+    Diagnostic,
     sendUsersService,
     noteService,
     CallNumber,

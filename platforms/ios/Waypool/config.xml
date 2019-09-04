@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.waypoolsas.waypool" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.waypoolsas.waypooluser" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -19,6 +19,9 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="CallNumber">
+        <param name="ios-package" value="CFCallNumber" />
+    </feature>
     <feature name="File">
         <param name="ios-package" value="CDVFile" />
         <param name="onload" value="true" />
@@ -36,49 +39,8 @@
         <param name="ios-package" value="FirebasePlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="CordovaGoogleMaps">
-        <param name="ios-package" value="CordovaGoogleMaps" />
-        <param name="onload" value="true" />
-        <param name="onreset" value="true" />
-    </feature>
-    <feature name="PluginEnvironment">
-        <param name="ios-package" value="PluginEnvironment" />
-    </feature>
-    <feature name="PluginGeocoder">
-        <param name="ios-package" value="PluginGeocoder" />
-    </feature>
-    <feature name="PluginLocationService">
-        <param name="ios-package" value="PluginLocationService" />
-    </feature>
-    <feature name="PluginMap">
-        <param name="ios-package" value="PluginMap" />
-    </feature>
-    <feature name="PluginCircle">
-        <param name="ios-package" value="PluginCircle" />
-    </feature>
-    <feature name="PluginGroundOverlay">
-        <param name="ios-package" value="PluginGroundOverlay" />
-    </feature>
-    <feature name="PluginKmlOverlay">
-        <param name="ios-package" value="PluginKmlOverlay" />
-    </feature>
-    <feature name="PluginMarker">
-        <param name="ios-package" value="PluginMarker" />
-    </feature>
-    <feature name="PluginPolygon">
-        <param name="ios-package" value="PluginPolygon" />
-    </feature>
-    <feature name="PluginPolyline">
-        <param name="ios-package" value="PluginPolyline" />
-    </feature>
-    <feature name="PluginTileOverlay">
-        <param name="ios-package" value="PluginTileOverlay" />
-    </feature>
-    <feature name="PluginMarkerCluster">
-        <param name="ios-package" value="PluginMarkerCluster" />
-    </feature>
-    <feature name="PluginStreetViewPanorama">
-        <param name="ios-package" value="PluginStreetViewPanorama" />
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
     </feature>
     <feature name="Keyboard">
         <param name="ios-package" onload="true" value="CDVIonicKeyboard" />
@@ -86,19 +48,6 @@
     <allow-navigation href="http://localhost:8080/*" />
     <feature name="CDVWKWebViewEngine">
         <param name="ios-package" value="CDVWKWebViewEngine" />
-    </feature>
-    <feature name="NativeGeocoder">
-        <param name="ios-package" value="NativeGeocoder" />
-    </feature>
-    <feature name="SplashScreen">
-        <param name="ios-package" value="CDVSplashScreen" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="SQLitePlugin">
-        <param name="ios-package" value="SQLitePlugin" />
-    </feature>
-    <feature name="CallNumber">
-        <param name="ios-package" value="CFCallNumber" />
     </feature>
     <name>Waypool</name>
     <description>carsharing app</description>
@@ -111,6 +60,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" />
     <config-file parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
         <string>Usado para conectarte con otros usuarios de Waypool</string>
     </config-file>
@@ -133,60 +83,15 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+    <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
+    <preference name="phonegap-version" value="cli-6.4.0" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenDelay" value="10000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="orientation" value="portrait" />
-    <feature name="Geolocation">
-        <param name="ios-package" value="CDVLocation" />
-    </feature>
-    <feature name="Diagnostic">
-        <param name="ios-package" value="Diagnostic" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Location">
-        <param name="ios-package" value="Diagnostic_Location" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Bluetooth">
-        <param name="ios-package" value="Diagnostic_Bluetooth" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Wifi">
-        <param name="ios-package" value="Diagnostic_Wifi" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Camera">
-        <param name="ios-package" value="Diagnostic_Camera" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Notifications">
-        <param name="ios-package" value="Diagnostic_Notifications" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Microphone">
-        <param name="ios-package" value="Diagnostic_Microphone" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Contacts">
-        <param name="ios-package" value="Diagnostic_Contacts" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Calendar">
-        <param name="ios-package" value="Diagnostic_Calendar" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Reminders">
-        <param name="ios-package" value="Diagnostic_Reminders" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Diagnostic_Motion">
-        <param name="ios-package" value="Diagnostic_Motion" />
-        <param name="onload" value="true" />
-    </feature>
 </widget>

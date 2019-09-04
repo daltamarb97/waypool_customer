@@ -7,65 +7,39 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-advanced-http": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-email-composer": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-firebase": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-googlemaps": {
-      "API_KEY_FOR_IOS": "AIzaSyC7wuQ1MQ6t7tZ8Q-qDkDvy-dRhqE65tOM",
-      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
-      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-nativegeocoder": {
-      "LOCATION_WHEN_IN_USE_DESCRIPTION": "Use geocoder service",
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "mx.ferreyra.callnumber": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova.plugins.diagnostic": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
+    "call-number": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     },
     "cordova-android-support-gradle-release": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    }
-  },
-  "dependent_plugins": {
-    "com.googlemaps.ios": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     },
     "cordova-plugin-add-swift-support": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-email-composer": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     }
-  }
+  },
+  "dependent_plugins": {}
 }

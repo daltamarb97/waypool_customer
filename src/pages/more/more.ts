@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, App } from 'ionic-angular';
+import { NavController, IonicPage, App, IonicModule } from 'ionic-angular';
 
 
 import { ProfilePage } from '../profile/profile';
@@ -12,6 +12,7 @@ import * as firebase from 'firebase';
 import { SignUpService } from '../../services/signup.services';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subject } from 'rxjs';
+import { MyApp } from '../../app/app.component';
 @IonicPage()
 
 @Component({
@@ -49,7 +50,8 @@ export class MorePage {
          logOut(){
     this.authenticationService.logOut();
     console.log(firebase.auth().currentUser);
-    this.app.getRootNav().push('LoginPage');
+    this.SignupService.userUniversity = undefined;
+    this.navCtrl.setRoot('LoginPage');
     }
 
     ionViewDidLeave(){

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, NavParams, IonicPage, Platform, ToastController } from 'ionic-angular';
+import { NavController, AlertController, NavParams, IonicPage, Platform, ToastController, IonicModule } from 'ionic-angular';
 
 
 import { authenticationService } from '../../services/userauthentication.service';
@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TabsPage } from '../tabs/tabs';
 import * as firebase from 'firebase';
 import { tap } from 'rxjs/operators';
+import { MyApp } from '../../app/app.component';
 
 
 @IonicPage()
@@ -30,6 +31,7 @@ export class LoginPage {
         email: ["", Validators.required],
         password: ["", Validators.required]
     })
+
 
   }
 
@@ -80,15 +82,30 @@ export class LoginPage {
                       alert.present();  
                 }else{
                     let metadata = this.auth.currentUser.metadata;
-                    if(metadata.creationTime == metadata.lastSignInTime){
+                    if(metadata.creationTime === metadata.lastSignInTime){
                         console.log(metadata.creationTime);
                         console.log(metadata.lastSignInTime);
-    
-                        this.navCtrl.push('TabsPage');//aqui va registration car, no tabspge
+                        // this.navCtrl.setRoot('TabsPage');
+                        setTimeout(()=>{
+                            if(this.navCtrl.getActive().id === 'LoginPage'){
+                                this.navCtrl.setRoot('TabsPage');
+
+                            }else{
+                                console.log('actuo el abservable')
+                            }
+                        }, 500)
+            
     
                     }else{
-                        this.navCtrl.push('TabsPage');
-                    }
+                        setTimeout(()=>{
+                            if(this.navCtrl.getActive().id === 'LoginPage'){
+                                this.navCtrl.setRoot('TabsPage');
+
+                            }else{
+                                console.log('actuo el abservable')
+                            }
+                        }, 500)  
+                     }
                     this.authenticationService.getStatus;  
                 };
             }).catch((error) => {

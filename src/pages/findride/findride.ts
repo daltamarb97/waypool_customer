@@ -18,9 +18,7 @@ import { environmentService } from '../../services/environment.service';
 import { TripsService } from '../../services/trips.service';
 import { Subject } from 'rxjs';
 import { instancesService } from '../../services/instances.service';
-import { Diagnostic } from '@ionic-native/diagnostic/ngx';
-
-
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 
  
@@ -94,7 +92,7 @@ export class FindridePage {
 
 
   driverOnNodeOr:any;
- constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private diagnostic:Diagnostic ) {
+ constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private locationAccuracy: LocationAccuracy ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -270,14 +268,9 @@ export class FindridePage {
 
   
   ionViewDidLoad(){
-    
     this.loadMap();
-  //  this.diagnostic.isLocationEnabled().then((enable)=>{
-  //    console.log(enable);
-  //  })
+}
 
-    
-  }
  
   loadMap(){
 

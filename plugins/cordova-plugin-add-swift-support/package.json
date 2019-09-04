@@ -1,28 +1,32 @@
 {
-  "_from": "cordova-plugin-add-swift-support@1.7.1",
-  "_id": "cordova-plugin-add-swift-support@1.7.1",
+  "_args": [
+    [
+      "cordova-plugin-add-swift-support@1.7.2",
+      "/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer"
+    ]
+  ],
+  "_from": "cordova-plugin-add-swift-support@1.7.2",
+  "_id": "cordova-plugin-add-swift-support@1.7.2",
   "_inBundle": false,
-  "_integrity": "sha512-pD8rf8qR9C9znj32d/uUzYKW1XOgE/bngXtSUtfwzC5TXbiLs1NIwc4l20qB2eojtG8L0k/zusCOW/tytdXYmw==",
+  "_integrity": "sha512-4syQ0srjXvlH07sAxQlwMAAqIRTI28IWLYI44RFAKFRdYoIyopjQDqUWdieBK2ELvxgffkn6Rr0r0hMdRyGz/w==",
   "_location": "/cordova-plugin-add-swift-support",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-add-swift-support@1.7.1",
+    "raw": "cordova-plugin-add-swift-support@1.7.2",
     "name": "cordova-plugin-add-swift-support",
     "escapedName": "cordova-plugin-add-swift-support",
-    "rawSpec": "1.7.1",
+    "rawSpec": "1.7.2",
     "saveSpec": null,
-    "fetchSpec": "1.7.1"
+    "fetchSpec": "1.7.2"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-add-swift-support/-/cordova-plugin-add-swift-support-1.7.1.tgz",
-  "_shasum": "91a3483d3c9092cf238aee69e526a15465e0cab8",
-  "_spec": "cordova-plugin-add-swift-support@1.7.1",
-  "_where": "/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_customer",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-add-swift-support/-/cordova-plugin-add-swift-support-1.7.2.tgz",
+  "_spec": "1.7.2",
+  "_where": "/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer",
   "author": {
     "name": "Alexis Kofman",
     "email": "alexis.kofman@gmail.com",
@@ -31,14 +35,12 @@
   "bugs": {
     "url": "https://github.com/akofman/cordova-plugin-add-swift-support/issues"
   },
-  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-add-swift-support",
     "platforms": [
       "ios"
     ]
   },
-  "deprecated": false,
   "description": "Add Swift support to your iOS plugins",
   "devDependencies": {
     "babel-core": "^6.21.0",
@@ -72,5 +74,5 @@
     "build": "webpack --config webpack.config.js",
     "test": "eslint src"
   },
-  "version": "1.7.1"
+  "version": "1.7.2"
 }

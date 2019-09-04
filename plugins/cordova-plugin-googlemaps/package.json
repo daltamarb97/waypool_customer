@@ -1,28 +1,28 @@
 {
-  "_from": "cordova-plugin-googlemaps",
-  "_id": "cordova-plugin-googlemaps@2.4.4",
+  "_from": "cordova-plugin-googlemaps@^2.4.4",
+  "_id": "cordova-plugin-googlemaps@2.6.2",
   "_inBundle": false,
-  "_integrity": "sha512-SEir8+1AkLQ2GeJYvRuiMxk7dU22oDIybrR++IV/MNKNL8YgSj+7cSWRVvGTCjj3LzdhBXQzerTJ3gv7HpB/9g==",
+  "_integrity": "sha512-Zb5y+3PoEPnH7oorp6mvATnxESqedYHFhZodJdcGmUFC1vaRS5h46HOKTOT2fE8XQJ1FnVub03nJiTqxrGsqYw==",
   "_location": "/cordova-plugin-googlemaps",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-googlemaps",
+    "raw": "cordova-plugin-googlemaps@^2.4.4",
     "name": "cordova-plugin-googlemaps",
     "escapedName": "cordova-plugin-googlemaps",
-    "rawSpec": "",
+    "rawSpec": "^2.4.4",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^2.4.4"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-googlemaps/-/cordova-plugin-googlemaps-2.4.4.tgz",
-  "_shasum": "035b4662b7e072eb2720fc27758fe7528fb7e1a3",
-  "_spec": "cordova-plugin-googlemaps",
-  "_where": "/Users/juandavidjaramillo/Downloads/codecanyon-21673171-car-pooling-ionic-app-templete-vroom/vroom_customer_src MAP TEST",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-googlemaps/-/cordova-plugin-googlemaps-2.6.2.tgz",
+  "_shasum": "8c73f1d3ab2f815b36e2239149c3731541e0ffe2",
+  "_spec": "cordova-plugin-googlemaps@^2.4.4",
+  "_where": "/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer",
   "author": {
     "name": "Masashi Katsumata, Hirbod Mirjavadi"
   },
@@ -38,8 +38,16 @@
       "browser"
     ]
   },
+  "dependencies": {
+    "cordova-common": "^3.1.0"
+  },
   "deprecated": false,
   "description": "Google Maps native SDK for Android and iOS, and Google Maps JavaScript API v3 for browser.",
+  "devDependencies": {
+    "cordova-js": "^4.2.4",
+    "eslint": "^5.7.0",
+    "jest": "^23.6.0"
+  },
   "engines": [
     {
       "name": "cordova-android",
@@ -47,7 +55,7 @@
     },
     {
       "name": "cordova-ios",
-      "version": ">=4.9.0"
+      "version": ">=4.5.0"
     },
     {
       "name": "apple-xcode",
@@ -66,13 +74,20 @@
     "google maps",
     "ecosystem:cordova",
     "cordova-android",
-    "cordova-ios"
+    "cordova-ios",
+    "cordova-browser"
   ],
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "name": "cordova-plugin-googlemaps",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git"
   },
-  "version": "2.4.4"
+  "scripts": {
+    "eslint": "node node_modules/eslint/bin/eslint www src",
+    "jest": "jest",
+    "test": "jest && npm run eslint",
+    "test:watch": "jest --watch"
+  },
+  "version": "2.6.2"
 }

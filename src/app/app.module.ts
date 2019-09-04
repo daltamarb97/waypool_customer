@@ -7,9 +7,9 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { GoogleMaps, Environment } from '@ionic-native/google-maps';
+import { GoogleMaps,  } from '@ionic-native/google-maps';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { authenticationService } from '../services/userauthentication.service';
 import { Firebase } from '@ionic-native/firebase';
@@ -25,7 +25,6 @@ import { SignUpService } from '../services/signup.services';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
   
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
-import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 
 import { sendFeedbackService } from '../services/sendFeedback.service';
 // import { IonicStorageModule } from '@ionic/storage';
@@ -36,6 +35,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 
 import { environmentService } from '../services/environment.service';
 import { ConfirmUniversityPage } from '../pages/confirm-university/confirm-university';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 
 export const firebaseConfig = {
@@ -43,9 +43,10 @@ export const firebaseConfig = {
   authDomain: "waypool-511be.firebaseapp.com",
   databaseURL: "https://waypool-511be.firebaseio.com",
   projectId: "waypool-511be",
-  storageBucket: "",
-  messagingSenderId: "904521954579"
-}
+  storageBucket: "waypool-511be.appspot.com",
+  messagingSenderId: "904521954579",
+};
+
 
 @NgModule({
   declarations: [
@@ -76,7 +77,6 @@ export const firebaseConfig = {
     Geolocation,
     sendCoordsService,
     EmailComposer,
-    Diagnostic,
     sendUsersService,
     noteService,
     CallNumber,
@@ -88,9 +88,8 @@ export const firebaseConfig = {
     reservesService,
     TripsService,
     environmentService,
-    ConfirmUniversityPage
-    
-
+    ConfirmUniversityPage,
+    LocationAccuracy   
   ]
 })
 export class AppModule {}

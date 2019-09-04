@@ -101,7 +101,7 @@ export class SignupPage {
               });
               alert.present(); 
         }else{
-            if(this.showReadonly == true){
+            if(this.showReadonly === true){
                 //creating user on firebase
             let userName = this.signupGroup.controls['name'].value;
             let userLastName = this.signupGroup.controls['lastname'].value;
@@ -147,7 +147,6 @@ export class SignupPage {
                             this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
                             
                             // this.sendVerificationCode(this.user.userId);
-                            this.app.getRootNav().push('LoginPage');
 
                         }else{
                             console.log('there is no user');
@@ -160,6 +159,19 @@ export class SignupPage {
                     if(user){
                         if(user.emailVerified == false){
                             user.sendEmailVerification();
+                            const alert = this.alertCtrl.create({
+                                title: 'Verificación de email',
+                                subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
+                                buttons: [
+                                    {
+                                        text: 'OK',
+                                        handler: () => {
+                                            this.app.getRootNav().push('LoginPage');
+                                        }
+                                      }
+                                ]
+                            });
+                            alert.present();
                         console.log("verification email has been sent");
                         }else{
                             console.log("verification email has not been sent or the email is already verifyied");
@@ -224,7 +236,6 @@ export class SignupPage {
                                 this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
                                 //send text message with code
                                 // this.sendVerificationCode(this.user.userId);
-                                this.app.getRootNav().push('LoginPage');
 
                             }else{
                                 console.log('there is no user');
@@ -237,6 +248,19 @@ export class SignupPage {
                         if(user){
                             if(user.emailVerified == false){
                                 user.sendEmailVerification();
+                                const alert = this.alertCtrl.create({
+                                    title: 'Verificación de email',
+                                    subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
+                                    buttons: [
+                                        {
+                                            text: 'OK',
+                                            handler: () => {
+                                                this.app.getRootNav().push('LoginPage');
+                                            }
+                                          }
+                                    ]
+                                });
+                                alert.present();
                             console.log("verification email has been sent");
                             }else{
                                 console.log("verification email has not been sent or the email is already verifyied");

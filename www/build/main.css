@@ -27238,6 +27238,224 @@ page-confirmtrip .hot {
   color: #F3705A;
 }
 
+.ios page-findride .search {
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.ios page-findride .search .card-content {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 5px 15px;
+}
+
+.ios page-findride .search .card-content .searchbar-search-icon {
+  display: none;
+}
+
+.ios page-findride .search .card-content .searchbar-input {
+  padding: 17px  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 1.25rem;
+}
+
+.ios page-findride .search .card-content .searchbar {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.ios page-findride .search .card-content .dot {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -10px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+.ios page-findride .search .card-content .dot.icons {
+  border-radius: 0;
+}
+
+.ios page-findride .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+.ios page-findride .search .item-ios {
+  font-size: 1.25rem;
+}
+
+.ios page-findride .search span.search-text {
+  width: 140px;
+  font-size: 1.3rem;
+  text-align: right;
+}
+
+.ios page-findride .scroll {
+  height: 100%;
+}
+
+.ios page-findride #map {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+}
+
+.ios page-findride .findRideText {
+  text-align: center;
+}
+
+.ios page-findride .alert {
+  font-weight: bold;
+}
+
+.ios page-findride .btn-left {
+  margin-right: 5px;
+  width: 49%;
+}
+
+.ios page-findride .btn-right {
+  width: 49%;
+}
+
+.ios page-findride .rowOfButtons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.md page-findride .search {
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.md page-findride .search .card-content {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px 15px;
+}
+
+.md page-findride .search .card-content .searchbar-search-icon {
+  display: none;
+}
+
+.md page-findride .search .card-content .searchbar-input {
+  padding: 17px  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 1.25rem;
+}
+
+.md page-findride .search .card-content .searchbar {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.md page-findride .search .card-content .dot {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -20px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+.md page-findride .search .card-content .dot.icons {
+  border-radius: 0;
+}
+
+.md page-findride .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+.md page-findride .search .item-ios {
+  font-size: 1.25rem;
+}
+
+.md page-findride .search span.search-text {
+  width: 140px;
+  font-size: 1.3rem;
+  text-align: right;
+}
+
+.md page-findride .scroll {
+  height: 100%;
+}
+
+.md page-findride #map {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+}
+
+.md page-findride .findRideText {
+  text-align: center;
+}
+
+.md page-findride .alert {
+  font-weight: bold;
+}
+
+.md page-findride .btn-left {
+  margin-right: 5px;
+  width: 49%;
+}
+
+.md page-findride .btn-right {
+  width: 49%;
+}
+
+.md page-findride .rowOfButtons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
 page-findride .search {
   border-radius: 10px;
   margin: 10px 0;
@@ -27249,7 +27467,14 @@ page-findride .search .card-content {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+page-findride .search .card-content .ios {
   padding: 5px 15px;
+}
+
+page-findride .search .card-content .md {
+  padding: 0px 15px;
 }
 
 page-findride .search .card-content .searchbar-search-icon {
@@ -27269,7 +27494,7 @@ page-findride .search .card-content .searchbar {
   border: none !important;
 }
 
-page-findride .search .card-content .dot {
+page-findride .search .card-content .ios .dot {
   min-width: 10px;
   min-height: 10px;
   display: -webkit-box;
@@ -27285,7 +27510,27 @@ page-findride .search .card-content .dot {
   z-index: 1;
 }
 
-page-findride .search .card-content .dot.icons {
+page-findride .search .card-content .ios .dot.icons {
+  border-radius: 0;
+}
+
+page-findride .search .card-content .dot-md {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -20px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+page-findride .search .card-content .dot-md.icons {
   border-radius: 0;
 }
 
@@ -27322,6 +27567,19 @@ page-findride .findRideText {
   text-align: center;
 }
 
+page-findride .alert {
+  font-weight: bold;
+}
+
+page-findride .btn-left {
+  margin-right: 5px;
+  width: 49%;
+}
+
+page-findride .btn-right {
+  width: 49%;
+}
+
 page-findride .rowOfButtons {
   display: -webkit-box;
   display: -webkit-flex;
@@ -27332,15 +27590,6 @@ page-findride .rowOfButtons {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-}
-
-page-findride .btn-left {
-  margin-right: 5px;
-  width: 49%;
-}
-
-page-findride .btn-right {
-  width: 49%;
 }
 
 page-help p {
@@ -27741,7 +27990,7 @@ page-myride .card ion-item .name h2 ion-icon {
 
 page-myride .card ion-item .more {
   position: relative;
-  right: 34px;
+  right: 50px;
   width: 65px;
   display: inline-block;
 }

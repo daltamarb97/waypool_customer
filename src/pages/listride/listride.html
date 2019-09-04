@@ -10,7 +10,6 @@
     <ion-row class="center-align bg-white flow-ride">
         <ion-col *ngFor = "let originUser of locationOriginUser"  class="hideLongText" col-5>
             <h2>Origen</h2> {{originUser}}
-
         </ion-col>
         <ion-col col-2 text-center>
             <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">
@@ -18,12 +17,13 @@
         <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>
             <h2>Destino</h2> {{destinationUser}}
         </ion-col>
-
     </ion-row>
     <div class="iconHelp">
         <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>
 
     </div>
+    <img *ngIf="noReserve" src="assets/imgs/noreserveavailable.png">
+
     <ion-card *ngFor = "let trip of initiatedTrips">
         <ion-item>
             <ion-avatar item-start>

@@ -9,6 +9,8 @@ import { sendUsersService } from '../../services/sendUsers.service';
 
 import { noteService } from '../../services/note.service';
 import { geofireService } from '../../services/geoFire.service';
+import * as moment from 'moment';
+import { MetricsService } from '../../services/metrics.service';
 
 @IonicPage()
 @Component({
@@ -22,15 +24,23 @@ export class ConfirmNotePage {
   
   note:string;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
-
-
-  constructor(public navCtrl: NavController, public noteService:noteService, public appCtrl: App,public alertCtrl: AlertController,private afDB: AngularFireDatabase,public sendUsersService: sendUsersService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams, public geofireService: geofireService) {
+  or;
+  dest;
+  info:any;
+  constructor(public navCtrl: NavController, public MetricsService:MetricsService,public noteService:noteService, public appCtrl: App,public alertCtrl: AlertController,private afDB: AngularFireDatabase,public sendUsersService: sendUsersService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams, public geofireService: geofireService) {
+    this.or= this.navParams.get('or') 
+    this.dest= this.navParams.get('dest') 
 
      
   }
 
   
     setNoteDriver(){
+      moment.locale('es'); //to make the date be in spanish  
+      let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
+      console.log(today)
+    
+      this.MetricsService.createdReserves(this.SignUpService.userUniversity,this.userUid,today,this.dest,this.or);
       if(this.note == null || this.note == ''){
         this.note = 'No hay nota'
         this.noteService.setNote(this.userUid, this.note, this.SignUpService.userUniversity)
@@ -52,6 +62,6 @@ export class ConfirmNotePage {
 
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
-    
   }  
 }
+

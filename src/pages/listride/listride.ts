@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, ToastController, IonicPage, App } from 'ionic-angular';
+import { NavController, ModalController, ToastController, IonicPage, App, LoadingController } from 'ionic-angular';
 
 import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { sendCoordsService } from '../../services/sendCoords.service';
@@ -28,8 +28,9 @@ export class ListridePage {
   tripsReserved:any =[];
   reserveLMU:any;
   unsubscribe = new Subject;
-pendingUsers:any = [];
-  constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
+  pendingUsers:any = [];
+  noReserve:boolean = false;
+  constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
     this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user = user;   
@@ -62,8 +63,11 @@ pendingUsers:any = [];
         this.reservesAvailable = [];
         this.ReservesGeofire = reserves;
         console.log(this.ReservesGeofire);
+        this.presentLoadingCustom(this.ReservesGeofire);   
+
         this.getMyReserves();
         this.getAvailableReserves();
+   
       });
      
   
@@ -86,9 +90,9 @@ getMyReserves(){
     
 
     this.tripsReserved = tripsReserved
-    
+
     console.log(this.tripsReserved);
-   
+  
   }) 
 }
   getAvailableReserves(){
@@ -102,10 +106,12 @@ getMyReserves(){
             this.reserve = info;
                 
             console.log(info);
+
             if(this.reserve=== undefined || this.reserve === null){
               // reserve doesn't exist
               console.log("hello"); 
            }else{
+
             this.reservesAvailable.push(this.reserve);
            } 
 
@@ -216,7 +222,33 @@ modal.present();
     this.unsubscribe.next();
     this.unsubscribe.complete();
   }             
+  presentLoadingCustom(array) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: `
+        <div class="custom-spinner-container">
+          <div class="custom-spinner-box"></div>
+        </div>`,
+      duration: 1000
+    });
+  
+    loading.onDidDismiss(() => {
+       console.log(array)
+      if(array.length === 0){
+        //there are no reserves to show
+        this.noReserve = true;
 
+      }else{
+        //there are reserves
+          this.noReserve = false;
+  
+      }
+
+    });
+  
+    loading.present();
+  }
+  
   help(){
     const toast = this.toastCtrl.create({
       message: 'Estos son los conductores que se van a tu misma zona. Podrás ver sus horas en las que se van y unirte en su viaje',

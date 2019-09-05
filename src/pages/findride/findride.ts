@@ -131,7 +131,7 @@ export class FindridePage {
           console.log("llegue adonde era")
         }else{
           //confirm that trip exist and get it
-          this.getTrip();
+          this.getOnTrip();
         }
        
       })
@@ -140,6 +140,36 @@ export class FindridePage {
             this.user = user;
             //  this.keyTrip = this.user.keyTrip
             console.log(this.user)
+            if(this.user.saveTrip === undefined || this.user.saveTrip === null){
+              console.log("AAAAAAAAAAAAAAAAAAAAA")
+                }else{
+              console.log(this.user.trip)
+              
+                  console.log("me active")
+                  this.TripsService.eliminatingSaveTrip(this.SignUpService.userUniversity,this.userUid);
+
+                  this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
+               
+                  this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
+              
+                  this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+                  this.TripsService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,this.user.trip.keyTrip);
+
+                  this.unsubscribe.next();
+                  this.unsubscribe.complete();
+                  setTimeout(() => {
+                    
+                    this.TripsService.saveTripOnRecords(this.SignUpService.userUniversity, this.userUid,this.user.trip);     
+
+                  this.navCtrl.push('RatetripPage',{trip:this.user.trip})
+                  this.TripsService.eliminateTrip(this.SignUpService.userUniversity, this.userUid);     
+
+                  console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+                  }, 3000);
+
+                }
+
+              
           })
           // set geofire key of university to avoid asking users to put where they are going
           this.geofireService.getLocationUniversity(this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(university=>{
@@ -186,7 +216,7 @@ export class FindridePage {
               console.log("llegue adonde era")
             }else{
               //confirm that trip exist and get it
-              this.getTrip();
+              this.getOnTrip();
             }
            
           })
@@ -195,6 +225,7 @@ export class FindridePage {
                 this.user = user;
                 //  this.keyTrip = this.user.keyTrip
                 console.log(this.user)
+          
               })
               // set geofire key of university to avoid asking users to put where they are going
               this.geofireService.getLocationUniversity(this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(university=>{
@@ -230,27 +261,11 @@ export class FindridePage {
   } // END OF CONSTRUCTOR
 
 
-  getTrip(){
 
-    this.afDB.database.ref(this.SignUpService.userUniversity + '/trips/'+ this.keyTrip.driverId +'/'+ this.keyTrip.keyTrip)
-    .once('value').then((snapshot) => {
-      let trip = snapshot.val();
-      console.log(trip);
-
-      if(trip === null || trip === undefined){
-        console.log("borre");
-        this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-        this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-      }else{
-        this.getOnTrip();
-      }
-    })
-     
-  } 
 
 
   getOnTrip(){
-    this.TripsService.getOnTrip(this.SignUpService.userUniversity, this.userUid)
+    this.TripsService.getOnTrip(this.SignUpService.userUniversity, this.userUid) 
     .subscribe(onTrip=>{
       this.onTrip =onTrip;
       if(this.onTrip === true){
@@ -258,7 +273,6 @@ export class FindridePage {
               this.geofireService.cancelGeofireOr();
               this.geofireService.cancelGeofireDestLMU();
               this.geofireService.cancelGeofireOrLMU();
-
       }
       console.log(this.onTrip);
       console.log('ONTRIP')

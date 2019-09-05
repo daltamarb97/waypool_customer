@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, AlertController, ToastController, IonicPage, App } from 'ionic-angular';
+import { NavController, ModalController, AlertController, ToastController, IonicPage, App, LoadingController } from 'ionic-angular';
 
 // import { RiderprofilePage } from '../riderprofile/riderprofile';
 // import { Observable } from 'rxjs';
@@ -43,8 +43,8 @@ export class ReservetripPage{
   onTrip:any;
   unsubscribe = new Subject;
   pendingUser:any;
-  
-  constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
+  noReserve:boolean;
+  constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService,public loadingCtrl: LoadingController, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
     this.reservesService.getOnTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( onTrip => {
        this.onTrip = onTrip;   
@@ -75,6 +75,14 @@ export class ReservetripPage{
       console.log(this.myReservesId);
       this.myReserves = [];
       this.getReserves();
+      if(this.myReservesId.length === 0){
+        //there are no reserves to show
+        this.presentLoadingCustom();   
+      }else{
+        //there are reserves
+          this.noReserve = false;
+  
+      }
     }) 
     
   }
@@ -128,12 +136,19 @@ export class ReservetripPage{
                           //  do nothing because the user is in the trip
                           console.log("in a trip")
                         }else{
-                        //  eliminate key because the driver has eliminated the user
-                        console.log("me borre");
-                        this.unSubscribeServices();
-                        console.log('fue aqui');
-                        this.eliminateReserve(this.userUid, reserve.keyReserve);
-                        // this.myReserves=[];
+                          if(this.onTrip === false){
+                            this.unSubscribeServices();
+                            this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,reserve.keyReserve);
+
+                          }else{
+                             //  eliminate key because the driver has eliminated the user
+                             console.log("me borre");
+                             this.unSubscribeServices();
+                             console.log('fue aqui');
+                             this.eliminateReserve(this.userUid, reserve.keyReserve);
+                             // this.myReserves=[];
+                          }
+                 
                         }
                             
                       }else{
@@ -184,7 +199,23 @@ help() {
     });
     toast.present();
 }
+presentLoadingCustom() {
+  let loading = this.loadingCtrl.create({
+    spinner: 'crescent',
+    content: `
+      <div class="custom-spinner-container">
+        <div class="custom-spinner-box"></div>
+      </div>`,
+    duration: 250
+  });
 
+  loading.onDidDismiss(() => {
+    this.noReserve = true;
+
+  });
+
+  loading.present();
+}
 
 ionViewDidLeave(){
   this.unsubscribe.next();

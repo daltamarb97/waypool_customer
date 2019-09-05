@@ -1,6 +1,6 @@
 webpackJsonp([15],{
 
-/***/ 637:
+/***/ 650:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListridePageModule", function() { return ListridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listride__ = __webpack_require__(662);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listride__ = __webpack_require__(675);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ListridePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 662:
+/***/ 675:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78,11 +78,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ListridePage = /** @class */ (function () {
-    function ListridePage(navCtrl, app, TripsService, toastCtrl, reservesService, AngularFireAuth, afDB, SignUpService, sendCoordsService, modalCtrl, geoFireService) {
+    function ListridePage(navCtrl, app, TripsService, loadingCtrl, toastCtrl, reservesService, AngularFireAuth, afDB, SignUpService, sendCoordsService, modalCtrl, geoFireService) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.app = app;
         this.TripsService = TripsService;
+        this.loadingCtrl = loadingCtrl;
         this.toastCtrl = toastCtrl;
         this.reservesService = reservesService;
         this.AngularFireAuth = AngularFireAuth;
@@ -100,6 +101,7 @@ var ListridePage = /** @class */ (function () {
         this.tripsReserved = [];
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
         this.pendingUsers = [];
+        this.noReserve = false;
         console.log("AQUI EMPIEZA");
         this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(function (user) {
             _this.user = user;
@@ -126,6 +128,7 @@ var ListridePage = /** @class */ (function () {
             _this.reservesAvailable = [];
             _this.ReservesGeofire = reserves;
             console.log(_this.ReservesGeofire);
+            _this.presentLoadingCustom(_this.ReservesGeofire);
             _this.getMyReserves();
             _this.getAvailableReserves();
         });
@@ -247,6 +250,26 @@ var ListridePage = /** @class */ (function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     };
+    ListridePage.prototype.presentLoadingCustom = function (array) {
+        var _this = this;
+        var loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: "\n        <div class=\"custom-spinner-container\">\n          <div class=\"custom-spinner-box\"></div>\n        </div>",
+            duration: 1000
+        });
+        loading.onDidDismiss(function () {
+            console.log(array);
+            if (array.length === 0) {
+                //there are no reserves to show
+                _this.noReserve = true;
+            }
+            else {
+                //there are reserves
+                _this.noReserve = false;
+            }
+        });
+        loading.present();
+    };
     ListridePage.prototype.help = function () {
         var toast = this.toastCtrl.create({
             message: 'Estos son los conductores que se van a tu misma zona. Podrás ver sus horas en las que se van y unirte en su viaje',
@@ -258,9 +281,9 @@ var ListridePage = /** @class */ (function () {
     };
     ListridePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-listride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/listride/listride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar >\n\n        <ion-title class="Title">ESCOGE TU COMPAÑERO\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light" class="hideLongText">\n    <ion-row class="center-align bg-white flow-ride">\n        <ion-col *ngFor = "let originUser of locationOriginUser"  class="hideLongText" col-5>\n            <h2>Origen</h2> {{originUser}}\n\n        </ion-col>\n        <ion-col col-2 text-center>\n            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">\n        </ion-col>\n        <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>\n            <h2>Destino</h2> {{destinationUser}}\n        </ion-col>\n\n    </ion-row>\n    <div class="iconHelp">\n        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>\n\n    </div>\n    <ion-card *ngFor = "let trip of initiatedTrips">\n        <ion-item>\n            <ion-avatar item-start>\n                <img class="animated infinite pulse" src="assets/imgs/flame.png">\n            </ion-avatar>\n           \n            <div class="name">\n               \n                <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase | slice:0:1}}\n                    <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                </h2>\n                <p>{{trip.car}}</p>\n            </div>\n            <div class="more">\n                <h2 class="text text-hot">                        \n                 $ {{trip.price}}                          \n                </h2>\n               \n            </div>\n        </ion-item>\n        <ion-card-content >\n            <div  class="ride-detail">\n                <p>\n                    <span class="icon-location bg-theme"></span>{{trip.origin}}</p>\n                <p>\n                    <span class="icon-location bg-yellow"></span>{{trip.destination}}</p>\n            </div>\n            <ion-row class="center-align">  \n                <ion-col center text-center col-6 text-right style="margin-left: auto;">\n                        <h2 class="text text-hot animated infinite pulse">                        \n                                Viaje en curso                         \n                             </h2>  \n                                       \n                </ion-col>                \n                \n                <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                    <button class="btn bg-hot rounded full text-white" (click)="enterTrip(trip)">Unirme</button>\n                        </ion-col>\n            </ion-row>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor = "let reserve of reservesAvailable">\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n           \n            <div class="name">\n                \n                <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase | slice:0:1}} \n                    <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                </h2>\n                <p>{{reserve.car}}</p>\n            </div>\n            <div class="more">\n                <h2 class="text text-theme">                        \n                    $ {{reserve.price}}                          \n                </h2>\n               \n            </div>\n        </ion-item>\n        <ion-card-content >\n            <div  class="ride-detail">\n                <p>\n                    <span class="icon-location bg-theme"></span>{{reserve.origin}}</p>\n                <p>\n                    <span class="icon-location bg-yellow"></span>{{reserve.destination}}</p>\n            </div>\n            <ion-row class="center-align">  \n                    \n                    <h2 class="text text-theme">                        \n                        Hora de partida: {{reserve.startHour}}                          \n                    </h2>                    \n                              \n                \n                <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                    <button class="btn bg-theme rounded full text-white" (click)="confirmpopup(reserve)">Unirme</button>\n                        </ion-col>\n            </ion-row>\n        </ion-card-content>\n    </ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/listride/listride.html"*/
+            selector: 'page-listride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/listride/listride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar >\n\n        <ion-title class="Title">ESCOGE TU COMPAÑERO\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light" class="hideLongText">\n    <ion-row class="center-align bg-white flow-ride">\n        <ion-col *ngFor = "let originUser of locationOriginUser"  class="hideLongText" col-5>\n            <h2>Origen</h2> {{originUser}}\n        </ion-col>\n        <ion-col col-2 text-center>\n            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">\n        </ion-col>\n        <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>\n            <h2>Destino</h2> {{destinationUser}}\n        </ion-col>\n    </ion-row>\n    <div class="iconHelp">\n        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>\n\n    </div>\n    \n    <div [ngSwitch]="noReserve">\n        <img *ngSwitchCase=true src="assets/imgs/noreserveavailable.png">\n\n\n\n\n\n        <ng-container *ngSwitchCase=false>\n            <ion-card *ngFor = "let trip of initiatedTrips">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img class="animated infinite pulse" src="assets/imgs/flame.png">\n                    </ion-avatar>\n                   \n                    <div class="name">\n                       \n                        <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase | slice:0:1}}\n                            <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                        </h2>\n                        <p>{{trip.car}}</p>\n                    </div>\n                    <div class="more">\n                        <h2 class="text text-hot">                        \n                         $ {{trip.price}}                          \n                        </h2>\n                       \n                    </div>\n                </ion-item>\n                <ion-card-content >\n                    <div  class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{trip.origin}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{trip.destination}}</p>\n                    </div>\n                    <ion-row class="center-align">  \n                        <ion-col center text-center col-6 text-right style="margin-left: auto;">\n                                <h2 class="text text-hot animated infinite pulse">                        \n                                        Viaje en curso                         \n                                     </h2>  \n                                               \n                        </ion-col>                \n                        \n                        <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                            <button class="btn bg-hot rounded full text-white" (click)="enterTrip(trip)">Unirme</button>\n                                </ion-col>\n                    </ion-row>\n                </ion-card-content>\n            </ion-card>\n            <ion-card *ngFor = "let reserve of reservesAvailable">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                   \n                    <div class="name">\n                        \n                        <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase | slice:0:1}} \n                            <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                        </h2>\n                        <p>{{reserve.car}}</p>\n                    </div>\n                    <div class="more">\n                        <h2 class="text text-theme">                        \n                            $ {{reserve.price}}                          \n                        </h2>\n                       \n                    </div>\n                </ion-item>\n                <ion-card-content >\n                    <div  class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{reserve.origin}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{reserve.destination}}</p>\n                    </div>\n                    <ion-row class="center-align">  \n                            \n                            <h2 class="text text-theme">                        \n                                Hora de partida: {{reserve.startHour}}                          \n                            </h2>                    \n                                      \n                        \n                        <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                            <button class="btn bg-theme rounded full text-white" (click)="confirmpopup(reserve)">Unirme</button>\n                                </ion-col>\n                    </ion-row>\n                </ion-card-content>\n            </ion-card>\n        </ng-container>\n\n       \n\n\n\n\n    </div>\n    \n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/listride/listride.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_8__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_8__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */]])
     ], ListridePage);
     return ListridePage;
 }());

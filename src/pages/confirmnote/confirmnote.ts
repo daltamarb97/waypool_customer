@@ -52,5 +52,6 @@ export class ConfirmNotePage {
 
   dismiss() {
     this.viewCtrl.dismiss(this.accepted);
+    
   }  
 }

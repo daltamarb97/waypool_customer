@@ -121,6 +121,8 @@ cancelUser:any;
           }, 2000);
           this.navCtrl.setRoot('TabsPage');
           this.navCtrl.push('RatetripPage',{trip:this.trip})
+          this.TripsService.eliminateTrip(this.SignUpService.userUniversity, this.userUid);     
+
           console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
         
         }

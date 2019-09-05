@@ -147,7 +147,7 @@ var FindridePage = /** @class */ (function () {
                         }
                         else {
                             //confirm that trip exist and get it
-                            _this.getTrip();
+                            _this.getOnTrip();
                         }
                     });
                     console.log(_this.SignUpService.userUniversity);
@@ -155,6 +155,26 @@ var FindridePage = /** @class */ (function () {
                         _this.user = user;
                         //  this.keyTrip = this.user.keyTrip
                         console.log(_this.user);
+                        if (_this.user.saveTrip === undefined || _this.user.saveTrip === null) {
+                            console.log("AAAAAAAAAAAAAAAAAAAAA");
+                        }
+                        else {
+                            console.log(_this.user.trip);
+                            console.log("me active");
+                            _this.TripsService.eliminatingSaveTrip(_this.SignUpService.userUniversity, _this.userUid);
+                            _this.TripsService.eliminatingOnTrip(_this.SignUpService.userUniversity, _this.userUid);
+                            _this.TripsService.eliminateKeyTrip(_this.SignUpService.userUniversity, _this.userUid);
+                            _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userUniversity, _this.userUid);
+                            _this.TripsService.eliminateKeyUser(_this.SignUpService.userUniversity, _this.userUid, _this.user.trip.keyTrip);
+                            _this.unsubscribe.next();
+                            _this.unsubscribe.complete();
+                            setTimeout(function () {
+                                _this.TripsService.saveTripOnRecords(_this.SignUpService.userUniversity, _this.userUid, _this.user.trip);
+                                _this.navCtrl.push('RatetripPage', { trip: _this.user.trip });
+                                _this.TripsService.eliminateTrip(_this.SignUpService.userUniversity, _this.userUid);
+                                console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                            }, 3000);
+                        }
                     });
                     // set geofire key of university to avoid asking users to put where they are going
                     _this.geofireService.getLocationUniversity(_this.SignUpService.userUniversity).takeUntil(_this.unsubscribe).subscribe(function (university) {
@@ -203,7 +223,7 @@ var FindridePage = /** @class */ (function () {
                 }
                 else {
                     //confirm that trip exist and get it
-                    _this.getTrip();
+                    _this.getOnTrip();
                 }
             });
             console.log(this.SignUpService.userUniversity);
@@ -242,22 +262,6 @@ var FindridePage = /** @class */ (function () {
             });
         }
     } // END OF CONSTRUCTOR
-    FindridePage.prototype.getTrip = function () {
-        var _this = this;
-        this.afDB.database.ref(this.SignUpService.userUniversity + '/trips/' + this.keyTrip.driverId + '/' + this.keyTrip.keyTrip)
-            .once('value').then(function (snapshot) {
-            var trip = snapshot.val();
-            console.log(trip);
-            if (trip === null || trip === undefined) {
-                console.log("borre");
-                _this.TripsService.eliminateKeyTrip(_this.SignUpService.userUniversity, _this.userUid);
-                _this.TripsService.eliminatingOnTrip(_this.SignUpService.userUniversity, _this.userUid);
-            }
-            else {
-                _this.getOnTrip();
-            }
-        });
-    };
     FindridePage.prototype.getOnTrip = function () {
         var _this = this;
         this.TripsService.getOnTrip(this.SignUpService.userUniversity, this.userUid)
@@ -725,7 +729,7 @@ var FindridePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-findride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/findride/findride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title><span class="text-white findRideText">PIDE TU VIAJE</span></ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content  padding>\n    \n    <ion-card class="search">\n          \n        <ion-card-content>\n            <span class="dot bg-theme"></span>\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n          \n            <ion-list   [hidden]="autocompleteItems.length == 0">\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n                  {{ item.description }}\n                </ion-item>\n              </ion-list>\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n        </ion-card-content>\n        <ion-card-content>\n            <span class="dot bg-yellow"></span>           \n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n              {{ item.description }}\n            </ion-item>\n          </ion-list>\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n        </ion-card-content>\n        \n    </ion-card>\n  \n <div #map id="map"></div>  \n    \n    \n<ion-row class="rowOfButtons">\n\n  <div class="btn-footer btn-left">\n      <button class="btn rounded bg-darkblue text-white myReservesButton" style="width: 100%" (click)="goToMyReserves()" >Mis Reservas</button> \n  </div>\n  <div class="btn-right">\n      <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%">Pedir</button>\n\n  </div>\n \n</ion-row>\n \n<div *ngIf="onTrip" >\n    <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;\n     position: fixed ;\n     bottom: 0px ;\n     left: 0px ;\n     height: 51px; \n     font-size: large;\n   " (click)="goToTrip() " >VIAJE EN CURSO\n    </button>\n</div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypoolapp_UNOFICIAL/waypool_costumer/src/pages/findride/findride.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_location_accuracy__["a" /* LocationAccuracy */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_location_accuracy__["a" /* LocationAccuracy */]])
     ], FindridePage);
     return FindridePage;
 }());

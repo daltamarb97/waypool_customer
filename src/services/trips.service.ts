@@ -88,6 +88,15 @@ export class TripsService {
       this.afDB.database.ref(university + '/users/'+userUid+'/recordTrips/'+trip.keyTrip).update(trip);
  
      }
+     public eliminateTrip(university, userUid){
+      //save trip in recordTrips
+      
+    this.afDB.database.ref(university + '/users/'+userUid+'/trip/').remove();
+
+   }
+
+
+
      joinTrip(university, keyTrip,driverId, userId, origin, destination, name, lastname, phone, note, verifiedPerson){
         this.afDB.database.ref(university + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).update({
              origin: origin,

@@ -13,6 +13,7 @@ import { environmentService } from '../../services/environment.service';
 import { Subject } from 'rxjs';
 import { reservesService } from '../../services/reserves.service';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { MetricsService } from '../../services/metrics.service';
 
 
 @IonicPage()
@@ -47,7 +48,7 @@ onTrip: boolean = false;
 onTripInstance:any;
 unsubscribe = new Subject;
 cancelUser:any;
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private reservesService: reservesService, private afDB: AngularFireDatabase) {
+  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public MetricsService:MetricsService,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private reservesService: reservesService, private afDB: AngularFireDatabase) {
 
     this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe(  keys => {      
@@ -291,12 +292,14 @@ this.callNumber.callNumber(number, true)
             text: 'Si',
             handler: () => {
               if(this.pickedUpUsers.length === 0 || this.pickedUpUsers === undefined || this.pickedUpUsers === null) {
-                this.unSubscribeServices();          
+                this.unSubscribeServices(); 
+                this.MetricsService.cancelReserves(this.SignUpService.userUniversity,this.userUid,this.trip);
                 this.TripsService.cancelTrip(this.SignUpService.userUniversity, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
                 this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
                 this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid); 
                 this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);              
                 this.navCtrl.pop();
+
               }
 
               this.reservesService.confirmMyExistenceInPickedupUsers(this.SignUpService.userUniversity, this.trip.driver.userId, this.trip.keyTrip, this.userUid).takeUntil(this.unsubscribe)
@@ -306,13 +309,13 @@ this.callNumber.callNumber(number, true)
                       console.log(pickedUp);
 
                       if(this.pickedUp === undefined || this.pickedUp === null ){
-
+                        this.MetricsService.cancelReserves(this.SignUpService.userUniversity,this.userUid,this.trip);
                         this.TripsService.cancelTrip(this.SignUpService.userUniversity, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
                         this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
                         this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
                         console.log(this.trip.keyTrip);
                         this.navCtrl.pop();
-                            
+
                       }else{
                         //don't cancel
                           const toast = this.toastCtrl.create({

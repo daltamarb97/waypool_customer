@@ -36,6 +36,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { environmentService } from '../services/environment.service';
 import { ConfirmUniversityPage } from '../pages/confirm-university/confirm-university';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
+import { MetricsService } from '../services/metrics.service';
 
 
 export const firebaseConfig = {
@@ -89,7 +90,8 @@ export const firebaseConfig = {
     TripsService,
     environmentService,
     ConfirmUniversityPage,
-    LocationAccuracy   
+    LocationAccuracy,
+    MetricsService
   ]
 })
 export class AppModule {}

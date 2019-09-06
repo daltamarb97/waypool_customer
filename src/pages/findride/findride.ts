@@ -1,24 +1,16 @@
 import { Component, ViewChild, ElementRef,NgZone } from '@angular/core';
-
-import { ListridePage } from '../listride/listride';
-
-
 import { Geolocation } from '@ionic-native/geolocation';
 import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage, App, ToastController } from 'ionic-angular';
 import { sendCoordsService } from '../../services/sendCoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { ConfirmNotePage } from '../confirmnote/confirmnote';
 import { geofireService } from '../../services/geoFire.service';
 import { SignUpService } from '../../services/signup.services';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as GeoFire from 'geofire';
-import { identifierModuleUrl } from '@angular/compiler';
-import { environmentService } from '../../services/environment.service';
 import { TripsService } from '../../services/trips.service';
 import { Subject } from 'rxjs';
 import { instancesService } from '../../services/instances.service';
-import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 
  
@@ -64,7 +56,6 @@ export class FindridePage {
   markerDest:any;
   markerGeolocation:any;
   //para acceder al uid en firebase
-  userInfoForOntrip:any;
   //geofire
   geofire1;
   geofire2;
@@ -92,7 +83,7 @@ export class FindridePage {
 
 
   driverOnNodeOr:any;
- constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private locationAccuracy: LocationAccuracy ) {
+ constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -179,27 +170,31 @@ export class FindridePage {
             })
   
         }
-  
-        this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(uni => {
-          this.universityInfo = uni;
-          
-          if(this.universityInfo.email == undefined){
-            if(this.userInfoForOntrip.documents){
-              if(this.userInfoForOntrip.documents.carne === undefined || this.userInfoForOntrip.documents.id === undefined){
+
+        setTimeout(() => {
+          this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(uni => {
+            this.universityInfo = uni;
+            
+            if(this.universityInfo.email === undefined){
+              if(this.user.documents){
+                if(this.user.documents.carne === undefined || this.user.documents.id === undefined){
+                  let modal = this.modalCtrl.create('VerificationImagesPage');
+                  modal.present();
+                }else if(this.user.documents.carne === true || this.user.documents.id === true){
+                  this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
+                }
+              }else if(!this.user.documents) {
+                console.log('no hay docs')
                 let modal = this.modalCtrl.create('VerificationImagesPage');
                 modal.present();
-              }else if(this.userInfoForOntrip.documents.carne === true || this.userInfoForOntrip.documents.id === true){
-                this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
-              }
-            }else if(!this.universityInfo.documents) {
-              console.log('no hay docs')
-              let modal = this.modalCtrl.create('VerificationImagesPage');
-                modal.present();
-            } 
-          }else{
-            this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
-          }
-        })
+              } 
+            }else{
+              this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
+            }
+          })
+        }, 1000);
+  
+        
       })
       modal.present();
     }else{
@@ -237,18 +232,18 @@ export class FindridePage {
                 this.SignUpService.getInfoUniversity(this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(uni => {
                   this.universityInfo = uni;
                   
-                  if(this.universityInfo.email == undefined){
-                    if(this.userInfoForOntrip.documents){
-                      if(this.userInfoForOntrip.documents.carne === undefined || this.userInfoForOntrip.documents.id === undefined){
+                  if(this.universityInfo.email === undefined){
+                    if(this.user.documents){
+                      if(this.user.documents.carne === undefined || this.user.documents.id === undefined){
                         let modal = this.modalCtrl.create('VerificationImagesPage');
                         modal.present();
-                      }else if(this.userInfoForOntrip.documents.carne === true || this.userInfoForOntrip.documents.id === true){
+                      }else if(this.user.documents.carne === true || this.user.documents.id === true){
                         this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
                       }
-                    }else if(!this.universityInfo.documents) {
+                    }else if(!this.user.documents) {
                       console.log('no hay docs')
                       let modal = this.modalCtrl.create('VerificationImagesPage');
-                        modal.present();
+                      modal.present();
                     } 
                   }else{
                     this.instanceService.isVerified(this.SignUpService.userUniversity, this.userUid);
@@ -765,16 +760,18 @@ geocodeLatLng(latLng,inputName) {
            
       } 
     
-  
-    confirmNote(){
-      let modal = this.modalCtrl.create('ConfirmNotePage');
-      modal.onDidDismiss(accepted => {
-        if(accepted){
-          this.app.getRootNav().push('ListridePage');
-        }
-      })
-   modal.present();
-  }  
+
+
+  confirmNote(){
+    let modal = this.modalCtrl.create('ConfirmNotePage',{or: this.orFirebase,dest:this.desFirebase});
+    modal.onDidDismiss(accepted => {
+      if(accepted){
+        this.app.getRootNav().push('ListridePage');
+      }
+    })
+ modal.present();
+}
+
 
         // set geoquery that determines if the person is in university
     setGeofireUniversity(university, radius:number, lat, lng, userId):void{ 

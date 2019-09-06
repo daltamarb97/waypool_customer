@@ -37,6 +37,7 @@ import { environmentService } from '../services/environment.service';
 import { ConfirmUniversityPage } from '../pages/confirm-university/confirm-university';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { MetricsService } from '../services/metrics.service';
+import { Camera } from '@ionic-native/camera/';
 
 
 export const firebaseConfig = {
@@ -91,7 +92,8 @@ export const firebaseConfig = {
     environmentService,
     ConfirmUniversityPage,
     LocationAccuracy,
-    MetricsService
+    MetricsService,
+    Camera  
   ]
 })
 export class AppModule {}

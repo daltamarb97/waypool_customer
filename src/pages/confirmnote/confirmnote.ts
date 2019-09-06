@@ -27,10 +27,10 @@ export class ConfirmNotePage {
   or;
   dest;
   info:any;
-  constructor(public navCtrl: NavController, public MetricsService:MetricsService,public noteService:noteService, public appCtrl: App,public alertCtrl: AlertController,private afDB: AngularFireDatabase,public sendUsersService: sendUsersService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams, public geofireService: geofireService) {
+  constructor(public navCtrl: NavController, private MetricsService:MetricsService,public noteService:noteService, public appCtrl: App,public alertCtrl: AlertController,private afDB: AngularFireDatabase,public sendUsersService: sendUsersService, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams, public geofireService: geofireService) {
     this.or= this.navParams.get('or') 
     this.dest= this.navParams.get('dest') 
-
+    console.log(this.dest);
      
   }
 
@@ -39,7 +39,7 @@ export class ConfirmNotePage {
       moment.locale('es'); //to make the date be in spanish  
       let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
       console.log(today)
-    
+      console.log(this.dest);
       this.MetricsService.createdReserves(this.SignUpService.userUniversity,this.userUid,today,this.dest,this.or);
       if(this.note == null || this.note == ''){
         this.note = 'No hay nota'

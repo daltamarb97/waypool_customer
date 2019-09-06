@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
-import { FindridePage } from '../findride/findride';
-import { Camera, CameraOptions, CameraOriginal } from '@ionic-native/camera';
 import { storage } from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SignUpService } from '../../services/signup.services';
-import { Subject } from 'rxjs';
+import { Camera, CameraOptions } from '@ionic-native/camera/';
 
 
 @IonicPage()
@@ -16,7 +14,6 @@ import { Subject } from 'rxjs';
 export class VerificationImagesPage {
 //everything that has number 1 refers to license and number 2 refers to Id (also in HTML)
 
-  user;
   userInfo;
   namePicture:any = "Cédula" ;
   description:any = "Sube una foto clara de tu" ;
@@ -34,8 +31,7 @@ export class VerificationImagesPage {
   showId:boolean = false;
   cameraPicCarne:boolean = false;
   cameraPicId:boolean = false;
-
-  unsubscribe = new Subject;
+  user;
 
   options:CameraOptions = {
     quality: 100,
@@ -43,24 +39,27 @@ export class VerificationImagesPage {
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private camera: CameraOriginal, public AngularFireauth: AngularFireAuth, public alertCtrl: AlertController, public SignUpService:SignUpService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public AngularFireauth: AngularFireAuth, public alertCtrl: AlertController, public SignUpService:SignUpService, private camera: Camera) {
     this.user =  this.AngularFireauth.auth.currentUser.uid;
 
-    this.SignUpService.getMyInfo(this.user, this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
-    .subscribe(user=>{
+    this.SignUpService.getMyInfo(this.user, this.SignUpService.userUniversity).subscribe(user=>{
       this.userInfo = user
       if(this.userInfo.documents){
-        if(this.userInfo.documents.license == true ){
+        if(this.userInfo.documents.carne == true ){
           this.picToViewCarne = "assets/imgs/v2.3.png";
           this.picToView =  "assets/imgs/v2.3.png";
+          this.showCarne = false;
         }else if(this.userInfo.documents.id == true ){
           this.picToViewId = "assets/imgs/_v4.3.png";
-        }else if(this.userInfo.documents.license == false){
+          this.showId = false;
+        }else if(this.userInfo.documents.carne == false){
           this.picToViewCarne = "assets/imgs/v2.2.png";
           this.picToView =  "assets/imgs/v2.2.png";
+          this.showCarne = false;
         }else if(this.userInfo.documents.id == false ){
           this.picToViewId = "assets/imgs/v4.2.png";
-        }else if(this.userInfo.documents.license == undefined ){
+          this.showId = false;
+        }else if(this.userInfo.documents.carne == undefined ){
           this.picToViewCarne = "assets/imgs/v2.png";
           this.picToView =  "assets/imgs/v2.png";
         }else if(this.userInfo.documents.id == undefined ){
@@ -87,9 +86,6 @@ export class VerificationImagesPage {
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-
-
-      // IMPORTANT: pending the University global variable in the path
       const picturesDrivers = storage().ref(this.SignUpService.userUniversity + '/verificationDocuments/' + this.user + '/' + this.data);
 
 
@@ -125,8 +121,6 @@ export class VerificationImagesPage {
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-
-            // IMPORTANT: pending the University global variable in the path
       const picturesDrivers = storage().ref(this.SignUpService.userUniversity + '/verificationDocuments/' + this.user + '/' + this.data);
 
 
@@ -162,22 +156,26 @@ export class VerificationImagesPage {
     if(this.userInfo.documents.carne == undefined){
       this.picToViewCarne = "assets/imgs/v2.png";
       this.picToView = "assets/imgs/v2.png";
+      this.showCarne = true;
     }else if (this.userInfo.documents.carne == false){
       this.picToViewCarne = "assets/imgs/v2.2.png";
       this.picToView = "assets/imgs/v2.2.png";
+      this.showCarne = false;
     }else if(this.userInfo.documents.carne == true){
       this.picToViewCarne = "assets/imgs/v2.3.png";
       this.picToView = "assets/imgs/v2.3.png";
+      this.showCarne = false;
     }else{
       this.picToViewCarne = "assets/imgs/v2.png";
       this.picToView = "assets/imgs/v2.png";
+      this.showCarne = true;
     }
   }
   
     this.namePicture = this.img1;
     this.description = this.des1;
     this.data = "carné";
-    this.showCarne = true;
+    // this.showCarne = true;
     this.showId = false;
   };
 
@@ -186,15 +184,23 @@ export class VerificationImagesPage {
     if(this.userInfo.documents.id == undefined){
       this.picToViewId = "assets/imgs/v4.png";
       this.picToView = "assets/imgs/v4.png";
+      this.showId = true;
+
     }else if(this.userInfo.documents.id == false){
       this.picToViewId = "assets/imgs/v4.2.png";
       this.picToView = "assets/imgs/v4.2.png";
+      this.showId = false;
+
     }else if(this.userInfo.documents.id == true){
       this.picToViewId = "assets/imgs/_v4.3.png";
       this.picToView = "assets/imgs/_v4.3.png";
+      this.showId = false;
+
     }else{
       this.picToViewId = "assets/imgs/v4.png";
       this.picToView = "assets/imgs/v4.png";
+      this.showId = true;
+
     }
 
   }
@@ -202,17 +208,10 @@ export class VerificationImagesPage {
     this.namePicture = this.img2;
     this.description = this.des1;
     this.data = "cédula";
-    this.showId = true;
+    // this.showId = true;
     this.showCarne = false;
  
   };
-
-
-  ionViewDidLeave(){
-    this.unsubscribe.next();
-    this.unsubscribe.complete();
-
-  }
 
 
 

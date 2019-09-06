@@ -48,7 +48,7 @@ onTrip: boolean = false;
 onTripInstance:any;
 unsubscribe = new Subject;
 cancelUser:any;
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public MetricsService:MetricsService,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private reservesService: reservesService, private afDB: AngularFireDatabase) {
+  constructor(public navCtrl: NavController,public modalCtrl: ModalController,private MetricsService:MetricsService,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private reservesService: reservesService, private afDB: AngularFireDatabase) {
 
     this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
     .subscribe(  keys => {      

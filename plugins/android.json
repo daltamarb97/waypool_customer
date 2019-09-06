@@ -22,6 +22,10 @@
     },
     "cordova-plugin-nativegeocoder": {
       "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     }
   },
   "dependent_plugins": {}

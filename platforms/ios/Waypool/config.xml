@@ -49,6 +49,9 @@
     <feature name="CDVWKWebViewEngine">
         <param name="ios-package" value="CDVWKWebViewEngine" />
     </feature>
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
     <name>Waypool</name>
     <description>carsharing app</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -83,6 +86,7 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+    <preference name="CameraUsesGeolocation" value="false" />
     <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
     <preference name="phonegap-version" value="cli-6.4.0" />
     <preference name="ScrollEnabled" value="false" />

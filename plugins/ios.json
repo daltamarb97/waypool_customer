@@ -39,6 +39,9 @@
     },
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     }
   },
   "dependent_plugins": {}

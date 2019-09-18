@@ -50,11 +50,10 @@
                                 </div>
                             </ion-col>
                             <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                   
-                                      
+                                <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            
                             </ion-col>
-                            <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                <button class="btn bg-theme rounded full text-white" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>
+                            <ion-col center text-center col-4 text-right >
+                                <button class="btn bg-theme rounded full text-white" style="margin-left: 9px;" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>
                             </ion-col>
                         </ion-row>
                     </ion-card-content>

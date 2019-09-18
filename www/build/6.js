@@ -27,7 +27,7 @@ var TabsPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]),
             ],
             exports: [
                 __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]
@@ -65,7 +65,7 @@ var TabsPage = /** @class */ (function () {
         // this.goConfirmUniversity();
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/tabs/tabs.html"*/'<ion-tabs tabsHideOnSubPages="false" [selectedIndex]="1">\n\n    <ion-tab [root]="tab3Root" tabIcon="md-card"  tabsHideOnSubPages="false"></ion-tab>\n    <ion-tab [root]="tab1Root"  tabIcon="md-car" tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab4Root" tabIcon="md-person" tabsHideOnSubPages="false"></ion-tab>\n</ion-tabs>\n '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\waypool_customer\waypool_costumer\src\pages\tabs\tabs.html"*/'<ion-tabs tabsHideOnSubPages="false" [selectedIndex]="1">\n\n\n\n    <ion-tab [root]="tab3Root" tabIcon="md-card"  tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab1Root"  tabIcon="md-car" tabsHideOnSubPages="false"></ion-tab>\n\n\n\n    <ion-tab [root]="tab4Root" tabIcon="md-person" tabsHideOnSubPages="false"></ion-tab>\n\n</ion-tabs>\n\n '/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\waypool_customer\waypool_costumer\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);

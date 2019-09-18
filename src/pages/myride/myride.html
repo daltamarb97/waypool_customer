@@ -99,8 +99,16 @@
                     </ion-row>
                 </ion-card-content>
             </ion-card>    
+            <ion-row class="rowOfButtons" >                                 
+                
+                <ion-col class="detail-text">
+                    <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>
+                </ion-col>
+                <ion-col class="detail-text">
+                    <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 9px; margin-right:9px;">Cancelar Viaje</button>
+                </ion-col>
            
-            <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 18px;">Cancelar Viaje</button>
+            </ion-row>
 
         </ion-list>
 

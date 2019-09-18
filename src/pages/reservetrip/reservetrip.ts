@@ -173,7 +173,13 @@ tripDetails(keyTrip, driverUid) {
     modal.present();
 }
 
-
+enterChat(reserve) {
+  let modal = this.modalCtrl.create('ChattingPage', {
+      reserve:reserve,
+      isTrip: false
+  })
+  modal.present();
+}
 // confirmreserve(reserveKey,driverUid){
 //      //TODAVÍA NO
 

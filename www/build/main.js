@@ -1133,7 +1133,7 @@ var MetricsService = /** @class */ (function () {
     }
     MetricsService.prototype.createdReserves = function (university, userUid, time, dest, or) {
         //send every reserve that were created
-        this.afDB.database.ref('data/timesUserGoListride/' + university + '/' + userUid + '/').push({
+        this.afDB.database.ref('data/timesUserGoListride/' + university).push({
             time: time,
             dest: dest,
             or: or
@@ -1141,7 +1141,7 @@ var MetricsService = /** @class */ (function () {
     };
     MetricsService.prototype.cancelReserves = function (university, userUid, trip) {
         //send every reserve that were created
-        this.afDB.database.ref('data/userCancelTrip/' + university + '/' + userUid + '/').push({
+        this.afDB.database.ref('data/userCancelTrip/' + university).push({
             trip: trip
         });
     };

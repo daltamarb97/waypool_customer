@@ -26140,26 +26140,33 @@ page-canceltrip .text {
   font-size: 1.5rem;
 }
 
-page-chatting .cb {
+.md page-chatting .label {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.md page-chatting .cb {
   clear: both;
 }
 
-page-chatting .toolbar-content .item {
+.md page-chatting .toolbar-content .item {
   background: transparent;
   padding: 0;
 }
 
-page-chatting .toolbar-content .item ion-label,
-page-chatting .toolbar-content .item ion-avatar {
+.md page-chatting .toolbar-content .item ion-label,
+.md page-chatting .toolbar-content .item ion-avatar {
   margin-top: 2px !important;
   margin-bottom: 2px !important;
 }
 
-page-chatting .toolbar-content .item .item-inner {
+.md page-chatting .toolbar-content .item .item-inner {
   border: none;
 }
 
-page-chatting .toolbar-content .item .item-inner h2 {
+.md page-chatting .toolbar-content .item .item-inner h2 {
   font-weight: 500;
   display: -webkit-box;
   display: -webkit-flex;
@@ -26172,39 +26179,39 @@ page-chatting .toolbar-content .item .item-inner h2 {
   align-items: center;
 }
 
-page-chatting .toolbar-content .item .item-inner h2 ion-icon {
+.md page-chatting .toolbar-content .item .item-inner h2 ion-icon {
   margin-left: auto;
 }
 
-page-chatting .chat-bg {
+.md page-chatting .chat-bg {
   background: url(../assets/imgs/chatbg.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
 }
 
-page-chatting .chat {
+.md page-chatting .chat {
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
 }
 
-page-chatting .chat p {
+.md page-chatting .chat p {
   margin-top: 0px;
   margin-bottom: 5px;
   font-weight: 500;
   font-size: 1.3rem;
 }
 
-page-chatting .chat p:last-child {
+.md page-chatting .chat p:last-child {
   margin-bottom: 0;
 }
 
-page-chatting .chat p small {
+.md page-chatting .chat p small {
   opacity: .7;
 }
 
-page-chatting .fixed-bottom {
+.md page-chatting .fixed-bottom {
   width: 100%;
   bottom: 0;
   left: 0;
@@ -26213,21 +26220,21 @@ page-chatting .fixed-bottom {
   padding-top: 2px;
 }
 
-page-chatting .fixed-bottom .list {
+.md page-chatting .fixed-bottom .list {
   padding: 0;
   border-radius: 0;
   margin: 0;
 }
 
-page-chatting .fixed-bottom .list .item {
+.md page-chatting .fixed-bottom .list .item {
   padding-left: 16px;
 }
 
-page-chatting .fixed-bottom .list .text-input {
+.md page-chatting .fixed-bottom .list .text-input {
   font-size: 1.2rem;
 }
 
-page-chatting .fixed-bottom .list .circle-icon {
+.md page-chatting .fixed-bottom .list .circle-icon {
   border: 1px solid #9E9E9E;
   color: #9E9E9E;
   border-radius: 50%;
@@ -26235,17 +26242,17 @@ page-chatting .fixed-bottom .list .circle-icon {
   height: 3rem;
 }
 
-page-chatting .fixed-bottom .list .icon {
+.md page-chatting .fixed-bottom .list .icon {
   font-size: 2rem;
   line-height: 1.4;
 }
 
-page-chatting .chat-message {
+.md page-chatting .chat-message {
   width: 80%;
   min-height: 40px;
 }
 
-page-chatting .chat-message .right-bubble {
+.md page-chatting .chat-message .right-bubble {
   position: relative;
   background: #dcf8c6;
   border-top-left-radius: .4em;
@@ -26255,7 +26262,126 @@ page-chatting .chat-message .right-bubble {
   left: 15%;
 }
 
-page-chatting .chat-message .right-bubble span.msg-date {
+.md page-chatting .chat-message .right-bubble span.msg-date {
+  font-size: 10px;
+}
+
+.ios page-chatting .cb {
+  clear: both;
+}
+
+.ios page-chatting .toolbar-content .item {
+  background: transparent;
+  padding: 0;
+}
+
+.ios page-chatting .toolbar-content .item ion-label,
+.ios page-chatting .toolbar-content .item ion-avatar {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+.ios page-chatting .toolbar-content .item .item-inner {
+  border: none;
+}
+
+.ios page-chatting .toolbar-content .item .item-inner h2 {
+  font-weight: 500;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.4rem;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.ios page-chatting .toolbar-content .item .item-inner h2 ion-icon {
+  margin-left: auto;
+}
+
+.ios page-chatting .chat-bg {
+  background: url(../assets/imgs/chatbg.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.ios page-chatting .chat {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.ios page-chatting .chat p {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+.ios page-chatting .chat p:last-child {
+  margin-bottom: 0;
+}
+
+.ios page-chatting .chat p small {
+  opacity: .7;
+}
+
+.ios page-chatting .fixed-bottom {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 56px;
+  background: #fff;
+  padding-top: 2px;
+}
+
+.ios page-chatting .fixed-bottom .list {
+  padding: 0;
+  border-radius: 0;
+  margin: 0;
+}
+
+.ios page-chatting .fixed-bottom .list .item {
+  padding-left: 16px;
+}
+
+.ios page-chatting .fixed-bottom .list .text-input {
+  font-size: 1.2rem;
+}
+
+.ios page-chatting .fixed-bottom .list .circle-icon {
+  border: 1px solid #9E9E9E;
+  color: #9E9E9E;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+
+.ios page-chatting .fixed-bottom .list .icon {
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+.ios page-chatting .chat-message {
+  width: 80%;
+  min-height: 40px;
+}
+
+.ios page-chatting .chat-message .right-bubble {
+  position: relative;
+  background: #dcf8c6;
+  border-top-left-radius: .4em;
+  border-bottom-left-radius: .4em;
+  border-bottom-right-radius: .4em;
+  padding: 5px 10px 10px;
+  left: 15%;
+}
+
+.ios page-chatting .chat-message .right-bubble span.msg-date {
   font-size: 10px;
 }
 

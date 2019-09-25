@@ -38,6 +38,7 @@ export class SignupPage {
     universities = [];
     showReadonly:boolean = true;
     onlyEmail:any;
+    noShowButton:boolean = false;
 
     unsubscribe = new Subject;
   constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private app: App) {
@@ -47,7 +48,7 @@ export class SignupPage {
         name: ["", Validators.required],
         lastname: ["", Validators.required],
         email: ["", Validators.required],
-        fixedemail: [""],
+        fixedemail: ["", Validators],
         password: ["", Validators.required],
         passwordconf: ["", Validators.required],
         phone: ["", Validators.required],

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import { storage } from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SignUpService } from '../../services/signup.services';
@@ -39,7 +39,7 @@ export class VerificationImagesPage {
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public AngularFireauth: AngularFireAuth, public alertCtrl: AlertController, public SignUpService:SignUpService, private camera: Camera) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public AngularFireauth: AngularFireAuth, public alertCtrl: AlertController, public SignUpService:SignUpService, private camera: Camera, public loadingCtrl:LoadingController) {
     this.user =  this.AngularFireauth.auth.currentUser.uid;
 
     this.SignUpService.getMyInfo(this.user, this.SignUpService.userUniversity).subscribe(user=>{
@@ -48,17 +48,13 @@ export class VerificationImagesPage {
         if(this.userInfo.documents.carne == true ){
           this.picToViewCarne = "assets/imgs/v2.3.png";
           this.picToView =  "assets/imgs/v2.3.png";
-          this.showCarne = false;
         }else if(this.userInfo.documents.id == true ){
           this.picToViewId = "assets/imgs/_v4.3.png";
-          this.showId = false;
         }else if(this.userInfo.documents.carne == false){
           this.picToViewCarne = "assets/imgs/v2.2.png";
           this.picToView =  "assets/imgs/v2.2.png";
-          this.showCarne = false;
         }else if(this.userInfo.documents.id == false ){
           this.picToViewId = "assets/imgs/v4.2.png";
-          this.showId = false;
         }else if(this.userInfo.documents.carne == undefined ){
           this.picToViewCarne = "assets/imgs/v2.png";
           this.picToView =  "assets/imgs/v2.png";
@@ -84,20 +80,42 @@ export class VerificationImagesPage {
     this.camera.getPicture(this.options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
+
+
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        content: `
+          <div class="custom-spinner-container">
+            <div class="custom-spinner-box"></div>
+          </div>`
+          });
+      loading.present();
+
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
       const picturesDrivers = storage().ref(this.SignUpService.userUniversity + '/verificationDocuments/' + this.user + '/' + this.data);
 
 
       
-      picturesDrivers.putString(base64Image, 'data_url');
-
+      picturesDrivers.putString(base64Image, 'data_url').then(()=>{
+        loading.dismiss();
+        const alert = this.alertCtrl.create({
+          title: '¡HECHO!',
+          subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
+          buttons: ['OK']
+        });
+        alert.present();
+      }).catch((error)=>{
+        loading.dismiss();
+        console.log(error);
       const alert = this.alertCtrl.create({
-        title: '¡HECHO!',
-        subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
+        title: 'hubo un error',
+        subTitle: 'intenta subir el documento otra vez',
         buttons: ['OK']
       });
       alert.present();
+      })
+
 
       this.picToViewCarne = "assets/imgs/v2.2.png";
       this.picToView = "assets/imgs/v2.2.png";
@@ -119,20 +137,42 @@ export class VerificationImagesPage {
     this.camera.getPicture(this.options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
+
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        content: `
+          <div class="custom-spinner-container">
+            <div class="custom-spinner-box"></div>
+          </div>`
+          });
+      loading.present();
+
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
       const picturesDrivers = storage().ref(this.SignUpService.userUniversity + '/verificationDocuments/' + this.user + '/' + this.data);
 
 
 
-      picturesDrivers.putString(base64Image, 'data_url');
-
+      picturesDrivers.putString(base64Image, 'data_url').then(()=>{
+        loading.dismiss();
+        const alert = this.alertCtrl.create({
+          title: '¡HECHO!',
+          subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
+          buttons: ['OK']
+        });
+        alert.present();
+      }).catch((error)=>{
+        loading.dismiss();
+        console.log(error);
       const alert = this.alertCtrl.create({
-        title: '¡HECHO!',
-        subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
+        title: 'hubo un error',
+        subTitle: 'intenta subir el documento otra vez',
         buttons: ['OK']
       });
       alert.present();
+      })
+
+      
       this.picToViewId = "assets/imgs/v4.2.png";
       this.picToView = "assets/imgs/v4.2.png";
       this.SignUpService.pushDocsId(this.SignUpService.userUniversity, this.user);
@@ -156,26 +196,22 @@ export class VerificationImagesPage {
     if(this.userInfo.documents.carne == undefined){
       this.picToViewCarne = "assets/imgs/v2.png";
       this.picToView = "assets/imgs/v2.png";
-      this.showCarne = true;
     }else if (this.userInfo.documents.carne == false){
       this.picToViewCarne = "assets/imgs/v2.2.png";
       this.picToView = "assets/imgs/v2.2.png";
-      this.showCarne = false;
     }else if(this.userInfo.documents.carne == true){
       this.picToViewCarne = "assets/imgs/v2.3.png";
       this.picToView = "assets/imgs/v2.3.png";
-      this.showCarne = false;
     }else{
       this.picToViewCarne = "assets/imgs/v2.png";
       this.picToView = "assets/imgs/v2.png";
-      this.showCarne = true;
     }
   }
   
     this.namePicture = this.img1;
     this.description = this.des1;
     this.data = "carné";
-    // this.showCarne = true;
+    this.showCarne = true;
     this.showId = false;
   };
 
@@ -184,22 +220,18 @@ export class VerificationImagesPage {
     if(this.userInfo.documents.id == undefined){
       this.picToViewId = "assets/imgs/v4.png";
       this.picToView = "assets/imgs/v4.png";
-      this.showId = true;
 
     }else if(this.userInfo.documents.id == false){
       this.picToViewId = "assets/imgs/v4.2.png";
       this.picToView = "assets/imgs/v4.2.png";
-      this.showId = false;
 
     }else if(this.userInfo.documents.id == true){
       this.picToViewId = "assets/imgs/_v4.3.png";
       this.picToView = "assets/imgs/_v4.3.png";
-      this.showId = false;
 
     }else{
       this.picToViewId = "assets/imgs/v4.png";
       this.picToView = "assets/imgs/v4.png";
-      this.showId = true;
 
     }
 
@@ -208,11 +240,10 @@ export class VerificationImagesPage {
     this.namePicture = this.img2;
     this.description = this.des1;
     this.data = "cédula";
-    // this.showId = true;
+    this.showId = true;
     this.showCarne = false;
  
   };
-
 
 
 }

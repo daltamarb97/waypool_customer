@@ -58,6 +58,10 @@
                                                         <ion-label></ion-label>
                                                             <ion-input type="text" text-right [(ngModel)]='onlyEmail' formControlName="email" placeholder= "email"></ion-input>
                                                         </ion-item>
+                                                <ion-item class="editable-email" *ngIf='noShowButton'>
+                                                         <ion-label></ion-label>
+                                                            <ion-input readonly formControlName="fixedemail"></ion-input>
+                                                         </ion-item>
                                                 </ion-list>
                                         </ion-col>
                                     </ion-row>

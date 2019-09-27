@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import * as firebase from 'firebase';
 import { Geolocation } from '@ionic-native/geolocation';
+import { FCM } from '@ionic-native/fcm';
 
 
 
@@ -16,7 +17,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class MyApp {
   rootPage:any;
   alertInternet:any;
-  constructor(public alertCtrl: AlertController, statusBar: StatusBar, splashScreen: SplashScreen, private geolocation: Geolocation) {
+  constructor(public alertCtrl: AlertController, statusBar: StatusBar, splashScreen: SplashScreen, private geolocation: Geolocation, private platform: Platform, private fcm: FCM) {
    
     const firebaseConfig = {
       apiKey: "AIzaSyB7Py2pOZEUJD2Ar34a-8z-rReiDtsikxw",
@@ -36,6 +37,19 @@ export class MyApp {
       console.log('location catched');
     }).catch((error)=>{
       console.log(error);
+    })
+
+
+    platform.ready().then(()=>{
+
+      this.fcm.onNotification().subscribe(data => {
+        if(data.wasTapped){
+         console.log('app in background');
+         console.log(JSON.stringify(data));
+        }else{
+         console.log(JSON.stringify(data));
+        }
+      })
     })
 
     setTimeout(() => {

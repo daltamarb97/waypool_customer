@@ -57,6 +57,9 @@
     },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {}

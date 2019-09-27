@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.waypoolsas.waypool" version="1.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <feature name="FCMPlugin">
+        <param name="android-package" value="com.gae.scaffolder.plugin.FCMPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>Waypool</name>
+    <description>carsharing app</description>
+    <author email="djaramilloj1@gmail.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" />
+    <config-file parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
+        <string>Usado para conectarte con otros usuarios de Waypool</string>
+    </config-file>
+    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+        <string>Necesitamos acceso a tu camara para que nos puedas enviar tus fotos de documentos</string>
+    </edit-config>
+    <resource-file src="google-services.json" />
+    <allow-intent href="market:*" />
+    <icon density="mdpi" src="resources/android/icon/drawable-mdpi/icon.png" />
+    <icon density="hdpi" src="resources/android/icon/drawable-hdpi/icon.png" />
+    <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi/icon.png" />
+    <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi/icon.png" />
+    <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi/icon.png" />
+    <splash density="port-ldpi" src="resources/android/splash/splash.png" />
+    <splash density="port-mdpi" src="resources/android/splash/splash.png" />
+    <splash density="port-hdpi" src="resources/android/splash/splash.png" />
+    <splash density="port-xhdpi" src="resources/android/splash/splash.png" />
+    <splash density="port-xxhdpi" src="resources/android/splash/splash.png" />
+    <splash density="port-xxxhdpi" src="resources/android/splash/splash.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
+    <preference name="phonegap-version" value="cli-6.4.0" />
+    <preference name="ScrollEnabled" value="false" />
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="FadeSplashScreenDuration" value="300" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="orientation" value="portrait" />
+</widget>

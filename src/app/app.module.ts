@@ -38,6 +38,7 @@ import { ConfirmUniversityPage } from '../pages/confirm-university/confirm-unive
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { MetricsService } from '../services/metrics.service';
 import { Camera } from '@ionic-native/camera/';
+import { FCM } from '@ionic-native/fcm';
 
 
 export const firebaseConfig = {
@@ -93,7 +94,8 @@ export const firebaseConfig = {
     ConfirmUniversityPage,
     LocationAccuracy,
     MetricsService,
-    Camera  
+    Camera,
+    FCM  
   ]
 })
 export class AppModule {}

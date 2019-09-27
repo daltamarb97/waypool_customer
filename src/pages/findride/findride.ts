@@ -11,6 +11,7 @@ import * as GeoFire from 'geofire';
 import { TripsService } from '../../services/trips.service';
 import { Subject } from 'rxjs';
 import { instancesService } from '../../services/instances.service';
+import { FCM } from '@ionic-native/fcm';
 
 
  
@@ -79,11 +80,12 @@ export class FindridePage {
   user:any;
 
   unsubscribe = new Subject;
- 
+  token:any;
+
 
 
   driverOnNodeOr:any;
- constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService ) {
+ constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -108,6 +110,17 @@ export class FindridePage {
       let modal = this.modalCtrl.create('ConfirmUniversityPage');
       modal.onDidDismiss(readyToStart => {
         if(readyToStart){
+
+          this.platform.ready().then(()=>{
+ 
+            this.token = this.fcm.getToken().then((token)=>{
+              console.log('this is the token ' + token);
+              this.afDB.database.ref(this.SignUpService.userUniversity + '/users/' + this.userUid + '/devices/').update({
+                token: token
+              })
+            })
+        
+        })
           
           //search keyTrip
       this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid)

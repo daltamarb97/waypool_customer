@@ -50,7 +50,7 @@ var ConfirmreservationPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_instances_service__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_instances_service__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_reserves_service__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(122);
@@ -91,7 +91,7 @@ var ReserveinfoPage = /** @class */ (function () {
         this.passengers = [];
         this.reserveKey = this.navParams.get('reserveKey');
         this.driverUid = this.navParams.get('driverUid');
-        this.reservesService.getPendingUsers(this.signUpService.userUniversity, this.driverUid, this.reserveKey).takeUntil(this.unsubscribe)
+        this.reservesService.getPendingUsers(this.signUpService.userPlace, this.driverUid, this.reserveKey).takeUntil(this.unsubscribe)
             .subscribe(function (users) {
             _this.passengers = users;
             console.log(_this.passengers);
@@ -101,8 +101,8 @@ var ReserveinfoPage = /** @class */ (function () {
         });
     }
     ReserveinfoPage.prototype.cancelReserve = function () {
-        this.reservesService.cancelReserve(this.signUpService.userUniversity, this.userUid, this.driverUid, this.reserveKey);
-        this.reservesService.eliminateKeyUser(this.signUpService.userUniversity, this.userUid, this.reserveKey);
+        this.reservesService.cancelReserve(this.signUpService.userPlace, this.userUid, this.driverUid, this.reserveKey);
+        this.reservesService.eliminateKeyUser(this.signUpService.userPlace, this.userUid, this.reserveKey);
         this.app.getRootNav().push('ListridePage');
     };
     ReserveinfoPage.prototype.showProfilePassegner = function (passenger) {

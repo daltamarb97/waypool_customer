@@ -39,13 +39,13 @@ export class ConfirmtripPage {
     
         
        //get the info of the driver 
-       this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
+       this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
          console.log(this.user);          
        });
 
-       this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
+       this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
        .subscribe(usersInPendingusers => {
         this.usersInPending = usersInPendingusers
         this.usersInPending.forEach(user => {
@@ -62,9 +62,9 @@ export class ConfirmtripPage {
   }
   
   goToRide(){  
-    this.geoFireService.saveKey(this.SignUpService.userUniversity,this.trip.keyTrip,this.trip.driver.userId, this.userUid);
-    this.reservesService.setOnTrip(this.SignUpService.userUniversity,this.userUid); 
-    this.TripsService.joinTrip(this.SignUpService.userUniversity, this.trip.keyTrip,this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note, this.user.verifiedPerson);
+    this.geoFireService.saveKey(this.SignUpService.userPlace,this.trip.keyTrip,this.trip.driver.userId, this.userUid);
+    this.reservesService.setOnTrip(this.SignUpService.userPlace,this.userUid); 
+    this.TripsService.joinTrip(this.SignUpService.userPlace, this.trip.keyTrip,this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.note, this.user.verifiedPerson);
     // this.geoFireService.removeKeyGeofire(this.userUid);
     //OLD
     // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES

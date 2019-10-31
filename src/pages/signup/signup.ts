@@ -16,6 +16,8 @@ import * as firebase from 'firebase';
 import { Subject } from 'rxjs';
 
 
+declare var google;
+
 @IonicPage()
 
 @Component({
@@ -34,11 +36,16 @@ export class SignupPage {
 
     //variables linked among them 
     emailVar:any;
-    universityVar:any;
-    universities = [];
+    enterpriseVar:any;
+    companyVar:any;
+    company:any;
+    places = [];
+    arrayEmails = [];
     showReadonly:boolean = true;
     onlyEmail:any;
     noShowButton:boolean = false;
+    geocoder: any
+
 
     unsubscribe = new Subject;
   constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private app: App) {
@@ -52,14 +59,18 @@ export class SignupPage {
         password: ["", Validators.required],
         passwordconf: ["", Validators.required],
         phone: ["", Validators.required],
-        university: ["", Validators.required],
+        place: ["", Validators.required],
         isChecked:[true, Validators.required]
         
     })
 
-    this.SignUpService.getUniversities().takeUntil(this.unsubscribe).subscribe((universities)=>{
-        this.universities = universities;
-        console.log(this.universities);
+
+    this.geocoder = new google.maps.Geocoder;
+
+
+    this.SignUpService.getPlaces().takeUntil(this.unsubscribe).subscribe((places)=>{
+        this.places = places;
+        console.log(this.places);
     })
 
 
@@ -68,19 +79,36 @@ export class SignupPage {
  onChange(){
         this.showReadonly = true;
         if(this.showReadonly == true){
-                var count = this.universities.length;
+                var count = this.places.length;
                 for(var i=0; i<count; i++){
-                    if(this.universities[i].name == this.universityVar){
-                      if(this.universities[i].email == undefined){
+                    if(this.places[i].name == this.enterpriseVar){
+                      if(this.places[i].emails == undefined){
                                 this.showReadonly = false;
                             }else{
-                                this.emailVar = this.universities[i].email
+                                // this.emailVar = this.universities[i].email
+
+                                this.SignUpService.getEmails(this.places[i].name).subscribe(emails =>{
+                                    this.arrayEmails = emails;
+                                    console.log(this.arrayEmails);
+                                })
                             }
                         }
                     }
             }
             
         }
+
+
+        onChangeEmail(){
+            var count = this.arrayEmails.length;
+            for(var i=0; i<count; i++){
+                if(this.arrayEmails[i].email == this.companyVar){
+                    this.company = this.arrayEmails[i].company;
+                    console.log(this.company);
+                }
+            }
+        }
+    
 
 
     scrolling(){
@@ -111,17 +139,33 @@ export class SignupPage {
             let userEmailComplete = userEmail + userFixedemail;
             let userPassword = this.signupGroup.controls['password'].value;
             let userPhone = this.signupGroup.controls['phone'].value;
-            let userUniversity = this.signupGroup.controls['university'].value;
-            // saving data in variable
+            let userPlace = this.signupGroup.controls['place'].value;     
+
+
+             // saving data in variable
+          if(this.company !== undefined || this.company !== null){
             this.user = {
                 name: userName,
                 lastname: userLastName,
                 email: userEmailComplete,
                 phone: '+57'+userPhone,
-                university: userUniversity,
-                createdBy: 'costumer'
+                place: userPlace,
+                createdBy: 'costumer',
+                company: this.company
             };
-            this.SignUpService.userUniversity = userUniversity;
+          }else{
+            this.user = {
+                name: userName,
+                lastname: userLastName,
+                email: userEmailComplete,
+                phone: '+57'+userPhone,
+                place: userPlace,
+                createdBy: 'costumer',
+            };  
+          }
+
+
+            this.SignUpService.userPlace = userPlace;
                 
 
             if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
@@ -145,8 +189,18 @@ export class SignupPage {
                             if(!this.user.userId){
                                 this.user.userId = user.uid;
                             }
-                            this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
-                            
+                            this.SignUpService.saveUser(this.user, this.SignUpService.userPlace);
+
+                            this.afDB.database.ref('allPlaces/' + this.SignUpService.userPlace + '/location').once('value').then((snap)=>{
+                                console.log(snap.val());
+                                console.log(snap.val().lng);
+                                
+                                this.SignUpService.setFixedLocationCoordinates(this.SignUpService.userPlace, this.user.userId, snap.val().lat, snap.val().lng )
+                                this.geocodingPlace(snap.val().lat, snap.val().lng, this.SignUpService.userPlace, this.user.userId);
+                            })
+
+                            this.SignUpService.saveUserInAllUsers(this.SignUpService.userPlace, this.user.userId);
+
                             // this.sendVerificationCode(this.user.userId);
 
                         }else{
@@ -161,7 +215,7 @@ export class SignupPage {
                         if(user.emailVerified == false){
                             user.sendEmailVerification();
                             const alert = this.alertCtrl.create({
-                                title: 'Verificación de email',
+                                title: '¡REGISTRO EXITOSO!',
                                 subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
                                 buttons: [
                                     {
@@ -175,7 +229,7 @@ export class SignupPage {
                             alert.present();
                         console.log("verification email has been sent");
                         }else{
-                            console.log("verification email has not been sent or the email is already verifyied");
+                            console.log("verification email has not been sent or the email is already verified");
                         }
                     }else{
                         console.log('there is no user');
@@ -199,18 +253,32 @@ export class SignupPage {
                 let userEmailComplete = userEmail;
                 let userPassword = this.signupGroup.controls['password'].value;
                 let userPhone = this.signupGroup.controls['phone'].value;
-                let userUniversity = this.signupGroup.controls['university'].value;
-                // saving data in variable
-                this.user = {
-                    name: userName,
-                    lastname: userLastName,
-                    email: userEmail,
-                    phone: '+57'+userPhone,
-                    university: userUniversity,
-                    createdBy: 'costumer'
-                };
+                let userPlace = this.signupGroup.controls['place'].value;
+               
+                   // saving data in variable
+          if(this.company !== undefined || this.company !== null){
+            this.user = {
+                name: userName,
+                lastname: userLastName,
+                email: userEmailComplete,
+                phone: '+57'+userPhone,
+                place: userPlace,
+                createdBy: 'costumer',
+                company: this.company
+            };
+          }else{
+            this.user = {
+                name: userName,
+                lastname: userLastName,
+                email: userEmailComplete,
+                phone: '+57'+userPhone,
+                place: userPlace,
+                createdBy: 'costumer',
+            };  
+          }
+
     
-                this.SignUpService.userUniversity = userUniversity;
+                this.SignUpService.userPlace = userPlace;
                     
     
                 if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
@@ -234,7 +302,16 @@ export class SignupPage {
                                 if(!this.user.userId){
                                     this.user.userId = user.uid;
                                 }
-                                this.SignUpService.saveUser(this.user, this.SignUpService.userUniversity);
+                                this.SignUpService.saveUser(this.user, this.SignUpService.userPlace);
+                                this.afDB.database.ref('allPlaces/' + this.SignUpService.userPlace + '/location').once('value').then((snap)=>{
+                                    console.log(snap.val());
+                                    console.log(snap.val().lng);
+                                    
+                                    this.SignUpService.setFixedLocationCoordinates(this.SignUpService.userPlace, this.user.userId, snap.val().lat, snap.val().lng )
+                                    this.geocodingPlace(snap.val().lat, snap.val().lng, this.SignUpService.userPlace, this.user.userId);
+                                })
+                                this.SignUpService.saveUserInAllUsers(this.SignUpService.userPlace, user.uid);
+
                                 //send text message with code
                                 // this.sendVerificationCode(this.user.userId);
 
@@ -250,7 +327,7 @@ export class SignupPage {
                             if(user.emailVerified == false){
                                 user.sendEmailVerification();
                                 const alert = this.alertCtrl.create({
-                                    title: 'Verificación de email',
+                                    title: '¡REGISTRO EXITOSO!',
                                     subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
                                     buttons: [
                                         {
@@ -264,7 +341,7 @@ export class SignupPage {
                                 alert.present();
                             console.log("verification email has been sent");
                             }else{
-                                console.log("verification email has not been sent or the email is already verifyied");
+                                console.log("verification email has not been sent or the email is already verified");
                             }
                         }else{
                             console.log('there is no user');
@@ -294,6 +371,25 @@ ionViewDidLeave(){
     this.unsubscribe.next();
     this.unsubscribe.complete();
 
+  }
+
+
+  geocodingPlace(lat, lng, place, userId) {
+
+    this.geocoder.geocode({'location': {lat, lng}}, (results, status) => {
+      if (status === 'OK') {
+        if (results[0]) {
+           let namePlace =[results[0].formatted_address];
+           this.SignUpService.setFixedLocationName(place, userId, namePlace[0]);
+        } else {
+         alert('No results found');
+        }
+      } else {
+        alert('Geocoder failed due to: ' + status);
+      }
+                  
+  
+    });
   }
 
 }

@@ -11,94 +11,94 @@ export class TripsService {
 
        }
        
-       public getOnTrip(university,userUid){
-        return  this.afDB.object(university+'/users/'+ userUid+'/onTrip/').valueChanges();
+       public getOnTrip(place,userUid){
+        return  this.afDB.object(place+'/users/'+ userUid+'/onTrip/').valueChanges();
        }
 
-    public getMyReservesUser(university, userUid){
+    public getMyReservesUser(place, userUid){
         // 
-        return  this.afDB.list(university+ '/users/'+ userUid+'/myReserves').valueChanges();
+        return  this.afDB.list(place+ '/users/'+ userUid+'/myReserves').valueChanges();
 
     }
-     public getKeyTrip(university, userUid){
+     public getKeyTrip(place, userUid){
       
-      return  this.afDB.object(university + '/users/'+ userUid+'/keyTrip').valueChanges();
+      return  this.afDB.object(place + '/users/'+ userUid+'/keyTrip').valueChanges();
 
   }
-    public getTripState(university,reserveId,driverId){
-    return  this.afDB.object(university+'/tripsState/'+driverId+'/'+reserveId+'/').valueChanges();
+    public getTripState(place,reserveId,driverId){
+    return  this.afDB.object(place+'/tripsState/'+driverId+'/'+reserveId+'/').valueChanges();
 
   }
     public getReserves(userUid){
         // get reserves from my driver (wrong)
         return  this.afDB.list('/reserves/'+ userUid).valueChanges();
     }
-    // public getMyReserves(university, reserveId,driverId){
-    public getTrip(university, reserveId,driverId){
+    // public getMyReserves(place, reserveId,driverId){
+    public getTrip(place, reserveId,driverId){
         //get reserves inside trip's node
-        return  this.afDB.object(university + '/trips/'+driverId+'/'+reserveId+'/').valueChanges();
+        return  this.afDB.object(place + '/trips/'+driverId+'/'+reserveId+'/').valueChanges();
 
     }
-    public getPendingUsers(university, keyTrip,driverId){
+    public getPendingUsers(place, keyTrip,driverId){
         //get trip in Trip's node
-        return  this.afDB.list(university + '/trips/'+driverId+'/'+ keyTrip+'/pendingUsers').valueChanges();
+        return  this.afDB.list(place + '/trips/'+driverId+'/'+ keyTrip+'/pendingUsers').valueChanges();
     } 
-    public getPickedUpUsers(university, keyTrip,driverId){
+    public getPickedUpUsers(place, keyTrip,driverId){
       //get trip in Trip's node
-      return  this.afDB.list(university + '/trips/'+driverId+'/'+ keyTrip+'/pickedUpUsers').valueChanges();
+      return  this.afDB.list(place + '/trips/'+driverId+'/'+ keyTrip+'/pickedUpUsers').valueChanges();
     }
 
-    public getCancelUsers(university, keyTrip,driverId){
-      return  this.afDB.list(university + '/tripsState/'+driverId+'/'+ keyTrip+'/cancelUsers').valueChanges();
+    public getCancelUsers(place, keyTrip,driverId){
+      return  this.afDB.list(place + '/tripsState/'+driverId+'/'+ keyTrip+'/cancelUsers').valueChanges();
   }
     
-    public getLastMinuteTripsDEMO(university, driverId, keyTrip){
-        return  this.afDB.object(university + '/trips/'+driverId+'/'+ keyTrip).valueChanges();
+    public getLastMinuteTripsDEMO(place, driverId, keyTrip){
+        return  this.afDB.object(place + '/trips/'+driverId+'/'+ keyTrip).valueChanges();
 
     }
-    public saveKeyTrip(university, userUid,keyTrip,driverId){            
-    this.afDB.database.ref(university + '/users/'+userUid+'/keyTrip').update({
+    public saveKeyTrip(place, userUid,keyTrip,driverId){            
+    this.afDB.database.ref(place + '/users/'+userUid+'/keyTrip').update({
       keyTrip:keyTrip,
       driverId:driverId
     });
 
     }  
-     public updateTripState(university, userUid,keyTrip,driverId){
-      this.afDB.database.ref(university + '/tripsState/'+driverId+'/'+ keyTrip+'/UserCancelation/'+userUid).update({
+     public updateTripState(place, userUid,keyTrip,driverId){
+      this.afDB.database.ref(place + '/tripsState/'+driverId+'/'+ keyTrip+'/UserCancelation/'+userUid).update({
         
         userUid:userUid
       });
     }
-    public pushItsMePendingUsers(university, userUid,keyTrip,driverId){
-      this.afDB.database.ref(university + '/trips/'+driverId+'/'+ keyTrip+'/pendingUsers/'+userUid).update({
+    public pushItsMePendingUsers(place, userUid,keyTrip,driverId){
+      this.afDB.database.ref(place + '/trips/'+driverId+'/'+ keyTrip+'/pendingUsers/'+userUid).update({
         
         itsMe:true
       });
     }
   
-    public pushItsMePickedUpUsers(university, userUid,keyTrip,driverId){
-      this.afDB.database.ref(university + '/trips/'+driverId+'/'+ keyTrip+'/pickedUpUsers/'+userUid).update({
+    public pushItsMePickedUpUsers(place, userUid,keyTrip,driverId){
+      this.afDB.database.ref(place + '/trips/'+driverId+'/'+ keyTrip+'/pickedUpUsers/'+userUid).update({
         
         itsMe:true
       });
     }
-      public saveTripOnRecords(university, userUid,trip){
+      public saveTripOnRecords(place, userUid,trip){
         //save trip in recordTrips
         
-      this.afDB.database.ref(university + '/users/'+userUid+'/recordTrips/'+trip.keyTrip).update(trip);
+      this.afDB.database.ref(place + '/users/'+userUid+'/recordTrips/'+trip.keyTrip).update(trip);
  
      }
-     public eliminateTrip(university, userUid){
+     public eliminateTrip(place, userUid){
       //save trip in recordTrips
       
-    this.afDB.database.ref(university + '/users/'+userUid+'/trip/').remove();
+    this.afDB.database.ref(place + '/users/'+userUid+'/trip/').remove();
 
    }
 
 
 
-     joinTrip(university, keyTrip,driverId, userId, origin, destination, name, lastname, phone, note, verifiedPerson){
-        this.afDB.database.ref(university + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).update({
+     joinTrip(place, keyTrip,driverId, userId, origin, destination, name, lastname, phone, note, verifiedPerson){
+        this.afDB.database.ref(place + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).update({
              origin: origin,
              destination: destination,
              name: name,
@@ -110,59 +110,59 @@ export class TripsService {
         });
     }
 
-    checkIfAcceptedInLMU(university, driverId, keyTrip, userId){
-      return this.afDB.object(university + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).valueChanges();
+    checkIfAcceptedInLMU(place, driverId, keyTrip, userId){
+      return this.afDB.object(place + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).valueChanges();
     }
-    public cancelTrip(university, userUid,driverUid,tripId){
+    public cancelTrip(place, userUid,driverUid,tripId){
         //eliminate user from reserve in reserve's node        
-      this.afDB.database.ref(university + '/trips/'+ driverUid +'/'+ tripId+'/pendingUsers/'+userUid).remove();
+      this.afDB.database.ref(place + '/trips/'+ driverUid +'/'+ tripId+'/pendingUsers/'+userUid).remove();
         //eliminate keyTrip from user's node to eliminate access to that reserve
 
      }
-     public eliminateKeyUser(university, userUid,reserveId){    
+     public eliminateKeyUser(place, userUid,reserveId){    
         //eliminate keyTrip from user's node to eliminate access to that reserve
-      this.afDB.database.ref(university +'/users/'+userUid+'/myReserves/'+ reserveId).remove();
+      this.afDB.database.ref(place +'/users/'+userUid+'/myReserves/'+ reserveId).remove();
      }
 
 
-     public eliminateKeyTrip(university, userUid){    
+     public eliminateKeyTrip(place, userUid){    
         //eliminate keyTrip from user's node to eliminate access to that reserve
-      this.afDB.database.ref(university + '/users/'+userUid+'/keyTrip/').remove();
+      this.afDB.database.ref(place + '/users/'+userUid+'/keyTrip/').remove();
   
      } 
 
-     public eliminateAvailableReserves(university, userUid){    
+     public eliminateAvailableReserves(place, userUid){    
       //eliminate keyTrip from user's node to eliminate access to that reserve
-    this.afDB.database.ref(university + '/users/'+userUid+'/availableReserves/').remove();
+    this.afDB.database.ref(place + '/users/'+userUid+'/availableReserves/').remove();
 
    } 
      
-     public eliminateAvailableUsers(university, userUid){    
+     public eliminateAvailableUsers(place, userUid){    
       //eliminate keyTrip from user's node to eliminate access to that reserve
-    this.afDB.database.ref(university + '/users/'+userUid+'/availableReserves/').remove();
+    this.afDB.database.ref(place + '/users/'+userUid+'/availableReserves/').remove();
 
    } 
   
-     public eraseReserve(university , userUid,reserveId){    
+     public eraseReserve(place , userUid,reserveId){    
       //eliminate keyTrip from user's node to eliminate access to that reserve
-    this.afDB.database.ref(university + '/users/'+userUid+'/myReserves/'+reserveId).remove();
+    this.afDB.database.ref(place + '/users/'+userUid+'/myReserves/'+reserveId).remove();
 
    }
 
      
-   public eliminatingOnTrip(university, userUid){    
+   public eliminatingOnTrip(place, userUid){    
     //eliminate keyTrip from tripsReserve node 
-  this.afDB.database.ref(university + '/users/'+userUid+'/onTrip').remove();
+  this.afDB.database.ref(place + '/users/'+userUid+'/onTrip').remove();
 
  }
- public eliminatingSaveTrip(university, userUid){    
+ public eliminatingSaveTrip(place, userUid){    
  
-this.afDB.database.ref(university + '/users/'+userUid+'/saveTrip').remove();
+this.afDB.database.ref(place + '/users/'+userUid+'/saveTrip').remove();
 
 }
-public eliminatingCancelTrip(university, userUid){    
+public eliminatingCancelTrip(place, userUid){    
  
-  this.afDB.database.ref(university + '/users/'+userUid+'/cancelTrip').remove();
+  this.afDB.database.ref(place + '/users/'+userUid+'/cancelTrip').remove();
   
   }
       

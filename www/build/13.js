@@ -48,18 +48,18 @@ var MyridePageModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyridePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sendUsers_service__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sendUsers_service__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(360);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_trips_service__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_trips_service__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_reserves_service__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_database__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_database__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_metrics_service__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_metrics_service__ = __webpack_require__(353);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -109,7 +109,7 @@ var MyridePage = /** @class */ (function () {
         this.driverExist = false;
         this.onTrip = false;
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_8_rxjs__["Subject"];
-        this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.TripsService.getKeyTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (keys) {
             _this.keyTrip = keys;
             console.log(_this.keyTrip.keyTrip);
@@ -123,14 +123,14 @@ var MyridePage = /** @class */ (function () {
             }
             else {
                 _this.getTrip(_this.keyTrip.keyTrip, _this.keyTrip.driverId);
-                _this.TripsService.eraseReserve(_this.SignUpService.userUniversity, _this.userUid, _this.keyTrip.keyTrip);
+                _this.TripsService.eraseReserve(_this.SignUpService.userPlace, _this.userUid, _this.keyTrip.keyTrip);
             }
             //get trip without searching         
             //check if its lastMinuteUser or not
             // if(){
             // }
         });
-        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
+        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
             .subscribe(function (info) {
             _this.user = info;
             console.log("estado mal");
@@ -140,34 +140,34 @@ var MyridePage = /** @class */ (function () {
             else {
                 _this.unSubscribeServices();
                 console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-                _this.TripsService.eliminatingOnTrip(_this.SignUpService.userUniversity, _this.userUid);
-                _this.TripsService.eliminateKeyTrip(_this.SignUpService.userUniversity, _this.userUid);
-                _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userUniversity, _this.userUid);
+                _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
+                _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
+                _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
                 _this.navCtrl.setRoot('TabsPage');
                 var modal = _this.modalCtrl.create('CanceltripPage');
                 modal.present();
                 console.log("me cancelaron el viaje");
                 setTimeout(function () {
-                    _this.TripsService.eliminatingCancelTrip(_this.SignUpService.userUniversity, _this.userUid);
+                    _this.TripsService.eliminatingCancelTrip(_this.SignUpService.userPlace, _this.userUid);
                     console.log("me cancele");
                 }, 2000);
             }
             if (_this.user.saveTrip === undefined || _this.user.saveTrip === null) {
             }
             else {
-                _this.TripsService.saveTripOnRecords(_this.SignUpService.userUniversity, _this.userUid, _this.trip);
+                _this.TripsService.saveTripOnRecords(_this.SignUpService.userPlace, _this.userUid, _this.trip);
                 console.log("me active");
                 _this.unSubscribeServices();
-                _this.TripsService.eliminatingOnTrip(_this.SignUpService.userUniversity, _this.userUid);
-                _this.TripsService.eliminateKeyTrip(_this.SignUpService.userUniversity, _this.userUid);
-                _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userUniversity, _this.userUid);
+                _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
+                _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
+                _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
                 setTimeout(function () {
-                    _this.TripsService.eliminatingSaveTrip(_this.SignUpService.userUniversity, _this.userUid);
+                    _this.TripsService.eliminatingSaveTrip(_this.SignUpService.userPlace, _this.userUid);
                     console.log("no deje pruebas");
                 }, 2000);
                 _this.navCtrl.setRoot('TabsPage');
                 _this.navCtrl.push('RatetripPage', { trip: _this.trip });
-                _this.TripsService.eliminateTrip(_this.SignUpService.userUniversity, _this.userUid);
+                _this.TripsService.eliminateTrip(_this.SignUpService.userPlace, _this.userUid);
                 console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
             }
         });
@@ -177,7 +177,7 @@ var MyridePage = /** @class */ (function () {
         console.log(this.trip);
         // this.getTripState(keyTrip,driverId);
         console.log(this.keyTrip);
-        this.TripsService.getTrip(this.SignUpService.userUniversity, keyTrip, driverId).takeUntil(this.unsubscribe)
+        this.TripsService.getTrip(this.SignUpService.userPlace, keyTrip, driverId).takeUntil(this.unsubscribe)
             .subscribe(function (info) {
             //check if the info of the reserve is null  
             if (_this.keyTrip.keyTrip === undefined || _this.keyTrip.keyTrip === null) {
@@ -196,19 +196,19 @@ var MyridePage = /** @class */ (function () {
         });
     };
     // getTripState(keyTrip,driverId){
-    //   this.TripsService.getTripState(this.SignUpService.userUniversity,keyTrip,driverId).takeUntil(this.unsubscribe)
+    //   this.TripsService.getTripState(this.SignUpService.userPlace,keyTrip,driverId).takeUntil(this.unsubscribe)
     //   .subscribe( tripState => {      
     //       this.tripState = tripState;
     //       console.log(this.tripState);
     //       console.log("estoy activado!!!")
     //         //check if trip has to be saved 
     //         if(this.tripState.saveTrip === true){
-    //           this.TripsService.saveTripOnRecords(this.SignUpService.userUniversity, this.userUid,this.trip);     
+    //           this.TripsService.saveTripOnRecords(this.SignUpService.userPlace, this.userUid,this.trip);     
     //           console.log("me active")
     //           this.unSubscribeServices();       
-    //           this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-    //           this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-    //           this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+    //           this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
+    //           this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+    //           this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
     //           this.navCtrl.pop();
     //           this.navCtrl.push('RatetripPage',{trip:this.trip})
     //           console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
@@ -217,15 +217,15 @@ var MyridePage = /** @class */ (function () {
     //         //check if trip was canceled by driver                         
     //         this.unSubscribeServices();         
     //         console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-    //         this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-    //         this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-    //         this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+    //         this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
+    //         this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+    //         this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
     //           let modal = this.modalCtrl.create('CanceltripPage');
     //           modal.present();  
     //           console.log("me cancelaron el viaje")
     //           this.navCtrl.pop();
     //         } 
-    //         this.afDB.database.ref(this.SignUpService.userUniversity + '/tripsState/'+ driverId +'/'+ keyTrip+ '/cancelUsers/'+this.userUid)
+    //         this.afDB.database.ref(this.SignUpService.userPlace + '/tripsState/'+ driverId +'/'+ keyTrip+ '/cancelUsers/'+this.userUid)
     //         .once('value').then((snapshot) => {
     //           this.cancelUser = snapshot.val();
     //             console.log("2paso")
@@ -233,9 +233,9 @@ var MyridePage = /** @class */ (function () {
     //                 }else{
     //                   console.log("3paso")
     //                   this.unSubscribeServices();          
-    //                   this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity,this.userUid);
-    //                   this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-    //                   this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+    //                   this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace,this.userUid);
+    //                   this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+    //                   this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
     //                   console.log("me eliminaron")
     //                   console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     //                   this.navCtrl.pop();
@@ -255,12 +255,12 @@ var MyridePage = /** @class */ (function () {
     };
     MyridePage.prototype.getPendingAndPickedUpUsers = function (keyTrip, driverId) {
         var _this = this;
-        this.TripsService.getPendingUsers(this.SignUpService.userUniversity, keyTrip, driverId).takeUntil(this.unsubscribe)
+        this.TripsService.getPendingUsers(this.SignUpService.userPlace, keyTrip, driverId).takeUntil(this.unsubscribe)
             .subscribe(function (user) {
             _this.pendingUsers = user;
             console.log(_this.pendingUsers);
         });
-        this.TripsService.getPickedUpUsers(this.SignUpService.userUniversity, keyTrip, driverId).takeUntil(this.unsubscribe)
+        this.TripsService.getPickedUpUsers(this.SignUpService.userPlace, keyTrip, driverId).takeUntil(this.unsubscribe)
             .subscribe(function (user) {
             _this.pickedUpUsers = user;
             console.log(_this.pickedUpUsers);
@@ -308,23 +308,23 @@ var MyridePage = /** @class */ (function () {
                     handler: function () {
                         if (_this.pickedUpUsers.length === 0 || _this.pickedUpUsers === undefined || _this.pickedUpUsers === null) {
                             _this.unSubscribeServices();
-                            _this.MetricsService.cancelReserves(_this.SignUpService.userUniversity, _this.userUid, _this.trip);
-                            _this.TripsService.cancelTrip(_this.SignUpService.userUniversity, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
-                            _this.TripsService.eliminateKeyTrip(_this.SignUpService.userUniversity, _this.userUid);
-                            _this.TripsService.eliminatingOnTrip(_this.SignUpService.userUniversity, _this.userUid);
-                            _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userUniversity, _this.userUid);
+                            _this.MetricsService.cancelReserves(_this.SignUpService.userPlace, _this.userUid, _this.trip);
+                            _this.TripsService.cancelTrip(_this.SignUpService.userPlace, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
+                            _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
+                            _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
+                            _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
                             _this.navCtrl.pop();
                         }
-                        _this.reservesService.confirmMyExistenceInPickedupUsers(_this.SignUpService.userUniversity, _this.trip.driver.userId, _this.trip.keyTrip, _this.userUid).takeUntil(_this.unsubscribe)
+                        _this.reservesService.confirmMyExistenceInPickedupUsers(_this.SignUpService.userPlace, _this.trip.driver.userId, _this.trip.keyTrip, _this.userUid).takeUntil(_this.unsubscribe)
                             .subscribe(function (pickedUp) {
                             _this.pickedUp = pickedUp;
                             console.log(_this.pickedUp);
                             console.log(pickedUp);
                             if (_this.pickedUp === undefined || _this.pickedUp === null) {
-                                _this.MetricsService.cancelReserves(_this.SignUpService.userUniversity, _this.userUid, _this.trip);
-                                _this.TripsService.cancelTrip(_this.SignUpService.userUniversity, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
-                                _this.TripsService.eliminateKeyTrip(_this.SignUpService.userUniversity, _this.userUid);
-                                _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userUniversity, _this.userUid);
+                                _this.MetricsService.cancelReserves(_this.SignUpService.userPlace, _this.userUid, _this.trip);
+                                _this.TripsService.cancelTrip(_this.SignUpService.userPlace, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
+                                _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
+                                _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
                                 console.log(_this.trip.keyTrip);
                                 _this.navCtrl.pop();
                             }

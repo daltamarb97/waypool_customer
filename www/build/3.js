@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 650:
+/***/ 649:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VerificationNumberPageModule", function() { return VerificationNumberPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verification_number__ = __webpack_require__(804);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verification_number__ = __webpack_require__(803);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var VerificationNumberPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 804:
+/***/ 803:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51,7 +51,7 @@ var VerificationNumberPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -82,24 +82,24 @@ var VerificationNumberPage = /** @class */ (function () {
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["Subject"];
         this.userId = this.navParams.get('userId');
         console.log(this.userId);
-        console.log(this.signUpService.userUniversity);
-        this.signUpService.getMyInfo(this.userId, this.signUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(function (user) {
+        console.log(this.signUpService.userPlace);
+        this.signUpService.getMyInfo(this.userId, this.signUpService.userPlace).takeUntil(this.unsubscribe).subscribe(function (user) {
             _this.userInfo = user;
             console.log(_this.userInfo);
         });
     }
     VerificationNumberPage.prototype.code = function () {
-        this.authenticationService.deleteResendCode(this.signUpService.userUniversity, this.userId);
-        this.authenticationService.sendVerificationCodeToFirebase(this.signUpService.userUniversity, this.userId, this.confText);
-        // this.signUpService.getMyInfo(this.signUpService.userUniversity, this.userId).subscribe(user => {
+        this.authenticationService.deleteResendCode(this.signUpService.userPlace, this.userId);
+        this.authenticationService.sendVerificationCodeToFirebase(this.signUpService.userPlace, this.userId, this.confText);
+        // this.signUpService.getMyInfo(this.signUpService.userPlace, this.userId).subscribe(user => {
         //   this.userInfo = user;
         //   console.log(this.userInfo);
         if (this.userInfo.verificationCodeApproval === true) {
             this.app.getRootNav().push('LoginPage');
-            this.authenticationService.deleteVerificationCode(this.signUpService.userUniversity, this.userId);
+            this.authenticationService.deleteVerificationCode(this.signUpService.userPlace, this.userId);
         }
         else if (this.userInfo.verificationCodeApproval === false) {
-            this.authenticationService.deleteVerificationCode(this.signUpService.userUniversity, this.userId);
+            this.authenticationService.deleteVerificationCode(this.signUpService.userPlace, this.userId);
             var alert_1 = this.alertCtrl.create({
                 title: 'Código Errado',
                 subTitle: 'el código de verificacón está errado',
@@ -110,8 +110,8 @@ var VerificationNumberPage = /** @class */ (function () {
         // })
     };
     VerificationNumberPage.prototype.resendCode = function () {
-        this.authenticationService.deleteverificationCodeApproval(this.signUpService.userUniversity, this.userId);
-        this.authenticationService.resendVerificationCode(this.signUpService.userUniversity, this.userId);
+        this.authenticationService.deleteverificationCodeApproval(this.signUpService.userPlace, this.userId);
+        this.authenticationService.resendVerificationCode(this.signUpService.userPlace, this.userId);
     };
     VerificationNumberPage.prototype.ionViewDidLeave = function () {
         this.unsubscribe.next();

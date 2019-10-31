@@ -7,17 +7,11 @@
     "files": {}
   },
   "installed_plugins": {
-    "call-number": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
     "cordova-plugin-fcm-with-dependecy-updated": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
     "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
     }
   },
   "dependent_plugins": {}

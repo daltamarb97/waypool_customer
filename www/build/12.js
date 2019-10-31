@@ -1,6 +1,6 @@
 webpackJsonp([12],{
 
-/***/ 643:
+/***/ 642:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(797);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(796);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ProfilePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 797:
+/***/ 796:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50,7 +50,7 @@ var ProfilePageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_userauthentication_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_userauthentication_service__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -83,7 +83,7 @@ var ProfilePage = /** @class */ (function () {
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
         this.user = {};
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["Subject"];
-        this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
+        this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
             _this.user = user;
             console.log(_this.user);
             _this.showInfoProfile(user);
@@ -95,42 +95,42 @@ var ProfilePage = /** @class */ (function () {
             this.navCtrl.pop();
         }
         else if (this.phone == null && this.user.about == null && this.user.url != null) {
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userUniversity, this.userUid, this.user.url);
+            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
             this.toastConfirmation();
             this.navCtrl.pop();
         }
         else if (this.phone == null && this.user.about != null && this.user.url == null) {
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userUniversity, this.userUid, this.user.about);
+            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
             this.toastConfirmation();
             this.navCtrl.pop();
         }
         else if (this.phone != null && this.user.about == null && this.user.url == null) {
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userUniversity, this.userUid, this.phone);
+            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
             this.toastConfirmation();
             this.navCtrl.pop();
         }
         else if (this.phone != null && this.user.about != null && this.user.url == null) {
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userUniversity, this.userUid, this.phone);
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userUniversity, this.userUid, this.user.about);
+            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
+            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
             this.toastConfirmation();
             this.navCtrl.pop();
         }
         else if (this.phone != null && this.user.about == null && this.user.url != null) {
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userUniversity, this.userUid, this.phone);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userUniversity, this.userUid, this.user.url);
+            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
+            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
             this.toastConfirmation();
             this.navCtrl.pop();
         }
         else if (this.phone == null && this.user.about != null && this.user.url != null) {
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userUniversity, this.userUid, this.user.about);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userUniversity, this.userUid, this.user.url);
+            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
+            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
             this.toastConfirmation();
             this.navCtrl.pop();
         }
         else if (this.phone != null && this.user.about != null && this.user.url != null) {
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userUniversity, this.userUid, this.user.about);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userUniversity, this.userUid, this.user.url);
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userUniversity, this.userUid, this.phone);
+            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
+            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
+            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
             this.toastConfirmation();
             this.navCtrl.pop();
         }
@@ -161,7 +161,7 @@ var ProfilePage = /** @class */ (function () {
                 {
                     text: 'Eliminar',
                     handler: function () {
-                        _this.SignupService.deleteAccount(_this.SignupService.userUniversity, _this.userUid);
+                        _this.SignupService.deleteAccount(_this.SignupService.userPlace, _this.userUid);
                         _this.AngularFireAuth.auth.currentUser.delete().then(function () {
                             console.log('user has been deleted');
                         }).catch(function (error) {

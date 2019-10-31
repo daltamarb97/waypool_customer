@@ -50,9 +50,9 @@ var RatetripPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendFeedback_service__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendFeedback_service__ = __webpack_require__(352);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -86,7 +86,7 @@ var RatetripPage = /** @class */ (function () {
         this.title = 'calificacion de viaje';
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
         this.today = Date.now();
-        this.signUpService.getMyInfo(this.userUid, this.signUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(function (user) {
+        this.signUpService.getMyInfo(this.userUid, this.signUpService.userPlace).takeUntil(this.unsubscribe).subscribe(function (user) {
             _this.user = user;
             console.log(_this.user);
         });
@@ -96,11 +96,11 @@ var RatetripPage = /** @class */ (function () {
     RatetripPage.prototype.sendInfo = function () {
         if (this.experience === null || this.experience === undefined) {
             this.experience = 'no hay feedback';
-            this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+            this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
             this.navCtrl.setRoot('TabsPage');
         }
         else {
-            this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+            this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
             this.navCtrl.setRoot('TabsPage');
         }
     };

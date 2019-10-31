@@ -45,19 +45,19 @@ export class ReservetripPage{
   pendingUser:any;
   noReserve:boolean;
   constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService,public loadingCtrl: LoadingController, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
-    this.reservesService.getOnTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    this.reservesService.getOnTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( onTrip => {
        this.onTrip = onTrip;   
        console.log(this.onTrip);  
     })
     
 
-    this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    this.sendCoordsService.getOriginUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( originUser => {
       this.locationOrigin = originUser;      
     })
     
-    this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    this.sendCoordsService.getDestinationUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
         .subscribe( destinationUser => {
           this.locationDestination = destinationUser;
     })
@@ -67,7 +67,7 @@ export class ReservetripPage{
     
   }
   ionViewDidLoad(){
-    this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( myReservesId => {
       console.log(this.myReserves);
       //get all reserves id (reserve push key, driverUid) of my user node
@@ -94,7 +94,7 @@ export class ReservetripPage{
 
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
     this.myReservesId.forEach(reserve => {
-        this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserve.driverId, reserve.keyReserve).takeUntil(this.unsubscribe)
+        this.reservesService.getMyReserves(this.SignUpService.userPlace, reserve.driverId, reserve.keyReserve).takeUntil(this.unsubscribe)
             .subscribe(info => {
                 this.reserve = info;
                 console.log(this.reserve)
@@ -105,7 +105,7 @@ export class ReservetripPage{
                     // i think doesnt work, just in case lets leave it here
                     this.unSubscribeServices();
                     console.log("me borre");
-                    this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,reserve.keyReserve);
+                    this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
                     this.navCtrl.pop();
                     console.log("1")
 
@@ -117,7 +117,7 @@ export class ReservetripPage{
                 //   console.log(this.reserve.keyTrip)
                   console.log(reserve.keyReserve)
 
-                  this.reservesService.confirmMyExistenceInPendingUsers(this.SignUpService.userUniversity, reserve.driverId, reserve.keyReserve, this.userUid).takeUntil(this.unsubscribe)
+                  this.reservesService.confirmMyExistenceInPendingUsers(this.SignUpService.userPlace, reserve.driverId, reserve.keyReserve, this.userUid).takeUntil(this.unsubscribe)
                   .subscribe(pendingUser => {
                       this.pendingUser = pendingUser;  
                       console.log(this.pendingUser);
@@ -138,7 +138,7 @@ export class ReservetripPage{
                         }else{
                           if(this.onTrip === false){
                             this.unSubscribeServices();
-                            this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, this.userUid,reserve.keyReserve);
+                            this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
 
                           }else{
                              //  eliminate key because the driver has eliminated the user
@@ -187,7 +187,7 @@ enterChat(reserve) {
 // }
 eliminateReserve(userUid, keyReserve) {
     this.unSubscribeServices();
-    this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, userUid, keyReserve);
+    this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, userUid, keyReserve);
     let modal = this.modalCtrl.create('CanceltripPage');
     // this.navCtrl.setRoot('FindridePage');
     modal.present();

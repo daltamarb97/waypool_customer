@@ -12,22 +12,22 @@ export class sendCoordsService {
     public getDestination(user){
         return  this.afDB.list('/drivers/'+ user +'/trips/destination').valueChanges();
     } 
-    public getPendingUsers(driverUid,pushKey, university){
-        return  this.afDB.list(university + '/reserves/'+ driverUid +'/'+pushKey+'/pendingUsers').valueChanges();
+    public getPendingUsers(driverUid,pushKey, place){
+        return  this.afDB.list(place + '/reserves/'+ driverUid +'/'+pushKey+'/pendingUsers').valueChanges();
     }
 
-    public getPendingUsersInTrips(driverUid,pushKey, university){
-        return  this.afDB.list(university + '/trips/'+ driverUid +'/'+pushKey+'/pendingUsers').valueChanges();
+    public getPendingUsersInTrips(driverUid,pushKey, place){
+        return  this.afDB.list(place + '/trips/'+ driverUid +'/'+pushKey+'/pendingUsers').valueChanges();
     }
 
     public getOrigin(user){
         return  this.afDB.list('/drivers/'+ user +'/trips/origin').valueChanges();
     } 
-    public getOriginUser(university, user){
-        return  this.afDB.list(university + '/users/'+ user +'/trips/origin').valueChanges();
+    public getOriginUser(place, user){
+        return  this.afDB.list(place + '/users/'+ user +'/trips/origin').valueChanges();
     } 
-    public getDestinationUser(university, user){
-        return  this.afDB.list(university + '/users/'+ user +'/trips/destination').valueChanges();
+    public getDestinationUser(place, user){
+        return  this.afDB.list(place + '/users/'+ user +'/trips/destination').valueChanges();
     } 
     public pushCoordinatesUsers(user , dest, or){
      
@@ -39,7 +39,7 @@ export class sendCoordsService {
 
     }
    
-    public deleteOnTripFinal(university, userId){
-            this.afDB.database.ref(university + '/users/'+ userId + '/onTripFinal' ).remove();
+    public deleteOnTripFinal(place, userId){
+            this.afDB.database.ref(place + '/users/'+ userId + '/onTripFinal' ).remove();
     }
 }

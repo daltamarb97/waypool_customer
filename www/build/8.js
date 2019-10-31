@@ -48,16 +48,16 @@ var ReservetripPageModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReservetripPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_instances_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_instances_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__ = __webpack_require__(346);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__ = __webpack_require__(347);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -111,23 +111,23 @@ var ReservetripPage = /** @class */ (function () {
         this.myReserves = [];
         this.pendingUsers = [];
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_4_rxjs__["Subject"];
-        this.reservesService.getOnTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.reservesService.getOnTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (onTrip) {
             _this.onTrip = onTrip;
             console.log(_this.onTrip);
         });
-        this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.sendCoordsService.getOriginUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (originUser) {
             _this.locationOrigin = originUser;
         });
-        this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.sendCoordsService.getDestinationUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (destinationUser) {
             _this.locationDestination = destinationUser;
         });
     }
     ReservetripPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (myReservesId) {
             console.log(_this.myReserves);
             //get all reserves id (reserve push key, driverUid) of my user node
@@ -150,7 +150,7 @@ var ReservetripPage = /** @class */ (function () {
         this.myReserves = []; //erase all of reserves 
         //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
         this.myReservesId.forEach(function (reserve) {
-            _this.reservesService.getMyReserves(_this.SignUpService.userUniversity, reserve.driverId, reserve.keyReserve).takeUntil(_this.unsubscribe)
+            _this.reservesService.getMyReserves(_this.SignUpService.userPlace, reserve.driverId, reserve.keyReserve).takeUntil(_this.unsubscribe)
                 .subscribe(function (info) {
                 _this.reserve = info;
                 console.log(_this.reserve);
@@ -161,7 +161,7 @@ var ReservetripPage = /** @class */ (function () {
                         // i think doesnt work, just in case lets leave it here
                         _this.unSubscribeServices();
                         console.log("me borre");
-                        _this.reservesService.eliminateKeyUser(_this.SignUpService.userUniversity, _this.userUid, reserve.keyReserve);
+                        _this.reservesService.eliminateKeyUser(_this.SignUpService.userPlace, _this.userUid, reserve.keyReserve);
                         _this.navCtrl.pop();
                         console.log("1");
                     }
@@ -173,7 +173,7 @@ var ReservetripPage = /** @class */ (function () {
                 else {
                     //   console.log(this.reserve.keyTrip)
                     console.log(reserve.keyReserve);
-                    _this.reservesService.confirmMyExistenceInPendingUsers(_this.SignUpService.userUniversity, reserve.driverId, reserve.keyReserve, _this.userUid).takeUntil(_this.unsubscribe)
+                    _this.reservesService.confirmMyExistenceInPendingUsers(_this.SignUpService.userPlace, reserve.driverId, reserve.keyReserve, _this.userUid).takeUntil(_this.unsubscribe)
                         .subscribe(function (pendingUser) {
                         _this.pendingUser = pendingUser;
                         console.log(_this.pendingUser);
@@ -193,7 +193,7 @@ var ReservetripPage = /** @class */ (function () {
                             else {
                                 if (_this.onTrip === false) {
                                     _this.unSubscribeServices();
-                                    _this.reservesService.eliminateKeyUser(_this.SignUpService.userUniversity, _this.userUid, reserve.keyReserve);
+                                    _this.reservesService.eliminateKeyUser(_this.SignUpService.userPlace, _this.userUid, reserve.keyReserve);
                                 }
                                 else {
                                     //  eliminate key because the driver has eliminated the user
@@ -232,7 +232,7 @@ var ReservetripPage = /** @class */ (function () {
     // }
     ReservetripPage.prototype.eliminateReserve = function (userUid, keyReserve) {
         this.unSubscribeServices();
-        this.reservesService.eliminateKeyUser(this.SignUpService.userUniversity, userUid, keyReserve);
+        this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, userUid, keyReserve);
         var modal = this.modalCtrl.create('CanceltripPage');
         // this.navCtrl.setRoot('FindridePage');
         modal.present();

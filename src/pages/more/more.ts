@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, App, IonicModule } from 'ionic-angular';
+import { NavController, IonicPage, App, IonicModule, AlertController } from 'ionic-angular';
 
 
 import { ProfilePage } from '../profile/profile';
@@ -24,8 +24,8 @@ export class MorePage {
      user:any={};
      verified:boolean = false;
      unsubscribe = new Subject;
-  constructor(public navCtrl: NavController, public AngularFireAuth:AngularFireAuth,private authenticationService: authenticationService,public SignupService:SignUpService, public app: App) {
-     this.SignupService.getMyInfoForProfile(this.SignupService.userUniversity, this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
+  constructor(public navCtrl: NavController, public AngularFireAuth:AngularFireAuth,private authenticationService: authenticationService,public SignupService:SignUpService, public app: App, public alertCtrl: AlertController) {
+     this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
           this.user= user;
             console.log(this.user)
           if(this.user.verifiedPerson === true){
@@ -47,11 +47,35 @@ export class MorePage {
          help(){
     this.navCtrl.push('HelpPage');
     }
+
+
+
          logOut(){
-    this.authenticationService.logOut();
-    console.log(firebase.auth().currentUser);
-    this.SignupService.userUniversity = undefined;
-    this.navCtrl.setRoot('LoginPage');
+
+
+          let alert = this.alertCtrl.create({
+            title: '¿estás seguro de querer cerrar sesión?',
+            buttons: [
+              {
+                text: 'Cancel',
+                role: 'cancel',
+                handler: () => {
+                  console.log('Cancel clicked');
+                }
+              },
+              {
+                text: 'cerrar sesión',
+                handler: () => {
+                  this.authenticationService.logOut().then(()=>{
+                    console.log(firebase.auth().currentUser);
+                    this.SignupService.userPlace = undefined;
+                    this.navCtrl.setRoot('LoginPage');
+                  })
+                }
+              }
+            ]
+          });
+          alert.present();
     }
 
     ionViewDidLeave(){

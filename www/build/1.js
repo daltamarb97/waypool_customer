@@ -48,7 +48,7 @@ var SignupPageModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(122);
@@ -190,7 +190,7 @@ var LoginPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(658);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__);
@@ -231,7 +231,8 @@ var SignupPage = /** @class */ (function () {
         this.tokenId = '';
         this.userId = '';
         this.isReadonly = true;
-        this.universities = [];
+        this.places = [];
+        this.arrayEmails = [];
         this.showReadonly = true;
         this.noShowButton = false;
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_8_rxjs__["Subject"];
@@ -243,27 +244,42 @@ var SignupPage = /** @class */ (function () {
             password: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
             passwordconf: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
             phone: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
-            university: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
+            place: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
             isChecked: [true, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required]
         });
-        this.SignUpService.getUniversities().takeUntil(this.unsubscribe).subscribe(function (universities) {
-            _this.universities = universities;
-            console.log(_this.universities);
+        this.geocoder = new google.maps.Geocoder;
+        this.SignUpService.getPlaces().takeUntil(this.unsubscribe).subscribe(function (places) {
+            _this.places = places;
+            console.log(_this.places);
         });
     }
     SignupPage.prototype.onChange = function () {
+        var _this = this;
         this.showReadonly = true;
         if (this.showReadonly == true) {
-            var count = this.universities.length;
+            var count = this.places.length;
             for (var i = 0; i < count; i++) {
-                if (this.universities[i].name == this.universityVar) {
-                    if (this.universities[i].email == undefined) {
+                if (this.places[i].name == this.enterpriseVar) {
+                    if (this.places[i].emails == undefined) {
                         this.showReadonly = false;
                     }
                     else {
-                        this.emailVar = this.universities[i].email;
+                        // this.emailVar = this.universities[i].email
+                        this.SignUpService.getEmails(this.places[i].name).subscribe(function (emails) {
+                            _this.arrayEmails = emails;
+                            console.log(_this.arrayEmails);
+                        });
                     }
                 }
+            }
+        }
+    };
+    SignupPage.prototype.onChangeEmail = function () {
+        var count = this.arrayEmails.length;
+        for (var i = 0; i < count; i++) {
+            if (this.arrayEmails[i].email == this.companyVar) {
+                this.company = this.arrayEmails[i].company;
+                console.log(this.company);
             }
         }
     };
@@ -277,12 +293,12 @@ var SignupPage = /** @class */ (function () {
     SignupPage.prototype.verification = function () {
         var _this = this;
         if (!this.signupGroup.controls['isChecked'].value === true) {
-            var alert_1 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'No aceptaste nuestros términos y condiciones',
                 subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
                 buttons: ['OK']
             });
-            alert_1.present();
+            alert.present();
         }
         else {
             if (this.showReadonly === true) {
@@ -294,26 +310,39 @@ var SignupPage = /** @class */ (function () {
                 var userEmailComplete = userEmail + userFixedemail;
                 var userPassword = this.signupGroup.controls['password'].value;
                 var userPhone = this.signupGroup.controls['phone'].value;
-                var userUniversity = this.signupGroup.controls['university'].value;
+                var userPlace = this.signupGroup.controls['place'].value;
                 // saving data in variable
-                this.user = {
-                    name: userName,
-                    lastname: userLastName,
-                    email: userEmailComplete,
-                    phone: '+57' + userPhone,
-                    university: userUniversity,
-                    createdBy: 'costumer'
-                };
-                this.SignUpService.userUniversity = userUniversity;
+                if (this.company !== undefined || this.company !== null) {
+                    this.user = {
+                        name: userName,
+                        lastname: userLastName,
+                        email: userEmailComplete,
+                        phone: '+57' + userPhone,
+                        place: userPlace,
+                        createdBy: 'costumer',
+                        company: this.company
+                    };
+                }
+                else {
+                    this.user = {
+                        name: userName,
+                        lastname: userLastName,
+                        email: userEmailComplete,
+                        phone: '+57' + userPhone,
+                        place: userPlace,
+                        createdBy: 'costumer',
+                    };
+                }
+                this.SignUpService.userPlace = userPlace;
                 if (this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value) {
                     this.authenticationService.registerWithEmail(userEmailComplete, userPassword).catch(function (error) {
                         if (error.code === "auth/email-already-in-use") {
-                            var alert_2 = _this.alertCtrl.create({
+                            var alert = _this.alertCtrl.create({
                                 title: 'ya existe una cuenta con este correo',
                                 subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
                                 buttons: ['OK']
                             });
-                            alert_2.present();
+                            alert.present();
                         }
                     });
                     if (!this.user.userId) {
@@ -325,7 +354,14 @@ var SignupPage = /** @class */ (function () {
                                 if (!_this.user.userId) {
                                     _this.user.userId = user.uid;
                                 }
-                                _this.SignUpService.saveUser(_this.user, _this.SignUpService.userUniversity);
+                                _this.SignUpService.saveUser(_this.user, _this.SignUpService.userPlace);
+                                _this.afDB.database.ref('allPlaces/' + _this.SignUpService.userPlace + '/location').once('value').then(function (snap) {
+                                    console.log(snap.val());
+                                    console.log(snap.val().lng);
+                                    _this.SignUpService.setFixedLocationCoordinates(_this.SignUpService.userPlace, _this.user.userId, snap.val().lat, snap.val().lng);
+                                    _this.geocodingPlace(snap.val().lat, snap.val().lng, _this.SignUpService.userPlace, _this.user.userId);
+                                });
+                                _this.SignUpService.saveUserInAllUsers(_this.SignUpService.userPlace, _this.user.userId);
                                 // this.sendVerificationCode(this.user.userId);
                             }
                             else {
@@ -339,8 +375,8 @@ var SignupPage = /** @class */ (function () {
                         if (user) {
                             if (user.emailVerified == false) {
                                 user.sendEmailVerification();
-                                var alert_3 = _this.alertCtrl.create({
-                                    title: 'Verificación de email',
+                                var alert = _this.alertCtrl.create({
+                                    title: '¡REGISTRO EXITOSO!',
                                     subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
                                     buttons: [
                                         {
@@ -351,11 +387,11 @@ var SignupPage = /** @class */ (function () {
                                         }
                                     ]
                                 });
-                                alert_3.present();
+                                alert.present();
                                 console.log("verification email has been sent");
                             }
                             else {
-                                console.log("verification email has not been sent or the email is already verifyied");
+                                console.log("verification email has not been sent or the email is already verified");
                             }
                         }
                         else {
@@ -364,12 +400,12 @@ var SignupPage = /** @class */ (function () {
                     });
                 }
                 else {
-                    var alert_4 = this.alertCtrl.create({
+                    var alert = this.alertCtrl.create({
                         title: 'Oops!',
                         subTitle: 'las contraseñas no coinciden, intenta de nuevo',
                         buttons: ['OK']
                     });
-                    alert_4.present();
+                    alert.present();
                 }
             }
             else if (this.showReadonly === false) {
@@ -380,26 +416,39 @@ var SignupPage = /** @class */ (function () {
                 var userEmailComplete = userEmail;
                 var userPassword = this.signupGroup.controls['password'].value;
                 var userPhone = this.signupGroup.controls['phone'].value;
-                var userUniversity = this.signupGroup.controls['university'].value;
+                var userPlace = this.signupGroup.controls['place'].value;
                 // saving data in variable
-                this.user = {
-                    name: userName,
-                    lastname: userLastName,
-                    email: userEmail,
-                    phone: '+57' + userPhone,
-                    university: userUniversity,
-                    createdBy: 'costumer'
-                };
-                this.SignUpService.userUniversity = userUniversity;
+                if (this.company !== undefined || this.company !== null) {
+                    this.user = {
+                        name: userName,
+                        lastname: userLastName,
+                        email: userEmailComplete,
+                        phone: '+57' + userPhone,
+                        place: userPlace,
+                        createdBy: 'costumer',
+                        company: this.company
+                    };
+                }
+                else {
+                    this.user = {
+                        name: userName,
+                        lastname: userLastName,
+                        email: userEmailComplete,
+                        phone: '+57' + userPhone,
+                        place: userPlace,
+                        createdBy: 'costumer',
+                    };
+                }
+                this.SignUpService.userPlace = userPlace;
                 if (this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value) {
                     this.authenticationService.registerWithEmail(userEmailComplete, userPassword).catch(function (error) {
                         if (error.code === "auth/email-already-in-use") {
-                            var alert_5 = _this.alertCtrl.create({
+                            var alert = _this.alertCtrl.create({
                                 title: 'ya existe una cuenta con este correo',
                                 subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
                                 buttons: ['OK']
                             });
-                            alert_5.present();
+                            alert.present();
                         }
                     });
                     if (!this.user.userId) {
@@ -411,7 +460,14 @@ var SignupPage = /** @class */ (function () {
                                 if (!_this.user.userId) {
                                     _this.user.userId = user.uid;
                                 }
-                                _this.SignUpService.saveUser(_this.user, _this.SignUpService.userUniversity);
+                                _this.SignUpService.saveUser(_this.user, _this.SignUpService.userPlace);
+                                _this.afDB.database.ref('allPlaces/' + _this.SignUpService.userPlace + '/location').once('value').then(function (snap) {
+                                    console.log(snap.val());
+                                    console.log(snap.val().lng);
+                                    _this.SignUpService.setFixedLocationCoordinates(_this.SignUpService.userPlace, _this.user.userId, snap.val().lat, snap.val().lng);
+                                    _this.geocodingPlace(snap.val().lat, snap.val().lng, _this.SignUpService.userPlace, _this.user.userId);
+                                });
+                                _this.SignUpService.saveUserInAllUsers(_this.SignUpService.userPlace, user.uid);
                                 //send text message with code
                                 // this.sendVerificationCode(this.user.userId);
                             }
@@ -426,8 +482,8 @@ var SignupPage = /** @class */ (function () {
                         if (user) {
                             if (user.emailVerified == false) {
                                 user.sendEmailVerification();
-                                var alert_6 = _this.alertCtrl.create({
-                                    title: 'Verificación de email',
+                                var alert = _this.alertCtrl.create({
+                                    title: '¡REGISTRO EXITOSO!',
                                     subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
                                     buttons: [
                                         {
@@ -438,11 +494,11 @@ var SignupPage = /** @class */ (function () {
                                         }
                                     ]
                                 });
-                                alert_6.present();
+                                alert.present();
                                 console.log("verification email has been sent");
                             }
                             else {
-                                console.log("verification email has not been sent or the email is already verifyied");
+                                console.log("verification email has not been sent or the email is already verified");
                             }
                         }
                         else {
@@ -451,12 +507,12 @@ var SignupPage = /** @class */ (function () {
                     });
                 }
                 else {
-                    var alert_7 = this.alertCtrl.create({
+                    var alert = this.alertCtrl.create({
                         title: 'Oops!',
                         subTitle: 'las contraseñas no coinciden, intenta de nuevo',
                         buttons: ['OK']
                     });
-                    alert_7.present();
+                    alert.present();
                 }
             }
         }
@@ -468,17 +524,35 @@ var SignupPage = /** @class */ (function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     };
+    SignupPage.prototype.geocodingPlace = function (lat, lng, place, userId) {
+        var _this = this;
+        this.geocoder.geocode({ 'location': { lat: lat, lng: lng } }, function (results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    var namePlace = [results[0].formatted_address];
+                    _this.SignUpService.setFixedLocationName(place, userId, namePlace[0]);
+                }
+                else {
+                    alert('No results found');
+                }
+            }
+            else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]) === "function" && _a || Object)
     ], SignupPage.prototype, "content", void 0);
     SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-signup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/signup/signup.html"*/'<ion-header class="transparent">\n    <ion-navbar>\n        <ion-title><span class="text-white">REGÍSTRATE</span></ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n\n<ion-content>\n    <form [formGroup]="signupGroup" (ngSubmit)="verification()">\n    <div>\n        <div class="">\n                <ion-row>\n                        <ion-col class="name-fild">\n                            <ion-list class="form" style="margin-bottom: 0">\n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>\n                                </ion-item>\n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>\n                                </ion-item>\n                                <ion-item>\n                                    <ion-label  text-right >selecciona tu universidad</ion-label>\n                                        <ion-select (ionChange)="onChange()" [(ngModel)]="universityVar" formControlName="university">\n                                            <ion-option *ngFor="let uni of universities">{{uni.name}}</ion-option>\n                                        </ion-select>\n                                </ion-item>\n                            </ion-list>\n                        </ion-col>\n                    </ion-row>\n                    <div [ngSwitch]="showReadonly">\n                            <ion-row *ngSwitchCase=true>\n                                    <ion-col class="name-fild-2">\n                                        <ion-list class="form">\n                                            <ion-item class="editable-email">\n                                                    <ion-label></ion-label>\n                                                        <ion-input type="text" text-right formControlName="email" placeholder= "email"></ion-input>\n                                                    </ion-item>\n                                            </ion-list>\n                                    </ion-col>\n                                    <ion-col class="name-fild-2">\n                                        <ion-list class="form">\n                                            <ion-item class="nonEditable-email">\n                                                    <ion-input readonly [(ngModel)]=\'emailVar\' formControlName="fixedemail"></ion-input>\n                                                </ion-item>\n                                        </ion-list>\n                                    </ion-col>\n                                </ion-row>\n            \n            \n            \n                                <ion-row *ngSwitchCase=false >\n                                        <ion-col class="name-fild-2">\n                                            <ion-list class="form">\n                                                <ion-item class="editable-email">\n                                                        <ion-label></ion-label>\n                                                            <ion-input type="text" text-right [(ngModel)]=\'onlyEmail\' formControlName="email" placeholder= "email"></ion-input>\n                                                        </ion-item>\n                                                <ion-item class="editable-email" *ngIf=\'noShowButton\'>\n                                                         <ion-label></ion-label>\n                                                            <ion-input readonly formControlName="fixedemail"></ion-input>\n                                                         </ion-item>\n                                                </ion-list>\n                                        </ion-col>\n                                    </ion-row>\n                    </div>\n\n            <ion-list class="form" style="margin-bottom: 0">\n                <ion-item>\n                    <ion-label  fixed><span style="font-weight: bold; color: red;">(mínimo 6 caracteres)</span></ion-label>\n                    <ion-input type="password"  text-right formControlName="password" placeholder= "crea tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="number" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label>Por favor lee y acepta nuestros términos y condiciones</ion-label>\n                    <ion-checkbox formControlName="isChecked" ></ion-checkbox>\n                </ion-item>\n                <ion-item>\n                    <p>Ver <a href="https://waypooltech.wordpress.com/">términos y condiciones</a></p>\n                </ion-item>\n                \n\n            </ion-list>\n            <div class="footer-signup">\n                    <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>\n                    <p text-center>¿ya estas registrado? <strong class="text-theme" (click)="login()">Inicia sesión</strong></p>\n            </div>\n        </div>\n    </div>\n</form>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/signup/signup.html"*/
+            selector: 'page-signup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/signup/signup.html"*/'<ion-header class="transparent">\n    <ion-navbar>\n        <ion-title><span class="text-white">REGÍSTRATE</span></ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n\n<ion-content>\n    <form [formGroup]="signupGroup" (ngSubmit)="verification()">\n    <div>\n        <div class="">\n                <ion-row>\n                        <ion-col class="name-fild">\n                            <ion-list class="form" style="margin-bottom: 0">\n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>\n                                </ion-item>\n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>\n                                </ion-item>\n                                <ion-item>\n                                    <ion-label  text-right >selecciona tu universidad/centro empresarial</ion-label>\n                                        <ion-select (ionChange)="onChange()" [(ngModel)]="enterpriseVar" formControlName="place">\n                                            <ion-option *ngFor="let plac of places">{{plac.name}}</ion-option>\n                                        </ion-select>\n                                </ion-item>\n                            </ion-list>\n                        </ion-col>\n                    </ion-row>\n                    <div [ngSwitch]="showReadonly">\n                            <ion-row *ngSwitchCase=true>\n                                    <ion-col class="name-fild-2">\n                                        <ion-list class="form">\n                                            <ion-item class="editable-email">\n                                                    <ion-label></ion-label>\n                                                        <ion-input type="text" text-right formControlName="email" placeholder= "email"></ion-input>\n                                                    </ion-item>\n                                            </ion-list>\n                                    </ion-col>\n                                    <ion-col class="name-fild-2">\n                                        <ion-list class="form">\n\n                                                <ion-select (ionChange)="onChangeEmail()" [(ngModel)]="companyVar" formControlName="fixedemail" class="nonEditable-email">\n                                                        <ion-option *ngFor="let email of arrayEmails">{{email.email}}</ion-option>\n                                                    </ion-select>\n                                            <!-- <ion-item class="nonEditable-email">\n                                                    <ion-input readonly [(ngModel)]=\'emailVar\' formControlName="fixedemail"></ion-input>\n                                                </ion-item> -->\n                                        </ion-list>\n                                    </ion-col>\n                                </ion-row>\n            \n            \n            \n                                <ion-row *ngSwitchCase=false >\n                                        <ion-col class="name-fild-2">\n                                            <ion-list class="form">\n                                                <ion-item class="editable-email">\n                                                        <ion-label></ion-label>\n                                                            <ion-input type="text" text-right [(ngModel)]=\'onlyEmail\' formControlName="email" placeholder= "email"></ion-input>\n                                                        </ion-item>\n                                                <ion-item class="editable-email" *ngIf=\'noShowButton\'>\n                                                         <ion-label></ion-label>\n                                                            <ion-input readonly formControlName="fixedemail"></ion-input>\n                                                         </ion-item>\n                                                </ion-list>\n                                        </ion-col>\n                                    </ion-row>\n                    </div>\n\n            <ion-list class="form" style="margin-bottom: 0">\n                <ion-item>\n                    <ion-label  fixed><span style="font-weight: bold; color: red;">(mínimo 6 caracteres)</span></ion-label>\n                    <ion-input type="password"  text-right formControlName="password" placeholder= "crea tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="number" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label>Por favor lee y acepta nuestros términos y condiciones</ion-label>\n                    <ion-checkbox formControlName="isChecked" ></ion-checkbox>\n                </ion-item>\n                <ion-item>\n                    <p>Ver <a href="https://waypooltech.wordpress.com/">términos y condiciones</a></p>\n                </ion-item>\n                \n\n            </ion-list>\n            <div class="footer-signup">\n                    <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>\n                    <p text-center>¿ya estas registrado? <strong class="text-theme" (click)="login()">Inicia sesión</strong></p>\n            </div>\n        </div>\n    </div>\n</form>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/signup/signup.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["AngularFireDatabase"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__["a" /* authenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_userauthentication_service__["a" /* authenticationService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__["AngularFireAuth"]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]) === "function" && _k || Object])
     ], SignupPage);
     return SignupPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
 //# sourceMappingURL=signup.js.map

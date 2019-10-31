@@ -32,24 +32,24 @@ export class ListridePage {
   noReserve:boolean = false;
   constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
-    this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(user=>{
+    this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user = user;   
       
     })
     
-    this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    this.sendCoordsService.getOriginUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( originUser => {
       this.locationOriginUser = originUser;
       // this.locationOrigin.push(origin)
       console.log(originUser);
     });
-    this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    this.sendCoordsService.getDestinationUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
         .subscribe( destinationUser => {
           this.locationDestinationUser = destinationUser;
           // this.locationOrigin.push(origin)
           console.log(destinationUser);
         });
-        this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
         .subscribe( tripsReserved => {
           
   
@@ -58,7 +58,7 @@ export class ListridePage {
   
         }) 
         
-    this.reservesService.getReserves(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)    
+    this.reservesService.getReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)    
       .subscribe(reserves => {
         this.reservesAvailable = [];
         this.ReservesGeofire = reserves;
@@ -81,11 +81,11 @@ export class ListridePage {
     this.unSubscribeServices();
 
     console.log("me active")
-    this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
+    this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
   }
 
 getMyReserves(){
-  this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+  this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
   .subscribe( tripsReserved => {
     
 
@@ -101,7 +101,7 @@ getMyReserves(){
    
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
       this.ReservesGeofire.forEach(reserveGeofire => {
-          this.reservesService.getMyReserves(this.SignUpService.userUniversity, reserveGeofire.driverId,reserveGeofire.keyReserve).takeUntil(this.unsubscribe)
+          this.reservesService.getMyReserves(this.SignUpService.userPlace, reserveGeofire.driverId,reserveGeofire.keyReserve).takeUntil(this.unsubscribe)
       .subscribe( info => {        
             this.reserve = info;
                 
@@ -123,7 +123,7 @@ getMyReserves(){
 
 
       if(reserveGeofire.LMU == true){
-        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userUniversity, reserveGeofire.driverId, reserveGeofire.keyReserve).subscribe((reserveLMU)=>{
+        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userPlace, reserveGeofire.driverId, reserveGeofire.keyReserve).subscribe((reserveLMU)=>{
           this.initiatedTrips = [];
           this.reserveLMU = reserveLMU;
           console.log(this.reserveLMU);
@@ -149,7 +149,7 @@ ionViewDidLoad(){
 
  
  confirmpopup(reserve){
-   this.reservesService.getPendingUsers(this.SignUpService.userUniversity,reserve.driver.userId,reserve.keyTrip).takeUntil(this.unsubscribe)
+   this.reservesService.getPendingUsers(this.SignUpService.userPlace,reserve.driver.userId,reserve.keyTrip).takeUntil(this.unsubscribe)
     .subscribe(pendingUsers=>{
       this.pendingUsers = pendingUsers
       console.log(pendingUsers);
@@ -163,7 +163,7 @@ ionViewDidLoad(){
         if(accepted){
           this.unSubscribeServices();
          this.navCtrl.pop();
-         this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
+         this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
     
          this.navCtrl.push('ReservetripPage');
         }
@@ -190,7 +190,7 @@ ionViewDidLoad(){
         if(accepted){
           this.unSubscribeServices();
          this.navCtrl.pop();
-         this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
+         this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
     
          this.navCtrl.push('ReservetripPage');
         }
@@ -210,7 +210,7 @@ ionViewDidLoad(){
     if(accepted){
       this.unSubscribeServices();
      this.navCtrl.pop();
-     this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity,this.userUid);
+     this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
      this.navCtrl.push('MyridePage');
 
     }

@@ -28,7 +28,7 @@ navBar: Navbar;
 unsubscribe = new Subject;
   constructor(private navCtrl: NavController,public navParams: NavParams, public sendfeedback:sendFeedbackService, public signUpService: SignUpService, public sendCoordsService: sendCoordsService, public angularFireAuth: AngularFireAuth, public alertCtrl: AlertController) {
     this.today = Date.now();
-    this.signUpService.getMyInfo( this.userUid,this.signUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(user=>{
+    this.signUpService.getMyInfo( this.userUid,this.signUpService.userPlace).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user = user;
       console.log(this.user)
     })  
@@ -40,10 +40,10 @@ unsubscribe = new Subject;
   sendInfo() {
     if(this.experience === null || this.experience === undefined){
       this.experience = 'no hay feedback'
-      this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+      this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
       this.navCtrl.setRoot('TabsPage')
     }else{
-      this.sendfeedback.sendFeedback(this.signUpService.userUniversity, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+      this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
       this.navCtrl.setRoot('TabsPage');
     }
   }

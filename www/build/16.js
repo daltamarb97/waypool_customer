@@ -48,15 +48,15 @@ var ListridePageModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListridePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(346);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_reserves_service__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_trips_service__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_trips_service__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -103,27 +103,27 @@ var ListridePage = /** @class */ (function () {
         this.pendingUsers = [];
         this.noReserve = false;
         console.log("AQUI EMPIEZA");
-        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userUniversity).takeUntil(this.unsubscribe).subscribe(function (user) {
+        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe).subscribe(function (user) {
             _this.user = user;
         });
-        this.sendCoordsService.getOriginUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.sendCoordsService.getOriginUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (originUser) {
             _this.locationOriginUser = originUser;
             // this.locationOrigin.push(origin)
             console.log(originUser);
         });
-        this.sendCoordsService.getDestinationUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.sendCoordsService.getDestinationUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (destinationUser) {
             _this.locationDestinationUser = destinationUser;
             // this.locationOrigin.push(origin)
             console.log(destinationUser);
         });
-        this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (tripsReserved) {
             _this.tripsReserved = tripsReserved;
             console.log(_this.tripsReserved);
         });
-        this.reservesService.getReserves(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.reservesService.getReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (reserves) {
             _this.reservesAvailable = [];
             _this.ReservesGeofire = reserves;
@@ -136,11 +136,11 @@ var ListridePage = /** @class */ (function () {
     ListridePage.prototype.ionViewDidLeave = function () {
         this.unSubscribeServices();
         console.log("me active");
-        this.TripsService.eliminateAvailableUsers(this.SignUpService.userUniversity, this.userUid);
+        this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace, this.userUid);
     };
     ListridePage.prototype.getMyReserves = function () {
         var _this = this;
-        this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (tripsReserved) {
             _this.tripsReserved = tripsReserved;
             console.log(_this.tripsReserved);
@@ -151,7 +151,7 @@ var ListridePage = /** @class */ (function () {
         var _this = this;
         //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
         this.ReservesGeofire.forEach(function (reserveGeofire) {
-            _this.reservesService.getMyReserves(_this.SignUpService.userUniversity, reserveGeofire.driverId, reserveGeofire.keyReserve).takeUntil(_this.unsubscribe)
+            _this.reservesService.getMyReserves(_this.SignUpService.userPlace, reserveGeofire.driverId, reserveGeofire.keyReserve).takeUntil(_this.unsubscribe)
                 .subscribe(function (info) {
                 _this.reserve = info;
                 console.log(info);
@@ -166,7 +166,7 @@ var ListridePage = /** @class */ (function () {
             });
             //// ELIMINAR NODO QUE LEE LMU CUANDO FINALICE VIAJE (MERGE)
             if (reserveGeofire.LMU == true) {
-                _this.TripsService.getLastMinuteTripsDEMO(_this.SignUpService.userUniversity, reserveGeofire.driverId, reserveGeofire.keyReserve).subscribe(function (reserveLMU) {
+                _this.TripsService.getLastMinuteTripsDEMO(_this.SignUpService.userPlace, reserveGeofire.driverId, reserveGeofire.keyReserve).subscribe(function (reserveLMU) {
                     _this.initiatedTrips = [];
                     _this.reserveLMU = reserveLMU;
                     console.log(_this.reserveLMU);
@@ -185,7 +185,7 @@ var ListridePage = /** @class */ (function () {
     };
     ListridePage.prototype.confirmpopup = function (reserve) {
         var _this = this;
-        this.reservesService.getPendingUsers(this.SignUpService.userUniversity, reserve.driver.userId, reserve.keyTrip).takeUntil(this.unsubscribe)
+        this.reservesService.getPendingUsers(this.SignUpService.userPlace, reserve.driver.userId, reserve.keyTrip).takeUntil(this.unsubscribe)
             .subscribe(function (pendingUsers) {
             _this.pendingUsers = pendingUsers;
             console.log(pendingUsers);
@@ -197,7 +197,7 @@ var ListridePage = /** @class */ (function () {
                 if (accepted) {
                     _this.unSubscribeServices();
                     _this.navCtrl.pop();
-                    _this.TripsService.eliminateAvailableUsers(_this.SignUpService.userUniversity, _this.userUid);
+                    _this.TripsService.eliminateAvailableUsers(_this.SignUpService.userPlace, _this.userUid);
                     _this.navCtrl.push('ReservetripPage');
                 }
             });
@@ -223,7 +223,7 @@ var ListridePage = /** @class */ (function () {
                 if (accepted) {
                     _this.unSubscribeServices();
                     _this.navCtrl.pop();
-                    _this.TripsService.eliminateAvailableUsers(_this.SignUpService.userUniversity, _this.userUid);
+                    _this.TripsService.eliminateAvailableUsers(_this.SignUpService.userPlace, _this.userUid);
                     _this.navCtrl.push('ReservetripPage');
                 }
             });
@@ -239,7 +239,7 @@ var ListridePage = /** @class */ (function () {
             if (accepted) {
                 _this.unSubscribeServices();
                 _this.navCtrl.pop();
-                _this.TripsService.eliminateAvailableUsers(_this.SignUpService.userUniversity, _this.userUid);
+                _this.TripsService.eliminateAvailableUsers(_this.SignUpService.userPlace, _this.userUid);
                 _this.navCtrl.push('MyridePage');
             }
         });

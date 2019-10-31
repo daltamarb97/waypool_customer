@@ -21,7 +21,7 @@ export class ConfirmUniversityPage {
   unsubscribe = new Subject;
 
   constructor(private signUpService: SignUpService, public viewCtrl: ViewController, private angularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private afDB: AngularFireDatabase) {
-    this.signUpService.getUniversities().takeUntil(this.unsubscribe)
+    this.signUpService.getPlaces().takeUntil(this.unsubscribe)
     .subscribe(universities => {
       this.universities = universities;
       console.log(this.universities);
@@ -33,11 +33,11 @@ export class ConfirmUniversityPage {
 
   onChange(){
     this.showButton = false;
-    this.signUpService.userUniversity = this.universityChosen;
-    console.log(this.signUpService.userUniversity);
+    this.signUpService.userPlace = this.universityChosen;
+    console.log(this.signUpService.userPlace);
 
     setTimeout(() => {
-      this.afDB.database.ref(this.signUpService.userUniversity + '/users/'+ this.userId)
+      this.afDB.database.ref(this.signUpService.userPlace + '/users/'+ this.userId)
       .once('value')
       .then((snap)=> {
         let user = snap.val();

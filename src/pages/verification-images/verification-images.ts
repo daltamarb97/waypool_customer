@@ -42,7 +42,7 @@ export class VerificationImagesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public AngularFireauth: AngularFireAuth, public alertCtrl: AlertController, public SignUpService:SignUpService, private camera: Camera, public loadingCtrl:LoadingController) {
     this.user =  this.AngularFireauth.auth.currentUser.uid;
 
-    this.SignUpService.getMyInfo(this.user, this.SignUpService.userUniversity).subscribe(user=>{
+    this.SignUpService.getMyInfo(this.user, this.SignUpService.userPlace).subscribe(user=>{
       this.userInfo = user
       if(this.userInfo.documents){
         if(this.userInfo.documents.carne == true ){
@@ -93,7 +93,7 @@ export class VerificationImagesPage {
 
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-      const picturesDrivers = storage().ref(this.SignUpService.userUniversity + '/verificationDocuments/' + this.user + '/' + this.data);
+      const picturesDrivers = storage().ref(this.SignUpService.userPlace + '/verificationDocuments/' + this.user + '/' + this.data);
 
 
       
@@ -119,7 +119,7 @@ export class VerificationImagesPage {
 
       this.picToViewCarne = "assets/imgs/v2.2.png";
       this.picToView = "assets/imgs/v2.2.png";
-      this.SignUpService.pushDocsCarne(this.SignUpService.userUniversity, this.user);
+      this.SignUpService.pushDocsCarne(this.SignUpService.userPlace, this.user);
       
 
      }, (err) => {
@@ -149,7 +149,7 @@ export class VerificationImagesPage {
 
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-      const picturesDrivers = storage().ref(this.SignUpService.userUniversity + '/verificationDocuments/' + this.user + '/' + this.data);
+      const picturesDrivers = storage().ref(this.SignUpService.userPlace + '/verificationDocuments/' + this.user + '/' + this.data);
 
 
 
@@ -175,7 +175,7 @@ export class VerificationImagesPage {
       
       this.picToViewId = "assets/imgs/v4.2.png";
       this.picToView = "assets/imgs/v4.2.png";
-      this.SignUpService.pushDocsId(this.SignUpService.userUniversity, this.user);
+      this.SignUpService.pushDocsId(this.SignUpService.userPlace, this.user);
 
       
 

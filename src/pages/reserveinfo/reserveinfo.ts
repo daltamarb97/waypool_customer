@@ -40,7 +40,7 @@ export class ReserveinfoPage {
 
   
 
-      this.reservesService.getPendingUsers(this.signUpService.userUniversity,this.driverUid,this.reserveKey).takeUntil(this.unsubscribe)
+      this.reservesService.getPendingUsers(this.signUpService.userPlace,this.driverUid,this.reserveKey).takeUntil(this.unsubscribe)
         .subscribe( users => {
 			this.passengers = users;			
 			console.log(this.passengers);
@@ -54,8 +54,8 @@ export class ReserveinfoPage {
 
 	
 cancelReserve(){
-	this.reservesService.cancelReserve(this.signUpService.userUniversity, this.userUid,this.driverUid,this.reserveKey);
-	this.reservesService.eliminateKeyUser(this.signUpService.userUniversity, this.userUid,this.reserveKey);
+	this.reservesService.cancelReserve(this.signUpService.userPlace, this.userUid,this.driverUid,this.reserveKey);
+	this.reservesService.eliminateKeyUser(this.signUpService.userPlace, this.userUid,this.reserveKey);
 	this.app.getRootNav().push('ListridePage');
 
   }

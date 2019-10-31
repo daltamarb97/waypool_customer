@@ -3,7 +3,7 @@ import * as admin from  'firebase-admin';
 admin.initializeApp(functions.config().firebase);
 
 
-exports.newMessageInReserveUser = functions.database.ref(`/{university}/reserves/{userId}/{reserveKey}/chats/messages/{messageId}`).onCreate((snap, context) =>{
+exports.newMessageInReserveUser = functions.database.ref(`/{university}/reserves/{userId}/{reserveKey}/chat/messages/{messageId}`).onCreate((snap, context) =>{
     const university = context.params.university;
     const userId = context.params.userId;
 
@@ -29,7 +29,7 @@ exports.newMessageInReserveUser = functions.database.ref(`/{university}/reserves
 
 
 
-exports.newMessageInTripsUser = functions.database.ref(`/{university}/trips/{userId}/{reserveKey}/chats/messages/{messageId}`).onCreate((snap, context) =>{
+exports.newMessageInTripsUser = functions.database.ref(`/{university}/trips/{userId}/{reserveKey}/chat/messages/{messageId}`).onCreate((snap, context) =>{
     const university = context.params.university;
     const userId = context.params.userId;
 

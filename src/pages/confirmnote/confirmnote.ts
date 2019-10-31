@@ -40,16 +40,16 @@ export class ConfirmNotePage {
       let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
       console.log(today)
       console.log(this.dest);
-      this.MetricsService.createdReserves(this.SignUpService.userUniversity,this.userUid,today,this.dest,this.or);
+      this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.dest,this.or);
       if(this.note == null || this.note == ''){
         this.note = 'No hay nota'
-        this.noteService.setNote(this.userUid, this.note, this.SignUpService.userUniversity)
+        this.noteService.setNote(this.userUid, this.note, this.SignUpService.userPlace)
 
         this.accepted = true;
         this.dismiss(); 
         
       } else {
-        this.noteService.setNote(this.userUid, this.note, this.SignUpService.userUniversity)
+        this.noteService.setNote(this.userUid, this.note, this.SignUpService.userPlace)
         this.accepted = true;
         this.dismiss();        
       }

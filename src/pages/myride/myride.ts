@@ -50,7 +50,7 @@ unsubscribe = new Subject;
 cancelUser:any;
   constructor(public navCtrl: NavController,public modalCtrl: ModalController,private MetricsService:MetricsService,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private reservesService: reservesService, private afDB: AngularFireDatabase) {
 
-    this.TripsService.getKeyTrip(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    this.TripsService.getKeyTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe(  keys => {      
         this.keyTrip =  keys; 
         console.log(this.keyTrip.keyTrip);
@@ -67,7 +67,7 @@ cancelUser:any;
 
            }else{
             this.getTrip(this.keyTrip.keyTrip,this.keyTrip.driverId);
-            this.TripsService.eraseReserve(this.SignUpService.userUniversity, this.userUid,this.keyTrip.keyTrip);
+            this.TripsService.eraseReserve(this.SignUpService.userPlace, this.userUid,this.keyTrip.keyTrip);
 
            }
 
@@ -80,7 +80,7 @@ cancelUser:any;
           // }
     
     })
-    this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userUniversity).takeUntil(this.unsubscribe)
+    this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userPlace).takeUntil(this.unsubscribe)
       .subscribe(info => {
         this.user = info
         console.log("estado mal")
@@ -91,16 +91,16 @@ cancelUser:any;
           this.unSubscribeServices();         
           console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 
-          this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-          this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-          this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+          this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
+          this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+          this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
           this.navCtrl.setRoot('TabsPage');
 
             let modal = this.modalCtrl.create('CanceltripPage');
             modal.present();  
             console.log("me cancelaron el viaje")
             setTimeout(() => {
-              this.TripsService.eliminatingCancelTrip(this.SignUpService.userUniversity,this.userUid);
+              this.TripsService.eliminatingCancelTrip(this.SignUpService.userPlace,this.userUid);
               console.log("me cancele");
               
             }, 2000);
@@ -109,20 +109,20 @@ cancelUser:any;
 
         }else{
       
-          this.TripsService.saveTripOnRecords(this.SignUpService.userUniversity, this.userUid,this.trip);     
+          this.TripsService.saveTripOnRecords(this.SignUpService.userPlace, this.userUid,this.trip);     
           console.log("me active")
           this.unSubscribeServices();       
-          this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-          this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-          this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+          this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
+          this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+          this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
           setTimeout(() => {
-            this.TripsService.eliminatingSaveTrip(this.SignUpService.userUniversity,this.userUid);
+            this.TripsService.eliminatingSaveTrip(this.SignUpService.userPlace,this.userUid);
             console.log("no deje pruebas");
             
           }, 2000);
           this.navCtrl.setRoot('TabsPage');
           this.navCtrl.push('RatetripPage',{trip:this.trip})
-          this.TripsService.eliminateTrip(this.SignUpService.userUniversity, this.userUid);     
+          this.TripsService.eliminateTrip(this.SignUpService.userPlace, this.userUid);     
 
           console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
         
@@ -140,7 +140,7 @@ cancelUser:any;
 
     console.log(this.keyTrip) 
      
-      this.TripsService.getTrip(this.SignUpService.userUniversity, keyTrip,driverId).takeUntil(this.unsubscribe)
+      this.TripsService.getTrip(this.SignUpService.userPlace, keyTrip,driverId).takeUntil(this.unsubscribe)
       .subscribe( info => {      
         //check if the info of the reserve is null  
         if(this.keyTrip.keyTrip === undefined || this.keyTrip.keyTrip=== null){
@@ -163,7 +163,7 @@ cancelUser:any;
         
   }
   // getTripState(keyTrip,driverId){
-  //   this.TripsService.getTripState(this.SignUpService.userUniversity,keyTrip,driverId).takeUntil(this.unsubscribe)
+  //   this.TripsService.getTripState(this.SignUpService.userPlace,keyTrip,driverId).takeUntil(this.unsubscribe)
   //   .subscribe( tripState => {      
   //       this.tripState = tripState;
   //       console.log(this.tripState);
@@ -172,12 +172,12 @@ cancelUser:any;
   //         //check if trip has to be saved 
   //         if(this.tripState.saveTrip === true){
             
-  //           this.TripsService.saveTripOnRecords(this.SignUpService.userUniversity, this.userUid,this.trip);     
+  //           this.TripsService.saveTripOnRecords(this.SignUpService.userPlace, this.userUid,this.trip);     
   //           console.log("me active")
   //           this.unSubscribeServices();       
-  //           this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-  //           this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-  //           this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+  //           this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
+  //           this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+  //           this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
 
   //           this.navCtrl.pop();
   //           this.navCtrl.push('RatetripPage',{trip:this.trip})
@@ -189,9 +189,9 @@ cancelUser:any;
   //         this.unSubscribeServices();         
   //         console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 
-  //         this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid);
-  //         this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-  //         this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+  //         this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
+  //         this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+  //         this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
 
   //           let modal = this.modalCtrl.create('CanceltripPage');
   //           modal.present();  
@@ -201,7 +201,7 @@ cancelUser:any;
   //         } 
 
 
-  //         this.afDB.database.ref(this.SignUpService.userUniversity + '/tripsState/'+ driverId +'/'+ keyTrip+ '/cancelUsers/'+this.userUid)
+  //         this.afDB.database.ref(this.SignUpService.userPlace + '/tripsState/'+ driverId +'/'+ keyTrip+ '/cancelUsers/'+this.userUid)
   //         .once('value').then((snapshot) => {
   //           this.cancelUser = snapshot.val();
             
@@ -212,9 +212,9 @@ cancelUser:any;
   //                 }else{
   //                   console.log("3paso")
   //                   this.unSubscribeServices();          
-  //                   this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity,this.userUid);
-  //                   this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-  //                   this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+  //                   this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace,this.userUid);
+  //                   this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+  //                   this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
   
   //                   console.log("me eliminaron")
   //                   console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
@@ -241,12 +241,12 @@ cancelUser:any;
   }
 
   getPendingAndPickedUpUsers(keyTrip,driverId){
-    this.TripsService.getPendingUsers(this.SignUpService.userUniversity, keyTrip,driverId).takeUntil(this.unsubscribe)
+    this.TripsService.getPendingUsers(this.SignUpService.userPlace, keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {      
         this.pendingUsers = user;
         console.log(this.pendingUsers);          
     });
-    this.TripsService.getPickedUpUsers(this.SignUpService.userUniversity, keyTrip,driverId).takeUntil(this.unsubscribe)
+    this.TripsService.getPickedUpUsers(this.SignUpService.userPlace, keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {    
       this.pickedUpUsers = user;   
 
@@ -300,26 +300,26 @@ this.callNumber.callNumber(number, true)
             handler: () => {
               if(this.pickedUpUsers.length === 0 || this.pickedUpUsers === undefined || this.pickedUpUsers === null) {
                 this.unSubscribeServices(); 
-                this.MetricsService.cancelReserves(this.SignUpService.userUniversity,this.userUid,this.trip);
-                this.TripsService.cancelTrip(this.SignUpService.userUniversity, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
-                this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-                this.TripsService.eliminatingOnTrip(this.SignUpService.userUniversity, this.userUid); 
-                this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);              
+                this.MetricsService.cancelReserves(this.SignUpService.userPlace,this.userUid,this.trip);
+                this.TripsService.cancelTrip(this.SignUpService.userPlace, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
+                this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+                this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid); 
+                this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);              
                 this.navCtrl.pop();
 
               }
 
-              this.reservesService.confirmMyExistenceInPickedupUsers(this.SignUpService.userUniversity, this.trip.driver.userId, this.trip.keyTrip, this.userUid).takeUntil(this.unsubscribe)
+              this.reservesService.confirmMyExistenceInPickedupUsers(this.SignUpService.userPlace, this.trip.driver.userId, this.trip.keyTrip, this.userUid).takeUntil(this.unsubscribe)
                   .subscribe(pickedUp => {
                       this.pickedUp = pickedUp;  
                       console.log(this.pickedUp);
                       console.log(pickedUp);
 
                       if(this.pickedUp === undefined || this.pickedUp === null ){
-                        this.MetricsService.cancelReserves(this.SignUpService.userUniversity,this.userUid,this.trip);
-                        this.TripsService.cancelTrip(this.SignUpService.userUniversity, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
-                        this.TripsService.eliminateKeyTrip(this.SignUpService.userUniversity, this.userUid);
-                        this.TripsService.eliminateAvailableReserves(this.SignUpService.userUniversity, this.userUid);
+                        this.MetricsService.cancelReserves(this.SignUpService.userPlace,this.userUid,this.trip);
+                        this.TripsService.cancelTrip(this.SignUpService.userPlace, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
+                        this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+                        this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
                         console.log(this.trip.keyTrip);
                         this.navCtrl.pop();
 

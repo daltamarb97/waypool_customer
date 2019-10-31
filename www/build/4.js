@@ -1,6 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 649:
+/***/ 650:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VerificationImagesPageModule", function() { return VerificationImagesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verification_images__ = __webpack_require__(803);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verification_images__ = __webpack_require__(804);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var VerificationImagesPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 803:
+/***/ 804:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53,7 +53,7 @@ var VerificationImagesPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera___ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera___ = __webpack_require__(359);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -99,7 +99,7 @@ var VerificationImagesPage = /** @class */ (function () {
             mediaType: this.camera.MediaType.PICTURE
         };
         this.user = this.AngularFireauth.auth.currentUser.uid;
-        this.SignUpService.getMyInfo(this.user, this.SignUpService.userUniversity).subscribe(function (user) {
+        this.SignUpService.getMyInfo(this.user, this.SignUpService.userPlace).subscribe(function (user) {
             _this.userInfo = user;
             if (_this.userInfo.documents) {
                 if (_this.userInfo.documents.carne == true) {
@@ -141,7 +141,7 @@ var VerificationImagesPage = /** @class */ (function () {
             });
             loading.present();
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_2_firebase__["storage"])().ref(_this.SignUpService.userUniversity + '/verificationDocuments/' + _this.user + '/' + _this.data);
+            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_2_firebase__["storage"])().ref(_this.SignUpService.userPlace + '/verificationDocuments/' + _this.user + '/' + _this.data);
             picturesDrivers.putString(base64Image, 'data_url').then(function () {
                 loading.dismiss();
                 var alert = _this.alertCtrl.create({
@@ -162,7 +162,7 @@ var VerificationImagesPage = /** @class */ (function () {
             });
             _this.picToViewCarne = "assets/imgs/v2.2.png";
             _this.picToView = "assets/imgs/v2.2.png";
-            _this.SignUpService.pushDocsCarne(_this.SignUpService.userUniversity, _this.user);
+            _this.SignUpService.pushDocsCarne(_this.SignUpService.userPlace, _this.user);
         }, function (err) {
             console.log(err);
             var alert = _this.alertCtrl.create({
@@ -184,7 +184,7 @@ var VerificationImagesPage = /** @class */ (function () {
             });
             loading.present();
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_2_firebase__["storage"])().ref(_this.SignUpService.userUniversity + '/verificationDocuments/' + _this.user + '/' + _this.data);
+            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_2_firebase__["storage"])().ref(_this.SignUpService.userPlace + '/verificationDocuments/' + _this.user + '/' + _this.data);
             picturesDrivers.putString(base64Image, 'data_url').then(function () {
                 loading.dismiss();
                 var alert = _this.alertCtrl.create({
@@ -205,7 +205,7 @@ var VerificationImagesPage = /** @class */ (function () {
             });
             _this.picToViewId = "assets/imgs/v4.2.png";
             _this.picToView = "assets/imgs/v4.2.png";
-            _this.SignUpService.pushDocsId(_this.SignUpService.userUniversity, _this.user);
+            _this.SignUpService.pushDocsId(_this.SignUpService.userPlace, _this.user);
         }, function (err) {
             console.log(err);
             var alert = _this.alertCtrl.create({

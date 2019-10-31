@@ -18,7 +18,7 @@ export class WalletPage {
   unsubscribe = new Subject;
 
   constructor(public navCtrl: NavController,public toastCtrl: ToastController,public sendUsersService:sendUsersService,public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public signUpServices: SignUpService) {
-    this.sendUsersService.getRecordTrips(this.signUpServices.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+    this.sendUsersService.getRecordTrips(this.signUpServices.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( user => {
     
       this.recordTrips = user;

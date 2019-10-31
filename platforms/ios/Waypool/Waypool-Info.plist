@@ -3,25 +3,29 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en_US</string>
+	<string>English</string>
 	<key>CFBundleDisplayName</key>
 	<string>Waypool</string>
 	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.waypoolsas.waypool</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.0</string>
+	<string>1.4.6</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.4.0</string>
+	<string>1.4.6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -31,12 +35,16 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Necesitamos acceso a tu camara para que nos puedas enviar tus fotos de documentos</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Usado para conectarte con otros usuarios de Waypool y asi brindarte un mejor servicio</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Usado para conectarte con otros usuarios de Waypool</string>
+	<string>Usado para conectarte con otros usuarios de Waypool y asi brindarte un mejor servicio</string>
 	<key>NSMainNibFile</key>
 	<string></string>
 	<key>NSMainNibFile~ipad</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Accedemos a tus imagenes para que sea más fácil para ti mandarnos tu documentos</string>
 	<key>UIInterfaceOrientation</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -3,8 +3,11 @@ page-reservetrip {
         margin-left: 0;
         margin-right: 0;
         width: 100%;
-        margin-bottom: 6px;
-        margin-top: 6px;
+        // margin-bottom: 6px;
+        // margin-top: 6px;
+        border-radius: 5%;
+        margin:2%;
+
         ion-item {
             .name {
                 width: calc(100% - 90px);
@@ -155,5 +158,16 @@ page-reservetrip {
         display: flex;
         justify-content: center;
     }
-  
+    .item-ios ion-avatar ion-img, .item-ios ion-avatar img {
+        border-radius: 0%;
+        overflow: hidden;
+        width: 70px;
+            height: 70px;
+    }
+    .item-md ion-avatar ion-img, .item-md ion-avatar img {
+        border-radius: 0%;
+        overflow: hidden;
+        width: 70px;
+            height: 70px;
+    }
 }

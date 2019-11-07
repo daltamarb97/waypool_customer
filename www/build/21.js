@@ -1,6 +1,6 @@
 webpackJsonp([21],{
 
-/***/ 633:
+/***/ 635:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmReservationPageModule", function() { return ConfirmReservationPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirm_reservation__ = __webpack_require__(787);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirm_reservation__ = __webpack_require__(790);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ConfirmReservationPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 787:
+/***/ 790:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54,7 +54,7 @@ var ConfirmReservationPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__ = __webpack_require__(343);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendUsers_service__ = __webpack_require__(344);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_geoFire_service__ = __webpack_require__(345);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_instances_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_instances_service__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -129,7 +129,7 @@ var ConfirmReservationPage = /** @class */ (function () {
     };
     ConfirmReservationPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirm-reservation',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\waypool_customer\waypool_costumer\src\pages\confirm-reservation\confirm-reservation.html"*/'<ion-content>\n\n  <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>\n\n  <ion-card>\n\n     <h6 class="text-theme">Tus compañeros de viaje</h6>\n\n     <ion-item  *ngFor="let passenger of passengers" >\n\n        <ion-avatar item-start>\n\n           <img src="assets/imgs/userPicture.png">\n\n        </ion-avatar>\n\n        <div class="passenger">\n\n          <div  class="name">\n\n                <h2 (click)=\'showProfilePassenger(passenger)\'>{{passenger.name |titlecase}} {{passenger.lastname  |titlecase | slice:0:1}}.</h2>\n\n                <h5>{{passenger.about | slice:0:25}}...</h5>\n\n\n\n          </div>\n\n        </div>\n\n        \n\n      \n\n     </ion-item>\n\n \n\n     <ion-card-content>\n\n        <div class="ride-detail no-before">\n\n           <p>\n\n              Estos son tus compañeros que se han unido a tu viaje, que tengas un excelente viaje \n\n             \n\n            \n\n           </p>\n\n           \n\n        </div>\n\n     </ion-card-content>\n\n     <ion-card-content>\n\n        <div class="seats">\n\n           \n\n           <ion-row style="margin-top: 14px;   display: flex;\n\n           justify-content: center">\n\n              \n\n              <ion-col col-8>\n\n                <!-- here, the user should be able just to step out from the reserve -->\n\n                 <button class="btn bg-red text-white rounded" style="width: 100%;font-size: .95rem;"(click)="cancelReserve()">Salir de este Viaje</button>\n\n              </ion-col>\n\n           </ion-row>\n\n        </div>\n\n     </ion-card-content>\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\waypool_customer\waypool_costumer\src\pages\confirm-reservation\confirm-reservation.html"*/,
+            selector: 'page-confirm-reservation',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\16-10-19\waypool_customer\waypool_costumer\src\pages\confirm-reservation\confirm-reservation.html"*/'<ion-content>\n\n  <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>\n\n  <ion-card>\n\n     <h6 class="text-theme">Tus compañeros de viaje</h6>\n\n     <ion-item  *ngFor="let passenger of passengers" >\n\n        <ion-avatar item-start>\n\n           <img src="assets/imgs/userPicture.png">\n\n        </ion-avatar>\n\n        <div class="passenger">\n\n          <div  class="name">\n\n                <h2 (click)=\'showProfilePassenger(passenger)\'>{{passenger.name |titlecase}} {{passenger.lastname  |titlecase | slice:0:1}}.</h2>\n\n                <h5>{{passenger.about | slice:0:25}}...</h5>\n\n\n\n          </div>\n\n        </div>\n\n        \n\n      \n\n     </ion-item>\n\n \n\n     <ion-card-content>\n\n        <div class="ride-detail no-before">\n\n           <p>\n\n              Estos son tus compañeros que se han unido a tu viaje, que tengas un excelente viaje \n\n             \n\n            \n\n           </p>\n\n           \n\n        </div>\n\n     </ion-card-content>\n\n     <ion-card-content>\n\n        <div class="seats">\n\n           \n\n           <ion-row style="margin-top: 14px;   display: flex;\n\n           justify-content: center">\n\n              \n\n              <ion-col col-8>\n\n                <!-- here, the user should be able just to step out from the reserve -->\n\n                 <button class="btn bg-red text-white rounded" style="width: 100%;font-size: .95rem;"(click)="cancelReserve()">Salir de este Viaje</button>\n\n              </ion-col>\n\n           </ion-row>\n\n        </div>\n\n     </ion-card-content>\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\16-10-19\waypool_customer\waypool_costumer\src\pages\confirm-reservation\confirm-reservation.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_6__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_7__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
     ], ConfirmReservationPage);

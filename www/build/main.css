@@ -27746,8 +27746,8 @@ page-listride .card {
   margin-left: 0;
   margin-right: 0;
   width: 100%;
-  margin-bottom: 6px;
-  margin-top: 6px;
+  border-radius: 5%;
+  margin: 2%;
 }
 
 page-listride .card ion-item .name {
@@ -27756,7 +27756,7 @@ page-listride .card ion-item .name {
 }
 
 page-listride .card ion-item .name h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -27924,6 +27924,26 @@ page-listride .iconHelp {
 
 page-listride .black-text {
   color: black;
+}
+
+page-listride ion-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 0% !important;
+}
+
+page-listride .item-ios ion-avatar ion-img, page-listride .item-ios ion-avatar img {
+  border-radius: 0%;
+  overflow: hidden;
+  width: 70px;
+  height: 70px;
+}
+
+page-listride .item-md ion-avatar ion-img, page-listride .item-md ion-avatar img {
+  border-radius: 0%;
+  overflow: hidden;
+  width: 70px;
+  height: 70px;
 }
 
 page-login .option-login {
@@ -29207,8 +29227,8 @@ page-reservetrip .card {
   margin-left: 0;
   margin-right: 0;
   width: 100%;
-  margin-bottom: 6px;
-  margin-top: 6px;
+  border-radius: 5%;
+  margin: 2%;
 }
 
 page-reservetrip .card ion-item .name {
@@ -29389,6 +29409,20 @@ page-reservetrip .iconHelp {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+page-reservetrip .item-ios ion-avatar ion-img, page-reservetrip .item-ios ion-avatar img {
+  border-radius: 0%;
+  overflow: hidden;
+  width: 70px;
+  height: 70px;
+}
+
+page-reservetrip .item-md ion-avatar ion-img, page-reservetrip .item-md ion-avatar img {
+  border-radius: 0%;
+  overflow: hidden;
+  width: 70px;
+  height: 70px;
 }
 
 page-signup .login {

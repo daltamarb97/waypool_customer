@@ -3,14 +3,17 @@ page-listride {
         margin-left: 0;
         margin-right: 0;
         width: 100%;
-        margin-bottom: 6px;
-        margin-top: 6px;
+        // margin-bottom: 6px;
+        // margin-top: 6px;
+        border-radius: 5%;
+        margin:2%;
+
         ion-item {
             .name {
                 width: calc(100% - 90px);
                 display: inline-block;
                 h2 {
-                    font-size: 1.3rem;
+                    font-size: 1.5rem;
                     font-weight: 600;
                     ion-icon {
                         margin-left: 5px;
@@ -151,5 +154,22 @@ page-listride {
         color: black;
     }
 
-      
+      ion-avatar{
+        width: 70px;
+        height: 70px;
+            border-radius: 0% !important;
+    
+}
+.item-ios ion-avatar ion-img, .item-ios ion-avatar img {
+    border-radius: 0%;
+    overflow: hidden;
+    width: 70px;
+        height: 70px;
+}
+.item-md ion-avatar ion-img, .item-md ion-avatar img {
+    border-radius: 0%;
+    overflow: hidden;
+    width: 70px;
+        height: 70px;
+}
 }

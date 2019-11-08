@@ -49,14 +49,14 @@ export class ListridePage {
           // this.locationOrigin.push(origin)
           console.log(destinationUser);
         });
-        this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
-        .subscribe( tripsReserved => {
+        // this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+        // .subscribe( tripsReserved => {
           
   
-          this.tripsReserved = tripsReserved
-          console.log(this.tripsReserved);
+        //   this.tripsReserved = tripsReserved
+        //   console.log(this.tripsReserved);
   
-        }) 
+        // }) 
         
     this.reservesService.getReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)    
       .subscribe(reserves => {
@@ -65,7 +65,7 @@ export class ListridePage {
         console.log(this.ReservesGeofire);
         this.presentLoadingCustom(this.ReservesGeofire);   
 
-        this.getMyReserves();
+        // this.getMyReserves();
         this.getAvailableReserves();
    
       });
@@ -85,15 +85,15 @@ export class ListridePage {
   }
 
 getMyReserves(){
-  this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
-  .subscribe( tripsReserved => {
+  // this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
+  // .subscribe( tripsReserved => {
     
 
-    this.tripsReserved = tripsReserved
+  //   this.tripsReserved = tripsReserved
 
-    console.log(this.tripsReserved);
+  //   console.log(this.tripsReserved);
   
-  }) 
+  // }) 
 }
   getAvailableReserves(){
     

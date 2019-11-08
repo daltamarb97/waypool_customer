@@ -115,11 +115,11 @@ cancelUser:any;
           this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
           this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
           this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
-          setTimeout(() => {
+         
             this.TripsService.eliminatingSaveTrip(this.SignUpService.userPlace,this.userUid);
             console.log("no deje pruebas");
             
-          }, 2000);
+          
           this.navCtrl.setRoot('TabsPage');
           this.navCtrl.push('RatetripPage',{trip:this.trip})
           this.TripsService.eliminateTrip(this.SignUpService.userPlace, this.userUid);     

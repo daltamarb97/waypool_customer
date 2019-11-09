@@ -82,7 +82,7 @@ export class FindridePage {
 
   unsubscribe = new Subject;
   token:any;
-
+  geofirePlaceSize:number;
 
 
   driverOnNodeOr:any;
@@ -113,7 +113,7 @@ export class FindridePage {
       this.SignUpService.userPlace = snap.val().place;
 
       console.log(this.SignUpService.userPlace);
-
+      
 
       this.platform.ready().then(()=>{
         this.token = this.fcm.getToken().then((token)=>{
@@ -220,6 +220,12 @@ export class FindridePage {
 
 
 
+    }).then(()=>{
+
+      // TEST THIS
+      this.afDB.database.ref('allPlaces/' + this.SignUpService.userPlace).once('value').then((snapPlace)=>{
+        this.geofirePlaceSize = snapPlace.val().geofireSize;
+      })
     })
 
 
@@ -724,7 +730,7 @@ geocodeLatLng(latLng,inputName) {
            } else {
          
              //turn on geoquery place to determine wether the user is in place
-        this.setGeofirePlace(this.SignUpService.userPlace ,0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
+        this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
       
 
 
@@ -797,7 +803,7 @@ geocodeLatLng(latLng,inputName) {
          } else {
        
               //turn on geoquery place to determine wether the user is in place
-        this.setGeofirePlace(this.SignUpService.userPlace ,0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
+        this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
       
 
 

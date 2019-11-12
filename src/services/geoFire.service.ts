@@ -330,7 +330,8 @@ keyEnteredDest( userId, place ){
              phone: phone,
              userId: userId,
              note:note,
-             verifiedPerson: verifiedPerson        
+             verifiedPerson: verifiedPerson,
+             place:place       
         }).catch((err)=>{
             console.log(err)
         })

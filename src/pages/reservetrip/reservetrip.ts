@@ -20,6 +20,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { geofireService } from '../../services/geoFire.service';
 import { take } from 'rxjs/operators';
+import undefined from 'firebase/empty-import';
 
 @IonicPage()
 @Component({
@@ -136,7 +137,7 @@ export class ReservetripPage{
                           //  do nothing because the user is in the trip
                           console.log("in a trip")
                         }else{
-                          if(this.onTrip === false){
+                          if(this.onTrip === false || this.onTrip === undefined || this.onTrip === null){
                             this.unSubscribeServices();
                             this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
 

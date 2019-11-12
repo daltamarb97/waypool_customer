@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 654:
+/***/ 653:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReservetripPageModule", function() { return ReservetripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reservetrip__ = __webpack_require__(808);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reservetrip__ = __webpack_require__(807);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 808:
+/***/ 807:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58,6 +58,7 @@ var ReservetripPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_signup_services__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__ = __webpack_require__(347);
+throw new Error("Cannot find module \"firebase/empty-import\"");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -77,6 +78,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // import * as firebase from 'firebase';
 // import { sendUsersService } from '../../services/sendUsers.service';
 // import { Geofence } from '@ionic-native/geofence';
+
 
 
 
@@ -156,7 +158,7 @@ var ReservetripPage = /** @class */ (function () {
                 console.log(_this.reserve);
                 _this.pendingUsers = [];
                 console.log("1");
-                if (reserve === undefined || reserve === null) {
+                if (reserve === __WEBPACK_IMPORTED_MODULE_11_firebase_empty_import___default.a || reserve === null) {
                     if (_this.onTrip === true) {
                         // i think doesnt work, just in case lets leave it here
                         _this.unSubscribeServices();
@@ -178,7 +180,7 @@ var ReservetripPage = /** @class */ (function () {
                         _this.pendingUser = pendingUser;
                         console.log(_this.pendingUser);
                         console.log(pendingUser);
-                        if (_this.pendingUser === undefined || _this.pendingUser === null) {
+                        if (_this.pendingUser === __WEBPACK_IMPORTED_MODULE_11_firebase_empty_import___default.a || _this.pendingUser === null) {
                             if (_this.onTrip === true) {
                                 _this.unSubscribeServices();
                                 console.log('fue aqui 2');
@@ -191,7 +193,7 @@ var ReservetripPage = /** @class */ (function () {
                                 console.log("in a trip");
                             }
                             else {
-                                if (_this.onTrip === false) {
+                                if (_this.onTrip === false || _this.onTrip === __WEBPACK_IMPORTED_MODULE_11_firebase_empty_import___default.a || _this.onTrip === null) {
                                     _this.unSubscribeServices();
                                     _this.reservesService.eliminateKeyUser(_this.SignUpService.userPlace, _this.userUid, reserve.keyReserve);
                                 }
@@ -268,11 +270,12 @@ var ReservetripPage = /** @class */ (function () {
     };
     ReservetripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-reservetrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/reservetrip/reservetrip.html"*/'<ion-header class="bg-theme title">\n    <ion-navbar >\n        <ion-title >Mis Reservas\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content class="bg-light" class="hideLongText">\n\n\n    \n    <img *ngIf="noReserve" src="assets/imgs/noreserve.png">\n<div style="display: flex;flex-direction: column;    width: 96%">\n    <ion-card *ngFor = "let reserve of myReserves">  \n        <ion-item>\n                <ion-avatar item-start>\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                    </ion-avatar>\n                <div class="name">\n                    <h2>Hora {{reserve.startHour |titlecase}} \n                    </h2>\n                </div>\n                \n                <div class="more"> \n                        <h2 class="text text-theme">                        \n                                $ {{reserve.price}}                          \n                            </h2> \n                </div>\n            </ion-item>\n            <ion-card-content>\n                <div class="ride-detail">\n                    <p  >\n                        <span class="icon-location bg-theme"></span>{{reserve.origin}}</p>\n                    <p > \n                        <span class="icon-location bg-yellow"></span>{{reserve.destination}}</p>\n                </div>\n                <ion-row class="center-align">\n                    <!-- <ion-col col-3 class="detail-text text-theme">\n                        3 seats\n                    </ion-col> -->\n                    \n                    <ion-col col-4 class="detail-text text-theme">\n                        <div class="name">\n        \n                            <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase | slice:0:1}}\n                                <ion-icon *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                            </h2>\n                            \n                        </div>\n                    </ion-col>\n                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                        <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            \n                    </ion-col>\n                    <ion-col center text-center col-4 text-right >\n                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>\n                    </ion-col>\n                </ion-row>\n            </ion-card-content>\n        \n</ion-card>\n\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/reservetrip/reservetrip.html"*/
+            selector: 'page-reservetrip',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_customer\waypool_costumer\src\pages\reservetrip\reservetrip.html"*/'<ion-header class="bg-theme title">\n\n    <ion-navbar >\n\n        <ion-title >Mis Reservas\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="bg-light" class="hideLongText">\n\n\n\n\n\n    \n\n    <img *ngIf="noReserve" src="assets/imgs/noreserve.png">\n\n<div style="display: flex;flex-direction: column;    width: 96%">\n\n    <ion-card *ngFor = "let reserve of myReserves">  \n\n        <ion-item>\n\n                <ion-avatar item-start>\n\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n\n                    </ion-avatar>\n\n                <div class="name">\n\n                    <h2>Hora {{reserve.startHour |titlecase}} \n\n                    </h2>\n\n                </div>\n\n                \n\n                <div class="more"> \n\n                        <h2 class="text text-theme">                        \n\n                                $ {{reserve.price}}                          \n\n                            </h2> \n\n                </div>\n\n            </ion-item>\n\n            <ion-card-content>\n\n                <div class="ride-detail">\n\n                    <p  >\n\n                        <span class="icon-location bg-theme"></span>{{reserve.houseAddr}}</p>\n\n                    <p > \n\n                        <span class="icon-location bg-yellow"></span>{{reserve.placeAddr}}</p>\n\n                </div>\n\n                <ion-row class="center-align">\n\n                    <!-- <ion-col col-3 class="detail-text text-theme">\n\n                        3 seats\n\n                    </ion-col> -->\n\n                    \n\n                    <ion-col col-4 class="detail-text text-theme">\n\n                        <div class="name">\n\n        \n\n                            <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase | slice:0:1}}\n\n                                <ion-icon *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                            </h2>\n\n                            \n\n                        </div>\n\n                    </ion-col>\n\n                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n\n                        <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            \n\n                    </ion-col>\n\n                    <ion-col center text-center col-4 text-right >\n\n                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </ion-card-content>\n\n        \n\n</ion-card>\n\n\n\n</div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_customer\waypool_costumer\src\pages\reservetrip\reservetrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_9__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_6__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */], __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__["a" /* geofireService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_9__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__services_signup_services__["a" /* SignUpService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__["a" /* sendCoordsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__["a" /* sendCoordsService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__["AngularFireDatabase"]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_6__services_instances_service__["a" /* instancesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_instances_service__["a" /* instancesService */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__["a" /* sendUsersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__["a" /* sendUsersService */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */]) === "function" && _o || Object, typeof (_p = typeof __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__["a" /* geofireService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__["a" /* geofireService */]) === "function" && _p || Object])
     ], ReservetripPage);
     return ReservetripPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
 }());
 
 //# sourceMappingURL=reservetrip.js.map

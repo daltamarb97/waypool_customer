@@ -709,172 +709,193 @@ geocodeLatLng(latLng,inputName) {
 
 
   listride(){
-  if(this.user.trips){
-    if(this.user.onTrip == true){
+  this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/blockPayment/').once('value').then((snapBlock)=>{
+    if(snapBlock.val() === true){
       let alert = this.alertCtrl.create({
-        title: 'Estas actualmente en un viaje',
-        subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
-        buttons: ['OK']
+        title: 'Tienes un saldo pendiente por pagar',
+        subTitle: 'Para seguir disfrutando de Waypool debes pagar el saldo pendiente de tus viajes pasados',
+        buttons: [
+          {
+            text: 'No lo quiero hacer ahora',
+            role: 'cancel',
+          },
+          {
+            text: 'Ir a Mi Saldo',
+            handler: () => {
+              this.app.getRootNav().push('WalletPage');
+            }
+          }
+        ]
       });
       alert.present();
     }else{
-      try {
-        this.desFirebase=this.autocompleteMyDest.input
-        this.orFirebase=this.autocompleteMyPos.input
-        console.log(this.desFirebase[0]);
-      if(this.autocompleteMyDest.input ==''|| this.autocompleteMyPos.input==''){
-            this.presentAlert('No tienes toda la informacion','Por favor asegura que tu origen y destino sean correctos','Ok');
-            this.clearMarkers();
-            this.directionsDisplay.setDirections({routes: []});
-            // AQUI
-           } else {
-         
-             //turn on geoquery place to determine wether the user is in place
-        this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
-      
-
-
-        // test: geoqueryU on listride() of findride.ts
-        this.geoqueryU.on("key_entered", function(key){
-            this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
-              origin: this.orFirebase,
-              destination: this.desFirebase        
-          }).then(()=>{
-            this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
-              if(status==='OK'){
-                this.geocoordinatesOr={
-                  lat:results[0].geometry.location.lat(),
-                  lng: results[0].geometry.location.lng()
-                }
-              }
-                  // turn geofire On
-                  if(this.user.onTrip === true){
-                    console.log('geofireOr hasnt been activated due ontrip')
-                  }else{ 
-                    this.geofireService.setGeofireOr(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid);
-                    this.geofireService.setGeofireOrLMU(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid);
-                    console.log('executed geofire Or');  
-    
-                  }
-              })
-                this.geofireOriginConfirmed = true;
-           
-          })
-          console.log(key + ' detected')
-        }.bind(this))
-
-        setTimeout(()=>{
-          if(!this.geofireOriginConfirmed == true){
-            this.geocoderDestinationCase();
-
-          }else{
-            this.geofireOriginConfirmed = false;
-            console.log('ORIGIN HAS BEEN EXECUTED');
-          }
-        },1500)
-   
-        this.confirmNote();
-        console.log("se ejecuto")
+      if(this.user.trips){
+        if(this.user.onTrip == true){
+          let alert = this.alertCtrl.create({
+            title: 'Estas actualmente en un viaje',
+            subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
+            buttons: ['OK']
+          });
+          alert.present();
+        }else{
+          try {
+            this.desFirebase=this.autocompleteMyDest.input
+            this.orFirebase=this.autocompleteMyPos.input
+            console.log(this.desFirebase[0]);
+          if(this.autocompleteMyDest.input ==''|| this.autocompleteMyPos.input==''){
+                this.presentAlert('No tienes toda la informacion','Por favor asegura que tu origen y destino sean correctos','Ok');
+                this.clearMarkers();
+                this.directionsDisplay.setDirections({routes: []});
+                // AQUI
+               } else {
+             
+                 //turn on geoquery place to determine wether the user is in place
+            this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
           
-      }
- 
-    }
-      catch(error) {
-        console.log("soy yo")
-        if(this.geofire2 === null || this.geofire2 === undefined ){
-          //this is to tell the user to select a place before publishing a trip
-          this.presentAlert('Información Incompleta','no puedes publicar un viaje sin antes seleccionar un lugar de la lista.','Ok') 
-        }else {
-          this.presentAlert('Hay un error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
-
-        }
-        }
-    }
-  }else{
-    try {
-      this.desFirebase=this.autocompleteMyDest.input
-      this.orFirebase=this.autocompleteMyPos.input
-      console.log(this.desFirebase[0]);
-    if(this.autocompleteMyDest.input ==''|| this.autocompleteMyPos.input==''){
-          this.presentAlert('No tienes toda la informacion','Por favor asegura que tu origen y destino sean correctos','Ok');
-          this.clearMarkers();
-          this.directionsDisplay.setDirections({routes: []});
-          // AQUI
-         } else {
-       
-              //turn on geoquery place to determine wether the user is in place
-        this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
-      
-
-
-        // test: geoqueryU on listride() of findride.ts
-        this.geoqueryU.on("key_entered", function(key){
-          this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid ).update({
-            geofireOrigin: true
-          }).then(()=>{
-            this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
-              origin: this.orFirebase,
-              destination: this.desFirebase        
-          }).then(()=>{
-              this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
-                if(status==='OK'){
-                  this.geocoordinatesOr={
-                    lat:results[0].geometry.location.lat(),
-                    lng: results[0].geometry.location.lng()
-                  }
-                }
-                   // turn geofire On
-                  if(this.user.onTrip === true){
-                    console.log('geofireOr hasnt been activated due ontrip')
-                  }else{ 
-                    console.log('AQUI ESTA EL ERROR 2');
-                    this.geofireService.setGeofireOr(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
-                    this.geofireService.setGeofireOrLMU(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
-                    console.log('executed geofire Or');  
     
-                  }          
-                })
-
-                this.geofireOriginConfirmed = true;
-           
-          })
-          console.log('directions set')
-          })
-          console.log(key + ' detected')
-        }.bind(this))
-
-        setTimeout(()=>{
-          if(!this.geofireOriginConfirmed == true){
-            this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
-              origin: this.orFirebase,
-              destination: this.desFirebase        
-          }).then(() => {
-            this.geocoderDestinationCase();
-            })
-
-          }else{
-            this.geofireOriginConfirmed = false;
+    
+            // test: geoqueryU on listride() of findride.ts
+            this.geoqueryU.on("key_entered", function(key){
+                this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
+                  origin: this.orFirebase,
+                  destination: this.desFirebase        
+              }).then(()=>{
+                this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
+                  if(status==='OK'){
+                    this.geocoordinatesOr={
+                      lat:results[0].geometry.location.lat(),
+                      lng: results[0].geometry.location.lng()
+                    }
+                  }
+                      // turn geofire On
+                      if(this.user.onTrip === true){
+                        console.log('geofireOr hasnt been activated due ontrip')
+                      }else{ 
+                        this.geofireService.setGeofireOr(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid);
+                        this.geofireService.setGeofireOrLMU(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid);
+                        console.log('executed geofire Or');  
+        
+                      }
+                  })
+                    this.geofireOriginConfirmed = true;
+               
+              })
+              console.log(key + ' detected')
+            }.bind(this))
+    
+            setTimeout(()=>{
+              if(!this.geofireOriginConfirmed == true){
+                this.geocoderDestinationCase();
+    
+              }else{
+                this.geofireOriginConfirmed = false;
+                console.log('ORIGIN HAS BEEN EXECUTED');
+              }
+            },1500)
+       
+            this.confirmNote();
+            console.log("se ejecuto")
+              
           }
-        },1000)
-   
-        this.confirmNote();
-        console.log("se ejecuto")
+     
         }
-
-       }
-    catch(error) {
-      console.log("soy yo")
-
-      if(this.geofire2 === null || this.geofire2=== undefined ){
-        //this is to tell the user to select a place before publishing a trip
-        this.presentAlert('Información Incompleta','no puedes publicar un viaje sin antes seleccionar un lugar de la lista.','Ok') 
-      }else {
-        this.presentAlert('Hay un error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
-
+          catch(error) {
+            console.log("soy yo")
+            if(this.geofire2 === null || this.geofire2 === undefined ){
+              //this is to tell the user to select a place before publishing a trip
+              this.presentAlert('Información Incompleta','no puedes publicar un viaje sin antes seleccionar un lugar de la lista.','Ok') 
+            }else {
+              this.presentAlert('Hay un error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+    
+            }
+            }
+        }
+      }else{
+        try {
+          this.desFirebase=this.autocompleteMyDest.input
+          this.orFirebase=this.autocompleteMyPos.input
+          console.log(this.desFirebase[0]);
+        if(this.autocompleteMyDest.input ==''|| this.autocompleteMyPos.input==''){
+              this.presentAlert('No tienes toda la informacion','Por favor asegura que tu origen y destino sean correctos','Ok');
+              this.clearMarkers();
+              this.directionsDisplay.setDirections({routes: []});
+              // AQUI
+             } else {
+           
+                  //turn on geoquery place to determine wether the user is in place
+            this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
+          
+    
+    
+            // test: geoqueryU on listride() of findride.ts
+            this.geoqueryU.on("key_entered", function(key){
+              this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid ).update({
+                geofireOrigin: true
+              }).then(()=>{
+                this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
+                  origin: this.orFirebase,
+                  destination: this.desFirebase        
+              }).then(()=>{
+                  this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
+                    if(status==='OK'){
+                      this.geocoordinatesOr={
+                        lat:results[0].geometry.location.lat(),
+                        lng: results[0].geometry.location.lng()
+                      }
+                    }
+                       // turn geofire On
+                      if(this.user.onTrip === true){
+                        console.log('geofireOr hasnt been activated due ontrip')
+                      }else{ 
+                        console.log('AQUI ESTA EL ERROR 2');
+                        this.geofireService.setGeofireOr(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
+                        this.geofireService.setGeofireOrLMU(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
+                        console.log('executed geofire Or');  
+        
+                      }          
+                    })
+    
+                    this.geofireOriginConfirmed = true;
+               
+              })
+              console.log('directions set')
+              })
+              console.log(key + ' detected')
+            }.bind(this))
+    
+            setTimeout(()=>{
+              if(!this.geofireOriginConfirmed == true){
+                this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
+                  origin: this.orFirebase,
+                  destination: this.desFirebase        
+              }).then(() => {
+                this.geocoderDestinationCase();
+                })
+    
+              }else{
+                this.geofireOriginConfirmed = false;
+              }
+            },1000)
+       
+            this.confirmNote();
+            console.log("se ejecuto")
+            }
+    
+           }
+        catch(error) {
+          console.log("soy yo")
+    
+          if(this.geofire2 === null || this.geofire2=== undefined ){
+            //this is to tell the user to select a place before publishing a trip
+            this.presentAlert('Información Incompleta','no puedes publicar un viaje sin antes seleccionar un lugar de la lista.','Ok') 
+          }else {
+            this.presentAlert('Hay un error en la aplicación','Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.','Ok') 
+    
+          }
+          }
       }
-      }
-  }
-  
+    }
+  })
 }
 
     geocoderDestinationCase(){

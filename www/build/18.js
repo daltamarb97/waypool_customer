@@ -54,13 +54,13 @@ var FindridePageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_geofire__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_trips_service__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_instances_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_instances_service__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__ = __webpack_require__(204);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -252,6 +252,11 @@ var FindridePage = /** @class */ (function () {
                     }
                 });
             }, 1000);
+        }).then(function () {
+            // TEST THIS
+            _this.afDB.database.ref('allPlaces/' + _this.SignUpService.userPlace).once('value').then(function (snapPlace) {
+                _this.geofirePlaceSize = snapPlace.val().geofireSize;
+            });
         });
         //------------------------------------------------------------------------//
         // if(this.SignUpService.userPlace == undefined){
@@ -666,158 +671,181 @@ var FindridePage = /** @class */ (function () {
     };
     FindridePage.prototype.listride = function () {
         var _this = this;
-        if (this.user.trips) {
-            if (this.user.onTrip == true) {
-                var alert_1 = this.alertCtrl.create({
-                    title: 'Estas actualmente en un viaje',
-                    subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
-                    buttons: ['OK']
+        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/blockPayment/').once('value').then(function (snapBlock) {
+            if (snapBlock.val() === true) {
+                var alert = _this.alertCtrl.create({
+                    title: 'Tienes un saldo pendiente por pagar',
+                    subTitle: 'Para seguir disfrutando de Waypool debes pagar el saldo pendiente de tus viajes pasados',
+                    buttons: [
+                        {
+                            text: 'No lo quiero hacer ahora',
+                            role: 'cancel',
+                        },
+                        {
+                            text: 'Ir a Mi Saldo',
+                            handler: function () {
+                                _this.app.getRootNav().push('WalletPage');
+                            }
+                        }
+                    ]
                 });
-                alert_1.present();
+                alert.present();
             }
             else {
-                try {
-                    this.desFirebase = this.autocompleteMyDest.input;
-                    this.orFirebase = this.autocompleteMyPos.input;
-                    console.log(this.desFirebase[0]);
-                    if (this.autocompleteMyDest.input == '' || this.autocompleteMyPos.input == '') {
-                        this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
-                        this.clearMarkers();
-                        this.directionsDisplay.setDirections({ routes: [] });
-                        // AQUI
+                if (_this.user.trips) {
+                    if (_this.user.onTrip == true) {
+                        var alert = _this.alertCtrl.create({
+                            title: 'Estas actualmente en un viaje',
+                            subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
+                            buttons: ['OK']
+                        });
+                        alert.present();
                     }
                     else {
-                        //turn on geoquery place to determine wether the user is in place
-                        this.setGeofirePlace(this.SignUpService.userPlace, 0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
-                        // test: geoqueryU on listride() of findride.ts
-                        this.geoqueryU.on("key_entered", function (key) {
-                            var _this = this;
-                            this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/trips').update({
-                                origin: this.orFirebase,
-                                destination: this.desFirebase
-                            }).then(function () {
-                                _this.geocoder.geocode({ 'address': _this.orFirebase[0] }, function (results, status) {
-                                    if (status === 'OK') {
-                                        _this.geocoordinatesOr = {
-                                            lat: results[0].geometry.location.lat(),
-                                            lng: results[0].geometry.location.lng()
-                                        };
-                                    }
-                                    // turn geofire On
-                                    if (_this.user.onTrip === true) {
-                                        console.log('geofireOr hasnt been activated due ontrip');
-                                    }
-                                    else {
-                                        _this.geofireService.setGeofireOr(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
-                                        _this.geofireService.setGeofireOrLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
-                                        console.log('executed geofire Or');
-                                    }
-                                });
-                                _this.geofireOriginConfirmed = true;
-                            });
-                            console.log(key + ' detected');
-                        }.bind(this));
-                        setTimeout(function () {
-                            if (!_this.geofireOriginConfirmed == true) {
-                                _this.geocoderDestinationCase();
+                        try {
+                            _this.desFirebase = _this.autocompleteMyDest.input;
+                            _this.orFirebase = _this.autocompleteMyPos.input;
+                            console.log(_this.desFirebase[0]);
+                            if (_this.autocompleteMyDest.input == '' || _this.autocompleteMyPos.input == '') {
+                                _this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
+                                _this.clearMarkers();
+                                _this.directionsDisplay.setDirections({ routes: [] });
+                                // AQUI
                             }
                             else {
-                                _this.geofireOriginConfirmed = false;
-                                console.log('ORIGIN HAS BEEN EXECUTED');
-                            }
-                        }, 1500);
-                        this.confirmNote();
-                        console.log("se ejecuto");
-                    }
-                }
-                catch (error) {
-                    console.log("soy yo");
-                    if (this.geofire2 === null || this.geofire2 === undefined) {
-                        //this is to tell the user to select a place before publishing a trip
-                        this.presentAlert('Información Incompleta', 'no puedes publicar un viaje sin antes seleccionar un lugar de la lista.', 'Ok');
-                    }
-                    else {
-                        this.presentAlert('Hay un error en la aplicación', 'Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.', 'Ok');
-                    }
-                }
-            }
-        }
-        else {
-            try {
-                this.desFirebase = this.autocompleteMyDest.input;
-                this.orFirebase = this.autocompleteMyPos.input;
-                console.log(this.desFirebase[0]);
-                if (this.autocompleteMyDest.input == '' || this.autocompleteMyPos.input == '') {
-                    this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
-                    this.clearMarkers();
-                    this.directionsDisplay.setDirections({ routes: [] });
-                    // AQUI
-                }
-                else {
-                    //turn on geoquery place to determine wether the user is in place
-                    this.setGeofirePlace(this.SignUpService.userPlace, 0.56, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
-                    // test: geoqueryU on listride() of findride.ts
-                    this.geoqueryU.on("key_entered", function (key) {
-                        var _this = this;
-                        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).update({
-                            geofireOrigin: true
-                        }).then(function () {
-                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
-                                origin: _this.orFirebase,
-                                destination: _this.desFirebase
-                            }).then(function () {
-                                _this.geocoder.geocode({ 'address': _this.orFirebase[0] }, function (results, status) {
-                                    if (status === 'OK') {
-                                        _this.geocoordinatesOr = {
-                                            lat: results[0].geometry.location.lat(),
-                                            lng: results[0].geometry.location.lng()
-                                        };
-                                    }
-                                    // turn geofire On
-                                    if (_this.user.onTrip === true) {
-                                        console.log('geofireOr hasnt been activated due ontrip');
+                                //turn on geoquery place to determine wether the user is in place
+                                _this.setGeofirePlace(_this.SignUpService.userPlace, _this.geofirePlaceSize, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
+                                // test: geoqueryU on listride() of findride.ts
+                                _this.geoqueryU.on("key_entered", function (key) {
+                                    var _this = this;
+                                    this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/trips').update({
+                                        origin: this.orFirebase,
+                                        destination: this.desFirebase
+                                    }).then(function () {
+                                        _this.geocoder.geocode({ 'address': _this.orFirebase[0] }, function (results, status) {
+                                            if (status === 'OK') {
+                                                _this.geocoordinatesOr = {
+                                                    lat: results[0].geometry.location.lat(),
+                                                    lng: results[0].geometry.location.lng()
+                                                };
+                                            }
+                                            // turn geofire On
+                                            if (_this.user.onTrip === true) {
+                                                console.log('geofireOr hasnt been activated due ontrip');
+                                            }
+                                            else {
+                                                _this.geofireService.setGeofireOr(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                _this.geofireService.setGeofireOrLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                console.log('executed geofire Or');
+                                            }
+                                        });
+                                        _this.geofireOriginConfirmed = true;
+                                    });
+                                    console.log(key + ' detected');
+                                }.bind(_this));
+                                setTimeout(function () {
+                                    if (!_this.geofireOriginConfirmed == true) {
+                                        _this.geocoderDestinationCase();
                                     }
                                     else {
-                                        console.log('AQUI ESTA EL ERROR 2');
-                                        _this.geofireService.setGeofireOr(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
-                                        _this.geofireService.setGeofireOrLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
-                                        console.log('executed geofire Or');
+                                        _this.geofireOriginConfirmed = false;
+                                        console.log('ORIGIN HAS BEEN EXECUTED');
                                     }
-                                });
-                                _this.geofireOriginConfirmed = true;
-                            });
-                            console.log('directions set');
-                        });
-                        console.log(key + ' detected');
-                    }.bind(this));
-                    setTimeout(function () {
-                        if (!_this.geofireOriginConfirmed == true) {
-                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
-                                origin: _this.orFirebase,
-                                destination: _this.desFirebase
-                            }).then(function () {
-                                _this.geocoderDestinationCase();
-                            });
+                                }, 1500);
+                                _this.confirmNote();
+                                console.log("se ejecuto");
+                            }
                         }
-                        else {
-                            _this.geofireOriginConfirmed = false;
+                        catch (error) {
+                            console.log("soy yo");
+                            if (_this.geofire2 === null || _this.geofire2 === undefined) {
+                                //this is to tell the user to select a place before publishing a trip
+                                _this.presentAlert('Información Incompleta', 'no puedes publicar un viaje sin antes seleccionar un lugar de la lista.', 'Ok');
+                            }
+                            else {
+                                _this.presentAlert('Hay un error en la aplicación', 'Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.', 'Ok');
+                            }
                         }
-                    }, 1000);
-                    this.confirmNote();
-                    console.log("se ejecuto");
-                }
-            }
-            catch (error) {
-                console.log("soy yo");
-                if (this.geofire2 === null || this.geofire2 === undefined) {
-                    //this is to tell the user to select a place before publishing a trip
-                    this.presentAlert('Información Incompleta', 'no puedes publicar un viaje sin antes seleccionar un lugar de la lista.', 'Ok');
+                    }
                 }
                 else {
-                    this.presentAlert('Hay un error en la aplicación', 'Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.', 'Ok');
+                    try {
+                        _this.desFirebase = _this.autocompleteMyDest.input;
+                        _this.orFirebase = _this.autocompleteMyPos.input;
+                        console.log(_this.desFirebase[0]);
+                        if (_this.autocompleteMyDest.input == '' || _this.autocompleteMyPos.input == '') {
+                            _this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
+                            _this.clearMarkers();
+                            _this.directionsDisplay.setDirections({ routes: [] });
+                            // AQUI
+                        }
+                        else {
+                            //turn on geoquery place to determine wether the user is in place
+                            _this.setGeofirePlace(_this.SignUpService.userPlace, _this.geofirePlaceSize, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
+                            // test: geoqueryU on listride() of findride.ts
+                            _this.geoqueryU.on("key_entered", function (key) {
+                                var _this = this;
+                                this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).update({
+                                    geofireOrigin: true
+                                }).then(function () {
+                                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
+                                        origin: _this.orFirebase,
+                                        destination: _this.desFirebase
+                                    }).then(function () {
+                                        _this.geocoder.geocode({ 'address': _this.orFirebase[0] }, function (results, status) {
+                                            if (status === 'OK') {
+                                                _this.geocoordinatesOr = {
+                                                    lat: results[0].geometry.location.lat(),
+                                                    lng: results[0].geometry.location.lng()
+                                                };
+                                            }
+                                            // turn geofire On
+                                            if (_this.user.onTrip === true) {
+                                                console.log('geofireOr hasnt been activated due ontrip');
+                                            }
+                                            else {
+                                                console.log('AQUI ESTA EL ERROR 2');
+                                                _this.geofireService.setGeofireOr(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                _this.geofireService.setGeofireOrLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                console.log('executed geofire Or');
+                                            }
+                                        });
+                                        _this.geofireOriginConfirmed = true;
+                                    });
+                                    console.log('directions set');
+                                });
+                                console.log(key + ' detected');
+                            }.bind(_this));
+                            setTimeout(function () {
+                                if (!_this.geofireOriginConfirmed == true) {
+                                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
+                                        origin: _this.orFirebase,
+                                        destination: _this.desFirebase
+                                    }).then(function () {
+                                        _this.geocoderDestinationCase();
+                                    });
+                                }
+                                else {
+                                    _this.geofireOriginConfirmed = false;
+                                }
+                            }, 1000);
+                            _this.confirmNote();
+                            console.log("se ejecuto");
+                        }
+                    }
+                    catch (error) {
+                        console.log("soy yo");
+                        if (_this.geofire2 === null || _this.geofire2 === undefined) {
+                            //this is to tell the user to select a place before publishing a trip
+                            _this.presentAlert('Información Incompleta', 'no puedes publicar un viaje sin antes seleccionar un lugar de la lista.', 'Ok');
+                        }
+                        else {
+                            _this.presentAlert('Hay un error en la aplicación', 'Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.', 'Ok');
+                        }
+                    }
                 }
             }
-        }
+        });
     };
     FindridePage.prototype.geocoderDestinationCase = function () {
         var _this = this;
@@ -887,15 +915,16 @@ var FindridePage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], FindridePage.prototype, "mapElement", void 0);
     FindridePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-findride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/findride/findride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title><span class="text-white findRideText">PIDE TU VIAJE</span></ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content  padding>\n    \n    <ion-card class="search">\n          \n        <ion-card-content>\n            <span class="dot bg-theme"></span>\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n          \n            <ion-list   [hidden]="autocompleteItems.length == 0">\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n                  {{ item.description }}\n                </ion-item>\n              </ion-list>\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n        </ion-card-content>\n        <ion-card-content>\n            <span class="dot bg-yellow"></span>           \n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n              {{ item.description }}\n            </ion-item>\n          </ion-list>\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n        </ion-card-content>\n        \n    </ion-card>\n  \n <div #map id="map"></div>  \n    \n    \n<ion-row class="rowOfButtons">\n\n  <div class="btn-footer btn-left">\n      <button class="btn rounded bg-darkblue text-white myReservesButton" style="width: 100%" (click)="goToMyReserves()" >Mis Reservas</button> \n  </div>\n  <div class="btn-right">\n      <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%">Pedir</button>\n\n  </div>\n \n</ion-row>\n \n<div *ngIf="onTrip" >\n    <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;\n     position:absolute;\n     bottom: 0px ;\n     left: 0px ;\n     height: 51px; \n     font-size: large;\n   " (click)="goToTrip() " >VIAJE EN CURSO\n    </button>\n</div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/findride/findride.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ModalController */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */]) === "function" && _o || Object, typeof (_p = typeof __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */]) === "function" && _p || Object, typeof (_q = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* Platform */]) === "function" && _q || Object, typeof (_r = typeof __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */]) === "function" && _r || Object, typeof (_s = typeof __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */]) === "function" && _s || Object])
     ], FindridePage);
     return FindridePage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s;
 }());
 
 //# sourceMappingURL=findride.js.map

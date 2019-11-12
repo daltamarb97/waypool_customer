@@ -5,6 +5,7 @@ import { sendCoordsService } from '../../services/sendCoords.service';
 import { sendUsersService } from '../../services/sendUsers.service';
 import { SignUpService } from '../../services/signup.services';
 import { Subject } from 'rxjs';
+import { AngularFireDatabase } from 'angularfire2/database';
 @IonicPage()
 
 @Component({
@@ -16,8 +17,9 @@ export class WalletPage {
   recordTrips:any=[];
   price:any;
   unsubscribe = new Subject;
-
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController,public sendUsersService:sendUsersService,public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public signUpServices: SignUpService) {
+  paymentLink:any;
+  total:any;
+  constructor(public navCtrl: NavController,public toastCtrl: ToastController,public sendUsersService:sendUsersService,public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public signUpServices: SignUpService, private afDB: AngularFireDatabase) {
     this.sendUsersService.getRecordTrips(this.signUpServices.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( user => {
     
@@ -27,7 +29,16 @@ export class WalletPage {
 
     });
    
-   
+   this.afDB.database.ref(this.signUpServices.userPlace + '/users/' + this.userUid).once('value').then((snapLink)=>{
+     if(snapLink.val().paymentLink === undefined || snapLink.val().paymentLink === null){
+       console.log('no hay link');
+       
+     }else{
+      this.paymentLink = snapLink.val().paymentLink;
+     }
+
+     this.total = snapLink.val().pendingToPay;
+   })
   }
   help(){
     const toast = this.toastCtrl.create({

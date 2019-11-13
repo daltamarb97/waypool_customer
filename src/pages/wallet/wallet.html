@@ -21,24 +21,24 @@
         <ion-card *ngFor = "let user of recordTrips">
                 <ion-item>
                     <ion-avatar item-start>
-                        <img src="assets/imgs/userPicture.png">
+                        <img src="assets/imgs/carBlue.png" style="height:70px; width: 70px;">
                     </ion-avatar>
                     <div class="name">
                         <h2>{{user.DestinationTime}}
                         </h2>
                         <p>{{user.car}}</p>
+                        <ion-badge  class="badge"> Precio: $ {{user.price}}</ion-badge>                                  
+
                     </div>
-                    <div class="more">                       
-                            <ion-badge  class="badge">$ {{user.price}}</ion-badge>                                  
-                                
-                    </div>
+
+                    
                 </ion-item>
                 <ion-card-content>
                     <div class="ride-detail">
                         <p>
-                            <span class="icon-location bg-theme"></span>{{user.origin}}</p>
+                            <span class="icon-location bg-theme"></span>{{user.houseAddr}}</p>
                         <p>
-                            <span class="icon-location bg-yellow"></span>{{user.destination}}</p>
+                            <span class="icon-location bg-yellow"></span>{{user.placeAddr}}</p>
                     </div>
                    
                 </ion-card-content>       

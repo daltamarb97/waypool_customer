@@ -240,7 +240,7 @@ webpackEmptyAsyncContext.id = 238;
 
 var map = {
 	"../pages/canceltrip/canceltrip.module": [
-		633,
+		632,
 		23
 	],
 	"../pages/chatting/chatting.module": [
@@ -248,7 +248,7 @@ var map = {
 		22
 	],
 	"../pages/confirm-reservation/confirm-reservation.module": [
-		632,
+		633,
 		21
 	],
 	"../pages/confirm-university/confirm-university.module": [
@@ -746,7 +746,8 @@ var geofireService = /** @class */ (function () {
             phone: phone,
             userId: userId,
             note: note,
-            verifiedPerson: verifiedPerson
+            verifiedPerson: verifiedPerson,
+            place: place
         }).catch(function (err) {
             console.log(err);
         });
@@ -1502,8 +1503,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule', name: 'ConfirmReservationPage', segment: 'confirm-reservation', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/canceltrip/canceltrip.module#CanceltripPageModule', name: 'CanceltripPage', segment: 'canceltrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule', name: 'ConfirmReservationPage', segment: 'confirm-reservation', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirm-university/confirm-university.module#ConfirmUniversityPageModule', name: 'ConfirmUniversityPage', segment: 'confirm-university', priority: 'low', defaultHistory: [] },

@@ -136,7 +136,7 @@ export class ReservetripPage{
                           //  do nothing because the user is in the trip
                           console.log("in a trip")
                         }else{
-                          if(this.onTrip === false){
+                          if(this.onTrip === false || this.onTrip === undefined || this.onTrip === null){
                             this.unSubscribeServices();
                             this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
 

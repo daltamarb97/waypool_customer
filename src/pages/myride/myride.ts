@@ -52,6 +52,8 @@ cancelUser:any;
 
     this.TripsService.getKeyTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe(  keys => {      
+      console.log(this.SignUpService.userPlace);
+      
         this.keyTrip =  keys; 
         console.log(this.keyTrip.keyTrip);
       
@@ -90,11 +92,11 @@ cancelUser:any;
         }else{
           this.unSubscribeServices();         
           console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-
+          console.log(this.user);
+          
           this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
           this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
           this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
-          this.navCtrl.setRoot('TabsPage');
 
             let modal = this.modalCtrl.create('CanceltripPage');
             modal.present();  

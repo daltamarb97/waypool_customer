@@ -103,10 +103,12 @@ cancelUser:any;
             console.log("me cancelaron el viaje")
             setTimeout(() => {
               this.TripsService.eliminatingCancelTrip(this.SignUpService.userPlace,this.userUid);
+              this.navCtrl.pop();
               console.log("me cancele");
               
             }, 2000);
         }
+        //save trip
         if(this.user.saveTrip === undefined || this.user.saveTrip === null){
 
         }else{
@@ -120,7 +122,8 @@ cancelUser:any;
          
             this.TripsService.eliminatingSaveTrip(this.SignUpService.userPlace,this.userUid);
             console.log("no deje pruebas");
-            
+            this.navCtrl.pop();
+
           
           this.navCtrl.setRoot('TabsPage');
           this.navCtrl.push('RatetripPage',{trip:this.trip})
@@ -164,73 +167,7 @@ cancelUser:any;
         
         
   }
-  // getTripState(keyTrip,driverId){
-  //   this.TripsService.getTripState(this.SignUpService.userPlace,keyTrip,driverId).takeUntil(this.unsubscribe)
-  //   .subscribe( tripState => {      
-  //       this.tripState = tripState;
-  //       console.log(this.tripState);
-  //       console.log("estoy activado!!!")
-        
-  //         //check if trip has to be saved 
-  //         if(this.tripState.saveTrip === true){
-            
-  //           this.TripsService.saveTripOnRecords(this.SignUpService.userPlace, this.userUid,this.trip);     
-  //           console.log("me active")
-  //           this.unSubscribeServices();       
-  //           this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
-  //           this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
-  //           this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
-
-  //           this.navCtrl.pop();
-  //           this.navCtrl.push('RatetripPage',{trip:this.trip})
-  //           console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-
-  //         }   
-  //         if(this.tripState.canceledTrip === true){
-  //         //check if trip was canceled by driver                         
-  //         this.unSubscribeServices();         
-  //         console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-
-  //         this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
-  //         this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
-  //         this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
-
-  //           let modal = this.modalCtrl.create('CanceltripPage');
-  //           modal.present();  
-  //           console.log("me cancelaron el viaje")
-
-  //           this.navCtrl.pop();
-  //         } 
-
-
-  //         this.afDB.database.ref(this.SignUpService.userPlace + '/tripsState/'+ driverId +'/'+ keyTrip+ '/cancelUsers/'+this.userUid)
-  //         .once('value').then((snapshot) => {
-  //           this.cancelUser = snapshot.val();
-            
-  //             console.log("2paso")
-
-  //               if(this.cancelUser === undefined || this.cancelUser === null){
-                
-  //                 }else{
-  //                   console.log("3paso")
-  //                   this.unSubscribeServices();          
-  //                   this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace,this.userUid);
-  //                   this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
-  //                   this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
   
-  //                   console.log("me eliminaron")
-  //                   console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-  
-  //                   this.navCtrl.pop();
-  //                   let modal = this.modalCtrl.create('CanceltripPage');
-  //                   modal.present();
-  //                 }                        
-               
-            
-  //         })   
-  //     })
-  // }
-
 
   unSubscribeServices(){
     this.unsubscribe.next();

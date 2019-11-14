@@ -39,6 +39,7 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { MetricsService } from '../services/metrics.service';
 import { Camera } from '@ionic-native/camera/';
 import { FCM } from '@ionic-native/fcm';
+import { Clipboard } from '@ionic-native/clipboard/';
 
 
 export const firebaseConfig = {
@@ -105,7 +106,8 @@ export const firebaseConfig = {
     MetricsService,
     Camera,
     FCM,
-    Firebase 
+    Firebase ,
+    Clipboard
   ]
 })
 export class AppModule {}

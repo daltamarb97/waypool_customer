@@ -29851,3 +29851,11 @@ page-wallet .love {
   justify-content: center;
   color: #4d5853;
 }
+
+page-wallet .item-ios ion-avatar ion-img, page-wallet .item-ios ion-avatar img {
+  border-radius: 0%;
+}
+
+page-wallet .item-md ion-avatar ion-img, page-wallet .item-md ion-avatar img {
+  border-radius: 0%;
+}

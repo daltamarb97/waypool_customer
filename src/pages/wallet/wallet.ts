@@ -6,6 +6,7 @@ import { sendUsersService } from '../../services/sendUsers.service';
 import { SignUpService } from '../../services/signup.services';
 import { Subject } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Clipboard } from '@ionic-native/clipboard';
 @IonicPage()
 
 @Component({
@@ -19,7 +20,7 @@ export class WalletPage {
   unsubscribe = new Subject;
   paymentLink:any;
   total:any;
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController,public sendUsersService:sendUsersService,public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public signUpServices: SignUpService, private afDB: AngularFireDatabase) {
+  constructor(public navCtrl: NavController,public toastCtrl: ToastController,public sendUsersService:sendUsersService,public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public signUpServices: SignUpService, private afDB: AngularFireDatabase, private clipboard:Clipboard) {
     this.sendUsersService.getRecordTrips(this.signUpServices.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( user => {
     
@@ -32,6 +33,7 @@ export class WalletPage {
    this.afDB.database.ref(this.signUpServices.userPlace + '/users/' + this.userUid).once('value').then((snapLink)=>{
      if(snapLink.val().paymentLink === undefined || snapLink.val().paymentLink === null){
        console.log('no hay link');
+       console.log(snapLink.val().paymentLink);
        
      }else{
       this.paymentLink = snapLink.val().paymentLink;
@@ -55,5 +57,25 @@ export class WalletPage {
     this.unsubscribe.complete();
 
   }
-  
+  copyToClipBoard(link){
+    console.log(link);
+    
+    this.clipboard.copy(link);
+    const toast = this.toastCtrl.create({
+      message: 'Link de pago copiado, pégalo en el browser',
+      showCloseButton:true,
+      closeButtonText: 'OK',
+      position:'top'
+         });
+    toast.present();
+  }
+  informationPayment(){
+    const toast = this.toastCtrl.create({
+      message: 'Nuestra pasarela de pagos es MercadoPago, hecha por Mercado Libre, considerada entre las 2 mejores de Latinoamérica en términos de eficiencia y seguridad. Waypool no obtiene en ningún momento información financiera como tarjeta de crédito, cuenta bancaria, u otra sensible.',
+      showCloseButton:true,
+      closeButtonText: 'OK',
+      position:'middle'
+         });
+    toast.present();
+  }
 }

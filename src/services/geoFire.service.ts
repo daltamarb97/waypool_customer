@@ -321,6 +321,20 @@ keyEnteredDest( userId, place ){
         });
     }
 
+    deleteKey(place,userId){
+        this.afDB.database.ref(place +'/users/' + userId +'/keyTrip/').remove();
+    }
+
+    deleteDriverFromLMU(place,userId, keyTrip){
+        this.afDB.database.ref(place +'/users/' + userId +'/availableReserves/' + keyTrip).remove();
+    }
+
+    setOntripFalse(place,userId){
+        this.afDB.database.ref(place +'/users/' + userId).update({
+            onTrip: false
+        })
+    }
+
     joinReserve(place, keyReserve,driverId, userId, origin, destination, name, lastname, phone, note, verifiedPerson){
         this.afDB.database.ref(place + '/reserves/' + driverId +'/'+keyReserve+ '/pendingUsers/' + userId).update({
              origin: origin,

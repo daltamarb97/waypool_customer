@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController, NavParams, ToastController, IonicPage, App } from 'ionic-angular';
+import { NavController, ViewController, NavParams, ToastController, IonicPage, App, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SignUpService } from '../../services/signup.services';
 import { sendCoordsService } from '../../services/sendCoords.service';
@@ -31,7 +31,8 @@ export class ConfirmtripPage {
   userInLMU:any;
   usersInPending:any;
   myRideActivation:boolean = false;
-  constructor(public navCtrl: NavController,public reservesService:reservesService, public sendUsersService:sendUsersService,public TripsService:TripsService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService) {
+  
+  constructor(public navCtrl: NavController,public reservesService:reservesService, public sendUsersService:sendUsersService,public TripsService:TripsService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService, public alertCtrl: AlertController) {
     
     this.trip= this.navParams.get('trip') 
     console.log(this.reserve)
@@ -42,7 +43,18 @@ export class ConfirmtripPage {
        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
-         console.log(this.user);          
+         console.log(this.user);  
+         
+         if(this.user.cancelModalLMU === true){
+           this.dismiss();
+
+           const alert = this.alertCtrl.create({
+            title: 'Escoge otro viaje',
+            buttons: ['OK']
+          })
+          alert.present();
+          
+         }
        });
 
        this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
@@ -53,11 +65,9 @@ export class ConfirmtripPage {
             this.accepted = true;
             this.dismiss();
             
-            
           }
         });
        })
-
 
   }
   
@@ -75,6 +85,16 @@ export class ConfirmtripPage {
 
     dismissX(){
       this.viewCtrl.dismiss();
+      this.geoFireService.deleteKey(this.SignUpService.userPlace, this.userUid);
+      this.geoFireService.deleteDriverFromLMU(this.SignUpService.userPlace, this.userUid, this.trip.keyTrip);
+      this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).once('value').then((snap)=>{
+        if(snap.val().onTrip){
+          this.geoFireService.setOntripFalse(this.SignUpService.userPlace,this.userUid);
+        }else{
+
+        }
+      })
+      this.TripsService.getOutFromLMU(this.SignUpService.userPlace, this.trip.keyTrip,this.trip.driver.userId, this.userUid);
 
     }
   dismiss() {

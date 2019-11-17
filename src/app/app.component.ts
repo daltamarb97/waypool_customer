@@ -21,22 +21,22 @@ export class MyApp {
   constructor(public alertCtrl: AlertController, statusBar: StatusBar, splashScreen: SplashScreen, private geolocation: Geolocation, private platform: Platform, private fcm: FCM, public toastController: ToastController, private firebase: Firebase) {
    
     const firebaseConfig = {
-      // apiKey: "AIzaSyB7Py2pOZEUJD2Ar34a-8z-rReiDtsikxw",
-      // authDomain: "waypool-511be.firebaseapp.com",
-      // databaseURL: "https://waypool-511be.firebaseio.com",
-      // projectId: "waypool-511be",
-      // storageBucket: "waypool-511be.appspot.com",
-      // messagingSenderId: "904521954579",
+      apiKey: "AIzaSyB7Py2pOZEUJD2Ar34a-8z-rReiDtsikxw",
+      authDomain: "waypool-511be.firebaseapp.com",
+      databaseURL: "https://waypool-511be.firebaseio.com",
+      projectId: "waypool-511be",
+      storageBucket: "waypool-511be.appspot.com",
+      messagingSenderId: "904521954579",
 
 
 
-      apiKey: "AIzaSyCvN6NNgoWCbOOUxBP9H23rbb7QSnBCf60",
-      authDomain: "fixingdatabase.firebaseapp.com",
-      databaseURL: "https://fixingdatabase.firebaseio.com",
-      projectId: "fixingdatabase",
-      storageBucket: "",
-      messagingSenderId: "1090675636677",
-      appId: "1:1090675636677:web:672dbea79f33a407"
+      // apiKey: "AIzaSyCvN6NNgoWCbOOUxBP9H23rbb7QSnBCf60",
+      // authDomain: "fixingdatabase.firebaseapp.com",
+      // databaseURL: "https://fixingdatabase.firebaseio.com",
+      // projectId: "fixingdatabase",
+      // storageBucket: "",
+      // messagingSenderId: "1090675636677",
+      // appId: "1:1090675636677:web:672dbea79f33a407"
     
 
     };

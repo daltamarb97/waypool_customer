@@ -19,7 +19,7 @@ export class sendCoordsService {
     public getPendingUsersInTrips(driverUid,pushKey, place){
         return  this.afDB.list(place + '/trips/'+ driverUid +'/'+pushKey+'/pendingUsers').valueChanges();
     }
-
+    
     public getOrigin(user){
         return  this.afDB.list('/drivers/'+ user +'/trips/origin').valueChanges();
     } 

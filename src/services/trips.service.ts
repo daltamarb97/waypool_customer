@@ -1,13 +1,13 @@
 import { AngularFireDatabase } from "@angular/fire/database";
 import { Injectable } from "@angular/core";
-import { UrlSerializer } from "ionic-angular";
+import { UrlSerializer, AlertController } from "ionic-angular";
 import * as GeoFire from 'geofire';
 
 @Injectable()
 export class TripsService {
 
    
-    constructor(public afDB: AngularFireDatabase){ 
+    constructor(public afDB: AngularFireDatabase, public alertCtrl: AlertController){ 
 
        }
        
@@ -109,6 +109,17 @@ export class TripsService {
              verifiedPerson: verifiedPerson
         });
     }
+
+
+    getOutFromLMU(place, keyTrip,driverId, userId){
+      this.afDB.database.ref(place + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).remove().then(()=>{
+          const alert = this.alertCtrl.create({
+            title: 'Escoge otro viaje',
+            buttons: ['OK']
+          })
+          alert.present();
+      })
+  }
 
     checkIfAcceptedInLMU(place, driverId, keyTrip, userId){
       return this.afDB.object(place + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).valueChanges();

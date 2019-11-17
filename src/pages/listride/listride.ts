@@ -206,13 +206,12 @@ ionViewDidLoad(){
   enterTrip(trip){
 
    let modal = this.modalCtrl.create('ConfirmtripPage',{trip:trip});
-   modal.onDidDismiss(accepted => {
+   modal.onDidDismiss((accepted) => {
     if(accepted){
       this.unSubscribeServices();
      this.navCtrl.pop();
      this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
      this.navCtrl.push('MyridePage');
-
     }
   })
 modal.present();

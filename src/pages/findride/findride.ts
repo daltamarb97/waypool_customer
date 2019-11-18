@@ -13,7 +13,8 @@ import { Subject } from 'rxjs';
 import { instancesService } from '../../services/instances.service';
 import { FCM } from '@ionic-native/fcm';
 import { Firebase } from '@ionic-native/firebase';
-
+import * as moment from 'moment';
+import { MetricsService } from '../../services/metrics.service';
 
  
 declare var google;
@@ -86,7 +87,7 @@ export class FindridePage {
 
 
   driverOnNodeOr:any;
- constructor(public navCtrl: NavController, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase ) {
+ constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -591,6 +592,7 @@ geocodeLatLng(latLng,inputName) {
                } else {
              
                  //turn on geoquery place to determine wether the user is in place
+                 
             this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
           
     
@@ -620,21 +622,29 @@ geocodeLatLng(latLng,inputName) {
                   })
                     this.geofireOriginConfirmed = true;
                
+              }).then(()=>{
+                if(!this.geofireOriginConfirmed === true){
+                  this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
+                    origin: this.orFirebase,
+                    destination: this.desFirebase        
+                }).then(() => {
+                  this.geocoderDestinationCase();
+                  })
+      
+                }else{
+                  this.geofireOriginConfirmed = false;
+                }
               })
               console.log(key + ' detected')
             }.bind(this))
-    
-            setTimeout(()=>{
-              if(!this.geofireOriginConfirmed == true){
-                this.geocoderDestinationCase();
-    
-              }else{
-                this.geofireOriginConfirmed = false;
-                console.log('ORIGIN HAS BEEN EXECUTED');
-              }
-            },1500)
        
-            this.confirmNote();
+
+            moment.locale('es'); //to make the date be in spanish  
+            let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
+            console.log(today)
+            this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+            this.app.getRootNav().push('ListridePage');
+            
             console.log("se ejecuto")
               
           }
@@ -664,6 +674,7 @@ geocodeLatLng(latLng,inputName) {
              } else {
            
                   //turn on geoquery place to determine wether the user is in place
+
             this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
           
     
@@ -698,27 +709,45 @@ geocodeLatLng(latLng,inputName) {
     
                     this.geofireOriginConfirmed = true;
                
+              }).then(()=>{
+                if(!this.geofireOriginConfirmed === true){
+                  this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
+                    origin: this.orFirebase,
+                    destination: this.desFirebase        
+                }).then(() => {
+                  this.geocoderDestinationCase();
+                  })
+      
+                }else{
+                  this.geofireOriginConfirmed = false;
+                }
               })
               console.log('directions set')
               })
               console.log(key + ' detected')
             }.bind(this))
     
-            setTimeout(()=>{
-              if(!this.geofireOriginConfirmed == true){
-                this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
-                  origin: this.orFirebase,
-                  destination: this.desFirebase        
-              }).then(() => {
-                this.geocoderDestinationCase();
-                })
+            // setTimeout(()=>{
+            //   if(!this.geofireOriginConfirmed == true){
+            //     this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
+            //       origin: this.orFirebase,
+            //       destination: this.desFirebase        
+            //   }).then(() => {
+            //     this.geocoderDestinationCase();
+            //     })
     
-              }else{
-                this.geofireOriginConfirmed = false;
-              }
-            },1000)
-       
-            this.confirmNote();
+            //   }else{
+            //     this.geofireOriginConfirmed = false;
+            //   }
+            // },3000)
+
+
+            moment.locale('es'); //to make the date be in spanish  
+            let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
+            console.log(today)
+            this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+            this.app.getRootNav().push('ListridePage');
+
             console.log("se ejecuto")
             }
     

@@ -234,7 +234,7 @@ keyEnteredDest( userId, place ){
     this.keyEnteredDestLMU( userId, place);
     this.keyExitedDestLMU( userId, place);
   
-    console.log('geoquery or added');
+    console.log('geoquery Dest added');
   
   
   }

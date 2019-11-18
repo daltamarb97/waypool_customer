@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 638:
+/***/ 637:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmNotePageModule", function() { return ConfirmNotePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmnote__ = __webpack_require__(791);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmnote__ = __webpack_require__(790);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1896,7 +1896,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(793)("./" + name);
+                __webpack_require__(792)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -4647,7 +4647,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(792)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(791)(module)))
 
 /***/ }),
 
@@ -16976,7 +16976,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 791:
+/***/ 790:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17074,7 +17074,7 @@ var ConfirmNotePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 792:
+/***/ 791:
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17103,7 +17103,7 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 793:
+/***/ 792:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -17376,7 +17376,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 793;
+webpackContext.id = 792;
 
 /***/ })
 

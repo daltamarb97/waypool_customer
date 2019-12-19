@@ -1,8 +1,8 @@
 {
   "_from": "cordova-plugin-fcm-with-dependecy-updated",
-  "_id": "cordova-plugin-fcm-with-dependecy-updated@3.2.0",
+  "_id": "cordova-plugin-fcm-with-dependecy-updated@4.1.0",
   "_inBundle": false,
-  "_integrity": "sha512-9V2AzKNnUw1kHoVazXk4u4WrXsCxqqufVHtF1l/tBVbZbB1a6XeQViRkl+FVOuP4zP/rfp01qusYC+tq9MwiMw==",
+  "_integrity": "sha512-vNmsDPQNe7OGiqTLILojz1IwOdlXjui4GbhlpEg3UMPYOGxOepe6rCW6M7XGf+f72hiIdFnO4W9L20lOqLyLZA==",
   "_location": "/cordova-plugin-fcm-with-dependecy-updated",
   "_phantomChildren": {},
   "_requested": {
@@ -19,8 +19,8 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-fcm-with-dependecy-updated/-/cordova-plugin-fcm-with-dependecy-updated-3.2.0.tgz",
-  "_shasum": "1703d06a0a4cacd7558b342ea9c1098a1750e0e0",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-fcm-with-dependecy-updated/-/cordova-plugin-fcm-with-dependecy-updated-4.1.0.tgz",
+  "_shasum": "a7f28d93228010a421966c36169ccec1cff765a4",
   "_spec": "cordova-plugin-fcm-with-dependecy-updated",
   "_where": "/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer",
   "author": {
@@ -50,6 +50,7 @@
     "cordova"
   ],
   "license": "MIT",
+  "main": "www/FCMPlugin.js",
   "name": "cordova-plugin-fcm-with-dependecy-updated",
   "platforms": [
     "android",
@@ -60,5 +61,6 @@
     "type": "git",
     "url": "git+https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated.git"
   },
-  "version": "3.2.0"
+  "typings": "src/FCMPlugin.d.ts",
+  "version": "4.1.0"
 }

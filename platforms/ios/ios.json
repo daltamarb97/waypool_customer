@@ -9,7 +9,7 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"FCMPlugin\"><param name=\"ios-package\" value=\"FCMPlugin\" /></feature>",
+              "xml": "<feature name=\"FirebasePlugin\"><param name=\"ios-package\" value=\"FirebasePlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             },
             {
@@ -42,7 +42,7 @@
     }
   },
   "installed_plugins": {
-    "cordova-plugin-fcm-with-dependecy-updated": {
+    "cordova-plugin-firebase": {
       "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
     "cordova-plugin-geolocation": {
@@ -52,11 +52,11 @@
   "dependent_plugins": {},
   "modules": [
     {
-      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
-      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
-      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
+      "id": "cordova-plugin-firebase.FirebasePlugin",
+      "file": "plugins/cordova-plugin-firebase/www/firebase.js",
+      "pluginId": "cordova-plugin-firebase",
       "clobbers": [
-        "FCMPlugin"
+        "FirebasePlugin"
       ]
     },
     {
@@ -93,7 +93,7 @@
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-fcm-with-dependecy-updated": "3.2.0",
+    "cordova-plugin-firebase": "2.0.5",
     "cordova-plugin-geolocation": "4.0.2"
   }
 }

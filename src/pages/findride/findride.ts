@@ -84,7 +84,7 @@ export class FindridePage {
   unsubscribe = new Subject;
   token:any;
   geofirePlaceSize:number;
-
+  distanceInMeters:any;
 
   driverOnNodeOr:any;
  constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase ) {
@@ -242,7 +242,7 @@ export class FindridePage {
     if (this.platform.is('android')) {
       this.token = await this.firebase.getToken().then((token)=>{
         console.log('this is the token ' + token);
-        this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.user + '/devices/').update({
+        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.user + '/devices/').update({
           token: token
         })
       })
@@ -251,7 +251,7 @@ export class FindridePage {
     if (this.platform.is('ios')) {
       this.token = await this.firebase.getToken().then((token)=>{
         console.log('this is the token ' + token);
-        this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.user + '/devices/').update({
+        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.user + '/devices/').update({
           token: token
         })
       })
@@ -372,6 +372,18 @@ export class FindridePage {
     
     
   }
+
+
+  calculateDistance(positionOr,positionDest){
+ 
+    
+    this.distanceInMeters = google.maps.geometry.spherical.computeDistanceBetween(positionOr,positionDest);
+    setTimeout(() => {
+      console.log('the distance in meters is ' + this.distanceInMeters);
+      
+    }, 1000);
+    
+  }
   
 
 //autocomplete of myPosition searchbar
@@ -487,6 +499,7 @@ updateSearchResultsMyPos(){
         this.directionsDisplay.setMap(this.map);
         this.myLatLngDest=results[0].geometry.location
         this.calculateRoute(this.markerGeolocation.position,results[0].geometry.location);
+        this.calculateDistance(this.markerGeolocation.position,results[0].geometry.location)
       }
     })
     
@@ -510,8 +523,17 @@ clearMarkers(){
       this.map.setCenter(latLng);
       this.geocodeLatLng(latLng,inputName)
      this.calculateRoute(this.markerGeolocation.position,latLng);
+     console.log(latLng);
+     
+     this.calculateDistance(this.markerGeolocation.position,
+      new google.maps.LatLng({
+      lat: latLng.lat, 
+      lng: latLng.lng
+  }))
   })
   }
+
+
   dragMarkerOr(marker,inputName){
     google.maps.event.addListener(marker, 'dragend',  (evt) => {
       let lat = marker.getPosition().lat()
@@ -525,7 +547,10 @@ clearMarkers(){
       } else {
   
         this.calculateRoute(latLng,this.markerDest.position);
-  
+        this.calculateDistance(new google.maps.LatLng({
+          lat: latLng.lat, 
+          lng: latLng.lng
+      }),this.markerDest.position);
       }
   })
   }
@@ -601,8 +626,9 @@ geocodeLatLng(latLng,inputName) {
             this.geoqueryU.on("key_entered", function(key){
                 this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
                   origin: this.orFirebase,
-                  destination: this.desFirebase        
-              }).then(()=>{
+                  destination: this.desFirebase,
+                  distanceToGoInKM: this.distanceInMeters/1000          
+                }).then(()=>{
                 this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
                   if(status==='OK'){
                     this.geocoordinatesOr={
@@ -626,7 +652,8 @@ geocodeLatLng(latLng,inputName) {
                 if(!this.geofireOriginConfirmed === true){
                   this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
                     origin: this.orFirebase,
-                    destination: this.desFirebase        
+                    destination: this.desFirebase,
+                    distanceToGoInKM: this.distanceInMeters/1000          
                 }).then(() => {
                   this.geocoderDestinationCase();
                   })
@@ -686,8 +713,9 @@ geocodeLatLng(latLng,inputName) {
               }).then(()=>{
                 this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
                   origin: this.orFirebase,
-                  destination: this.desFirebase        
-              }).then(()=>{
+                  destination: this.desFirebase,
+                  distanceToGoInKM: this.distanceInMeters/1000          
+                }).then(()=>{
                   this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
                     if(status==='OK'){
                       this.geocoordinatesOr={
@@ -713,7 +741,8 @@ geocodeLatLng(latLng,inputName) {
                 if(!this.geofireOriginConfirmed === true){
                   this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
                     origin: this.orFirebase,
-                    destination: this.desFirebase        
+                    destination: this.desFirebase,
+                    distanceToGoInKM: this.distanceInMeters/1000          
                 }).then(() => {
                   this.geocoderDestinationCase();
                   })
@@ -727,21 +756,6 @@ geocodeLatLng(latLng,inputName) {
               console.log(key + ' detected')
             }.bind(this))
     
-            // setTimeout(()=>{
-            //   if(!this.geofireOriginConfirmed == true){
-            //     this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
-            //       origin: this.orFirebase,
-            //       destination: this.desFirebase        
-            //   }).then(() => {
-            //     this.geocoderDestinationCase();
-            //     })
-    
-            //   }else{
-            //     this.geofireOriginConfirmed = false;
-            //   }
-            // },3000)
-
-
             moment.locale('es'); //to make the date be in spanish  
             let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
             console.log(today)

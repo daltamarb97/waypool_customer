@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 637:
+/***/ 657:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmNotePageModule", function() { return ConfirmNotePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FindridePageModule", function() { return FindridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmnote__ = __webpack_require__(790);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__findride__ = __webpack_require__(811);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,26 +18,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ConfirmNotePageModule = /** @class */ (function () {
-    function ConfirmNotePageModule() {
+var FindridePageModule = /** @class */ (function () {
+    function FindridePageModule() {
     }
-    ConfirmNotePageModule = __decorate([
+    FindridePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmnote__["a" /* ConfirmNotePage */],
+                __WEBPACK_IMPORTED_MODULE_2__findride__["a" /* FindridePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirmnote__["a" /* ConfirmNotePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__findride__["a" /* FindridePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmnote__["a" /* ConfirmNotePage */]
+                __WEBPACK_IMPORTED_MODULE_2__findride__["a" /* FindridePage */]
             ]
         })
-    ], ConfirmNotePageModule);
-    return ConfirmNotePageModule;
+    ], FindridePageModule);
+    return FindridePageModule;
 }());
 
-//# sourceMappingURL=confirmnote.module.js.map
+//# sourceMappingURL=findride.module.js.map
 
 /***/ }),
 
@@ -1896,7 +1896,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(792)("./" + name);
+                __webpack_require__(787)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -4647,11 +4647,11 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(791)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(786)(module)))
 
 /***/ }),
 
-/***/ 660:
+/***/ 659:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -4729,7 +4729,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 661:
+/***/ 660:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -4869,7 +4869,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 662:
+/***/ 661:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -4933,7 +4933,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 663:
+/***/ 662:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -4997,7 +4997,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 664:
+/***/ 663:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5124,7 +5124,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 665:
+/***/ 664:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5188,7 +5188,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 666:
+/***/ 665:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5297,7 +5297,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 667:
+/***/ 666:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5361,7 +5361,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 668:
+/***/ 667:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5471,7 +5471,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 669:
+/***/ 668:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5608,7 +5608,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 670:
+/***/ 669:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5703,7 +5703,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 671:
+/***/ 670:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5766,7 +5766,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 672:
+/***/ 671:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5890,7 +5890,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 673:
+/***/ 672:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6014,7 +6014,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 674:
+/***/ 673:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6127,7 +6127,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 675:
+/***/ 674:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6283,7 +6283,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 676:
+/***/ 675:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6376,7 +6376,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 677:
+/***/ 676:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6553,7 +6553,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 678:
+/***/ 677:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6621,7 +6621,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 679:
+/***/ 678:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6706,7 +6706,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 680:
+/***/ 679:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6771,7 +6771,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 681:
+/***/ 680:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6852,7 +6852,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 682:
+/***/ 681:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -6933,7 +6933,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 683:
+/***/ 682:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7014,7 +7014,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 684:
+/***/ 683:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7118,7 +7118,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 685:
+/***/ 684:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7223,7 +7223,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 686:
+/***/ 685:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7295,7 +7295,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 687:
+/***/ 686:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7367,7 +7367,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 688:
+/***/ 687:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7435,7 +7435,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 689:
+/***/ 688:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7507,7 +7507,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 690:
+/***/ 689:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7579,7 +7579,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 691:
+/***/ 690:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7646,7 +7646,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 692:
+/***/ 691:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7718,7 +7718,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 693:
+/***/ 692:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7794,7 +7794,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 694:
+/***/ 693:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7891,7 +7891,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 695:
+/***/ 694:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -7988,7 +7988,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 696:
+/***/ 695:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8085,7 +8085,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 697:
+/***/ 696:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8170,7 +8170,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 698:
+/***/ 697:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8241,7 +8241,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 699:
+/***/ 698:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8352,7 +8352,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 700:
+/***/ 699:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8466,7 +8466,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 701:
+/***/ 700:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8531,7 +8531,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 702:
+/***/ 701:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8619,7 +8619,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 703:
+/***/ 702:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8698,7 +8698,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 704:
+/***/ 703:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8781,7 +8781,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 705:
+/***/ 704:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8861,7 +8861,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 706:
+/***/ 705:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -8943,7 +8943,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 707:
+/***/ 706:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -9024,7 +9024,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 708:
+/***/ 707:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -9106,7 +9106,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 709:
+/***/ 708:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -9234,7 +9234,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 710:
+/***/ 709:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -9363,7 +9363,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 711:
+/***/ 710:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -9465,7 +9465,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 712:
+/***/ 711:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -9594,7 +9594,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 713:
+/***/ 712:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -9753,7 +9753,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 714:
+/***/ 713:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -9868,7 +9868,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 715:
+/***/ 714:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -9968,7 +9968,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 716:
+/***/ 715:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10055,7 +10055,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 717:
+/***/ 716:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10192,7 +10192,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 718:
+/***/ 717:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10266,7 +10266,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 719:
+/***/ 718:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10340,7 +10340,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 720:
+/***/ 719:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10437,7 +10437,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 721:
+/***/ 720:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10524,7 +10524,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 722:
+/***/ 721:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10618,7 +10618,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 723:
+/***/ 722:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10710,7 +10710,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 724:
+/***/ 723:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10825,7 +10825,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 725:
+/***/ 724:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -10956,7 +10956,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 726:
+/***/ 725:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11042,7 +11042,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 727:
+/***/ 726:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11166,7 +11166,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 728:
+/***/ 727:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11258,7 +11258,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 729:
+/***/ 728:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11399,7 +11399,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 730:
+/***/ 729:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11474,7 +11474,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 731:
+/***/ 730:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11597,7 +11597,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 732:
+/***/ 731:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11699,7 +11699,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 733:
+/***/ 732:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11816,7 +11816,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 734:
+/***/ 733:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11885,7 +11885,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 735:
+/***/ 734:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -11980,7 +11980,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 736:
+/***/ 735:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12066,7 +12066,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 737:
+/***/ 736:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12175,7 +12175,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 738:
+/***/ 737:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12340,7 +12340,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 739:
+/***/ 738:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12427,7 +12427,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 740:
+/***/ 739:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12514,7 +12514,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 741:
+/***/ 740:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12579,7 +12579,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 742:
+/***/ 741:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12677,7 +12677,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 743:
+/***/ 742:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12744,7 +12744,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 744:
+/***/ 743:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12872,7 +12872,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 745:
+/***/ 744:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -12964,7 +12964,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 746:
+/***/ 745:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13056,7 +13056,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 747:
+/***/ 746:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13121,7 +13121,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 748:
+/***/ 747:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13250,7 +13250,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 749:
+/***/ 748:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13381,7 +13381,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 750:
+/***/ 749:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13451,7 +13451,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 751:
+/***/ 750:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13517,7 +13517,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 752:
+/***/ 751:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13597,7 +13597,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 753:
+/***/ 752:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13784,7 +13784,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 754:
+/***/ 753:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13887,7 +13887,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 755:
+/***/ 754:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -13952,7 +13952,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 756:
+/***/ 755:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -14028,7 +14028,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 757:
+/***/ 756:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -14189,7 +14189,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 758:
+/***/ 757:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -14367,7 +14367,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 759:
+/***/ 758:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -14440,7 +14440,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 760:
+/***/ 759:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -14556,7 +14556,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 761:
+/***/ 760:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -14672,7 +14672,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 762:
+/***/ 761:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -14765,7 +14765,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 763:
+/***/ 762:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -14839,7 +14839,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 764:
+/***/ 763:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -14903,7 +14903,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 765:
+/***/ 764:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15037,7 +15037,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 766:
+/***/ 765:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15131,7 +15131,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 767:
+/***/ 766:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15203,7 +15203,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 768:
+/***/ 767:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15324,7 +15324,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 769:
+/***/ 768:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15396,7 +15396,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 769:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15463,7 +15463,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 770:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15590,7 +15590,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 771:
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -15689,7 +15689,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 773:
+/***/ 772:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15785,7 +15785,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 774:
+/***/ 773:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15848,7 +15848,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 775:
+/***/ 774:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -15911,7 +15911,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 776:
+/***/ 775:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js language configuration
@@ -16035,7 +16035,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 777:
+/***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16194,7 +16194,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 778:
+/***/ 777:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16297,7 +16297,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 779:
+/***/ 778:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16360,7 +16360,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 780:
+/***/ 779:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16423,7 +16423,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 781:
+/***/ 780:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16507,7 +16507,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 782:
+/***/ 781:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16580,7 +16580,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 783:
+/***/ 782:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16645,7 +16645,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 784:
+/***/ 783:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16760,7 +16760,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 785:
+/***/ 784:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16868,7 +16868,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 786:
+/***/ 785:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -16976,105 +16976,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 790:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmNotePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__ = __webpack_require__(345);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_note_service__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_geoFire_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__(658);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_metrics_service__ = __webpack_require__(353);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-
-
-var ConfirmNotePage = /** @class */ (function () {
-    function ConfirmNotePage(navCtrl, MetricsService, noteService, appCtrl, alertCtrl, afDB, sendUsersService, SignUpService, sendCoordsService, modalCtrl, AngularFireAuth, viewCtrl, navParams, geofireService) {
-        this.navCtrl = navCtrl;
-        this.MetricsService = MetricsService;
-        this.noteService = noteService;
-        this.appCtrl = appCtrl;
-        this.alertCtrl = alertCtrl;
-        this.afDB = afDB;
-        this.sendUsersService = sendUsersService;
-        this.SignUpService = SignUpService;
-        this.sendCoordsService = sendCoordsService;
-        this.modalCtrl = modalCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.viewCtrl = viewCtrl;
-        this.navParams = navParams;
-        this.geofireService = geofireService;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.or = this.navParams.get('or');
-        this.dest = this.navParams.get('dest');
-        console.log(this.dest);
-    }
-    ConfirmNotePage.prototype.setNoteDriver = function () {
-        __WEBPACK_IMPORTED_MODULE_9_moment__["locale"]('es'); //to make the date be in spanish  
-        var today = __WEBPACK_IMPORTED_MODULE_9_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
-        console.log(today);
-        console.log(this.dest);
-        this.MetricsService.createdReserves(this.SignUpService.userPlace, this.userUid, today, this.dest, this.or);
-        if (this.note == null || this.note == '') {
-            this.note = 'No hay nota';
-            this.noteService.setNote(this.userUid, this.note, this.SignUpService.userPlace);
-            this.accepted = true;
-            this.dismiss();
-        }
-        else {
-            this.noteService.setNote(this.userUid, this.note, this.SignUpService.userPlace);
-            this.accepted = true;
-            this.dismiss();
-        }
-    };
-    ;
-    ConfirmNotePage.prototype.dismissOnClick = function () {
-        this.viewCtrl.dismiss(this.accepted);
-    };
-    ConfirmNotePage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss(this.accepted);
-    };
-    ConfirmNotePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirmnote',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/confirmnote/confirmnote.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissOnClick()"></ion-icon>\n    <ion-card>\n        <h6 class="text-theme">Detalles del Viaje</h6>\n        \n\n        <ion-card-content>\n            <div class="ride-detail">\n                <ion-item >\n                    <ion-label>Nota (Opcional):</ion-label>\n                \n                  </ion-item>\n                <ion-item>\n                    <div class="form">\n                        <ion-list no-lines>\n                            <ion-item>\n                                    <ion-textarea [(ngModel)]="note" rows="10"type="text"  ></ion-textarea>\n\n                            </ion-item>\n                        </ion-list>\n                    </div>\n                  </ion-item>\n            </div>\n        </ion-card-content>\n\n        <ion-card-content>\n            <div class="seats">\n                \n                <ion-row style="margin-top: 14px;justify-content: center">\n                    \n                    <ion-col col-8>\n                        <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.5rem;" (click)="setNoteDriver()">Pedir Viaje</button>\n                    </ion-col>\n                </ion-row>\n\n\n            </div>\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/confirmnote/confirmnote.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_10__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_7__services_note_service__["a" /* noteService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_8__services_geoFire_service__["a" /* geofireService */]])
-    ], ConfirmNotePage);
-    return ConfirmNotePage;
-}());
-
-//# sourceMappingURL=confirmnote.js.map
-
-/***/ }),
-
-/***/ 791:
+/***/ 786:
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17103,264 +17005,264 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 792:
+/***/ 787:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 660,
-	"./af.js": 660,
-	"./ar": 661,
-	"./ar-dz": 662,
-	"./ar-dz.js": 662,
-	"./ar-kw": 663,
-	"./ar-kw.js": 663,
-	"./ar-ly": 664,
-	"./ar-ly.js": 664,
-	"./ar-ma": 665,
-	"./ar-ma.js": 665,
-	"./ar-sa": 666,
-	"./ar-sa.js": 666,
-	"./ar-tn": 667,
-	"./ar-tn.js": 667,
-	"./ar.js": 661,
-	"./az": 668,
-	"./az.js": 668,
-	"./be": 669,
-	"./be.js": 669,
-	"./bg": 670,
-	"./bg.js": 670,
-	"./bm": 671,
-	"./bm.js": 671,
-	"./bn": 672,
-	"./bn.js": 672,
-	"./bo": 673,
-	"./bo.js": 673,
-	"./br": 674,
-	"./br.js": 674,
-	"./bs": 675,
-	"./bs.js": 675,
-	"./ca": 676,
-	"./ca.js": 676,
-	"./cs": 677,
-	"./cs.js": 677,
-	"./cv": 678,
-	"./cv.js": 678,
-	"./cy": 679,
-	"./cy.js": 679,
-	"./da": 680,
-	"./da.js": 680,
-	"./de": 681,
-	"./de-at": 682,
-	"./de-at.js": 682,
-	"./de-ch": 683,
-	"./de-ch.js": 683,
-	"./de.js": 681,
-	"./dv": 684,
-	"./dv.js": 684,
-	"./el": 685,
-	"./el.js": 685,
-	"./en-SG": 686,
-	"./en-SG.js": 686,
-	"./en-au": 687,
-	"./en-au.js": 687,
-	"./en-ca": 688,
-	"./en-ca.js": 688,
-	"./en-gb": 689,
-	"./en-gb.js": 689,
-	"./en-ie": 690,
-	"./en-ie.js": 690,
-	"./en-il": 691,
-	"./en-il.js": 691,
-	"./en-nz": 692,
-	"./en-nz.js": 692,
-	"./eo": 693,
-	"./eo.js": 693,
-	"./es": 694,
-	"./es-do": 695,
-	"./es-do.js": 695,
-	"./es-us": 696,
-	"./es-us.js": 696,
-	"./es.js": 694,
-	"./et": 697,
-	"./et.js": 697,
-	"./eu": 698,
-	"./eu.js": 698,
-	"./fa": 699,
-	"./fa.js": 699,
-	"./fi": 700,
-	"./fi.js": 700,
-	"./fo": 701,
-	"./fo.js": 701,
-	"./fr": 702,
-	"./fr-ca": 703,
-	"./fr-ca.js": 703,
-	"./fr-ch": 704,
-	"./fr-ch.js": 704,
-	"./fr.js": 702,
-	"./fy": 705,
-	"./fy.js": 705,
-	"./ga": 706,
-	"./ga.js": 706,
-	"./gd": 707,
-	"./gd.js": 707,
-	"./gl": 708,
-	"./gl.js": 708,
-	"./gom-latn": 709,
-	"./gom-latn.js": 709,
-	"./gu": 710,
-	"./gu.js": 710,
-	"./he": 711,
-	"./he.js": 711,
-	"./hi": 712,
-	"./hi.js": 712,
-	"./hr": 713,
-	"./hr.js": 713,
-	"./hu": 714,
-	"./hu.js": 714,
-	"./hy-am": 715,
-	"./hy-am.js": 715,
-	"./id": 716,
-	"./id.js": 716,
-	"./is": 717,
-	"./is.js": 717,
-	"./it": 718,
-	"./it-ch": 719,
-	"./it-ch.js": 719,
-	"./it.js": 718,
-	"./ja": 720,
-	"./ja.js": 720,
-	"./jv": 721,
-	"./jv.js": 721,
-	"./ka": 722,
-	"./ka.js": 722,
-	"./kk": 723,
-	"./kk.js": 723,
-	"./km": 724,
-	"./km.js": 724,
-	"./kn": 725,
-	"./kn.js": 725,
-	"./ko": 726,
-	"./ko.js": 726,
-	"./ku": 727,
-	"./ku.js": 727,
-	"./ky": 728,
-	"./ky.js": 728,
-	"./lb": 729,
-	"./lb.js": 729,
-	"./lo": 730,
-	"./lo.js": 730,
-	"./lt": 731,
-	"./lt.js": 731,
-	"./lv": 732,
-	"./lv.js": 732,
-	"./me": 733,
-	"./me.js": 733,
-	"./mi": 734,
-	"./mi.js": 734,
-	"./mk": 735,
-	"./mk.js": 735,
-	"./ml": 736,
-	"./ml.js": 736,
-	"./mn": 737,
-	"./mn.js": 737,
-	"./mr": 738,
-	"./mr.js": 738,
-	"./ms": 739,
-	"./ms-my": 740,
-	"./ms-my.js": 740,
-	"./ms.js": 739,
-	"./mt": 741,
-	"./mt.js": 741,
-	"./my": 742,
-	"./my.js": 742,
-	"./nb": 743,
-	"./nb.js": 743,
-	"./ne": 744,
-	"./ne.js": 744,
-	"./nl": 745,
-	"./nl-be": 746,
-	"./nl-be.js": 746,
-	"./nl.js": 745,
-	"./nn": 747,
-	"./nn.js": 747,
-	"./pa-in": 748,
-	"./pa-in.js": 748,
-	"./pl": 749,
-	"./pl.js": 749,
-	"./pt": 750,
-	"./pt-br": 751,
-	"./pt-br.js": 751,
-	"./pt.js": 750,
-	"./ro": 752,
-	"./ro.js": 752,
-	"./ru": 753,
-	"./ru.js": 753,
-	"./sd": 754,
-	"./sd.js": 754,
-	"./se": 755,
-	"./se.js": 755,
-	"./si": 756,
-	"./si.js": 756,
-	"./sk": 757,
-	"./sk.js": 757,
-	"./sl": 758,
-	"./sl.js": 758,
-	"./sq": 759,
-	"./sq.js": 759,
-	"./sr": 760,
-	"./sr-cyrl": 761,
-	"./sr-cyrl.js": 761,
-	"./sr.js": 760,
-	"./ss": 762,
-	"./ss.js": 762,
-	"./sv": 763,
-	"./sv.js": 763,
-	"./sw": 764,
-	"./sw.js": 764,
-	"./ta": 765,
-	"./ta.js": 765,
-	"./te": 766,
-	"./te.js": 766,
-	"./tet": 767,
-	"./tet.js": 767,
-	"./tg": 768,
-	"./tg.js": 768,
-	"./th": 769,
-	"./th.js": 769,
-	"./tl-ph": 770,
-	"./tl-ph.js": 770,
-	"./tlh": 771,
-	"./tlh.js": 771,
-	"./tr": 772,
-	"./tr.js": 772,
-	"./tzl": 773,
-	"./tzl.js": 773,
-	"./tzm": 774,
-	"./tzm-latn": 775,
-	"./tzm-latn.js": 775,
-	"./tzm.js": 774,
-	"./ug-cn": 776,
-	"./ug-cn.js": 776,
-	"./uk": 777,
-	"./uk.js": 777,
-	"./ur": 778,
-	"./ur.js": 778,
-	"./uz": 779,
-	"./uz-latn": 780,
-	"./uz-latn.js": 780,
-	"./uz.js": 779,
-	"./vi": 781,
-	"./vi.js": 781,
-	"./x-pseudo": 782,
-	"./x-pseudo.js": 782,
-	"./yo": 783,
-	"./yo.js": 783,
-	"./zh-cn": 784,
-	"./zh-cn.js": 784,
-	"./zh-hk": 785,
-	"./zh-hk.js": 785,
-	"./zh-tw": 786,
-	"./zh-tw.js": 786
+	"./af": 659,
+	"./af.js": 659,
+	"./ar": 660,
+	"./ar-dz": 661,
+	"./ar-dz.js": 661,
+	"./ar-kw": 662,
+	"./ar-kw.js": 662,
+	"./ar-ly": 663,
+	"./ar-ly.js": 663,
+	"./ar-ma": 664,
+	"./ar-ma.js": 664,
+	"./ar-sa": 665,
+	"./ar-sa.js": 665,
+	"./ar-tn": 666,
+	"./ar-tn.js": 666,
+	"./ar.js": 660,
+	"./az": 667,
+	"./az.js": 667,
+	"./be": 668,
+	"./be.js": 668,
+	"./bg": 669,
+	"./bg.js": 669,
+	"./bm": 670,
+	"./bm.js": 670,
+	"./bn": 671,
+	"./bn.js": 671,
+	"./bo": 672,
+	"./bo.js": 672,
+	"./br": 673,
+	"./br.js": 673,
+	"./bs": 674,
+	"./bs.js": 674,
+	"./ca": 675,
+	"./ca.js": 675,
+	"./cs": 676,
+	"./cs.js": 676,
+	"./cv": 677,
+	"./cv.js": 677,
+	"./cy": 678,
+	"./cy.js": 678,
+	"./da": 679,
+	"./da.js": 679,
+	"./de": 680,
+	"./de-at": 681,
+	"./de-at.js": 681,
+	"./de-ch": 682,
+	"./de-ch.js": 682,
+	"./de.js": 680,
+	"./dv": 683,
+	"./dv.js": 683,
+	"./el": 684,
+	"./el.js": 684,
+	"./en-SG": 685,
+	"./en-SG.js": 685,
+	"./en-au": 686,
+	"./en-au.js": 686,
+	"./en-ca": 687,
+	"./en-ca.js": 687,
+	"./en-gb": 688,
+	"./en-gb.js": 688,
+	"./en-ie": 689,
+	"./en-ie.js": 689,
+	"./en-il": 690,
+	"./en-il.js": 690,
+	"./en-nz": 691,
+	"./en-nz.js": 691,
+	"./eo": 692,
+	"./eo.js": 692,
+	"./es": 693,
+	"./es-do": 694,
+	"./es-do.js": 694,
+	"./es-us": 695,
+	"./es-us.js": 695,
+	"./es.js": 693,
+	"./et": 696,
+	"./et.js": 696,
+	"./eu": 697,
+	"./eu.js": 697,
+	"./fa": 698,
+	"./fa.js": 698,
+	"./fi": 699,
+	"./fi.js": 699,
+	"./fo": 700,
+	"./fo.js": 700,
+	"./fr": 701,
+	"./fr-ca": 702,
+	"./fr-ca.js": 702,
+	"./fr-ch": 703,
+	"./fr-ch.js": 703,
+	"./fr.js": 701,
+	"./fy": 704,
+	"./fy.js": 704,
+	"./ga": 705,
+	"./ga.js": 705,
+	"./gd": 706,
+	"./gd.js": 706,
+	"./gl": 707,
+	"./gl.js": 707,
+	"./gom-latn": 708,
+	"./gom-latn.js": 708,
+	"./gu": 709,
+	"./gu.js": 709,
+	"./he": 710,
+	"./he.js": 710,
+	"./hi": 711,
+	"./hi.js": 711,
+	"./hr": 712,
+	"./hr.js": 712,
+	"./hu": 713,
+	"./hu.js": 713,
+	"./hy-am": 714,
+	"./hy-am.js": 714,
+	"./id": 715,
+	"./id.js": 715,
+	"./is": 716,
+	"./is.js": 716,
+	"./it": 717,
+	"./it-ch": 718,
+	"./it-ch.js": 718,
+	"./it.js": 717,
+	"./ja": 719,
+	"./ja.js": 719,
+	"./jv": 720,
+	"./jv.js": 720,
+	"./ka": 721,
+	"./ka.js": 721,
+	"./kk": 722,
+	"./kk.js": 722,
+	"./km": 723,
+	"./km.js": 723,
+	"./kn": 724,
+	"./kn.js": 724,
+	"./ko": 725,
+	"./ko.js": 725,
+	"./ku": 726,
+	"./ku.js": 726,
+	"./ky": 727,
+	"./ky.js": 727,
+	"./lb": 728,
+	"./lb.js": 728,
+	"./lo": 729,
+	"./lo.js": 729,
+	"./lt": 730,
+	"./lt.js": 730,
+	"./lv": 731,
+	"./lv.js": 731,
+	"./me": 732,
+	"./me.js": 732,
+	"./mi": 733,
+	"./mi.js": 733,
+	"./mk": 734,
+	"./mk.js": 734,
+	"./ml": 735,
+	"./ml.js": 735,
+	"./mn": 736,
+	"./mn.js": 736,
+	"./mr": 737,
+	"./mr.js": 737,
+	"./ms": 738,
+	"./ms-my": 739,
+	"./ms-my.js": 739,
+	"./ms.js": 738,
+	"./mt": 740,
+	"./mt.js": 740,
+	"./my": 741,
+	"./my.js": 741,
+	"./nb": 742,
+	"./nb.js": 742,
+	"./ne": 743,
+	"./ne.js": 743,
+	"./nl": 744,
+	"./nl-be": 745,
+	"./nl-be.js": 745,
+	"./nl.js": 744,
+	"./nn": 746,
+	"./nn.js": 746,
+	"./pa-in": 747,
+	"./pa-in.js": 747,
+	"./pl": 748,
+	"./pl.js": 748,
+	"./pt": 749,
+	"./pt-br": 750,
+	"./pt-br.js": 750,
+	"./pt.js": 749,
+	"./ro": 751,
+	"./ro.js": 751,
+	"./ru": 752,
+	"./ru.js": 752,
+	"./sd": 753,
+	"./sd.js": 753,
+	"./se": 754,
+	"./se.js": 754,
+	"./si": 755,
+	"./si.js": 755,
+	"./sk": 756,
+	"./sk.js": 756,
+	"./sl": 757,
+	"./sl.js": 757,
+	"./sq": 758,
+	"./sq.js": 758,
+	"./sr": 759,
+	"./sr-cyrl": 760,
+	"./sr-cyrl.js": 760,
+	"./sr.js": 759,
+	"./ss": 761,
+	"./ss.js": 761,
+	"./sv": 762,
+	"./sv.js": 762,
+	"./sw": 763,
+	"./sw.js": 763,
+	"./ta": 764,
+	"./ta.js": 764,
+	"./te": 765,
+	"./te.js": 765,
+	"./tet": 766,
+	"./tet.js": 766,
+	"./tg": 767,
+	"./tg.js": 767,
+	"./th": 768,
+	"./th.js": 768,
+	"./tl-ph": 769,
+	"./tl-ph.js": 769,
+	"./tlh": 770,
+	"./tlh.js": 770,
+	"./tr": 771,
+	"./tr.js": 771,
+	"./tzl": 772,
+	"./tzl.js": 772,
+	"./tzm": 773,
+	"./tzm-latn": 774,
+	"./tzm-latn.js": 774,
+	"./tzm.js": 773,
+	"./ug-cn": 775,
+	"./ug-cn.js": 775,
+	"./uk": 776,
+	"./uk.js": 776,
+	"./ur": 777,
+	"./ur.js": 777,
+	"./uz": 778,
+	"./uz-latn": 779,
+	"./uz-latn.js": 779,
+	"./uz.js": 778,
+	"./vi": 780,
+	"./vi.js": 780,
+	"./x-pseudo": 781,
+	"./x-pseudo.js": 781,
+	"./yo": 782,
+	"./yo.js": 782,
+	"./zh-cn": 783,
+	"./zh-cn.js": 783,
+	"./zh-hk": 784,
+	"./zh-hk.js": 784,
+	"./zh-tw": 785,
+	"./zh-tw.js": 785
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -17376,7 +17278,799 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 792;
+webpackContext.id = 787;
+
+/***/ }),
+
+/***/ 811:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FindridePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_geofire__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_trips_service__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_instances_service__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_moment__ = __webpack_require__(658);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_metrics_service__ = __webpack_require__(353);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var FindridePage = /** @class */ (function () {
+    function FindridePage(navCtrl, MetricsService, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, geofireService, SignUpService, modalCtrl, app, afDB, TripsService, instanceService, platform, fcm, firebase) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.MetricsService = MetricsService;
+        this.geolocation = geolocation;
+        this.zone = zone;
+        this.sendCoordsService = sendCoordsService;
+        this.AngularFireAuth = AngularFireAuth;
+        this.alertCtrl = alertCtrl;
+        this.geofireService = geofireService;
+        this.SignUpService = SignUpService;
+        this.modalCtrl = modalCtrl;
+        this.app = app;
+        this.afDB = afDB;
+        this.TripsService = TripsService;
+        this.instanceService = instanceService;
+        this.platform = platform;
+        this.fcm = fcm;
+        this.firebase = firebase;
+        // waypoints variables
+        this.directionsService = null;
+        this.directionsDisplay = null;
+        this.bounds = null;
+        this.myLatLng = [];
+        this.tripId = null;
+        this.locationPlace = {};
+        this.onTrip = false;
+        //variables for geoquery
+        this.geocoordinatesDest = {};
+        this.geocoordinatesOr = {};
+        this.geofireOriginConfirmed = false;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_10_rxjs__["Subject"];
+        this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+        this.geocoder = new google.maps.Geocoder;
+        this.autocompleteMyPos = { input: '' };
+        this.autocompleteMyDest = { input: '' };
+        this.autocompleteItems = [];
+        this.autocompleteItems2 = [];
+        this.directionsService = new google.maps.DirectionsService();
+        this.directionsDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true,
+        });
+        this.bounds = new google.maps.LatLngBounds();
+        this.markers = [];
+        // initialize the plugin
+        console.log(this.SignUpService.userPlace);
+        this.afDB.database.ref('allUsers/' + this.userUid).once('value').then(function (snap) {
+            _this.SignUpService.userPlace = snap.val().place;
+            console.log(_this.SignUpService.userPlace);
+            _this.platform.ready().then(function () {
+                _this.token = _this.fcm.getToken().then(function (token) {
+                    console.log('this is the token ' + token);
+                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/devices/').update({
+                        token: token
+                    });
+                });
+                // this.getToken();
+            });
+            //search keyTrip
+            _this.TripsService.getKeyTrip(_this.SignUpService.userPlace, _this.userUid)
+                .subscribe(function (keyTrip) {
+                _this.keyTrip = keyTrip;
+                console.log(_this.keyTrip);
+                //if key its deleted don't show VIAJE EN CURSO  
+                if (_this.keyTrip === undefined || _this.keyTrip === null) {
+                    _this.onTrip = false;
+                    _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
+                    console.log("llegue adonde era");
+                }
+                else {
+                    //confirm that trip exist and get it
+                    _this.getOnTrip();
+                }
+            });
+            _this.SignUpService.getMyInfo(_this.userUid, _this.SignUpService.userPlace).takeUntil(_this.unsubscribe).subscribe(function (user) {
+                _this.user = user;
+                //  this.keyTrip = this.user.keyTrip
+                console.log(_this.user);
+                if (_this.user.saveTrip === undefined || _this.user.saveTrip === null) {
+                    console.log("AAAAAAAAAAAAAAAAAAAAA");
+                }
+                else {
+                    console.log(_this.user.trip);
+                    console.log("me active");
+                    _this.TripsService.eliminatingSaveTrip(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminateKeyUser(_this.SignUpService.userPlace, _this.userUid, _this.user.trip.keyTrip);
+                    _this.unsubscribe.next();
+                    _this.unsubscribe.complete();
+                    setTimeout(function () {
+                        _this.TripsService.saveTripOnRecords(_this.SignUpService.userPlace, _this.userUid, _this.user.trip);
+                        _this.navCtrl.push('RatetripPage', { trip: _this.user.trip });
+                        _this.TripsService.eliminateTrip(_this.SignUpService.userPlace, _this.userUid);
+                        console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                    }, 3000);
+                }
+            });
+            // set geofire key of place to avoid asking users to put where they are going
+            _this.geofireService.getLocationPlace(_this.SignUpService.userPlace).takeUntil(_this.unsubscribe).subscribe(function (place) {
+                _this.place = place;
+                _this.locationPlace = _this.place.location;
+                _this.geofireService.setLocationPlace(_this.SignUpService.userPlace, "some_key", _this.locationPlace.lat, _this.locationPlace.lng);
+            });
+            setTimeout(function () {
+                _this.SignUpService.getInfoPlace(_this.SignUpService.userPlace).takeUntil(_this.unsubscribe).subscribe(function (plac) {
+                    _this.placeInfo = plac;
+                    if (_this.placeInfo.emails === undefined) {
+                        if (_this.user.documents) {
+                            if (_this.user.documents.carne === undefined || _this.user.documents.id === undefined) {
+                                var modal = _this.modalCtrl.create('VerificationImagesPage');
+                                modal.present();
+                            }
+                            else if (_this.user.documents.carne === true || _this.user.documents.id === true) {
+                                _this.instanceService.isVerified(_this.SignUpService.userPlace, _this.userUid);
+                            }
+                        }
+                        else if (!_this.user.documents) {
+                            console.log('no hay docs');
+                            var modal = _this.modalCtrl.create('VerificationImagesPage');
+                            modal.present();
+                        }
+                    }
+                    else {
+                        _this.instanceService.isVerified(_this.SignUpService.userPlace, _this.userUid);
+                    }
+                });
+            }, 1000);
+        }).then(function () {
+            // TEST THIS
+            _this.afDB.database.ref('allPlaces/' + _this.SignUpService.userPlace).once('value').then(function (snapPlace) {
+                _this.geofirePlaceSize = snapPlace.val().geofireSize;
+            });
+        });
+    } // END OF CONSTRUCTOR
+    FindridePage.prototype.getToken = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var _a, _b;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        if (!this.platform.is('android')) return [3 /*break*/, 2];
+                        _a = this;
+                        return [4 /*yield*/, this.firebase.getToken().then(function (token) {
+                                console.log('this is the token ' + token);
+                                _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.user + '/devices/').update({
+                                    token: token
+                                });
+                            })];
+                    case 1:
+                        _a.token = _c.sent();
+                        _c.label = 2;
+                    case 2:
+                        if (!this.platform.is('ios')) return [3 /*break*/, 5];
+                        _b = this;
+                        return [4 /*yield*/, this.firebase.getToken().then(function (token) {
+                                console.log('this is the token ' + token);
+                                _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.user + '/devices/').update({
+                                    token: token
+                                });
+                            })];
+                    case 3:
+                        _b.token = _c.sent();
+                        return [4 /*yield*/, this.firebase.grantPermission()];
+                    case 4:
+                        _c.sent();
+                        _c.label = 5;
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    FindridePage.prototype.getOnTrip = function () {
+        var _this = this;
+        this.TripsService.getOnTrip(this.SignUpService.userPlace, this.userUid)
+            .subscribe(function (onTrip) {
+            _this.onTrip = onTrip;
+            if (_this.onTrip === true) {
+                _this.geofireService.cancelGeofireDest();
+                _this.geofireService.cancelGeofireOr();
+                _this.geofireService.cancelGeofireDestLMU();
+                _this.geofireService.cancelGeofireOrLMU();
+            }
+            console.log(_this.onTrip);
+            console.log('ONTRIP');
+        });
+    };
+    FindridePage.prototype.ionViewDidLoad = function () {
+        this.loadMap();
+    };
+    FindridePage.prototype.loadMap = function () {
+        // this gets current position and set the camera of the map and put a marker in your location
+        var _this = this;
+        this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then(function (position) {
+            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var mapOptions = {
+                center: latLng,
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoomControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                rotateControl: false,
+                fullscreenControl: false,
+                styles: [
+                    {
+                        featureType: 'poi',
+                        elementType: 'labels.icon',
+                        stylers: [
+                            {
+                                visibility: 'off'
+                            }
+                        ]
+                    }
+                ]
+            };
+            //creates the map and give options
+            _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
+            _this.myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+            _this.markerGeolocation = new google.maps.Marker({
+                map: _this.map,
+                animation: google.maps.Animation.DROP,
+                position: latLng,
+                draggable: true,
+                icon: { url: "assets/imgs/marker-origin.png",
+                    scaledSize: new google.maps.Size(90, 90)
+                }
+            });
+            _this.markers.push(_this.markerGeolocation);
+            _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
+            //to reverse-geocode position
+            _this.geocodeLatLng(latLng, _this.autocompleteMyPos);
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    FindridePage.prototype.calculateRoute = function (positionOr, positionDest) {
+        //tutorial ngclassroom https://blog.ng-classroom.com/blog/ionic2/directions-google-js-ionic/
+        var _this = this;
+        this.bounds.extend(this.myLatLng);
+        this.map.fitBounds(this.bounds);
+        this.directionsService.route({
+            origin: positionOr,
+            destination: positionDest,
+            travelMode: google.maps.TravelMode.DRIVING,
+            avoidTolls: true
+        }, function (response, status) {
+            //render
+            if (status === google.maps.DirectionsStatus.OK) {
+                _this.directionsDisplay.setDirections(response);
+            }
+            else {
+                alert('Could not display directions due to: ' + status);
+            }
+        });
+    };
+    FindridePage.prototype.calculateDistance = function (positionOr, positionDest) {
+        var _this = this;
+        this.distanceInMeters = google.maps.geometry.spherical.computeDistanceBetween(positionOr, positionDest);
+        setTimeout(function () {
+            console.log('the distance in meters is ' + _this.distanceInMeters);
+        }, 1000);
+    };
+    //autocomplete of myPosition searchbar
+    FindridePage.prototype.updateSearchResultsMyPos = function () {
+        var _this = this;
+        if (this.autocompleteMyPos.input == '') {
+            this.autocompleteItems = [];
+            return;
+        }
+        this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteMyPos.input, componentRestrictions: { country: 'co' } }, function (predictions, status) {
+            _this.autocompleteItems = [];
+            if (predictions) {
+                _this.zone.run(function () {
+                    predictions.forEach(function (prediction) {
+                        _this.autocompleteItems.push(prediction);
+                    });
+                });
+            }
+        });
+    };
+    ////autocomplete of my destination
+    FindridePage.prototype.updateSearchResultsMyDest = function () {
+        var _this = this;
+        if (this.autocompleteMyDest.input == '') {
+            this.autocompleteItems2 = [];
+            return;
+        }
+        this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteMyDest.input, componentRestrictions: { country: 'co' } }, function (predictions, status) {
+            _this.autocompleteItems2 = [];
+            if (predictions) {
+                _this.zone.run(function () {
+                    predictions.forEach(function (prediction) {
+                        _this.autocompleteItems2.push(prediction);
+                    });
+                });
+            }
+        });
+    };
+    ////select result of my position searchbar
+    FindridePage.prototype.selectSearchResultMyPos = function (item) {
+        var _this = this;
+        this.autocompleteItems = [];
+        this.clearMarkers();
+        this.autocompleteMyDest.input = '';
+        this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+                // let position = {
+                //     lat: results[0].geometry.location.lat,
+                //     lng: results[0].geometry.location.lng
+                // };
+                _this.markerGeolocation = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: _this.map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/marker-origin.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    },
+                });
+                _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
+                _this.markers.push(_this.markerGeolocation);
+                _this.map.setCenter(results[0].geometry.location);
+                _this.autocompleteMyPos.input = [item.description];
+                _this.directionsDisplay.setMap(null);
+            }
+        });
+    };
+    ////select result of my destination searchbar
+    FindridePage.prototype.selectSearchResultMyDest = function (item) {
+        var _this = this;
+        this.autocompleteItems2 = [];
+        if (this.markerDest !== undefined) {
+            this.markerDest.setMap(null);
+        }
+        this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+                // let position = {
+                //   latitude: results[0].geometry.location.lat,
+                //   longitude: results[0].geometry.location.lng
+                // };
+                var position = new google.maps.LatLng(results[0].geometry.location.lat, results[0].geometry.location.lng);
+                console.log(position);
+                _this.markerDest = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: _this.map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/marker-destination2.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    }
+                });
+                console.log(position);
+                _this.map.fitBounds(_this.bounds);
+                _this.markers.push(_this.markerDest);
+                _this.map.setCenter(results[0].geometry.location);
+                console.log(results[0].geometry.location);
+                _this.autocompleteMyDest.input = [item.description];
+                _this.dragMarkerDest(_this.markerDest, _this.autocompleteMyDest);
+                _this.directionsDisplay.setMap(_this.map);
+                _this.myLatLngDest = results[0].geometry.location;
+                _this.calculateRoute(_this.markerGeolocation.position, results[0].geometry.location);
+                _this.calculateDistance(_this.markerGeolocation.position, results[0].geometry.location);
+            }
+        });
+    };
+    ////////Markers
+    FindridePage.prototype.clearMarkers = function () {
+        for (var i = 0; i < this.markers.length; i++) {
+            console.log(this.markers[i]);
+            this.markers[i].setMap(null);
+        }
+        this.markers = [];
+    };
+    FindridePage.prototype.dragMarkerDest = function (marker, inputName) {
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            _this.map.setCenter(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            _this.calculateRoute(_this.markerGeolocation.position, latLng);
+            console.log(latLng);
+            _this.calculateDistance(_this.markerGeolocation.position, new google.maps.LatLng({
+                lat: latLng.lat,
+                lng: latLng.lng
+            }));
+        });
+    };
+    FindridePage.prototype.dragMarkerOr = function (marker, inputName) {
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            _this.map.setCenter(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            if (_this.autocompleteMyDest.input == undefined || _this.autocompleteMyDest.input == '') {
+                console.log("funciona");
+            }
+            else {
+                _this.calculateRoute(latLng, _this.markerDest.position);
+                _this.calculateDistance(new google.maps.LatLng({
+                    lat: latLng.lat,
+                    lng: latLng.lng
+                }), _this.markerDest.position);
+            }
+        });
+    };
+    FindridePage.prototype.geocodeLatLng = function (latLng, inputName) {
+        this.geocoder.geocode({ 'location': latLng }, function (results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    console.log(results[0].formatted_address);
+                    inputName.input = [results[0].formatted_address];
+                }
+                else {
+                    alert('No results found');
+                }
+            }
+            else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
+    };
+    FindridePage.prototype.listride = function () {
+        var _this = this;
+        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/blockPayment/').once('value').then(function (snapBlock) {
+            if (snapBlock.val() === true) {
+                var alert_1 = _this.alertCtrl.create({
+                    title: 'Tienes un saldo pendiente por pagar',
+                    subTitle: 'Para seguir disfrutando de Waypool debes pagar el saldo pendiente de tus viajes pasados',
+                    buttons: [
+                        {
+                            text: 'No lo quiero hacer ahora',
+                            role: 'cancel',
+                        },
+                        {
+                            text: 'Ir a Mi Saldo',
+                            handler: function () {
+                                _this.app.getRootNav().push('WalletPage');
+                            }
+                        }
+                    ]
+                });
+                alert_1.present();
+            }
+            else {
+                if (_this.user.trips) {
+                    if (_this.user.onTrip == true) {
+                        var alert_2 = _this.alertCtrl.create({
+                            title: 'Estas actualmente en un viaje',
+                            subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
+                            buttons: ['OK']
+                        });
+                        alert_2.present();
+                    }
+                    else {
+                        try {
+                            _this.desFirebase = _this.autocompleteMyDest.input;
+                            _this.orFirebase = _this.autocompleteMyPos.input;
+                            console.log(_this.desFirebase[0]);
+                            if (_this.autocompleteMyDest.input == '' || _this.autocompleteMyPos.input == '') {
+                                _this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
+                                _this.clearMarkers();
+                                _this.directionsDisplay.setDirections({ routes: [] });
+                                // AQUI
+                            }
+                            else {
+                                //turn on geoquery place to determine wether the user is in place
+                                _this.setGeofirePlace(_this.SignUpService.userPlace, _this.geofirePlaceSize, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
+                                // test: geoqueryU on listride() of findride.ts
+                                _this.geoqueryU.on("key_entered", function (key) {
+                                    var _this = this;
+                                    this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/trips').update({
+                                        origin: this.orFirebase,
+                                        destination: this.desFirebase,
+                                        distanceToGoInKM: this.distanceInMeters / 1000
+                                    }).then(function () {
+                                        _this.geocoder.geocode({ 'address': _this.orFirebase[0] }, function (results, status) {
+                                            if (status === 'OK') {
+                                                _this.geocoordinatesOr = {
+                                                    lat: results[0].geometry.location.lat(),
+                                                    lng: results[0].geometry.location.lng()
+                                                };
+                                            }
+                                            // turn geofire On
+                                            if (_this.user.onTrip === true) {
+                                                console.log('geofireOr hasnt been activated due ontrip');
+                                            }
+                                            else {
+                                                _this.geofireService.setGeofireOr(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                _this.geofireService.setGeofireOrLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                console.log('executed geofire Or');
+                                            }
+                                        });
+                                        _this.geofireOriginConfirmed = true;
+                                    }).then(function () {
+                                        if (!_this.geofireOriginConfirmed === true) {
+                                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
+                                                origin: _this.orFirebase,
+                                                destination: _this.desFirebase,
+                                                distanceToGoInKM: _this.distanceInMeters / 1000
+                                            }).then(function () {
+                                                _this.geocoderDestinationCase();
+                                            });
+                                        }
+                                        else {
+                                            _this.geofireOriginConfirmed = false;
+                                        }
+                                    });
+                                    console.log(key + ' detected');
+                                }.bind(_this));
+                                __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
+                                var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
+                                console.log(today);
+                                _this.MetricsService.createdReserves(_this.SignUpService.userPlace, _this.userUid, today, _this.desFirebase, _this.orFirebase);
+                                _this.app.getRootNav().push('ListridePage');
+                                console.log("se ejecuto");
+                            }
+                        }
+                        catch (error) {
+                            console.log("soy yo");
+                            if (_this.geofire2 === null || _this.geofire2 === undefined) {
+                                //this is to tell the user to select a place before publishing a trip
+                                _this.presentAlert('Información Incompleta', 'no puedes publicar un viaje sin antes seleccionar un lugar de la lista.', 'Ok');
+                            }
+                            else {
+                                _this.presentAlert('Hay un error en la aplicación', 'Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.', 'Ok');
+                            }
+                        }
+                    }
+                }
+                else {
+                    try {
+                        _this.desFirebase = _this.autocompleteMyDest.input;
+                        _this.orFirebase = _this.autocompleteMyPos.input;
+                        console.log(_this.desFirebase[0]);
+                        if (_this.autocompleteMyDest.input == '' || _this.autocompleteMyPos.input == '') {
+                            _this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
+                            _this.clearMarkers();
+                            _this.directionsDisplay.setDirections({ routes: [] });
+                            // AQUI
+                        }
+                        else {
+                            //turn on geoquery place to determine wether the user is in place
+                            _this.setGeofirePlace(_this.SignUpService.userPlace, _this.geofirePlaceSize, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
+                            // test: geoqueryU on listride() of findride.ts
+                            _this.geoqueryU.on("key_entered", function (key) {
+                                var _this = this;
+                                this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).update({
+                                    geofireOrigin: true
+                                }).then(function () {
+                                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
+                                        origin: _this.orFirebase,
+                                        destination: _this.desFirebase,
+                                        distanceToGoInKM: _this.distanceInMeters / 1000
+                                    }).then(function () {
+                                        _this.geocoder.geocode({ 'address': _this.orFirebase[0] }, function (results, status) {
+                                            if (status === 'OK') {
+                                                _this.geocoordinatesOr = {
+                                                    lat: results[0].geometry.location.lat(),
+                                                    lng: results[0].geometry.location.lng()
+                                                };
+                                            }
+                                            // turn geofire On
+                                            if (_this.user.onTrip === true) {
+                                                console.log('geofireOr hasnt been activated due ontrip');
+                                            }
+                                            else {
+                                                console.log('AQUI ESTA EL ERROR 2');
+                                                _this.geofireService.setGeofireOr(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                _this.geofireService.setGeofireOrLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                console.log('executed geofire Or');
+                                            }
+                                        });
+                                        _this.geofireOriginConfirmed = true;
+                                    }).then(function () {
+                                        if (!_this.geofireOriginConfirmed === true) {
+                                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
+                                                origin: _this.orFirebase,
+                                                destination: _this.desFirebase,
+                                                distanceToGoInKM: _this.distanceInMeters / 1000
+                                            }).then(function () {
+                                                _this.geocoderDestinationCase();
+                                            });
+                                        }
+                                        else {
+                                            _this.geofireOriginConfirmed = false;
+                                        }
+                                    });
+                                    console.log('directions set');
+                                });
+                                console.log(key + ' detected');
+                            }.bind(_this));
+                            __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
+                            var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
+                            console.log(today);
+                            _this.MetricsService.createdReserves(_this.SignUpService.userPlace, _this.userUid, today, _this.desFirebase, _this.orFirebase);
+                            _this.app.getRootNav().push('ListridePage');
+                            console.log("se ejecuto");
+                        }
+                    }
+                    catch (error) {
+                        console.log("soy yo");
+                        if (_this.geofire2 === null || _this.geofire2 === undefined) {
+                            //this is to tell the user to select a place before publishing a trip
+                            _this.presentAlert('Información Incompleta', 'no puedes publicar un viaje sin antes seleccionar un lugar de la lista.', 'Ok');
+                        }
+                        else {
+                            _this.presentAlert('Hay un error en la aplicación', 'Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.', 'Ok');
+                        }
+                    }
+                }
+            }
+        });
+    };
+    FindridePage.prototype.geocoderDestinationCase = function () {
+        var _this = this;
+        this.geocoder.geocode({ 'address': this.desFirebase[0] }, function (results, status) {
+            if (status === 'OK') {
+                _this.geocoordinatesDest = {
+                    lat: results[0].geometry.location.lat(),
+                    lng: results[0].geometry.location.lng()
+                };
+            }
+            // turn geofire On
+            if (_this.user.onTrip === true) {
+                console.log('geofireDest hasnt been activated due ontrip');
+            }
+            else {
+                _this.geofireService.setGeofireDest(_this.SignUpService.userPlace, 2, _this.geocoordinatesDest.lat, _this.geocoordinatesDest.lng, _this.userUid);
+                _this.geofireService.setGeofireDestLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesDest.lat, _this.geocoordinatesDest.lng, _this.userUid);
+                console.log('executed geofire Dest');
+            }
+        });
+    };
+    FindridePage.prototype.presentAlert = function (title, text, button) {
+        var alert = this.alertCtrl.create({
+            title: title,
+            subTitle: text,
+            buttons: [button]
+        });
+        alert.present();
+    };
+    FindridePage.prototype.goToMyReserves = function () {
+        this.app.getRootNav().push('ReservetripPage');
+    };
+    FindridePage.prototype.goToTrip = function () {
+        // go to trip      
+        if (this.onTrip === true) {
+            console.log('DISPARADOR');
+            var modal = this.modalCtrl.create('MyridePage');
+            modal.present();
+        }
+        else {
+            console.log("es undefined");
+        }
+    };
+    FindridePage.prototype.confirmNote = function () {
+        var _this = this;
+        var modal = this.modalCtrl.create('ConfirmNotePage', { or: this.orFirebase, dest: this.desFirebase });
+        modal.onDidDismiss(function (accepted) {
+            if (accepted) {
+                _this.app.getRootNav().push('ListridePage');
+            }
+        });
+        modal.present();
+    };
+    // set geoquery that determines if the person is in place
+    FindridePage.prototype.setGeofirePlace = function (place, radius, lat, lng, userId) {
+        this.dbRef = this.afDB.database.ref(place + '/geofirePlace/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_8_geofire__(this.dbRef);
+        this.geoqueryU = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
+        });
+        console.log('geoquery place added');
+    };
+    FindridePage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], FindridePage.prototype, "mapElement", void 0);
+    FindridePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-findride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/findride/findride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title><span class="text-white findRideText">PIDE TU VIAJE</span></ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content  padding>\n    \n    <ion-card class="search">\n          \n        <ion-card-content>\n            <span class="dot bg-theme"></span>\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n          \n            <ion-list   [hidden]="autocompleteItems.length == 0">\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n                  {{ item.description }}\n                </ion-item>\n              </ion-list>\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n        </ion-card-content>\n        <ion-card-content>\n            <span class="dot bg-yellow"></span>           \n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n              {{ item.description }}\n            </ion-item>\n          </ion-list>\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n        </ion-card-content>\n        \n    </ion-card>\n  \n <div #map id="map"></div>  \n    \n    \n<ion-row class="rowOfButtons">\n\n  <div class="btn-footer btn-left">\n      <button class="btn rounded bg-darkblue text-white myReservesButton" style="width: 100%" (click)="goToMyReserves()" >Mis Reservas</button> \n  </div>\n  <div class="btn-right">\n      <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%">Pedir</button>\n\n  </div>\n \n</ion-row>\n \n<div *ngIf="onTrip" >\n    <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;\n     position:absolute;\n     bottom: 0px ;\n     left: 0px ;\n     height: 51px; \n     font-size: large;\n   " (click)="goToTrip() " >VIAJE EN CURSO\n    </button>\n</div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/findride/findride.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_15__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */]])
+    ], FindridePage);
+    return FindridePage;
+}());
+
+//# sourceMappingURL=findride.js.map
 
 /***/ })
 

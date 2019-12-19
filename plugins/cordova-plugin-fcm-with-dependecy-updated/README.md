@@ -2,6 +2,7 @@
 > Extremely easy plug&play push notification plugin for Cordova applications with Google Firebase FCM.
 
 [![npm downloads](https://img.shields.io/npm/dt/cordova-plugin-fcm-with-dependecy-updated.svg)](https://www.npmjs.com/package/cordova-plugin-fcm-with-dependecy-updated)
+[![npm per month](https://img.shields.io/npm/dm/cordova-plugin-fcm-with-dependecy-updated.svg)](https://www.npmjs.com/package/cordova-plugin-fcm-with-dependecy-updated)
 [![npm version](https://img.shields.io/npm/v/cordova-plugin-fcm-with-dependecy-updated.svg)](https://www.npmjs.com/package/cordova-plugin-fcm-with-dependecy-updated)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![GitHub issues](https://img.shields.io/github/issues/andrehtissot/cordova-plugin-fcm-with-dependecy-updated.svg)](https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated/issues)
@@ -11,9 +12,38 @@
 [![DeepScan grade](https://deepscan.io/api/teams/3417/projects/5068/branches/39495/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=3417&pid=5068&bid=39495)
 
 ## Authorship
-This is a fork from https://github.com/fechanique/cordova-plugin-fcm with improvements.
+This is a fork from https://github.com/fechanique/cordova-plugin-fcm, which has dependencies versions upgraded, jitpack and cocoapods support, and newer features.
 
-This fork has its google and firebase dependencies versions defined, which is necessary to avoid cordova build errors.
+### Version 4.1.0 (26/10/2019)
+
+Older notifications can be cleared from notification center.
+Works on both IOS and Android.
+
+```javascript
+//FCMPlugin.clearAllNotifications( successCallback(msg), errorCallback(err) );
+FCMPlugin.clearAllNotifications();
+```
+
+### Version 4.0.0 (12/10/2019)
+The old `FCMPlugin.getToken` is focused on retrieving the FCM Token.
+For the IOS, APNS token can now be retrieved by the new method:
+
+```javascript
+FCMPlugin.getAPNSToken(
+  function(token) {
+    console.info("Retrieved token: "+token)
+  },
+  function(error) {
+    console.error(error);
+  }
+);
+```
+
+On android, it will always return `null`.
+
+The APNS token, once given, should not change for the same user (as commented on in https://stackoverflow.com/questions/6652242/does-the-apns-device-token-ever-change-once-created).
+
+Although, contrary to APNS, the FCM tokens do expire, and for this reason, `FCMPlugin.onTokenRefresh` will be called with the new one FCM token.
 
 ### Version 3.2.0 (16/09/2019)
 #### Checking for permissions

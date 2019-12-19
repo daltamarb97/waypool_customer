@@ -49,17 +49,10 @@ export class ListridePage {
           // this.locationOrigin.push(origin)
           console.log(destinationUser);
         });
-        // this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
-        // .subscribe( tripsReserved => {
-          
-  
-        //   this.tripsReserved = tripsReserved
-        //   console.log(this.tripsReserved);
-  
-        // }) 
-        
+
     this.reservesService.getReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)    
       .subscribe(reserves => {
+        this.initiatedTrips = [];
         this.reservesAvailable = [];
         this.ReservesGeofire = reserves;
         console.log(this.ReservesGeofire);
@@ -67,15 +60,14 @@ export class ListridePage {
 
         // this.getMyReserves();
         this.getAvailableReserves();
+        
    
       });
      
   
   }
 
-
-   
-  
+ 
 
   ionViewDidLeave(){
     this.unSubscribeServices();
@@ -84,65 +76,54 @@ export class ListridePage {
     this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
   }
 
-getMyReserves(){
-  // this.reservesService.getMyReservesUser(this.SignUpService.userUniversity, this.userUid).takeUntil(this.unsubscribe)
-  // .subscribe( tripsReserved => {
-    
 
-  //   this.tripsReserved = tripsReserved
 
-  //   console.log(this.tripsReserved);
-  
-  // }) 
-}
+      // getMyReserves(){
+      // }
+
+
+
   getAvailableReserves(){
-    
-    //bring reserves that i have entered to hide them in listride
+        //bring reserves that i have entered to hide them in listride
    
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
       this.ReservesGeofire.forEach(reserveGeofire => {
-          this.reservesService.getMyReserves(this.SignUpService.userPlace, reserveGeofire.driverId,reserveGeofire.keyReserve).takeUntil(this.unsubscribe)
-      .subscribe( info => {        
-            this.reserve = info;
-                
-            console.log(info);
 
-            if(this.reserve=== undefined || this.reserve === null){
+        this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ reserveGeofire.driverId +'/'+ reserveGeofire.keyReserve).once('value').then((snapReserve)=>{
+          let obj = snapReserve.val();
+          console.log(obj);
+          
+          if(obj=== undefined || obj === null){
               // reserve doesn't exist
               console.log("hello"); 
-           }else{
-
-            this.reservesAvailable.push(this.reserve);
-           } 
-
-            
-          // arreglar problema de que aparece varias veces la misma reserva
-      })
-
-      //// ELIMINAR NODO QUE LEE LMU CUANDO FINALICE VIAJE (MERGE)
-
-
-      if(reserveGeofire.LMU == true){
-        this.TripsService.getLastMinuteTripsDEMO(this.SignUpService.userPlace, reserveGeofire.driverId, reserveGeofire.keyReserve).subscribe((reserveLMU)=>{
-          this.initiatedTrips = [];
-          this.reserveLMU = reserveLMU;
-          console.log(this.reserveLMU);
-          this.initiatedTrips.push(this.reserveLMU);
-          console.log(this.initiatedTrips);
-
+              }else{
+                this.reservesAvailable.push(obj);
+              } 
         })
+
+        if(reserveGeofire.LMU == true){
+          
+          this.afDB.database.ref(this.SignUpService.userPlace + '/trips/'+reserveGeofire.driverId+'/'+ reserveGeofire.keyReserve).once('value').then((snapTripLMU)=>{
+            this.reserveLMU = snapTripLMU.val();
+            this.initiatedTrips.push(this.reserveLMU);
+            console.log(this.initiatedTrips);  
+          })
+
       }
-    })  
+  })
+
   }
 
   
-ionViewDidLoad(){
-  // this.geoFireService.getDriversAvailableForUser(this.userUid)
-  //   .subscribe(drivers=>{
-  //       this.driversAvailable = drivers;
-  //       console.log(this.driversAvailable);
-  //   })
-}
+
+
+  ionViewDidLoad(){
+    // this.geoFireService.getDriversAvailableForUser(this.userUid)
+    //   .subscribe(drivers=>{
+    //       this.driversAvailable = drivers;
+    //       console.log(this.driversAvailable);
+    //   })
+  }
 
 
 
@@ -203,25 +184,36 @@ ionViewDidLoad(){
   }
 
 
-  enterTrip(trip){
 
+
+  enterTrip(trip){
    let modal = this.modalCtrl.create('ConfirmtripPage',{trip:trip});
    modal.onDidDismiss((accepted) => {
     if(accepted){
-      this.unSubscribeServices();
-     this.navCtrl.pop();
-     this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
-     this.navCtrl.push('MyridePage');
-    }
-  })
-modal.present();
-  //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
+        this.unSubscribeServices();
+        this.navCtrl.pop();
+        this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
+        this.navCtrl.push('MyridePage');
+      }
+    })
+    modal.present();
+   //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
    }
+
+
+
+
+
+
    unSubscribeServices(){
     this.unsubscribe.next();
     this.unsubscribe.complete();
-  }             
-  presentLoadingCustom(array) {
+  }
+  
+
+
+  
+  presentLoadingCustom(array){
     let loading = this.loadingCtrl.create({
       spinner: 'crescent',
       content: `
@@ -236,18 +228,18 @@ modal.present();
       if(array.length === 0){
         //there are no reserves to show
         this.noReserve = true;
-
       }else{
         //there are reserves
-          this.noReserve = false;
-  
+          this.noReserve = false;  
       }
-
     });
-  
     loading.present();
   }
   
+
+
+
+
   help(){
     const toast = this.toastCtrl.create({
       message: 'Estos son los conductores que se van a tu misma zona. Podrás ver sus horas en las que se van y unirte en su viaje',
@@ -257,6 +249,8 @@ modal.present();
          });
     toast.present();
   }
+
+
 
   
 }

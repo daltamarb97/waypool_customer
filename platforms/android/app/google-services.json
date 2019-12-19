@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "904521954579",
+    "firebase_url": "https://waypool-511be.firebaseio.com",
+    "project_id": "waypool-511be",
+    "storage_bucket": "waypool-511be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904521954579:android:558e9df4e7c52835",
+        "android_client_info": {
+          "package_name": "com.waypoolsas.waypoolcars"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904521954579-elc0cuvqkq60fkpvtn2875h6tnir0pgl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5-45m0gNXV81swCSn8QtvozSXm9wZ8Us"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904521954579-elc0cuvqkq60fkpvtn2875h6tnir0pgl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "904521954579-hs58u2hk7btnsu3o7468a0g5mb11lv7b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.waypoolsas.waypoolcars2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904521954579:android:188288bccc534bc0",
+        "android_client_info": {
+          "package_name": "com.waypoolsas.waypooluser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904521954579-elc0cuvqkq60fkpvtn2875h6tnir0pgl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5-45m0gNXV81swCSn8QtvozSXm9wZ8Us"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904521954579-elc0cuvqkq60fkpvtn2875h6tnir0pgl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "904521954579-hs58u2hk7btnsu3o7468a0g5mb11lv7b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.waypoolsas.waypoolcars2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

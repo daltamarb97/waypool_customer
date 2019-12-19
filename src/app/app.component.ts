@@ -55,6 +55,7 @@ export class MyApp {
 
     platform.ready().then(()=>{
 
+      console.log('aqui es notificaciíon nueva');
       this.fcm.onNotification().subscribe(data => {
         if(data.wasTapped){
          console.log('app in background');

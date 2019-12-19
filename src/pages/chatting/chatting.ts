@@ -37,7 +37,7 @@ isTrip:any;
       this.getChatFromTrip()
 
     }else{
-      this.getChatFromReserve()
+      this.getChatFromReserve() 
     }
   }
   getChatFromTrip(){

@@ -7,7 +7,7 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-fcm-with-dependecy-updated": {
+    "cordova-plugin-firebase": {
       "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
     "cordova-plugin-geolocation": {

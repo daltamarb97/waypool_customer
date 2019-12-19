@@ -97,7 +97,7 @@ export class TripsService {
 
 
 
-     joinTrip(place, keyTrip,driverId, userId, origin, destination, name, lastname, phone, note, verifiedPerson){
+     joinTrip(place, keyTrip,driverId, userId, origin, destination, name, lastname, phone, verifiedPerson, distance){
         this.afDB.database.ref(place + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).update({
              origin: origin,
              destination: destination,
@@ -105,8 +105,8 @@ export class TripsService {
              lastname: lastname,
              phone: phone,
              userId: userId,
-             note:note,
-             verifiedPerson: verifiedPerson
+             verifiedPerson: verifiedPerson,
+             distance: distance
         });
     }
 

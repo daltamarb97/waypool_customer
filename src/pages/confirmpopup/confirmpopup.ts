@@ -69,7 +69,7 @@ export class ConfirmpopupPage {
       
     })
     console.log(this.reserve.keyTrip )
-    this.geoFireService.joinReserve(this.SignUpService.userPlace, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
+    this.geoFireService.joinReserve(this.SignUpService.userPlace, this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
     this.geoFireService.pushToMyReserve(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
     this.hideButton = !this.hideButton;
     this.hideText = !this.hideText;

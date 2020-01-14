@@ -87,6 +87,8 @@ export class FindridePage {
   distanceInMeters:any;
 
   driverOnNodeOr:any;
+  multipleLocations:boolean;
+  zonesToIterate:any;
  constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -111,17 +113,51 @@ export class FindridePage {
 
 
     this.afDB.database.ref('allUsers/' + this.userUid).once('value').then((snap)=>{
-      this.SignUpService.userPlace = snap.val().place;
 
-      console.log(this.SignUpService.userPlace);
+      this.afDB.database.ref('allCities/' + snap.val().city + '/allPlaces/' + snap.val().place).once('value').then((snapshot)=>{
+        console.log(snapshot.val().multipleLocations);
+        this.zonesToIterate = snapshot.val().zones;
+        console.log(this.zonesToIterate);
+        
+        if(snapshot.val().multipleLocations === true){
+          // temporary location until user chooses the right location of their company
+          this.SignUpService.userPlace = this.zonesToIterate[0]
+          this.multipleLocations = true;
+  
+          //user get their check sign of verficiation here
+          Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{    
+          
+            if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
+  
+            }else{
+              this.instanceService.isVerified(this.zonesToIterate[key], this.userUid);
+              
+            }
+          })
+  
+  
+        }else{
+          this.SignUpService.userPlace = this.zonesToIterate[0]
+          this.multipleLocations = false;
+          
+          //user get their check sign of verficiation here
+          this.instanceService.isVerified(this.SignUpService.userPlace, this.userUid);
+  
+        }
+        
+      })
       
 
       this.platform.ready().then(()=>{
         this.token = this.fcm.getToken().then((token)=>{
           console.log('this is the token ' + token);
-          this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/devices/').update({
-            token: token
+
+          Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
+            this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/devices/').update({
+              token: token
+            })
           })
+         
         })
 
         // this.getToken();
@@ -129,22 +165,27 @@ export class FindridePage {
     })
 
         //search keyTrip
-        this.TripsService.getKeyTrip(this.SignUpService.userPlace, this.userUid)
+        //REVISAR ESTO CON DANIEL
+        Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
+          this.TripsService.getKeyTrip(this.zonesToIterate[key], this.userUid)
         .subscribe(keyTrip=>{
           this.keyTrip =keyTrip;
           console.log(this.keyTrip)
           //if key its deleted don't show VIAJE EN CURSO  
           if(this.keyTrip === undefined || this.keyTrip === null){
            this.onTrip=false;
-            this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
-            this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
+            this.TripsService.eliminateKeyTrip(this.zonesToIterate[key], this.userUid);
+            this.TripsService.eliminatingOnTrip(this.zonesToIterate[key], this.userUid);
             console.log("llegue adonde era")
           }else{
             //confirm that trip exist and get it
-            this.getOnTrip();
+            this.SignUpService.userPlace = this.zonesToIterate[key]
+            this.getOnTrip(this.zonesToIterate[key]);
           }
          
         })
+        })
+        
 
 
 
@@ -171,7 +212,9 @@ export class FindridePage {
                 this.unsubscribe.complete();
                 setTimeout(() => {
                   
-                  this.TripsService.saveTripOnRecords(this.SignUpService.userPlace, this.userUid,this.user.trip);     
+                  Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
+                    this.TripsService.saveTripOnRecords(this.zonesToIterate[key], this.userUid,this.user.trip);     
+                  });
 
                 this.navCtrl.push('RatetripPage',{trip:this.user.trip})
                 this.TripsService.eliminateTrip(this.SignUpService.userPlace, this.userUid);     
@@ -186,6 +229,8 @@ export class FindridePage {
 
 
 
+
+        // AQUI QUEDEEEEEEEEE
         // set geofire key of place to avoid asking users to put where they are going
         this.geofireService.getLocationPlace(this.SignUpService.userPlace).takeUntil(this.unsubscribe).subscribe(place=>{
           this.place = place;
@@ -265,8 +310,8 @@ export class FindridePage {
 
 
 
-  getOnTrip(){
-    this.TripsService.getOnTrip(this.SignUpService.userPlace, this.userUid) 
+  getOnTrip(place){
+    this.TripsService.getOnTrip(place, this.userUid) 
     .subscribe(onTrip=>{
       this.onTrip =onTrip;
       if(this.onTrip === true){

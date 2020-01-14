@@ -36,18 +36,21 @@ export class SignupPage {
 
     //variables linked among them 
     emailVar:any;
-    enterpriseVar:any;
+    cityVar:any;
     companyVar:any;
     company:any;
-    places = [];
+    cities = [];
     arrayEmails = [];
-    showReadonly:boolean = true;
-    onlyEmail:any;
-    noShowButton:boolean = false;
+    email:any;
+    // noShowButton:boolean = false;
     geocoder: any
-
-
+    
+    forLoopsCompleted:any;
+    companyIdentified:boolean = false;
     unsubscribe = new Subject;
+    emailStringVerification:any;
+    rightEmailOnDatabase:any;
+    zones = [];
   constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private app: App) {
 
 
@@ -55,11 +58,10 @@ export class SignupPage {
         name: ["", Validators.required],
         lastname: ["", Validators.required],
         email: ["", Validators.required],
-        fixedemail: ["", Validators],
         password: ["", Validators.required],
         passwordconf: ["", Validators.required],
-        phone: ["", Validators.required],
-        place: ["", Validators.required],
+        phone: ["", Validators.required], 
+        city: ["", Validators.required],
         isChecked:[true, Validators.required]
         
     })
@@ -68,44 +70,43 @@ export class SignupPage {
     this.geocoder = new google.maps.Geocoder;
 
 
-    this.SignUpService.getPlaces().takeUntil(this.unsubscribe).subscribe((places)=>{
-        this.places = places;
-        console.log(this.places);
+    this.SignUpService.getAllCities().takeUntil(this.unsubscribe).subscribe((cities)=>{
+        this.cities = cities;
+        console.log(this.cities);
     })
 
 
   }
 
  onChange(){
-        this.showReadonly = true;
-        if(this.showReadonly == true){
-                var count = this.places.length;
-                for(var i=0; i<count; i++){
-                    if(this.places[i].name == this.enterpriseVar){
-                      if(this.places[i].emails == undefined){
-                                this.showReadonly = false;
-                            }else{
-                                // this.emailVar = this.universities[i].email
 
-                                this.SignUpService.getEmails(this.places[i].name).subscribe(emails =>{
-                                    this.arrayEmails = emails;
-                                    console.log(this.arrayEmails);
-                                })
-                            }
-                        }
-                    }
-            }
+        this.arrayEmails = [];
+        this.afDB.database.ref('allCities/' + this.cityVar + '/allPlaces').once('value').then((snap)=>{
+            let obj = snap.val();
+    
+            Object.getOwnPropertyNames(obj).forEach((key)=>{
+                this.arrayEmails.push(obj[key].email);
+                console.log(this.arrayEmails);
+                
+                
+            })
+        })  
             
-        }
+     }
 
 
-        onChangeEmail(){
-            var count = this.arrayEmails.length;
-            for(var i=0; i<count; i++){
-                if(this.arrayEmails[i].email == this.companyVar){
-                    this.company = this.arrayEmails[i].company;
-                    console.log(this.company);
+        noCompanyIdentified(numberToExecute){
+            ++this.forLoopsCompleted;
+            if(this.forLoopsCompleted === numberToExecute){
+                if(this.companyIdentified === false){
+                    const alert = this.alertCtrl.create({
+                        title: 'El correo que ingresaste no concuerda con el de ninguna empresa de la red de Waypool',
+                        subTitle: 'Revisa si escribiste el correo bien o si tu empresa no está en Waypool, envianos un correo a waypooltec@gmail.com',
+                        buttons: ['OK']
+                      });
+                      alert.present(); 
                 }
+                
             }
         }
     
@@ -117,249 +118,161 @@ export class SignupPage {
 
 
     login(){
-        this.navCtrl.push(LoginPage);
+        this.navCtrl.setRoot('LoginPage');
     }
      
     verification(){
     
-        if(!this.signupGroup.controls['isChecked'].value === true ){
-            const alert = this.alertCtrl.create({
-                title: 'No aceptaste nuestros términos y condiciones',
-                subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
-                buttons: ['OK']
-              });
-              alert.present(); 
-        }else{
-            if(this.showReadonly === true){
-                //creating user on firebase
-            let userName = this.signupGroup.controls['name'].value;
-            let userLastName = this.signupGroup.controls['lastname'].value;
-            let userEmail = this.signupGroup.controls['email'].value 
-            let userFixedemail = this.signupGroup.controls['fixedemail'].value;
-            let userEmailComplete = userEmail + userFixedemail;
-            let userPassword = this.signupGroup.controls['password'].value;
-            let userPhone = this.signupGroup.controls['phone'].value;
-            let userPlace = this.signupGroup.controls['place'].value;     
+        this.forLoopsCompleted = 0;
+        this.companyIdentified = false;
+        var count = this.arrayEmails.length;
+        for(var i=0; i<count; i++){
 
-
-             // saving data in variable
-          if(this.company !== undefined || this.company !== null){
-            this.user = {
-                name: userName,
-                lastname: userLastName,
-                email: userEmailComplete,
-                phone: '+57'+userPhone,
-                place: userPlace,
-                createdBy: 'costumer',
-                company: this.company
-            };
-          }else{
-            this.user = {
-                name: userName,
-                lastname: userLastName,
-                email: userEmailComplete,
-                phone: '+57'+userPhone,
-                place: userPlace,
-                createdBy: 'costumer',
-            };  
-          }
-
-
-            this.SignUpService.userPlace = userPlace;
-                
-
-            if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
-                this.authenticationService.registerWithEmail(userEmailComplete, userPassword).catch((error)=>{
-                    if(error.code === "auth/email-already-in-use"){
-                        const alert = this.alertCtrl.create({
-                            title: 'ya existe una cuenta con este correo',
-                            subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
-                            buttons: ['OK']
-                          });
-                          alert.present(); 
-                    }
-                })
-            
-                if(!this.user.userId){
-                    this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
-                        if(user){
-                                user.getIdToken().then((token)=>{
-                                this.user.tokenId = token;
-                                })
-                            if(!this.user.userId){
-                                this.user.userId = user.uid;
-                            }
-                            this.SignUpService.saveUser(this.user, this.SignUpService.userPlace);
-
-                            this.afDB.database.ref('allPlaces/' + this.SignUpService.userPlace + '/location').once('value').then((snap)=>{
-                                console.log(snap.val());
-                                console.log(snap.val().lng);
-                                
-                                this.SignUpService.setFixedLocationCoordinates(this.SignUpService.userPlace, this.user.userId, snap.val().lat, snap.val().lng )
-                                this.geocodingPlace(snap.val().lat, snap.val().lng, this.SignUpService.userPlace, this.user.userId);
-                            })
-
-                            this.SignUpService.saveUserInAllUsers(this.SignUpService.userPlace, this.user.userId);
-
-                            // this.sendVerificationCode(this.user.userId);
-
-                        }else{
-                            console.log('there is no user');
+            this.emailStringVerification = this.email.indexOf(this.arrayEmails[i]);
+            console.log(this.emailStringVerification);
+            if(this.emailStringVerification > -1){
+                this.companyIdentified = true;
+                this.rightEmailOnDatabase = this.arrayEmails[i];
+                this.afDB.database.ref('allCities/' + this.cityVar + '/allPlaces').once('value').then((snap)=>{
+                    let obj = snap.val();
+                    Object.getOwnPropertyNames(obj).forEach((key)=>{ 
+                        if(obj[key].email === this.rightEmailOnDatabase){
+                            console.log(`la empresa es ${obj[key].name}`);  
+                            this.company = obj[key].name;
+                                obj[key].zones.forEach(zone => {
+                                    this.zones.push(zone);
+                                });                                  
+                            
+                            
+                            
                         }
                     })
-                };
-
-                // sending email verification and verifying weather email is verified or not
-                this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
-                    if(user){
-                        if(user.emailVerified == false){
-                            user.sendEmailVerification();
+                }).then(()=>{
+                   if(!this.signupGroup.controls['isChecked'].value === true ){
                             const alert = this.alertCtrl.create({
-                                title: '¡REGISTRO EXITOSO!',
-                                subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
-                                buttons: [
-                                    {
-                                        text: 'OK',
-                                        handler: () => {
-                                            this.app.getRootNav().push('LoginPage');
-                                        }
-                                      }
-                                ]
-                            });
-                            alert.present();
-                        console.log("verification email has been sent");
-                        }else{
-                            console.log("verification email has not been sent or the email is already verified");
-                        }
-                    }else{
-                        console.log('there is no user');
-                    }
-                })  
-
-                
-            }else{
-                const alert = this.alertCtrl.create({
-                    title: 'Oops!',
-                    subTitle: 'las contraseñas no coinciden, intenta de nuevo',
-                    buttons: ['OK']
-                });
-                alert.present();
-            }
-        }else if(this.showReadonly === false){
-                //creating user on firebase
-                let userName = this.signupGroup.controls['name'].value;
-                let userLastName = this.signupGroup.controls['lastname'].value;
-                let userEmail = this.signupGroup.controls['email'].value 
-                let userEmailComplete = userEmail;
-                let userPassword = this.signupGroup.controls['password'].value;
-                let userPhone = this.signupGroup.controls['phone'].value;
-                let userPlace = this.signupGroup.controls['place'].value;
-               
-                   // saving data in variable
-          if(this.company !== undefined || this.company !== null){
-            this.user = {
-                name: userName,
-                lastname: userLastName,
-                email: userEmailComplete,
-                phone: '+57'+userPhone,
-                place: userPlace,
-                createdBy: 'costumer',
-                company: this.company
-            };
-          }else{
-            this.user = {
-                name: userName,
-                lastname: userLastName,
-                email: userEmailComplete,
-                phone: '+57'+userPhone,
-                place: userPlace,
-                createdBy: 'costumer',
-            };  
-          }
-
-    
-                this.SignUpService.userPlace = userPlace;
-                    
-    
-                if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
-                    this.authenticationService.registerWithEmail(userEmailComplete, userPassword).catch((error)=>{
-                        if(error.code === "auth/email-already-in-use"){
-                            const alert = this.alertCtrl.create({
-                                title: 'ya existe una cuenta con este correo',
-                                subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
+                                title: 'No aceptaste nuestros términos y condiciones',
+                                subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
                                 buttons: ['OK']
-                              });
-                              alert.present(); 
-                        }
-                    })
-                
-                    if(!this.user.userId){
-                        this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
-                            if(user){
-                                    user.getIdToken().then((token)=>{
-                                    this.user.tokenId = token;
-                                    })
-                                if(!this.user.userId){
-                                    this.user.userId = user.uid;
-                                }
-                                this.SignUpService.saveUser(this.user, this.SignUpService.userPlace);
-                                this.afDB.database.ref('allPlaces/' + this.SignUpService.userPlace + '/location').once('value').then((snap)=>{
-                                    console.log(snap.val());
-                                    console.log(snap.val().lng);
-                                    
-                                    this.SignUpService.setFixedLocationCoordinates(this.SignUpService.userPlace, this.user.userId, snap.val().lat, snap.val().lng )
-                                    this.geocodingPlace(snap.val().lat, snap.val().lng, this.SignUpService.userPlace, this.user.userId);
-                                })
-                                this.SignUpService.saveUserInAllUsers(this.SignUpService.userPlace, user.uid);
-
-                                //send text message with code
-                                // this.sendVerificationCode(this.user.userId);
-
-                            }else{
-                                console.log('there is no user');
-                            }
-                        })
-                    };
-    
-                    // sending email verification and verifying weather email is verified or not
-                    this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
-                        if(user){
-                            if(user.emailVerified == false){
-                                user.sendEmailVerification();
-                                const alert = this.alertCtrl.create({
-                                    title: '¡REGISTRO EXITOSO!',
-                                    subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
-                                    buttons: [
-                                        {
-                                            text: 'OK',
-                                            handler: () => {
-                                                this.app.getRootNav().push('LoginPage');
-                                            }
-                                          }
-                                    ]
-                                });
-                                alert.present();
-                            console.log("verification email has been sent");
-                            }else{
-                                console.log("verification email has not been sent or the email is already verified");
-                            }
+                            });
+                            alert.present(); 
                         }else{
-                            console.log('there is no user');
-                        }
-                    })  
-    
-                    
-                }else{
-                    const alert = this.alertCtrl.create({
-                        title: 'Oops!',
-                        subTitle: 'las contraseñas no coinciden, intenta de nuevo',
-                        buttons: ['OK']
-                    });
-                    alert.present();
-                }
+                                //creating user on firebase
+                                let userName = this.signupGroup.controls['name'].value;
+                                let userLastName = this.signupGroup.controls['lastname'].value;
+                                let userEmail = this.signupGroup.controls['email'].value 
+                                let userPassword = this.signupGroup.controls['password'].value;
+                                let userPhone = this.signupGroup.controls['phone'].value;
+                            
+                        // saving data in variable
+                       
+                            this.user = {
+                                name: userName,
+                                lastname: userLastName,
+                                email: userEmail,
+                                phone: '+57'+userPhone,
+                                createdBy: 'costumer',
+                                company: this.company,
+                                city: this.cityVar
+                            };
+                        
 
+                    
+                                // this.SignUpService.userPlace = userPlace;
+                                    
+                    
+                                if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
+                                    this.authenticationService.registerWithEmail(userEmail, userPassword).then(()=>{
+
+                                        if(!this.user.userId){
+                                            this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
+                                                if(user){
+                                                        user.getIdToken().then((token)=>{
+                                                        this.user.tokenId = token;
+                                                        })
+                                                    if(!this.user.userId){
+                                                        this.user.userId = user.uid;
+                                                    }
+    
+                                                    this.zones.forEach(zone => {
+                                                        this.SignUpService.saveUser(this.user, zone);
+                                                    })
+    
+                                                    this.afDB.database.ref('allCities/'+ this.cityVar + '/allPlaces/' + this.company + '/location').once('value').then((snap)=>{
+                                                        console.log(snap.val());
+                                                        
+                                                        snap.val().forEach(location => {
+                                                            this.SignUpService.setFixedLocationCoordinates(location.zone, this.user.userId, location.lat, location.lng );
+                                                            this.SignUpService.setFixedLocationName(location.zone, this.user.userId, location.name);   
+                                                            this.SignUpService.addPlaceZone(location.zone, this.user.userId);  
+                                                        })
+    
+                                                    }).then(()=>{
+                                                        this.SignUpService.saveUserInAllUsers(this.company, user.uid, this.cityVar);
+                                                    })
+    
+                                                    //send text message with code
+                                                    // this.sendVerificationCode(this.user.userId);
+    
+                                                }else{
+                                                    console.log('there is no user');
+                                                }
+                                            })
+                                        };
+                        
+                                        // sending email verification and verifying whether email is verified or not
+                                        this.AngularFireAuth.auth.onAuthStateChanged((user)=>{
+                                            if(user){
+                                                if(user.emailVerified == false){
+                                                    user.sendEmailVerification();
+                                                    const alert = this.alertCtrl.create({
+                                                        title: '¡REGISTRO EXITOSO!',
+                                                        subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
+                                                        buttons: [
+                                                            {
+                                                                text: 'OK',
+                                                                handler: () => {
+                                                                    this.navCtrl.setRoot('LoginPage');
+                                                                }
+                                                            }
+                                                        ]
+                                                    });
+                                                    alert.present();
+                                                console.log("verification email has been sent");
+                                                }else{
+                                                    console.log("verification email has not been sent or the email is already verified");
+                                                }
+                                            }else{
+                                                console.log('there is no user');
+                                            }
+                                        }) 
+
+                                    }).catch((error)=>{
+                                        if(error.code === "auth/email-already-in-use"){
+                                            const alert = this.alertCtrl.create({
+                                                title: 'ya existe una cuenta con este correo',
+                                                subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
+                                                buttons: ['OK']
+                                            });
+                                            alert.present(); 
+                                        }
+                                    })
+                                    
+                                }else{
+                                    const alert = this.alertCtrl.create({
+                                        title: 'Oops!',
+                                        subTitle: 'las contraseñas no coinciden, intenta de nuevo',
+                                        buttons: ['OK']
+                                    });
+                                    alert.present();
+                                }
+
+                        
+                        }
+                })
+            }
+            this.noCompanyIdentified(count);        
         }
-        }
+       
     }
 
 
@@ -371,25 +284,6 @@ ionViewDidLeave(){
     this.unsubscribe.next();
     this.unsubscribe.complete();
 
-  }
-
-
-  geocodingPlace(lat, lng, place, userId) {
-
-    this.geocoder.geocode({'location': {lat, lng}}, (results, status) => {
-      if (status === 'OK') {
-        if (results[0]) {
-           let namePlace =[results[0].formatted_address];
-           this.SignUpService.setFixedLocationName(place, userId, namePlace[0]);
-        } else {
-         alert('No results found');
-        }
-      } else {
-        alert('Geocoder failed due to: ' + status);
-      }
-                  
-  
-    });
   }
 
 }

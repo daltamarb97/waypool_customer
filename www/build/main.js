@@ -29,8 +29,8 @@ var SignUpService = /** @class */ (function () {
         this.afDB.database.ref(place + '/users/' + user.userId).update(user);
         this.afDB.database.ref(place + '/drivers/' + user.userId).update(user);
     };
-    SignUpService.prototype.getPlaces = function () {
-        return this.afDB.list('allPlaces/').valueChanges();
+    SignUpService.prototype.getAllCities = function () {
+        return this.afDB.list('allCities/').valueChanges();
     };
     SignUpService.prototype.getInfoPlace = function (place) {
         return this.afDB.object('/allPlaces/' + place).valueChanges();
@@ -67,9 +67,10 @@ var SignUpService = /** @class */ (function () {
     SignUpService.prototype.checkMyReserves = function (place, userId) {
         return this.afDB.list(place + '/users/' + userId + '/myReserves').valueChanges();
     };
-    SignUpService.prototype.saveUserInAllUsers = function (place, user) {
+    SignUpService.prototype.saveUserInAllUsers = function (place, user, city) {
         this.afDB.database.ref('/allUsers/' + user).update({
-            place: place
+            place: place,
+            city: city
         });
     };
     SignUpService.prototype.getInfoDriver = function (userDriverId) {
@@ -127,6 +128,10 @@ var SignUpService = /** @class */ (function () {
         this.afDB.database.ref(place + '/drivers/' + user + '/fixedLocation').update({
             name: name
         });
+    };
+    SignUpService.prototype.addPlaceZone = function (place, userUid) {
+        this.afDB.database.ref(place + '/drivers/' + userUid).update({ place: place });
+        this.afDB.database.ref(place + '/users/' + userUid).update({ place: place });
     };
     SignUpService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
@@ -240,27 +245,27 @@ webpackEmptyAsyncContext.id = 238;
 
 var map = {
 	"../pages/canceltrip/canceltrip.module": [
-		633,
+		638,
 		23
 	],
 	"../pages/chatting/chatting.module": [
-		634,
+		633,
 		22
 	],
 	"../pages/confirm-reservation/confirm-reservation.module": [
-		635,
+		634,
 		21
 	],
 	"../pages/confirm-university/confirm-university.module": [
-		636,
+		635,
 		24
 	],
 	"../pages/confirmnote/confirmnote.module": [
-		637,
+		636,
 		1
 	],
 	"../pages/confirmpopup/confirmpopup.module": [
-		638,
+		637,
 		20
 	],
 	"../pages/confirmtrip/confirmtrip.module": [
@@ -276,19 +281,19 @@ var map = {
 		18
 	],
 	"../pages/listride/listride.module": [
-		641,
+		643,
 		17
 	],
 	"../pages/login/login.module": [
-		642,
+		641,
 		16
 	],
 	"../pages/more/more.module": [
-		643,
+		642,
 		15
 	],
 	"../pages/myride/myride.module": [
-		656,
+		655,
 		14
 	],
 	"../pages/profile/profile.module": [
@@ -308,11 +313,11 @@ var map = {
 		10
 	],
 	"../pages/reservetrip/reservetrip.module": [
-		654,
+		656,
 		9
 	],
 	"../pages/signup/signup.module": [
-		655,
+		654,
 		2
 	],
 	"../pages/support/support.module": [
@@ -320,11 +325,11 @@ var map = {
 		8
 	],
 	"../pages/tabs/tabs.module": [
-		648,
+		650,
 		7
 	],
 	"../pages/terms/terms.module": [
-		650,
+		648,
 		6
 	],
 	"../pages/verification-images/verification-images.module": [
@@ -748,7 +753,7 @@ var geofireService = /** @class */ (function () {
             onTrip: false
         });
     };
-    geofireService.prototype.joinReserve = function (place, keyReserve, driverId, userId, origin, destination, name, lastname, phone, distance, verifiedPerson) {
+    geofireService.prototype.joinReserve = function (place, company, keyReserve, driverId, userId, origin, destination, name, lastname, phone, distance, verifiedPerson) {
         this.afDB.database.ref(place + '/reserves/' + driverId + '/' + keyReserve + '/pendingUsers/' + userId).update({
             origin: origin,
             destination: destination,
@@ -758,7 +763,7 @@ var geofireService = /** @class */ (function () {
             userId: userId,
             distance: distance,
             verifiedPerson: verifiedPerson,
-            place: place
+            company: company
         }).catch(function (err) {
             console.log(err);
         });
@@ -1522,30 +1527,30 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/canceltrip/canceltrip.module#CanceltripPageModule', name: 'CanceltripPage', segment: 'canceltrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule', name: 'ConfirmReservationPage', segment: 'confirm-reservation', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirm-university/confirm-university.module#ConfirmUniversityPageModule', name: 'ConfirmUniversityPage', segment: 'confirm-university', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/canceltrip/canceltrip.module#CanceltripPageModule', name: 'CanceltripPage', segment: 'canceltrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/public-profile/public-profile.module#PublicProfilePageModule', name: 'PublicProfilePage', segment: 'public-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reserveinfo/reserveinfo.module#ConfirmreservationPageModule', name: 'ReserveinfoPage', segment: 'reserveinfo', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-images/verification-images.module#VerificationImagesPageModule', name: 'VerificationImagesPage', segment: 'verification-images', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/findride/findride.module#FindridePageModule', name: 'FindridePage', segment: 'findride', priority: 'low', defaultHistory: [] }
                     ]
                 }),

@@ -17,55 +17,30 @@
                                     <ion-label></ion-label>
                                     <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>
                                 </ion-item>
+                        
                                 <ion-item>
                                     <ion-label></ion-label>
                                     <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>
                                 </ion-item>
+            
                                 <ion-item>
-                                    <ion-label  text-right >selecciona tu universidad/centro empresarial</ion-label>
-                                        <ion-select (ionChange)="onChange()" [(ngModel)]="enterpriseVar" formControlName="place">
-                                            <ion-option *ngFor="let plac of places">{{plac.name}}</ion-option>
+                                    <ion-label  text-right >selecciona tu ciudad</ion-label>
+                                        <ion-select (ionChange)="onChange()" [(ngModel)]="cityVar" formControlName="city">
+                                            <ion-option *ngFor="let city of cities">{{city.name}}</ion-option>
                                         </ion-select>
                                 </ion-item>
                             </ion-list>
                         </ion-col>
                     </ion-row>
-                    <div [ngSwitch]="showReadonly">
-                            <ion-row *ngSwitchCase=true>
-                                    <ion-col class="name-fild-2">
-                                        <ion-list class="form">
-                                            <ion-item class="editable-email">
-                                                    <ion-label></ion-label>
-                                                        <ion-input type="text" text-right formControlName="email" placeholder= "email"></ion-input>
-                                                    </ion-item>
-                                            </ion-list>
-                                    </ion-col>
-                                    <ion-col class="name-fild-2">
-                                        <ion-list class="form">
 
-                                                <ion-select (ionChange)="onChangeEmail()" [(ngModel)]="companyVar" formControlName="fixedemail" class="nonEditable-email">
-                                                        <ion-option *ngFor="let email of arrayEmails">{{email.email}}</ion-option>
-                                                    </ion-select>
-                                            <!-- <ion-item class="nonEditable-email">
-                                                    <ion-input readonly [(ngModel)]='emailVar' formControlName="fixedemail"></ion-input>
-                                                </ion-item> -->
-                                        </ion-list>
-                                    </ion-col>
-                                </ion-row>
-            
-            
-            
-                                <ion-row *ngSwitchCase=false >
+                    <div>   
+                                <ion-row>
                                         <ion-col class="name-fild-2">
                                             <ion-list class="form">
                                                 <ion-item class="editable-email">
                                                         <ion-label></ion-label>
-                                                            <ion-input type="text" text-right [(ngModel)]='onlyEmail' formControlName="email" placeholder= "email"></ion-input>
+                                                            <ion-input type="text" text-right [(ngModel)]='email' formControlName="email" placeholder= "email"></ion-input>
                                                         </ion-item>
-                                                <ion-item class="editable-email" *ngIf='noShowButton'>
-                                                         <ion-label></ion-label>
-                                                            <ion-input readonly formControlName="fixedemail"></ion-input>
-                                                         </ion-item>
                                                 </ion-list>
                                         </ion-col>
                                     </ion-row>

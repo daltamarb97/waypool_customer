@@ -19,8 +19,8 @@ export class SignUpService {
 
     }
 
-    public getPlaces(){
-       return this.afDB.list('allPlaces/').valueChanges()
+    public getAllCities(){
+       return this.afDB.list('allCities/').valueChanges()
     }
 
     public getInfoPlace(place){
@@ -75,9 +75,10 @@ export class SignUpService {
             }
 
 
-            public saveUserInAllUsers(place, user){
+            public saveUserInAllUsers(place, user, city){
                 this.afDB.database.ref('/allUsers/'+ user).update({
-                    place: place
+                    place: place,
+                    city: city
                 });
                 
         
@@ -155,5 +156,12 @@ setFixedLocationName(place, user, name){
         name: name
     })
 }
+
+
+    public addPlaceZone(place, userUid){
+        this.afDB.database.ref(place + '/drivers/'+ userUid).update({place: place});
+        this.afDB.database.ref(place + '/users/'+ userUid).update({place: place});
+
+    }
 
 }

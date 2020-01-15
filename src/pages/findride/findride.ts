@@ -57,6 +57,7 @@ export class FindridePage {
   tripId:any = null;
   orFirebase:any;
   markerDest:any;
+  myLatLngOr:any;
   markerGeolocation:any;
   //para acceder al uid en firebase
   //geofire
@@ -78,6 +79,8 @@ export class FindridePage {
   geoFire;
   geoqueryU;
   geofireOriginConfirmed:boolean = false;
+  geofireDestinationConfirmed:boolean = false;
+
   userUid=this.AngularFireAuth.auth.currentUser.uid;
   user:any;
 
@@ -89,6 +92,9 @@ export class FindridePage {
   driverOnNodeOr:any;
   multipleLocations:boolean;
   zonesToIterate:any;
+  cityUser:any;
+  companyUser:any;
+  usingGeolocation:boolean = false;
  constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -113,7 +119,8 @@ export class FindridePage {
 
 
     this.afDB.database.ref('allUsers/' + this.userUid).once('value').then((snap)=>{
-
+      this.cityUser = snap.val().city;
+      this.companyUser = snap.val().place;
       this.afDB.database.ref('allCities/' + snap.val().city + '/allPlaces/' + snap.val().place).once('value').then((snapshot)=>{
         console.log(snapshot.val().multipleLocations);
         this.zonesToIterate = snapshot.val().zones;
@@ -145,53 +152,61 @@ export class FindridePage {
   
         }
         
-      })
-      
+      }).then(()=>{
 
-      this.platform.ready().then(()=>{
-        this.token = this.fcm.getToken().then((token)=>{
-          console.log('this is the token ' + token);
-
-          Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
-            this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/devices/').update({
-              token: token
+        this.platform.ready().then(()=>{
+          this.token = this.fcm.getToken().then((token)=>{
+            console.log('this is the token ' + token);
+  
+            Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
+              if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
+  
+              }else{
+                this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/devices/').update({
+                  token: token
+                })
+              }   
             })
+           
           })
-         
+  
+          // this.getToken();
+      
+      })
+  
+          //search keyTrip
+          //REVISAR ESTO CON DANIEL
+          console.log(this.zonesToIterate);
+          
+          Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
+            if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
+  
+            }else{
+            this.TripsService.getKeyTrip(this.zonesToIterate[key], this.userUid)
+              .subscribe(keyTrip=>{
+                this.keyTrip =keyTrip;
+                console.log('keyTrip es: ' + this.keyTrip)
+                //if key its deleted don't show VIAJE EN CURSO  
+                if(this.keyTrip === undefined || this.keyTrip === null){
+                this.onTrip=false;
+                  this.TripsService.eliminateKeyTrip(this.zonesToIterate[key], this.userUid);
+                  this.TripsService.eliminatingOnTrip(this.zonesToIterate[key], this.userUid);
+                  console.log("llegue adonde era")
+                }else{
+                  //confirm that trip exist and get it
+                  this.SignUpService.userPlace = this.zonesToIterate[key]
+                  this.getOnTrip(this.zonesToIterate[key]);
+                }
+              
+              })
+            } 
+            
         })
-
-        // this.getToken();
-    
-    })
-
-        //search keyTrip
-        //REVISAR ESTO CON DANIEL
-        Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
-          this.TripsService.getKeyTrip(this.zonesToIterate[key], this.userUid)
-        .subscribe(keyTrip=>{
-          this.keyTrip =keyTrip;
-          console.log(this.keyTrip)
-          //if key its deleted don't show VIAJE EN CURSO  
-          if(this.keyTrip === undefined || this.keyTrip === null){
-           this.onTrip=false;
-            this.TripsService.eliminateKeyTrip(this.zonesToIterate[key], this.userUid);
-            this.TripsService.eliminatingOnTrip(this.zonesToIterate[key], this.userUid);
-            console.log("llegue adonde era")
-          }else{
-            //confirm that trip exist and get it
-            this.SignUpService.userPlace = this.zonesToIterate[key]
-            this.getOnTrip(this.zonesToIterate[key]);
-          }
-         
-        })
-        })
-        
-
 
 
         this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe).subscribe(user=>{
           this.user = user;
-          //  this.keyTrip = this.user.keyTrip
+          console.log(this.SignUpService.userPlace);
           console.log(this.user)
           if(this.user.saveTrip === undefined || this.user.saveTrip === null){
             console.log("AAAAAAAAAAAAAAAAAAAAA")
@@ -213,7 +228,11 @@ export class FindridePage {
                 setTimeout(() => {
                   
                   Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
-                    this.TripsService.saveTripOnRecords(this.zonesToIterate[key], this.userUid,this.user.trip);     
+                    if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
+  
+                    }else{
+                      this.TripsService.saveTripOnRecords(this.zonesToIterate[key], this.userUid,this.user.trip);     
+                    }
                   });
 
                 this.navCtrl.push('RatetripPage',{trip:this.user.trip})
@@ -222,54 +241,32 @@ export class FindridePage {
                 console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
                 }, 3000);
 
-              }
-
-            
+              }     
         })
 
 
 
-
-        // AQUI QUEDEEEEEEEEE
         // set geofire key of place to avoid asking users to put where they are going
-        this.geofireService.getLocationPlace(this.SignUpService.userPlace).takeUntil(this.unsubscribe).subscribe(place=>{
-          this.place = place;
-          this.locationPlace = this.place.location;
-          this.geofireService.setLocationPlace(this.SignUpService.userPlace, "some_key", this.locationPlace.lat, this.locationPlace.lng);
-        }) 
+        this.afDB.database.ref('allCities/' + snap.val().city + '/allPlaces/' + snap.val().place).once('value').then(snapGeofirePlace => {
+          let objLocations = snapGeofirePlace.val().location;
+          
+          
+          Object.getOwnPropertyNames(objLocations).forEach((key)=>{
+            if(objLocations[key] === 1 || objLocations[key] === 2 || objLocations[key] === 3 || objLocations[key] === 4 || objLocations[key] === 5 || objLocations[key] === 6 || objLocations[key] === 7 || objLocations[key] === 8 || objLocations[key] === 9 || objLocations[key] === 10 ){
 
-
-        setTimeout(() => {
-          this.SignUpService.getInfoPlace(this.SignUpService.userPlace).takeUntil(this.unsubscribe).subscribe(plac => {
-            this.placeInfo = plac;
-            
-            if(this.placeInfo.emails === undefined){
-              if(this.user.documents){
-                if(this.user.documents.carne === undefined || this.user.documents.id === undefined){
-                  let modal = this.modalCtrl.create('VerificationImagesPage');
-                  modal.present();
-                }else if(this.user.documents.carne === true || this.user.documents.id === true){
-                  this.instanceService.isVerified(this.SignUpService.userPlace, this.userUid);
-                }
-              }else if(!this.user.documents) {
-                console.log('no hay docs')
-                let modal = this.modalCtrl.create('VerificationImagesPage');
-                modal.present();
-              } 
             }else{
-              this.instanceService.isVerified(this.SignUpService.userPlace, this.userUid);
+              this.geofireService.setLocationPlace(objLocations[key].zone, "some_key", objLocations[key].lat, objLocations[key].lng);
             }
           })
-        }, 1000);
-
-
-
+        })
+    })
+        
 
 
     }).then(()=>{
 
       // TEST THIS
-      this.afDB.database.ref('allPlaces/' + this.SignUpService.userPlace).once('value').then((snapPlace)=>{
+      this.afDB.database.ref('allCities/' + this.cityUser + '/allPlaces/' + this.companyUser).once('value').then((snapPlace)=>{
         this.geofirePlaceSize = snapPlace.val().geofireSize;
       })
     })
@@ -365,7 +362,11 @@ export class FindridePage {
     //creates the map and give options
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.myLatLng = {lat: position.coords.latitude , lng: position.coords.longitude};
-  
+        this.myLatLngOr = {
+          lat: this.myLatLng.lat,
+          lng: this.myLatLng.lng
+        }
+      this.usingGeolocation = true;
 
       this.markerGeolocation = new google.maps.Marker({
         map: this.map,
@@ -499,6 +500,10 @@ updateSearchResultsMyPos(){
         this.map.setCenter(results[0].geometry.location);
         this.autocompleteMyPos.input=[item.description]
         this.directionsDisplay.setMap(null);
+        this.myLatLngOr = results[0].geometry.location;
+        this.usingGeolocation = false;
+        console.log(this.myLatLngOr);
+        
 
       } 
     })
@@ -621,6 +626,9 @@ geocodeLatLng(latLng,inputName) {
 
 
   listride(){
+    console.log(this.myLatLngOr);
+    console.log(this.usingGeolocation);
+    
   this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/blockPayment/').once('value').then((snapBlock)=>{
     if(snapBlock.val() === true){
       let alert = this.alertCtrl.create({
@@ -661,68 +669,122 @@ geocodeLatLng(latLng,inputName) {
                 // AQUI
                } else {
              
-                 //turn on geoquery place to determine wether the user is in place
-                 
-            this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
-          
-    
-    
-            // test: geoqueryU on listride() of findride.ts
-            this.geoqueryU.on("key_entered", function(key){
-                this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
-                  origin: this.orFirebase,
-                  destination: this.desFirebase,
-                  distanceToGoInKM: this.distanceInMeters/1000          
-                }).then(()=>{
-                this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
-                  if(status==='OK'){
-                    this.geocoordinatesOr={
-                      lat:results[0].geometry.location.lat(),
-                      lng: results[0].geometry.location.lng()
-                    }
-                  }
-                      // turn geofire On
-                      if(this.user.onTrip === true){
-                        console.log('geofireOr hasnt been activated due ontrip')
-                      }else{ 
-                        this.geofireService.setGeofireOr(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid);
-                        this.geofireService.setGeofireOrLMU(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid);
-                        console.log('executed geofire Or');  
-        
-                      }
-                  })
-                    this.geofireOriginConfirmed = true;
-               
-              }).then(()=>{
-                if(!this.geofireOriginConfirmed === true){
-                  this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
-                    origin: this.orFirebase,
-                    destination: this.desFirebase,
-                    distanceToGoInKM: this.distanceInMeters/1000          
-                }).then(() => {
-                  this.geocoderDestinationCase();
-                  })
-      
+                   //turn on geoquery place to determine wether the user is in place
+
+            this.afDB.database.ref('allCities/' + this.cityUser + '/allPlaces/' + this.companyUser + '/location').once('value').then((snap)=>{
+              let objLocations = snap.val();
+              Object.getOwnPropertyNames(objLocations).forEach((keyLocations)=>{
+                if(objLocations[keyLocations] === 1 || objLocations[keyLocations] === 2 ||  objLocations[keyLocations] === 3 || objLocations[keyLocations] === 4 || objLocations[keyLocations] === 5 || objLocations[keyLocations] === 6 || objLocations[keyLocations] === 7 || objLocations[keyLocations] === 8 || objLocations[keyLocations] === 9 || objLocations[keyLocations] === 10){
+
                 }else{
-                  this.geofireOriginConfirmed = false;
+
+                  ///// GEOFIREPLACE WITH DEST ACTIVATED 
+                  this.setGeofirePlaceWithDest(objLocations[keyLocations].zone ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
+
+
+                  this.geoqueryU.on("key_entered", function(key){
+                    this.afDB.database.ref(objLocations[keyLocations].zone + '/users/' + this.userUid ).update({
+                      geofireOrigin: true
+                    }).then(()=>{
+                      this.afDB.database.ref(objLocations[keyLocations].zone + '/users/'+ this.userUid +'/trips').update({
+                        origin: this.orFirebase,
+                        destination: this.desFirebase,
+                        distanceToGoInKM: this.distanceInMeters/1000          
+                      }).then(()=>{
+
+                          // turn geofire On
+                          if(this.user.onTrip === true){
+                            console.log('geofireOr hasnt been activated due ontrip')
+                          }else{ 
+                            console.log('AQUI ESTA EL ERROR 2');
+                            if(this.usingGeolocation === true){
+                              this.geofireService.setGeofireOr(objLocations[keyLocations].zone, 2, this.myLatLngOr.lat, this.myLatLngOr.lng, this.userUid)
+                              this.geofireService.setGeofireOrLMU(objLocations[keyLocations].zone, 2, this.myLatLngOr.lat, this.myLatLngOr.lng, this.userUid)
+                              console.log('executed geofire Or'); 
+                            }else{
+                              this.geofireService.setGeofireOr(objLocations[keyLocations].zone, 2, this.myLatLngOr.lat(), this.myLatLngOr.lng(), this.userUid)
+                              this.geofireService.setGeofireOrLMU(objLocations[keyLocations].zone, 2, this.myLatLngOr.lat(), this.myLatLngOr.lng(), this.userUid)
+                              console.log('executed geofire Or');  
+                            }
+                           
+            
+                          } 
+                          this.SignUpService.userPlace = objLocations[keyLocations].zone;
+                          this.geofireOriginConfirmed = true;
+                     
+                    })
+                    console.log('directions set')
+                    })
+                    console.log(key + ' detected')
+                  }.bind(this))
+
+
+
+
+
+                  ///// GEOFIREPLACE WITH OR ACTIVATED 
+                  if(this.usingGeolocation === true){
+                    this.setGeofirePlaceWithOr(objLocations[keyLocations].zone ,this.geofirePlaceSize, this.myLatLngOr.lat, this.myLatLngOr.lng, this.userUid);
+                  }else{
+                    this.setGeofirePlaceWithOr(objLocations[keyLocations].zone ,this.geofirePlaceSize, this.myLatLngOr.lat(), this.myLatLngOr.lng(), this.userUid);
+                  }
+
+
+                  this.geoqueryU.on("key_entered", function(key){
+                    this.afDB.database.ref(objLocations[keyLocations].zone + '/users/' + this.userUid ).update({
+                      geofireOrigin: true
+                    }).then(()=>{
+                      this.afDB.database.ref(objLocations[keyLocations].zone + '/users/'+ this.userUid +'/trips').update({
+                        origin: this.orFirebase,
+                        destination: this.desFirebase,
+                        distanceToGoInKM: this.distanceInMeters/1000          
+                      }).then(()=>{
+
+                          // turn geofire On
+                          if(this.user.onTrip === true){
+                            console.log('geofireOr hasnt been activated due ontrip')
+                          }else{ 
+                            console.log('AQUI ESTA EL ERROR 2');
+                            this.geofireService.setGeofireDest(objLocations[keyLocations].zone, 2, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid)
+                            this.geofireService.setGeofireDestLMU(objLocations[keyLocations].zone, 2, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid)
+                            console.log('executed geofire Or');  
+            
+                          } 
+                          this.SignUpService.userPlace = objLocations[keyLocations].zone;
+                          this.geofireDestinationConfirmed = true;
+                     
+                    })
+
+                    console.log('directions set')
+                    })
+                    console.log(key + ' detected')
+                  }.bind(this))
                 }
               })
-              console.log(key + ' detected')
-            }.bind(this))
-       
-
+            }).then(()=>{
+              if(this.geofireOriginConfirmed === true && this.geofireDestinationConfirmed === true){
+                this.presentAlert('Alguna de las dos direcciones que pusiste debe ser diferente a la de tu empresa', '', 'OK');
+                this.SignUpService.userPlace = this.zonesToIterate[0];
+                console.log(this.SignUpService.userPlace);
+                this.geofireService.cancelGeofireDest();
+                this.geofireService.cancelGeofireOr();
+                this.geofireService.cancelGeofireDestLMU();
+                this.geofireService.cancelGeofireOrLMU();
+              }
+            })
+               
             moment.locale('es'); //to make the date be in spanish  
             let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
             console.log(today)
             this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
             this.app.getRootNav().push('ListridePage');
-            
+            console.log(this.geofireDestinationConfirmed);
+            console.log(this.geofireOriginConfirmed); 
             console.log("se ejecuto")
               
           }
      
-        }
-          catch(error) {
+        }catch(error) {
             console.log("soy yo")
             if(this.geofire2 === null || this.geofire2 === undefined ){
               //this is to tell the user to select a place before publishing a trip
@@ -732,8 +794,8 @@ geocodeLatLng(latLng,inputName) {
     
             }
             }
-        }
-      }else{
+      }
+    }else{
         try {
           this.desFirebase=this.autocompleteMyDest.input
           this.orFirebase=this.autocompleteMyPos.input
@@ -744,70 +806,126 @@ geocodeLatLng(latLng,inputName) {
               this.directionsDisplay.setDirections({routes: []});
               // AQUI
              } else {
-           
-                  //turn on geoquery place to determine wether the user is in place
+          //turn on geoquery place to determine wether the user is in place
 
-            this.setGeofirePlace(this.SignUpService.userPlace ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
+            this.afDB.database.ref('allCities/' + this.cityUser + '/allPlaces/' + this.companyUser + '/location').once('value').then((snap)=>{
+              let objLocations = snap.val();
+              Object.getOwnPropertyNames(objLocations).forEach((keyLocations)=>{
+                if(objLocations[keyLocations] === 1 || objLocations[keyLocations] === 2 ||  objLocations[keyLocations] === 3 || objLocations[keyLocations] === 4 || objLocations[keyLocations] === 5 || objLocations[keyLocations] === 6 || objLocations[keyLocations] === 7 || objLocations[keyLocations] === 8 || objLocations[keyLocations] === 9 || objLocations[keyLocations] === 10){
+
+                }else{
+
+                  ///// GEOFIREPLACE WITH DEST ACTIVATED 
+                  this.setGeofirePlaceWithDest(objLocations[keyLocations].zone ,this.geofirePlaceSize, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
+
+
+                  this.geoqueryU.on("key_entered", function(key){
+                    this.afDB.database.ref(objLocations[keyLocations].zone + '/users/' + this.userUid ).update({
+                      geofireOrigin: true
+                    }).then(()=>{
+                      this.afDB.database.ref(objLocations[keyLocations].zone + '/users/'+ this.userUid +'/trips').update({
+                        origin: this.orFirebase,
+                        destination: this.desFirebase,
+                        distanceToGoInKM: this.distanceInMeters/1000          
+                      }).then(()=>{
+
+                          // turn geofire On
+                          if(this.user.onTrip === true){
+                            console.log('geofireOr hasnt been activated due ontrip')
+                          }else{ 
+                            console.log('AQUI ESTA EL ERROR 2');
+
+                            if(this.usingGeolocation === true){
+                              this.geofireService.setGeofireOr(objLocations[keyLocations].zone, 2, this.myLatLngOr.lat, this.myLatLngOr.lng, this.userUid)
+                              this.geofireService.setGeofireOrLMU(objLocations[keyLocations].zone, 2, this.myLatLngOr.lat, this.myLatLngOr.lng, this.userUid)
+                              console.log('executed geofire Or'); 
+                            }else{
+                              this.geofireService.setGeofireOr(objLocations[keyLocations].zone, 2, this.myLatLngOr.lat(), this.myLatLngOr.lng(), this.userUid)
+                              this.geofireService.setGeofireOrLMU(objLocations[keyLocations].zone, 2, this.myLatLngOr.lat(), this.myLatLngOr.lng(), this.userUid)
+                              console.log('executed geofire Or');  
+                            }
+            
+                          } 
+                          this.SignUpService.userPlace = objLocations[keyLocations].zone;
+                          this.geofireOriginConfirmed = true;
+                     
+                    })
+                    console.log('directions set')
+                    })
+                    console.log(key + ' detected')
+                  }.bind(this))
+
+
+
+
+
+                  ///// GEOFIREPLACE WITH OR ACTIVATED 
+
+                  if(this.usingGeolocation === true){
+                    this.setGeofirePlaceWithOr(objLocations[keyLocations].zone ,this.geofirePlaceSize, this.myLatLngOr.lat, this.myLatLngOr.lng, this.userUid);
+                  }else{
+                    this.setGeofirePlaceWithOr(objLocations[keyLocations].zone ,this.geofirePlaceSize, this.myLatLngOr.lat(), this.myLatLngOr.lng(), this.userUid);
+                  }
+
+                  this.geoqueryU.on("key_entered", function(key){
+                    this.afDB.database.ref(objLocations[keyLocations].zone + '/users/' + this.userUid ).update({
+                      geofireOrigin: true
+                    }).then(()=>{
+                      this.afDB.database.ref(objLocations[keyLocations].zone + '/users/'+ this.userUid +'/trips').update({
+                        origin: this.orFirebase,
+                        destination: this.desFirebase,
+                        distanceToGoInKM: this.distanceInMeters/1000          
+                      }).then(()=>{
+
+                          // turn geofire On
+                          if(this.user.onTrip === true){
+                            console.log('geofireOr hasnt been activated due ontrip')
+                          }else{ 
+                            console.log('AQUI ESTA EL ERROR 2');
+                            this.geofireService.setGeofireDest(objLocations[keyLocations].zone, 2, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid)
+                            this.geofireService.setGeofireDestLMU(objLocations[keyLocations].zone, 2, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid)
+                            console.log('executed geofire Or');  
+            
+                          } 
+                          this.SignUpService.userPlace = objLocations[keyLocations].zone;
+                          this.geofireDestinationConfirmed = true;
+                     
+                    })
+
+                    console.log('directions set')
+                    })
+                    console.log(key + ' detected')
+                  }.bind(this))
+                }
+              })
+            }).then(()=>{
+              if(this.geofireOriginConfirmed === true && this.geofireDestinationConfirmed === true){
+                this.presentAlert('Alguna de las dos direcciones que pusiste debe ser diferente a la de tu empresa', '', 'OK');
+                this.SignUpService.userPlace = this.zonesToIterate[0];
+                console.log(this.SignUpService.userPlace);
+                this.geofireService.cancelGeofireDest();
+                this.geofireService.cancelGeofireOr();
+                this.geofireService.cancelGeofireDestLMU();
+                this.geofireService.cancelGeofireOrLMU();
+              }
+            })
           
     
     
-            // test: geoqueryU on listride() of findride.ts
-            this.geoqueryU.on("key_entered", function(key){
-              this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid ).update({
-                geofireOrigin: true
-              }).then(()=>{
-                this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
-                  origin: this.orFirebase,
-                  destination: this.desFirebase,
-                  distanceToGoInKM: this.distanceInMeters/1000          
-                }).then(()=>{
-                  this.geocoder.geocode({'address': this.orFirebase[0]}, (results, status)=>{
-                    if(status==='OK'){
-                      this.geocoordinatesOr={
-                        lat:results[0].geometry.location.lat(),
-                        lng: results[0].geometry.location.lng()
-                      }
-                    }
-                       // turn geofire On
-                      if(this.user.onTrip === true){
-                        console.log('geofireOr hasnt been activated due ontrip')
-                      }else{ 
-                        console.log('AQUI ESTA EL ERROR 2');
-                        this.geofireService.setGeofireOr(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
-                        this.geofireService.setGeofireOrLMU(this.SignUpService.userPlace, 2, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng, this.userUid)
-                        console.log('executed geofire Or');  
-        
-                      }          
-                    })
-    
-                    this.geofireOriginConfirmed = true;
-               
-              }).then(()=>{
-                if(!this.geofireOriginConfirmed === true){
-                  this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
-                    origin: this.orFirebase,
-                    destination: this.desFirebase,
-                    distanceToGoInKM: this.distanceInMeters/1000          
-                }).then(() => {
-                  this.geocoderDestinationCase();
-                  })
-      
-                }else{
-                  this.geofireOriginConfirmed = false;
-                }
-              })
-              console.log('directions set')
-              })
-              console.log(key + ' detected')
-            }.bind(this))
+           
+            
     
             moment.locale('es'); //to make the date be in spanish  
             let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
             console.log(today)
             this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
             this.app.getRootNav().push('ListridePage');
-
+            console.log(this.geofireDestinationConfirmed);
+            console.log(this.geofireOriginConfirmed); 
             console.log("se ejecuto")
+
+
+
             }
     
            }
@@ -827,25 +945,25 @@ geocodeLatLng(latLng,inputName) {
   })
 }
 
-    geocoderDestinationCase(){
-              this.geocoder.geocode({'address': this.desFirebase[0]}, (results, status)=>{
-                if(status==='OK'){
-                  this.geocoordinatesDest={
-                    lat:results[0].geometry.location.lat(),
-                    lng: results[0].geometry.location.lng()
-                  }
-              }     
-                  // turn geofire On
-                  if(this.user.onTrip === true){
-                    console.log('geofireDest hasnt been activated due ontrip')
-                  }else{ 
-                  this.geofireService.setGeofireDest(this.SignUpService.userPlace , 2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.userUid);
-                  this.geofireService.setGeofireDestLMU(this.SignUpService.userPlace ,2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.userUid);
-                  console.log('executed geofire Dest');  
+    // geocoderDestinationCase(){
+    //           this.geocoder.geocode({'address': this.desFirebase[0]}, (results, status)=>{
+    //             if(status==='OK'){
+    //               this.geocoordinatesDest={
+    //                 lat:results[0].geometry.location.lat(),
+    //                 lng: results[0].geometry.location.lng()
+    //               }
+    //           }     
+    //               // turn geofire On
+    //               if(this.user.onTrip === true){
+    //                 console.log('geofireDest hasnt been activated due ontrip')
+    //               }else{ 
+    //               this.geofireService.setGeofireDest(this.SignUpService.userPlace , 2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.userUid);
+    //               this.geofireService.setGeofireDestLMU(this.SignUpService.userPlace ,2, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng, this.userUid);
+    //               console.log('executed geofire Dest');  
     
-                  }
-                })      
-    }
+    //               }
+    //             })      
+    // }
 
 
     presentAlert(title,text,button) {
@@ -888,7 +1006,7 @@ geocodeLatLng(latLng,inputName) {
 
 
         // set geoquery that determines if the person is in place
-    setGeofirePlace(place, radius:number, lat, lng, userId):void{ 
+    setGeofirePlaceWithDest(place, radius:number, lat, lng, userId):void{ 
       
       this.dbRef = this.afDB.database.ref(place + '/geofirePlace/' );
       this.geoFire = new GeoFire(this.dbRef); 
@@ -900,6 +1018,21 @@ geocodeLatLng(latLng,inputName) {
 
     console.log('geoquery place added');
     }
+
+
+        // set geoquery that determines if the person is in place
+        setGeofirePlaceWithOr(place, radius:number, lat, lng, userId):void{ 
+      
+          this.dbRef = this.afDB.database.ref(place + '/geofirePlace/' );
+          this.geoFire = new GeoFire(this.dbRef); 
+    
+          this.geoqueryU = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
+          })
+    
+        console.log('geoquery place added');
+        }
 
     ionViewDidLeave(){
       this.unsubscribe.next();

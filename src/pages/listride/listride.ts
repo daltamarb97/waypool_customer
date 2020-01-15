@@ -57,11 +57,8 @@ export class ListridePage {
         this.ReservesGeofire = reserves;
         console.log(this.ReservesGeofire);
         this.presentLoadingCustom(this.ReservesGeofire);   
-
-        // this.getMyReserves();
         this.getAvailableReserves();
-        
-   
+
       });
      
   
@@ -83,8 +80,9 @@ export class ListridePage {
 
 
 
-  getAvailableReserves(){
+  getAvailableReserves(){ 
         //bring reserves that i have entered to hide them in listride
+   console.log('me ejecute avilable');
    
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
       this.ReservesGeofire.forEach(reserveGeofire => {
@@ -98,6 +96,8 @@ export class ListridePage {
               console.log("hello"); 
               }else{
                 this.reservesAvailable.push(obj);
+                console.log(this.reservesAvailable);
+                
               } 
         })
 

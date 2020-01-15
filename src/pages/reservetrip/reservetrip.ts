@@ -81,7 +81,7 @@ export class ReservetripPage{
       }else{
         //there are reserves
           this.noReserve = false;
-  
+    
       }
     }) 
     

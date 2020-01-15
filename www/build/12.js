@@ -5,10 +5,10 @@ webpackJsonp([12],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RatetripPageModule", function() { return RatetripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(797);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ratetrip__ = __webpack_require__(798);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,41 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ProfilePageModule = /** @class */ (function () {
-    function ProfilePageModule() {
+var RatetripPageModule = /** @class */ (function () {
+    function RatetripPageModule() {
     }
-    ProfilePageModule = __decorate([
+    RatetripPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
+                __WEBPACK_IMPORTED_MODULE_2__ratetrip__["a" /* RatetripPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__ratetrip__["a" /* RatetripPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]
+                __WEBPACK_IMPORTED_MODULE_2__ratetrip__["a" /* RatetripPage */]
             ]
         })
-    ], ProfilePageModule);
-    return ProfilePageModule;
+    ], RatetripPageModule);
+    return RatetripPageModule;
 }());
 
-//# sourceMappingURL=profile.module.js.map
+//# sourceMappingURL=ratetrip.module.js.map
 
 /***/ }),
 
-/***/ 797:
+/***/ 798:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RatetripPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_userauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendFeedback_service__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,151 +69,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ProfilePage = /** @class */ (function () {
-    function ProfilePage(navCtrl, modalCtrl, toastCtrl, alertCtrl, AngularFireAuth, authenticationService, SignupService) {
+
+var RatetripPage = /** @class */ (function () {
+    function RatetripPage(navCtrl, navParams, sendfeedback, signUpService, sendCoordsService, angularFireAuth, alertCtrl) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
-        this.toastCtrl = toastCtrl;
+        this.navParams = navParams;
+        this.sendfeedback = sendfeedback;
+        this.signUpService = signUpService;
+        this.sendCoordsService = sendCoordsService;
+        this.angularFireAuth = angularFireAuth;
         this.alertCtrl = alertCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.authenticationService = authenticationService;
-        this.SignupService = SignupService;
-        this.myprofile = "about";
-        this.emailUser = this.AngularFireAuth.auth.currentUser.email;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.userUid = this.angularFireAuth.auth.currentUser.uid;
         this.user = {};
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["Subject"];
-        this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
+        this.driver = {};
+        this.title = 'calificacion de viaje';
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
+        this.today = Date.now();
+        this.signUpService.getMyInfo(this.userUid, this.signUpService.userPlace).takeUntil(this.unsubscribe).subscribe(function (user) {
             _this.user = user;
             console.log(_this.user);
-            _this.showInfoProfile(user);
         });
+        this.trip = this.navParams.get('trip');
+        console.log(this.trip);
     }
-    ProfilePage.prototype.saveChanges = function () {
-        if (this.phone == null && this.user.about == null && this.user.url == null) {
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone == null && this.user.about == null && this.user.url != null) {
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone == null && this.user.about != null && this.user.url == null) {
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone != null && this.user.about == null && this.user.url == null) {
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone != null && this.user.about != null && this.user.url == null) {
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone != null && this.user.about == null && this.user.url != null) {
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone == null && this.user.about != null && this.user.url != null) {
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone != null && this.user.about != null && this.user.url != null) {
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
-            this.toastConfirmation();
-            this.navCtrl.pop();
+    RatetripPage.prototype.sendInfo = function () {
+        if (this.experience === null || this.experience === undefined) {
+            this.experience = 'no hay feedback';
+            this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+            this.navCtrl.setRoot('TabsPage');
         }
         else {
-            console.log('go to the f*cking hell');
+            this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+            this.navCtrl.setRoot('TabsPage');
         }
     };
-    ProfilePage.prototype.toastConfirmation = function () {
-        var toast = this.toastCtrl.create({
-            message: 'Información actualizada',
-            duration: 1000,
-            position: 'bottom'
-        });
-        toast.present();
-    };
-    ProfilePage.prototype.deleteAccount = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Eliminar Cuenta',
-            message: "\u00BFEstas segur@ que deseas eliminar esta cuenta? si tienes cuenta en WAYPOOL DRIVER tambi\u00E9n se eliminar\u00E1",
-            buttons: [
-                {
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: function () {
-                    }
-                },
-                {
-                    text: 'Eliminar',
-                    handler: function () {
-                        _this.SignupService.deleteAccount(_this.SignupService.userPlace, _this.userUid);
-                        _this.AngularFireAuth.auth.currentUser.delete().then(function () {
-                            console.log('user has been deleted');
-                        }).catch(function (error) {
-                            console.log('error:', error);
-                        });
-                        _this.navCtrl.setRoot('LoginPage');
-                        var toast = _this.toastCtrl.create({
-                            message: "Acabas de eliminar esta cuenta, si deseas volver a ser parte de la comunidad por favor reg\u00EDstrate de nuevo",
-                            showCloseButton: true,
-                            closeButtonText: 'Ok'
-                        });
-                        toast.present();
-                    }
-                }
-            ]
-        });
-        alert.present();
-    };
-    ProfilePage.prototype.showInfoProfile = function (user) {
-        this.name = user.name;
-        this.lastname = user.lastname;
-        this.emailComplete = user.email + user.fixedemail;
-        console.log(this.emailComplete);
-    };
-    ProfilePage.prototype.changePassword = function () {
-        var _this = this;
-        this.AngularFireAuth.auth.sendPasswordResetEmail(this.emailUser).then(function () {
-            var alert = _this.alertCtrl.create({
-                title: 'Revisa tu email',
-                subTitle: 'te enviamos un correo donde podras reestablecer tu contraseña',
-                buttons: ['OK']
-            });
-            alert.present();
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    ProfilePage.prototype.ionViewDidLeave = function () {
+    RatetripPage.prototype.ionViewDidLeave = function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     };
-    ProfilePage = __decorate([
+    RatetripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-profile',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/profile/profile.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title>MI PERFIL</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n    <ion-item style="position: relative;z-index: 2;">\n        <ion-avatar item-start>\n            <img src="assets/imgs/userPicture.png">\n        </ion-avatar>\n        <div class="name">\n            <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n            </h2>\n            <p *ngIf=\'user.verifiedPerson\' class="text-theme">VERIFICADO\n                <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n            </p>\n        </div>\n        \n    </ion-item>\n    \n    <div >\n        <ion-list >\n              \n                     \n            <div class="bg-white" padding>\n\n                <ion-list no-lines class="form-list">\n                    <ion-item>\n                        <ion-label floating >Nombre</ion-label>\n                        <ion-input type="text" [(ngModel)]="user.name" readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating >Apellido</ion-label>\n                        <ion-input type="text" [(ngModel)]="user.lastname" readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>Número Telefónico Actual</ion-label>\n                        <ion-input type="number"  [(ngModel)]="user.phone" readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label stacked>Número Telefónico Nuevo</ion-label>\n                        <ion-input type="number" placeholder="modifica aqui tu número" [(ngModel)]="phone"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>Email</ion-label>\n                        <ion-input type="text"  [(ngModel)]="emailComplete"  readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label stacked >Sobre mi</ion-label>\n                        <ion-textarea placeholder="tu carrera, pasiones, skills"  [(ngModel)]="user.about"></ion-textarea>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label stacked>URL de interés</ion-label>\n                        <ion-input type="text" placeholder="¿qué quieres que vean sobre ti?" [(ngModel)]="user.url" ></ion-input>\n                    </ion-item>\n\n\n                </ion-list>\n            </div>\n            <div padding-top padding-left padding-right text-center>\n                <p>\n                    <button class="btn text-theme rounded bg-white" style="width: 100%;margin-bottom: 8px;" (click)="saveChanges()">Guardar Cambios</button>\n\n                    <button class="btn text-theme rounded bg-white" style="width: 100%;    margin-bottom: 8px;" (click)="changePassword()" >Cambiar Contraseña</button>\n                    <button class="btn text-white rounded bg-red" style="width: 100%;    margin-bottom: 8px;" (click)="deleteAccount()">Eliminar Cuenta</button>\n              \n                </p>\n\n            </div>\n        </ion-list>\n        \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/profile/profile.html"*/
+            selector: 'page-ratetrip',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_customer\waypool_costumer\src\pages\p-ratetrip\ratetrip.html"*/'<ion-header class="bg-theme">\n\n  <ion-navbar>\n\n      <ion-title>Viaje Finalizado</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bg-light">\n\n  <ion-card class="slip">\n\n      <div text-center>\n\n          <h4 class="text-dark">¡Esperamos que hayas tenido un excelente viaje!</h4>\n\n          <p class="text-light">{{today | date}}\n\n\n\n      </p>\n\n          <h4 class="text-dark">el precio que pagaste por este viaje fue de:</h4>\n\n          <h1 class="text-theme">$ {{trip.price}}</h1>\n\n      </div>\n\n  </ion-card>\n\n  <ion-card class="rate">\n\n      <div text-center>\n\n              <h4 class="text-dark">Cuéntanos {{user.name}} como ha sido la experiencia con Waypool</h4>\n\n\n\n         \n\n          <div class="driver">\n\n              \n\n              <div class="form">\n\n                  <ion-list no-lines>\n\n                      <ion-item>\n\n                          <ion-textarea [(ngModel)]="experience" type="text" placeholder="Déjanos tu sugerencia" ></ion-textarea>\n\n                      </ion-item>\n\n                  </ion-list>\n\n              </div>\n\n\n\n\n\n              <p padding-top><button (click)="sendInfo()" class="btn text-white bg-theme rounded" style="width: 100%;">ENVIAR</button></p>\n\n          </div>\n\n      </div>\n\n  </ion-card>\n\n  <p class="love">Created with <ion-icon name="heart"></ion-icon></p> \n\n\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_customer\waypool_costumer\src\pages\p-ratetrip\ratetrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_3__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */]])
-    ], ProfilePage);
-    return ProfilePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__services_sendFeedback_service__["a" /* sendFeedbackService */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+    ], RatetripPage);
+    return RatetripPage;
 }());
 
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=ratetrip.js.map
 
 /***/ })
 

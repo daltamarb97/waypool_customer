@@ -216,7 +216,7 @@ ion-segment-button {
 .fix-btn {
     z-index: 999;
 }
-
+ion-header[transparent] .toolbar-background { background: transparent;}
 .space {
     z-index: -1;
 }

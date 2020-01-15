@@ -335,7 +335,7 @@ keyEnteredDest( userId, place ){
         })
     }
 
-    joinReserve(place, keyReserve,driverId, userId, origin, destination, name, lastname, phone, note, verifiedPerson){
+    joinReserve(place, keyReserve,driverId, userId, origin, destination, name, lastname, phone, verifiedPerson){
         this.afDB.database.ref(place + '/reserves/' + driverId +'/'+keyReserve+ '/pendingUsers/' + userId).update({
              origin: origin,
              destination: destination,
@@ -343,7 +343,6 @@ keyEnteredDest( userId, place ){
              lastname: lastname,
              phone: phone,
              userId: userId,
-             note:note,
              verifiedPerson: verifiedPerson,
              place:place       
         }).catch((err)=>{

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, AlertController, ToastController } from 'ionic-angular';
+import { Platform, AlertController, ToastController, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import * as firebaseFirst from 'firebase';
@@ -16,10 +16,21 @@ import { Firebase } from '@ionic-native/firebase';
   
 })
 export class MyApp {
-  rootPage:any;
+  @ViewChild(Nav) nav:Nav;
+
+  rootPage:any  = 'LoginPage';
   alertInternet:any;
+  pages:any=[];
   constructor(public alertCtrl: AlertController, statusBar: StatusBar, splashScreen: SplashScreen, private geolocation: Geolocation, private platform: Platform, private fcm: FCM, public toastController: ToastController, private firebase: Firebase) {
-   
+    this.pages = [
+      {title:'Mis viajes',component:'ReservetripPage', icon:'md-paper'},
+      {title: 'Billetera', component:'WalletPage',icon:'card'},
+      {title:'Mi perfil',component:'MorePage',icon:'person'},
+      {title:'Instrucciones',component:'WalkthroughPage',icon:'alert'},
+
+    
+
+    ]
     const firebaseConfig = {
       apiKey: "AIzaSyB7Py2pOZEUJD2Ar34a-8z-rReiDtsikxw",
       authDomain: "waypool-511be.firebaseapp.com",
@@ -108,7 +119,7 @@ export class MyApp {
         if(user.emailVerified == false){
           this.rootPage = 'LoginPage';
         }else{
-          this.rootPage = 'TabsPage';
+          this.rootPage = 'FindridePassPage';
         }
       }else{
         this.rootPage = 'LoginPage';
@@ -119,7 +130,9 @@ export class MyApp {
     
   }
 
-  
+  openPage(page){
+    this.nav.push(page.component)
+  } 
 
 
 }

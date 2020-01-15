@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 637:
+/***/ 656:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmNotePageModule", function() { return ConfirmNotePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FindridePassPageModule", function() { return FindridePassPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmnote__ = __webpack_require__(790);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__findride__ = __webpack_require__(811);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,30 +18,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ConfirmNotePageModule = /** @class */ (function () {
-    function ConfirmNotePageModule() {
+var FindridePassPageModule = /** @class */ (function () {
+    function FindridePassPageModule() {
     }
-    ConfirmNotePageModule = __decorate([
+    FindridePassPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmnote__["a" /* ConfirmNotePage */],
+                __WEBPACK_IMPORTED_MODULE_2__findride__["a" /* FindridePassPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirmnote__["a" /* ConfirmNotePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__findride__["a" /* FindridePassPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmnote__["a" /* ConfirmNotePage */]
+                __WEBPACK_IMPORTED_MODULE_2__findride__["a" /* FindridePassPage */]
             ]
         })
-    ], ConfirmNotePageModule);
-    return ConfirmNotePageModule;
+    ], FindridePassPageModule);
+    return FindridePassPageModule;
 }());
 
-//# sourceMappingURL=confirmnote.module.js.map
+//# sourceMappingURL=findride.module.js.map
 
 /***/ }),
 
-/***/ 658:
+/***/ 657:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var require;//! moment.js
@@ -1896,7 +1896,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(792)("./" + name);
+                __webpack_require__(786)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -4647,17 +4647,17 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(791)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(785)(module)))
 
 /***/ }),
 
-/***/ 660:
+/***/ 658:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4729,13 +4729,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 661:
+/***/ 659:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4869,13 +4869,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 662:
+/***/ 660:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4933,13 +4933,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 663:
+/***/ 661:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4997,13 +4997,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 664:
+/***/ 662:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5124,13 +5124,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 665:
+/***/ 663:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5188,13 +5188,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 666:
+/***/ 664:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5297,13 +5297,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 667:
+/***/ 665:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5361,13 +5361,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 668:
+/***/ 666:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5471,13 +5471,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 669:
+/***/ 667:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5608,13 +5608,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 670:
+/***/ 668:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5703,13 +5703,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 671:
+/***/ 669:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5766,13 +5766,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 672:
+/***/ 670:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5890,13 +5890,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 673:
+/***/ 671:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6014,13 +6014,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 674:
+/***/ 672:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6127,13 +6127,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 675:
+/***/ 673:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6283,13 +6283,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 676:
+/***/ 674:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6376,13 +6376,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 677:
+/***/ 675:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6553,13 +6553,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 678:
+/***/ 676:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6621,13 +6621,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 679:
+/***/ 677:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6706,13 +6706,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 680:
+/***/ 678:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6771,13 +6771,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 681:
+/***/ 679:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6852,13 +6852,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 682:
+/***/ 680:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6933,13 +6933,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 683:
+/***/ 681:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7014,13 +7014,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 684:
+/***/ 682:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7118,13 +7118,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 685:
+/***/ 683:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7223,13 +7223,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 686:
+/***/ 684:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7295,13 +7295,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 687:
+/***/ 685:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7367,13 +7367,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 688:
+/***/ 686:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7435,13 +7435,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 689:
+/***/ 687:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7507,13 +7507,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 690:
+/***/ 688:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7579,13 +7579,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 691:
+/***/ 689:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7646,13 +7646,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 692:
+/***/ 690:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7718,13 +7718,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 693:
+/***/ 691:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7794,13 +7794,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 694:
+/***/ 692:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7891,13 +7891,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 695:
+/***/ 693:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7988,13 +7988,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 696:
+/***/ 694:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8085,13 +8085,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 697:
+/***/ 695:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8170,13 +8170,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 698:
+/***/ 696:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8241,13 +8241,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 699:
+/***/ 697:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8352,13 +8352,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 700:
+/***/ 698:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8466,13 +8466,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 701:
+/***/ 699:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8531,13 +8531,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 702:
+/***/ 700:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8619,13 +8619,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 703:
+/***/ 701:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8698,13 +8698,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 704:
+/***/ 702:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8781,13 +8781,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 705:
+/***/ 703:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8861,13 +8861,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 706:
+/***/ 704:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8943,13 +8943,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 707:
+/***/ 705:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9024,13 +9024,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 708:
+/***/ 706:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9106,13 +9106,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 709:
+/***/ 707:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9234,13 +9234,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 710:
+/***/ 708:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9363,13 +9363,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 711:
+/***/ 709:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9465,13 +9465,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 712:
+/***/ 710:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9594,13 +9594,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 713:
+/***/ 711:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9753,13 +9753,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 714:
+/***/ 712:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9868,13 +9868,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 715:
+/***/ 713:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9968,13 +9968,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 716:
+/***/ 714:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10055,13 +10055,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 717:
+/***/ 715:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10192,13 +10192,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 718:
+/***/ 716:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10266,13 +10266,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 719:
+/***/ 717:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10340,13 +10340,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 720:
+/***/ 718:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10437,13 +10437,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 721:
+/***/ 719:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10524,13 +10524,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 722:
+/***/ 720:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10618,13 +10618,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 723:
+/***/ 721:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10710,13 +10710,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 724:
+/***/ 722:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10825,13 +10825,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 725:
+/***/ 723:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10956,13 +10956,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 726:
+/***/ 724:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11042,13 +11042,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 727:
+/***/ 725:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11166,13 +11166,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 728:
+/***/ 726:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11258,13 +11258,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 729:
+/***/ 727:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11399,13 +11399,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 730:
+/***/ 728:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11474,13 +11474,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 731:
+/***/ 729:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11597,13 +11597,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 732:
+/***/ 730:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11699,13 +11699,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 733:
+/***/ 731:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11816,13 +11816,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 734:
+/***/ 732:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11885,13 +11885,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 735:
+/***/ 733:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11980,13 +11980,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 736:
+/***/ 734:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12066,13 +12066,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 737:
+/***/ 735:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12175,13 +12175,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 738:
+/***/ 736:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12340,13 +12340,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 739:
+/***/ 737:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12427,13 +12427,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 740:
+/***/ 738:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12514,13 +12514,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 741:
+/***/ 739:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12579,13 +12579,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 742:
+/***/ 740:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12677,13 +12677,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 743:
+/***/ 741:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12744,13 +12744,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 744:
+/***/ 742:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12872,13 +12872,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 745:
+/***/ 743:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12964,13 +12964,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 746:
+/***/ 744:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13056,13 +13056,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 747:
+/***/ 745:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13121,13 +13121,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 748:
+/***/ 746:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13250,13 +13250,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 749:
+/***/ 747:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13381,13 +13381,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 750:
+/***/ 748:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13451,13 +13451,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 751:
+/***/ 749:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13517,13 +13517,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 752:
+/***/ 750:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13597,13 +13597,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 753:
+/***/ 751:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13784,13 +13784,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 754:
+/***/ 752:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13887,13 +13887,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 755:
+/***/ 753:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13952,13 +13952,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 756:
+/***/ 754:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14028,13 +14028,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 757:
+/***/ 755:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14189,13 +14189,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 758:
+/***/ 756:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14367,13 +14367,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 759:
+/***/ 757:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14440,13 +14440,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 760:
+/***/ 758:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14556,13 +14556,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 761:
+/***/ 759:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14672,13 +14672,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 762:
+/***/ 760:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14765,13 +14765,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 763:
+/***/ 761:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14839,13 +14839,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 764:
+/***/ 762:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14903,13 +14903,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 765:
+/***/ 763:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15037,13 +15037,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 766:
+/***/ 764:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15131,13 +15131,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 767:
+/***/ 765:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15203,13 +15203,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 768:
+/***/ 766:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15324,13 +15324,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 769:
+/***/ 767:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15396,13 +15396,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 768:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15463,13 +15463,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 769:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15590,12 +15590,12 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 770:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15689,13 +15689,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 773:
+/***/ 771:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15785,13 +15785,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 774:
+/***/ 772:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15848,13 +15848,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 775:
+/***/ 773:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15911,13 +15911,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 776:
+/***/ 774:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js language configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16035,13 +16035,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 777:
+/***/ 775:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16194,13 +16194,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 778:
+/***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16297,13 +16297,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 779:
+/***/ 777:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16360,13 +16360,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 780:
+/***/ 778:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16423,13 +16423,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 781:
+/***/ 779:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16507,13 +16507,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 782:
+/***/ 780:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16580,13 +16580,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 783:
+/***/ 781:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16645,13 +16645,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 784:
+/***/ 782:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16760,13 +16760,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 785:
+/***/ 783:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16868,13 +16868,13 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 786:
+/***/ 784:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(658)) :
+    true ? factory(__webpack_require__(657)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16976,105 +16976,7 @@ var ConfirmNotePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 790:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmNotePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__ = __webpack_require__(345);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_note_service__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_geoFire_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__(658);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_metrics_service__ = __webpack_require__(353);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-
-
-var ConfirmNotePage = /** @class */ (function () {
-    function ConfirmNotePage(navCtrl, MetricsService, noteService, appCtrl, alertCtrl, afDB, sendUsersService, SignUpService, sendCoordsService, modalCtrl, AngularFireAuth, viewCtrl, navParams, geofireService) {
-        this.navCtrl = navCtrl;
-        this.MetricsService = MetricsService;
-        this.noteService = noteService;
-        this.appCtrl = appCtrl;
-        this.alertCtrl = alertCtrl;
-        this.afDB = afDB;
-        this.sendUsersService = sendUsersService;
-        this.SignUpService = SignUpService;
-        this.sendCoordsService = sendCoordsService;
-        this.modalCtrl = modalCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.viewCtrl = viewCtrl;
-        this.navParams = navParams;
-        this.geofireService = geofireService;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.or = this.navParams.get('or');
-        this.dest = this.navParams.get('dest');
-        console.log(this.dest);
-    }
-    ConfirmNotePage.prototype.setNoteDriver = function () {
-        __WEBPACK_IMPORTED_MODULE_9_moment__["locale"]('es'); //to make the date be in spanish  
-        var today = __WEBPACK_IMPORTED_MODULE_9_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
-        console.log(today);
-        console.log(this.dest);
-        this.MetricsService.createdReserves(this.SignUpService.userPlace, this.userUid, today, this.dest, this.or);
-        if (this.note == null || this.note == '') {
-            this.note = 'No hay nota';
-            this.noteService.setNote(this.userUid, this.note, this.SignUpService.userPlace);
-            this.accepted = true;
-            this.dismiss();
-        }
-        else {
-            this.noteService.setNote(this.userUid, this.note, this.SignUpService.userPlace);
-            this.accepted = true;
-            this.dismiss();
-        }
-    };
-    ;
-    ConfirmNotePage.prototype.dismissOnClick = function () {
-        this.viewCtrl.dismiss(this.accepted);
-    };
-    ConfirmNotePage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss(this.accepted);
-    };
-    ConfirmNotePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirmnote',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/confirmnote/confirmnote.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissOnClick()"></ion-icon>\n    <ion-card>\n        <h6 class="text-theme">Detalles del Viaje</h6>\n        \n\n        <ion-card-content>\n            <div class="ride-detail">\n                <ion-item >\n                    <ion-label>Nota (Opcional):</ion-label>\n                \n                  </ion-item>\n                <ion-item>\n                    <div class="form">\n                        <ion-list no-lines>\n                            <ion-item>\n                                    <ion-textarea [(ngModel)]="note" rows="10"type="text"  ></ion-textarea>\n\n                            </ion-item>\n                        </ion-list>\n                    </div>\n                  </ion-item>\n            </div>\n        </ion-card-content>\n\n        <ion-card-content>\n            <div class="seats">\n                \n                <ion-row style="margin-top: 14px;justify-content: center">\n                    \n                    <ion-col col-8>\n                        <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.5rem;" (click)="setNoteDriver()">Pedir Viaje</button>\n                    </ion-col>\n                </ion-row>\n\n\n            </div>\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/confirmnote/confirmnote.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_10__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_7__services_note_service__["a" /* noteService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_8__services_geoFire_service__["a" /* geofireService */]])
-    ], ConfirmNotePage);
-    return ConfirmNotePage;
-}());
-
-//# sourceMappingURL=confirmnote.js.map
-
-/***/ }),
-
-/***/ 791:
+/***/ 785:
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17103,264 +17005,264 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 792:
+/***/ 786:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 660,
-	"./af.js": 660,
-	"./ar": 661,
-	"./ar-dz": 662,
-	"./ar-dz.js": 662,
-	"./ar-kw": 663,
-	"./ar-kw.js": 663,
-	"./ar-ly": 664,
-	"./ar-ly.js": 664,
-	"./ar-ma": 665,
-	"./ar-ma.js": 665,
-	"./ar-sa": 666,
-	"./ar-sa.js": 666,
-	"./ar-tn": 667,
-	"./ar-tn.js": 667,
-	"./ar.js": 661,
-	"./az": 668,
-	"./az.js": 668,
-	"./be": 669,
-	"./be.js": 669,
-	"./bg": 670,
-	"./bg.js": 670,
-	"./bm": 671,
-	"./bm.js": 671,
-	"./bn": 672,
-	"./bn.js": 672,
-	"./bo": 673,
-	"./bo.js": 673,
-	"./br": 674,
-	"./br.js": 674,
-	"./bs": 675,
-	"./bs.js": 675,
-	"./ca": 676,
-	"./ca.js": 676,
-	"./cs": 677,
-	"./cs.js": 677,
-	"./cv": 678,
-	"./cv.js": 678,
-	"./cy": 679,
-	"./cy.js": 679,
-	"./da": 680,
-	"./da.js": 680,
-	"./de": 681,
-	"./de-at": 682,
-	"./de-at.js": 682,
-	"./de-ch": 683,
-	"./de-ch.js": 683,
-	"./de.js": 681,
-	"./dv": 684,
-	"./dv.js": 684,
-	"./el": 685,
-	"./el.js": 685,
-	"./en-SG": 686,
-	"./en-SG.js": 686,
-	"./en-au": 687,
-	"./en-au.js": 687,
-	"./en-ca": 688,
-	"./en-ca.js": 688,
-	"./en-gb": 689,
-	"./en-gb.js": 689,
-	"./en-ie": 690,
-	"./en-ie.js": 690,
-	"./en-il": 691,
-	"./en-il.js": 691,
-	"./en-nz": 692,
-	"./en-nz.js": 692,
-	"./eo": 693,
-	"./eo.js": 693,
-	"./es": 694,
-	"./es-do": 695,
-	"./es-do.js": 695,
-	"./es-us": 696,
-	"./es-us.js": 696,
-	"./es.js": 694,
-	"./et": 697,
-	"./et.js": 697,
-	"./eu": 698,
-	"./eu.js": 698,
-	"./fa": 699,
-	"./fa.js": 699,
-	"./fi": 700,
-	"./fi.js": 700,
-	"./fo": 701,
-	"./fo.js": 701,
-	"./fr": 702,
-	"./fr-ca": 703,
-	"./fr-ca.js": 703,
-	"./fr-ch": 704,
-	"./fr-ch.js": 704,
-	"./fr.js": 702,
-	"./fy": 705,
-	"./fy.js": 705,
-	"./ga": 706,
-	"./ga.js": 706,
-	"./gd": 707,
-	"./gd.js": 707,
-	"./gl": 708,
-	"./gl.js": 708,
-	"./gom-latn": 709,
-	"./gom-latn.js": 709,
-	"./gu": 710,
-	"./gu.js": 710,
-	"./he": 711,
-	"./he.js": 711,
-	"./hi": 712,
-	"./hi.js": 712,
-	"./hr": 713,
-	"./hr.js": 713,
-	"./hu": 714,
-	"./hu.js": 714,
-	"./hy-am": 715,
-	"./hy-am.js": 715,
-	"./id": 716,
-	"./id.js": 716,
-	"./is": 717,
-	"./is.js": 717,
-	"./it": 718,
-	"./it-ch": 719,
-	"./it-ch.js": 719,
-	"./it.js": 718,
-	"./ja": 720,
-	"./ja.js": 720,
-	"./jv": 721,
-	"./jv.js": 721,
-	"./ka": 722,
-	"./ka.js": 722,
-	"./kk": 723,
-	"./kk.js": 723,
-	"./km": 724,
-	"./km.js": 724,
-	"./kn": 725,
-	"./kn.js": 725,
-	"./ko": 726,
-	"./ko.js": 726,
-	"./ku": 727,
-	"./ku.js": 727,
-	"./ky": 728,
-	"./ky.js": 728,
-	"./lb": 729,
-	"./lb.js": 729,
-	"./lo": 730,
-	"./lo.js": 730,
-	"./lt": 731,
-	"./lt.js": 731,
-	"./lv": 732,
-	"./lv.js": 732,
-	"./me": 733,
-	"./me.js": 733,
-	"./mi": 734,
-	"./mi.js": 734,
-	"./mk": 735,
-	"./mk.js": 735,
-	"./ml": 736,
-	"./ml.js": 736,
-	"./mn": 737,
-	"./mn.js": 737,
-	"./mr": 738,
-	"./mr.js": 738,
-	"./ms": 739,
-	"./ms-my": 740,
-	"./ms-my.js": 740,
-	"./ms.js": 739,
-	"./mt": 741,
-	"./mt.js": 741,
-	"./my": 742,
-	"./my.js": 742,
-	"./nb": 743,
-	"./nb.js": 743,
-	"./ne": 744,
-	"./ne.js": 744,
-	"./nl": 745,
-	"./nl-be": 746,
-	"./nl-be.js": 746,
-	"./nl.js": 745,
-	"./nn": 747,
-	"./nn.js": 747,
-	"./pa-in": 748,
-	"./pa-in.js": 748,
-	"./pl": 749,
-	"./pl.js": 749,
-	"./pt": 750,
-	"./pt-br": 751,
-	"./pt-br.js": 751,
-	"./pt.js": 750,
-	"./ro": 752,
-	"./ro.js": 752,
-	"./ru": 753,
-	"./ru.js": 753,
-	"./sd": 754,
-	"./sd.js": 754,
-	"./se": 755,
-	"./se.js": 755,
-	"./si": 756,
-	"./si.js": 756,
-	"./sk": 757,
-	"./sk.js": 757,
-	"./sl": 758,
-	"./sl.js": 758,
-	"./sq": 759,
-	"./sq.js": 759,
-	"./sr": 760,
-	"./sr-cyrl": 761,
-	"./sr-cyrl.js": 761,
-	"./sr.js": 760,
-	"./ss": 762,
-	"./ss.js": 762,
-	"./sv": 763,
-	"./sv.js": 763,
-	"./sw": 764,
-	"./sw.js": 764,
-	"./ta": 765,
-	"./ta.js": 765,
-	"./te": 766,
-	"./te.js": 766,
-	"./tet": 767,
-	"./tet.js": 767,
-	"./tg": 768,
-	"./tg.js": 768,
-	"./th": 769,
-	"./th.js": 769,
-	"./tl-ph": 770,
-	"./tl-ph.js": 770,
-	"./tlh": 771,
-	"./tlh.js": 771,
-	"./tr": 772,
-	"./tr.js": 772,
-	"./tzl": 773,
-	"./tzl.js": 773,
-	"./tzm": 774,
-	"./tzm-latn": 775,
-	"./tzm-latn.js": 775,
-	"./tzm.js": 774,
-	"./ug-cn": 776,
-	"./ug-cn.js": 776,
-	"./uk": 777,
-	"./uk.js": 777,
-	"./ur": 778,
-	"./ur.js": 778,
-	"./uz": 779,
-	"./uz-latn": 780,
-	"./uz-latn.js": 780,
-	"./uz.js": 779,
-	"./vi": 781,
-	"./vi.js": 781,
-	"./x-pseudo": 782,
-	"./x-pseudo.js": 782,
-	"./yo": 783,
-	"./yo.js": 783,
-	"./zh-cn": 784,
-	"./zh-cn.js": 784,
-	"./zh-hk": 785,
-	"./zh-hk.js": 785,
-	"./zh-tw": 786,
-	"./zh-tw.js": 786
+	"./af": 658,
+	"./af.js": 658,
+	"./ar": 659,
+	"./ar-dz": 660,
+	"./ar-dz.js": 660,
+	"./ar-kw": 661,
+	"./ar-kw.js": 661,
+	"./ar-ly": 662,
+	"./ar-ly.js": 662,
+	"./ar-ma": 663,
+	"./ar-ma.js": 663,
+	"./ar-sa": 664,
+	"./ar-sa.js": 664,
+	"./ar-tn": 665,
+	"./ar-tn.js": 665,
+	"./ar.js": 659,
+	"./az": 666,
+	"./az.js": 666,
+	"./be": 667,
+	"./be.js": 667,
+	"./bg": 668,
+	"./bg.js": 668,
+	"./bm": 669,
+	"./bm.js": 669,
+	"./bn": 670,
+	"./bn.js": 670,
+	"./bo": 671,
+	"./bo.js": 671,
+	"./br": 672,
+	"./br.js": 672,
+	"./bs": 673,
+	"./bs.js": 673,
+	"./ca": 674,
+	"./ca.js": 674,
+	"./cs": 675,
+	"./cs.js": 675,
+	"./cv": 676,
+	"./cv.js": 676,
+	"./cy": 677,
+	"./cy.js": 677,
+	"./da": 678,
+	"./da.js": 678,
+	"./de": 679,
+	"./de-at": 680,
+	"./de-at.js": 680,
+	"./de-ch": 681,
+	"./de-ch.js": 681,
+	"./de.js": 679,
+	"./dv": 682,
+	"./dv.js": 682,
+	"./el": 683,
+	"./el.js": 683,
+	"./en-SG": 684,
+	"./en-SG.js": 684,
+	"./en-au": 685,
+	"./en-au.js": 685,
+	"./en-ca": 686,
+	"./en-ca.js": 686,
+	"./en-gb": 687,
+	"./en-gb.js": 687,
+	"./en-ie": 688,
+	"./en-ie.js": 688,
+	"./en-il": 689,
+	"./en-il.js": 689,
+	"./en-nz": 690,
+	"./en-nz.js": 690,
+	"./eo": 691,
+	"./eo.js": 691,
+	"./es": 692,
+	"./es-do": 693,
+	"./es-do.js": 693,
+	"./es-us": 694,
+	"./es-us.js": 694,
+	"./es.js": 692,
+	"./et": 695,
+	"./et.js": 695,
+	"./eu": 696,
+	"./eu.js": 696,
+	"./fa": 697,
+	"./fa.js": 697,
+	"./fi": 698,
+	"./fi.js": 698,
+	"./fo": 699,
+	"./fo.js": 699,
+	"./fr": 700,
+	"./fr-ca": 701,
+	"./fr-ca.js": 701,
+	"./fr-ch": 702,
+	"./fr-ch.js": 702,
+	"./fr.js": 700,
+	"./fy": 703,
+	"./fy.js": 703,
+	"./ga": 704,
+	"./ga.js": 704,
+	"./gd": 705,
+	"./gd.js": 705,
+	"./gl": 706,
+	"./gl.js": 706,
+	"./gom-latn": 707,
+	"./gom-latn.js": 707,
+	"./gu": 708,
+	"./gu.js": 708,
+	"./he": 709,
+	"./he.js": 709,
+	"./hi": 710,
+	"./hi.js": 710,
+	"./hr": 711,
+	"./hr.js": 711,
+	"./hu": 712,
+	"./hu.js": 712,
+	"./hy-am": 713,
+	"./hy-am.js": 713,
+	"./id": 714,
+	"./id.js": 714,
+	"./is": 715,
+	"./is.js": 715,
+	"./it": 716,
+	"./it-ch": 717,
+	"./it-ch.js": 717,
+	"./it.js": 716,
+	"./ja": 718,
+	"./ja.js": 718,
+	"./jv": 719,
+	"./jv.js": 719,
+	"./ka": 720,
+	"./ka.js": 720,
+	"./kk": 721,
+	"./kk.js": 721,
+	"./km": 722,
+	"./km.js": 722,
+	"./kn": 723,
+	"./kn.js": 723,
+	"./ko": 724,
+	"./ko.js": 724,
+	"./ku": 725,
+	"./ku.js": 725,
+	"./ky": 726,
+	"./ky.js": 726,
+	"./lb": 727,
+	"./lb.js": 727,
+	"./lo": 728,
+	"./lo.js": 728,
+	"./lt": 729,
+	"./lt.js": 729,
+	"./lv": 730,
+	"./lv.js": 730,
+	"./me": 731,
+	"./me.js": 731,
+	"./mi": 732,
+	"./mi.js": 732,
+	"./mk": 733,
+	"./mk.js": 733,
+	"./ml": 734,
+	"./ml.js": 734,
+	"./mn": 735,
+	"./mn.js": 735,
+	"./mr": 736,
+	"./mr.js": 736,
+	"./ms": 737,
+	"./ms-my": 738,
+	"./ms-my.js": 738,
+	"./ms.js": 737,
+	"./mt": 739,
+	"./mt.js": 739,
+	"./my": 740,
+	"./my.js": 740,
+	"./nb": 741,
+	"./nb.js": 741,
+	"./ne": 742,
+	"./ne.js": 742,
+	"./nl": 743,
+	"./nl-be": 744,
+	"./nl-be.js": 744,
+	"./nl.js": 743,
+	"./nn": 745,
+	"./nn.js": 745,
+	"./pa-in": 746,
+	"./pa-in.js": 746,
+	"./pl": 747,
+	"./pl.js": 747,
+	"./pt": 748,
+	"./pt-br": 749,
+	"./pt-br.js": 749,
+	"./pt.js": 748,
+	"./ro": 750,
+	"./ro.js": 750,
+	"./ru": 751,
+	"./ru.js": 751,
+	"./sd": 752,
+	"./sd.js": 752,
+	"./se": 753,
+	"./se.js": 753,
+	"./si": 754,
+	"./si.js": 754,
+	"./sk": 755,
+	"./sk.js": 755,
+	"./sl": 756,
+	"./sl.js": 756,
+	"./sq": 757,
+	"./sq.js": 757,
+	"./sr": 758,
+	"./sr-cyrl": 759,
+	"./sr-cyrl.js": 759,
+	"./sr.js": 758,
+	"./ss": 760,
+	"./ss.js": 760,
+	"./sv": 761,
+	"./sv.js": 761,
+	"./sw": 762,
+	"./sw.js": 762,
+	"./ta": 763,
+	"./ta.js": 763,
+	"./te": 764,
+	"./te.js": 764,
+	"./tet": 765,
+	"./tet.js": 765,
+	"./tg": 766,
+	"./tg.js": 766,
+	"./th": 767,
+	"./th.js": 767,
+	"./tl-ph": 768,
+	"./tl-ph.js": 768,
+	"./tlh": 769,
+	"./tlh.js": 769,
+	"./tr": 770,
+	"./tr.js": 770,
+	"./tzl": 771,
+	"./tzl.js": 771,
+	"./tzm": 772,
+	"./tzm-latn": 773,
+	"./tzm-latn.js": 773,
+	"./tzm.js": 772,
+	"./ug-cn": 774,
+	"./ug-cn.js": 774,
+	"./uk": 775,
+	"./uk.js": 775,
+	"./ur": 776,
+	"./ur.js": 776,
+	"./uz": 777,
+	"./uz-latn": 778,
+	"./uz-latn.js": 778,
+	"./uz.js": 777,
+	"./vi": 779,
+	"./vi.js": 779,
+	"./x-pseudo": 780,
+	"./x-pseudo.js": 780,
+	"./yo": 781,
+	"./yo.js": 781,
+	"./zh-cn": 782,
+	"./zh-cn.js": 782,
+	"./zh-hk": 783,
+	"./zh-hk.js": 783,
+	"./zh-tw": 784,
+	"./zh-tw.js": 784
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -17376,7 +17278,790 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 792;
+webpackContext.id = 786;
+
+/***/ }),
+
+/***/ 811:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FindridePassPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_geofire__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_trips_service__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_instances_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_moment__ = __webpack_require__(657);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_metrics_service__ = __webpack_require__(353);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var FindridePassPage = /** @class */ (function () {
+    function FindridePassPage(navCtrl, MetricsService, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, geofireService, SignUpService, modalCtrl, app, afDB, TripsService, instanceService, platform, fcm, firebase) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.MetricsService = MetricsService;
+        this.geolocation = geolocation;
+        this.zone = zone;
+        this.sendCoordsService = sendCoordsService;
+        this.AngularFireAuth = AngularFireAuth;
+        this.alertCtrl = alertCtrl;
+        this.geofireService = geofireService;
+        this.SignUpService = SignUpService;
+        this.modalCtrl = modalCtrl;
+        this.app = app;
+        this.afDB = afDB;
+        this.TripsService = TripsService;
+        this.instanceService = instanceService;
+        this.platform = platform;
+        this.fcm = fcm;
+        this.firebase = firebase;
+        // waypoints variables
+        this.directionsService = null;
+        this.directionsDisplay = null;
+        this.bounds = null;
+        this.myLatLng = [];
+        this.tripId = null;
+        this.locationPlace = {};
+        this.onTrip = false;
+        //variables for geoquery
+        this.geocoordinatesDest = {};
+        this.geocoordinatesOr = {};
+        this.geofireOriginConfirmed = false;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_10_rxjs__["Subject"];
+        this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+        this.geocoder = new google.maps.Geocoder;
+        this.autocompleteMyPos = { input: '' };
+        this.autocompleteMyDest = { input: '' };
+        this.autocompleteItems = [];
+        this.autocompleteItems2 = [];
+        this.directionsService = new google.maps.DirectionsService();
+        this.directionsDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true,
+        });
+        this.bounds = new google.maps.LatLngBounds();
+        this.markers = [];
+        // initialize the plugin
+        console.log(this.SignUpService.userPlace);
+        this.afDB.database.ref('allUsers/' + this.userUid).once('value').then(function (snap) {
+            _this.SignUpService.userPlace = snap.val().place;
+            console.log(_this.SignUpService.userPlace);
+            _this.platform.ready().then(function () {
+                _this.token = _this.fcm.getToken().then(function (token) {
+                    console.log('this is the token ' + token);
+                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/devices/').update({
+                        token: token
+                    });
+                });
+                // this.getToken();
+            });
+            //search keyTrip
+            _this.TripsService.getKeyTrip(_this.SignUpService.userPlace, _this.userUid)
+                .subscribe(function (keyTrip) {
+                _this.keyTrip = keyTrip;
+                console.log(_this.keyTrip);
+                //if key its deleted don't show VIAJE EN CURSO  
+                if (_this.keyTrip === undefined || _this.keyTrip === null) {
+                    _this.onTrip = false;
+                    _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
+                    console.log("llegue adonde era");
+                }
+                else {
+                    //confirm that trip exist and get it
+                    _this.getOnTrip();
+                }
+            });
+            _this.SignUpService.getMyInfo(_this.userUid, _this.SignUpService.userPlace).takeUntil(_this.unsubscribe).subscribe(function (user) {
+                _this.user = user;
+                //  this.keyTrip = this.user.keyTrip
+                console.log(_this.user);
+                if (_this.user.saveTrip === undefined || _this.user.saveTrip === null) {
+                    console.log("AAAAAAAAAAAAAAAAAAAAA");
+                }
+                else {
+                    console.log(_this.user.trip);
+                    console.log("me active");
+                    _this.TripsService.eliminatingSaveTrip(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminateKeyUser(_this.SignUpService.userPlace, _this.userUid, _this.user.trip.keyTrip);
+                    _this.unsubscribe.next();
+                    _this.unsubscribe.complete();
+                    setTimeout(function () {
+                        _this.TripsService.saveTripOnRecords(_this.SignUpService.userPlace, _this.userUid, _this.user.trip);
+                        _this.navCtrl.push('RatetripPage', { trip: _this.user.trip });
+                        _this.TripsService.eliminateTrip(_this.SignUpService.userPlace, _this.userUid);
+                        console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                    }, 3000);
+                }
+            });
+            // set geofire key of place to avoid asking users to put where they are going
+            _this.geofireService.getLocationPlace(_this.SignUpService.userPlace).takeUntil(_this.unsubscribe).subscribe(function (place) {
+                _this.place = place;
+                _this.locationPlace = _this.place.location;
+                _this.geofireService.setLocationPlace(_this.SignUpService.userPlace, "some_key", _this.locationPlace.lat, _this.locationPlace.lng);
+            });
+            setTimeout(function () {
+                _this.SignUpService.getInfoPlace(_this.SignUpService.userPlace).takeUntil(_this.unsubscribe).subscribe(function (plac) {
+                    _this.placeInfo = plac;
+                    if (_this.placeInfo.emails === undefined) {
+                        if (_this.user.documents) {
+                            if (_this.user.documents.carne === undefined || _this.user.documents.id === undefined) {
+                                var modal = _this.modalCtrl.create('VerificationImagesPage');
+                                modal.present();
+                            }
+                            else if (_this.user.documents.carne === true || _this.user.documents.id === true) {
+                                _this.instanceService.isVerified(_this.SignUpService.userPlace, _this.userUid);
+                            }
+                        }
+                        else if (!_this.user.documents) {
+                            console.log('no hay docs');
+                            var modal = _this.modalCtrl.create('VerificationImagesPage');
+                            modal.present();
+                        }
+                    }
+                    else {
+                        _this.instanceService.isVerified(_this.SignUpService.userPlace, _this.userUid);
+                    }
+                });
+            }, 1000);
+        }).then(function () {
+            // TEST THIS
+            _this.afDB.database.ref('allPlaces/' + _this.SignUpService.userPlace).once('value').then(function (snapPlace) {
+                _this.geofirePlaceSize = snapPlace.val().geofireSize;
+            });
+        });
+    } // END OF CONSTRUCTOR
+    FindridePassPage.prototype.getToken = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var _a, _b;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        if (!this.platform.is('android')) return [3 /*break*/, 2];
+                        _a = this;
+                        return [4 /*yield*/, this.firebase.getToken().then(function (token) {
+                                console.log('this is the token ' + token);
+                                _this.afDB.database.ref(_this.SignUpService.userPlace + '/drivers/' + _this.user + '/devices/').update({
+                                    token: token
+                                });
+                            })];
+                    case 1:
+                        _a.token = _c.sent();
+                        _c.label = 2;
+                    case 2:
+                        if (!this.platform.is('ios')) return [3 /*break*/, 5];
+                        _b = this;
+                        return [4 /*yield*/, this.firebase.getToken().then(function (token) {
+                                console.log('this is the token ' + token);
+                                _this.afDB.database.ref(_this.SignUpService.userPlace + '/drivers/' + _this.user + '/devices/').update({
+                                    token: token
+                                });
+                            })];
+                    case 3:
+                        _b.token = _c.sent();
+                        return [4 /*yield*/, this.firebase.grantPermission()];
+                    case 4:
+                        _c.sent();
+                        _c.label = 5;
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    FindridePassPage.prototype.getOnTrip = function () {
+        var _this = this;
+        this.TripsService.getOnTrip(this.SignUpService.userPlace, this.userUid)
+            .subscribe(function (onTrip) {
+            _this.onTrip = onTrip;
+            if (_this.onTrip === true) {
+                _this.geofireService.cancelGeofireDest();
+                _this.geofireService.cancelGeofireOr();
+                _this.geofireService.cancelGeofireDestLMU();
+                _this.geofireService.cancelGeofireOrLMU();
+            }
+            console.log(_this.onTrip);
+            console.log('ONTRIP');
+        });
+    };
+    FindridePassPage.prototype.ionViewDidLoad = function () {
+        this.loadMap();
+    };
+    FindridePassPage.prototype.loadMap = function () {
+        // this gets current position and set the camera of the map and put a marker in your location
+        var _this = this;
+        this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then(function (position) {
+            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var mapOptions = {
+                center: latLng,
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoomControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                rotateControl: false,
+                fullscreenControl: false,
+                styles: [
+                    {
+                        featureType: 'poi',
+                        elementType: 'labels.icon',
+                        stylers: [
+                            {
+                                visibility: 'off'
+                            }
+                        ]
+                    }
+                ]
+            };
+            //creates the map and give options
+            _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
+            _this.myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+            _this.markerGeolocation = new google.maps.Marker({
+                map: _this.map,
+                animation: google.maps.Animation.DROP,
+                position: latLng,
+                draggable: true,
+                icon: { url: "assets/imgs/marker-origin.png",
+                    scaledSize: new google.maps.Size(90, 90)
+                }
+            });
+            _this.markers.push(_this.markerGeolocation);
+            _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
+            //to reverse-geocode position
+            _this.geocodeLatLng(latLng, _this.autocompleteMyPos);
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    FindridePassPage.prototype.calculateRoute = function (positionOr, positionDest) {
+        //tutorial ngclassroom https://blog.ng-classroom.com/blog/ionic2/directions-google-js-ionic/
+        var _this = this;
+        this.bounds.extend(this.myLatLng);
+        this.map.fitBounds(this.bounds);
+        this.directionsService.route({
+            origin: positionOr,
+            destination: positionDest,
+            travelMode: google.maps.TravelMode.DRIVING,
+            avoidTolls: true
+        }, function (response, status) {
+            //render
+            if (status === google.maps.DirectionsStatus.OK) {
+                _this.directionsDisplay.setDirections(response);
+            }
+            else {
+                alert('Could not display directions due to: ' + status);
+            }
+        });
+    };
+    //autocomplete of myPosition searchbar
+    FindridePassPage.prototype.updateSearchResultsMyPos = function () {
+        var _this = this;
+        if (this.autocompleteMyPos.input == '') {
+            this.autocompleteItems = [];
+            return;
+        }
+        this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteMyPos.input, componentRestrictions: { country: 'co' } }, function (predictions, status) {
+            _this.autocompleteItems = [];
+            if (predictions) {
+                _this.zone.run(function () {
+                    predictions.forEach(function (prediction) {
+                        _this.autocompleteItems.push(prediction);
+                    });
+                });
+            }
+        });
+    };
+    ////autocomplete of my destination
+    FindridePassPage.prototype.updateSearchResultsMyDest = function () {
+        var _this = this;
+        if (this.autocompleteMyDest.input == '') {
+            this.autocompleteItems2 = [];
+            return;
+        }
+        this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteMyDest.input, componentRestrictions: { country: 'co' } }, function (predictions, status) {
+            _this.autocompleteItems2 = [];
+            if (predictions) {
+                _this.zone.run(function () {
+                    predictions.forEach(function (prediction) {
+                        _this.autocompleteItems2.push(prediction);
+                    });
+                });
+            }
+        });
+    };
+    ////select result of my position searchbar
+    FindridePassPage.prototype.selectSearchResultMyPos = function (item) {
+        var _this = this;
+        this.autocompleteItems = [];
+        this.clearMarkers();
+        this.autocompleteMyDest.input = '';
+        this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+                // let position = {
+                //     lat: results[0].geometry.location.lat,
+                //     lng: results[0].geometry.location.lng
+                // };
+                _this.markerGeolocation = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: _this.map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/marker-origin.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    },
+                });
+                _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
+                _this.markers.push(_this.markerGeolocation);
+                _this.map.setCenter(results[0].geometry.location);
+                _this.autocompleteMyPos.input = [item.description];
+                _this.directionsDisplay.setMap(null);
+            }
+        });
+    };
+    ////select result of my destination searchbar
+    FindridePassPage.prototype.selectSearchResultMyDest = function (item) {
+        var _this = this;
+        this.autocompleteItems2 = [];
+        if (this.markerDest !== undefined) {
+            this.markerDest.setMap(null);
+        }
+        this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+                // let position = {
+                //   latitude: results[0].geometry.location.lat,
+                //   longitude: results[0].geometry.location.lng
+                // };
+                var position = new google.maps.LatLng(results[0].geometry.location.lat, results[0].geometry.location.lng);
+                console.log(position);
+                _this.markerDest = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: _this.map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/marker-destination2.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    }
+                });
+                console.log(position);
+                _this.map.fitBounds(_this.bounds);
+                _this.markers.push(_this.markerDest);
+                _this.map.setCenter(results[0].geometry.location);
+                console.log(results[0].geometry.location);
+                _this.autocompleteMyDest.input = [item.description];
+                _this.dragMarkerDest(_this.markerDest, _this.autocompleteMyDest);
+                _this.directionsDisplay.setMap(_this.map);
+                _this.myLatLngDest = results[0].geometry.location;
+                _this.calculateRoute(_this.markerGeolocation.position, results[0].geometry.location);
+            }
+        });
+    };
+    ////////Markers
+    FindridePassPage.prototype.clearMarkers = function () {
+        for (var i = 0; i < this.markers.length; i++) {
+            console.log(this.markers[i]);
+            this.markers[i].setMap(null);
+        }
+        this.markers = [];
+    };
+    FindridePassPage.prototype.dragMarkerDest = function (marker, inputName) {
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            _this.map.setCenter(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            _this.calculateRoute(_this.markerGeolocation.position, latLng);
+        });
+    };
+    FindridePassPage.prototype.dragMarkerOr = function (marker, inputName) {
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            _this.map.setCenter(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            if (_this.autocompleteMyDest.input == undefined || _this.autocompleteMyDest.input == '') {
+                console.log("funciona");
+            }
+            else {
+                _this.calculateRoute(latLng, _this.markerDest.position);
+            }
+        });
+    };
+    FindridePassPage.prototype.geocodeLatLng = function (latLng, inputName) {
+        this.geocoder.geocode({ 'location': latLng }, function (results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    console.log(results[0].formatted_address);
+                    inputName.input = [results[0].formatted_address];
+                }
+                else {
+                    alert('No results found');
+                }
+            }
+            else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
+    };
+    FindridePassPage.prototype.listride = function () {
+        var _this = this;
+        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/blockPayment/').once('value').then(function (snapBlock) {
+            if (snapBlock.val() === true) {
+                var alert_1 = _this.alertCtrl.create({
+                    title: 'Tienes un saldo pendiente por pagar',
+                    subTitle: 'Para seguir disfrutando de Waypool debes pagar el saldo pendiente de tus viajes pasados, estas perjudicando a varias personas de tu comunidad',
+                    buttons: [
+                        {
+                            text: 'No lo quiero hacer ahora',
+                            role: 'cancel',
+                        },
+                        {
+                            text: 'Ir a Mi Saldo',
+                            handler: function () {
+                                _this.app.getRootNav().push('WalletPage');
+                            }
+                        }
+                    ]
+                });
+                alert_1.present();
+            }
+            else {
+                if (_this.user.trips) {
+                    if (_this.user.onTrip == true) {
+                        var alert_2 = _this.alertCtrl.create({
+                            title: 'Estas actualmente en un viaje',
+                            subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
+                            buttons: ['OK']
+                        });
+                        alert_2.present();
+                    }
+                    else {
+                        try {
+                            _this.desFirebase = _this.autocompleteMyDest.input;
+                            _this.orFirebase = _this.autocompleteMyPos.input;
+                            console.log(_this.desFirebase[0]);
+                            if (_this.autocompleteMyDest.input == '' || _this.autocompleteMyPos.input == '') {
+                                _this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
+                                _this.clearMarkers();
+                                _this.directionsDisplay.setDirections({ routes: [] });
+                                // AQUI
+                            }
+                            else {
+                                //turn on geoquery place to determine wether the user is in place
+                                _this.setGeofirePlace(_this.SignUpService.userPlace, _this.geofirePlaceSize, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
+                                // test: geoqueryU on listride() of findride.ts
+                                _this.geoqueryU.on("key_entered", function (key) {
+                                    var _this = this;
+                                    this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid + '/trips').update({
+                                        origin: this.orFirebase,
+                                        destination: this.desFirebase
+                                    }).then(function () {
+                                        _this.geocoder.geocode({ 'address': _this.orFirebase[0] }, function (results, status) {
+                                            if (status === 'OK') {
+                                                _this.geocoordinatesOr = {
+                                                    lat: results[0].geometry.location.lat(),
+                                                    lng: results[0].geometry.location.lng()
+                                                };
+                                            }
+                                            // turn geofire On
+                                            if (_this.user.onTrip === true) {
+                                                console.log('geofireOr hasnt been activated due ontrip');
+                                            }
+                                            else {
+                                                _this.geofireService.setGeofireOr(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                _this.geofireService.setGeofireOrLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                console.log('executed geofire Or');
+                                            }
+                                        });
+                                        _this.geofireOriginConfirmed = true;
+                                    }).then(function () {
+                                        if (!_this.geofireOriginConfirmed === true) {
+                                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
+                                                origin: _this.orFirebase,
+                                                destination: _this.desFirebase
+                                            }).then(function () {
+                                                _this.geocoderDestinationCase();
+                                            });
+                                        }
+                                        else {
+                                            _this.geofireOriginConfirmed = false;
+                                        }
+                                    });
+                                    console.log(key + ' detected');
+                                }.bind(_this));
+                                __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
+                                var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
+                                console.log(today);
+                                _this.MetricsService.createdReserves(_this.SignUpService.userPlace, _this.userUid, today, _this.desFirebase, _this.orFirebase);
+                                _this.app.getRootNav().push('ListridePage');
+                                console.log("se ejecuto");
+                            }
+                        }
+                        catch (error) {
+                            console.log("soy yo");
+                            if (_this.geofire2 === null || _this.geofire2 === undefined) {
+                                //this is to tell the user to select a place before publishing a trip
+                                _this.presentAlert('Información Incompleta', 'no puedes publicar un viaje sin antes seleccionar un lugar de la lista.', 'Ok');
+                            }
+                            else {
+                                _this.presentAlert('Hay un error en la aplicación', 'Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.', 'Ok');
+                            }
+                        }
+                    }
+                }
+                else {
+                    try {
+                        _this.desFirebase = _this.autocompleteMyDest.input;
+                        _this.orFirebase = _this.autocompleteMyPos.input;
+                        console.log(_this.desFirebase[0]);
+                        if (_this.autocompleteMyDest.input == '' || _this.autocompleteMyPos.input == '') {
+                            _this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
+                            _this.clearMarkers();
+                            _this.directionsDisplay.setDirections({ routes: [] });
+                            // AQUI
+                        }
+                        else {
+                            //turn on geoquery place to determine wether the user is in place
+                            _this.setGeofirePlace(_this.SignUpService.userPlace, _this.geofirePlaceSize, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
+                            // test: geoqueryU on listride() of findride.ts
+                            _this.geoqueryU.on("key_entered", function (key) {
+                                var _this = this;
+                                this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).update({
+                                    geofireOrigin: true
+                                }).then(function () {
+                                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
+                                        origin: _this.orFirebase,
+                                        destination: _this.desFirebase
+                                    }).then(function () {
+                                        _this.geocoder.geocode({ 'address': _this.orFirebase[0] }, function (results, status) {
+                                            if (status === 'OK') {
+                                                _this.geocoordinatesOr = {
+                                                    lat: results[0].geometry.location.lat(),
+                                                    lng: results[0].geometry.location.lng()
+                                                };
+                                            }
+                                            // turn geofire On
+                                            if (_this.user.onTrip === true) {
+                                                console.log('geofireOr hasnt been activated due ontrip');
+                                            }
+                                            else {
+                                                console.log('AQUI ESTA EL ERROR 2');
+                                                _this.geofireService.setGeofireOr(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                _this.geofireService.setGeofireOrLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng, _this.userUid);
+                                                console.log('executed geofire Or');
+                                            }
+                                        });
+                                        _this.geofireOriginConfirmed = true;
+                                    }).then(function () {
+                                        if (!_this.geofireOriginConfirmed === true) {
+                                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trips').update({
+                                                origin: _this.orFirebase,
+                                                destination: _this.desFirebase
+                                            }).then(function () {
+                                                _this.geocoderDestinationCase();
+                                            });
+                                        }
+                                        else {
+                                            _this.geofireOriginConfirmed = false;
+                                        }
+                                    });
+                                    console.log('directions set');
+                                });
+                                console.log(key + ' detected');
+                            }.bind(_this));
+                            // setTimeout(()=>{
+                            //   if(!this.geofireOriginConfirmed == true){
+                            //     this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/trips').update({
+                            //       origin: this.orFirebase,
+                            //       destination: this.desFirebase        
+                            //   }).then(() => {
+                            //     this.geocoderDestinationCase();
+                            //     })
+                            //   }else{
+                            //     this.geofireOriginConfirmed = false;
+                            //   }
+                            // },3000)
+                            __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
+                            var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
+                            console.log(today);
+                            _this.MetricsService.createdReserves(_this.SignUpService.userPlace, _this.userUid, today, _this.desFirebase, _this.orFirebase);
+                            _this.app.getRootNav().push('ListridePage');
+                            console.log("se ejecuto");
+                        }
+                    }
+                    catch (error) {
+                        console.log("soy yo");
+                        if (_this.geofire2 === null || _this.geofire2 === undefined) {
+                            //this is to tell the user to select a place before publishing a trip
+                            _this.presentAlert('Información Incompleta', 'no puedes publicar un viaje sin antes seleccionar un lugar de la lista.', 'Ok');
+                        }
+                        else {
+                            _this.presentAlert('Hay un error en la aplicación', 'Lo sentimos, por favor para solucionar este problema porfavor envianos un correo a soporte@waypool.com,¡lo solucionaremos!.', 'Ok');
+                        }
+                    }
+                }
+            }
+        });
+    };
+    FindridePassPage.prototype.geocoderDestinationCase = function () {
+        var _this = this;
+        this.geocoder.geocode({ 'address': this.desFirebase[0] }, function (results, status) {
+            if (status === 'OK') {
+                _this.geocoordinatesDest = {
+                    lat: results[0].geometry.location.lat(),
+                    lng: results[0].geometry.location.lng()
+                };
+            }
+            // turn geofire On
+            if (_this.user.onTrip === true) {
+                console.log('geofireDest hasnt been activated due ontrip');
+            }
+            else {
+                _this.geofireService.setGeofireDest(_this.SignUpService.userPlace, 2, _this.geocoordinatesDest.lat, _this.geocoordinatesDest.lng, _this.userUid);
+                _this.geofireService.setGeofireDestLMU(_this.SignUpService.userPlace, 2, _this.geocoordinatesDest.lat, _this.geocoordinatesDest.lng, _this.userUid);
+                console.log('executed geofire Dest');
+            }
+        });
+    };
+    FindridePassPage.prototype.presentAlert = function (title, text, button) {
+        var alert = this.alertCtrl.create({
+            title: title,
+            subTitle: text,
+            buttons: [button]
+        });
+        alert.present();
+    };
+    FindridePassPage.prototype.goToMyReserves = function () {
+        this.app.getRootNav().push('ReservetripPage');
+    };
+    FindridePassPage.prototype.goToTrip = function () {
+        // go to trip      
+        if (this.onTrip === true) {
+            console.log('DISPARADOR');
+            var modal = this.modalCtrl.create('MyridePage');
+            modal.present();
+        }
+        else {
+            console.log("es undefined");
+        }
+    };
+    FindridePassPage.prototype.confirmNote = function () {
+        var _this = this;
+        var modal = this.modalCtrl.create('ConfirmNotePage', { or: this.orFirebase, dest: this.desFirebase });
+        modal.onDidDismiss(function (accepted) {
+            if (accepted) {
+                _this.app.getRootNav().push('ListridePage');
+            }
+        });
+        modal.present();
+    };
+    // set geoquery that determines if the person is in place
+    FindridePassPage.prototype.setGeofirePlace = function (place, radius, lat, lng, userId) {
+        this.dbRef = this.afDB.database.ref(place + '/geofirePlace/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_8_geofire__(this.dbRef);
+        this.geoqueryU = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
+        });
+        console.log('geoquery place added');
+    };
+    FindridePassPage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], FindridePassPage.prototype, "mapElement", void 0);
+    FindridePassPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-findride',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_customer\waypool_costumer\src\pages\p-findride\findride.html"*/'\n\n<ion-header class="bg-theme">\n\n  <ion-navbar>\n\n      <button ion-button menuToggle>\n\n          <ion-icon name="menu" style="color: white;"></ion-icon>\n\n        \n\n        </button>\n\n      <ion-title>WAYPOOL</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content  padding>\n\n   \n\n \n\n    <ion-card class="search">\n\n          \n\n        <ion-card-content>\n\n            <span class="dot bg-theme"></span>\n\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n\n          \n\n            <ion-list   [hidden]="autocompleteItems.length == 0">\n\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n\n                  {{ item.description }}\n\n                </ion-item>\n\n              </ion-list>\n\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n        </ion-card-content>\n\n        <ion-card-content>\n\n            <span class="dot bg-yellow"></span>           \n\n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n\n              {{ item.description }}\n\n            </ion-item>\n\n          </ion-list>\n\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n\n\n        </ion-card-content>\n\n        \n\n    </ion-card>\n\n  \n\n <div #map id="map"></div>  \n\n    \n\n    \n\n<ion-row class="rowOfButtons">\n\n\n\n  <div class="btn-footer btn-left">\n\n      <button class="btn rounded bg-darkblue text-white myReservesButton" style="width: 100%" (click)="goToMyReserves()" >Mis Viajes</button> \n\n  </div>\n\n  <div class="btn-right">\n\n      <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%">Buscar</button>\n\n\n\n  </div>\n\n \n\n</ion-row>\n\n \n\n<div *ngIf="onTrip" >\n\n    <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;\n\n     position:absolute;\n\n     bottom: 0px ;\n\n     left: 0px ;\n\n     height: 51px; \n\n     font-size: large;\n\n   " (click)="goToTrip() " >VIAJE EN CURSO\n\n    </button>\n\n</div>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_customer\waypool_costumer\src\pages\p-findride\findride.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_15__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */]])
+    ], FindridePassPage);
+    return FindridePassPage;
+}());
+
+//# sourceMappingURL=findride.js.map
 
 /***/ })
 

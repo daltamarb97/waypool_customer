@@ -14,14 +14,16 @@ export class MetricsService {
     this.afDB.database.ref('data/timesUserGoListride/'+place).push({
       time:time,
       dest:dest,
-      or:or
+      or:or,
+      userId:userUid
     });
 
    }   
-   public cancelReserves(place, userUid,trip){
+   public cancelReserves(place, userId,trip){
     //send every reserve that were created
     this.afDB.database.ref('data/userCancelTrip/'+place).push({
-      trip:trip
+      trip:trip,
+      userId:userId
     });
 
    }

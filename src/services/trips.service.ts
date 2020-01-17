@@ -146,7 +146,17 @@ export class TripsService {
       //eliminate keyTrip from user's node to eliminate access to that reserve
     this.afDB.database.ref(place + '/users/'+userUid+'/availableReserves/').remove();
 
-   } 
+   }
+   
+   
+   public setClearToDeleteDriver(place, driverUid, keyTrip){    
+    //eliminate keyTrip from user's node to eliminate access to that reserve
+  this.afDB.database.ref(place + '/trips/'+driverUid+'/'+ keyTrip).update({
+    clearToDeleteDriver: true
+  });
+
+ }
+   
      
      public eliminateAvailableUsers(place, userUid){    
       //eliminate keyTrip from user's node to eliminate access to that reserve

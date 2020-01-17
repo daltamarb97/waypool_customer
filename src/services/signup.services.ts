@@ -65,6 +65,10 @@ export class SignUpService {
         return this.afDB.object(place + '/users/'+ userId).valueChanges();
         }
 
+    public getSaveTrip(userId, place){
+            return this.afDB.object(place + '/users/'+ userId + '/saveTrip/').valueChanges();
+            }
+
         public getEmails(enterprise){
             return this.afDB.list('allPlaces/' + enterprise +'/emails' ).valueChanges()
          }

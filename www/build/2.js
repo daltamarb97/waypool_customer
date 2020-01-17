@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 653:
+/***/ 651:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WalletPageModule", function() { return WalletPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wallet__ = __webpack_require__(807);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wallet__ = __webpack_require__(806);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,22 +41,22 @@ var WalletPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 807:
+/***/ 806:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WalletPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendUsers_service__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_signup_services__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_signup_services__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_clipboard__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_clipboard__ = __webpack_require__(359);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -98,6 +98,7 @@ var WalletPage = /** @class */ (function () {
             if (snapLink.val().paymentLink === undefined || snapLink.val().paymentLink === null) {
                 console.log('no hay link');
                 console.log(snapLink.val().paymentLink);
+                _this.paymentLink = 'No hay link todavía';
             }
             else {
                 _this.paymentLink = snapLink.val().paymentLink;
@@ -131,7 +132,7 @@ var WalletPage = /** @class */ (function () {
     };
     WalletPage.prototype.informationPayment = function () {
         var toast = this.toastCtrl.create({
-            message: 'Nuestra pasarela de pagos es MercadoPago, hecha por Mercado Libre, considerada entre las 2 mejores de Latinoamérica en términos de eficiencia y seguridad. Waypool no obtiene en ningún momento información financiera como tarjeta de crédito, cuenta bancaria, u otra sensible.',
+            message: 'Nuestra pasarela de pagos es MercadoPago, hecha por Mercado Libre, considerada entre las 2 mejores de Latinoamérica en términos de eficiencia y seguridad. Waypool no obtiene en ningún momento información financiera como tarjeta de crédito, cuenta bancaria, u otra información sensible.',
             showCloseButton: true,
             closeButtonText: 'OK',
             position: 'middle'
@@ -140,9 +141,9 @@ var WalletPage = /** @class */ (function () {
     };
     WalletPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-wallet',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/wallet/wallet.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title class="text-center">SALDO A PAGAR</ion-title>\n    </ion-navbar>\n\n    <div text-center >\n        <p><small class="text-white">Saldo pendiente a pagar:</small></p>\n        <h1 class="text-white">$ {{total}}</h1>\n        <ion-row style="    display: flex;\n        justify-content: center;"> \n                <div class="iconHelp" style="font-size: 30px; margin-bottom: 7px;">\n                        <ion-icon class="text-white" (click)="informationPayment()" name="information-circle-outline"></ion-icon>\n                    </div>\n        </ion-row>\n    </div>\n    \n\n</ion-header>\n\n<ion-content class="bg-light">\n       \n        <ion-list style="display: flex" (click)=\'copyToClipBoard(paymentLink)\' >\n           \n\n                <ion-item>\n                    <ion-label stacked>Link para pagar tu saldo pendiente</ion-label>\n                    <ion-input  [(ngModel)]="paymentLink" readonly></ion-input>\n                </ion-item>\n                <button class="btn rounded bg-darkblue text-white" style="width: 20%;height: 66px;font-size: 30px;"><ion-icon name="copy"></ion-icon>\n                </button>\n            </ion-list>\n\n        <p class="love">Historial de viajes</p> \n\n    <ion-list>\n        <ion-card *ngFor = "let user of recordTrips">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/carBlue.png" style="height:45px; width: 45px;">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{user.DestinationTime}}\n                        </h2>\n                        <p>{{user.car}}</p>\n                        <ion-badge  class="badge bg-darkblue"> Precio: $ {{user.price}}</ion-badge>                                  \n\n                    </div>\n\n                    \n                </ion-item>\n                <ion-card-content>\n                    <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{user.houseAddr}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{user.placeAddr}}</p>\n                    </div>\n                   \n                </ion-card-content>       \n                \n            </ion-card>  \n</ion-list>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/wallet/wallet.html"*/
+            selector: 'page-wallet',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-wallet/wallet.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title class="text-center">SALDO A PAGAR</ion-title>\n    </ion-navbar>\n\n    <div text-center >\n        <p><small class="text-white">Saldo pendiente a pagar:</small></p>\n        <h1 class="text-white">$ {{total}}</h1>\n        <ion-row style="    display: flex;\n        justify-content: center;"> \n                <div class="iconHelp" style="font-size: 30px; margin-bottom: 7px;">\n                        <ion-icon class="text-white" (click)="informationPayment()" name="information-circle-outline"></ion-icon>\n                    </div>\n        </ion-row>\n    </div>\n    \n\n</ion-header>\n\n<ion-content class="bg-light">\n       \n        <ion-list style="display: flex" (click)=\'copyToClipBoard(paymentLink)\' >\n           \n\n                <ion-item>\n                    <ion-label stacked>Link para pagar tu saldo pendiente</ion-label>\n                    <ion-input  [(ngModel)]="paymentLink" readonly></ion-input>\n                </ion-item>\n                <button class="btn rounded bg-darkblue text-white" style="width: 20%;height: 66px;font-size: 30px;"><ion-icon name="copy"></ion-icon>\n                </button>\n            </ion-list>\n\n        <p class="love">Historial de viajes</p> \n\n    <ion-list>\n        <ion-card *ngFor = "let user of recordTrips">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/carBlue.png" style="height:45px; width: 45px;">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{user.DestinationTime}}\n                        </h2>\n                        <p>{{user.car}}</p>\n                        <ion-badge  class="badge bg-darkblue"> Precio: $ {{user.price}}</ion-badge>                                  \n\n                    </div>\n\n                    \n                </ion-item>\n                <ion-card-content>\n                    <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{user.houseAddr}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{user.placeAddr}}</p>\n                    </div>\n                   \n                </ion-card-content>       \n                \n            </ion-card>  \n</ion-list>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-wallet/wallet.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_8__ionic_native_clipboard__["a" /* Clipboard */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_8__ionic_native_clipboard__["a" /* Clipboard */]])
     ], WalletPage);
     return WalletPage;
 }());

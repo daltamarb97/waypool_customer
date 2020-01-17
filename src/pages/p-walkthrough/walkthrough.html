@@ -1,0 +1,91 @@
+<!--
+  Generated template for the WalkthroughPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>walkthrough</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content style="background-color: #001127">
+    <ion-slides pager>
+        <ion-slide>
+            <div class="logoholderm" text-center>
+                <img src="./assets/imgs/connectemployees.png" alt="">
+                
+                <h2>¡Viaja con tus compañeros!</h2>
+                <p>
+                    De tu empresa o de otras empresas
+                </p> 
+                </div>
+          
+        </ion-slide>
+    
+        <ion-slide>
+            <div class="logoholderm" text-center>
+                <img src="./assets/imgs/typesoftrips.png" alt="">
+                
+                <h2>Tipos de viaje</h2>
+                <p>
+                    Programados: podrás reservar un viaje a cualquier hora durante el día.
+                </p> 
+                <p>
+                    En curso: Son viajes iniciados por poolers que ya están recogiendo a otros pasajeros y pueden recogerte en ese momento.
+                </p>
+                </div>
+          
+        </ion-slide>
+        <ion-slide>
+            <div class="logoholderm" text-center>
+                <img src="./assets/imgs/morethanonetrip.png"  alt="">
+                
+                <h2>Puedes entrar en más de 1 viaje programado </h2>
+                <p>
+                    También escribir por chat para saludar a tus compañeros. 
+                </p> 
+                </div>         
+        </ion-slide>
+        <ion-slide>
+            <div class="logoholderm" text-center>
+                <img src="./assets/imgs/nocash.png"  alt="">
+                
+                <h2>No se maneja efectivo en el viaje</h2>
+                <p>
+                  Los viajes que haz hecho se cobran una sola vez cada semana mediante un link de la pasarela MercadoPago que te enviaremos en la App. Ahí podrás pagar con TC, efecty o Baloto. 
+                </p> 
+                </div>         
+        </ion-slide>
+            <ion-slide>
+                <div class="logoholderm" text-center>
+                    <img src="./assets/imgs/lowprices.png"  alt="">
+                    
+                    <h2>Precios bajos</h2>
+                    <p>
+                        Al viajar con tus compañeros aportas una pequeña contribución a los gastos de su viaje.
+                    </p> 
+                    </div>         
+            </ion-slide>
+            
+        <ion-slide> 
+            <div class="logoholderm"  text-center>
+                <img [ngClass]="animate" src="assets/imgs/blueCarWalkthrough.png" style="height: 20%; width: 20%;" alt="">
+                
+                <h2>Listo</h2>
+                <p>
+                   Gracias por ayudarnos a construir esta red de transporte inteligente
+                </p> 
+
+                <div text-center>
+                    <button  class="btn bg-light text-theme rounded"  (click)="goLogin()">SALIR</button>
+                  </div>
+                </div>               
+        </ion-slide>
+      </ion-slides>
+
+</ion-content>

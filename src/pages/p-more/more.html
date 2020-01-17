@@ -1,0 +1,69 @@
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title class="text-center">PERFIL</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light" >
+    <ion-item>
+        
+                <ion-avatar item-start>
+                        <img src="assets/imgs/userPicture.png">
+                    </ion-avatar>
+                    <div class="name">
+                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}
+                            <ion-icon *ngIf = 'verified' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                        </h2>
+                        <p (click)="profile()">Editar Perfil</p>
+                    </div>
+        
+        
+        
+    </ion-item>
+
+    <ion-list no-lines>
+        <!-- <button ion-item (click)="reviews()">
+            <ion-avatar item-start>
+                <ion-icon name="ios-star"></ion-icon>
+            </ion-avatar>
+            Mis calificaciones (Próximamente)
+        </button>
+        <button ion-item (click)="notification()">
+            <ion-avatar item-start>
+                <ion-icon name="md-notifications"></ion-icon>
+            </ion-avatar>
+            Notificaciones (Próximamente)
+        </button> -->
+        <button ion-item (click)="terms()">
+            <ion-avatar item-start>
+                <ion-icon name="md-paper"></ion-icon>
+            </ion-avatar>
+            Terminos y Condiciones
+        </button>
+        <!-- <button ion-item (click)="earn()">
+            <ion-avatar item-start>
+                <ion-icon name="md-share"></ion-icon>
+            </ion-avatar>
+            Refiérenos y Ganas (Próximamente)
+        </button>
+        <button ion-item (click)="ratevroom()">
+            <ion-avatar item-start>
+                <ion-icon name="md-thumbs-up"></ion-icon>
+            </ion-avatar>
+            Cálifica a Waypool (Próximamente)
+        </button> -->
+        <!-- <button ion-item (click)="help()">
+            <ion-avatar item-start>
+                <ion-icon name="md-alert"></ion-icon>
+            </ion-avatar>
+           Soporte 
+        </button> -->
+    </ion-list>
+  
+    
+    <ion-list no-lines>
+        <button ion-item (click)="logOut()" text-center><h2 class="text-theme"><strong>Salir de mi cuenta</strong></h2></button>
+
+    </ion-list>
+    <p class="love">Desarrollado con Amor <ion-icon name="heart"></ion-icon></p> 
+</ion-content>

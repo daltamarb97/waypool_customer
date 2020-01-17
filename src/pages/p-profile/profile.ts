@@ -33,46 +33,59 @@ unsubscribe = new Subject
     })
   }
   saveChanges(){
-    if(this.phone == null && this.user.about == null && this.user.url == null){
+
+    this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company + '/zones').once('value').then((snap)=>{
+      let obj = snap.val();
+      Object.getOwnPropertyNames(obj).forEach((key)=>{
+        if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
+          
+        }else{
+          if(this.phone == null && this.user.about == null && this.user.url == null){
       
+            
+            this.navCtrl.pop();
+          }else if(this.phone == null && this.user.about == null && this.user.url != null){
+            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
+            
+            this.navCtrl.pop();
+          }else if(this.phone == null && this.user.about != null && this.user.url == null){
+            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
+            
+            this.navCtrl.pop();
+          }else if(this.phone != null && this.user.about == null && this.user.url == null){
+            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid,this.phone);
+            
+            this.navCtrl.pop();
+          }else if(this.phone != null && this.user.about != null && this.user.url == null){
+            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid,this.phone);
+            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
+            
+            this.navCtrl.pop();
+          }else if(this.phone != null && this.user.about == null && this.user.url != null){
+            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid,this.phone);
+            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
+            
+            this.navCtrl.pop();
+          }else if(this.phone == null && this.user.about != null && this.user.url != null){
+            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
+            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
+            
+            this.navCtrl.pop(); 
+          }else if(this.phone != null && this.user.about != null && this.user.url != null){
+            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
+            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
+            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
+            
+            this.navCtrl.pop();
+          }else{
+            console.log('go to the f*cking hell');
+          } 
+        }
+      })
+    }).then(()=>{
       this.toastConfirmation();
-      this.navCtrl.pop();
-    }else if(this.phone == null && this.user.about == null && this.user.url != null){
-      this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
-      this.toastConfirmation();
-      this.navCtrl.pop();
-    }else if(this.phone == null && this.user.about != null && this.user.url == null){
-      this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
-      this.toastConfirmation();
-      this.navCtrl.pop();
-    }else if(this.phone != null && this.user.about == null && this.user.url == null){
-      this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid,this.phone);
-      this.toastConfirmation();
-      this.navCtrl.pop();
-    }else if(this.phone != null && this.user.about != null && this.user.url == null){
-      this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid,this.phone);
-      this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
-      this.toastConfirmation();
-      this.navCtrl.pop();
-    }else if(this.phone != null && this.user.about == null && this.user.url != null){
-      this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid,this.phone);
-      this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
-      this.toastConfirmation();
-      this.navCtrl.pop();
-    }else if(this.phone == null && this.user.about != null && this.user.url != null){
-      this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
-      this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
-      this.toastConfirmation();
-      this.navCtrl.pop(); 
-    }else if(this.phone != null && this.user.about != null && this.user.url != null){
-      this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
-      this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
-      this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
-      this.toastConfirmation();
-      this.navCtrl.pop();
-    }else{
-      console.log('go to the f*cking hell');
-    } 
+    })
+    
   }
 
   toastConfirmation(){

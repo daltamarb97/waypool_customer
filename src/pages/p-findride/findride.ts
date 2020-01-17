@@ -103,7 +103,9 @@ export class FindridePassPage {
   usingGeolocation:boolean = false;
 
   loading:any;
- constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase, public loadingCtrl: LoadingController ) {
+  keyDetectedInGeofireOrigin:boolean = false;
+  keyDetectedInGeofireDestination:boolean = false;
+ constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase, public loadingCtrl: LoadingController, public viewCtril: ViewController ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -133,6 +135,30 @@ export class FindridePassPage {
         console.log(snapshot.val().multipleLocations);
         this.zonesToIterate = snapshot.val().zones;
         console.log(this.zonesToIterate);
+
+
+        //logica de instrucciones 
+        this.afDB.database.ref(snapshot.val().zones[0] + '/users/' + this.userUid ).once('value').then((snapWalkthr)=>{
+          if(snapWalkthr.val().shownInstructions === true){
+            console.log('ya lo mostre');
+            
+          }else{
+            this.app.getRootNav().push('WalkthroughPage');
+
+            Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{    
+          
+              if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
+    
+              }else{
+                this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid).update({
+                  shownInstructions: true
+                })
+
+              }
+            })
+
+          }
+        })
         
         if(snapshot.val().multipleLocations === true){
           // temporary location until user chooses the right location of their company
@@ -159,31 +185,6 @@ export class FindridePassPage {
           this.instanceService.isVerified(this.SignUpService.userPlace, this.userUid);
   
         }
-
-        //logica de instrucciones
-        // this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.userUid ).once('value').then((snapWalkthr)=>{
-        //   if(snapWalkthr.val().shownInstructions === true){
-        //     console.log('ya lo mostre');
-            
-        //   }else{
-        //     this.app.getRootNav().push('WalkthroughPage');
-
-        //     Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{    
-          
-        //       if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
-    
-        //       }else{
-        //         this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid).update({
-        //           shownInstructions: true
-        //         })
-
-        //       }
-        //     })
-
-        //   }
-        // })
-
-
         
       }).then(()=>{
 
@@ -801,23 +802,31 @@ geocodeLatLng(latLng,inputName) {
                       console.log(key + ' detected')
                     }.bind(this)) 
 
-                   // si no hay nada disponible
-                    setTimeout(() => {
-                      if(this.geofireDestinationConfirmed === false && this.geofireOriginConfirmed === false){
-                        moment.locale('es'); //to make the date be in spanish  
-                        let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
-                        console.log(today)
-                        // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
-                        this.loading.dismiss();
-                        this.app.getRootNav().push('ListridePage');
-                        console.log('esto debe ser false y es: ' + this.geofireDestinationConfirmed);
-                        console.log('esto debe ser false y es: ' + this.geofireOriginConfirmed); 
-                        console.log("se ejecuto")
-                      }
-                    }, 10000);
+                   
                   }
   
                 })
+
+                  // si no hay nada disponible
+                  setTimeout(() => {
+                    // if(this.keyDetectedInGeofireDestination === false && this.keyDetectedInGeofireOrigin === false){
+                      moment.locale('es'); //to make the date be in spanish  
+                      let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
+                      console.log(today)
+                      // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+                      this.loading.dismiss();
+                      this.app.getRootNav().push('ListridePage');
+                      console.log('esto debe ser false y es: ' + this.geofireDestinationConfirmed);
+                      console.log('esto debe ser false y es: ' + this.geofireOriginConfirmed); 
+                      console.log("se ejecuto")
+                  // }
+                  }, 5000);
+
+                  // setTimeout(() => {
+                  //   console.log(this.viewCtril.name)
+                  // }, 12000);
+
+                
   
               })
      
@@ -938,27 +947,32 @@ geocodeLatLng(latLng,inputName) {
                           console.log(key + ' detected')
                         }.bind(this)) 
 
-                  
-                        // si no hay nada disponible
-                        setTimeout(() => {
-                          if(this.geofireDestinationConfirmed === false && this.geofireOriginConfirmed === false){
-                            moment.locale('es'); //to make the date be in spanish  
-                            let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
-                            console.log(today)
-                            // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
-                            this.loading.dismiss();
-                            this.app.getRootNav().push('ListridePage');
-                            console.log('esto debe ser false y es: ' + this.geofireDestinationConfirmed);
-                            console.log('esto debe ser false y es: ' + this.geofireOriginConfirmed); 
-                            console.log("se ejecuto")
-                          
-                          }
-                            
-                        }, 10000);
-
                   }
 
                 })
+
+                  // si no hay nada disponible
+                  setTimeout(() => {
+                    if(this.keyDetectedInGeofireDestination === false && this.keyDetectedInGeofireOrigin === false){
+                      moment.locale('es'); //to make the date be in spanish  
+                      let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
+                      console.log(today)
+                      // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+                      this.loading.dismiss();
+                      this.app.getRootNav().push('ListridePage');
+                      console.log('esto debe ser false y es: ' + this.geofireDestinationConfirmed);
+                      console.log('esto debe ser false y es: ' + this.geofireOriginConfirmed); 
+                      console.log("se ejecuto")
+                    
+                    }
+                      
+                  }, 5000);
+
+
+                  // setTimeout(() => {
+                  //   console.log(this.viewCtril.name)
+                  // }, 12000);
+
 
               })
 
@@ -1041,6 +1055,9 @@ geocodeLatLng(latLng,inputName) {
         console.log('geoquery place added');
         }
 
+
+
+
     ionViewDidLeave(){
       this.unsubscribe.next();
        this.unsubscribe.complete();
@@ -1087,13 +1104,14 @@ geocodeLatLng(latLng,inputName) {
           })
   
        }).then(()=>{
-        
+        console.log(this.viewCtril.name)
+        this.keyDetectedInGeofireOrigin = true;
         moment.locale('es'); //to make the date be in spanish  
         let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
         console.log(today)
-        // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
-        this.loading.dismiss();
-        this.app.getRootNav().push('ListridePage');
+        this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+        // this.loading.dismiss();
+        // this.navCtrl.push('ListridePage');
         console.log('esto debe ser false y es: ' + this.geofireDestinationConfirmed);
         console.log('esto debe ser true y es: ' + this.geofireOriginConfirmed); 
         console.log("se ejecuto")
@@ -1108,7 +1126,6 @@ geocodeLatLng(latLng,inputName) {
   
     
     keyExitedOr( userId, place ){
-     
      this.keyexitedOr = this.geoquery2.on("key_exited", function(key){
        this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).remove()
      }.bind(this))
@@ -1152,13 +1169,13 @@ geocodeLatLng(latLng,inputName) {
               })  
           })
        }).then(()=>{
-
+          this.keyDetectedInGeofireOrigin = true;
           moment.locale('es'); //to make the date be in spanish  
           let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
           console.log(today)
-          // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
-          this.loading.dismiss();
-          this.app.getRootNav().push('ListridePage');
+          this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+          // this.loading.dismiss();
+          // this.app.getRootNav().push('ListridePage');
           console.log('esto debe ser false y es: ' + this.geofireDestinationConfirmed);
           console.log('esto debe ser true y es: ' + this.geofireOriginConfirmed); 
           console.log("se ejecuto")
@@ -1217,12 +1234,13 @@ geocodeLatLng(latLng,inputName) {
           })
          }).then(()=>{
 
+          this.keyDetectedInGeofireDestination = true;
           moment.locale('es'); //to make the date be in spanish  
           let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
           console.log(today)
-          // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
-          this.loading.dismiss();
-          this.app.getRootNav().push('ListridePage');
+          this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+          // this.loading.dismiss();
+          // this.app.getRootNav().push('ListridePage');
           console.log('esto debe ser true y es: ' + this.geofireDestinationConfirmed);
           console.log('esto debe ser false y es: ' + this.geofireOriginConfirmed); 
           console.log("se ejecuto")
@@ -1281,12 +1299,13 @@ geocodeLatLng(latLng,inputName) {
         })
      }).then(()=>{
 
+      this.keyDetectedInGeofireDestination = true;
         moment.locale('es'); //to make the date be in spanish  
         let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
         console.log(today)
-        // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
-        this.loading.dismiss();
-        this.app.getRootNav().push('ListridePage');
+        this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+        // this.loading.dismiss();
+        // this.app.getRootNav().push('ListridePage');
         console.log('esto debe ser true y es: ' + this.geofireDestinationConfirmed);
         console.log('esto debe ser false y es: ' + this.geofireOriginConfirmed); 
         console.log("se ejecuto")

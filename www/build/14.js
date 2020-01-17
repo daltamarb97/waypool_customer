@@ -1,6 +1,6 @@
 webpackJsonp([14],{
 
-/***/ 641:
+/***/ 642:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(796);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(797);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ProfilePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 796:
+/***/ 797:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53,7 +53,7 @@ var ProfilePageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_userauthentication_service__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angularfire2_database__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -94,53 +94,57 @@ var ProfilePage = /** @class */ (function () {
         });
     }
     ProfilePage.prototype.saveChanges = function () {
-        if (this.phone == null && this.user.about == null && this.user.url == null) {
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone == null && this.user.about == null && this.user.url != null) {
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone == null && this.user.about != null && this.user.url == null) {
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone != null && this.user.about == null && this.user.url == null) {
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone != null && this.user.about != null && this.user.url == null) {
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone != null && this.user.about == null && this.user.url != null) {
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone == null && this.user.about != null && this.user.url != null) {
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else if (this.phone != null && this.user.about != null && this.user.url != null) {
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid, this.user.about);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid, this.user.url);
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
-            this.toastConfirmation();
-            this.navCtrl.pop();
-        }
-        else {
-            console.log('go to the f*cking hell');
-        }
+        var _this = this;
+        this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company + '/zones').once('value').then(function (snap) {
+            var obj = snap.val();
+            Object.getOwnPropertyNames(obj).forEach(function (key) {
+                if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
+                }
+                else {
+                    if (_this.phone == null && _this.user.about == null && _this.user.url == null) {
+                        _this.navCtrl.pop();
+                    }
+                    else if (_this.phone == null && _this.user.about == null && _this.user.url != null) {
+                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
+                        _this.navCtrl.pop();
+                    }
+                    else if (_this.phone == null && _this.user.about != null && _this.user.url == null) {
+                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
+                        _this.navCtrl.pop();
+                    }
+                    else if (_this.phone != null && _this.user.about == null && _this.user.url == null) {
+                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
+                        _this.navCtrl.pop();
+                    }
+                    else if (_this.phone != null && _this.user.about != null && _this.user.url == null) {
+                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
+                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
+                        _this.navCtrl.pop();
+                    }
+                    else if (_this.phone != null && _this.user.about == null && _this.user.url != null) {
+                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
+                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
+                        _this.navCtrl.pop();
+                    }
+                    else if (_this.phone == null && _this.user.about != null && _this.user.url != null) {
+                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
+                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
+                        _this.navCtrl.pop();
+                    }
+                    else if (_this.phone != null && _this.user.about != null && _this.user.url != null) {
+                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
+                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
+                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
+                        _this.navCtrl.pop();
+                    }
+                    else {
+                        console.log('go to the f*cking hell');
+                    }
+                }
+            });
+        }).then(function () {
+            _this.toastConfirmation();
+        });
     };
     ProfilePage.prototype.toastConfirmation = function () {
         var toast = this.toastCtrl.create({

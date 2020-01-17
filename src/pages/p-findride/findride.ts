@@ -161,27 +161,27 @@ export class FindridePassPage {
         }
 
         //logica de instrucciones
-        this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.userUid ).once('value').then((snapWalkthr)=>{
-          if(snapWalkthr.val().shownInstructions === true){
-            console.log('ya lo mostre');
+        // this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.userUid ).once('value').then((snapWalkthr)=>{
+        //   if(snapWalkthr.val().shownInstructions === true){
+        //     console.log('ya lo mostre');
             
-          }else{
-            this.app.getRootNav().push('WalkthroughPage');
+        //   }else{
+        //     this.app.getRootNav().push('WalkthroughPage');
 
-            Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{    
+        //     Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{    
           
-              if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
+        //       if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
     
-              }else{
-                this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid).update({
-                  shownInstructions: true
-                })
+        //       }else{
+        //         this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid).update({
+        //           shownInstructions: true
+        //         })
 
-              }
-            })
+        //       }
+        //     })
 
-          }
-        })
+        //   }
+        // })
 
 
         

@@ -148,10 +148,8 @@ var MyridePage = /** @class */ (function () {
                     var modal = _this.modalCtrl.create('CanceltripPage');
                     modal.present();
                     console.log("me cancelaron el viaje");
-                    setTimeout(function () {
-                        _this.TripsService.eliminatingCancelTrip(_this.SignUpService.userPlace, _this.userUid);
-                        console.log("me cancele");
-                    }, 2000);
+                }).then(function () {
+                    _this.TripsService.eliminatingCancelTrip(_this.SignUpService.userPlace, _this.userUid);
                 });
             }
             //save trip
@@ -165,9 +163,7 @@ var MyridePage = /** @class */ (function () {
                 _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
                 _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
                 _this.TripsService.eliminatingSaveTrip(_this.SignUpService.userPlace, _this.userUid);
-                console.log("no deje pruebas");
                 _this.navCtrl.pop();
-                _this.navCtrl.setRoot('TabsPage');
                 _this.navCtrl.push('RatetripPage', { trip: _this.trip });
                 _this.TripsService.eliminateTrip(_this.SignUpService.userPlace, _this.userUid);
                 console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");

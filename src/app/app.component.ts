@@ -26,8 +26,8 @@ export class MyApp {
       {title:'Mis viajes',component:'ReservetripPage', icon:'md-paper'},
       {title: 'Billetera', component:'WalletPage',icon:'card'},
       {title:'Mi perfil',component:'MorePage',icon:'person'},
-      {title:'Instrucciones',component:'WalkthroughPage',icon:'alert'},
       {title:'Soporte',component:'HelpPage',icon:'help'},
+      {title:'Instrucciones',component:'WalkthroughPage',icon:'alert'},
 
       
 

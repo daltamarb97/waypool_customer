@@ -100,10 +100,10 @@ saveTrip:any;
             let modal = this.modalCtrl.create('CanceltripPage');
             modal.present();  
             console.log("me cancelaron el viaje")
-            setTimeout(() => {
-              this.TripsService.eliminatingCancelTrip(this.SignUpService.userPlace,this.userUid);
-              console.log("me cancele");
-            }, 2000);
+          
+          }).then(()=>{
+            this.TripsService.eliminatingCancelTrip(this.SignUpService.userPlace,this.userUid);
+
           })
 
          
@@ -123,12 +123,10 @@ saveTrip:any;
           this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
           this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
          
-            this.TripsService.eliminatingSaveTrip(this.SignUpService.userPlace,this.userUid);
-            console.log("no deje pruebas");
-            this.navCtrl.pop();
+          this.TripsService.eliminatingSaveTrip(this.SignUpService.userPlace,this.userUid);
+          this.navCtrl.pop();
 
           
-          this.navCtrl.setRoot('TabsPage');
           this.navCtrl.push('RatetripPage',{trip:this.trip})
           this.TripsService.eliminateTrip(this.SignUpService.userPlace, this.userUid);     
 

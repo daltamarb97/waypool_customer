@@ -23,6 +23,7 @@ export class reservesService {
 
     }
 
+
     public getMyReservesSelected(place, userUid){
         // 
         return  this.afDB.list(place + '/users/'+ userUid+'/myReserves').valueChanges();

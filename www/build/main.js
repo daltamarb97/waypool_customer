@@ -217,9 +217,10 @@ var reservesService = /** @class */ (function () {
     };
     reservesService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object])
     ], reservesService);
     return reservesService;
+    var _a;
 }());
 
 //# sourceMappingURL=reserves.service.js.map
@@ -292,19 +293,19 @@ var map = {
 		16
 	],
 	"../pages/p-myride/myride.module": [
-		653,
+		654,
 		15
 	],
 	"../pages/p-profile/profile.module": [
-		642,
+		643,
 		14
 	],
 	"../pages/p-public-profile/public-profile.module": [
-		643,
+		644,
 		13
 	],
 	"../pages/p-ratetrip/ratetrip.module": [
-		644,
+		642,
 		12
 	],
 	"../pages/p-reserveinfo/reserveinfo.module": [
@@ -312,7 +313,7 @@ var map = {
 		11
 	],
 	"../pages/p-reservetrip/reservetrip.module": [
-		654,
+		653,
 		10
 	],
 	"../pages/p-signup/signup.module": [
@@ -1452,9 +1453,9 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-public-profile/public-profile.module#PublicProfilePageModule', name: 'PublicProfilePage', segment: 'public-profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-reserveinfo/reserveinfo.module#ConfirmreservationPageModule', name: 'ReserveinfoPage', segment: 'reserveinfo', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
@@ -1463,8 +1464,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-walkthrough/walkthrough.module#WalkthroughPageModule', name: 'WalkthroughPage', segment: 'walkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-findride/findride.module#FindridePassPageModule', name: 'FindridePassPage', segment: 'findride', priority: 'low', defaultHistory: [] }
                     ]
@@ -1562,8 +1563,8 @@ var MyApp = /** @class */ (function () {
             { title: 'Mis viajes', component: 'ReservetripPage', icon: 'md-paper' },
             { title: 'Billetera', component: 'WalletPage', icon: 'card' },
             { title: 'Mi perfil', component: 'MorePage', icon: 'person' },
-            { title: 'Instrucciones', component: 'WalkthroughPage', icon: 'alert' },
             { title: 'Soporte', component: 'HelpPage', icon: 'help' },
+            { title: 'Instrucciones', component: 'WalkthroughPage', icon: 'alert' },
         ];
         var firebaseConfig = {
             apiKey: "AIzaSyB7Py2pOZEUJD2Ar34a-8z-rReiDtsikxw",

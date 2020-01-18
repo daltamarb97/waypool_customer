@@ -1,6 +1,6 @@
 webpackJsonp([10],{
 
-/***/ 654:
+/***/ 653:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReservetripPageModule", function() { return ReservetripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reservetrip__ = __webpack_require__(809);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reservetrip__ = __webpack_require__(808);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 809:
+/***/ 808:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -124,9 +124,7 @@ var ReservetripPage = /** @class */ (function () {
             .subscribe(function (destinationUser) {
             _this.locationDestination = destinationUser;
         });
-    }
-    ReservetripPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
+        console.log(this.SignUpService.userPlace);
         this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (myReservesId) {
             console.log(_this.myReserves);
@@ -144,10 +142,14 @@ var ReservetripPage = /** @class */ (function () {
                 _this.noReserve = false;
             }
         });
+    }
+    ReservetripPage.prototype.ionViewDidLoad = function () {
     };
     ReservetripPage.prototype.getReserves = function () {
         var _this = this;
         this.myReserves = []; //erase all of reserves 
+        console.log('aqui necesito verte');
+        console.log(this.myReservesId);
         //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
         this.myReservesId.forEach(function (reserve) {
             _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + reserve.driverId + '/' + reserve.keyReserve).once('value').then(function (snapReserve) {
@@ -204,61 +206,6 @@ var ReservetripPage = /** @class */ (function () {
                     });
                 }
             });
-            // this.reservesService.getMyReserves(this.SignUpService.userPlace, reserve.driverId, reserve.keyReserve).takeUntil(this.unsubscribe)
-            //     .subscribe(info => {
-            //         this.reserve = info;
-            //         console.log(this.reserve)
-            //         this.pendingUsers = [];                         
-            //         if(reserve === undefined || reserve === null){
-            //           if(this.onTrip === true){
-            //             // i think doesnt work, just in case lets leave it here
-            //             this.unSubscribeServices();
-            //             console.log("me borre");
-            //             this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
-            //             this.navCtrl.pop();
-            //             console.log("1")
-            //           }else{
-            //             // the driver cancel or eliminated the reserve
-            //             console.log("cai en el vacío")
-            //           } 
-            //         }else{
-            //         //   console.log(this.reserve.keyTrip)
-            //           console.log(reserve.keyReserve) 
-            //           this.reservesService.confirmMyExistenceInPendingUsers(this.SignUpService.userPlace, reserve.driverId, reserve.keyReserve, this.userUid).takeUntil(this.unsubscribe)
-            //           .subscribe(pendingUser => {
-            //               this.pendingUser = pendingUser;  
-            //               console.log(this.pendingUser);
-            //               console.log(pendingUser);
-            //               if(this.pendingUser === undefined || this.pendingUser === null ){
-            //                 if(this.onTrip === true){
-            //                   this.unSubscribeServices();
-            //                   console.log('fue aqui 2');
-            //                   this.geofireService.cancelGeofireDest();
-            //                   this.geofireService.cancelGeofireOr();
-            //                   this.geofireService.cancelGeofireDestLMU();
-            //                   this.geofireService.cancelGeofireOrLMU();
-            //                   this.app.getRootNav().push('MyridePage');
-            //                   //  do nothing because the user is in the trip
-            //                   console.log("in a trip")
-            //                 }else{
-            //                   if(this.onTrip === false || this.onTrip === undefined || this.onTrip === null){
-            //                     this.unSubscribeServices();
-            //                     this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
-            //                   }else{
-            //                      //  eliminate key because the driver has eliminated the user
-            //                      console.log("me borre");
-            //                      this.unSubscribeServices();
-            //                      console.log('fue aqui');
-            //                      this.eliminateReserve(this.userUid, reserve.keyReserve);
-            //                      // this.myReserves=[];
-            //                   }
-            //                 }
-            //               }else{
-            //                 this.myReserves.push(info);
-            //               }
-            //           })
-            //         }              
-            //     })
         });
     };
     ReservetripPage.prototype.tripDetails = function (keyTrip, driverUid) {
@@ -318,9 +265,10 @@ var ReservetripPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-reservetrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-reservetrip/reservetrip.html"*/'<ion-header class="bg-theme title">\n    <ion-navbar >\n        <ion-title >Mis Reservas\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content class="bg-light" class="hideLongText">\n\n\n    \n    <img *ngIf="noReserve" src="assets/imgs/noreserve.png">\n<div style="display: flex;flex-direction: column;    width: 96%">\n    <ion-card *ngFor = "let reserve of myReserves">  \n        <ion-item>\n                <ion-avatar item-start>\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                    </ion-avatar>\n                <div class="name">\n                    <h2>Hora {{reserve.startHour |titlecase}} \n                    </h2>\n                </div>\n                \n                <div class="more"> \n                        <h2 class="text text-theme">                        \n                                $ {{reserve.price}}                          \n                            </h2> \n                </div>\n            </ion-item>\n            <ion-card-content>\n                <div class="ride-detail">\n                    <p  >\n                        <span class="icon-location bg-theme"></span>{{reserve.houseAddr}}</p>\n                    <p > \n                        <span class="icon-location bg-yellow"></span>{{reserve.placeAddr}}</p>\n                </div>\n                <ion-row class="center-align">\n                    <!-- <ion-col col-3 class="detail-text text-theme">\n                        3 seats\n                    </ion-col> -->\n                    \n                    <ion-col col-4 class="detail-text text-theme">\n                        <div class="name">\n        \n                            <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase | slice:0:1}}\n                                <ion-icon *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                            </h2>\n                            \n                        </div>\n                    </ion-col>\n                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                        <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            \n                    </ion-col>\n                    <ion-col center text-center col-4 text-right >\n                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>\n                    </ion-col> \n                </ion-row>\n            </ion-card-content>\n        \n</ion-card>\n\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-reservetrip/reservetrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_9__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_6__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */], __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__["a" /* geofireService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_9__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__services_signup_services__["a" /* SignUpService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__["a" /* sendCoordsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__["a" /* sendCoordsService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__["AngularFireDatabase"]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_6__services_instances_service__["a" /* instancesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_instances_service__["a" /* instancesService */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__["a" /* sendUsersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__["a" /* sendUsersService */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */]) === "function" && _o || Object, typeof (_p = typeof __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__["a" /* geofireService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__["a" /* geofireService */]) === "function" && _p || Object])
     ], ReservetripPage);
     return ReservetripPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
 }());
 
 //# sourceMappingURL=reservetrip.js.map

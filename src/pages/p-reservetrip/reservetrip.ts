@@ -60,13 +60,11 @@ export class ReservetripPage{
     this.sendCoordsService.getDestinationUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
         .subscribe( destinationUser => {
           this.locationDestination = destinationUser;
-    })
-
-
-   
+    }) 
     
-  }
-  ionViewDidLoad(){
+    
+    console.log(this.SignUpService.userPlace);
+    
     this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( myReservesId => {
       console.log(this.myReserves);
@@ -83,7 +81,15 @@ export class ReservetripPage{
           this.noReserve = false;
     
       }
+
     }) 
+
+  }
+
+
+
+  ionViewDidLoad(){
+    
     
   }
 
@@ -91,7 +97,9 @@ export class ReservetripPage{
 
   getReserves() {
     this.myReserves = []; //erase all of reserves 
-
+    console.log('aqui necesito verte');
+    console.log(this.myReservesId);
+    
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
     this.myReservesId.forEach(reserve => {
 
@@ -101,7 +109,7 @@ export class ReservetripPage{
           console.log(this.reserve);
 
           this.pendingUser = [];
-
+          
           if(reserve === undefined || reserve === null){
             if(this.onTrip === true){
               // i think doesnt work, just in case lets leave it here
@@ -155,81 +163,6 @@ export class ReservetripPage{
           }
           
         })
-
-
-
-
-
-
-
-        // this.reservesService.getMyReserves(this.SignUpService.userPlace, reserve.driverId, reserve.keyReserve).takeUntil(this.unsubscribe)
-        //     .subscribe(info => {
-        //         this.reserve = info;
-        //         console.log(this.reserve)
-        //         this.pendingUsers = [];                         
-
-        //         if(reserve === undefined || reserve === null){
-        //           if(this.onTrip === true){
-        //             // i think doesnt work, just in case lets leave it here
-        //             this.unSubscribeServices();
-        //             console.log("me borre");
-        //             this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
-        //             this.navCtrl.pop();
-        //             console.log("1")
-
-        //           }else{
-        //             // the driver cancel or eliminated the reserve
-        //             console.log("cai en el vacío")
-        //           } 
-        //         }else{
-        //         //   console.log(this.reserve.keyTrip)
-        //           console.log(reserve.keyReserve) 
-
-        //           this.reservesService.confirmMyExistenceInPendingUsers(this.SignUpService.userPlace, reserve.driverId, reserve.keyReserve, this.userUid).takeUntil(this.unsubscribe)
-        //           .subscribe(pendingUser => {
-        //               this.pendingUser = pendingUser;  
-        //               console.log(this.pendingUser);
-        //               console.log(pendingUser);
-
-        //               if(this.pendingUser === undefined || this.pendingUser === null ){
-
-        //                 if(this.onTrip === true){
-        //                   this.unSubscribeServices();
-        //                   console.log('fue aqui 2');
-        //                   this.geofireService.cancelGeofireDest();
-        //                   this.geofireService.cancelGeofireOr();
-        //                   this.geofireService.cancelGeofireDestLMU();
-        //                   this.geofireService.cancelGeofireOrLMU();
-        //                   this.app.getRootNav().push('MyridePage');
-        //                   //  do nothing because the user is in the trip
-        //                   console.log("in a trip")
-        //                 }else{
-        //                   if(this.onTrip === false || this.onTrip === undefined || this.onTrip === null){
-        //                     this.unSubscribeServices();
-        //                     this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
-
-        //                   }else{
-        //                      //  eliminate key because the driver has eliminated the user
-        //                      console.log("me borre");
-        //                      this.unSubscribeServices();
-        //                      console.log('fue aqui');
-        //                      this.eliminateReserve(this.userUid, reserve.keyReserve);
-        //                      // this.myReserves=[];
-        //                   }
-                 
-        //                 }
-                            
-        //               }else{
-        //                 this.myReserves.push(info);
-        //               }
-
-        //           })
-        //         }              
-                  
-                
-                
-
-        //     })
     })
 }
 
@@ -260,10 +193,15 @@ eliminateReserve(userUid, keyReserve) {
     // this.navCtrl.setRoot('FindridePassPage');
     modal.present();
 }
+
+
 unSubscribeServices(){
   this.unsubscribe.next();
   this.unsubscribe.complete();
-}     
+}  
+
+
+
 help() {
     const toast = this.toastCtrl.create({
         message: 'Aquí te saldrán las personas que quieren irse contigo',

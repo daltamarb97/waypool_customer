@@ -77,7 +77,6 @@ saveTrip:any;
     })
 
 
-
     this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userPlace).takeUntil(this.unsubscribe)
       .subscribe(info => {
         this.user = info
@@ -112,11 +111,11 @@ saveTrip:any;
       
       
         //save trip
+        
         if(this.user.saveTrip === undefined || this.user.saveTrip === null){
 
         }else{
-      
-          this.TripsService.saveTripOnRecords(this.SignUpService.userPlace, this.userUid,this.trip);     
+          console.log(this.SignUpService.userPlace);
           console.log("me active")
           this.unSubscribeServices();       
           this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);

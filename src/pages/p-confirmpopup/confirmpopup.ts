@@ -26,6 +26,7 @@ export class ConfirmpopupPage {
   userUid=this.AngularFireAuth.auth.currentUser.uid;
   unsubscribe = new Subject;
   reservesWhereIam:any;
+  freeRidesCompany:boolean = false;
   constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService, public alertCtrl: AlertController) {
     
     this.reserve= this.navParams.get('reserve') 
@@ -37,7 +38,14 @@ export class ConfirmpopupPage {
        this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userPlace).takeUntil(this.unsubscribe)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
-         console.log(this.user);          
+         console.log(this.user); 
+         
+         
+         this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company).once('value').then((snapUser)=>{
+           if(snapUser.val().freeRidesNumber > 0){
+            this.freeRidesCompany = true;
+           }
+         })
        });
 
 
@@ -47,6 +55,9 @@ export class ConfirmpopupPage {
         this.reservesWhereIam = reserves;
         console.log(this.reservesWhereIam);
        })
+
+
+       
 
 
   }
@@ -63,13 +74,13 @@ export class ConfirmpopupPage {
       alert.present();
     }else {
 
-    if(this.user.personalFreeRides){
+    if(this.user.personalFreeRides && this.freeRidesCompany === true){
       let alert = this.alertCtrl.create({
         title: 'ESTE SERÁ UN VIAJE GRATIS',
         subTitle: 'Siempre que veas este mensaje significa que no pagarás nada por el viaje al que te uniste',
         buttons: [{
           text: 'OK',
-          handler: ()=>{
+          handler: ()=>{ 
             console.log(this.reserve.keyTrip )
             this.geoFireService.joinReserve(this.SignUpService.userPlace, this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
             this.geoFireService.pushToMyReserve(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
@@ -87,6 +98,20 @@ export class ConfirmpopupPage {
         }]
       });
       alert.present();
+    }else{
+      console.log(this.reserve.keyTrip )
+      this.geoFireService.joinReserve(this.SignUpService.userPlace, this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
+      this.geoFireService.pushToMyReserve(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
+      this.hideButton = !this.hideButton;
+      this.hideText = !this.hideText;
+      this.accepted = true;  
+       const toast = this.toastCtrl.create({
+        message: `Haz reservado con ${this.reserve.driver.name} para compartir tu viaje a las ${this.reserve.startHour}, entra en Mis reservas para ver más.`,
+        showCloseButton: true,
+        closeButtonText: 'Ok'
+      });
+      toast.present();  
+      this.dismiss();
     }
   }
 }

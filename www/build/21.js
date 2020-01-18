@@ -97,6 +97,7 @@ var ConfirmpopupPage = /** @class */ (function () {
         this.hideText = false;
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
+        this.freeRidesCompany = false;
         this.reserve = this.navParams.get('reserve');
         console.log(this.reserve);
         //get the info of the driver 
@@ -104,6 +105,11 @@ var ConfirmpopupPage = /** @class */ (function () {
             .subscribe(function (myUserInfo) {
             _this.user = myUserInfo;
             console.log(_this.user);
+            _this.afDB.database.ref('allCities/' + _this.user.city + '/allPlaces/' + _this.user.company).once('value').then(function (snapUser) {
+                if (snapUser.val().freeRidesNumber > 0) {
+                    _this.freeRidesCompany = true;
+                }
+            });
         });
         // function to get in how many reserves I am
         this.SignUpService.checkMyReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
@@ -115,16 +121,16 @@ var ConfirmpopupPage = /** @class */ (function () {
     ConfirmpopupPage.prototype.goToRide = function () {
         var _this = this;
         if (this.reservesWhereIam.length >= 5) {
-            var alert_1 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'limite de reservas por un dia',
                 subTitle: 'Ya excediste el limite de reservas por un dia ',
                 buttons: ['OK']
             });
-            alert_1.present();
+            alert.present();
         }
         else {
-            if (this.user.personalFreeRides) {
-                var alert_2 = this.alertCtrl.create({
+            if (this.user.personalFreeRides && this.freeRidesCompany === true) {
+                var alert = this.alertCtrl.create({
                     title: 'ESTE SERÁ UN VIAJE GRATIS',
                     subTitle: 'Siempre que veas este mensaje significa que no pagarás nada por el viaje al que te uniste',
                     buttons: [{
@@ -146,7 +152,22 @@ var ConfirmpopupPage = /** @class */ (function () {
                             }
                         }]
                 });
-                alert_2.present();
+                alert.present();
+            }
+            else {
+                console.log(this.reserve.keyTrip);
+                this.geoFireService.joinReserve(this.SignUpService.userPlace, this.user.company, this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
+                this.geoFireService.pushToMyReserve(this.SignUpService.userPlace, this.reserve.keyTrip, this.reserve.driver.userId, this.userUid);
+                this.hideButton = !this.hideButton;
+                this.hideText = !this.hideText;
+                this.accepted = true;
+                var toast = this.toastCtrl.create({
+                    message: "Haz reservado con " + this.reserve.driver.name + " para compartir tu viaje a las " + this.reserve.startHour + ", entra en Mis reservas para ver m\u00E1s.",
+                    showCloseButton: true,
+                    closeButtonText: 'Ok'
+                });
+                toast.present();
+                this.dismiss();
             }
         }
     };
@@ -167,9 +188,10 @@ var ConfirmpopupPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-confirmpopup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-confirmpopup/confirmpopup.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>\n    <ion-card>\n        <h6 class="text-theme">Detalles de la Reserva</h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{reserve.driver.name|titlecase }} {{reserve.driver.lastname|titlecase | slice:0:1}}\n                <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                </h2>\n                <p>{{reserve.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen</small>\n                    <span class="icon-location bg-theme"></span>{{reserve.houseAddr}}</p>\n                <p>\n                    <small>Destino</small>\n                    <span class="icon-location bg-yellow"></span>{{reserve.placeAddr}}</p>\n            </div>\n        </ion-card-content>\n\n        \n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{reserve.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-theme text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">CONFIRMAR CONDUCTOR</button>\n                <p  text-center *ngIf="hideText">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-confirmpopup/confirmpopup.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _m || Object])
     ], ConfirmpopupPage);
     return ConfirmpopupPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
 }());
 
 //# sourceMappingURL=confirmpopup.js.map

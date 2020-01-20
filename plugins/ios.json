@@ -12,6 +12,15 @@
     },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.waypoolsas.waypool"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
+    },
+    "call-number": {
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     }
   },
   "dependent_plugins": {}

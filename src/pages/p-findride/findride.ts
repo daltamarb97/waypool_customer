@@ -146,7 +146,8 @@ export class FindridePassPage {
               this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/trip/').remove();
               this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/availableReserves/').remove();
               this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/keyTrip/').remove();
-              this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').remove()
+              this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').remove();
+
             }
           })
         })

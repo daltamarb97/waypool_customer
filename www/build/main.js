@@ -217,10 +217,9 @@ var reservesService = /** @class */ (function () {
     };
     reservesService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
     ], reservesService);
     return reservesService;
-    var _a;
 }());
 
 //# sourceMappingURL=reserves.service.js.map
@@ -277,11 +276,11 @@ var map = {
 		0
 	],
 	"../pages/p-help/help.module": [
-		638,
+		639,
 		19
 	],
 	"../pages/p-listride/listride.module": [
-		639,
+		638,
 		18
 	],
 	"../pages/p-login/login.module": [
@@ -297,15 +296,15 @@ var map = {
 		15
 	],
 	"../pages/p-profile/profile.module": [
-		643,
+		642,
 		14
 	],
 	"../pages/p-public-profile/public-profile.module": [
-		644,
+		643,
 		13
 	],
 	"../pages/p-ratetrip/ratetrip.module": [
-		642,
+		644,
 		12
 	],
 	"../pages/p-reserveinfo/reserveinfo.module": [
@@ -313,7 +312,7 @@ var map = {
 		11
 	],
 	"../pages/p-reservetrip/reservetrip.module": [
-		653,
+		646,
 		10
 	],
 	"../pages/p-signup/signup.module": [
@@ -321,31 +320,31 @@ var map = {
 		9
 	],
 	"../pages/p-support/support.module": [
-		646,
+		647,
 		8
 	],
 	"../pages/p-tabs/tabs.module": [
-		647,
+		648,
 		7
 	],
 	"../pages/p-terms/terms.module": [
-		648,
+		649,
 		6
 	],
 	"../pages/p-verification-images/verification-images.module": [
-		649,
+		650,
 		5
 	],
 	"../pages/p-verification-number/verification-number.module": [
-		650,
+		651,
 		4
 	],
 	"../pages/p-walkthrough/walkthrough.module": [
-		651,
+		652,
 		3
 	],
 	"../pages/p-wallet/wallet.module": [
-		652,
+		653,
 		2
 	]
 };
@@ -1449,14 +1448,15 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-public-profile/public-profile.module#PublicProfilePageModule', name: 'PublicProfilePage', segment: 'public-profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-reserveinfo/reserveinfo.module#ConfirmreservationPageModule', name: 'ReserveinfoPage', segment: 'reserveinfo', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
@@ -1464,7 +1464,6 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-walkthrough/walkthrough.module#WalkthroughPageModule', name: 'WalkthroughPage', segment: 'walkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-findride/findride.module#FindridePassPageModule', name: 'FindridePassPage', segment: 'findride', priority: 'low', defaultHistory: [] }

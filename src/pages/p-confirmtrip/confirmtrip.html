@@ -7,7 +7,7 @@
                 <img src="assets/imgs/userPicture.png">
             </ion-avatar>
             <div class="name">
-                <h2>{{trip.driver.name|titlecase }} {{trip.driver.lastname|titlecase | slice:0:1}}
+                <h2>{{trip.driver.name|titlecase }} {{trip.driver.lastname|titlecase }}
                     <ion-icon *ngIf='trip.driver.verifiedPerson' name="ios-checkmark-circle" class="text-hot"></ion-icon>
                 </h2>
                 <p>{{trip.car}}</p>

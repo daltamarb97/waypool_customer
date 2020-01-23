@@ -42,28 +42,33 @@ export class ReservetripPage{
   pendingUsers:any = [];
   onTrip:any;
   unsubscribe = new Subject;
-  pendingUser:any;
   noReserve:boolean;
   constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService,public loadingCtrl: LoadingController, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
+    
     this.reservesService.getOnTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( onTrip => {
        this.onTrip = onTrip;   
-       console.log(this.onTrip);  
-    })
-    
+       console.log(this.onTrip);
+       console.log('fue aqui 2');
+       if (this.onTrip === true) {
 
-    this.sendCoordsService.getOriginUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
-    .subscribe( originUser => {
-      this.locationOrigin = originUser;      
+        this.unSubscribeServices();
+        this.navCtrl.pop();
+
+        this.geofireService.cancelGeofireDest();
+        this.geofireService.cancelGeofireOr();
+        this.geofireService.cancelGeofireDestLMU();
+        this.geofireService.cancelGeofireOrLMU();
+        console.log("repetire");
+        
+        this.navCtrl.push('MyridePage');
+       } else {
+         
+       }
+   
     })
     
-    this.sendCoordsService.getDestinationUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
-        .subscribe( destinationUser => {
-          this.locationDestination = destinationUser;
-    }) 
     
-    
-    console.log(this.SignUpService.userPlace);
     
     this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
     .subscribe( myReservesId => {
@@ -72,14 +77,26 @@ export class ReservetripPage{
       this.myReservesId = myReservesId;
       console.log(this.myReservesId);
       this.myReserves = [];
-      this.getReserves();
       if(this.myReservesId.length === 0){
         //there are no reserves to show
         this.presentLoadingCustom();   
       }else{
         //there are reserves
           this.noReserve = false;
-    
+          //check if driver have cancel me from reserve
+          this.myReservesId.forEach(reserve => {
+            if (reserve.cancelReserve == true) {
+              this.unSubscribeServices();
+              this.navCtrl.pop();
+              let modal = this.modalCtrl.create('CanceltripPage');
+              modal.present();
+              this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
+              
+
+            }
+          });
+          this.getReserves();
+          
       }
 
     }) 
@@ -105,61 +122,12 @@ export class ReservetripPage{
 
         this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ reserve.driverId +'/'+ reserve.keyReserve).once('value').then((snapReserve)=>{
           this.reserve = snapReserve.val();
-
-          console.log(this.reserve);
-
-          this.pendingUser = [];
-          
+          console.log(this.reserve);          
           if(reserve === undefined || reserve === null){
-            if(this.onTrip === true){
-              // i think doesnt work, just in case lets leave it here
-              this.unSubscribeServices();
-              console.log("me borre");
-              this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
-              this.navCtrl.pop();
-              console.log("1")
-
-            }else{
-              // the driver cancel or eliminated the reserve
-              console.log("cai en el vacío")
-            } 
-
-            console.log('aqui hubo error de reserva fantasma');
-            
+           
           }else{
-            this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ reserve.driverId +'/'+ reserve.keyReserve+'/pendingUsers/'+this.userUid).once('value').then((snapExistence)=>{
-              if(snapExistence === undefined || snapExistence === null ){
 
-                if(this.onTrip === true){
-                  this.unSubscribeServices();
-                  console.log('fue aqui 2');
-                  this.geofireService.cancelGeofireDest();
-                  this.geofireService.cancelGeofireOr();
-                  this.geofireService.cancelGeofireDestLMU();
-                  this.geofireService.cancelGeofireOrLMU();
-                  this.app.getRootNav().push('MyridePage');
-                  //  do nothing because the user is in the trip
-                  console.log("in a trip")
-                }else{
-                  if(this.onTrip === false || this.onTrip === undefined || this.onTrip === null){
-                    this.unSubscribeServices();
-                    this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
-
-                  }else{
-                     //  eliminate key because the driver has eliminated the user
-                     console.log("me borre");
-                     this.unSubscribeServices();
-                     console.log('fue aqui');
-                     this.eliminateReserve(this.userUid, reserve.keyReserve);
-                     // this.myReserves=[];
-                  }
-         
-                }
-                    
-              }else{
-                this.myReserves.push(this.reserve);
-              }
-            })
+            this.myReserves.push(this.reserve);
           }
           
         })
@@ -186,13 +154,7 @@ enterChat(reserve) {
 
 
 // }
-eliminateReserve(userUid, keyReserve) {
-    this.unSubscribeServices();
-    this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, userUid, keyReserve);
-    let modal = this.modalCtrl.create('CanceltripPage');
-    // this.navCtrl.setRoot('FindridePassPage');
-    modal.present();
-}
+
 
 
 unSubscribeServices(){

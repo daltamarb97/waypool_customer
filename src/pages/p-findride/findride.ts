@@ -106,6 +106,7 @@ export class FindridePassPage {
   keyDetectedInGeofireOrigin:boolean = false;
   keyDetectedInGeofireDestination:boolean = false;
   thereAreReserves:boolean;
+  saveTrip:any;
  constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase, public loadingCtrl: LoadingController, public viewCtril: ViewController ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -139,18 +140,18 @@ export class FindridePassPage {
         console.log(this.zonesToIterate);
 
         // if user closed app at myRide before finishing a trip, this will delete the garbage 
-        Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
-          this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').once('value').then((snapOnTrip)=>{
-            if(snapOnTrip.val() === false || snapOnTrip.val() === undefined || snapOnTrip.val() === null){
-              this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/saveTrip/').remove();
-              this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/trip/').remove();
-              this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/availableReserves/').remove();
-              this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/keyTrip/').remove();
-              this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').remove();
+        // Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
+        //   this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').once('value').then((snapOnTrip)=>{
+        //     if(snapOnTrip.val() === false || snapOnTrip.val() === undefined || snapOnTrip.val() === null){
+        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/saveTrip/').remove();
+        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/trip/').remove();
+        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/availableReserves/').remove();
+        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/keyTrip/').remove();
+        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').remove();
 
-            }
-          })
-        })
+        //     }
+        //   })
+        // })
 
 
         //logica de instrucciones 
@@ -206,51 +207,35 @@ export class FindridePassPage {
                         //REVISAR ESTO CON DANIEL
                         console.log(this.zonesToIterate);
                         
-                        Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
-                          if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
-                
-                          }else{
-                          this.TripsService.getKeyTrip(this.zonesToIterate[key], this.userUid)
-                            .subscribe(keyTrip=>{
-                              this.keyTrip =keyTrip;
-                              console.log('keyTrip es: ' + this.keyTrip)
-                              //if key its deleted don't show VIAJE EN CURSO  
-                              if(this.keyTrip === undefined || this.keyTrip === null){
-                              this.onTrip=false;
-                                this.TripsService.eliminateKeyTrip(this.zonesToIterate[key], this.userUid);
-                                this.TripsService.eliminatingOnTrip(this.zonesToIterate[key], this.userUid);
-                                console.log("llegue adonde era")
-                              }else{
-                                //confirm that trip exist and get it
-                                this.SignUpService.userPlace = this.zonesToIterate[key]
-                                this.getOnTrip(this.zonesToIterate[key]);
-                              }
-                            
-                            })
-                          } 
-                          
-                      })
 
+                        this.getOnTrip( this.SignUpService.userPlace);
 
                       this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe).subscribe(user=>{
                         this.user = user;
 
-                        console.log(this.SignUpService.userPlace);
-                        console.log(this.user)
+                        if(this.user.cancelTrip === undefined || this.user.cancelTrip === null){
+                          //when the user is canceled
+                        }else if(this.user.cancelTrip == true){
+                         
+                          this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
+                        
+                          this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+this.userUid+'/cancelTrip').remove()
+                          .then(()=>{
+                            this.MetricsService.cancelReserves(this.SignUpService.userPlace , this.userUid, this.trip)
+                            let modal = this.modalCtrl.create('CanceltripPage');
+                            modal.present();  
+                          })
+                        }
+
+                       // when the trip has finished
                         if(this.user.saveTrip === undefined || this.user.saveTrip === null){
                           console.log("AAAAAAAAAAAAAAAAAAAAA")
-                            }else{
+                            }else if(this.user.saveTrip == true){
                           console.log(this.user.trip)
-                          
+                          this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
+
                               console.log("me active")
                               this.TripsService.eliminatingSaveTrip(this.SignUpService.userPlace,this.userUid);
-
-                              this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid);
-                          
-                              this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
-                          
-                              this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
-                              this.TripsService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,this.user.trip.keyTrip);
 
                               this.unsubscribe.next();
                               this.unsubscribe.complete();
@@ -258,21 +243,25 @@ export class FindridePassPage {
                                 
                                 Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
                                   if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
-                
+                    
                                   }else{
                                     this.TripsService.saveTripOnRecords(this.zonesToIterate[key], this.userUid,this.user.trip);     
                                   }
                                 });
+                                
+                              // this.TripsService.eliminateTrip(this.SignUpService.userPlace, this.userUid);     
+                              this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid+'/trip/').remove()
+                                .then(()=>{
+                                this.navCtrl.push('RatetripPage',{trip:this.user.trip})
 
-                              this.navCtrl.push('RatetripPage',{trip:this.user.trip})
-                              this.TripsService.eliminateTrip(this.SignUpService.userPlace, this.userUid);     
+                              })
+
 
                               console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
                               }, 3000);
-
-                            }     
+                    
+                            }    
                       })
-
 
 
                       // set geofire key of place to avoid asking users to put where they are going
@@ -382,7 +371,19 @@ export class FindridePassPage {
      
     })
   }
+  // getSaveTrip(place){
+  //   this.TripsService.getSaveTrip(place, this.userUid) 
+  //   .subscribe(saveTrip =>{
+  //     this.saveTrip = saveTrip;
+     
+     
+  //   })
 
+
+
+
+   
+  // }
   
   ionViewDidLoad(){
     this.loadMap();

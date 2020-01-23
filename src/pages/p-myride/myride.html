@@ -20,7 +20,7 @@
                             <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
                         </h2>
                         <ng-template #itsNotMeBlock >
-                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase | slice:0:1}}
+                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}
                                 <ion-icon *ngIf='user.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
                             </h2>
                             <p>{{user.company}}</p>
@@ -44,7 +44,7 @@
                             <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>
                         </h2>
                         <ng-template #itsNotMeBlock >
-                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase | slice:0:1}}
+                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}
                                 <ion-icon *ngIf='user.verifiedPerson' name="ios-checkmark-circle" class="text-green"></ion-icon>                           
                             </h2>
                             <p>{{user.company}}</p>
@@ -67,7 +67,7 @@
                         <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
                     </ion-avatar>
                     <div class="name">
-                        <h2>{{trip.driver.name|titlecase}} {{trip.driver.lastname |titlecase | slice:0:1}}
+                        <h2>{{trip.driver.name|titlecase}} {{trip.driver.lastname |titlecase }}
                             <ion-icon *ngIf='trip.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
                             <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>
 

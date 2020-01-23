@@ -14,7 +14,9 @@ export class TripsService {
        public getOnTrip(place,userUid){
         return  this.afDB.object(place+'/users/'+ userUid+'/onTrip/').valueChanges();
        }
-
+       public getSaveTrip(place,userUid){
+        return  this.afDB.object(place+'/users/'+ userUid+'/saveTrip/').valueChanges();
+       }
     public getMyReservesUser(place, userUid){
         // 
         return  this.afDB.list(place+ '/users/'+ userUid+'/myReserves').valueChanges();
@@ -112,13 +114,7 @@ export class TripsService {
 
 
     getOutFromLMU(place, keyTrip,driverId, userId){
-      this.afDB.database.ref(place + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).remove().then(()=>{
-          const alert = this.alertCtrl.create({
-            title: 'Escoge otro viaje',
-            buttons: ['OK']
-          })
-          alert.present();
-      })
+      this.afDB.database.ref(place + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).remove();
   }
 
     checkIfAcceptedInLMU(place, driverId, keyTrip, userId){

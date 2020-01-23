@@ -17430,17 +17430,17 @@ var FindridePassPage = /** @class */ (function () {
                 _this.zonesToIterate = snapshot.val().zones;
                 console.log(_this.zonesToIterate);
                 // if user closed app at myRide before finishing a trip, this will delete the garbage 
-                Object.getOwnPropertyNames(_this.zonesToIterate).forEach(function (key) {
-                    _this.afDB.database.ref(_this.zonesToIterate[key] + '/users/' + _this.userUid + '/onTrip/').once('value').then(function (snapOnTrip) {
-                        if (snapOnTrip.val() === false || snapOnTrip.val() === undefined || snapOnTrip.val() === null) {
-                            _this.afDB.database.ref(_this.zonesToIterate[key] + '/users/' + _this.userUid + '/saveTrip/').remove();
-                            _this.afDB.database.ref(_this.zonesToIterate[key] + '/users/' + _this.userUid + '/trip/').remove();
-                            _this.afDB.database.ref(_this.zonesToIterate[key] + '/users/' + _this.userUid + '/availableReserves/').remove();
-                            _this.afDB.database.ref(_this.zonesToIterate[key] + '/users/' + _this.userUid + '/keyTrip/').remove();
-                            _this.afDB.database.ref(_this.zonesToIterate[key] + '/users/' + _this.userUid + '/onTrip/').remove();
-                        }
-                    });
-                });
+                // Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
+                //   this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').once('value').then((snapOnTrip)=>{
+                //     if(snapOnTrip.val() === false || snapOnTrip.val() === undefined || snapOnTrip.val() === null){
+                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/saveTrip/').remove();
+                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/trip/').remove();
+                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/availableReserves/').remove();
+                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/keyTrip/').remove();
+                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').remove();
+                //     }
+                //   })
+                // })
                 //logica de instrucciones 
                 _this.afDB.database.ref(snapshot.val().zones[0] + '/users/' + _this.userUid).once('value').then(function (snapWalkthr) {
                     if (snapWalkthr.val().shownInstructions === true) {
@@ -17481,44 +17481,30 @@ var FindridePassPage = /** @class */ (function () {
                             //search keyTrip
                             //REVISAR ESTO CON DANIEL
                             console.log(_this.zonesToIterate);
-                            Object.getOwnPropertyNames(_this.zonesToIterate).forEach(function (key) {
-                                if (_this.zonesToIterate[key] === 2 || _this.zonesToIterate[key] === 3 || _this.zonesToIterate[key] === 4 || _this.zonesToIterate[key] === 5 || _this.zonesToIterate[key] === 6 || _this.zonesToIterate[key] === 1 || _this.zonesToIterate[key] === 7 || _this.zonesToIterate[key] === 8 || _this.zonesToIterate[key] === 9 || _this.zonesToIterate[key] === 10) {
-                                }
-                                else {
-                                    _this.TripsService.getKeyTrip(_this.zonesToIterate[key], _this.userUid)
-                                        .subscribe(function (keyTrip) {
-                                        _this.keyTrip = keyTrip;
-                                        console.log('keyTrip es: ' + _this.keyTrip);
-                                        //if key its deleted don't show VIAJE EN CURSO  
-                                        if (_this.keyTrip === undefined || _this.keyTrip === null) {
-                                            _this.onTrip = false;
-                                            _this.TripsService.eliminateKeyTrip(_this.zonesToIterate[key], _this.userUid);
-                                            _this.TripsService.eliminatingOnTrip(_this.zonesToIterate[key], _this.userUid);
-                                            console.log("llegue adonde era");
-                                        }
-                                        else {
-                                            //confirm that trip exist and get it
-                                            _this.SignUpService.userPlace = _this.zonesToIterate[key];
-                                            _this.getOnTrip(_this.zonesToIterate[key]);
-                                        }
-                                    });
-                                }
-                            });
+                            _this.getOnTrip(_this.SignUpService.userPlace);
                             _this.SignUpService.getMyInfo(_this.userUid, _this.SignUpService.userPlace).takeUntil(_this.unsubscribe).subscribe(function (user) {
                                 _this.user = user;
-                                console.log(_this.SignUpService.userPlace);
-                                console.log(_this.user);
+                                if (_this.user.cancelTrip === undefined || _this.user.cancelTrip === null) {
+                                    //when the user is canceled
+                                }
+                                else if (_this.user.cancelTrip == true) {
+                                    _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
+                                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/cancelTrip').remove()
+                                        .then(function () {
+                                        _this.MetricsService.cancelReserves(_this.SignUpService.userPlace, _this.userUid, _this.trip);
+                                        var modal = _this.modalCtrl.create('CanceltripPage');
+                                        modal.present();
+                                    });
+                                }
+                                // when the trip has finished
                                 if (_this.user.saveTrip === undefined || _this.user.saveTrip === null) {
                                     console.log("AAAAAAAAAAAAAAAAAAAAA");
                                 }
-                                else {
+                                else if (_this.user.saveTrip == true) {
                                     console.log(_this.user.trip);
+                                    _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
                                     console.log("me active");
                                     _this.TripsService.eliminatingSaveTrip(_this.SignUpService.userPlace, _this.userUid);
-                                    _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
-                                    _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
-                                    _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
-                                    _this.TripsService.eliminateKeyUser(_this.SignUpService.userPlace, _this.userUid, _this.user.trip.keyTrip);
                                     _this.unsubscribe.next();
                                     _this.unsubscribe.complete();
                                     setTimeout(function () {
@@ -17529,8 +17515,11 @@ var FindridePassPage = /** @class */ (function () {
                                                 _this.TripsService.saveTripOnRecords(_this.zonesToIterate[key], _this.userUid, _this.user.trip);
                                             }
                                         });
-                                        _this.navCtrl.push('RatetripPage', { trip: _this.user.trip });
-                                        _this.TripsService.eliminateTrip(_this.SignUpService.userPlace, _this.userUid);
+                                        // this.TripsService.eliminateTrip(this.SignUpService.userPlace, this.userUid);     
+                                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/trip/').remove()
+                                            .then(function () {
+                                            _this.navCtrl.push('RatetripPage', { trip: _this.user.trip });
+                                        });
                                         console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
                                     }, 3000);
                                 }
@@ -17626,6 +17615,12 @@ var FindridePassPage = /** @class */ (function () {
             console.log('ONTRIP');
         });
     };
+    // getSaveTrip(place){
+    //   this.TripsService.getSaveTrip(place, this.userUid) 
+    //   .subscribe(saveTrip =>{
+    //     this.saveTrip = saveTrip;
+    //   })
+    // }
     FindridePassPage.prototype.ionViewDidLoad = function () {
         this.loadMap();
     };
@@ -18545,7 +18540,7 @@ var FindridePassPage = /** @class */ (function () {
     ], FindridePassPage.prototype, "mapElement", void 0);
     FindridePassPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-findride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-findride/findride.html"*/'\n<ion-header class="bg-theme">\n  <ion-navbar>\n      <button ion-button menuToggle>\n          <ion-icon name="menu" style="color: white;"></ion-icon>\n        \n        </button>\n      <ion-title>WAYPOOL</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content  padding>\n   \n \n    <ion-card class="search">\n          \n        <ion-card-content>\n            <span class="dot bg-theme"></span>\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n          \n            <ion-list   [hidden]="autocompleteItems.length == 0">\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n                  {{ item.description }}\n                </ion-item>\n              </ion-list>\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n        </ion-card-content>\n        <ion-card-content>\n            <span class="dot bg-yellow"></span>           \n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n              {{ item.description }}\n            </ion-item>\n          </ion-list>\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n        </ion-card-content>\n        \n    </ion-card>\n  \n <div #map id="map"></div>  \n    \n    \n<ion-row class="rowOfButtons">\n\n  <div class="btn-footer btn-left">\n      <button class="btn rounded bg-darkblue text-white myReservesButton" style="width: 100%" (click)="goToMyReserves()" >Mis Viajes</button> \n  </div>\n  <div class="btn-right">\n      <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%">Buscar</button>\n\n  </div>\n \n</ion-row>\n \n<div *ngIf="onTrip" >\n    <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;\n     position:absolute;\n     bottom: 0px ;\n     left: 0px ;\n     height: 51px; \n     font-size: large;\n   " (click)="goToTrip() " >VIAJE EN CURSO\n    </button>\n</div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-findride/findride.html"*/
+            selector: 'page-findride',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\user\waypool_costumer\src\pages\p-findride\findride.html"*/'\n\n<ion-header class="bg-theme">\n\n  <ion-navbar>\n\n      <button ion-button menuToggle>\n\n          <ion-icon name="menu" style="color: white;"></ion-icon>\n\n        \n\n        </button>\n\n      <ion-title>WAYPOOL</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content  padding>\n\n   \n\n \n\n    <ion-card class="search">\n\n          \n\n        <ion-card-content>\n\n            <span class="dot bg-theme"></span>\n\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n\n          \n\n            <ion-list   [hidden]="autocompleteItems.length == 0">\n\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n\n                  {{ item.description }}\n\n                </ion-item>\n\n              </ion-list>\n\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n        </ion-card-content>\n\n        <ion-card-content>\n\n            <span class="dot bg-yellow"></span>           \n\n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n\n              {{ item.description }}\n\n            </ion-item>\n\n          </ion-list>\n\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n\n\n        </ion-card-content>\n\n        \n\n    </ion-card>\n\n  \n\n <div #map id="map"></div>  \n\n    \n\n    \n\n<ion-row class="rowOfButtons">\n\n\n\n  <div class="btn-footer btn-left">\n\n      <button class="btn rounded bg-darkblue text-white myReservesButton" style="width: 100%" (click)="goToMyReserves()" >Mis Viajes</button> \n\n  </div>\n\n  <div class="btn-right">\n\n      <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%">Buscar</button>\n\n\n\n  </div>\n\n \n\n</ion-row>\n\n \n\n<div *ngIf="onTrip" >\n\n    <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;\n\n     position:absolute;\n\n     bottom: 0px ;\n\n     left: 0px ;\n\n     height: 51px; \n\n     font-size: large;\n\n   " (click)="goToTrip() " >VIAJE EN CURSO\n\n    </button>\n\n</div>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\user\waypool_costumer\src\pages\p-findride\findride.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_15__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* ViewController */]])
     ], FindridePassPage);

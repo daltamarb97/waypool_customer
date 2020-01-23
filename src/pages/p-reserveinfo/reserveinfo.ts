@@ -56,9 +56,8 @@ export class ReserveinfoPage {
 cancelReserve(){
 	this.reservesService.cancelReserve(this.signUpService.userPlace, this.userUid,this.driverUid,this.reserveKey);
 	this.reservesService.eliminateKeyUser(this.signUpService.userPlace, this.userUid,this.reserveKey);
-	this.app.getRootNav().push('ListridePage');
-
-  }
+	let modal = this.modalCtrl.create('CanceltripPage');
+	modal.present();  }
 
 
 		 showProfilePassegner(passenger){

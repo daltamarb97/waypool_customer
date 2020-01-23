@@ -276,19 +276,19 @@ var map = {
 		0
 	],
 	"../pages/p-help/help.module": [
-		639,
+		638,
 		19
 	],
 	"../pages/p-listride/listride.module": [
-		638,
+		653,
 		18
 	],
 	"../pages/p-login/login.module": [
-		640,
+		639,
 		17
 	],
 	"../pages/p-more/more.module": [
-		641,
+		640,
 		16
 	],
 	"../pages/p-myride/myride.module": [
@@ -296,23 +296,23 @@ var map = {
 		15
 	],
 	"../pages/p-profile/profile.module": [
-		642,
+		641,
 		14
 	],
 	"../pages/p-public-profile/public-profile.module": [
-		643,
+		642,
 		13
 	],
 	"../pages/p-ratetrip/ratetrip.module": [
-		644,
+		643,
 		12
 	],
 	"../pages/p-reserveinfo/reserveinfo.module": [
-		645,
+		644,
 		11
 	],
 	"../pages/p-reservetrip/reservetrip.module": [
-		646,
+		645,
 		10
 	],
 	"../pages/p-signup/signup.module": [
@@ -320,31 +320,31 @@ var map = {
 		9
 	],
 	"../pages/p-support/support.module": [
-		647,
+		646,
 		8
 	],
 	"../pages/p-tabs/tabs.module": [
-		648,
+		647,
 		7
 	],
 	"../pages/p-terms/terms.module": [
-		649,
+		648,
 		6
 	],
 	"../pages/p-verification-images/verification-images.module": [
-		650,
+		649,
 		5
 	],
 	"../pages/p-verification-number/verification-number.module": [
-		651,
+		650,
 		4
 	],
 	"../pages/p-walkthrough/walkthrough.module": [
-		652,
+		651,
 		3
 	],
 	"../pages/p-wallet/wallet.module": [
-		653,
+		652,
 		2
 	]
 };
@@ -990,6 +990,9 @@ var TripsService = /** @class */ (function () {
     TripsService.prototype.getOnTrip = function (place, userUid) {
         return this.afDB.object(place + '/users/' + userUid + '/onTrip/').valueChanges();
     };
+    TripsService.prototype.getSaveTrip = function (place, userUid) {
+        return this.afDB.object(place + '/users/' + userUid + '/saveTrip/').valueChanges();
+    };
     TripsService.prototype.getMyReservesUser = function (place, userUid) {
         // 
         return this.afDB.list(place + '/users/' + userUid + '/myReserves').valueChanges();
@@ -1065,14 +1068,7 @@ var TripsService = /** @class */ (function () {
         });
     };
     TripsService.prototype.getOutFromLMU = function (place, keyTrip, driverId, userId) {
-        var _this = this;
-        this.afDB.database.ref(place + '/trips/' + driverId + '/' + keyTrip + '/lastMinuteUsers/' + userId).remove().then(function () {
-            var alert = _this.alertCtrl.create({
-                title: 'Escoge otro viaje',
-                buttons: ['OK']
-            });
-            alert.present();
-        });
+        this.afDB.database.ref(place + '/trips/' + driverId + '/' + keyTrip + '/lastMinuteUsers/' + userId).remove();
     };
     TripsService.prototype.checkIfAcceptedInLMU = function (place, driverId, keyTrip, userId) {
         return this.afDB.object(place + '/trips/' + driverId + '/' + keyTrip + '/lastMinuteUsers/' + userId).valueChanges();
@@ -1448,7 +1444,6 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
@@ -1464,6 +1459,7 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-walkthrough/walkthrough.module#WalkthroughPageModule', name: 'WalkthroughPage', segment: 'walkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-findride/findride.module#FindridePassPageModule', name: 'FindridePassPage', segment: 'findride', priority: 'low', defaultHistory: [] }
@@ -1649,7 +1645,7 @@ var MyApp = /** @class */ (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/app/app.html"*/'<ion-menu [content]="content">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n          <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n          {{p.title}}                \n        </button>\n      \n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  \n  <ion-nav  #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/app/app.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\user\waypool_costumer\src\app\app.html"*/'<ion-menu [content]="content">\n\n    <ion-header>\n\n      <ion-toolbar>\n\n        <ion-title>Menu</ion-title>\n\n      </ion-toolbar>\n\n    </ion-header>\n\n    <ion-content>\n\n      <ion-list>\n\n        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n          <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n\n\n          {{p.title}}                \n\n        </button>\n\n      \n\n      </ion-list>\n\n    </ion-content>\n\n  </ion-menu>\n\n  \n\n  <ion-nav  #content [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\user\waypool_costumer\src\app\app.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_firebase__["a" /* Firebase */]])
     ], MyApp);

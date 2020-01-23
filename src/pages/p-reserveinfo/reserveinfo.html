@@ -13,14 +13,14 @@
                            <h2 *ngIf="passenger.userId === userUid; else itsNotMeBlock" (click) = "showProfilePassegner(passenger)" style="font-size:1.5rem;"> Yo
                                  <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>  
                               </h2>
-                                  <!-- <h5>{{passenger.about | slice:0:19 }}...</h5> -->
+                                  <!-- <h5>{{passenger.about | 9 }}...</h5> -->
                                   <ng-template #itsNotMeBlock >
                           
-                                       <h2>{{passenger.name |titlecase}} {{passenger.lastname  |titlecase | slice:0:1}}. 
+                                       <h2>{{passenger.name |titlecase}} {{passenger.lastname  |titlecase }}. 
                                           <ion-icon  *ngIf='passenger.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
                                        </h2>
       
-                                       <!-- <h5>{{passenger.about | slice:0:19}}...</h5> -->
+                                       <!-- <h5>{{passenger.about | 9}}...</h5> -->
                                
                            </ng-template >
                      </div>  

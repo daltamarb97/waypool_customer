@@ -69,7 +69,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, authenticationService, alertCtrl, AngularFireAuth, NavParams, SignUpService, formBuilder, platform, toastCtrl) {
+    function LoginPage(navCtrl, authenticationService, alertCtrl, AngularFireAuth, NavParams, SignUpService, formBuilder, platform, toastCtrl, loadingCtrl) {
         this.navCtrl = navCtrl;
         this.authenticationService = authenticationService;
         this.alertCtrl = alertCtrl;
@@ -79,6 +79,7 @@ var LoginPage = /** @class */ (function () {
         this.formBuilder = formBuilder;
         this.platform = platform;
         this.toastCtrl = toastCtrl;
+        this.loadingCtrl = loadingCtrl;
         this.email = '';
         this.auth = this.AngularFireAuth.auth;
         this.loginGroup = this.formBuilder.group({
@@ -92,22 +93,22 @@ var LoginPage = /** @class */ (function () {
     ;
     LoginPage.prototype.resetPassword = function (email) {
         if (this.loginGroup.controls['email'].value == '') {
-            var alert_1 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'no hay ningun email',
                 subTitle: 'ingresa un email para resetear tu contraseña',
                 buttons: ['OK']
             });
-            alert_1.present();
+            alert.present();
             console.log("reset password email hasn't been sent");
         }
         else {
             this.auth.sendPasswordResetEmail(this.loginGroup.controls['email'].value);
-            var alert_2 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'revisa tu email',
                 subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
                 buttons: ['OK']
             });
-            alert_2.present();
+            alert.present();
             console.log("reset password email has been sent");
         }
         ;
@@ -115,18 +116,24 @@ var LoginPage = /** @class */ (function () {
     ;
     LoginPage.prototype.logIn = function () {
         var _this = this;
+        var loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: "\n              <div class=\"custom-spinner-container\">\n                <div class=\"custom-spinner-box\"></div>\n              </div>"
+        });
+        loading.present();
         this.receivedUser = this.NavParams.data;
         var email = this.loginGroup.controls['email'].value;
         var password = this.loginGroup.controls['password'].value;
         this.authenticationService.loginWithEmail(email, password).then(function (data) {
             console.log(data);
             if (data.user.emailVerified == false) {
-                var alert_3 = _this.alertCtrl.create({
+                loading.dismiss();
+                var alert = _this.alertCtrl.create({
                     title: 'Oops!',
                     subTitle: 'por favor verifica tu email',
                     buttons: ['OK']
                 });
-                alert_3.present();
+                alert.present();
             }
             else {
                 var metadata = _this.auth.currentUser.metadata;
@@ -136,9 +143,11 @@ var LoginPage = /** @class */ (function () {
                     // this.navCtrl.setRoot('TabsPage');
                     setTimeout(function () {
                         if (_this.navCtrl.getActive().id === 'LoginPage') {
+                            loading.dismiss();
                             _this.navCtrl.setRoot('FindridePassPage');
                         }
                         else {
+                            loading.dismiss();
                             console.log('actuo el abservable');
                         }
                     }, 500);
@@ -147,8 +156,10 @@ var LoginPage = /** @class */ (function () {
                     setTimeout(function () {
                         if (_this.navCtrl.getActive().id === 'LoginPage') {
                             _this.navCtrl.setRoot('FindridePassPage');
+                            loading.dismiss();
                         }
                         else {
+                            loading.dismiss();
                             console.log('actuo el abservable');
                         }
                     }, 500);
@@ -157,6 +168,7 @@ var LoginPage = /** @class */ (function () {
             }
             ;
         }).catch(function (error) {
+            loading.dismiss();
             var alert = _this.alertCtrl.create({
                 title: 'Oops!',
                 subTitle: 'El usuario o la contraseña están incorrectas',
@@ -169,11 +181,12 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\user\waypool_costumer\src\pages\p-login\login.html"*/'<ion-header class="transparent">\n\n    <ion-navbar>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <div class="logo">\n\n        <img src="assets/imgs/logo waypool-01.png" alt="logo">\n\n    </div>\n\n\n\n    <div class="bg-white login">\n\n        <div class="">\n\n         <form [formGroup]="loginGroup" (ngSubmit)="logIn()">\n\n            <ion-list class="form">\n\n                <ion-item>\n\n                    <ion-label></ion-label>\n\n                    <ion-input type="email"  text-right  formControlName="email" placeholder= "email universitario"></ion-input>\n\n                </ion-item>\n\n                <ion-item>\n\n                    <ion-label></ion-label>\n\n                    <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>\n\n                </ion-item>\n\n            </ion-list>\n\n            <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!loginGroup.valid">ENTRAR</button>\n\n            <br>\n\n         </form>\n\n\n\n            <ion-row style="padding-top: 30px;">\n\n                <ion-col (click)="signup()"><small>¿Eres nuevo? <strong class="text-theme">¡Regístrate!</strong></small></ion-col>\n\n                <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme">contraseña?</strong></small></ion-col>\n\n            </ion-row>\n\n           \n\n\n\n        </div>\n\n    </div>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\user\waypool_costumer\src\pages\p-login\login.html"*/
+            selector: 'page-login',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL2/waypool_costumer/src/pages/p-login/login.html"*/'<ion-header class="transparent">\n    <ion-navbar>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="logo">\n        <img src="assets/imgs/logo waypool-01.png" alt="logo">\n    </div>\n\n    <div class="bg-white login">\n        <div class="">\n         <form [formGroup]="loginGroup" (ngSubmit)="logIn()">\n            <ion-list class="form">\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="email"  text-right  formControlName="email" placeholder= "email universitario"></ion-input>\n                </ion-item>\n                <ion-item> \n                    <ion-label></ion-label>\n                    <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>\n                </ion-item>\n            </ion-list>\n            <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!loginGroup.valid">ENTRAR</button>\n            <br>\n         </form>\n\n            <ion-row style="padding-top: 30px;">\n                <ion-col (click)="signup()"><small>¿Eres nuevo? <strong class="text-theme">¡Regístrate!</strong></small></ion-col>\n                <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme">contraseña?</strong></small></ion-col>\n            </ion-row>\n           \n\n        </div>\n    </div>\n</ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL2/waypool_costumer/src/pages/p-login/login.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__["a" /* authenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__["a" /* authenticationService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* Platform */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]) === "function" && _k || Object])
     ], LoginPage);
     return LoginPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
 //# sourceMappingURL=login.js.map

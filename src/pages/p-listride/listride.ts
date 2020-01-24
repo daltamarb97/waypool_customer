@@ -56,9 +56,12 @@ export class ListridePage {
 
         this.reservesService.getReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)    
         .subscribe(reserves => {
-          this.initiatedTrips = [];
-          this.reservesAvailable = [];
+          // this.initiatedTrips = [];
+          // this.reservesAvailable = [];
+          
           this.ReservesGeofire = reserves; 
+          console.log(this.ReservesGeofire);
+          
           if(this.ReservesGeofire.length === 0){
               //there are no reserves to show
               this.noReserve = true;
@@ -68,7 +71,22 @@ export class ListridePage {
           }
           // this.presentLoadingCustom(this.ReservesGeofire);
           this.getAvailableReserves();
+
         });
+
+
+        this.reservesService.getSeenReservesInAvailableReserves(this.SignUpService.userPlace, this.userUid).subscribe((reserve)=>{
+          this.reservesAvailable = reserve;
+          console.log(this.reservesAvailable);
+          
+        })
+
+
+        this.reservesService.getSeenReservesInAvailableReservesLMU(this.SignUpService.userPlace, this.userUid).subscribe((reserve)=>{
+          this.initiatedTrips = reserve;
+          console.log(this.initiatedTrips);
+          
+        })
      
   
   }
@@ -81,6 +99,8 @@ export class ListridePage {
     
     console.log("me active")
     this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
+    this.TripsService.eliminateSeenAvailableReserves(this.SignUpService.userPlace,this.userUid);
+    this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
   }
 
 
@@ -92,29 +112,28 @@ export class ListridePage {
 
   getAvailableReserves(){ 
         //bring reserves that i have entered to hide them in listride
-   
+    // this.reservesAvailable = [];
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
-      this.ReservesGeofire.forEach(reserveGeofire => {        
+    console.log(this.ReservesGeofire);
+      
+    this.ReservesGeofire.forEach(reserveGeofire => {        
         this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ reserveGeofire.driverId +'/'+ reserveGeofire.keyReserve).once('value').then((snapReserve)=>{
           let obj = snapReserve.val();
           console.log(obj);
-          
-          if(obj=== undefined || obj === null){
-              // reserve doesn't exist
-              console.log("hello"); 
-              }else{
-                this.reservesAvailable.push(obj);
-                console.log(this.reservesAvailable);
-                
-              } 
+          this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/reservesSeenInAvailableReserves/').remove().then(()=>{
+            this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/reservesSeenInAvailableReserves/'+ reserveGeofire.keyReserve).update(obj);
+          })
         })
 
         if(reserveGeofire.LMU == true){
           
           this.afDB.database.ref(this.SignUpService.userPlace + '/trips/'+reserveGeofire.driverId+'/'+ reserveGeofire.keyReserve).once('value').then((snapTripLMU)=>{
-            this.reserveLMU = snapTripLMU.val();
-            this.initiatedTrips.push(this.reserveLMU);
-            console.log(this.initiatedTrips);  
+            let obj = snapTripLMU.val();
+            this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/reservesSeenInAvailableReservesLMU/').remove().then(()=>{
+              this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/reservesSeenInAvailableReservesLMU/'+ reserveGeofire.keyReserve).update(obj);
+            })
+            // this.initiatedTrips.push(this.reserveLMU);
+            // console.log(this.initiatedTrips);  
           })
 
       }
@@ -153,7 +172,9 @@ export class ListridePage {
           this.unSubscribeServices();
          this.navCtrl.pop();
          this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
-    
+         this.TripsService.eliminateSeenAvailableReserves(this.SignUpService.userPlace,this.userUid);
+         this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
+
          this.navCtrl.push('ReservetripPage');
         }
       })
@@ -180,7 +201,9 @@ export class ListridePage {
           this.unSubscribeServices();
          this.navCtrl.pop();
          this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
-    
+         this.TripsService.eliminateSeenAvailableReserves(this.SignUpService.userPlace,this.userUid);
+         this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
+
          this.navCtrl.push('ReservetripPage');
         }
       })
@@ -201,6 +224,9 @@ export class ListridePage {
         this.unSubscribeServices();
         this.navCtrl.pop();
         this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
+        this.TripsService.eliminateSeenAvailableReserves(this.SignUpService.userPlace,this.userUid);
+        this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
+
         this.navCtrl.push('MyridePage');
       }
     })

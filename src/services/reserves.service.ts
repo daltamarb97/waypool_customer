@@ -35,6 +35,21 @@ export class reservesService {
         return  this.afDB.list(place + '/users/'+ userUid+'/availableReserves').valueChanges();
 
     }
+
+
+    public getSeenReservesInAvailableReserves(place, userUid){
+        //get reserves of the geofire
+        return  this.afDB.list(place + '/users/'+ userUid+'/reservesSeenInAvailableReserves').valueChanges();
+
+    }
+
+    public getSeenReservesInAvailableReservesLMU(place, userUid){
+        //get reserves of the geofire
+        return  this.afDB.list(place + '/users/'+ userUid+'/reservesSeenInAvailableReservesLMU').valueChanges();
+
+    }
+
+
     public getOnTrip(place, userUid){
         //get reserves of the geofire
         return  this.afDB.object(place + '/users/'+ userUid+'/onTrip').valueChanges();

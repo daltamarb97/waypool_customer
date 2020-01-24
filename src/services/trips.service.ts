@@ -159,6 +159,20 @@ export class TripsService {
     this.afDB.database.ref(place + '/users/'+userUid+'/availableReserves/').remove();
 
    } 
+
+
+   public eliminateSeenAvailableReserves(place, userUid){    
+    //eliminate keyTrip from user's node to eliminate access to that reserve
+  this.afDB.database.ref(place + '/users/'+userUid+'/reservesSeenInAvailableReserves/').remove();
+
+ } 
+
+
+ public eliminateSeenAvailableReservesLMU(place, userUid){    
+  //eliminate keyTrip from user's node to eliminate access to that reserve
+this.afDB.database.ref(place + '/users/'+userUid+'/reservesSeenInAvailableReservesLMU/').remove();
+
+} 
   
      public eraseReserve(place , userUid,reserveId){    
       //eliminate keyTrip from user's node to eliminate access to that reserve

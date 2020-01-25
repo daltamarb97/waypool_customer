@@ -18,10 +18,16 @@
                         <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
                     </ion-avatar>
                 <div class="name">
-                    <h2>Hora {{reserve.startHour |titlecase}} 
+                   
+                    <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase  }}
+                        <ion-icon *ngIf='reserve.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
                     </h2>
                 </div>
-                
+                <!-- <div class="name">
+        
+                  
+                    
+                </div> -->
                 <div class="more"> 
                         <h2 class="text text-theme">                        
                                 $ {{reserve.price}}                          
@@ -40,14 +46,12 @@
                         3 seats
                     </ion-col> -->
                     
-                    <ion-col col-4 class="detail-text text-theme">
-                        <div class="name">
+                    <ion-col col-4  >
         
-                            <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase  }}
-                                <ion-icon *ngIf='reserve.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                            <h2 style="font-size: 1.8rem;
+                            font-weight: 600;" >Hora {{reserve.startHour |titlecase}} 
                             </h2>
                             
-                        </div>
                     </ion-col>
                     <ion-col center text-center col-4 text-right style="margin-left: auto;">
                         <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            

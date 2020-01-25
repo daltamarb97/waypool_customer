@@ -69,10 +69,11 @@
                     <div class="name">
                         <h2>{{trip.driver.name|titlecase}} {{trip.driver.lastname |titlecase }}
                             <ion-icon *ngIf='trip.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
-                            <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>
 
                         </h2>
+                        
                         <p>{{trip.car}}</p>
+                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>
 
                     </div>
                     <div class="more">

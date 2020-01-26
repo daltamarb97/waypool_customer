@@ -40,9 +40,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Usado para conectarte con otros usuarios de Waypool y asi brindarte un mejor servicio</string>
 	<key>NSMainNibFile</key>
-	<string></string>
+	<string/>
 	<key>NSMainNibFile~ipad</key>
-	<string></string>
+	<string/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Accedemos a tus imagenes para que sea más fácil para ti mandarnos tu documentos</string>
 	<key>UIInterfaceOrientation</key>

@@ -2,7 +2,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 
-import { NavController, NavParams, IonicPage, App } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, App, LoadingController } from 'ionic-angular';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -50,7 +50,7 @@ export class SignupPage {
     emailStringVerification:any;
     rightEmailOnDatabase:any;
     zones = [];
-  constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private app: App) {
+  constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private app: App, public loadingCtrl: LoadingController) {
 
 
     this.signupGroup = this.formBuilder.group({
@@ -121,7 +121,15 @@ export class SignupPage {
     }
      
     verification(){
-    
+        
+        let loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: `
+              <div class="custom-spinner-container">
+                <div class="custom-spinner-box"></div>
+              </div>`
+              });
+          loading.present(); 
         this.forLoopsCompleted = 0;
         this.companyIdentified = false;
         var count = this.arrayEmails.length;
@@ -148,6 +156,7 @@ export class SignupPage {
                     })
                 }).then(()=>{
                    if(!this.signupGroup.controls['isChecked'].value === true ){
+                            loading.dismiss();
                             const alert = this.alertCtrl.create({
                                 title: 'No aceptaste nuestros términos y condiciones',
                                 subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
@@ -223,6 +232,7 @@ export class SignupPage {
                                             if(user){
                                                 if(user.emailVerified == false){
                                                     user.sendEmailVerification();
+                                                    loading.dismiss();
                                                     const alert = this.alertCtrl.create({
                                                         title: '¡REGISTRO EXITOSO!',
                                                         subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
@@ -246,6 +256,7 @@ export class SignupPage {
                                         }) 
 
                                     }).catch((error)=>{
+                                        loading.dismiss();
                                         if(error.code === "auth/email-already-in-use"){
                                             const alert = this.alertCtrl.create({
                                                 title: 'ya existe una cuenta con este correo',
@@ -257,6 +268,7 @@ export class SignupPage {
                                     })
                                     
                                 }else{
+                                    loading.dismiss();
                                     const alert = this.alertCtrl.create({
                                         title: 'Oops!',
                                         subTitle: 'las contraseñas no coinciden, intenta de nuevo',
@@ -269,6 +281,7 @@ export class SignupPage {
                         }
                 })
             }
+            loading.dismiss(); 
             this.noCompanyIdentified(count);        
         }
        

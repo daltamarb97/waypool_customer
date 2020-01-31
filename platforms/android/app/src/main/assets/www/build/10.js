@@ -1,6 +1,6 @@
 webpackJsonp([10],{
 
-/***/ 646:
+/***/ 645:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReservetripPageModule", function() { return ReservetripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reservetrip__ = __webpack_require__(801);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reservetrip__ = __webpack_require__(800);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 801:
+/***/ 800:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -115,16 +115,20 @@ var ReservetripPage = /** @class */ (function () {
             .subscribe(function (onTrip) {
             _this.onTrip = onTrip;
             console.log(_this.onTrip);
+            console.log('fue aqui 2');
+            if (_this.onTrip === true) {
+                _this.unSubscribeServices();
+                _this.navCtrl.pop();
+                _this.geofireService.cancelGeofireDest();
+                _this.geofireService.cancelGeofireOr();
+                _this.geofireService.cancelGeofireDestLMU();
+                _this.geofireService.cancelGeofireOrLMU();
+                console.log("repetire");
+                _this.navCtrl.push('MyridePage');
+            }
+            else {
+            }
         });
-        this.sendCoordsService.getOriginUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
-            .subscribe(function (originUser) {
-            _this.locationOrigin = originUser;
-        });
-        this.sendCoordsService.getDestinationUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
-            .subscribe(function (destinationUser) {
-            _this.locationDestination = destinationUser;
-        });
-        console.log(this.SignUpService.userPlace);
         this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (myReservesId) {
             console.log(_this.myReserves);
@@ -132,7 +136,6 @@ var ReservetripPage = /** @class */ (function () {
             _this.myReservesId = myReservesId;
             console.log(_this.myReservesId);
             _this.myReserves = [];
-            _this.getReserves();
             if (_this.myReservesId.length === 0) {
                 //there are no reserves to show
                 _this.presentLoadingCustom();
@@ -140,6 +143,17 @@ var ReservetripPage = /** @class */ (function () {
             else {
                 //there are reserves
                 _this.noReserve = false;
+                //check if driver have cancel me from reserve
+                _this.myReservesId.forEach(function (reserve) {
+                    if (reserve.cancelReserve == true) {
+                        _this.unSubscribeServices();
+                        _this.navCtrl.pop();
+                        var modal = _this.modalCtrl.create('CanceltripPage');
+                        modal.present();
+                        _this.reservesService.eliminateKeyUser(_this.SignUpService.userPlace, _this.userUid, reserve.keyReserve);
+                    }
+                });
+                _this.getReserves();
             }
         });
     }
@@ -155,55 +169,10 @@ var ReservetripPage = /** @class */ (function () {
             _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + reserve.driverId + '/' + reserve.keyReserve).once('value').then(function (snapReserve) {
                 _this.reserve = snapReserve.val();
                 console.log(_this.reserve);
-                _this.pendingUser = [];
                 if (reserve === undefined || reserve === null) {
-                    if (_this.onTrip === true) {
-                        // i think doesnt work, just in case lets leave it here
-                        _this.unSubscribeServices();
-                        console.log("me borre");
-                        _this.reservesService.eliminateKeyUser(_this.SignUpService.userPlace, _this.userUid, reserve.keyReserve);
-                        _this.navCtrl.pop();
-                        console.log("1");
-                    }
-                    else {
-                        // the driver cancel or eliminated the reserve
-                        console.log("cai en el vacío");
-                    }
-                    console.log('aqui hubo error de reserva fantasma');
                 }
                 else {
-                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + reserve.driverId + '/' + reserve.keyReserve + '/pendingUsers/' + _this.userUid).once('value').then(function (snapExistence) {
-                        if (snapExistence === undefined || snapExistence === null) {
-                            if (_this.onTrip === true) {
-                                _this.unSubscribeServices();
-                                console.log('fue aqui 2');
-                                _this.geofireService.cancelGeofireDest();
-                                _this.geofireService.cancelGeofireOr();
-                                _this.geofireService.cancelGeofireDestLMU();
-                                _this.geofireService.cancelGeofireOrLMU();
-                                _this.app.getRootNav().push('MyridePage');
-                                //  do nothing because the user is in the trip
-                                console.log("in a trip");
-                            }
-                            else {
-                                if (_this.onTrip === false || _this.onTrip === undefined || _this.onTrip === null) {
-                                    _this.unSubscribeServices();
-                                    _this.reservesService.eliminateKeyUser(_this.SignUpService.userPlace, _this.userUid, reserve.keyReserve);
-                                }
-                                else {
-                                    //  eliminate key because the driver has eliminated the user
-                                    console.log("me borre");
-                                    _this.unSubscribeServices();
-                                    console.log('fue aqui');
-                                    _this.eliminateReserve(_this.userUid, reserve.keyReserve);
-                                    // this.myReserves=[];
-                                }
-                            }
-                        }
-                        else {
-                            _this.myReserves.push(_this.reserve);
-                        }
-                    });
+                    _this.myReserves.push(_this.reserve);
                 }
             });
         });
@@ -225,13 +194,6 @@ var ReservetripPage = /** @class */ (function () {
     // confirmreserve(reserveKey,driverUid){
     //      //TODAVÍA NO
     // }
-    ReservetripPage.prototype.eliminateReserve = function (userUid, keyReserve) {
-        this.unSubscribeServices();
-        this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, userUid, keyReserve);
-        var modal = this.modalCtrl.create('CanceltripPage');
-        // this.navCtrl.setRoot('FindridePassPage');
-        modal.present();
-    };
     ReservetripPage.prototype.unSubscribeServices = function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
@@ -263,7 +225,7 @@ var ReservetripPage = /** @class */ (function () {
     };
     ReservetripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-reservetrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-reservetrip/reservetrip.html"*/'<ion-header class="bg-theme title">\n    <ion-navbar >\n        <ion-title >Mis Reservas\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content class="bg-light" class="hideLongText">\n\n\n    \n    <img *ngIf="noReserve" src="assets/imgs/noreserve.png">\n<div style="display: flex;flex-direction: column;    width: 96%">\n    <ion-card *ngFor = "let reserve of myReserves">  \n        <ion-item>\n                <ion-avatar item-start>\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                    </ion-avatar>\n                <div class="name">\n                    <h2>Hora {{reserve.startHour |titlecase}} \n                    </h2>\n                </div>\n                \n                <div class="more"> \n                        <h2 class="text text-theme">                        \n                                $ {{reserve.price}}                          \n                            </h2> \n                </div>\n            </ion-item>\n            <ion-card-content>\n                <div class="ride-detail">\n                    <p  >\n                        <span class="icon-location bg-theme"></span>{{reserve.houseAddr}}</p>\n                    <p > \n                        <span class="icon-location bg-yellow"></span>{{reserve.placeAddr}}</p>\n                </div>\n                <ion-row class="center-align">\n                    <!-- <ion-col col-3 class="detail-text text-theme">\n                        3 seats\n                    </ion-col> -->\n                    \n                    <ion-col col-4 class="detail-text text-theme">\n                        <div class="name">\n        \n                            <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase | }}\n                                <ion-icon *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                            </h2>\n                            \n                        </div>\n                    </ion-col>\n                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                        <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            \n                    </ion-col>\n                    <ion-col center text-center col-4 text-right >\n                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>\n                    </ion-col> \n                </ion-row>\n            </ion-card-content>\n        \n</ion-card>\n\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-reservetrip/reservetrip.html"*/
+            selector: 'page-reservetrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL2/waypool_costumer/src/pages/p-reservetrip/reservetrip.html"*/'<ion-header class="bg-theme title">\n    <ion-navbar >\n        <ion-title >Mis Reservas\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content class="bg-light" class="hideLongText">\n\n\n    \n    <img *ngIf="noReserve" src="assets/imgs/noreserve.png">\n<div style="display: flex;flex-direction: column;    width: 96%">\n    <ion-card *ngFor = "let reserve of myReserves">  \n        <ion-item>\n                <ion-avatar item-start>\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                    </ion-avatar>\n                <div class="name">\n                   \n                    <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase  }}\n                        <ion-icon *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                    </h2>\n                </div>\n                <!-- <div class="name">\n        \n                  \n                    \n                </div> -->\n                <div class="more"> \n                        <h2 class="text text-theme">                        \n                                $ {{reserve.price}}                          \n                            </h2> \n                </div>\n            </ion-item>\n            <ion-card-content>\n                <div class="ride-detail">\n                    <p  >\n                        <span class="icon-location bg-theme"></span>{{reserve.houseAddr}}</p>\n                    <p > \n                        <span class="icon-location bg-yellow"></span>{{reserve.placeAddr}}</p>\n                </div>\n                <ion-row class="center-align">\n                    <!-- <ion-col col-3 class="detail-text text-theme">\n                        3 seats\n                    </ion-col> -->\n                    \n                    <ion-col col-4  >\n        \n                            <h2 style="font-size: 1.8rem;\n                            font-weight: 600;" >Hora {{reserve.startHour |titlecase}} \n                            </h2>\n                            \n                    </ion-col>\n                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                        <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            \n                    </ion-col>\n                    <ion-col center text-center col-4 text-right >\n                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>\n                    </ion-col> \n                </ion-row>\n            </ion-card-content>\n        \n</ion-card>\n\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL2/waypool_costumer/src/pages/p-reservetrip/reservetrip.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_9__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_6__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */], __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__["a" /* geofireService */]])
     ], ReservetripPage);

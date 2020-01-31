@@ -21,8 +21,6 @@ page-terms {
         position: relative;
         img {
             position: absolute;
-            width: 144px;
-            height: 144px;
             margin: auto;
             top: 0;
             left: 0;
@@ -30,4 +28,25 @@ page-terms {
             right: 0;
         }
     }
+
+    .text-theme{
+        color: #000000;
+        font-weight: bold;
+    }
+     
+    .text-theme2{
+        color: #001127;
+        font-weight: bold;
+    }
+
+    .text-theme3{
+        color: #000000;
+        text-decoration: underline;
+        text-decoration-color: black; 
+    }
+
+    .text-dark2{
+        font-weight: bold;
+    }
+    
 }

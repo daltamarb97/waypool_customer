@@ -29417,13 +29417,32 @@ page-terms .logo {
 
 page-terms .logo img {
   position: absolute;
-  width: 144px;
-  height: 144px;
   margin: auto;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+page-terms .text-theme {
+  color: #000000;
+  font-weight: bold;
+}
+
+page-terms .text-theme2 {
+  color: #001127;
+  font-weight: bold;
+}
+
+page-terms .text-theme3 {
+  color: #000000;
+  text-decoration: underline;
+  -webkit-text-decoration-color: black;
+  text-decoration-color: black;
+}
+
+page-terms .text-dark2 {
+  font-weight: bold;
 }
 
 page-verification-images p {

@@ -7,20 +7,20 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-firebase": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
-    },
-    "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "call-number": {
-      "PACKAGE_NAME": "com.waypoolsas.waypool"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
   "dependent_plugins": {}

@@ -1,4 +1,4 @@
-<ion-header class="bg-theme">
+<ion-header class="bg-theme-driver">
     <ion-navbar>
         <ion-title class="text-center">PERFIL</ion-title>
     </ion-navbar>
@@ -12,7 +12,7 @@
                     </ion-avatar>
                     <div class="name">
                         <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}
-                            <ion-icon *ngIf = 'verified' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                            <ion-icon *ngIf = 'verified' name="ios-checkmark-circle" class="text-theme-driver"></ion-icon>
                         </h2>
                         <p (click)="profile()">Editar Perfil</p>
                     </div>

@@ -89,7 +89,7 @@ export class DriverSchedulePage {
           });
           alert.present();
         }else{
-          let modal = this.modalCtrl.create('AddSchedulePage');
+          let modal = this.modalCtrl.create('DriverAddSchedulePage');
           modal.onDidDismiss(accepted => {
             if(accepted){
             }
@@ -101,9 +101,9 @@ export class DriverSchedulePage {
 
   skipSchedule(){
     if(!this.userInfo.houseAddress){
-      this.navCtrl.push('SpecifyOriginPage'); 
+      this.navCtrl.push('DriverSpecifyOriginPage'); 
     }else{
-      this.navCtrl.setRoot('FindridePage'); 
+      this.navCtrl.setRoot('DriverFindridePage'); 
     }
   }
 
@@ -117,7 +117,7 @@ export class DriverSchedulePage {
         });
         alert.present();
       }else{
-        let modal = this.modalCtrl.create('RemoveSchedulePage', {
+        let modal = this.modalCtrl.create('DriverRemoveSchedulePage', {
           schedule: sche
         });
         modal.onDidDismiss(accepted => {
@@ -172,7 +172,7 @@ export class DriverSchedulePage {
           buttons: [{
             text: 'OK', 
             handler: () => {
-              this.navCtrl.push('FindridePage');
+              this.navCtrl.push('DriverFindridePage');
             }
           }]
         });
@@ -236,7 +236,7 @@ export class DriverSchedulePage {
           buttons: [{
             text: 'OK',
             handler: () => {
-              this.navCtrl.push('FindridePage');
+              this.navCtrl.push('DriverFindridePage');
             }
           }]
         });

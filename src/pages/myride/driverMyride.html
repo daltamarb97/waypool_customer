@@ -1,4 +1,4 @@
-<ion-header class="bg-theme">
+<ion-header class="bg-theme-driver">
     <ion-navbar>
         <ion-title class="text-center">VIAJE EN CURSO
            
@@ -35,7 +35,7 @@
                 <ion-card-content>
                     <div class="ride-detail">
                         <p><small></small>
-                            <span class="icon-location bg-theme"></span>{{user.origin}}</p>
+                            <span class="icon-location bg-theme-driver"></span>{{user.origin}}</p>
                         <p><small></small>
                             <span class="icon-location bg-yellow"></span>{{user.destination}}</p>
                     </div>
@@ -46,7 +46,7 @@
             
                                     </ion-col>
                         <ion-col col-5>
-                            <button class="btn bg-theme rounded full text-white" (click)="goToRide(user)">Ir a Recoger/Dejar</button>
+                            <button class="btn bg-theme-driver rounded full text-white" (click)="goToRide(user)">Ir a Recoger/Dejar</button>
                         </ion-col>
                     </ion-row>
                 </ion-card-content>         
@@ -75,7 +75,7 @@
                     <ion-card-content>
                         <div class="ride-detail">
                             <p>
-                                <span class="icon-location bg-theme"></span>{{user.origin}}</p>
+                                <span class="icon-location bg-theme-driver"></span>{{user.origin}}</p>
                             <p>
                                 <span class="icon-location bg-yellow"></span>{{user.destination}}</p>
                         </div>
@@ -93,7 +93,7 @@
                         <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>
                     </ion-col>
                     <ion-col class="detail-text">
-                        <button class="btn bg-theme text-white rounded"  (click)="endTrip()" style="width: 93%;margin-top: 14px;margin-left: 9px; margin-right: 9px;">Finalizar Viaje</button>
+                        <button class="btn bg-theme-driver text-white rounded"  (click)="endTrip()" style="width: 93%;margin-top: 14px;margin-left: 9px; margin-right: 9px;">Finalizar Viaje</button>
                     </ion-col>
                
                 </ion-row>

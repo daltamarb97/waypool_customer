@@ -43,7 +43,7 @@ export class DriverLoginPage {
 
   
     signup(){
-        this.navCtrl.push('SignupPage');
+        this.navCtrl.push('DSignupPage');
 
     };
 
@@ -111,9 +111,9 @@ export class DriverLoginPage {
     
                     // }
                         setTimeout(()=>{
-                            if(this.navCtrl.getActive().id === 'LoginPage'){
+                            if(this.navCtrl.getActive().id === 'DriverLoginPage'){
                                 loading.dismiss();
-                                this.navCtrl.setRoot('FindridePage');
+                                this.navCtrl.setRoot('DriverFindridePage');
 
                             }else{
                                 loading.dismiss();

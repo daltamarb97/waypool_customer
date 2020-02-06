@@ -1,4 +1,4 @@
-<ion-header class="bg-theme">
+<ion-header class="bg-theme-driver">
     <ion-navbar>
         <ion-title>Soporte</ion-title>
     </ion-navbar>
@@ -7,7 +7,7 @@
 <ion-content class="bg-light">
     <ion-card class="slip">
         <div text-center>
-            <h1 class="text-theme">{{typeOfSituation}}</h1>
+            <h1 class="text-theme-driver">{{typeOfSituation}}</h1>
             <p class="text-light">{{today | date}}
             </p>
            
@@ -23,7 +23,7 @@
                         <img src="assets/imgs/userPicture.png">
                     </ion-avatar>
                     <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}
-                        <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                        <ion-icon name="ios-checkmark-circle" class="text-theme-driver"></ion-icon>
                     </h2>
             
                 </ion-item>
@@ -35,7 +35,7 @@
                         </ion-item>
                     </ion-list>
                 </div>
-                <p padding-top><button class="btn text-white bg-theme rounded" style="width: 100%;"  (click)="sendEmail()" >ENVIAR</button></p>
+                <p padding-top><button class="btn text-white bg-theme-driver rounded" style="width: 100%;"  (click)="sendEmail()" >ENVIAR</button></p>
             </div>
         </div>
     </ion-card>

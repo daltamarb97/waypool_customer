@@ -1,4 +1,4 @@
-<ion-header class="bg-theme">
+<ion-header class="bg-theme-driver">
     <ion-navbar >
         <ion-item style="display: flex !important;">                
             <ion-icon name="arrow-back" style="font-size: 33px"  class="text-white" end-item navPop></ion-icon>
@@ -14,7 +14,7 @@
     <div class="chatbox"*ngFor="let chat of chats">
             <div  class="cb" >        
                     <div>                        
-                         <div *ngIf="userUid === chat.uid" class="chat chat-left bg-theme text-white"  text-left padding float-right style="max-width: 70%;text-align: left">
+                         <div *ngIf="userUid === chat.uid" class="chat chat-left bg-theme-driver text-white"  text-left padding float-right style="max-width: 70%;text-align: left">
                             <!-- its driver message -->
                              <p>{{chat.message}}</p>       
                        </div>                       
@@ -40,7 +40,7 @@
                     <ion-item>
                         <ion-input type="text" placeholder="Escribe tu mensaje" [(ngModel)]="message" autofocus (keyup.enter)="sendMessage()"></ion-input>
                   
-                       <button class="text-theme" item-right (click)="sendMessage()"> <ion-icon name="md-send" ></ion-icon></button>
+                       <button class="text-theme-driver" item-right (click)="sendMessage()"> <ion-icon name="md-send" ></ion-icon></button>
                     </ion-item>
                 </ion-list>
             

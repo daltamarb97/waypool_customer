@@ -67,7 +67,7 @@ calculationOfTotalAmount(){
 
 
   goPaymentInfo(){
-    let modal = this.modalCtrl.create('PaymentsInfoPage', {userInfo: this.userInfo});                      
+    let modal = this.modalCtrl.create('DriverPaymentsInfoPage', {userInfo: this.userInfo});                      
     modal.present();
   }
 }

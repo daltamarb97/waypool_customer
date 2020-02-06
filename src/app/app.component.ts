@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { FCM } from '@ionic-native/fcm';
 import { Firebase } from '@ionic-native/firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 
@@ -23,8 +24,7 @@ export class MyApp {
   alertInternet:any;
   pagesUser:any=[];
   pagesDriver:any=[];
-  showUser:boolean = false;
-  showDriver:boolean = false;
+  showUser:boolean;
   userId:any;
   constructor(public alertCtrl: AlertController, statusBar: StatusBar, splashScreen: SplashScreen, private geolocation: Geolocation, private platform: Platform, private fcm: FCM, public toastController: ToastController, private firebase: Firebase, private afDB: AngularFireDatabase, public loadingCtrl: LoadingController) {
    
@@ -46,6 +46,7 @@ export class MyApp {
       {title:'Pasar a Pasajero',component:'FindridePassPage',icon:'people'},    
     ]
 
+    
 
 
     // const firebaseConfig = {
@@ -154,7 +155,6 @@ export class MyApp {
         this.afDB.database.ref('allUsers/' + user.uid + '/appStatus/').once('value').then(snap =>{
           if(snap.val()=== 'user'){
             this.showUser = true;
-            this.showDriver = false;
             if(user.emailVerified == false){
               loading.dismiss();
               this.rootPage = 'LoginPage';
@@ -164,7 +164,6 @@ export class MyApp {
             }
           }else if(snap.val()=== 'driver'){
             this.showUser = false;
-            this.showDriver = true;
             if(user.emailVerified == false){
               loading.dismiss();
               this.rootPage = 'LoginPage';
@@ -174,7 +173,6 @@ export class MyApp {
             }
           }else{
             this.showUser = true;
-            this.showDriver = false;
             if(user.emailVerified == false){
               loading.dismiss();
               this.rootPage = 'LoginPage';
@@ -197,23 +195,27 @@ export class MyApp {
 
   openPage(page){
     if(page.component === 'DriverFindridePage'){
-        this.showUser = false;
-        this.showDriver = true;
-        this.nav.setRoot(page.component);
-        this.afDB.database.ref('allUsers/' + this.userId).update({
-          appStatus: 'driver'
-        }).then(()=>{
         
-      })  
+        this.nav.setRoot('DriverFindridePage').then(()=>{
+            this.afDB.database.ref('allUsers/' + this.userId).update({
+              appStatus: 'driver'
+            }).then(()=>{
+              this.showUser = false;
+          }) 
+        })
+        
     }else if(page.component === 'FindridePassPage'){
-      this.showUser = true;
-      this.showDriver = false;
-      this.nav.setRoot(page.component);
-      this.afDB.database.ref('allUsers/' + this.userId).update({
-        appStatus: 'user'
-      }).then(()=>{
-       
+      
+      
+      this.nav.setRoot('FindridePassPage').then(()=>{
+        this.afDB.database.ref('allUsers/' + this.userId).update({
+          appStatus: 'user'
+        }).then(()=>{
+          this.showUser = true;
+          // this.showDriver = false;
+        })
       })
+      
     }else{
       this.nav.push(page.component)
     }

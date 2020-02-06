@@ -1,5 +1,5 @@
 
-<ion-header class="bg-theme title">
+<ion-header class="bg-theme-driver title">
     <ion-navbar >
         <ion-title >Mis Viajes
         </ion-title>
@@ -29,7 +29,7 @@
                 </h2>
             </div>
             <div class="more">                              
-                            <h2 class="text text-theme">                        
+                            <h2 class="text text-theme-driver">                        
                                 $ {{trip.price}}                          
                             </h2>                       
                      
@@ -38,7 +38,7 @@
         <ion-card-content>
             <div class="ride-detail">
                 <p  >
-                    <span class="icon-location bg-theme"></span>{{trip.houseAddr}}</p>
+                    <span class="icon-location bg-theme-driver"></span>{{trip.houseAddr}}</p>
                 <p > 
                     <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>
             </div>
@@ -80,14 +80,14 @@
                                         <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>
                                 </div>
                                 <ion-row class="center-align">  
-                                        <ion-col col-2 class="detail-text text-theme">
+                                        <ion-col col-2 class="detail-text text-theme-driver">
                                             </ion-col>
                                             <ion-col center text-center col-4 text-right style="margin-left: auto;">
                                                     <button class="btn bg-hot rounded full text-white"  (click)="seePassengers(trip.keyTrip)">DETALLES</button>
                                                 </ion-col>
                                               
                                             <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                                <button  class="btn bg-theme rounded full text-white" (click)="startTrip(trip.keyTrip,trip)">
+                                                <button  class="btn bg-theme-driver rounded full text-white" (click)="startTrip(trip.keyTrip,trip)">
                                                      INICIAR VIAJE
                                                 </button>
                                              </ion-col>
@@ -109,7 +109,7 @@
                                     </h2>
                                 </div>
                                 <div class="more">                              
-                                                <h2 class="text text-theme">                        
+                                                <h2 class="text text-theme-driver">                        
                                                     $ {{trip.price}}                          
                                                 </h2>                       
                                          
@@ -118,15 +118,15 @@
                             <ion-card-content>
                                 <div class="ride-detail">
                                     <p  >
-                                        <span class="icon-location bg-theme"></span>{{trip.houseAddr}}</p>
+                                        <span class="icon-location bg-theme-driver"></span>{{trip.houseAddr}}</p>
                                     <p > 
                                         <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>
                                 </div>
                                 <ion-row class="center-align">
-                                    <!-- <ion-col col-3 class="detail-text text-theme">
+                                    <!-- <ion-col col-3 class="detail-text text-theme-driver">
                                         3 seats
                                     </ion-col> -->
-                                    <ion-col col-3 class="detail-text text-theme">
+                                    <ion-col col-3 class="detail-text text-theme-driver">
                                             <button class="btn bg-darkblue rounded full text-white" (click)="enterChat(trip)">Chat</button>
                                     </ion-col>
                                     
@@ -134,7 +134,7 @@
                                         <button class="btn bg-darkblue rounded full text-white" (click)="seePassengers(trip.keyTrip)">Detalles</button>
                                     </ion-col>
                                     <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                        <button class="btn bg-theme rounded full text-white" (click)="startTrip(trip.keyTrip,trip)">INICIAR VIAJE</button>
+                                        <button class="btn bg-theme-driver rounded full text-white" (click)="startTrip(trip.keyTrip,trip)">INICIAR VIAJE</button>
                                      </ion-col>
                                     
                                 </ion-row>

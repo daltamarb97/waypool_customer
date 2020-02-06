@@ -23,7 +23,7 @@ export class DriverChatsPage {
   }
   
      chatting(user){
-    this.navCtrl.push('ChattingPage',{user:user});
+    this.navCtrl.push('DriverChattingPage',{user:user});
 
     }
 

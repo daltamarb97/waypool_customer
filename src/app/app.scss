@@ -31,9 +31,14 @@ li,
     color: #3fb1df;
 }
 
+.text-theme-driver {
+    color: #001127;
+}
+
 .text-dark {
     color: #4c4c4c;
 }
+
 .text-hot{
     color: #F3705A;
 }
@@ -54,6 +59,11 @@ li,
 .bg-theme {
     background: #3fb1df;
 }
+
+.bg-theme-driver {
+    background: #001127;
+}
+
 .bg-darkblue{
     background: #0081ad;
 }
@@ -85,6 +95,11 @@ li,
 .tab-button[aria-selected=true] .tab-button-icon {
     color: #3fb1df !important;
     border-color: #3fb1df !important;
+}
+
+.tab-button-icon-driver {
+    color: #001127 !important;
+    border-color: #001127 !important;
 }
 
 .tabbar {
@@ -193,6 +208,19 @@ li,
 .header.bg-theme {
     .toolbar-background {
         background: #3fb1df !important;
+    }
+    .text-center {
+        text-align: center !important;
+    }
+    .toolbar-title {
+        color: #fff !important;
+    }
+}
+
+
+.header.bg-theme-driver {
+    .toolbar-background {
+        background: #001127 !important;
     }
     .text-center {
         text-align: center !important;

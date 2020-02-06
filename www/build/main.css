@@ -25710,6 +25710,10 @@ li,
   color: #3fb1df;
 }
 
+.text-theme-driver {
+  color: #001127;
+}
+
 .text-dark {
   color: #4c4c4c;
 }
@@ -25736,6 +25740,10 @@ li,
 
 .bg-theme {
   background: #3fb1df;
+}
+
+.bg-theme-driver {
+  background: #001127;
 }
 
 .bg-darkblue {
@@ -25774,6 +25782,11 @@ li,
 .tab-button[aria-selected=true] .tab-button-icon {
   color: #3fb1df !important;
   border-color: #3fb1df !important;
+}
+
+.tab-button-icon-driver {
+  color: #001127 !important;
+  border-color: #001127 !important;
 }
 
 .tabbar {
@@ -25905,6 +25918,18 @@ li,
 }
 
 .header.bg-theme .toolbar-title {
+  color: #fff !important;
+}
+
+.header.bg-theme-driver .toolbar-background {
+  background: #001127 !important;
+}
+
+.header.bg-theme-driver .text-center {
+  text-align: center !important;
+}
+
+.header.bg-theme-driver .toolbar-title {
   color: #fff !important;
 }
 

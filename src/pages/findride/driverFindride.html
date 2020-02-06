@@ -1,4 +1,4 @@
-<ion-header class="bg-theme"  >
+<ion-header class="bg-theme-driver"  >
     
     <ion-navbar  >
         <button ion-button menuToggle>
@@ -40,7 +40,7 @@
           <ion-card-content>
               <span style=" z-index: 1;position: relative;" class="text-light search-text">Casa &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>
 
-              <span class="dot bg-theme"></span>
+              <span class="dot bg-theme-driver"></span>
               <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" id="input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Cóloca la dirección de tu casa"></ion-searchbar>
 
               <ion-list   [hidden]="autocompleteItems.length == 0">
@@ -76,7 +76,7 @@
 
   
             <div *ngIf="onTrip" >
-              <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;
+              <button class="btn rounded bg-theme-driver text-white animated infinite pulse" style=" width: 100% ;
               position: fixed ;
               bottom: 0px ;
               left: 0px ;

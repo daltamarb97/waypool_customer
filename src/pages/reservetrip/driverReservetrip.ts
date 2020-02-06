@@ -233,7 +233,7 @@ export class DriverReservetripPage{
   
   
                  }
-                 this.navCtrl.push('MyridePage');
+                 this.navCtrl.push('DriverMyridePage');
                  this.MetricsService.tripsInitiated(this.SignUpService.userPlace,this.userUid,tripKeyTrip,trip)
  
               })
@@ -253,7 +253,7 @@ export class DriverReservetripPage{
   enterChat(trip) {
     //send isTrip=true for the chat to know if its a reserve or a trip
 
-    let modal = this.modalCtrl.create('ChattingPage', {
+    let modal = this.modalCtrl.create('DriverChattingPage', {
         reserve: trip,
         isTrip: false
     })
@@ -262,14 +262,14 @@ export class DriverReservetripPage{
 
  lateReserve(keyTrip,reserve){
   
-   let modal = this.modalCtrl.create('ReserveReminderPage', {keyTrip:keyTrip,trip:reserve});
+   let modal = this.modalCtrl.create('DriverReserveReminderPage', {keyTrip:keyTrip,trip:reserve});
  
    modal.present();
 
 }
 
   seePassengers(KeyTrip){    
-        this.navCtrl.push('DetailsReservePage',{reserveKey:KeyTrip});
+        this.navCtrl.push('DriverDetailsReservePage',{reserveKey:KeyTrip});
     // let modal = this.modalCtrl.create('ConfirmreservationPage',{reserveKey:KeyTrip});
     // modal.present();
     // this.usersFindingTrip.pop();

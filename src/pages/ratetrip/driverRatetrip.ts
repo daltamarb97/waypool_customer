@@ -30,10 +30,10 @@ trip:any;
       if(this.experience === null || this.experience === undefined){
         this.experience = 'no hay feedback'
         this.sendfeedback.sendFeedback(this.SignUpService.userPlace, this.title, this.experience, this.userDriver.name, this.userDriver.lastname, this.userDriver.phone, this.userDriverUid);
-        this.navCtrl.setRoot('FindridePage');
+        this.navCtrl.setRoot('DriverFindridePage');
       }else{
         this.sendfeedback.sendFeedback(this.SignUpService.userPlace, this.title, this.experience, this.userDriver.name, this.userDriver.lastname, this.userDriver.phone, this.userDriverUid);
-        this.navCtrl.setRoot('FindridePage');
+        this.navCtrl.setRoot('DriverFindridePage');
       }
     }
 }

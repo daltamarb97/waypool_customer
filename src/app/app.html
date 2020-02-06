@@ -1,4 +1,4 @@
-<ion-menu [content]="content" *ngIf='showUser'>
+<ion-menu [content]="content" *ngIf='showUser === true'>
     <ion-header>
       <ion-toolbar>
         <ion-title>Menu</ion-title>
@@ -16,7 +16,7 @@
     </ion-content>
   </ion-menu>
 
-  <ion-menu [content]="content" *ngIf='showDriver'>
+  <ion-menu [content]="content" *ngIf='showUser === false'>
     <ion-header>
       <ion-toolbar>
         <ion-title>Menu</ion-title>

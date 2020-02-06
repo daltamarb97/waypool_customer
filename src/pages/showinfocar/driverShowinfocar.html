@@ -1,7 +1,7 @@
 <ion-content>
     <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
     <ion-card>
-        <h6 class="text-theme">Mis vehículos</h6>
+        <h6 class="text-theme-driver">Mis vehículos</h6>
         <ion-item *ngFor="let car of carList">
             <div  style="display: flex">
                 <ion-avatar item-start>
@@ -48,7 +48,7 @@
         <ion-card-content>
             <div class="seats">
                 
-                <button class="btn bg-theme text-white rounded" (click)="addCar()" style="width: 100%;margin-top: 14px;"> AGREGAR VEHÍCULO </button>
+                <button class="btn bg-theme-driver text-white rounded" (click)="addCar()" style="width: 100%;margin-top: 14px;"> AGREGAR VEHÍCULO </button>
             </div>
         </ion-card-content>
     </ion-card>

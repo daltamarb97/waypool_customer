@@ -1,4 +1,4 @@
-<ion-header class="bg-theme">
+<ion-header class="bg-theme-driver">
     <ion-navbar>
         <ion-title>MI PERFIL</ion-title>
     </ion-navbar>
@@ -13,8 +13,8 @@
             <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}
             </h2>
 
-            <p *ngIf='user.verifiedPerson' class="text-theme">VERIFICADO
-                <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+            <p *ngIf='user.verifiedPerson' class="text-theme-driver">VERIFICADO
+                <ion-icon name="ios-checkmark-circle" class="text-theme-driver"></ion-icon>
             </p>
             
         </div>
@@ -62,9 +62,9 @@
             </div>
             <div padding-top padding-left padding-right text-center>
                 <p>
-                    <button class="btn text-white rounded bg-theme" style="width: 100%;margin-bottom: 8px;" (click)="saveChanges()">Guardar Cambios</button>
-                    <button class="btn text-theme rounded bg-white" style="width: 100%;    margin-bottom: 8px;" (click)="signOut()">Cerrar Sesión</button>
-                    <button class="btn text-theme rounded bg-white" style="width: 100%;    margin-bottom: 8px;" (click)="changePassword()">Cambiar Contraseña</button>
+                    <button class="btn text-white rounded bg-theme-driver" style="width: 100%;margin-bottom: 8px;" (click)="saveChanges()">Guardar Cambios</button>
+                    <button class="btn text-theme-driver rounded bg-white" style="width: 100%;    margin-bottom: 8px;" (click)="signOut()">Cerrar Sesión</button>
+                    <button class="btn text-theme-driver rounded bg-white" style="width: 100%;    margin-bottom: 8px;" (click)="changePassword()">Cambiar Contraseña</button>
                     <button class="btn text-white rounded bg-red" style="width: 100%;    margin-bottom: 8px;" (click)="deleteAccount()">Eliminar Cuenta</button>
               
                 </p>

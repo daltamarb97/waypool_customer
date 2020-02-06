@@ -63,7 +63,7 @@ export class WalletPage {
     
     this.clipboard.copy(link);
     const toast = this.toastCtrl.create({
-      message: 'Link de pago copiado, pégalo en el browser',
+      message: 'Link de pago copiado. Pégalo en tu navegador de preferencia ',
       showCloseButton:true,
       closeButtonText: 'OK',
       position:'top'

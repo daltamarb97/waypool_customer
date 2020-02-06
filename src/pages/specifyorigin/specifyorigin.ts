@@ -359,7 +359,7 @@ sendLocation(){
     })
     
   }).then(()=>{
-    this.navCtrl.setRoot('FindridePage')
+    this.navCtrl.setRoot('DriverFindridePage')
   })
   
  }

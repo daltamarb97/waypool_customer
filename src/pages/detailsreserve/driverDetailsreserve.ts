@@ -54,7 +54,7 @@ ionViewDidLeave(){
 		
 
 		 showProfilePassegner(passenger){
-			this.app.getRootNav().push('PublicProfilePage', {passenger: passenger});
+			this.app.getRootNav().push('DriverPublicProfilePage', {passenger: passenger});
 			this.accepted = true;
 			this.dismiss();
  		}

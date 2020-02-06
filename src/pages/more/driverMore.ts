@@ -32,21 +32,21 @@ export class DriverMorePage {
   
        profile(){
     
-    this.app.getRootNav().push('ProfilePage');
+    this.app.getRootNav().push('DriverProfilePage');
     }
     showInfoCars(){
 
-     let modal = this.modalCtrl.create('ShowInfoCarPage', {user:this.user});
+     let modal = this.modalCtrl.create('DriverShowInfoCarPage', {user:this.user});
     
   modal.present();   
     }
         
          terms(){
-    this.navCtrl.push('TermsPage');
+    this.navCtrl.push('DriverTermsPage');
     }
      
          help(){
-    this.navCtrl.push('HelpPage');
+    this.navCtrl.push('DriverHelpPage');
     }
          logout(){
           this.authenticationService.logOut();

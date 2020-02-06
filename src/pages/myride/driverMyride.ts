@@ -82,7 +82,7 @@ clearToDeleteDriver:boolean = false;
 							console.log(this.lastMinuteUsers)
 							console.log("3")
 	
-							let modal = this.modalCtrl.create('ConfirmtripPage', {
+							let modal = this.modalCtrl.create('DriverConfirmtripPage', {
 								user: userLastMinute,
 								keyTrip: this.userDriver.keyTrip
 							});
@@ -157,7 +157,7 @@ clearToDeleteDriver:boolean = false;
 
 		
 			// this.navCtrl.setRoot(this.navCtrl.getActive().component);
-			let modal = this.modalCtrl.create('CanceltripPage');
+			let modal = this.modalCtrl.create('DriverCanceltripPage');
 			modal.present();
 			console.log("me reproduci 1")
 
@@ -176,7 +176,7 @@ clearToDeleteDriver:boolean = false;
 		this.navCtrl.pop();
 		console.log("me reproduci 2")
 
-		let modal = this.modalCtrl.create('CanceltripPage');
+		let modal = this.modalCtrl.create('DriverCanceltripPage');
 		modal.present();
 
 		}     
@@ -205,7 +205,7 @@ clearToDeleteDriver:boolean = false;
 	  }   
 
 	goToRide(user) {
-		this.navCtrl.push('PickupPage', {
+		this.navCtrl.push('DriverPickupPage', {
 			user: user,
 			keyTrip: this.userDriver.keyTrip
 		});
@@ -292,7 +292,7 @@ clearToDeleteDriver:boolean = false;
 									
 							this.navCtrl.pop();
 							//TO-DO: AQUI FALTA RATETRIPPAGE
-							this.navCtrl.push('RatetripPage',{user:this.userDriver, trip:this.trip});
+							this.navCtrl.push('DriverRatetripPage',{user:this.userDriver, trip:this.trip});
 
 						}
 					}
@@ -309,7 +309,7 @@ clearToDeleteDriver:boolean = false;
 	enterChat() {
 		//send isTrip=true for the chat to know if its a reserve or a trip
 		let isTrip = true;
-		let modal = this.modalCtrl.create('ChattingPage', {
+		let modal = this.modalCtrl.create('DriverChattingPage', {
 			reserve: this.trip,
 			isTrip: isTrip
 

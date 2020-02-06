@@ -284,7 +284,7 @@ export class DriverCarRegistrationLoginPage {
   };
 
   skip(){
-    this.app.getRootNav().push('SchedulePage', {defaultZone: this.defaultZone});
+    this.app.getRootNav().push('DriverSchedulePage', {defaultZone: this.defaultZone});
   }
 
   goSchedulePage(){

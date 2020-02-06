@@ -1,0 +1,56 @@
+<ion-content>
+    <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
+    <ion-card>
+            <img src="assets/imgs/detallesviaje.png" width="100px" style="display:inline-block" height="150px"/>
+
+        <ion-card-content>
+            <div class="ride-detail">
+                    <p> Este valor se replicará en todos los viajes en tu horario </p>
+
+                <ion-item class="form">
+                    <ion-label floating>Precio Por Persona</ion-label>
+                    <ion-input type="number" [(ngModel)]="precio"></ion-input>
+                  </ion-item>                
+            </div>
+        </ion-card-content>
+
+        <ion-card-content>
+            <!-- <div class="ride-detail no-before">
+                <p><small>Recuerda:</small>
+                    <ion-icon name="md-calendar" class="icon-location"></ion-icon>
+                  - Precio Recomendado: 2500 </p>
+        
+                <p>- Tus compañeros te pagarán en efectivo, evita colocar precios que requieran mucho vuelto, lleva dinero suficiente para dar vueltas.</p>
+            </div> -->
+        </ion-card-content>
+        <ion-card-content>
+                <ion-row style="margin-top: 14px;    display: flex;
+                justify-content: center">
+                   <ion-list>
+                        <ion-item>
+                          <ion-label>Escoge el carro:</ion-label>
+                          <ion-select [(ngModel)]="car">
+                                <ion-option *ngFor="let car of carModelList" >{{car.carModel}} | {{car.plateNumber}} | {{car.color}}</ion-option>
+                       
+                          </ion-select>
+                        </ion-item>
+                      </ion-list>
+                </ion-row>
+                
+               
+       
+            <div class="seats">
+                
+                <ion-row style="margin-top: 14px;    display: flex;
+                justify-content: center">
+                   
+                    <ion-col col-8>
+                        <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setPriceDriver()">Conectarme</button>
+                    </ion-col>
+                </ion-row>
+               
+
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

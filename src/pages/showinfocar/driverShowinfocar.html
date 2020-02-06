@@ -1,0 +1,55 @@
+<ion-content>
+    <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
+    <ion-card>
+        <h6 class="text-theme">Mis vehículos</h6>
+        <ion-item *ngFor="let car of carList">
+            <div  style="display: flex">
+                <ion-avatar item-start>
+                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
+                </ion-avatar>  
+                    <div class="name" style="display: flex;justify-content: center;margin-top:2px">
+                            <h2>{{car.carModel}}</h2>
+                            <p>{{car.plateNumber}} | {{car.color}}</p>
+                        </div>
+                            <ion-icon name="close-circle" style="display: flex;
+                            align-items: center;" (click)="deleteCar(car.keyCar)"></ion-icon>
+                         
+            </div>
+            
+        </ion-item>
+        
+
+    
+        <ion-row>
+            <ion-col class="name-fild-2">
+                <ion-list class="form">
+                    <ion-item class="carModel">
+                            <ion-label></ion-label>
+                                <ion-input class="input" [(ngModel)]="carModel"type="text" text-right  placeholder= "ej: Mazda"></ion-input>
+                            </ion-item>
+                    </ion-list>
+            </ion-col>
+            <ion-col class="name-fild-2">
+                <ion-list class="form">
+                    <ion-item class="plateNumber">
+                            <ion-input type="text" [(ngModel)]="plateNumber" text-right  placeholder= "placa de carro" ></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+          
+                <ion-list class="form">
+                    <ion-item class="plateNumber">
+                            <ion-input type="text" [(ngModel)]="color" text-right  placeholder= "Color" ></ion-input>
+                    </ion-item>
+                </ion-list>
+           
+        </ion-row>
+
+        <ion-card-content>
+            <div class="seats">
+                
+                <button class="btn bg-theme text-white rounded" (click)="addCar()" style="width: 100%;margin-top: 14px;"> AGREGAR VEHÍCULO </button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

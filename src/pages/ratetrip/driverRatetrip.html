@@ -1,0 +1,38 @@
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title>Viaje Finalizado</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-card class="slip">
+        <div text-center>
+            <h4 class="text-dark">¡Esperamos que hayas tenido un excelente viaje!</h4>
+            <p class="text-light">{{today | date}}
+
+        </p>
+            <h1 class="text-theme">$ {{trip.price}}</h1>
+            <h4 class="text-dark">Podrás ver tu pago en el ícono<br>Ganancias</h4>
+        </div>
+    </ion-card>
+    <ion-card class="rate">
+        <div text-center>
+                <h4 class="text-dark">Cuéntanos {{userDriver.name}} como ha sido la experiencia con Waypool </h4>           
+            <div class="driver">                
+                <div class="form">
+                    <ion-list no-lines>
+                        <ion-item>
+                            <ion-textarea [(ngModel)]="experience" type="text" placeholder="Déjanos tu sugerencia" ></ion-textarea>
+                        </ion-item>
+                    </ion-list>
+                </div>
+                <p padding-top><button navPop (click)="sendEmail()" class="btn text-white bg-theme rounded" style="width: 100%;">ENVIAR</button></p>
+            </div>
+        </div>
+        <!-- <ion-row>
+            <button navPop (click)="sendEmail()" class="btn text-white bg-theme rounded" style="width: 30%;">ENVIAR</button>
+
+        </ion-row> -->
+    </ion-card>
+    <p class="love"> Created with <ion-icon name="heart"></ion-icon></p> 
+</ion-content>

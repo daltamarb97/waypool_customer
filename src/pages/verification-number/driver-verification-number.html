@@ -1,0 +1,25 @@
+<ion-header class="transparent">
+  <ion-navbar>
+      <ion-title><span class="text-white">verification</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-background-img">
+  <div class="logo">
+      <img src="assets/imgs/logo waypool gris-01.png" alt="logo">
+  </div>
+  <div class="bg-white login">
+      <div class="">
+          <p padding text-center>Ingresa el código de confirmación<br>enviado a tu SMS!</p>
+          <br>
+          <ion-list class="form" text-center>
+              <ion-item>
+                  <ion-input type="text" [(ngModel)]='confText' text-right></ion-input>
+              </ion-item>
+          </ion-list>
+          <button ion-button full class="bg-theme text-white btn rounded" (click)="code()">Next</button>
+          <br>
+          <p padding text-center class="resendingButton" (click)= "resendCode()">Reenviar código de verificación</p>      
+        </div>
+  </div>
+</ion-content>

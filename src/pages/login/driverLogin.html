@@ -1,0 +1,38 @@
+<ion-header class="transparent">
+    <ion-navbar hide-tabs>
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="logo">
+        <img src="assets/imgs/logo waypool gris-01.png" alt="logo">
+    </div>
+
+<div class="bg-white login">
+    <div >
+     <div [formGroup]="loginGroup" >
+        <ion-list class="form">
+            <ion-item>
+                <ion-label></ion-label>
+                <ion-input type="email"  text-right  formControlName="email" placeholder= "email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label></ion-label>
+                <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+    <button ion-button full class="bg-theme text-white btn rounded" (click)="logIn()" [disabled]="!loginGroup.valid">ENTRAR</button>
+    <button ion-button full class="bg-darkblue text-white btn rounded" (click)="signup()" >REGÍSTRATE</button>
+
+
+            <ion-row style="padding-top: 8px;">
+                <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme"> contraseña?</strong></small></ion-col>
+            </ion-row>
+
+
+        </div>
+
+    </div>
+</ion-content>

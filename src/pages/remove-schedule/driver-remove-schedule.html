@@ -1,0 +1,39 @@
+<ion-content>
+
+    <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
+    <ion-card>
+  
+        <ion-card-content>
+            <ion-row style="margin-top: 14px;    display: flex;
+            justify-content: center">
+                <ion-list>
+                    <ion-item>
+                        <ion-label>Hora:</ion-label>
+                <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>
+                </ion-item>
+                </ion-list>                    
+            </ion-row>
+    </ion-card-content>
+
+    <br>
+    <h2 text-center>A esta hora vas a tu:</h2>
+     <h1 text-center class="texto1">{{textMessage}}</h1>
+      <ion-row>
+          <ion-col class="col1">
+              <img [src]="picToView" height="100px" width="100%"/>
+          </ion-col>
+      </ion-row>
+  
+        <ion-card-content>
+            <div class="seats">           
+                <ion-row style="margin-top: 14px;    display: flex;
+                justify-content: center">
+                   
+                    <ion-col col-8>
+                        <button class="btn bg-red text-white rounded" style="width: 100%;font-size: .95rem;" (click)="remove()">Eliminar este horario</button>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

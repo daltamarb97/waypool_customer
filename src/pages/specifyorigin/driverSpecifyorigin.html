@@ -1,0 +1,32 @@
+
+
+
+
+<ion-content  padding>
+      <h5 class="text-theme" style="font-weight: bold;">DIRECCIÓN DE TU HOGAR</h5>
+      <ion-card class="search" >
+          <ion-card-content>
+              <span style=" z-index: 1;position: relative;" class="text-light search-text">Tu casa &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>
+
+              <span class="dot bg-theme"></span>
+              <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" id="input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Cóloca la dirección de tu casa"></ion-searchbar>
+
+              <ion-list   [hidden]="autocompleteItems.length == 0">
+                  <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">
+                    {{ item.description }}
+                  </ion-item>
+                </ion-list>
+                <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->
+          </ion-card-content>
+
+           
+      </ion-card>
+      <!-- <ion-avatar item-end>
+          <img style="height: 15%; width: 15%;" src="assets/imgs/centermap.png" (click)="centerMap()">
+      </ion-avatar> -->
+      <div style="display: flex; justify-content: center;">    
+          <button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="sendLocation()">Listo</button>
+      </div>
+   <div #map id="map"></div>  
+</ion-content>
+

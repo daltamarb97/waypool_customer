@@ -1,0 +1,22 @@
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title class="text-center">CHATS
+        </ion-title>
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-item (click)="chatting(user)" *ngFor="let user of pickingUsers">
+        <ion-avatar item-start>
+            <img src="assets/imgs/userPicture.png">
+            <ion-badge color="danger">9+</ion-badge>
+        </ion-avatar>
+        <h2 class="text-theme">{{user.name |titlecase}} {{user.lastname | titlecase}}.
+        </h2>
+        <p>Washington sq Park?</p>
+        <ion-note item-end>Ride on<span class="time">1:12 pm</span></ion-note>
+    </ion-item>
+   
+    <p text-center class="text-light"><small>Este chat se borrará automáticamente cuando  <br>terminado el viaje.</small></p>
+</ion-content>

@@ -1,0 +1,95 @@
+<!--
+  Generated template for the SchedulePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title class="text-center">MI HORARIO</ion-title>
+    </ion-navbar>
+    <div padding-left padding-right>
+        <ion-segment [(ngModel)]="schedule">
+            <ion-segment-button value=makeYourOwn>
+                Arma tu horario
+            </ion-segment-button>
+            <ion-segment-button value="picture">
+                Foto de mi horario
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+</ion-header>
+
+
+<ion-content class="bg-light">
+    <div [ngSwitch]="schedule">
+      <div *ngSwitchCase="'makeYourOwn'">
+
+
+
+        <p text-center padding-top margin-top>Agrega cada una de las horas en las que vas de tu casa al trabajo/universidad o viceversa</p>
+
+            <ion-card *ngFor = "let sche of schedules" (click) = 'removeTime(sche)' style="border-radius: 5%;" >
+                    <ng-container>
+                        <ion-card-content style="display: flex; ">
+                            <img [src]="sche.image"  style="height:50px; width:150px;     margin-right: 20px;" />
+                            <p>Destino: {{ sche.description }} <br> Hora: <span style="color:#3fb1df;">{{ sche.hour}}</span></p>
+
+                                                                       
+                            
+                        </ion-card-content>
+                    </ng-container>
+                </ion-card>
+
+
+                <ion-row *ngIf= 'showButtonWorkSchedule'>
+                        <ion-col>
+                            <p padding-top class="btn-box"><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="goFindride()">Continuar</button></p>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row >
+                        <div style="position: relative">
+                                <p style="position: fixed; bottom: 10px; width:100%; text-align: left" class="skipText"  (click)="skipSchedule()"> No lo quiero hacer ahora </p>
+
+                        </div>
+                       
+                    </ion-row>
+
+
+
+
+
+          <ion-fab bottom right>
+              <button ion-fab (click)='makeSchedule()'><ion-icon name="add"></ion-icon></button>
+            </ion-fab>
+      </div>
+
+
+      <div *ngSwitchCase="'picture'">
+            <p text-center padding-top margin-top>Toma un screenshot o una foto de tu <span style="color:#3fb1df;">HORARIO</span>, mándanoslo y haremos el resto por ti</p>
+        
+            <div text-center class="verifiy">
+                <img src="assets/imgs/v1.png">
+            </div>
+            <ion-row>
+                <ion-col>
+                    <p padding-top class="btn-box"><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraSchedule()">Tomar Foto de horario</button></p>
+                </ion-col>
+
+                <ion-col>
+                        <p padding-top class="btn-box"><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="accessLibrary()">Subir Foto de galería</button></p>
+                    </ion-col>
+            </ion-row>
+            <br>
+            <br>
+            <br>
+            <ion-row>
+                
+                    <p padding-top class="skipText"  (click)="skipSchedule()"> No lo quiero hacer ahora </p>
+               
+            </ion-row>
+      </div>
+      
+    </div>
+</ion-content>

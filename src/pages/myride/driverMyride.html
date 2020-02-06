@@ -1,0 +1,107 @@
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title class="text-center">VIAJE EN CURSO
+           
+            <ion-icon name="help-circle-outline" class="text-white" (click)="help() " style="margin-left: auto;float: right;"></ion-icon> 
+        </ion-title>
+
+    </ion-navbar>
+    
+</ion-header>
+
+<ion-content class="bg-light"> 
+        <p class="important">No se intercambia efectivo durante el viaje </p> 
+       
+      
+        <ion-list >
+            <ion-card *ngFor = "let user of pendingUsers">
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="assets/imgs/userPicture.png">
+                    </ion-avatar>
+                    <div class="name">
+                        <h2>{{user.name |titlecase}} {{user.lastname | titlecase}}.
+                          <ion-icon *ngIf='user.verifiedPerson' name="ios-checkmark-circle" class="text-darkblue"></ion-icon>
+                          <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>
+
+
+                        </h2>
+                    </div>
+                    <div class="more">
+                            <ion-icon name="md-more" (click)="presentActionSheet(user.userId,user.name)"></ion-icon>
+
+                    </div>
+                </ion-item>
+                <ion-card-content>
+                    <div class="ride-detail">
+                        <p><small></small>
+                            <span class="icon-location bg-theme"></span>{{user.origin}}</p>
+                        <p><small></small>
+                            <span class="icon-location bg-yellow"></span>{{user.destination}}</p>
+                    </div>
+                    <ion-row>
+                        
+                                <ion-col class="detail-text">
+                                        <button class="btn bg-yellow rounded full text-white"(click)="callUser(user.phone)"><ion-icon name="ios-call" class="text-white"></ion-icon></button>
+            
+                                    </ion-col>
+                        <ion-col col-5>
+                            <button class="btn bg-theme rounded full text-white" (click)="goToRide(user)">Ir a Recoger/Dejar</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>         
+
+                
+            </ion-card>
+            
+            
+            
+            <ion-card *ngFor = "let user of pickedUpUsers">
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="assets/imgs/userPicture.png">
+                        </ion-avatar>
+                        <div class="name">
+                            <h2 >{{user.name |titlecase}} {{user.lastname | titlecase}}.
+                            </h2>
+                            <p>{{user.company}}</p>
+
+                        </div>
+                        <div class="more">                       
+                                <ion-badge  class="badge bg-darkblue">RECOGIDO</ion-badge>                                  
+                                    
+                        </div>
+                    </ion-item>
+                    <ion-card-content>
+                        <div class="ride-detail">
+                            <p>
+                                <span class="icon-location bg-theme"></span>{{user.origin}}</p>
+                            <p>
+                                <span class="icon-location bg-yellow"></span>{{user.destination}}</p>
+                        </div>
+                       
+                    </ion-card-content>
+                   
+        
+                    
+                </ion-card> 
+
+            
+                <ion-row class="rowOfButtons" >                                 
+                
+                    <ion-col class="detail-text">
+                        <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>
+                    </ion-col>
+                    <ion-col class="detail-text">
+                        <button class="btn bg-theme text-white rounded"  (click)="endTrip()" style="width: 93%;margin-top: 14px;margin-left: 9px; margin-right: 9px;">Finalizar Viaje</button>
+                    </ion-col>
+               
+                </ion-row>
+        </ion-list>
+        
+
+
+
+            
+            
+</ion-content>

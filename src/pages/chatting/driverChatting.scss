@@ -1,0 +1,213 @@
+.md{
+    driver-page-chatting { 
+
+        .label{
+            display: flex;
+        }
+        .cb {
+            clear: both;
+        }
+        .toolbar-content {
+            .item {
+                background: transparent;
+                padding: 0;
+                ion-label,
+                ion-avatar {
+                    margin-top: 2px !important;
+                    margin-bottom: 2px !important;
+                }
+                .item-inner {
+                    border: none;
+                    h2 {
+                        font-weight: 500;
+                        display: flex;
+                        font-size: 1.4rem;
+                        align-items: center;
+                        ion-icon {
+                            margin-left: auto;
+                        }
+                    }
+                }
+            }
+        }
+        .chat-bg {
+            background: url(../assets/imgs/chatbg.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        .chat {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            p {
+                margin-top: 0px;
+                margin-bottom: 5px;
+                font-weight: 500;
+                font-size: 1.3rem;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                small {
+                    opacity: .7;
+                }
+            }
+        }
+        .fixed-bottom {
+            
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            height: 56px;
+            background: #fff;
+            padding-top: 2px;
+            .list {
+                padding: 0;
+                border-radius: 0;
+                margin: 0;
+                .item {
+                    padding-left: 16px;
+                }
+                .text-input {
+                    font-size: 1.2rem;
+                }
+                .circle-icon {
+                    border: 1px solid #9E9E9E;
+                    color: #9E9E9E;
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                }
+                .icon {
+                    font-size: 2rem;
+                    line-height: 1.4;
+                }
+            }
+        
+        }
+        .chat-message {
+            width: 80%;
+            min-height: 40px;
+            .right-bubble {
+                position: relative;
+                background: #dcf8c6;
+                border-top-left-radius: .4em;
+              border-bottom-left-radius: .4em;
+              border-bottom-right-radius: .4em;
+              padding: 5px 10px 10px;
+              left: 15%;
+              
+              span.msg-date {
+                font-size: 10px;
+              }
+            }
+        
+    }
+    
+    }
+}
+.ios{
+    driver-page-chatting {         
+            .cb {
+                clear: both;
+            }
+            .toolbar-content {
+                .item {
+                    background: transparent;
+                    padding: 0;
+                    ion-label,
+                    ion-avatar {
+                        margin-top: 2px !important;
+                        margin-bottom: 2px !important;
+                    }
+                    .item-inner {
+                        border: none;
+                        h2 {
+                            font-weight: 500;
+                            display: flex;
+                            font-size: 1.4rem;
+                            align-items: center;
+                            ion-icon {
+                                margin-left: auto;
+                            }
+                        }
+                    }
+                }
+            }
+            .chat-bg {
+                background: url(../assets/imgs/chatbg.jpg);
+                background-attachment: fixed;
+                background-size: cover;
+                background-position: center;
+            }
+            .chat {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                p {
+                    margin-top: 0px;
+                    margin-bottom: 5px;
+                    font-weight: 500;
+                    font-size: 1.3rem;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    small {
+                        opacity: .7;
+                    }
+                }
+            }
+            .fixed-bottom {
+                
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                height: 56px;
+                background: #fff;
+                padding-top: 2px;
+                .list {
+                    padding: 0;
+                    border-radius: 0;
+                    margin: 0;
+                    .item {
+                        padding-left: 16px;
+                    }
+                    .text-input {
+                        font-size: 1.2rem;
+                    }
+                    .circle-icon {
+                        border: 1px solid #9E9E9E;
+                        color: #9E9E9E;
+                        border-radius: 50%;
+                        width: 3rem;
+                        height: 3rem;
+                    }
+                    .icon {
+                        font-size: 2rem;
+                        line-height: 1.4;
+                    }
+                }
+            
+            }
+            .chat-message {
+                width: 80%;
+                min-height: 40px;
+                .right-bubble {
+                    position: relative;
+                    background: #dcf8c6;
+                    border-top-left-radius: .4em;
+                  border-bottom-left-radius: .4em;
+                  border-bottom-right-radius: .4em;
+                  padding: 5px 10px 10px;
+                  left: 15%;
+                  
+                  span.msg-date {
+                    font-size: 10px;
+                  }
+                }
+            
+        }
+        
+        }
+    }
+

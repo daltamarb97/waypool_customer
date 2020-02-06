@@ -1,14 +1,14 @@
 webpackJsonp([21],{
 
-/***/ 636:
+/***/ 673:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmpopupPageModule", function() { return ConfirmpopupPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WalletPageModule", function() { return WalletPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmpopup__ = __webpack_require__(791);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wallet__ = __webpack_require__(860);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,46 +18,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ConfirmpopupPageModule = /** @class */ (function () {
-    function ConfirmpopupPageModule() {
+var WalletPageModule = /** @class */ (function () {
+    function WalletPageModule() {
     }
-    ConfirmpopupPageModule = __decorate([
+    WalletPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmpopup__["a" /* ConfirmpopupPage */],
+                __WEBPACK_IMPORTED_MODULE_2__wallet__["a" /* WalletPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirmpopup__["a" /* ConfirmpopupPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__wallet__["a" /* WalletPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmpopup__["a" /* ConfirmpopupPage */]
+                __WEBPACK_IMPORTED_MODULE_2__wallet__["a" /* WalletPage */]
             ]
         })
-    ], ConfirmpopupPageModule);
-    return ConfirmpopupPageModule;
+    ], WalletPageModule);
+    return WalletPageModule;
 }());
 
-//# sourceMappingURL=confirmpopup.module.js.map
+//# sourceMappingURL=wallet.module.js.map
 
 /***/ }),
 
-/***/ 791:
+/***/ 860:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmpopupPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WalletPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__ = __webpack_require__(345);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_instances_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendUsers_service__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_clipboard__ = __webpack_require__(371);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -76,124 +75,80 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var ConfirmpopupPage = /** @class */ (function () {
-    function ConfirmpopupPage(navCtrl, sendUsersService, toastCtrl, viewCtrl, afDB, SignUpService, sendCoordsService, navParams, AngularFireAuth, geoFireService, instances, alertCtrl) {
+var WalletPage = /** @class */ (function () {
+    function WalletPage(navCtrl, toastCtrl, sendUsersService, sendCoordsService, AngularFireAuth, signUpServices, afDB, clipboard) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.sendUsersService = sendUsersService;
         this.toastCtrl = toastCtrl;
-        this.viewCtrl = viewCtrl;
-        this.afDB = afDB;
-        this.SignUpService = SignUpService;
+        this.sendUsersService = sendUsersService;
         this.sendCoordsService = sendCoordsService;
-        this.navParams = navParams;
         this.AngularFireAuth = AngularFireAuth;
-        this.geoFireService = geoFireService;
-        this.instances = instances;
-        this.alertCtrl = alertCtrl;
-        this.user = {};
-        this.hideButton = true;
-        this.hideText = false;
+        this.signUpServices = signUpServices;
+        this.afDB = afDB;
+        this.clipboard = clipboard;
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
-        this.freeRidesCompany = false;
-        this.reserve = this.navParams.get('reserve');
-        console.log(this.reserve);
-        //get the info of the driver 
-        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
-            .subscribe(function (myUserInfo) {
-            _this.user = myUserInfo;
-            console.log(_this.user);
-            _this.afDB.database.ref('allCities/' + _this.user.city + '/allPlaces/' + _this.user.company).once('value').then(function (snapUser) {
-                if (snapUser.val().freeRidesNumber > 0) {
-                    _this.freeRidesCompany = true;
-                }
-            });
+        this.recordTrips = [];
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
+        this.sendUsersService.getRecordTrips(this.signUpServices.userPlace, this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (user) {
+            _this.recordTrips = user;
+            console.log(_this.recordTrips);
         });
-        // function to get in how many reserves I am
-        this.SignUpService.checkMyReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
-            .subscribe(function (reserves) {
-            _this.reservesWhereIam = reserves;
-            console.log(_this.reservesWhereIam);
-        });
-    }
-    ConfirmpopupPage.prototype.goToRide = function () {
-        var _this = this;
-        if (this.reservesWhereIam.length >= 5) {
-            var alert_1 = this.alertCtrl.create({
-                title: 'limite de reservas por un dia',
-                subTitle: 'Ya excediste el limite de reservas por un dia ',
-                buttons: ['OK']
-            });
-            alert_1.present();
-        }
-        else {
-            if (this.user.personalFreeRides && this.freeRidesCompany === true) {
-                var alert_2 = this.alertCtrl.create({
-                    title: 'ESTE SERÁ UN VIAJE GRATIS',
-                    subTitle: 'Siempre que veas este mensaje significa que no pagarás nada por el viaje al que te uniste',
-                    buttons: [{
-                            text: 'OK',
-                            handler: function () {
-                                console.log(_this.reserve.keyTrip);
-                                _this.geoFireService.joinReserve(_this.SignUpService.userPlace, _this.user.company, _this.reserve.keyTrip, _this.reserve.driver.userId, _this.userUid, _this.user.trips.origin, _this.user.trips.destination, _this.user.name, _this.user.lastname, _this.user.phone, _this.user.trips.distanceToGoInKM, _this.user.verifiedPerson);
-                                _this.geoFireService.pushToMyReserve(_this.SignUpService.userPlace, _this.reserve.keyTrip, _this.reserve.driver.userId, _this.userUid);
-                                _this.hideButton = !_this.hideButton;
-                                _this.hideText = !_this.hideText;
-                                _this.accepted = true;
-                                var toast = _this.toastCtrl.create({
-                                    message: "Haz reservado con " + _this.reserve.driver.name + " para compartir tu viaje a las " + _this.reserve.startHour + ", entra en Mis reservas para ver m\u00E1s.",
-                                    showCloseButton: true,
-                                    closeButtonText: 'Ok'
-                                });
-                                toast.present();
-                                _this.dismiss();
-                            }
-                        }]
-                });
-                alert_2.present();
+        this.afDB.database.ref(this.signUpServices.userPlace + '/users/' + this.userUid).once('value').then(function (snapLink) {
+            if (snapLink.val().paymentLink === undefined || snapLink.val().paymentLink === null) {
+                console.log('no hay link');
+                console.log(snapLink.val().paymentLink);
+                _this.paymentLink = 'No hay link todavía';
             }
             else {
-                console.log(this.reserve.keyTrip);
-                this.geoFireService.joinReserve(this.SignUpService.userPlace, this.user.company, this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
-                this.geoFireService.pushToMyReserve(this.SignUpService.userPlace, this.reserve.keyTrip, this.reserve.driver.userId, this.userUid);
-                this.hideButton = !this.hideButton;
-                this.hideText = !this.hideText;
-                this.accepted = true;
-                var toast = this.toastCtrl.create({
-                    message: "Haz reservado con " + this.reserve.driver.name + " para compartir tu viaje a las " + this.reserve.startHour + ", entra en Mis reservas para ver m\u00E1s.",
-                    showCloseButton: true,
-                    closeButtonText: 'Ok'
-                });
-                toast.present();
-                this.dismiss();
+                _this.paymentLink = snapLink.val().paymentLink;
             }
-        }
+            _this.total = snapLink.val().pendingToPay;
+        });
+    }
+    WalletPage.prototype.help = function () {
+        var toast = this.toastCtrl.create({
+            message: 'En esta página podrás ver el historial de viajes en los que ver la hora en la que terminaste el viaje, origen y destino, y el precio que colocaste por persona',
+            showCloseButton: true,
+            closeButtonText: 'OK',
+            position: 'top'
+        });
+        toast.present();
     };
-    ConfirmpopupPage.prototype.dismissX = function () {
-        this.viewCtrl.dismiss();
-    };
-    ConfirmpopupPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss(this.accepted);
+    WalletPage.prototype.ionViewDidLeave = function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
-        // this.navCtrl.pop();
     };
-    ConfirmpopupPage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
+    WalletPage.prototype.copyToClipBoard = function (link) {
+        console.log(link);
+        this.clipboard.copy(link);
+        var toast = this.toastCtrl.create({
+            message: 'Link de pago copiado, pégalo en el browser',
+            showCloseButton: true,
+            closeButtonText: 'OK',
+            position: 'top'
+        });
+        toast.present();
     };
-    ConfirmpopupPage = __decorate([
+    WalletPage.prototype.informationPayment = function () {
+        var toast = this.toastCtrl.create({
+            message: 'Nuestra pasarela de pagos es MercadoPago, hecha por Mercado Libre, considerada entre las 2 mejores de Latinoamérica en términos de eficiencia y seguridad. Waypool no obtiene en ningún momento información financiera como tarjeta de crédito, cuenta bancaria, u otra información sensible.',
+            showCloseButton: true,
+            closeButtonText: 'OK',
+            position: 'middle'
+        });
+        toast.present();
+    };
+    WalletPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirmpopup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-confirmpopup/confirmpopup.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>\n    <ion-card>\n        <h6 class="text-theme">Detalles de la Reserva</h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{reserve.driver.name|titlecase }} {{reserve.driver.lastname|titlecase }}\n                <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                </h2>\n                <p>{{reserve.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen</small>\n                    <span class="icon-location bg-theme"></span>{{reserve.houseAddr}}</p>\n                <p>\n                    <small>Destino</small>\n                    <span class="icon-location bg-yellow"></span>{{reserve.placeAddr}}</p>\n            </div>\n        </ion-card-content>\n\n        \n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{reserve.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-theme text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">CONFIRMAR CONDUCTOR</button>\n                <p  text-center *ngIf="hideText">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-confirmpopup/confirmpopup.html"*/
+            selector: 'page-wallet',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-wallet/wallet.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title class="text-center">SALDO A PAGAR</ion-title>\n    </ion-navbar>\n\n    <div text-center >\n        <p><small class="text-white">Saldo pendiente a pagar:</small></p>\n        <h1 class="text-white">$ {{total}}</h1>\n        <ion-row style="    display: flex;\n        justify-content: center;"> \n                <div class="iconHelp" style="font-size: 30px; margin-bottom: 7px;">\n                        <ion-icon class="text-white" (click)="informationPayment()" name="information-circle-outline"></ion-icon>\n                    </div>\n        </ion-row>\n    </div>\n    \n\n</ion-header>\n\n<ion-content class="bg-light">\n       \n        <ion-list style="display: flex" (click)=\'copyToClipBoard(paymentLink)\' >\n           \n\n                <ion-item>\n                    <ion-label stacked>Link para pagar tu saldo pendiente</ion-label>\n                    <ion-input  [(ngModel)]="paymentLink" readonly></ion-input>\n                </ion-item>\n                <button class="btn rounded bg-darkblue text-white" style="width: 20%;height: 66px;font-size: 30px;"><ion-icon name="copy"></ion-icon>\n                </button>\n            </ion-list>\n\n        <p class="love">Historial de viajes</p> \n\n    <ion-list>\n        <ion-card *ngFor = "let user of recordTrips">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/carBlue.png" style="height:45px; width: 45px;">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{user.DestinationTime}}\n                        </h2>\n                        <p>{{user.car}}</p>\n                        <ion-badge  class="badge bg-darkblue"> Precio: $ {{user.price}}</ion-badge>                                  \n\n                    </div>\n\n                    \n                </ion-item>\n                <ion-card-content>\n                    <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{user.houseAddr}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{user.placeAddr}}</p>\n                    </div>\n                   \n                </ion-card-content>       \n                \n            </ion-card>  \n</ion-list>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-wallet/wallet.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
-    ], ConfirmpopupPage);
-    return ConfirmpopupPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_8__ionic_native_clipboard__["a" /* Clipboard */]])
+    ], WalletPage);
+    return WalletPage;
 }());
 
-//# sourceMappingURL=confirmpopup.js.map
+//# sourceMappingURL=wallet.js.map
 
 /***/ })
 

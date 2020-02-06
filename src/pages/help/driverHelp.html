@@ -1,0 +1,50 @@
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title>Soporte</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <p class="textHelp" padding>¡Escoje tu situación y escríbenos con mucho detalle para poder ayudarte lo más pronto posible!. También puedes escribirnos a team@waypooltech.com</p>
+    <ion-card (click)="suggestion()">
+        <ion-card-header>
+            <h1><strong>Sugerencia</strong>
+                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>
+            </h1>
+        </ion-card-header>
+        <ion-card-content class="text">
+            Ayúdanos a mejorar el servicio  
+        </ion-card-content>
+    </ion-card>
+    <ion-card (click)="trip()">
+        <ion-card-header>
+            <h1><strong>Viaje</strong>
+                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>
+            </h1>
+        </ion-card-header>
+        <ion-card-content class="text">
+            Escríbenos cualquier sugerencia/quejas con respecto a algún viaje
+        </ion-card-content>
+    </ion-card>
+    <ion-card (click)="bug()">
+        <ion-card-header>
+            <h1><strong>Problema con la App</strong>
+                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>
+            </h1>
+        </ion-card-header>
+        <ion-card-content class="text">
+        Escríbenos cualquier problema que tengas con la App 
+        </ion-card-content>
+    </ion-card>
+    <ion-card (click)="myAccount()">
+        <ion-card-header>
+            <h1><strong>Mi Cuenta</strong>
+                <ion-icon name="ios-arrow-down-outline" class="text"></ion-icon>
+            </h1>
+        </ion-card-header>
+        <ion-card-content class="text">
+        ¿Tienes alguna pregunta acerca de tu cuenta? ¡Escríbenos!.
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+

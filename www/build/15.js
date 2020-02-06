@@ -1,14 +1,14 @@
 webpackJsonp([15],{
 
-/***/ 654:
+/***/ 695:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyridePageModule", function() { return MyridePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverSchedulePageModule", function() { return DriverSchedulePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myride__ = __webpack_require__(809);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__schedule__ = __webpack_require__(886);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,48 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MyridePageModule = /** @class */ (function () {
-    function MyridePageModule() {
+var DriverSchedulePageModule = /** @class */ (function () {
+    function DriverSchedulePageModule() {
     }
-    MyridePageModule = __decorate([
+    DriverSchedulePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__myride__["a" /* MyridePage */],
+                __WEBPACK_IMPORTED_MODULE_2__schedule__["a" /* DriverSchedulePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__myride__["a" /* MyridePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__schedule__["a" /* DriverSchedulePage */]),
             ],
-            exports: [
-                __WEBPACK_IMPORTED_MODULE_2__myride__["a" /* MyridePage */]
-            ]
         })
-    ], MyridePageModule);
-    return MyridePageModule;
+    ], DriverSchedulePageModule);
+    return DriverSchedulePageModule;
 }());
 
-//# sourceMappingURL=myride.module.js.map
+//# sourceMappingURL=schedule.module.js.map
 
 /***/ }),
 
-/***/ 809:
+/***/ 886:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyridePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSchedulePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sendUsers_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(360);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_trips_service__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_reserves_service__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_database__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_metrics_service__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -77,216 +71,254 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-
-var MyridePage = /** @class */ (function () {
-    function MyridePage(navCtrl, modalCtrl, MetricsService, alertCtrl, TripsService, toastCtrl, SignUpService, geolocation, navParams, AngularFireAuth, callNumber, sendUsersService, app, reservesService, afDB) {
+/**
+ * Generated class for the SchedulePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var DriverSchedulePage = /** @class */ (function () {
+    function DriverSchedulePage(navCtrl, navParams, modalCtrl, signUpService, angularFireAuth, app, alertCtrl, camera, loadingCtrl, instances, afDB) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
-        this.MetricsService = MetricsService;
-        this.alertCtrl = alertCtrl;
-        this.TripsService = TripsService;
-        this.toastCtrl = toastCtrl;
-        this.SignUpService = SignUpService;
-        this.geolocation = geolocation;
         this.navParams = navParams;
-        this.AngularFireAuth = AngularFireAuth;
-        this.callNumber = callNumber;
-        this.sendUsersService = sendUsersService;
+        this.modalCtrl = modalCtrl;
+        this.signUpService = signUpService;
+        this.angularFireAuth = angularFireAuth;
         this.app = app;
-        this.reservesService = reservesService;
+        this.alertCtrl = alertCtrl;
+        this.camera = camera;
+        this.loadingCtrl = loadingCtrl;
+        this.instances = instances;
         this.afDB = afDB;
-        this.pendingUsers = [];
-        this.pickedUpUsers = [];
-        this.driverOnTrip = [];
-        this.myReservesId = [];
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.cancelReserves = [];
-        this.cancelUsers = [];
-        this.driverExist = false;
-        this.onTrip = false;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_8_rxjs__["Subject"];
-        this.TripsService.getKeyTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
-            .subscribe(function (keys) {
-            console.log(_this.SignUpService.userPlace);
-            _this.keyTrip = keys;
-            console.log(_this.keyTrip.keyTrip);
-            if (_this.keyTrip === undefined || _this.keyTrip === null) {
-                _this.unSubscribeServices();
-                console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-                _this.driverExist = false;
-                _this.onTrip = false;
-                _this.navCtrl.pop();
+        this.schedule = "makeYourOwn";
+        this.schedules = [];
+        this.showButtonWorkSchedule = false;
+        this.optionsCamera = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+        };
+        this.optionsLibrary = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+        };
+        this.defaultZone = this.navParams.get('defaultZone');
+        console.log(this.defaultZone);
+        this.userId = this.angularFireAuth.auth.currentUser.uid;
+        if (this.defaultZone) {
+            this.signUpService.userPlace = this.defaultZone;
+        }
+        else {
+        }
+        this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then(function (snap) {
+            _this.userInfo = snap.val();
+        });
+        this.signUpService.getSchedule(this.signUpService.userPlace, this.userId).subscribe(function (hour) {
+            _this.schedules = hour;
+            console.log(_this.schedules);
+            if (_this.schedules.length !== 0) {
+                _this.afDB.database.ref(_this.signUpService.userPlace + '/drivers/' + _this.userId + '/scheduleType/').once('value').then(function (snap) {
+                    if (snap.val() === 'picture') {
+                    }
+                    else {
+                        _this.showButtonWorkSchedule = true;
+                    }
+                });
             }
             else {
-                _this.getTrip(_this.keyTrip.keyTrip, _this.keyTrip.driverId);
-            }
-        });
-        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
-            .subscribe(function (info) {
-            _this.user = info;
-            // here starts the conditionals for the trip
-            if (_this.user.cancelTrip === undefined || _this.user.cancelTrip === null) {
-            }
-            else if (_this.user.cancelTrip == true) {
-                _this.unSubscribeServices();
-                _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
-                _this.navCtrl.pop();
-                var modal = _this.modalCtrl.create('CanceltripPage');
-                modal.present();
-                _this.TripsService.eliminatingCancelTrip(_this.SignUpService.userPlace, _this.userUid);
-                _this.MetricsService.cancelReserves(_this.SignUpService.userPlace, _this.userUid, _this.trip);
-            }
-            //save trip
-            console.log(_this.user.saveTrip);
-            if (_this.user.saveTrip === undefined || _this.user.saveTrip === null) {
-                console.log(_this.user.saveTrip);
-            }
-            else if (_this.user.saveTrip == true) {
-                console.log(_this.user.saveTrip);
-                console.log('RATETRIPPPPPPPPPPPPPPPPPPPPP');
-                _this.unSubscribeServices();
-                _this.navCtrl.setRoot('RatetripPage', { trip: _this.trip });
-                _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
-                _this.TripsService.eliminatingSaveTrip(_this.SignUpService.userPlace, _this.userUid);
+                _this.showButtonWorkSchedule = false;
             }
         });
     }
-    MyridePage.prototype.getTrip = function (keyTrip, driverId) {
+    DriverSchedulePage.prototype.makeSchedule = function () {
         var _this = this;
-        console.log(this.trip);
-        // this.getTripState(keyTrip,driverId);
-        console.log(this.keyTrip);
-        this.TripsService.getTrip(this.SignUpService.userPlace, keyTrip, driverId).takeUntil(this.unsubscribe)
-            .subscribe(function (info) {
-            //check if the info of the reserve is null  
-            if (_this.keyTrip.keyTrip === undefined || _this.keyTrip.keyTrip === null) {
-                _this.driverExist = false;
-                _this.onTrip = false;
-                console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-                console.log("existo");
+        console.log(this.signUpService.userPlace);
+        console.log(this.userId);
+        this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then(function (snap) {
+            if (snap.val().toggleStatus === 'online') {
+                var alert_1 = _this.alertCtrl.create({
+                    title: 'Para añadir un nuevo horario debes estar offline',
+                    buttons: ['OK']
+                });
+                alert_1.present();
             }
             else {
-                _this.trip = info;
-                console.log(_this.trip);
-                _this.getPendingAndPickedUpUsers(keyTrip, driverId);
-                _this.driverExist = true;
-                _this.onTrip = true;
+                var modal = _this.modalCtrl.create('AddSchedulePage');
+                modal.onDidDismiss(function (accepted) {
+                    if (accepted) {
+                    }
+                });
+                modal.present();
             }
         });
     };
-    MyridePage.prototype.unSubscribeServices = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
+    DriverSchedulePage.prototype.skipSchedule = function () {
+        if (!this.userInfo.houseAddress) {
+            this.navCtrl.push('SpecifyOriginPage');
+        }
+        else {
+            this.navCtrl.setRoot('FindridePage');
+        }
     };
-    MyridePage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    };
-    MyridePage.prototype.getPendingAndPickedUpUsers = function (keyTrip, driverId) {
+    DriverSchedulePage.prototype.removeTime = function (sche) {
         var _this = this;
-        this.TripsService.getPendingUsers(this.SignUpService.userPlace, keyTrip, driverId).takeUntil(this.unsubscribe)
-            .subscribe(function (user) {
-            _this.pendingUsers = user;
-            console.log(_this.pendingUsers);
-        });
-        this.TripsService.getPickedUpUsers(this.SignUpService.userPlace, keyTrip, driverId).takeUntil(this.unsubscribe)
-            .subscribe(function (user) {
-            _this.pickedUpUsers = user;
-            console.log(_this.pickedUpUsers);
+        this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then(function (snap) {
+            if (snap.val().toggleStatus === 'online') {
+                var alert_2 = _this.alertCtrl.create({
+                    title: 'Para eliminar este horario debes estar offline',
+                    buttons: ['OK']
+                });
+                alert_2.present();
+            }
+            else {
+                var modal = _this.modalCtrl.create('RemoveSchedulePage', {
+                    schedule: sche
+                });
+                modal.onDidDismiss(function (accepted) {
+                    if (accepted) {
+                        // this.navCtrl.push('ListridePage');
+                        var alert_3 = _this.alertCtrl.create({
+                            title: 'Este horario ha sido eliminado',
+                            buttons: ['OK']
+                        });
+                        alert_3.present();
+                    }
+                });
+                modal.present();
+            }
         });
     };
-    MyridePage.prototype.enterChat = function () {
-        //send isTrip=true for the chat to know if its a reserve or a trip
-        var isTrip = true;
-        var modal = this.modalCtrl.create('ChattingPage', {
-            reserve: this.trip,
-            isTrip: isTrip
-        });
-        modal.present();
-    };
-    MyridePage.prototype.callUser = function (number) {
+    DriverSchedulePage.prototype.usageCameraSchedule = function () {
         var _this = this;
-        console.log(number);
-        this.callNumber.callNumber(number, true)
-            .then(function (res) { return console.log('Launched dialer!', res); })
-            .catch(function (err) {
+        this.camera.getPicture(this.optionsCamera).then(function (imageData) {
+            _this.afDB.database.ref('allCities/' + _this.userInfo.city + '/allPlaces/' + _this.userInfo.company + '/zones').once('value').then(function (snap) {
+                var obj = snap.val();
+                Object.getOwnPropertyNames(obj).forEach(function (key) {
+                    if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
+                    }
+                    else {
+                        _this.instances.scheduleTypePicture(obj[key], _this.userId);
+                    }
+                });
+            });
+            var loading = _this.loadingCtrl.create({
+                spinner: 'crescent',
+                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
+            });
+            loading.present();
+            var base64Image = 'data:image/jpeg;base64,' + imageData;
+            var pictureSchedule = Object(__WEBPACK_IMPORTED_MODULE_5_firebase__["storage"])().ref(_this.userInfo.company + '/schedules/' + _this.userId);
+            pictureSchedule.putString(base64Image, 'data_url').then(function () {
+                loading.dismiss();
+                var alert = _this.alertCtrl.create({
+                    title: '¡HECHO!',
+                    subTitle: 'ya tenemos tu horario, en las próximas horas empezarás a recibir solicitudes de compañeros de viaje',
+                    buttons: [{
+                            text: 'OK',
+                            handler: function () {
+                                _this.navCtrl.push('FindridePage');
+                            }
+                        }]
+                });
+                alert.present();
+            }).catch(function (error) {
+                console.log(error);
+                var alert = _this.alertCtrl.create({
+                    title: 'hubo un error',
+                    subTitle: 'intenta subir el horario otra vez',
+                    buttons: ['OK']
+                });
+                alert.present();
+            });
+        }, function (err) {
+            console.log(err);
             var alert = _this.alertCtrl.create({
-                title: 'Error de llamada',
-                subTitle: 'Hubo un error en la llamada, si persiste el problema envianos un correo a waypooltec@gmail.com',
+                title: 'hubo un error',
+                subTitle: 'intenta subir el horario otra vez',
                 buttons: ['OK']
             });
             alert.present();
-            console.log('Error launching dialer', err);
         });
     };
-    MyridePage.prototype.cancelTrip = function () {
+    DriverSchedulePage.prototype.accessLibrary = function () {
         var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Cancelar Viaje',
-            message: "\u00BFEstas seguro que deseas cancelar?",
-            buttons: [
-                {
-                    text: 'No',
-                    role: 'cancel',
-                    handler: function () {
-                        //do nothing
-                    }
-                },
-                {
-                    text: 'Si',
-                    handler: function () {
-                        if (_this.pickedUpUsers.length === 0 || _this.pickedUpUsers === undefined || _this.pickedUpUsers === null) {
-                            _this.unSubscribeServices();
-                            _this.MetricsService.cancelReserves(_this.SignUpService.userPlace, _this.userUid, _this.trip);
-                            _this.TripsService.cancelTrip(_this.SignUpService.userPlace, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
-                            _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
-                            _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
-                            _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
-                            _this.navCtrl.pop();
+        this.camera.getPicture(this.optionsLibrary).then(function (imageData) {
+            var loading = _this.loadingCtrl.create({
+                spinner: 'crescent',
+                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
+            });
+            loading.present();
+            var base64Image = 'data:image/jpeg;base64,' + imageData;
+            var pictureSchedule = Object(__WEBPACK_IMPORTED_MODULE_5_firebase__["storage"])().ref(_this.userInfo.company + '/schedules/' + _this.userId);
+            pictureSchedule.putString(base64Image, 'data_url').then(function () {
+                loading.dismiss();
+                _this.afDB.database.ref('allCities/' + _this.userInfo.city + '/allPlaces/' + _this.userInfo.company + '/zones').once('value').then(function (snap) {
+                    var obj = snap.val();
+                    Object.getOwnPropertyNames(obj).forEach(function (key) {
+                        if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
                         }
-                        _this.reservesService.confirmMyExistenceInPickedupUsers(_this.SignUpService.userPlace, _this.trip.driver.userId, _this.trip.keyTrip, _this.userUid).takeUntil(_this.unsubscribe)
-                            .subscribe(function (pickedUp) {
-                            _this.pickedUp = pickedUp;
-                            console.log(_this.pickedUp);
-                            console.log(pickedUp);
-                            if (_this.pickedUp === undefined || _this.pickedUp === null) {
-                                _this.MetricsService.cancelReserves(_this.SignUpService.userPlace, _this.userUid, _this.trip);
-                                _this.TripsService.cancelTrip(_this.SignUpService.userPlace, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
-                                _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
-                                _this.TripsService.eliminateAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
-                                console.log(_this.trip.keyTrip);
-                                _this.navCtrl.pop();
+                        else {
+                            _this.instances.scheduleTypePicture(obj[key], _this.userId);
+                        }
+                    });
+                });
+                var alert = _this.alertCtrl.create({
+                    title: '¡HECHO!',
+                    subTitle: 'ya tenemos tu horario, en las próximas horas empezarás a recibir solicitudes de compañeros de viaje',
+                    buttons: [{
+                            text: 'OK',
+                            handler: function () {
+                                _this.navCtrl.push('FindridePage');
                             }
-                            else {
-                                //don't cancel
-                                var toast = _this.toastCtrl.create({
-                                    message: _this.pickedUp.name + " : No puedes cancelar ya que tu compa\u00F1ero ya te recogi\u00F3, si esto no es verdad, por favor saca un screenshot de Mi Viaje y m\u00E1ndalo al correo waypooltec@gmail.com",
-                                    showCloseButton: true,
-                                    closeButtonText: 'Ok'
-                                });
-                                toast.present();
-                            }
-                        });
-                    }
-                }
-            ]
+                        }]
+                });
+                alert.present();
+            }).catch(function (error) {
+                console.log(error);
+                var alert = _this.alertCtrl.create({
+                    title: 'hubo un error',
+                    subTitle: 'intenta subir el horario otra vez',
+                    buttons: ['OK']
+                });
+                alert.present();
+            });
+        }, function (err) {
+            console.log(err);
+            var alert = _this.alertCtrl.create({
+                title: 'hubo un error',
+                subTitle: 'intenta subir el horario otra vez',
+                buttons: ['OK']
+            });
+            alert.present();
         });
-        alert.present();
     };
-    MyridePage = __decorate([
+    DriverSchedulePage.prototype.goFindride = function () {
+        var _this = this;
+        this.skipSchedule();
+        this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then(function (snap) {
+            var obj = snap.val();
+            Object.getOwnPropertyNames(obj).forEach(function (key) {
+                if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
+                }
+                else {
+                    _this.instances.scheduleTypeManual(obj[key], _this.userId);
+                }
+            });
+        });
+    };
+    DriverSchedulePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-myride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-myride/myride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar hideBackButton="true">\n        <ion-title class="text-center">MI VIAJE</ion-title>\n    </ion-navbar>\n    \n</ion-header>\n\n<ion-content class="bg-light">\n    <p class="important">¡IMPORTANTE!: Después del viaje NO hay intercambio de efectivo.</p> \n\n    <div>\n        <ion-list>\n            <ion-card *ngFor = "let user of pendingUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock "> Yo\n                            <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                        </h2>\n                        <ng-template #itsNotMeBlock >\n                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}\n                                <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                            </h2>\n                            <p>{{user.company}}</p>\n\n                        </ng-template>\n                        \n                    </div>                   \n                    <div class="more">\n                        <ion-badge class="bg-yellow">EN ESPERA</ion-badge>\n                    </div>\n                </ion-item>\n                \n            </ion-card>\n            <ion-card *ngFor = "let user of pickedUpUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock " style="font-size:1.5rem; "> Yo\n                            <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>\n                        </h2>\n                        <ng-template #itsNotMeBlock >\n                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}\n                                <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-green"></ion-icon>                           \n                            </h2>\n                            <p>{{user.company}}</p>\n\n                        </ng-template>\n                        \n                    </div>\n                    <div class="more">\n                        <ion-badge class="bg-green">RECOGIDO</ion-badge>  \n                    </div>\n                   \n                </ion-item>\n                \n            </ion-card>\n\n            <!-- repilica -->\n            <ion-card *ngIf="driverExist">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{trip.driver.name|titlecase}} {{trip.driver.lastname |titlecase }}\n                            <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                        </h2>\n                        \n                        <p>{{trip.car}}</p>\n                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n\n                    </div>\n                    <div class="more">\n                        <h2 class="text-theme" class="priceDriver">$ {{trip.price}}\n                        </h2>\n                    </div>                \n                   \n                </ion-item>\n                <ion-card-content>\n                    <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{trip.houseAddr}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n                    </div>\n                    <ion-row>\n                      \n                            <h2 class="text text-theme" style=" display: flex; align-items: center; font-weight:600">                        \n                                Hora de partida: {{trip.startHour}}                          \n                            </h2>                    \n                          \n                       \n                            <ion-col class="detail-text">\n                                <button class="btn bg-green rounded full text-white" style="    width: 44px;\n                                font-size: 21px;" (click)="callUser(trip.driver.phone)"><ion-icon name="ios-call" class="text-white"></ion-icon></button>\n\n                            </ion-col>\n                      \n                   \n                    </ion-row>\n                </ion-card-content>\n            </ion-card>    \n            <ion-row class="rowOfButtons" >                                 \n                \n                <ion-col class="detail-text">\n                    <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>\n                </ion-col>\n                <ion-col class="detail-text">\n                    <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 9px; margin-right:9px;">Cancelar Viaje</button>\n                </ion-col>\n           \n            </ion-row>\n\n        </ion-list>\n\n        <!-- <div *ngSwitchCase="\'map\'">\n           <div #map id="map" ></div>\n        </div> -->\n             \n\n        \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-myride/myride.html"*/
+            selector: 'driver-page-schedule',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/schedule/driverschedule.html"*/'<!--\n  Generated template for the SchedulePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title class="text-center">MI HORARIO</ion-title>\n    </ion-navbar>\n    <div padding-left padding-right>\n        <ion-segment [(ngModel)]="schedule">\n            <ion-segment-button value=makeYourOwn>\n                Arma tu horario\n            </ion-segment-button>\n            <ion-segment-button value="picture">\n                Foto de mi horario\n            </ion-segment-button>\n        </ion-segment>\n    </div>\n</ion-header>\n\n\n<ion-content class="bg-light">\n    <div [ngSwitch]="schedule">\n      <div *ngSwitchCase="\'makeYourOwn\'">\n\n\n\n        <p text-center padding-top margin-top>Agrega cada una de las horas en las que vas de tu casa al trabajo/universidad o viceversa</p>\n\n            <ion-card *ngFor = "let sche of schedules" (click) = \'removeTime(sche)\' style="border-radius: 5%;" >\n                    <ng-container>\n                        <ion-card-content style="display: flex; ">\n                            <img [src]="sche.image"  style="height:50px; width:150px;     margin-right: 20px;" />\n                            <p>Destino: {{ sche.description }} <br> Hora: <span style="color:#3fb1df;">{{ sche.hour}}</span></p>\n\n                                                                       \n                            \n                        </ion-card-content>\n                    </ng-container>\n                </ion-card>\n\n\n                <ion-row *ngIf= \'showButtonWorkSchedule\'>\n                        <ion-col>\n                            <p padding-top class="btn-box"><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="goFindride()">Continuar</button></p>\n                        </ion-col>\n                    </ion-row>\n\n                    <ion-row >\n                        <div style="position: relative">\n                                <p style="position: fixed; bottom: 10px; width:100%; text-align: left" class="skipText"  (click)="skipSchedule()"> No lo quiero hacer ahora </p>\n\n                        </div>\n                       \n                    </ion-row>\n\n\n\n\n\n          <ion-fab bottom right>\n              <button ion-fab (click)=\'makeSchedule()\'><ion-icon name="add"></ion-icon></button>\n            </ion-fab>\n      </div>\n\n\n      <div *ngSwitchCase="\'picture\'">\n            <p text-center padding-top margin-top>Toma un screenshot o una foto de tu <span style="color:#3fb1df;">HORARIO</span>, mándanoslo y haremos el resto por ti</p>\n        \n            <div text-center class="verifiy">\n                <img src="assets/imgs/v1.png">\n            </div>\n            <ion-row>\n                <ion-col>\n                    <p padding-top class="btn-box"><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraSchedule()">Tomar Foto de horario</button></p>\n                </ion-col>\n\n                <ion-col>\n                        <p padding-top class="btn-box"><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="accessLibrary()">Subir Foto de galería</button></p>\n                    </ion-col>\n            </ion-row>\n            <br>\n            <br>\n            <br>\n            <ion-row>\n                \n                    <p padding-top class="skipText"  (click)="skipSchedule()"> No lo quiero hacer ahora </p>\n               \n            </ion-row>\n      </div>\n      \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/schedule/driverschedule.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */], __WEBPACK_IMPORTED_MODULE_11__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_7__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_2__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_9__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_10_angularfire2_database__["AngularFireDatabase"]])
-    ], MyridePage);
-    return MyridePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"]])
+    ], DriverSchedulePage);
+    return DriverSchedulePage;
 }());
 
-//# sourceMappingURL=myride.js.map
+//# sourceMappingURL=schedule.js.map
 
 /***/ })
 

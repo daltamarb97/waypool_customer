@@ -1,0 +1,45 @@
+<ion-header class="bg-theme title">
+    <ion-navbar >
+        <ion-title >Tus compañeros
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<div #map id="map"></div>  
+
+<ion-content  style="background-color: rgba(255, 255, 255, 0.959);">
+         <ion-card *ngFor = "let passenger of passengers">
+               <ion-item>
+                   <ion-avatar item-start style="border-radius: 0%;">
+                    <img  style="height:70px; width: 70px;" src="assets/imgs/userPicture.png">
+                </ion-avatar>
+                   <div class="name">
+                       <h2>{{passenger.name |titlecase}} {{passenger.lastname | titlecase}}.
+                         <ion-icon *ngIf='passenger.verifiedPerson' name="ios-checkmark-circle" class="text-darkblue"></ion-icon>
+                       </h2>
+
+                         <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{passenger.company}}</ion-badge>
+                    </div>
+                   <div class="more" item-end>
+                           <ion-icon name="md-more"  (click)="presentActionSheet(passenger.userId,passenger.name)"></ion-icon>
+                   </div>
+               </ion-item>
+               <ion-card-content>
+                   <div class="ride-detail">
+                       <p><small></small>
+                           <span class="icon-location bg-theme"></span>{{passenger.origin}}</p>
+                       <p><small></small>
+                           <span class="icon-location bg-yellow"></span>{{passenger.destination}}</p>
+                   </div>
+                   
+               </ion-card-content>         
+         
+
+           </ion-card>
+           <div style=" display: flex; justify-content: center;">
+            <button (click)="cancelReserve()" class="btn bg-theme text-white rounded" > Cancelar Reserva </button>
+
+           </div>
+
+ </ion-content>
+
+ 

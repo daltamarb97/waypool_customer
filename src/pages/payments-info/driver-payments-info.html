@@ -1,0 +1,81 @@
+<ion-content>
+  <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
+  <ion-card>
+      
+        
+    <div *ngIf = 'showInputsToEdit'>
+        <ion-card-content>
+             <h2>INFORMACIÓN PARA RECIBIR DINERO ACOMULADO POR COMPARTIR TU CARRO</h2>
+            <div class="ride-detail">
+                <ion-item class="form">
+                    <ion-label floating>Tu cédula</ion-label>
+                    <ion-input type="number" [(ngModel)]="id"></ion-input>
+                  </ion-item>                
+            </div>
+        </ion-card-content>
+        <ion-card-content>
+          <div class="ride-detail">
+            <ion-list>
+              <ion-item class="form">
+                <ion-label floating>Tu número de cuenta</ion-label>
+                <ion-input type="number" [(ngModel)]="bankAccount"></ion-input>
+              </ion-item>
+            </ion-list>               
+          </div>
+      </ion-card-content>
+  
+      <ion-card-content>
+          <ion-row style="margin-top: 14px;    display: flex;
+                justify-content: center">
+                   <ion-list>
+                        <ion-item>
+                          <ion-label>Tu banco</ion-label>
+                          <ion-select [(ngModel)]="bankEntity" (ionChange)="onChange()">
+                            <ion-option *ngFor="let bank of bankList" >{{bank}}</ion-option>
+                          </ion-select>
+                        </ion-item>
+                        <ion-item *ngIf='showOther'>
+                            <ion-label floating>Nombre de tu banco</ion-label>
+                            <ion-input  [(ngModel)]="bankEntityOther"></ion-input>
+                        </ion-item>
+                    </ion-list>
+                </ion-row>
+      </ion-card-content>
+</div>
+<div *ngIf = 'fullInformation'>
+        <ion-card-content>
+                <h2>YA TENEMOS TU INFORMACIÓN FINANCIERA PARA ENVIARTE TU DINERO</h2>
+
+                <ion-row style="margin-top: 14px; display: flex; justify-content: center">
+                 
+                  <ion-col col-8>
+                      <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="editPaymentInfo()">Editar mi información</button>
+                  </ion-col>
+              </ion-row>
+           </ion-card-content>
+</div>
+    <br/>
+      <ion-card-content>
+          <div class="ride-detail no-before">
+              <p>Esta información es necesaria para que puedas recibir el dinero que ganaste por compartir tu carro.</p>      
+              <br/>
+              <p>Recuerda que esta información es tuya y por lo tanto nos tomamos enserio su protección. Tus datos estan protegidos bajo las normas de nuestra politica de  privacidad de datos. <a href="https://waypooltech.wordpress.com/" style="color: #0081ad">Más Información</a></p>
+          </div>
+              
+             
+     
+          <div class="seats">
+              
+              <ion-row style="margin-top: 14px;    display: flex;
+              justify-content: center">
+                 
+                  <ion-col col-8>
+                      <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setPaymentInfo()">Listo</button>
+                  </ion-col>
+              </ion-row>
+             
+
+          </div>
+      </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,115 @@
+driver-page-wallet {
+    ion-header {
+        p {
+            margin-bottom: 0;
+            font-size: 18px
+        }
+        h1 {
+            margin-top: 0;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            font-size: 5rem;
+            font-weight: 600;
+        }
+        .btn {
+            width: 100%;
+            max-width: 145px;
+        }
+    }
+    .card {
+
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        margin-top: 6px;
+        margin-bottom: 5px;
+        ion-item {
+            .name {
+                width: calc(100% - 70px);
+                display: inline-block;
+                h2 {
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    ion-icon {
+                        margin-left: 5px;
+                    }
+                }
+            }
+            .more {
+                .badge{
+                    position: absolute;
+                    right: 21px;
+                    top: 19px;
+                    background-color: #001127
+                }
+                width: 65px;
+                display: inline-block;
+                h2 {
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    color: #001127;
+                    display: flex;
+                    ion-icon {
+                        margin-left: 5px;
+                        font-size: 2rem;
+                        margin-left: auto;
+                        color: #222;
+                    }
+                }
+            }
+            p {
+                font-size: 1.1rem;
+                color: #777;
+                font-weight: 400;
+            }
+            
+        }
+    }
+    ion-card-content {
+        padding-left: 30px !important;
+        position: relative;
+        .ride-detail {
+            position: relative;
+            margin-bottom: 1rem;
+            p {
+                font-size: 1.2rem;
+                padding-left: 43px;
+                position: relative;
+                color: #777;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+                .icon-location {
+                    position: absolute;
+                    left: 0px;
+                    top: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    display: inline-block;
+                    bottom: 0;
+                    margin: auto;
+                }
+            }
+            &::before {
+                content: '';
+                display: block;
+                width: 1px;
+                height: 20px;
+                background: #555;
+                position: absolute;
+                left: 5px;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        }
+}
+.love{
+    display: flex;
+    justify-content: center;
+ 
+    color: #4d5853;
+} 
+}

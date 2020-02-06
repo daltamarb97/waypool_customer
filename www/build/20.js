@@ -1,14 +1,14 @@
 webpackJsonp([20],{
 
-/***/ 637:
+/***/ 674:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmtripPageModule", function() { return ConfirmtripPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverPaymentsInfoPageModule", function() { return DriverPaymentsInfoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmtrip__ = __webpack_require__(792);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__payments_info__ = __webpack_require__(861);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,48 +18,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ConfirmtripPageModule = /** @class */ (function () {
-    function ConfirmtripPageModule() {
+var DriverPaymentsInfoPageModule = /** @class */ (function () {
+    function DriverPaymentsInfoPageModule() {
     }
-    ConfirmtripPageModule = __decorate([
+    DriverPaymentsInfoPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */],
+                __WEBPACK_IMPORTED_MODULE_2__payments_info__["a" /* DriverPaymentsInfoPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__payments_info__["a" /* DriverPaymentsInfoPage */]),
             ],
-            exports: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]
-            ]
         })
-    ], ConfirmtripPageModule);
-    return ConfirmtripPageModule;
+    ], DriverPaymentsInfoPageModule);
+    return DriverPaymentsInfoPageModule;
 }());
 
-//# sourceMappingURL=confirmtrip.module.js.map
+//# sourceMappingURL=payments-info.module.js.map
 
 /***/ }),
 
-/***/ 792:
+/***/ 861:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmtripPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverPaymentsInfoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(346);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__ = __webpack_require__(345);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_price_service__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_instances_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_trips_service__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__ = __webpack_require__(200);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -75,114 +66,121 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-
-
-
-var ConfirmtripPage = /** @class */ (function () {
-    function ConfirmtripPage(navCtrl, reservesService, sendUsersService, TripsService, toastCtrl, viewCtrl, afDB, SignUpService, sendCoordsService, navParams, AngularFireAuth, geoFireService, instances, alertCtrl) {
+/**
+ * Generated class for the PaymentsInfoPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var DriverPaymentsInfoPage = /** @class */ (function () {
+    function DriverPaymentsInfoPage(navCtrl, navParams, afDB, viewCtrl, alertCtrl, priceServices, signUpServices, angularFireAuth) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.reservesService = reservesService;
-        this.sendUsersService = sendUsersService;
-        this.TripsService = TripsService;
-        this.toastCtrl = toastCtrl;
-        this.viewCtrl = viewCtrl;
-        this.afDB = afDB;
-        this.SignUpService = SignUpService;
-        this.sendCoordsService = sendCoordsService;
         this.navParams = navParams;
-        this.AngularFireAuth = AngularFireAuth;
-        this.geoFireService = geoFireService;
-        this.instances = instances;
+        this.afDB = afDB;
+        this.viewCtrl = viewCtrl;
         this.alertCtrl = alertCtrl;
-        this.user = {};
-        this.button = true;
-        this.text = false;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
-        this.myRideActivation = false;
-        this.trip = this.navParams.get('trip');
-        console.log(this.reserve);
-        //get the info of the driver 
-        this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
-            .subscribe(function (myUserInfo) {
-            _this.user = myUserInfo;
-            console.log(_this.user);
-            if (_this.user.cancelModalLMU === true) {
-                _this.dismiss();
-                var alert_1 = _this.alertCtrl.create({
-                    title: 'Escoge otro viaje',
-                    buttons: ['OK']
-                });
-                alert_1.present();
-            }
+        this.priceServices = priceServices;
+        this.signUpServices = signUpServices;
+        this.angularFireAuth = angularFireAuth;
+        this.bankList = [];
+        this.showOther = false;
+        this.afDB.database.ref('/bankList/').once('value').then(function (snap) {
+            console.log(snap.val());
+            _this.bankList = snap.val();
         });
-        this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
-            .subscribe(function (usersInPendingusers) {
-            _this.usersInPending = usersInPendingusers;
-            _this.usersInPending.forEach(function (user) {
-                if (user.userId === _this.userUid) {
-                    _this.accepted = true;
-                    _this.dismiss();
-                }
-            });
-        });
-    }
-    ConfirmtripPage.prototype.goToRide = function () {
-        this.geoFireService.saveKey(this.SignUpService.userPlace, this.trip.keyTrip, this.trip.driver.userId, this.userUid);
-        this.reservesService.setOnTrip(this.SignUpService.userPlace, this.userUid);
-        this.TripsService.joinTrip(this.SignUpService.userPlace, this.trip.keyTrip, this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.verifiedPerson, this.user.trips.distanceToGoInKM);
-        // this.geoFireService.removeKeyGeofire(this.userUid);
-        //OLD
-        // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
-        // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
-        this.button = false;
-        this.text = true;
-    };
-    ConfirmtripPage.prototype.dismissX = function () {
-        var _this = this;
-        this.viewCtrl.dismiss();
-        this.geoFireService.deleteKey(this.SignUpService.userPlace, this.userUid);
-        this.geoFireService.deleteDriverFromLMU(this.SignUpService.userPlace, this.userUid, this.trip.keyTrip);
-        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).once('value').then(function (snap) {
-            if (snap.val().onTrip) {
-                _this.geoFireService.setOntripFalse(_this.SignUpService.userPlace, _this.userUid);
+        this.userInfo = this.navParams.get('userInfo');
+        this.afDB.database.ref(this.signUpServices.userPlace + '/drivers/' + this.userInfo.userId).once('value').then(function (snap) {
+            if (snap.val().bankAccount !== null && snap.val().idNumber !== null && snap.val().bankEntity !== null && snap.val().bankAccount !== undefined && snap.val().idNumber !== undefined && snap.val().bankEntity !== undefined) {
+                _this.fullInformation = true;
+                _this.showInputsToEdit = false;
             }
             else {
+                _this.showInputsToEdit = true;
+                _this.fullInformation = false;
             }
         });
-        this.TripsService.getOutFromLMU(this.SignUpService.userPlace, this.trip.keyTrip, this.trip.driver.userId, this.userUid);
+        this.driverId = this.angularFireAuth.auth.currentUser.uid;
+    }
+    DriverPaymentsInfoPage.prototype.editPaymentInfo = function () {
+        this.fullInformation = false;
+        this.showInputsToEdit = true;
     };
-    ConfirmtripPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss(this.accepted);
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-        if (this.trip.type === 'origin') {
-            this.geoFireService.cancelGeofireOr();
-            this.geoFireService.cancelGeofireOrLMU();
+    DriverPaymentsInfoPage.prototype.onChange = function () {
+        if (this.bankEntity === 'Otro') {
+            this.showOther = true;
         }
-        else if (this.trip.type === 'destination') {
-            this.geoFireService.cancelGeofireDest();
-            this.geoFireService.cancelGeofireDestLMU();
+        else {
+            this.showOther = false;
         }
     };
-    ConfirmtripPage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
+    DriverPaymentsInfoPage.prototype.setPaymentInfo = function () {
+        var _this = this;
+        if (this.fullInformation === true) {
+            this.dismiss();
+        }
+        else {
+            if (this.bankEntity === 'Otro') {
+                if (this.id === null || this.id === undefined || this.bankEntityOther === null || this.bankEntityOther === undefined || this.bankAccount === null || this.bankAccount === undefined) {
+                    var alert_1 = this.alertCtrl.create({
+                        title: 'Informacion Incompleta',
+                        subTitle: 'Por favor revisa que pusiste toda la información correctamente',
+                        buttons: ['OK']
+                    });
+                    alert_1.present();
+                }
+                else {
+                    this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then(function (snap) {
+                        var obj = snap.val();
+                        Object.getOwnPropertyNames(obj).forEach(function (key) {
+                            if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
+                            }
+                            else {
+                                _this.priceServices.sendPaymentInfo(obj[key], _this.driverId, _this.id, _this.bankAccount, _this.bankEntityOther);
+                            }
+                        });
+                    });
+                    this.dismiss();
+                }
+            }
+            else {
+                if (this.id === null || this.id === undefined || this.bankEntity === null || this.bankEntity === undefined || this.bankAccount === null || this.bankAccount === undefined) {
+                    var alert_2 = this.alertCtrl.create({
+                        title: 'Informacion Incompleta',
+                        subTitle: 'Por favor revisa que pusiste toda la información correctamente',
+                        buttons: ['OK']
+                    });
+                    alert_2.present();
+                }
+                else {
+                    this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then(function (snap) {
+                        var obj = snap.val();
+                        Object.getOwnPropertyNames(obj).forEach(function (key) {
+                            if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
+                            }
+                            else {
+                                _this.priceServices.sendPaymentInfo(obj[key], _this.driverId, _this.id, _this.bankAccount, _this.bankEntity);
+                            }
+                        });
+                    });
+                    this.dismiss();
+                }
+            }
+        }
     };
-    ConfirmtripPage = __decorate([
+    DriverPaymentsInfoPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    DriverPaymentsInfoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirmtrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-confirmtrip/confirmtrip.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>\n    <ion-card>\n        <h6 class="text-hot hot">Viaje Iniciado </h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{trip.driver.name|titlecase }} {{trip.driver.lastname|titlecase }}\n                    <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                </h2>\n                <p>{{trip.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen del viaje</small>\n                    <span class="icon-location bg-hot"></span>{{trip.houseAddr}}</p>\n                <p>\n                    <small>Destino del viaje</small>\n                    <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n            </div>\n        </ion-card-content>\n\n        \n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{trip.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-hot text-white rounded" (click)="goToRide()" *ngIf="button" style="width: 100%;margin-top: 14px;">Enviar Solicitud </button>\n                <p  text-center *ngIf="text">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-confirmtrip/confirmtrip.html"*/
+            selector: 'driver-page-payments-info',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/payments-info/driver-payments-info.html"*/'<ion-content>\n  <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>\n  <ion-card>\n      \n        \n    <div *ngIf = \'showInputsToEdit\'>\n        <ion-card-content>\n             <h2>INFORMACIÓN PARA RECIBIR DINERO ACOMULADO POR COMPARTIR TU CARRO</h2>\n            <div class="ride-detail">\n                <ion-item class="form">\n                    <ion-label floating>Tu cédula</ion-label>\n                    <ion-input type="number" [(ngModel)]="id"></ion-input>\n                  </ion-item>                \n            </div>\n        </ion-card-content>\n        <ion-card-content>\n          <div class="ride-detail">\n            <ion-list>\n              <ion-item class="form">\n                <ion-label floating>Tu número de cuenta</ion-label>\n                <ion-input type="number" [(ngModel)]="bankAccount"></ion-input>\n              </ion-item>\n            </ion-list>               \n          </div>\n      </ion-card-content>\n  \n      <ion-card-content>\n          <ion-row style="margin-top: 14px;    display: flex;\n                justify-content: center">\n                   <ion-list>\n                        <ion-item>\n                          <ion-label>Tu banco</ion-label>\n                          <ion-select [(ngModel)]="bankEntity" (ionChange)="onChange()">\n                            <ion-option *ngFor="let bank of bankList" >{{bank}}</ion-option>\n                          </ion-select>\n                        </ion-item>\n                        <ion-item *ngIf=\'showOther\'>\n                            <ion-label floating>Nombre de tu banco</ion-label>\n                            <ion-input  [(ngModel)]="bankEntityOther"></ion-input>\n                        </ion-item>\n                    </ion-list>\n                </ion-row>\n      </ion-card-content>\n</div>\n<div *ngIf = \'fullInformation\'>\n        <ion-card-content>\n                <h2>YA TENEMOS TU INFORMACIÓN FINANCIERA PARA ENVIARTE TU DINERO</h2>\n\n                <ion-row style="margin-top: 14px; display: flex; justify-content: center">\n                 \n                  <ion-col col-8>\n                      <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="editPaymentInfo()">Editar mi información</button>\n                  </ion-col>\n              </ion-row>\n           </ion-card-content>\n</div>\n    <br/>\n      <ion-card-content>\n          <div class="ride-detail no-before">\n              <p>Esta información es necesaria para que puedas recibir el dinero que ganaste por compartir tu carro.</p>      \n              <br/>\n              <p>Recuerda que esta información es tuya y por lo tanto nos tomamos enserio su protección. Tus datos estan protegidos bajo las normas de nuestra politica de  privacidad de datos. <a href="https://waypooltech.wordpress.com/" style="color: #0081ad">Más Información</a></p>\n          </div>\n              \n             \n     \n          <div class="seats">\n              \n              <ion-row style="margin-top: 14px;    display: flex;\n              justify-content: center">\n                 \n                  <ion-col col-8>\n                      <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setPaymentInfo()">Listo</button>\n                  </ion-col>\n              </ion-row>\n             \n\n          </div>\n      </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/payments-info/driver-payments-info.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_10__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
-    ], ConfirmtripPage);
-    return ConfirmtripPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__services_d_price_service__["a" /* DriverPriceService */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"]])
+    ], DriverPaymentsInfoPage);
+    return DriverPaymentsInfoPage;
 }());
 
-//# sourceMappingURL=confirmtrip.js.map
+//# sourceMappingURL=payments-info.js.map
 
 /***/ })
 

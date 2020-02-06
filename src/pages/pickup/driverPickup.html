@@ -1,0 +1,46 @@
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title>Escoger Compañero
+                <ion-icon name="help-circle-outline" class="text-white" (click)="help() " style="margin-left: auto;float: right;"></ion-icon> 
+
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+        <ion-card class="cardOnTrip">
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="assets/imgs/userPicture.png">
+                    </ion-avatar>
+                    <div class="name">
+                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}.
+                        </h2>
+                       
+                    </div>
+                    <div class="more">
+                        <h2 class="text-theme">
+                            <!-- <ion-icon name="md-more"></ion-icon> -->
+                        </h2>
+                    </div>
+                </ion-item>
+                <ion-card-content>
+                    <div class="ride-detail">
+                        <p>
+                            <span class="icon-location bg-theme"></span>{{addressOrigin}}</p>
+                        <p>
+                            <span class="icon-location bg-yellow"></span>{{user.origin}}</p>
+                    </div>
+                    <ion-row>
+                           <!-- <div text-left>
+                                <button class="btn bg-theme rounded full text-white" (click)="goToWaze(user.origin)">waze</button>                               
+                            </div>  -->                      
+                                <!-- <button class="btn bg-yellow rounded full text-white"><ion-icon name="chatboxes" class="text-white"></ion-icon></button> -->
+                                <button (click)="callUser()" class="btn bg-yellow rounded full text-white"><ion-icon name="ios-call" class="text-white"></ion-icon></button>
+                                
+                            <button navPop class="btn bg-theme rounded full text-white" (click)="PickUp()">Listo</button>                      
+                    </ion-row>
+                </ion-card-content>             
+            </ion-card>
+    <div #map id="map"></div>   
+</ion-content>

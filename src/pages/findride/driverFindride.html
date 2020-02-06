@@ -1,0 +1,99 @@
+<ion-header class="bg-theme"  >
+    
+    <ion-navbar  >
+        <button ion-button menuToggle>
+            <ion-icon name="menu" style="color: white;"></ion-icon>
+          
+          </button>
+          <!-- <ion-avatar ion-button menuToggle>
+            <img style="height:100%; width:100%" src="assets/imgs/menu.png">
+        </ion-avatar> -->
+          <ion-buttons style="display: flex; justify-content: center;"> 
+              <ion-item style="background-color: transparent;">
+                <!-- <ion-toggle [(ngModel)]="isConected" [checked]="isConected" (ionChange)="conectDriver()"></ion-toggle> -->
+
+                  <!-- <div><p class="text-white">Conectado</p></div> -->
+              
+                  <ion-row class="center-align row" style="margin-left: 16px; justify-content: flex-end;" >
+                    
+                      <button  #buttonDisconected class="btn rounded bg-red  text-white buttonDisconected" (click)="disconectDriver()" >Offline</button>
+                      <button #buttonConected  class="btn  text-white buttonConected" (click)="conectDriver()" >Online</button>
+                    
+                    
+                </ion-row>
+              </ion-item>
+
+           
+ 
+          </ion-buttons> 
+       
+    </ion-navbar>
+
+</ion-header>
+
+
+
+
+<ion-content  padding>
+
+      <ion-card class="search" >
+          <ion-card-content>
+              <span style=" z-index: 1;position: relative;" class="text-light search-text">Casa &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>
+
+              <span class="dot bg-theme"></span>
+              <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" id="input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Cóloca la dirección de tu casa"></ion-searchbar>
+
+              <ion-list   [hidden]="autocompleteItems.length == 0">
+                  <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">
+                    {{ item.description }}
+                  </ion-item>
+                </ion-list>
+                <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->
+          </ion-card-content>
+
+          <ion-card-content>
+            <span style=" z-index: 1;position: relative;" class="text-light search-text">Oficina &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>
+
+              <span class="dot bg-yellow"></span>           
+             <ion-searchbar  [(ngModel)]="autocompleteMyDest.input"  id="input2" (click)="updateSearchResultsMyDest()" placeholder="Cóloca tu destino"></ion-searchbar>
+  
+  
+              <ion-list   *ngIf="showList">
+              <ion-item class="item" *ngFor="let item of multipleDestinations" tappable (click)="selectSearchResultMyDest(item)">
+                {{ item.name }}
+              </ion-item>
+            </ion-list>
+  
+           </ion-card-content>
+           
+      </ion-card>
+      <!-- <ion-avatar item-end>
+          <img style="height: 15%; width: 15%;" src="assets/imgs/centermap.png" (click)="centerMap()">
+      </ion-avatar> -->
+  
+   <div #map id="map"></div>  
+     
+
+  
+            <div *ngIf="onTrip" >
+              <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;
+              position: fixed ;
+              bottom: 0px ;
+              left: 0px ;
+              height: 51px; 
+              font-size: large;
+              
+          " (click)="goToTrip() " >VIAJE EN CURSO
+              </button>
+          </div>
+     
+  
+ 
+    
+   
+    
+
+
+ 
+</ion-content>
+

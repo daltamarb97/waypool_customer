@@ -39,6 +39,18 @@ import { MetricsService } from '../services/metrics.service';
 import { Camera } from '@ionic-native/camera/';
 import { FCM } from '@ionic-native/fcm';
 import { Clipboard } from '@ionic-native/clipboard/';
+import { DriverChatsService } from '../services/d-chat.service';
+import { DriverAuthenticationService } from '../services/d-driverauthentication.service';
+import { DriverGeofireService } from '../services/d-geofire.services';
+import { DriverInstancesService } from '../services/d-instances.services';
+import { DriverMetricsService } from '../services/d-metrics.service';
+import { DriverPriceService } from '../services/d-price.service';
+import { DriverSendCoordsService } from '../services/d-sendCoords.service';
+import { DriverSendFeedbackService } from '../services/d-sendFeedback.service';
+import { DriverSendUsersService } from '../services/d-sendUsers.service';
+import { DriverSignUpService } from '../services/d-signup.service';
+import { DriverTripsService } from '../services/d-trips.service';
+import { DriverWindowService } from '../services/d-window.service';
 
 
 export const firebaseConfig = {
@@ -100,7 +112,18 @@ export const firebaseConfig = {
     reservesService,
     TripsService,
     environmentService,
-    
+    DriverChatsService,
+    DriverAuthenticationService,
+    DriverGeofireService,
+    DriverInstancesService,
+    DriverMetricsService,
+    DriverPriceService,
+    DriverSendCoordsService,
+    DriverSendFeedbackService,
+    DriverSendUsersService,
+    DriverSignUpService,
+    DriverTripsService,
+    DriverWindowService,
     LocationAccuracy,
     MetricsService,
     Camera,

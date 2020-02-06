@@ -1,0 +1,59 @@
+<ion-header class="bg-theme">
+    <ion-navbar>
+        <ion-title class="text-center">Mis Ganancias</ion-title>
+        <ion-icon name="help-circle-outline" class="text-white" (click)="help() " style="float: right;"></ion-icon> 
+
+    </ion-navbar>
+    <div text-center >
+        <p><small class="text-white">Ganancias Totales:</small></p>
+        <h1 class="text-white">$ {{total}}</h1>
+        <ion-row>
+              
+        </ion-row>
+    </div>
+
+</ion-header>
+ 
+<ion-content class="bg-light">
+        <ion-row class="center-align row" style="margin-left: 16px; margin-right: 16px; margin-top: 15px" >
+                <button class="btn bg-theme text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="goPaymentInfo()">Añadir información para recibir pagos</button>
+        </ion-row>
+        <p class="love">Historial de viajes</p> 
+       
+    <ion-list>
+            <ion-card *ngFor = "let user of recordTrips">
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="assets/imgs/carBlue.png">
+                        </ion-avatar>
+                        <div class="name">
+                            <h2>{{user.DestinationTime}}
+                            </h2>
+                            <p>{{user.car}}</p>
+                        </div>
+                        <div class="more">                       
+                                <ion-badge  class="badge">$ {{user.price}}</ion-badge>                                  
+                                    
+                        </div>
+                    </ion-item>
+                    <ion-card-content>
+                        <div class="ride-detail">
+                            <p>
+                                <span class="icon-location bg-theme"></span>{{user.houseAddr}}</p>
+                            <p>
+                                <span class="icon-location bg-yellow"></span>{{user.placeAddr}}</p>
+                        </div>
+                       
+                    </ion-card-content>       
+
+                </ion-card>  
+    </ion-list>
+
+
+    
+
+   
+   
+    
+    
+</ion-content>

@@ -19,6 +19,19 @@ export class MetricsService {
     });
 
    }   
+   public metricTripsInBikes(place,userUid,date,route,or,dest,distance){
+    //send every reserve that were created
+    this.afDB.database.ref('data/tripsInBikes/'+place).push({
+      date:date,
+      dest:dest,
+      or:or,
+      userId:userUid,
+      distance:distance,
+      route:route,
+    });
+
+   }   
+    
    public cancelReserves(place, userId,trip){
     //send every reserve that were created
     this.afDB.database.ref('data/userCancelTrip/'+place).push({

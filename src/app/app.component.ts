@@ -23,6 +23,7 @@ export class MyApp {
   pages:any=[];
   constructor(public alertCtrl: AlertController, statusBar: StatusBar, splashScreen: SplashScreen, private geolocation: Geolocation, private platform: Platform, private fcm: FCM, public toastController: ToastController, private firebase: Firebase) {
     this.pages = [
+      {title:'Modo Bicicleta',component:'BikeModePage', icon:'md-bicycle'},
       {title:'Mis viajes',component:'ReservetripPage', icon:'md-paper'},
       {title: 'Billetera', component:'WalletPage',icon:'card'},
       {title:'Mi perfil',component:'MorePage',icon:'person'},

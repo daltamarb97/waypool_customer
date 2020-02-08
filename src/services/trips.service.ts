@@ -2,6 +2,7 @@ import { AngularFireDatabase } from "@angular/fire/database";
 import { Injectable } from "@angular/core";
 import { UrlSerializer, AlertController } from "ionic-angular";
 import * as GeoFire from 'geofire';
+import { listLazyRoutes } from "@angular/compiler/src/aot/lazy_routes";
 
 @Injectable()
 export class TripsService {
@@ -196,5 +197,16 @@ public eliminatingCancelTrip(place, userUid){
   this.afDB.database.ref(place + '/users/'+userUid+'/cancelTrip').remove();
   
   }
-      
+ public recordTripsInBike(place,userUid,date,route,or,dest,distance){
+  this.afDB.database.ref(place + '/users/'+userUid+'/recordTripBicycle/').push({
+   
+    date:date,
+    route:route,
+    or:or,
+    dest:dest,
+    distance:distance
+    
+  });
+
+ }     
 }

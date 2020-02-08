@@ -31,6 +31,9 @@
 		EC0554586B2344619A95EB40 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EDE965D9C5A451D818CF193 /* GoogleService-Info.plist */; };
 		ED5F8F5399FB4DD5AAE96E2C /* CFCallNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 5054E33EF99E4C51ACCF9763 /* CFCallNumber.m */; };
 		EE1F05FCF32A4DCC9E62C347 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4CB0FFDAB24657B9D083EA /* libz.tbd */; };
+		BFBABB9A9A4E4248ABDCA115 /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E64ABD91C5429D8525DA11 /* SQLitePlugin.m */; };
+		8D00E320997140678A3FE945 /* PSPDFThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B00C5A2BECA54149ACC7C8A0 /* PSPDFThreadSafeMutableDictionary.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		2B836B461DBA4174A5E95FF5 /* sqlite3.c in Resources */ = {isa = PBXBuildFile; fileRef = 59CF1F563C614C80A0FF8CBB /* sqlite3.c */; settings = {COMPILER_FLAGS = "-w -DSQLITE_THREADSAFE=1 -DSQLITE_DEFAULT_SYNCHRONOUS=3 -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_OMIT_DECLTYPE -DSQLITE_OMIT_DEPRECATED -DSQLITE_OMIT_PROGRESS_CALLBACK -DSQLITE_OMIT_SHARED_CACHE -DSQLITE_TEMP_STORE=2 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_DEFAULT_PAGE_SIZE=1024"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,12 @@
 		F0E375B8092C4BF0A874EF2C /* FCMPlugin.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = FCMPlugin.h; path = "cordova-plugin-fcm-with-dependecy-updated/FCMPlugin.h"; sourceTree = "<group>"; };
 		F4F5356076A4444EB1BA1BBB /* AppDelegate+FCMPlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+FCMPlugin.m"; path = "cordova-plugin-fcm-with-dependecy-updated/AppDelegate+FCMPlugin.m"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = Waypool/config.xml; sourceTree = "<group>"; };
+		39E64ABD91C5429D8525DA11 /* SQLitePlugin.m */ = {isa = PBXFileReference; name = "SQLitePlugin.m"; path = "cordova-sqlite-storage/SQLitePlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		B00C5A2BECA54149ACC7C8A0 /* PSPDFThreadSafeMutableDictionary.m */ = {isa = PBXFileReference; name = "PSPDFThreadSafeMutableDictionary.m"; path = "cordova-sqlite-storage/PSPDFThreadSafeMutableDictionary.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		59CF1F563C614C80A0FF8CBB /* sqlite3.c */ = {isa = PBXFileReference; name = "sqlite3.c"; path = "cordova-sqlite-storage/sqlite3.c"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A0EF6CC8A41C42D688F5726E /* SQLitePlugin.h */ = {isa = PBXFileReference; name = "SQLitePlugin.h"; path = "cordova-sqlite-storage/SQLitePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		15EECD945C9C42F697379B1F /* PSPDFThreadSafeMutableDictionary.h */ = {isa = PBXFileReference; name = "PSPDFThreadSafeMutableDictionary.h"; path = "cordova-sqlite-storage/PSPDFThreadSafeMutableDictionary.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		7A5AEB4F37E44466BEA5FED8 /* sqlite3.h */ = {isa = PBXFileReference; name = "sqlite3.h"; path = "cordova-sqlite-storage/sqlite3.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +253,12 @@
 				17525AF8F58642A3ACC86492 /* CDVCamera.h */,
 				DDD77D1A755F4767933FE391 /* CDVJpegHeaderWriter.h */,
 				31F647F0125441199EFD170D /* CDVExif.h */,
+				39E64ABD91C5429D8525DA11 /* SQLitePlugin.m */,
+				B00C5A2BECA54149ACC7C8A0 /* PSPDFThreadSafeMutableDictionary.m */,
+				59CF1F563C614C80A0FF8CBB /* sqlite3.c */,
+				A0EF6CC8A41C42D688F5726E /* SQLitePlugin.h */,
+				15EECD945C9C42F697379B1F /* PSPDFThreadSafeMutableDictionary.h */,
+				7A5AEB4F37E44466BEA5FED8 /* sqlite3.h */,
 			);
 			name = Plugins;
 			path = Waypool/Plugins;
@@ -413,6 +428,9 @@
 				3871D6929BDD45E7B4439810 /* UIImage+CropScaleOrientation.m in Sources */,
 				7BFDBD8523954FCBB633BC92 /* CDVCamera.m in Sources */,
 				57AB1F423CC44CBF83C5FBBD /* CDVJpegHeaderWriter.m in Sources */,
+				BFBABB9A9A4E4248ABDCA115 /* SQLitePlugin.m in Sources */,
+				8D00E320997140678A3FE945 /* PSPDFThreadSafeMutableDictionary.m in Sources */,
+				2B836B461DBA4174A5E95FF5 /* sqlite3.c in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

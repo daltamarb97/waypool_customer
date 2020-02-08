@@ -25815,19 +25815,6 @@ li,
   border-radius: 5px;
 }
 
-.transparent.header {
-  background: transparent;
-}
-
-.transparent.header .toolbar-background {
-  background: transparent;
-  border: none !important;
-}
-
-.transparent.header::after {
-  display: none;
-}
-
 .toolbar-title {
   font-size: 1.65rem !important;
 }
@@ -25923,12 +25910,362 @@ ion-segment-button.segment-button.segment-activated {
   z-index: 999;
 }
 
-ion-header[transparent] .toolbar-background {
+.ios page-bikemode ion-header .navbar {
   background: transparent;
 }
 
-.space {
+.ios page-bikemode .search {
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.ios page-bikemode .search .card-content {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 5px 15px;
+}
+
+.ios page-bikemode .search .card-content .searchbar-search-icon {
+  display: none;
+}
+
+.ios page-bikemode .search .card-content .searchbar-input {
+  padding: 17px  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 1.25rem;
+}
+
+.ios page-bikemode .search .card-content .searchbar {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.ios page-bikemode .search .card-content .dot {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -10px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+.ios page-bikemode .search .card-content .dot.icons {
+  border-radius: 0;
+}
+
+.ios page-bikemode .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+.ios page-bikemode .search .item-ios {
+  font-size: 1.25rem;
+}
+
+.ios page-bikemode .search span.search-text {
+  width: 140px;
+  font-size: 1.3rem;
+  text-align: right;
+}
+
+.ios page-bikemode .scroll {
+  height: 100%;
+}
+
+.ios page-bikemode #map {
   z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+}
+
+.ios page-bikemode .findRideText {
+  text-align: center;
+}
+
+.ios page-bikemode .alert {
+  font-weight: bold;
+}
+
+.ios page-bikemode .btn-left {
+  margin-right: 5px;
+  width: 49%;
+}
+
+.ios page-bikemode .btn-right {
+  width: 49%;
+}
+
+.ios page-bikemode .rowOfButtons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.md page-bikemode .search {
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.md page-bikemode .search .card-content {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px 15px;
+}
+
+.md page-bikemode .search .card-content .searchbar-search-icon {
+  display: none;
+}
+
+.md page-bikemode .search .card-content .searchbar-input {
+  padding: 17px  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 1.25rem;
+}
+
+.md page-bikemode .search .card-content .searchbar {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.md page-bikemode .search .card-content .dot {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -20px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+.md page-bikemode .search .card-content .dot.icons {
+  border-radius: 0;
+}
+
+.md page-bikemode .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+.md page-bikemode .search .item-ios {
+  font-size: 1.25rem;
+}
+
+.md page-bikemode .search span.search-text {
+  width: 140px;
+  font-size: 1.3rem;
+  text-align: right;
+}
+
+.md page-bikemode .scroll {
+  height: 100%;
+}
+
+.md page-bikemode #map {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+}
+
+.md page-bikemode .findRideText {
+  text-align: center;
+}
+
+.md page-bikemode .alert {
+  font-weight: bold;
+}
+
+.md page-bikemode .btn-left {
+  margin-right: 5px;
+  width: 49%;
+}
+
+.md page-bikemode .btn-right {
+  width: 49%;
+}
+
+.md page-bikemode .rowOfButtons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+page-bikemode .search {
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+page-bikemode .search .card-content {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-bikemode .search .card-content .ios {
+  padding: 5px 15px;
+}
+
+page-bikemode .search .card-content .md {
+  padding: 0px 15px;
+}
+
+page-bikemode .search .card-content .searchbar-search-icon {
+  display: none;
+}
+
+page-bikemode .search .card-content .searchbar-input {
+  padding: 17px  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 1.25rem;
+}
+
+page-bikemode .search .card-content .searchbar {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+page-bikemode .search .card-content .ios .dot {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -10px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+page-bikemode .search .card-content .ios .dot.icons {
+  border-radius: 0;
+}
+
+page-bikemode .search .card-content .dot-md {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -20px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+page-bikemode .search .card-content .dot-md.icons {
+  border-radius: 0;
+}
+
+page-bikemode .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+page-bikemode .search .item-ios {
+  font-size: 1.25rem;
+}
+
+page-bikemode .search span.search-text {
+  width: 140px;
+  font-size: 1.3rem;
+  text-align: right;
+}
+
+page-bikemode .scroll {
+  height: 100%;
+}
+
+page-bikemode #map {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+}
+
+page-bikemode .findRideText {
+  text-align: center;
+}
+
+page-bikemode .alert {
+  font-weight: bold;
+}
+
+page-bikemode .btn-left {
+  margin-right: 5px;
+  width: 49%;
+}
+
+page-bikemode .btn-right {
+  width: 49%;
+}
+
+page-bikemode .rowOfButtons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 page-canceltrip .close-icon {
@@ -29443,6 +29780,202 @@ page-terms .text-theme3 {
 
 page-terms .text-dark2 {
   font-weight: bold;
+}
+
+page-tripbike #map {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+}
+
+page-tripbike p.text-light {
+  padding: 10px 15px 0;
+  font-size: 1.2rem;
+}
+
+page-tripbike .card {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 5px;
+}
+
+page-tripbike .card ion-item .name {
+  width: calc(100% - 70px);
+  display: inline-block;
+}
+
+page-tripbike .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+page-tripbike .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+page-tripbike .card ion-item .more {
+  width: 65px;
+  display: inline-block;
+}
+
+page-tripbike .card ion-item .more h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0fc874;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+page-tripbike .card ion-item .more h2 ion-icon {
+  margin-left: 5px;
+  font-size: 2rem;
+  margin-left: auto;
+  color: #222;
+}
+
+page-tripbike .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+page-tripbike ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+page-tripbike ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+page-tripbike ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 43px;
+  position: relative;
+  color: #777;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+page-tripbike ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+}
+
+page-tripbike ion-card-content .ride-detail::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: #555;
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+page-tripbike ion-card-content .detail-text {
+  height: 4.5rem;
+  font-size: 1rem;
+  color: #bfbfbf;
+  text-transform: none;
+}
+
+page-tripbike ion-card-content .detail-text h2 {
+  color: #0fc874;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+page-tripbike ion-card-content .full.btn {
+  float: right;
+  margin-right: 5px;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 32px;
+  font-size: 1.1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+page-tripbike ion-card-content .full.btn .icon {
+  font-size: 2rem;
+}
+
+page-tripbike ion-card-content .status {
+  display: block;
+  width: 26px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+}
+
+page-tripbike ion-card-content .status img {
+  width: 100%;
+}
+
+page-tripbike .col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+page-tripbike .user {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+page-tripbike .user.u1 {
+  top: 9%;
+  left: 77%;
+}
+
+page-tripbike .user.u2 {
+  top: 20%;
+  left: 65%;
+}
+
+page-tripbike .user.u3 {
+  top: 30%;
+  left: 50%;
+}
+
+page-tripbike .dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+page-tripbike .dot.drop {
+  top: 5%;
+  left: 90%;
+}
+
+page-tripbike .dot.pickup {
+  top: 46%;
+  left: 40%;
 }
 
 page-verification-images p {

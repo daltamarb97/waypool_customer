@@ -26,6 +26,9 @@
     },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     }
   },
   "dependent_plugins": {}

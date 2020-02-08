@@ -150,6 +150,8 @@ export class SignupPage {
                                     this.zones.push(zone);
                                 });                                  
                             
+                            // this.company = 'electricaribe';
+                            // this.zones.push('zone1');
                             
                             
                         }

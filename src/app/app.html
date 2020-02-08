@@ -1,11 +1,12 @@
-<ion-menu [content]="content" *ngIf='showUser === true'>
+<ion-menu [content]="content" >
     <ion-header>
       <ion-toolbar>
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list>
+      <!-- user -->
+      <ion-list *ngIf='showUser === true'>
         <button menuClose ion-item *ngFor="let p of pagesUser" (click)="openPage(p)">
           <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      
 
@@ -13,10 +14,20 @@
         </button>
       
       </ion-list>
+
+      <!-- driver -->
+      <ion-list *ngIf='showUser === false'>
+          <button menuClose ion-item *ngFor="let p of pagesDriver" (click)="openPage(p)">
+            <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      
+  
+            {{p.title}}                
+          </button>
+        
+        </ion-list>
     </ion-content>
   </ion-menu>
 
-  <ion-menu [content]="content" *ngIf='showUser === false'>
+  <!-- <ion-menu [content]="content" >
     <ion-header>
       <ion-toolbar>
         <ion-title>Menu</ion-title>
@@ -32,6 +43,6 @@
       
       </ion-list>
     </ion-content>
-  </ion-menu>
+  </ion-menu> -->
   
   <ion-nav  #content [root]="rootPage"></ion-nav>

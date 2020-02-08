@@ -1,6 +1,6 @@
 webpackJsonp([21],{
 
-/***/ 671:
+/***/ 672:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WalletPageModule", function() { return WalletPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wallet__ = __webpack_require__(858);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wallet__ = __webpack_require__(859);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var WalletPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 858:
+/***/ 859:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -123,7 +123,7 @@ var WalletPage = /** @class */ (function () {
         console.log(link);
         this.clipboard.copy(link);
         var toast = this.toastCtrl.create({
-            message: 'Link de pago copiado, pégalo en el browser',
+            message: 'Link de pago copiado. Pégalo en tu navegador de preferencia ',
             showCloseButton: true,
             closeButtonText: 'OK',
             position: 'top'

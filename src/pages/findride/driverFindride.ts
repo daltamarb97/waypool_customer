@@ -642,10 +642,8 @@ console.log(  this.positionDest.lat);
                                           console.log("estoy true")
                                           this.disable();
                                           console.log(this.userInfo.fixedLocation.name);
-                                      } else {
-                                          this.presentAlert('Información incompleta', 'Por favor escribe toda la información para conectarte', 'OK')
-
-                                      }
+                                      } 
+                       
                                   })
                                   modal.present();
 

@@ -1,21 +1,26 @@
 <ion-content>
 
 
-    <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
     <ion-card>
 
         <ion-card-content>
+                <ion-icon name="close-circle" class="close-icon text-theme-driver"  (click)="dismiss()"></ion-icon>
                 <h2 text-center class="text-theme-driver">AÑADE UN HORARIO</h2>
 
             <ion-row style="margin-top: 14px;    display: flex;
             justify-content: center">
                 <ion-list>
              <h2 text-center>Coloca la hora a la que te vas:</h2>
+                    <div style="    border-color: black;
+                    border-style: solid;">
 
                     <ion-item>
                         <ion-label>Hora:</ion-label>
                 <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>
                 </ion-item>
+
+                </div>
+                    
                 </ion-list>                    
             </ion-row>
     </ion-card-content>

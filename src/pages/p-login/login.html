@@ -22,10 +22,11 @@
                 </ion-item>
             </ion-list>
             <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!loginGroup.valid">ENTRAR</button>
-            <button ion-button full class="bg-darkblue text-white btn rounded" (click)="signup()" >REGÍSTRATE</button>
 
             <br>
          </form>
+         <button ion-button full class="bg-darkblue text-white btn rounded" (click)="signup()" >REGÍSTRATE</button>
+
 
             <ion-row style="padding-top: 30px;">
                 <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme">contraseña?</strong></small></ion-col>

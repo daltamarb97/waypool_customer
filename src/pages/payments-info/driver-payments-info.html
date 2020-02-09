@@ -1,10 +1,10 @@
 <ion-content>
-  <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>
   <ion-card>
       
         
     <div *ngIf = 'showInputsToEdit'>
         <ion-card-content>
+                <ion-icon name="close-circle" class="close-icon text-theme-driver"  (click)="dismiss()"></ion-icon>
              <h2>INFORMACIÓN PARA RECIBIR DINERO ACOMULADO POR COMPARTIR TU CARRO</h2>
             <div class="ride-detail">
                 <ion-item class="form">
@@ -44,6 +44,7 @@
 </div>
 <div *ngIf = 'fullInformation'>
         <ion-card-content>
+                <ion-icon name="close-circle" class="close-icon text-theme-driver"  (click)="dismiss()"></ion-icon>
                 <h2>YA TENEMOS TU INFORMACIÓN FINANCIERA PARA ENVIARTE TU DINERO</h2>
 
                 <ion-row style="margin-top: 14px; display: flex; justify-content: center">

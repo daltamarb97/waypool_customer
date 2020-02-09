@@ -61,13 +61,35 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "FCMPlugin"
       ]
+<<<<<<< HEAD
+=======
+    },
+    {
+      "id": "cordova-plugin-geolocation.PositionError",
+      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "runs": true
+    },
+    {
+      "id": "cordova-sqlite-storage.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-storage",
+      "clobbers": [
+        "SQLitePlugin"
+      ]
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
     }
   ];
   module.exports.metadata = {
     "mx.ferreyra.callnumber": "0.0.2",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-whitelist": "1.3.4",
+<<<<<<< HEAD
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-fcm-with-dependecy-updated": "4.1.1"
+=======
+    "cordova-plugin-geolocation": "4.0.2",
+    "cordova-sqlite-storage": "3.2.1"
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
   };
 });

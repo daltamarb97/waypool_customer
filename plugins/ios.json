@@ -19,7 +19,11 @@
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
+<<<<<<< HEAD
     "mx.ferreyra.callnumber": {
+=======
+    "cordova-sqlite-storage": {
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },

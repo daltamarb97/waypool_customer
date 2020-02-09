@@ -26,6 +26,9 @@
       "GRADLE_TOOLS_VERSION": "3.5.0",
       "GOOGLE_SERVICES_VERSION": "4.2.0",
       "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     }
   },
   "dependent_plugins": {}

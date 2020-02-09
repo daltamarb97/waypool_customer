@@ -73,11 +73,19 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+<<<<<<< HEAD
       "id": "mx.ferreyra.callnumber.CallNumber",
       "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
       "pluginId": "mx.ferreyra.callnumber",
       "clobbers": [
         "call"
+=======
+      "id": "cordova-sqlite-storage.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-storage",
+      "clobbers": [
+        "SQLitePlugin"
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
       ]
     }
   ];
@@ -86,6 +94,10 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-whitelist": "1.3.4",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-geolocation": "4.0.2",
+<<<<<<< HEAD
     "mx.ferreyra.callnumber": "0.0.2"
+=======
+    "cordova-sqlite-storage": "3.2.1"
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
   };
 });

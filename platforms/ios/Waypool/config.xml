@@ -77,10 +77,15 @@
     <preference name="ShowSplashScreen" value="true" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="orientation" value="portrait" />
+<<<<<<< HEAD
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
     <feature name="CallNumber">
         <param name="ios-package" value="CFCallNumber" />
+=======
+    <feature name="SQLitePlugin">
+        <param name="ios-package" value="SQLitePlugin" />
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
     </feature>
 </widget>

@@ -925,7 +925,7 @@ listride(){
                       moment.locale('es'); //to make the date be in spanish  
                       let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
                       console.log(today)
-                      // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+                      this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
                       this.loading.dismiss();
                       this.app.getRootNav().push('ListridePage');
                       console.log('esto debe ser false y es: ' + this.geofireDestinationConfirmed);
@@ -1143,7 +1143,7 @@ listride(){
                       moment.locale('es'); //to make the date be in spanish  
                       let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
                       console.log(today)
-                      // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
+                      this.MetricsService.createdReserves(this.SignUpService.userPlace,this.userUid,today,this.desFirebase,this.orFirebase);
                       this.loading.dismiss();
                       this.app.getRootNav().push('ListridePage');
                       console.log('esto debe ser false y es: ' + this.geofireDestinationConfirmed);
@@ -1508,7 +1508,11 @@ listride(){
      this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
   }
-      
+      goToBikeMode(){
+        console.log(this.user);
+        
+        this.navCtrl.push('BikeModePage',{user:this.user})
+      }
 
 }
    

@@ -5,10 +5,10 @@ webpackJsonp([7],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverWalkthroughPageModule", function() { return DriverWalkthroughPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverWalletPageModule", function() { return DriverWalletPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverWalkthrough__ = __webpack_require__(876);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverWallet__ = __webpack_require__(878);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverWalkthroughPageModule = /** @class */ (function () {
-    function DriverWalkthroughPageModule() {
+var DriverWalletPageModule = /** @class */ (function () {
+    function DriverWalletPageModule() {
     }
-    DriverWalkthroughPageModule = __decorate([
+    DriverWalletPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverWalkthrough__["a" /* DriverWalkthroughPage */],
+                __WEBPACK_IMPORTED_MODULE_2__driverWallet__["a" /* DriverWalletPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverWalkthrough__["a" /* DriverWalkthroughPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverWallet__["a" /* DriverWalletPage */]),
             ],
+            exports: [
+                __WEBPACK_IMPORTED_MODULE_2__driverWallet__["a" /* DriverWalletPage */]
+            ]
         })
-    ], DriverWalkthroughPageModule);
-    return DriverWalkthroughPageModule;
+    ], DriverWalletPageModule);
+    return DriverWalletPageModule;
 }());
 
-//# sourceMappingURL=driverWalkthrough.module.js.map
+//# sourceMappingURL=driverWallet.module.js.map
 
 /***/ }),
 
-/***/ 876:
+/***/ 878:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverWalkthroughPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverWalletPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_sendCoords_service__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_sendUsers_service__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,48 +67,68 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the WalkthroughPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var DriverWalkthroughPage = /** @class */ (function () {
-    function DriverWalkthroughPage(navCtrl, navParams, viewCtrl, menuCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.menuCtrl = menuCtrl;
-        this.animationSpeed = 1;
-        this.lottieConfig = {
-            path: 'assets/icon/checked_done_.json',
-            autoplay: true,
-            loop: false
-        };
-    }
-    DriverWalkthroughPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad WalkthroughPage');
-    };
-    DriverWalkthroughPage.prototype.handleAnimation = function (anim) {
-        this.anim = anim;
-    };
-    DriverWalkthroughPage.prototype.goLogin = function () {
+
+
+
+
+
+
+var DriverWalletPage = /** @class */ (function () {
+    function DriverWalletPage(navCtrl, toastCtrl, sendUsersService, sendCoordsService, AngularFireAuth, signupService, afDB, app, modalCtrl) {
         var _this = this;
-        this.animate = "animated bounceOutRight";
-        setTimeout(function () {
-            _this.navCtrl.pop();
-        }, 1000);
+        this.navCtrl = navCtrl;
+        this.toastCtrl = toastCtrl;
+        this.sendUsersService = sendUsersService;
+        this.sendCoordsService = sendCoordsService;
+        this.AngularFireAuth = AngularFireAuth;
+        this.signupService = signupService;
+        this.afDB = afDB;
+        this.app = app;
+        this.modalCtrl = modalCtrl;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.recordTrips = [];
+        this.total = 0;
+        this.subtotal = 0;
+        this.pickedUpUsers = [];
+        this.newNumber = 0;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
+        this.afDB.database.ref(this.signupService.userPlace + '/drivers/' + this.userUid).once('value').then(function (snap) {
+            _this.userInfo = snap.val();
+        });
+        this.sendUsersService.getRecordTrips(this.signupService.userPlace, this.userUid)
+            .subscribe(function (user) {
+            _this.recordTrips = user;
+            console.log(_this.recordTrips);
+            _this.calculationOfTotalAmount();
+        });
+        console.log(this.total);
+    }
+    DriverWalletPage.prototype.calculationOfTotalAmount = function () {
+        this.total = this.userInfo.pendingToReceive;
     };
-    DriverWalkthroughPage = __decorate([
+    DriverWalletPage.prototype.help = function () {
+        var toast = this.toastCtrl.create({
+            message: 'En esta página podrás ver cuanto dinero haz hecho por viaje, ádemas del historial de viajes en los que podrás ver la hora en la que terminaste el viaje, origen y destino, y el precio que colocaste por persona',
+            showCloseButton: true,
+            closeButtonText: 'OK',
+            position: 'top'
+        });
+        toast.present();
+    };
+    DriverWalletPage.prototype.goPaymentInfo = function () {
+        var modal = this.modalCtrl.create('DriverPaymentsInfoPage', { userInfo: this.userInfo });
+        modal.present();
+    };
+    DriverWalletPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-walkthrough',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/walkthrough/driverWalkthrough.html"*/'<!--\n  Generated template for the WalkthroughPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>walkthrough</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n\n<ion-content style="background-color: #001127">\n    <ion-slides pager>\n        <ion-slide>\n            <div class="logoholderm" text-center>\n                <img src="./assets/imgs/conectemployees.png" alt="">\n                \n                <h2>¡Conéctate con tus compañeros!</h2>\n                <p>\n                    Automáticamente, todos los días\n                </p> \n                </div>\n          \n        </ion-slide>\n    \n        <ion-slide>\n            <div class="logoholderm" text-center>\n                <img src="./assets/imgs/scheduleWalkthrough.png" alt="">\n                \n                <h2>Haz tu horario</h2>\n                <p>\n                    Cóloca las horas y si vas a tu casa o a la empresa.\n                </p> \n                </div>\n          \n        </ion-slide>\n    \n        <!-- <ion-slide>\n            <div class="logoholderm" text-center>\n                <img src="./assets/imgs/documentWalkthrough.png"  alt="">\n                \n                <h2>Envía tus documentos </h2>\n                <p>\n                    Envíanos tu licencia de conducción y cédula.\n                </p> \n                </div>         \n        </ion-slide>\n        <ion-slide>\n \n            <div class="logoholderm animated pulse" text-center>\n                <img src="./assets/imgs/confirmationWalkthrough.png"  alt="">\n\n             \n                <h2>Espera que verífiquemos tus documentos</h2>\n                <p>\n                    Nosotros te notificaremos por correo cuando hayamos verificado\n                </p> \n                </div>        \n        </ion-slide> -->\n        <ion-slide>\n            <div class="logoholderm" text-center>\n                <img src="./assets/imgs/nocash.png"  alt="">\n                \n                <h2>No se maneja efectivo en el viaje</h2>\n                <p>\n                  Al final de cada mes te consignaremos a tu cuenta bancaria el monto total que acumulaste por todas las veces que compartiste tu carro durante ese mes.\n                </p> \n                </div>         \n        </ion-slide>\n        <ion-slide> \n            <div class="logoholderm"  text-center>\n                <img [ngClass]="animate" src="assets/imgs/carBlue.png" style="height: 20%; width: 20%;" alt="">\n                \n                <h2>Listo</h2>\n                <p>\n                    Después de seguir estos pasos podrás usar Waypool y construir esta red de transporte inteligente\n                </p> \n\n                <div text-center>\n                    <button  class="btn bg-light text-theme-driver rounded"  (click)="goLogin()">SALIR</button>\n                  </div>\n                </div>               \n        </ion-slide>\n      </ion-slides>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/walkthrough/driverWalkthrough.html"*/,
+            selector: 'driver-page-wallet',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/wallet/driverWallet.html"*/'<ion-header class="bg-theme-driver">\n    <ion-navbar>\n        <ion-title class="text-center">Mis Ganancias</ion-title>\n        <ion-icon name="help-circle-outline" class="text-white" (click)="help() " style="float: right;"></ion-icon> \n\n    </ion-navbar>\n    <div text-center >\n        <p><small class="text-white">Ganancias Totales:</small></p>\n        <h1 class="text-white">$ {{total}}</h1>\n        <ion-row>\n              \n        </ion-row>\n    </div>\n\n</ion-header>\n \n<ion-content class="bg-light">\n        <ion-row class="center-align row" style="margin-left: 16px; margin-right: 16px; margin-top: 15px" >\n                <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="goPaymentInfo()">Añadir información para recibir pagos</button>\n        </ion-row>\n        <p class="love">Historial de viajes</p> \n       \n    <ion-list>\n            <ion-card *ngFor = "let user of recordTrips">\n                    <ion-item>\n                        <ion-avatar item-start>\n                            <img src="assets/imgs/carBlue.png">\n                        </ion-avatar>\n                        <div class="name">\n                            <h2>{{user.DestinationTime}}\n                            </h2>\n                            <p>{{user.car}}</p>\n                        </div>\n                        <div class="more">                       \n                                <ion-badge  class="badge">$ {{user.price}}</ion-badge>                                  \n                                    \n                        </div>\n                    </ion-item>\n                    <ion-card-content>\n                        <div class="ride-detail">\n                            <p>\n                                <span class="icon-location bg-theme-driver"></span>{{user.houseAddr}}</p>\n                            <p>\n                                <span class="icon-location bg-yellow"></span>{{user.placeAddr}}</p>\n                        </div>\n                       \n                    </ion-card-content>       \n\n                </ion-card>  \n    </ion-list>\n\n\n    \n\n   \n   \n    \n    \n</ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/wallet/driverWallet.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* MenuController */]])
-    ], DriverWalkthroughPage);
-    return DriverWalkthroughPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_5__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_3__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]])
+    ], DriverWalletPage);
+    return DriverWalletPage;
 }());
 
-//# sourceMappingURL=driverWalkthrough.js.map
+//# sourceMappingURL=driverWallet.js.map
 
 /***/ })
 

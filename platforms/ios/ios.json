@@ -25,7 +25,11 @@
               "count": 1
             },
             {
+<<<<<<< HEAD
               "xml": "<feature name=\"CallNumber\"><param name=\"ios-package\" value=\"CFCallNumber\" /></feature>",
+=======
+              "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
               "count": 1
             }
           ]
@@ -100,7 +104,11 @@
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
+<<<<<<< HEAD
     "mx.ferreyra.callnumber": {
+=======
+    "cordova-sqlite-storage": {
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
@@ -179,11 +187,19 @@
       ]
     },
     {
+<<<<<<< HEAD
       "id": "mx.ferreyra.callnumber.CallNumber",
       "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
       "pluginId": "mx.ferreyra.callnumber",
       "clobbers": [
         "call"
+=======
+      "id": "cordova-sqlite-storage.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-storage",
+      "clobbers": [
+        "SQLitePlugin"
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
       ]
     }
   ],
@@ -192,6 +208,10 @@
     "cordova-plugin-whitelist": "1.3.4",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-geolocation": "4.0.2",
+<<<<<<< HEAD
     "mx.ferreyra.callnumber": "0.0.2"
+=======
+    "cordova-sqlite-storage": "3.2.1"
+>>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
   }
 }

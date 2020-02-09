@@ -38,6 +38,15 @@ export class sendCoordsService {
     });
 
     }
+    public pushCoordinatesOnBikeMode(user , dest, or){
+     
+        this.afDB.database.ref('/users/'+ user+'/trips/bikeMode').update({
+            origin: or,
+            destination: dest,
+            
+    });
+
+    }
    
     public deleteOnTripFinal(place, userId){
             this.afDB.database.ref(place + '/users/'+ userId + '/onTripFinal' ).remove();

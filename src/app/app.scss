@@ -138,16 +138,16 @@ li,
 }
 
 //header transparent
-.transparent.header {
-    background: transparent;
-    .toolbar-background {
-        background: transparent;
-        border: none !important;
-    }
-    &::after {
-        display: none;
-    }
-}
+// .transparent.header {
+//     background: transparent;
+//     .toolbar-background {
+//         background: transparent;
+//         border: none !important;
+//     }
+//     &::after {
+//         display: none;
+//     }
+// }
 
 .toolbar-title {
     font-size: 1.65rem !important;
@@ -244,7 +244,7 @@ ion-segment-button {
 .fix-btn {
     z-index: 999;
 }
-ion-header[transparent] .toolbar-background { background: transparent;}
-.space {
-    z-index: -1;
-}
+// ion-header[transparent] .toolbar-background { background: transparent;}
+// .space {
+//     z-index: -1;
+// }

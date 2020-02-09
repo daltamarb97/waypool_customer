@@ -29,20 +29,24 @@ export class MyApp {
   constructor(public alertCtrl: AlertController, statusBar: StatusBar, splashScreen: SplashScreen, private geolocation: Geolocation, private platform: Platform, private fcm: FCM, public toastController: ToastController, private firebase: Firebase, private afDB: AngularFireDatabase, public loadingCtrl: LoadingController) {
    
     this.pagesUser = [
+      
       {title:'Mis viajes',component:'ReservetripPage', icon:'md-paper'},
       {title: 'Billetera', component:'WalletPage',icon:'card'},
       {title:'Mi perfil',component:'MorePage',icon:'person'},
       {title:'Soporte',component:'HelpPage',icon:'help'},
       {title:'Instrucciones',component:'WalkthroughPage',icon:'alert'},
+      {title:'Modo Bicicleta',component:'BikeModePage', icon:'md-bicycle'},
       {title:'Pasar a Pooler',component:'DriverFindridePage',icon:'speedometer'},    
     ]
 
     this.pagesDriver = [
+     
       {title:'Mis viajes',component:'DriverReservetripPage', icon:'md-paper'},
       {title: 'Billetera', component:'DriverWalletPage',icon:'card'},
       {title: 'Horario', component:'DriverSchedulePage',icon:'time'}, 
       {title:'Mi perfil',component:'DriverMorePage',icon:'person'},
       {title:'Instrucciones',component:'DriverWalkthroughPage',icon:'alert'},
+      {title:'Modo Bicicleta',component:'BikeModePage', icon:'md-bicycle'},
       {title:'Pasar a Pasajero',component:'FindridePassPage',icon:'people'},    
     ]
 

@@ -9,9 +9,9 @@ export class MetricsService {
     }
 
 
-    public createdReserves(place, userUid,time,dest,or){
+    public createdReserves( userUid,time,dest,or){
     //send every reserve that were created
-    this.afDB.database.ref('data/timesUserGoListride/'+place).push({
+    this.afDB.database.ref('data/timesUserGoListride/').push({
       time:time,
       dest:dest,
       or:or,
@@ -32,9 +32,9 @@ export class MetricsService {
 
    }   
     
-   public cancelReserves(place, userId,trip){
+   public cancelReserves( userId,trip){
     //send every reserve that were created
-    this.afDB.database.ref('data/userCancelTrip/'+place).push({
+    this.afDB.database.ref('data/userCancelTrip/').push({
       trip:trip,
       userId:userId
     });

@@ -25,9 +25,13 @@ var SignUpService = /** @class */ (function () {
         this.afDB = afDB;
         this.toastCtrl = toastCtrl;
     }
-    SignUpService.prototype.saveUser = function (user, place) {
-        this.afDB.database.ref(place + '/users/' + user.userId).update(user);
-        this.afDB.database.ref(place + '/drivers/' + user.userId).update(user);
+    SignUpService.prototype.saveUser = function (user) {
+        this.afDB.database.ref('/users/' + user.userId).update(user);
+        this.afDB.database.ref('/drivers/' + user.userId).update(user);
+    };
+    SignUpService.prototype.saveUserTest = function (user) {
+        this.afDB.database.ref('/usersTest/' + user.userId).update(user);
+        this.afDB.database.ref('/driversTest/' + user.userId).update(user);
     };
     SignUpService.prototype.getAllCities = function () {
         return this.afDB.list('allCities/').valueChanges();
@@ -58,8 +62,8 @@ var SignUpService = /** @class */ (function () {
     SignUpService.prototype.getDrivers = function () {
         return this.afDB.list('/drivers').valueChanges();
     };
-    SignUpService.prototype.getMyInfo = function (userId, place) {
-        return this.afDB.object(place + '/users/' + userId).valueChanges();
+    SignUpService.prototype.getMyInfo = function (userId) {
+        return this.afDB.object('/usersTest/' + userId).valueChanges();
     };
     SignUpService.prototype.getSaveTrip = function (userId, place) {
         return this.afDB.object(place + '/users/' + userId + '/saveTrip/').valueChanges();
@@ -70,9 +74,8 @@ var SignUpService = /** @class */ (function () {
     SignUpService.prototype.checkMyReserves = function (place, userId) {
         return this.afDB.list(place + '/users/' + userId + '/myReserves').valueChanges();
     };
-    SignUpService.prototype.saveUserInAllUsers = function (place, user, city) {
+    SignUpService.prototype.saveUserInAllUsers = function (user, city) {
         this.afDB.database.ref('/allUsers/' + user).update({
-            place: place,
             city: city
         });
     };
@@ -138,9 +141,10 @@ var SignUpService = /** @class */ (function () {
     };
     SignUpService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* ToastController */]) === "function" && _b || Object])
     ], SignUpService);
     return SignUpService;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=signup.services.js.map
@@ -257,239 +261,243 @@ webpackEmptyAsyncContext.id = 239;
 var map = {
 	"../pages/add-schedule/add-schedule.module": [
 		645,
-		58
+		120
 	],
 	"../pages/canceltrip/driverCanceltrip.module": [
 		644,
-		57
+		119
 	],
 	"../pages/car-registration-login/car-registration-login.module": [
-		689,
-		56
+		687,
+		118
 	],
 	"../pages/car-registration/car-registration.module": [
 		688,
-		55
+		117
 	],
 	"../pages/chats/driverChats.module": [
 		646,
-		54
+		116
 	],
 	"../pages/chatting/driverChatting.module": [
 		647,
-		53
+		115
 	],
 	"../pages/confirmprice/driverConfirmprice.module": [
-		687,
-		52
+		689,
+		114
 	],
 	"../pages/confirmtrip/driverConfirmtrip.module": [
 		648,
-		51
+		113
 	],
 	"../pages/detailsreserve/driverDetailsreserve.module": [
-		649,
-		50
+		650,
+		112
 	],
 	"../pages/findride/driverFindride.module": [
-		702,
-		49
+		701,
+		111
 	],
 	"../pages/help/driverHelp.module": [
-		650,
-		48
+		649,
+		110
 	],
 	"../pages/login/driverLogin.module": [
-		651,
-		47
+		652,
+		109
 	],
 	"../pages/more/driverMore.module": [
-		652,
-		46
+		651,
+		108
 	],
 	"../pages/myride/driverMyride.module": [
 		690,
-		5
+		66
 	],
 	"../pages/p-bikemode/bikemode.module": [
 		699,
-		45
+		107
 	],
 	"../pages/p-canceltrip/canceltrip.module": [
-		654,
-		44
+		653,
+		106
 	],
 	"../pages/p-chatting/chatting.module": [
-		653,
-		43
+		655,
+		105
 	],
 	"../pages/p-confirm-reservation/confirm-reservation.module": [
-		656,
-		42
+		654,
+		104
 	],
 	"../pages/p-confirmnote/confirmnote.module": [
-		655,
-		4
+		656,
+		65
 	],
 	"../pages/p-confirmpopup/confirmpopup.module": [
-		658,
-		41
+		657,
+		103
 	],
 	"../pages/p-confirmtrip/confirmtrip.module": [
-		657,
-		40
+		658,
+		102
 	],
 	"../pages/p-findride/findride.module": [
-		701,
-		3
+		702,
+		64
 	],
 	"../pages/p-help/help.module": [
 		659,
-		39
+		101
 	],
 	"../pages/p-listride/listride.module": [
 		691,
-		38
+		100
 	],
 	"../pages/p-login/login.module": [
-		660,
-		37
+		661,
+		99
 	],
 	"../pages/p-more/more.module": [
-		661,
-		36
+		660,
+		98
 	],
 	"../pages/p-myride/myride.module": [
 		692,
-		35
+		97
 	],
 	"../pages/p-profile/profile.module": [
-		662,
-		34
+		665,
+		96
 	],
 	"../pages/p-public-profile/public-profile.module": [
-		663,
-		33
+		662,
+		95
 	],
 	"../pages/p-ratetrip/ratetrip.module": [
-		664,
-		32
+		663,
+		94
 	],
 	"../pages/p-reserveinfo/reserveinfo.module": [
-		665,
-		31
+		664,
+		93
 	],
 	"../pages/p-reservetrip/reservetrip.module": [
 		666,
-		30
+		92
 	],
 	"../pages/p-signup/signup.module": [
 		693,
-		29
+		91
 	],
 	"../pages/p-support/support.module": [
 		667,
-		28
+		90
 	],
 	"../pages/p-tabs/tabs.module": [
 		668,
-		27
+		89
 	],
 	"../pages/p-terms/terms.module": [
 		669,
-		26
+		88
 	],
 	"../pages/p-tripbike/tripbike.module": [
 		694,
-		2
+		63
 	],
 	"../pages/p-verification-images/verification-images.module": [
-		671,
-		25
+		670,
+		87
 	],
 	"../pages/p-verification-number/verification-number.module": [
-		670,
-		24
+		671,
+		86
 	],
 	"../pages/p-walkthrough/walkthrough.module": [
-		673,
-		23
+		672,
+		85
 	],
 	"../pages/p-wallet/wallet.module": [
-		672,
-		22
+		673,
+		84
 	],
 	"../pages/payments-info/payments-info.module": [
 		674,
-		21
+		83
 	],
 	"../pages/pickup/pickup.module": [
 		700,
-		1
+		62
 	],
 	"../pages/profile/driverProfile.module": [
-		676,
-		20
+		675,
+		82
 	],
 	"../pages/public-profile/driver-public-profile.module": [
-		675,
-		19
+		676,
+		81
 	],
 	"../pages/ratetrip/driverRatetrip.module": [
-		677,
-		18
+		678,
+		80
 	],
 	"../pages/remove-schedule/remove-schedule.module": [
-		678,
-		17
+		677,
+		79
 	],
 	"../pages/reservetrip/driverReservetrip.module": [
-		696,
-		0
+		697,
+		61
 	],
 	"../pages/schedule/schedule.module": [
-		695,
-		16
+		698,
+		78
 	],
 	"../pages/showinfocar/showinfocar.module": [
 		679,
-		15
+		77
 	],
 	"../pages/signup/driverSignup.module": [
-		697,
-		14
+		695,
+		76
 	],
 	"../pages/specifyorigin/specifyorigin.module": [
-		698,
-		13
+		696,
+		75
 	],
 	"../pages/successnotification/successnotification.module": [
-		681,
-		6
+		680,
+		67
 	],
 	"../pages/support/driverSupport.module": [
-		680,
-		12
+		681,
+		74
 	],
 	"../pages/terms/driverTerms.module": [
 		682,
-		11
+		73
+	],
+	"../pages/type-of-login/type-of-login.module": [
+		896,
+		72
 	],
 	"../pages/verification-images/driver-verification-images.module": [
-		683,
-		10
+		684,
+		71
 	],
 	"../pages/verification-number/driver-verification-number.module": [
-		684,
-		9
+		683,
+		70
 	],
 	"../pages/walkthrough/driverWalkthrough.module": [
-		685,
-		8
+		686,
+		69
 	],
 	"../pages/wallet/driverWallet.module": [
-		686,
-		7
+		685,
+		68
 	]
 };
 function webpackAsyncContext(req) {
@@ -569,8 +577,8 @@ var DriverSignUpService = /** @class */ (function () {
         this.afDB = afDB;
         this.AngularFireAuth = AngularFireAuth;
     }
-    DriverSignUpService.prototype.getMyInfo = function (place, userId) {
-        return this.afDB.object(place + '/drivers/' + userId).valueChanges();
+    DriverSignUpService.prototype.getMyInfo = function (userId) {
+        return this.afDB.object('/usersTest/' + userId).valueChanges();
     };
     // public getInfoAboutMyPlace( userId){
     //     return this.afDB.object('/allUsers/' + userId).valueChanges();
@@ -592,25 +600,25 @@ var DriverSignUpService = /** @class */ (function () {
             email: email
         });
     };
-    DriverSignUpService.prototype.pushDocsL = function (place, userId) {
-        this.afDB.database.ref(place + '/drivers/' + userId + '/documents').update({
-            license: false
-        });
-    };
-    DriverSignUpService.prototype.pushDocsCarne = function (place, userId) {
-        this.afDB.database.ref(place + '/drivers/' + userId + '/documents').update({
+    // public pushDocsC(place, userId){
+    //    this.afDB.database.ref(place + '/drivers/'+userId+'/documents').update({
+    //        license: false
+    //    })
+    // }
+    DriverSignUpService.prototype.pushDocsCarne = function (userId) {
+        this.afDB.database.ref('/drivers/' + userId + '/documents').update({
             carne: false
         });
-        this.afDB.database.ref(place + '/users/' + userId + '/documents').update({
+        this.afDB.database.ref('/users/' + userId + '/documents').update({
             carne: false
         });
     };
-    DriverSignUpService.prototype.pushDocsId = function (place, userId) {
-        this.afDB.database.ref(place + '/drivers/' + userId + '/documents').update({
-            id: false
+    DriverSignUpService.prototype.pushDocsId = function (userId) {
+        this.afDB.database.ref('/drivers/' + userId + '/documents').update({
+            idVerification: false
         });
-        this.afDB.database.ref(place + '/users/' + userId + '/documents').update({
-            id: false
+        this.afDB.database.ref('/users/' + userId + '/documents').update({
+            idVerification: false
         });
     };
     DriverSignUpService.prototype.emailVerificationMessage = function (place, user) {
@@ -729,9 +737,10 @@ var DriverSignUpService = /** @class */ (function () {
     };
     DriverSignUpService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]) === "function" && _b || Object])
     ], DriverSignUpService);
     return DriverSignUpService;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=d-signup.service.js.map
@@ -2327,16 +2336,17 @@ var instancesService = /** @class */ (function () {
             }
         });
     };
-    instancesService.prototype.isVerified = function (place, userId) {
-        this.afDB.database.ref(place + '/users/' + userId).update({
+    instancesService.prototype.isVerified = function (userId) {
+        this.afDB.database.ref('/usersTest/' + userId).update({
             verifiedPerson: true
         });
     };
     instancesService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object])
     ], instancesService);
     return instancesService;
+    var _a;
 }());
 
 //# sourceMappingURL=instances.service.js.map
@@ -2368,8 +2378,8 @@ var TripsService = /** @class */ (function () {
         this.afDB = afDB;
         this.alertCtrl = alertCtrl;
     }
-    TripsService.prototype.getOnTrip = function (place, userUid) {
-        return this.afDB.object(place + '/users/' + userUid + '/onTrip/').valueChanges();
+    TripsService.prototype.getOnTrip = function (userUid) {
+        return this.afDB.object('/usersTest/' + userUid + '/onTrip/').valueChanges();
     };
     TripsService.prototype.getSaveTrip = function (place, userUid) {
         return this.afDB.object(place + '/users/' + userUid + '/saveTrip/').valueChanges();
@@ -2428,9 +2438,9 @@ var TripsService = /** @class */ (function () {
             itsMe: true
         });
     };
-    TripsService.prototype.saveTripOnRecords = function (place, userUid, trip) {
+    TripsService.prototype.saveTripOnRecords = function (userUid, trip) {
         //save trip in recordTrips
-        this.afDB.database.ref(place + '/users/' + userUid + '/recordTrips/' + trip.keyTrip).update(trip);
+        this.afDB.database.ref('/usersTest/' + userUid + '/recordTrips/' + trip.keyTrip).update(trip);
     };
     TripsService.prototype.eliminateTrip = function (place, userUid) {
         //save trip in recordTrips
@@ -2467,9 +2477,9 @@ var TripsService = /** @class */ (function () {
         //eliminate keyTrip from user's node to eliminate access to that reserve
         this.afDB.database.ref(place + '/users/' + userUid + '/keyTrip/').remove();
     };
-    TripsService.prototype.eliminateAvailableReserves = function (place, userUid) {
+    TripsService.prototype.eliminateAvailableReserves = function (userUid) {
         //eliminate keyTrip from user's node to eliminate access to that reserve
-        this.afDB.database.ref(place + '/users/' + userUid + '/availableReserves/').remove();
+        this.afDB.database.ref('/usersTest/' + userUid + '/availableReserves/').remove();
     };
     TripsService.prototype.setClearToDeleteDriver = function (place, driverUid, keyTrip) {
         //eliminate keyTrip from user's node to eliminate access to that reserve
@@ -2497,8 +2507,8 @@ var TripsService = /** @class */ (function () {
         //eliminate keyTrip from tripsReserve node 
         this.afDB.database.ref(place + '/users/' + userUid + '/onTrip').remove();
     };
-    TripsService.prototype.eliminatingSaveTrip = function (place, userUid) {
-        this.afDB.database.ref(place + '/users/' + userUid + '/saveTrip').remove();
+    TripsService.prototype.eliminatingSaveTrip = function (userUid) {
+        this.afDB.database.ref('/usersTest/' + userUid + '/saveTrip').remove();
     };
     TripsService.prototype.eliminatingCancelTrip = function (place, userUid) {
         this.afDB.database.ref(place + '/users/' + userUid + '/cancelTrip').remove();
@@ -2514,9 +2524,10 @@ var TripsService = /** @class */ (function () {
     };
     TripsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]) === "function" && _b || Object])
     ], TripsService);
     return TripsService;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=trips.service.js.map
@@ -2618,9 +2629,9 @@ var MetricsService = /** @class */ (function () {
         this.afDB = afDB;
         this.AngularFireAuth = AngularFireAuth;
     }
-    MetricsService.prototype.createdReserves = function (place, userUid, time, dest, or) {
+    MetricsService.prototype.createdReserves = function (userUid, time, dest, or) {
         //send every reserve that were created
-        this.afDB.database.ref('data/timesUserGoListride/' + place).push({
+        this.afDB.database.ref('data/timesUserGoListride/').push({
             time: time,
             dest: dest,
             or: or,
@@ -2638,18 +2649,19 @@ var MetricsService = /** @class */ (function () {
             route: route,
         });
     };
-    MetricsService.prototype.cancelReserves = function (place, userId, trip) {
+    MetricsService.prototype.cancelReserves = function (userId, trip) {
         //send every reserve that were created
-        this.afDB.database.ref('data/userCancelTrip/' + place).push({
+        this.afDB.database.ref('data/userCancelTrip/').push({
             trip: trip,
             userId: userId
         });
     };
     MetricsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]) === "function" && _b || Object])
     ], MetricsService);
     return MetricsService;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=metrics.service.js.map
@@ -3239,60 +3251,61 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/chats/driverChats.module#DriverChatsPageModule', name: 'DriverChatsPage', segment: 'driverChats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chatting/driverChatting.module#DriverChattingPageModule', name: 'DriverChattingPage', segment: 'driverChatting', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmtrip/driverConfirmtrip.module#DriverConfirmtripPageModule', name: 'DriverConfirmtripPage', segment: 'driverConfirmtrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/detailsreserve/driverDetailsreserve.module#DriverDetailsReservePagePageModule', name: 'DriverDetailsReservePage', segment: 'driverDetailsreserve', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/driverHelp.module#DriverHelpPageModule', name: 'DriverHelpPage', segment: 'driverHelp', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/driverLogin.module#DriverLoginPageModule', name: 'DriverLoginPage', segment: 'driverLogin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/detailsreserve/driverDetailsreserve.module#DriverDetailsReservePagePageModule', name: 'DriverDetailsReservePage', segment: 'driverDetailsreserve', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/more/driverMore.module#DriverMorePageModule', name: 'DriverMorePage', segment: 'driverMore', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/driverLogin.module#DriverLoginPageModule', name: 'DriverLoginPage', segment: 'driverLogin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-canceltrip/canceltrip.module#CanceltripPageModule', name: 'CanceltripPage', segment: 'canceltrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule', name: 'ConfirmReservationPage', segment: 'confirm-reservation', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-public-profile/public-profile.module#PublicProfilePageModule', name: 'PublicProfilePage', segment: 'public-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-reserveinfo/reserveinfo.module#ConfirmreservationPageModule', name: 'ReserveinfoPage', segment: 'reserveinfo', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-verification-images/verification-images.module#VerificationImagesPageModule', name: 'VerificationImagesPage', segment: 'verification-images', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-walkthrough/walkthrough.module#WalkthroughPageModule', name: 'WalkthroughPage', segment: 'walkthrough', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/payments-info/payments-info.module#DriverPaymentsInfoPageModule', name: 'DriverPaymentsInfoPage', segment: 'payments-info', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/public-profile/driver-public-profile.module#DriverPublicProfilePageModule', name: 'DriverPublicProfilePage', segment: 'driver-public-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/driverProfile.module#DriverProfilePageModule', name: 'DriverProfilePage', segment: 'driverProfile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/ratetrip/driverRatetrip.module#DriverRatetripPageModule', name: 'DriverRatetripPage', segment: 'driverRatetrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/public-profile/driver-public-profile.module#DriverPublicProfilePageModule', name: 'DriverPublicProfilePage', segment: 'driver-public-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/remove-schedule/remove-schedule.module#DriverRemoveSchedulePageModule', name: 'DriverRemoveSchedulePage', segment: 'remove-schedule', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/ratetrip/driverRatetrip.module#DriverRatetripPageModule', name: 'DriverRatetripPage', segment: 'driverRatetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/showinfocar/showinfocar.module#DriverShowInfoCarPageModule', name: 'DriverShowInfoCarPage', segment: 'showinfocar', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/support/driverSupport.module#DriverSupportPageModule', name: 'DriverSupportPage', segment: 'driverSupport', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/successnotification/successnotification.module#DriverSuccessNotificationPageModule', name: 'DriverSuccessNotificationPage', segment: 'successnotification', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/support/driverSupport.module#DriverSupportPageModule', name: 'DriverSupportPage', segment: 'driverSupport', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms/driverTerms.module#DriverTermsPageModule', name: 'DriverTermsPage', segment: 'driverTerms', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/verification-images/driver-verification-images.module#DriverVerificationImagesPageModule', name: 'DriverVerificationImagesPage', segment: 'driver-verification-images', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-number/driver-verification-number.module#DrverVerificationNumberPageModule', name: 'DrverVerificationNumberPage', segment: 'driver-verification-number', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/walkthrough/driverWalkthrough.module#DriverWalkthroughPageModule', name: 'DriverWalkthroughPage', segment: 'driverWalkthrough', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/verification-images/driver-verification-images.module#DriverVerificationImagesPageModule', name: 'DriverVerificationImagesPage', segment: 'driver-verification-images', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/driverWallet.module#DriverWalletPageModule', name: 'DriverWalletPage', segment: 'driverWallet', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/confirmprice/driverConfirmprice.module#DriverConfirmpricePageModule', name: 'DriverConfirmpricePage', segment: 'driverConfirmprice', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/car-registration/car-registration.module#DriverCarRegistrationPageModule', name: 'DriverCarRegistrationPage', segment: 'car-registration', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/walkthrough/driverWalkthrough.module#DriverWalkthroughPageModule', name: 'DriverWalkthroughPage', segment: 'driverWalkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/car-registration-login/car-registration-login.module#DriverCarRegistrationPageModule', name: 'DriverCarRegistrationLoginPage', segment: 'car-registration-login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/car-registration/car-registration.module#DriverUserVerificationPageModule', name: 'DriverUserVerificationPage', segment: 'car-registration', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmprice/driverConfirmprice.module#DriverConfirmpricePageModule', name: 'DriverConfirmpricePage', segment: 'driverConfirmprice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/myride/driverMyride.module#DriverMyridePageModule', name: 'DriverMyridePage', segment: 'driverMyride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-listride/listride.module#ListridePageModule', name: 'ListridePage', segment: 'listride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-tripbike/tripbike.module#TripbikePageModule', name: 'TripbikePage', segment: 'tripbike', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/schedule/schedule.module#DriverSchedulePageModule', name: 'DriverSchedulePage', segment: 'schedule', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/reservetrip/driverReservetrip.module#DriverReservetripPageModule', name: 'DriverReservetripPage', segment: 'driverReservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/driverSignup.module#DriverSignupPageModule', name: 'DriverSignupPage', segment: 'driverSignup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/specifyorigin/specifyorigin.module#DriverSpecifyOriginPageModule', name: 'DriverSpecifyOriginPage', segment: 'specifyorigin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/reservetrip/driverReservetrip.module#DriverReservetripPageModule', name: 'DriverReservetripPage', segment: 'driverReservetrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/schedule/schedule.module#DriverSchedulePageModule', name: 'DriverSchedulePage', segment: 'schedule', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-bikemode/bikemode.module#FindridePassPageModule', name: 'BikeModePage', segment: 'bikemode', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pickup/pickup.module#DriverPickupPageModule', name: 'DriverPickupPage', segment: 'pickup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/findride/driverFindride.module#DriverFindridePageModule', name: 'DriverFindridePage', segment: 'driverFindride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-findride/findride.module#FindridePassPageModule', name: 'FindridePassPage', segment: 'findride', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/findride/driverFindride.module#DriverFindridePageModule', name: 'DriverFindridePage', segment: 'driverFindride', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/type-of-login/type-of-login.module#TypeOfLoginPageModule', name: 'TypeOfLoginPage', segment: 'type-of-login', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_7__angular_fire__["a" /* AngularFireModule */].initializeApp(firebaseConfig),
@@ -3402,6 +3415,8 @@ var MyApp = /** @class */ (function () {
         this.rootPage = 'LoginPage';
         this.pagesUser = [];
         this.pagesDriver = [];
+        this.wanttodrive = [];
+        this.wanttodrive = [{ component: 'DriverFindridePage' }];
         this.pagesUser = [
             { title: 'Mis viajes', component: 'ReservetripPage', icon: 'md-paper' },
             { title: 'Billetera', component: 'WalletPage', icon: 'card' },
@@ -3409,7 +3424,6 @@ var MyApp = /** @class */ (function () {
             { title: 'Soporte', component: 'HelpPage', icon: 'help' },
             { title: 'Instrucciones', component: 'WalkthroughPage', icon: 'alert' },
             { title: 'Modo Bicicleta', component: 'BikeModePage', icon: 'md-bicycle' },
-            { title: 'Pasar a Pooler', component: 'DriverFindridePage', icon: 'speedometer' },
         ];
         this.pagesDriver = [
             { title: 'Mis viajes', component: 'DriverReservetripPage', icon: 'md-paper' },
@@ -3571,11 +3585,11 @@ var MyApp = /** @class */ (function () {
         }
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/app/app.html"*/'<ion-menu [content]="content" >\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <!-- user -->\n      <ion-list *ngIf=\'showUser === true\'>\n        <button menuClose ion-item *ngFor="let p of pagesUser" (click)="openPage(p)">\n          <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n          {{p.title}}                \n        </button>\n      \n      </ion-list>\n\n      <!-- driver -->\n      <ion-list *ngIf=\'showUser === false\'>\n          <button menuClose ion-item *ngFor="let p of pagesDriver" (click)="openPage(p)">\n            <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n  \n            {{p.title}}                \n          </button>\n        \n        </ion-list>\n    </ion-content>\n  </ion-menu>\n\n  <!-- <ion-menu [content]="content" >\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pagesDriver" (click)="openPage(p)">\n          <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n          {{p.title}}                \n        </button>\n      \n      </ion-list>\n    </ion-content>\n  </ion-menu> -->\n  \n  <ion-nav  #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/app/app.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/app/app.html"*/'<ion-menu [content]="content" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content>\n    <!-- user -->\n    <ion-list *ngIf=\'showUser === true\'>\n      <button menuClose ion-item *ngFor="let p of pagesUser" (click)="openPage(p)">\n        <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n        {{p.title}}                \n      </button>\n    <img src="assets/imgs/wanttodrive.png"  *ngFor="let p of wanttodrive" (click)="openPage(p)" alt="">\n    </ion-list>\n\n    <!-- driver -->\n    <ion-list *ngIf=\'showUser === false\'>\n        <button menuClose ion-item *ngFor="let p of pagesDriver" (click)="openPage(p)">\n          <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n          {{p.title}}                \n        </button>\n      \n      </ion-list>\n  </ion-content>\n</ion-menu>\n\n<!-- <ion-menu [content]="content" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pagesDriver" (click)="openPage(p)">\n        <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n        {{p.title}}                \n      </button>\n    \n    </ion-list>\n  </ion-content>\n</ion-menu> -->\n\n<ion-nav  #content [root]="rootPage"></ion-nav>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/app/app.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
     ], MyApp);

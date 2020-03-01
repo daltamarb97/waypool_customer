@@ -19,12 +19,10 @@
 
 var Q = require('q');
 var path = require('path');
-var cp = require('child_process');
+var iossim = require('ios-sim');
 var build = require('./build');
-var shell = require('shelljs');
-var superspawn = require('cordova-common').superspawn;
+var spawn = require('./spawn');
 var check_reqs = require('./check_reqs');
-var fs = require('fs-extra');
 
 var events = require('cordova-common').events;
 
@@ -80,7 +78,7 @@ module.exports.run = function (runOptions) {
                         var ipafile = path.join(buildOutputDir, projectName + '.ipa');
 
                         // unpack the existing platform/ios/build/device/appname.ipa (zipfile), will create a Payload folder
-                        return superspawn.spawn('unzip', [ '-o', '-qq', ipafile ], { cwd: buildOutputDir, printCommand: true, stdio: 'inherit' });
+                        return spawn('unzip', [ '-o', '-qq', ipafile ], buildOutputDir);
                     })
                     .then(function () {
                         // Uncompress IPA (zip file)
@@ -89,13 +87,15 @@ module.exports.run = function (runOptions) {
                         var payloadFolder = path.join(buildOutputDir, 'Payload');
 
                         // delete the existing platform/ios/build/device/appname.app
-                        fs.removeSync(appFile);
-                        // move the platform/ios/build/device/Payload/appname.app to parent
-                        shell.mv('-f', appFileInflated, buildOutputDir);
-                        // delete the platform/ios/build/device/Payload folder
-                        shell.rm('-rf', payloadFolder);
-
-                        return null;
+                        return spawn('rm', [ '-rf', appFile ], buildOutputDir)
+                            .then(function () {
+                                // move the platform/ios/build/device/Payload/appname.app to parent
+                                return spawn('mv', [ '-f', appFileInflated, buildOutputDir ], buildOutputDir);
+                            })
+                            .then(function () {
+                                // delete the platform/ios/build/device/Payload folder
+                                return spawn('rm', [ '-rf', payloadFolder ], buildOutputDir);
+                            });
                     })
                     .then(function () {
                         appPath = path.join(projectPath, 'build', 'device', projectName + '.app');
@@ -149,7 +149,7 @@ function filterSupportedArgs (args) {
  * @return {Promise} Fullfilled when any device is connected, rejected otherwise
  */
 function checkDeviceConnected () {
-    return superspawn.spawn('ios-deploy', ['-c', '-t', '1'], { printCommand: true, stdio: 'inherit' });
+    return spawn('ios-deploy', ['-c', '-t', '1']);
 }
 
 /**
@@ -161,9 +161,9 @@ function checkDeviceConnected () {
 function deployToDevice (appPath, target, extraArgs) {
     // Deploying to device...
     if (target) {
-        return superspawn.spawn('ios-deploy', ['--justlaunch', '-d', '-b', appPath, '-i', target].concat(extraArgs), { printCommand: true, stdio: 'inherit' });
+        return spawn('ios-deploy', ['--justlaunch', '-d', '-b', appPath, '-i', target].concat(extraArgs));
     } else {
-        return superspawn.spawn('ios-deploy', ['--justlaunch', '--no-wifi', '-d', '-b', appPath].concat(extraArgs), { printCommand: true, stdio: 'inherit' });
+        return spawn('ios-deploy', ['--justlaunch', '--no-wifi', '-d', '-b', appPath].concat(extraArgs));
     }
 }
 
@@ -197,15 +197,7 @@ function deployToSim (appPath, target) {
 function startSim (appPath, target) {
     var logPath = path.join(cordovaPath, 'console.log');
 
-    return iossimLaunch(appPath, 'com.apple.CoreSimulator.SimDeviceType.' + target, logPath, '--exit');
-}
-
-function iossimLaunch (app_path, devicetypeid, log, exit) {
-    var f = path.resolve(path.dirname(require.resolve('ios-sim')), 'bin', 'ios-sim');
-    var proc = cp.spawn(f, ['launch', app_path, '--devicetypeid', devicetypeid, '--log', log, exit]);
-    proc.stdout.on('data', (data) => {
-        console.log(data.toString());
-    });
+    return iossim.launch(appPath, 'com.apple.CoreSimulator.SimDeviceType.' + target, logPath, '--exit');
 }
 
 function listDevices () {

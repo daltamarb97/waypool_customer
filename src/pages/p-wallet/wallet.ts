@@ -61,20 +61,29 @@ export class WalletPage {
   copyToClipBoard(link){
     console.log(link);
     
-    this.clipboard.copy(link);
+    this.clipboard.copy(link).then(()=>{
+      console.log('copiaste');
+      
+    }).catch((error)=>{
+      console.log('no copiaste porque: ' + error);
+      
+    })
     const toast = this.toastCtrl.create({
       message: 'Link de pago copiado. Pégalo en tu navegador de preferencia ',
       showCloseButton:true,
       closeButtonText: 'OK',
-      position:'top'
+      position:'top',
+      duration: 1000
          });
     toast.present();
   }
+
+
   informationPayment(){
     const toast = this.toastCtrl.create({
       message: 'Nuestra pasarela de pagos es MercadoPago, hecha por Mercado Libre, considerada entre las 2 mejores de Latinoamérica en términos de eficiencia y seguridad. Waypool no obtiene en ningún momento información financiera como tarjeta de crédito, cuenta bancaria, u otra información sensible.',
       showCloseButton:true,
-      closeButtonText: 'OK',
+      closeButtonText: 'OK', 
       position:'middle'
          });
     toast.present();

@@ -178,23 +178,23 @@ export class DriverFindridePage {
           
         this.platform.ready().then(()=>{
     
-          // this.getToken();
+          this.getToken();
     
-          console.log('aqui cogi el token');
+          // console.log('aqui cogi el token');
     
-          this.token = this.fcm.getToken().then((token)=>{
-            console.log('this is the token ' + token);
+          // this.token = this.fcm.getToken().then((token)=>{
+          //   console.log('this is the token ' + token);
     
-            Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
-              if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
+          //   Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
+          //     if(this.zonesToIterate[key] === 2 || this.zonesToIterate[key] === 3 || this.zonesToIterate[key] === 4 || this.zonesToIterate[key] === 5 || this.zonesToIterate[key] === 6 || this.zonesToIterate[key] === 1 || this.zonesToIterate[key] === 7 || this.zonesToIterate[key] === 8 || this.zonesToIterate[key] === 9 || this.zonesToIterate[key] === 10){
     
-              }else{
-                this.afDB.database.ref(this.zonesToIterate[key] + '/drivers/' + this.user + '/devices/').update({
-                  token: token
-                })
-              }
-            })
-          })
+          //     }else{
+          //       this.afDB.database.ref(this.zonesToIterate[key] + '/drivers/' + this.user + '/devices/').update({
+          //         token: token
+          //       })
+          //     }
+          //   })
+          // })
       })
     
       console.log(this.SignUpService.userPlace);
@@ -469,6 +469,7 @@ async getToken() {
   }
 
   if (this.platform.is('ios')) {
+    await this.firebaseNative.grantPermission();
     this.token = await this.firebaseNative.getToken().then((token)=>{
       console.log('this is the token ' + token);
       Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
@@ -477,14 +478,19 @@ async getToken() {
         }else{
           this.afDB.database.ref(this.zonesToIterate[key] + '/drivers/' + this.user + '/devices/').update({
             token: token
+          }).then(()=>{
+            console.log('DONE DRIVER DEVICE TOKEN');
+            
           })
         }
       })
     })
-    await this.firebaseNative.grantPermission();
+   
   }
 
 }
+
+
 
 LoadMapWithHouseAdress(positionOr){
   this.geolocation.getCurrentPosition({enableHighAccuracy: true}).then((position) => {

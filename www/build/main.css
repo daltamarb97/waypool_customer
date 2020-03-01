@@ -26659,13 +26659,13 @@ driver-page-canceltrip .text {
   font-size: 1.5rem;
 }
 
-driver-page-car-registration p {
+driver-page-user-verification p {
   font-weight: 600;
   font-size: 1.3rem;
   margin-top: 3rem !important;
 }
 
-driver-page-car-registration h2 {
+driver-page-user-verification h2 {
   margin-top: 0;
   font-weight: 600;
   position: relative;
@@ -26673,7 +26673,7 @@ driver-page-car-registration h2 {
   margin-bottom: 70px;
 }
 
-driver-page-car-registration h2::before {
+driver-page-user-verification h2::before {
   content: '';
   width: 131px;
   height: 3px;
@@ -26686,19 +26686,19 @@ driver-page-car-registration h2::before {
   left: 0;
 }
 
-driver-page-car-registration img {
+driver-page-user-verification img {
   width: 70%;
 }
 
-driver-page-car-registration .verifiy {
+driver-page-user-verification .verifiy {
   margin-top: 60px;
 }
 
-driver-page-car-registration .verifiy img {
+driver-page-user-verification .verifiy img {
   width: 50%;
 }
 
-driver-page-car-registration .btn-box {
+driver-page-user-verification .btn-box {
   position: inherit;
   width: 100%;
   bottom: 0;
@@ -26706,15 +26706,15 @@ driver-page-car-registration .btn-box {
   text-align: center;
 }
 
-driver-page-car-registration .btn-box button {
+driver-page-user-verification .btn-box button {
   margin: 0 auto;
 }
 
-driver-page-car-registration .buttonLight {
+driver-page-user-verification .buttonLight {
   color: light;
 }
 
-driver-page-car-registration .skiptext {
+driver-page-user-verification .skiptext {
   color: red;
   font-size: 10px;
   margin-left: 95px;

@@ -1,14 +1,14 @@
 webpackJsonp([12],{
 
-/***/ 643:
+/***/ 681:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RatetripPageModule", function() { return RatetripPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverSupportPageModule", function() { return DriverSupportPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ratetrip__ = __webpack_require__(798);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverSupport__ = __webpack_require__(874);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,42 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RatetripPageModule = /** @class */ (function () {
-    function RatetripPageModule() {
+var DriverSupportPageModule = /** @class */ (function () {
+    function DriverSupportPageModule() {
     }
-    RatetripPageModule = __decorate([
+    DriverSupportPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__ratetrip__["a" /* RatetripPage */],
+                __WEBPACK_IMPORTED_MODULE_2__driverSupport__["a" /* DriverSupportPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__ratetrip__["a" /* RatetripPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverSupport__["a" /* DriverSupportPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__ratetrip__["a" /* RatetripPage */]
+                __WEBPACK_IMPORTED_MODULE_2__driverSupport__["a" /* DriverSupportPage */]
             ]
         })
-    ], RatetripPageModule);
-    return RatetripPageModule;
+    ], DriverSupportPageModule);
+    return DriverSupportPageModule;
 }());
 
-//# sourceMappingURL=ratetrip.module.js.map
+//# sourceMappingURL=driverSupport.module.js.map
 
 /***/ }),
 
-/***/ 798:
+/***/ 874:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RatetripPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSupportPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendFeedback_service__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__ = __webpack_require__(345);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_driverauthentication_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_sendFeedback_service__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,54 +70,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var RatetripPage = /** @class */ (function () {
-    function RatetripPage(navCtrl, navParams, sendfeedback, signUpService, sendCoordsService, angularFireAuth, alertCtrl) {
+var DriverSupportPage = /** @class */ (function () {
+    function DriverSupportPage(navCtrl, navParams, AngularFireAuth, authenticationService, SignupService, sendFeedbackService) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.sendfeedback = sendfeedback;
-        this.signUpService = signUpService;
-        this.sendCoordsService = sendCoordsService;
-        this.angularFireAuth = angularFireAuth;
-        this.alertCtrl = alertCtrl;
-        this.userUid = this.angularFireAuth.auth.currentUser.uid;
+        this.AngularFireAuth = AngularFireAuth;
+        this.authenticationService = authenticationService;
+        this.SignupService = SignupService;
+        this.sendFeedbackService = sendFeedbackService;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.userEmail = this.AngularFireAuth.auth.currentUser.email;
         this.user = {};
-        this.driver = {};
-        this.title = 'calificacion de viaje';
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
+        this.typeOfSituation = this.navParams.get('typeOfSituation');
+        this.info = this.navParams.get('info');
         this.today = Date.now();
-        this.signUpService.getMyInfo(this.userUid, this.signUpService.userPlace).takeUntil(this.unsubscribe).subscribe(function (user) {
+        this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (user) {
             _this.user = user;
             console.log(_this.user);
         });
-        this.trip = this.navParams.get('trip');
-        console.log(this.trip);
     }
-    RatetripPage.prototype.sendInfo = function () {
-        if (this.experience === null || this.experience === undefined) {
-            this.experience = 'no hay feedback';
-            this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
-            this.navCtrl.setRoot('FindridePassPage');
-        }
-        else {
-            this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
-            this.navCtrl.setRoot('FindridePassPage');
-        }
-    };
-    RatetripPage.prototype.ionViewDidLeave = function () {
+    DriverSupportPage.prototype.ionViewDidLeave = function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     };
-    RatetripPage = __decorate([
+    DriverSupportPage.prototype.sendEmail = function () {
+        this.sendFeedbackService.sendFeedback(this.SignupService.userPlace, this.typeOfSituation, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+        this.navCtrl.pop();
+    };
+    DriverSupportPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-ratetrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-ratetrip/ratetrip.html"*/'<ion-header class="bg-theme">\n  <ion-navbar>\n      <ion-title>Viaje Finalizado</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n  <ion-card class="slip">\n      <div text-center>\n          <h4 class="text-dark">¡Esperamos que hayas tenido un excelente viaje!</h4>\n          <p class="text-light">{{today | date}}\n\n      </p>\n          <h4 class="text-dark">el precio que pagaste por este viaje fue de:</h4>\n          <h1 class="text-theme">$ {{trip.price}}</h1>\n      </div>\n  </ion-card>\n  <ion-card class="rate">\n      <div text-center>\n              <h4 class="text-dark">Cuéntanos {{user.name}} como ha sido la experiencia con Waypool</h4>\n\n         \n          <div class="driver">\n              \n              <div class="form">\n                  <ion-list no-lines>\n                      <ion-item>\n                          <ion-textarea [(ngModel)]="experience" type="text" placeholder="Déjanos tu sugerencia" ></ion-textarea>\n                      </ion-item>\n                  </ion-list>\n              </div>\n\n\n              <p padding-top><button (click)="sendInfo()" class="btn text-white bg-theme rounded" style="width: 100%;">ENVIAR</button></p>\n\n          </div>\n      </div>\n  </ion-card>\n  <p class="love">Created with <ion-icon name="heart"></ion-icon></p> \n\n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-ratetrip/ratetrip.html"*/
+            selector: 'driver-page-support',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/support/driverSupport.html"*/'<ion-header class="bg-theme-driver">\n    <ion-navbar>\n        <ion-title>Soporte</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n    <ion-card class="slip">\n        <div text-center>\n            <h1 class="text-theme-driver">{{typeOfSituation}}</h1>\n            <p class="text-light">{{today | date}}\n            </p>\n           \n            <h4 class="text-dark">{{info}}</h4>\n        </div>\n    </ion-card>\n    <ion-card class="rate">\n        <div text-center>\n            \n            <div class="driver">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n                        <ion-icon name="ios-checkmark-circle" class="text-theme-driver"></ion-icon>\n                    </h2>\n            \n                </ion-item>\n                \n                <div class="form">\n                    <ion-list no-lines>\n                        <ion-item>\n                            <ion-textarea [(ngModel)]="experience" type="text" placeholder="¡Escríbenos con detalle!"></ion-textarea>\n                        </ion-item>\n                    </ion-list>\n                </div>\n                <p padding-top><button class="btn text-white bg-theme-driver rounded" style="width: 100%;"  (click)="sendEmail()" >ENVIAR</button></p>\n            </div>\n        </div>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/support/driverSupport.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__services_sendFeedback_service__["a" /* sendFeedbackService */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
-    ], RatetripPage);
-    return RatetripPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_3__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_d_sendFeedback_service__["a" /* DriverSendFeedbackService */]])
+    ], DriverSupportPage);
+    return DriverSupportPage;
 }());
 
-//# sourceMappingURL=ratetrip.js.map
+//# sourceMappingURL=driverSupport.js.map
 
 /***/ })
 

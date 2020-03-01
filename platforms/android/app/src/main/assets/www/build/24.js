@@ -1,14 +1,14 @@
 webpackJsonp([24],{
 
-/***/ 632:
+/***/ 671:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CanceltripPageModule", function() { return CanceltripPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VerificationNumberPageModule", function() { return VerificationNumberPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__canceltrip__ = __webpack_require__(787);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verification_number__ = __webpack_require__(860);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CanceltripPageModule = /** @class */ (function () {
-    function CanceltripPageModule() {
+var VerificationNumberPageModule = /** @class */ (function () {
+    function VerificationNumberPageModule() {
     }
-    CanceltripPageModule = __decorate([
+    VerificationNumberPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__canceltrip__["a" /* CanceltripPage */],
+                __WEBPACK_IMPORTED_MODULE_2__verification_number__["a" /* VerificationNumberPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__canceltrip__["a" /* CanceltripPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__verification_number__["a" /* VerificationNumberPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__canceltrip__["a" /* CanceltripPage */]
+                __WEBPACK_IMPORTED_MODULE_2__verification_number__["a" /* VerificationNumberPage */]
             ]
         })
-    ], CanceltripPageModule);
-    return CanceltripPageModule;
+    ], VerificationNumberPageModule);
+    return VerificationNumberPageModule;
 }());
 
-//# sourceMappingURL=canceltrip.module.js.map
+//# sourceMappingURL=verification-number.module.js.map
 
 /***/ }),
 
-/***/ 787:
+/***/ 860:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CanceltripPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerificationNumberPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,24 +64,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var CanceltripPage = /** @class */ (function () {
-    function CanceltripPage(navCtrl, viewCtrl) {
+
+
+
+
+var VerificationNumberPage = /** @class */ (function () {
+    function VerificationNumberPage(navCtrl, navParams, modalCtrl, authenticationService, alertCtrl, AngularFireAuth, signUpService, app) {
+        var _this = this;
         this.navCtrl = navCtrl;
-        this.viewCtrl = viewCtrl;
+        this.navParams = navParams;
+        this.modalCtrl = modalCtrl;
+        this.authenticationService = authenticationService;
+        this.alertCtrl = alertCtrl;
+        this.AngularFireAuth = AngularFireAuth;
+        this.signUpService = signUpService;
+        this.app = app;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["Subject"];
+        this.userId = this.navParams.get('userId');
+        console.log(this.userId);
+        console.log(this.signUpService.userPlace);
+        this.signUpService.getMyInfo(this.userId, this.signUpService.userPlace).takeUntil(this.unsubscribe).subscribe(function (user) {
+            _this.userInfo = user;
+            console.log(_this.userInfo);
+        });
     }
-    CanceltripPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss(this.accepted);
+    VerificationNumberPage.prototype.code = function () {
+        this.authenticationService.deleteResendCode(this.signUpService.userPlace, this.userId);
+        this.authenticationService.sendVerificationCodeToFirebase(this.signUpService.userPlace, this.userId, this.confText);
+        // this.signUpService.getMyInfo(this.signUpService.userPlace, this.userId).subscribe(user => {
+        //   this.userInfo = user;
+        //   console.log(this.userInfo);
+        if (this.userInfo.verificationCodeApproval === true) {
+            this.app.getRootNav().push('LoginPage');
+            this.authenticationService.deleteVerificationCode(this.signUpService.userPlace, this.userId);
+        }
+        else if (this.userInfo.verificationCodeApproval === false) {
+            this.authenticationService.deleteVerificationCode(this.signUpService.userPlace, this.userId);
+            var alert_1 = this.alertCtrl.create({
+                title: 'Código Errado',
+                subTitle: 'el código de verificacón está errado',
+                buttons: ['OK']
+            });
+            alert_1.present();
+        }
+        // })
     };
-    CanceltripPage = __decorate([
+    VerificationNumberPage.prototype.resendCode = function () {
+        this.authenticationService.deleteverificationCodeApproval(this.signUpService.userPlace, this.userId);
+        this.authenticationService.resendVerificationCode(this.signUpService.userPlace, this.userId);
+    };
+    VerificationNumberPage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    };
+    VerificationNumberPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-canceltrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-canceltrip/canceltrip.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismiss()"></ion-icon>\n    <ion-card>\n            <img src="assets/imgs/cancelacion.png" width="100px" style="display:inline-block" height="150px"/>\n\n        <!-- <h5 class="text-hot">Este usuario desea irse contigo</h5> -->\n        <ion-item>\n            \n            <div>\n\n                <h2 class="text">Se ha cancelado el viaje</h2>\n                <h2 class="text"></h2>\n\n\n               \n                \n            \n\n\n            </div>\n        </ion-item>\n       \n\n\n        <ion-card-content>\n            <ion-row>\n                <ion-col>\n                    <button class="btn bg-white text-red rounded" (click)="dismiss()"  style="width: 100%;margin-top: 14px;">OK</button>\n\n                </ion-col>\n               \n            </ion-row>\n\n        </ion-card-content>\n    </ion-card>\n</ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-canceltrip/canceltrip.html"*/
+            selector: 'page-verification-number',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-verification-number/verification-number.html"*/'<ion-header class="transparent">\n    <ion-navbar>\n        <ion-title><span class="text-white">verification</span></ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  <ion-content class="bg-background-img">\n    <div class="logo">\n        <img src="assets/imgs/logo waypool gris-01.png" alt="logo">\n    </div>\n    <div class="bg-white login">\n        <div class="">\n            <p padding text-center>Ingresa el código de confirmación<br>enviado a tu SMS!</p>\n            <br>\n            <ion-list class="form" text-center>\n                <ion-item>\n                    <ion-input type="text" [(ngModel)]=\'confText\' text-right></ion-input>\n                </ion-item>\n            </ion-list>\n            <button ion-button full class="bg-theme text-white btn rounded" (click)="code()">Next</button>\n            <br>\n            <p padding text-center class="resendingButton" (click)= "resendCode()">Reenviar código de verificación</p>      \n          </div>\n    </div>\n  </ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-verification-number/verification-number.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ViewController */]])
-    ], CanceltripPage);
-    return CanceltripPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
+    ], VerificationNumberPage);
+    return VerificationNumberPage;
 }());
 
-//# sourceMappingURL=canceltrip.js.map
+//# sourceMappingURL=verification-number.js.map
 
 /***/ })
 

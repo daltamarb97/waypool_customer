@@ -12,8 +12,8 @@ export class TripsService {
 
        }
        
-       public getOnTrip(place,userUid){
-        return  this.afDB.object(place+'/users/'+ userUid+'/onTrip/').valueChanges();
+       public getOnTrip(userUid){
+        return  this.afDB.object('/usersTest/'+ userUid+'/onTrip/').valueChanges();
        }
        public getSaveTrip(place,userUid){
         return  this.afDB.object(place+'/users/'+ userUid+'/saveTrip/').valueChanges();
@@ -85,10 +85,10 @@ export class TripsService {
         itsMe:true
       });
     }
-      public saveTripOnRecords(place, userUid,trip){
+      public saveTripOnRecords( userUid,trip){
         //save trip in recordTrips
         
-      this.afDB.database.ref(place + '/users/'+userUid+'/recordTrips/'+trip.keyTrip).update(trip);
+      this.afDB.database.ref('/usersTest/'+userUid+'/recordTrips/'+trip.keyTrip).update(trip);
  
      }
      public eliminateTrip(place, userUid){
@@ -139,9 +139,9 @@ export class TripsService {
   
      } 
 
-     public eliminateAvailableReserves(place, userUid){    
+     public eliminateAvailableReserves( userUid){    
       //eliminate keyTrip from user's node to eliminate access to that reserve
-    this.afDB.database.ref(place + '/users/'+userUid+'/availableReserves/').remove();
+    this.afDB.database.ref( '/usersTest/'+userUid+'/availableReserves/').remove();
 
    }
    
@@ -187,9 +187,9 @@ this.afDB.database.ref(place + '/users/'+userUid+'/reservesSeenInAvailableReserv
   this.afDB.database.ref(place + '/users/'+userUid+'/onTrip').remove();
 
  }
- public eliminatingSaveTrip(place, userUid){    
+ public eliminatingSaveTrip( userUid){    
  
-this.afDB.database.ref(place + '/users/'+userUid+'/saveTrip').remove();
+this.afDB.database.ref('/usersTest/'+userUid+'/saveTrip').remove();
 
 }
 public eliminatingCancelTrip(place, userUid){    

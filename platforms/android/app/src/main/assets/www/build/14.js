@@ -1,14 +1,14 @@
 webpackJsonp([14],{
 
-/***/ 641:
+/***/ 697:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverSignupPageModule", function() { return DriverSignupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(796);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverSignup__ = __webpack_require__(890);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,43 +18,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ProfilePageModule = /** @class */ (function () {
-    function ProfilePageModule() {
+var DriverSignupPageModule = /** @class */ (function () {
+    function DriverSignupPageModule() {
     }
-    ProfilePageModule = __decorate([
+    DriverSignupPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
+                __WEBPACK_IMPORTED_MODULE_2__driverSignup__["a" /* DriverSignupPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverSignup__["a" /* DriverSignupPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]
+                __WEBPACK_IMPORTED_MODULE_2__driverSignup__["a" /* DriverSignupPage */]
             ]
         })
-    ], ProfilePageModule);
-    return ProfilePageModule;
+    ], DriverSignupPageModule);
+    return DriverSignupPageModule;
 }());
 
-//# sourceMappingURL=profile.module.js.map
+//# sourceMappingURL=driverSignup.module.js.map
 
 /***/ }),
 
-/***/ 796:
+/***/ 890:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSignupPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_userauthentication_service__ = __webpack_require__(350);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_driverauthentication_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_window_service__ = __webpack_require__(372);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_angularfire2_database__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,168 +68,276 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+// import { VerificationPage } from '../verification/verification';
+// import { AngularFireDatabase } from '@angular/fire/database';
 
 
 
 
 
-var ProfilePage = /** @class */ (function () {
-    function ProfilePage(navCtrl, modalCtrl, toastCtrl, alertCtrl, AngularFireAuth, authenticationService, SignupService, afDB) {
+
+
+
+
+var DriverSignupPage = /** @class */ (function () {
+    function DriverSignupPage(navCtrl, formBuilder, authenticationService, SignUpService, alertCtrl, AngularFireAuth, navParams, windowService, app, afDB, loadingCtrl) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
-        this.toastCtrl = toastCtrl;
+        this.formBuilder = formBuilder;
+        this.authenticationService = authenticationService;
+        this.SignUpService = SignUpService;
         this.alertCtrl = alertCtrl;
         this.AngularFireAuth = AngularFireAuth;
-        this.authenticationService = authenticationService;
-        this.SignupService = SignupService;
+        this.navParams = navParams;
+        this.windowService = windowService;
+        this.app = app;
         this.afDB = afDB;
-        this.myprofile = "about";
-        this.emailUser = this.AngularFireAuth.auth.currentUser.email;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.loadingCtrl = loadingCtrl;
         this.user = {};
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["Subject"];
-        this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
-            _this.user = user;
-            console.log(_this.user);
-            _this.showInfoProfile(user);
+        this.car = {};
+        this.tokenId = '';
+        this.userId = '';
+        this.isReadonly = true;
+        this.cities = [];
+        this.showReadonly = true;
+        // onlyEmail:any;
+        this.arrayEmails = [];
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_7_rxjs__["Subject"];
+        this.zones = [];
+        this.forLoopsCompleted = 0;
+        this.companyIdentified = false;
+        this.signupGroup = this.formBuilder.group({
+            name: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            lastname: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            email: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            password: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            passwordconf: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            phone: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            carModel: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            plateNumber: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            color: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            city: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            isChecked: [true, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]
+        });
+        this.geocoder = new google.maps.Geocoder;
+        // this.SignUpService.pushEmails('uninorte', '@uninorte.edu.co');
+        // this.SignUpService.pushEmails('uninorte', '@jhggh.edu.co');
+        this.SignUpService.getAllCities().takeUntil(this.unsubscribe)
+            .subscribe(function (cities) {
+            _this.cities = cities;
+            console.log(_this.cities);
         });
     }
-    ProfilePage.prototype.saveChanges = function () {
+    DriverSignupPage.prototype.onChange = function () {
         var _this = this;
-        this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company + '/zones').once('value').then(function (snap) {
+        this.arrayEmails = [];
+        this.afDB.database.ref('allCities/' + this.cityVar + '/allPlaces').once('value').then(function (snap) {
             var obj = snap.val();
             Object.getOwnPropertyNames(obj).forEach(function (key) {
-                if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                }
-                else {
-                    if (_this.phone == null && _this.user.about == null && _this.user.url == null) {
-                        _this.navCtrl.pop();
-                    }
-                    else if (_this.phone == null && _this.user.about == null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
-                        _this.navCtrl.pop();
-                    }
-                    else if (_this.phone == null && _this.user.about != null && _this.user.url == null) {
-                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
-                        _this.navCtrl.pop();
-                    }
-                    else if (_this.phone != null && _this.user.about == null && _this.user.url == null) {
-                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
-                        _this.navCtrl.pop();
-                    }
-                    else if (_this.phone != null && _this.user.about != null && _this.user.url == null) {
-                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
-                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
-                        _this.navCtrl.pop();
-                    }
-                    else if (_this.phone != null && _this.user.about == null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
-                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
-                        _this.navCtrl.pop();
-                    }
-                    else if (_this.phone == null && _this.user.about != null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
-                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
-                        _this.navCtrl.pop();
-                    }
-                    else if (_this.phone != null && _this.user.about != null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
-                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
-                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
-                        _this.navCtrl.pop();
+                _this.arrayEmails.push(obj[key].email);
+                console.log(_this.arrayEmails);
+            });
+        });
+    };
+    DriverSignupPage.prototype.noCompanyIdentified = function (numberToExecute) {
+        ++this.forLoopsCompleted;
+        if (this.forLoopsCompleted === numberToExecute) {
+            if (this.companyIdentified === false) {
+                var alert_1 = this.alertCtrl.create({
+                    title: 'El correo que ingresaste no concuerda con el de ninguna empresa de la red de Waypool',
+                    subTitle: 'Revisa si escribiste el correo bien o si tu empresa no está en Waypool, envianos un correo a team@waypooltech.com',
+                    buttons: ['OK']
+                });
+                alert_1.present();
+            }
+        }
+    };
+    DriverSignupPage.prototype.scrolling = function () {
+        this.content.scrollTo(30, 0);
+    };
+    ;
+    DriverSignupPage.prototype.login = function () {
+        this.navCtrl.setRoot('LoginPage');
+    };
+    DriverSignupPage.prototype.verification = function () {
+        var _this = this;
+        //put this loading in user as well in next update//
+        var loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: "\n              <div class=\"custom-spinner-container\">\n                <div class=\"custom-spinner-box\"></div>\n              </div>"
+        });
+        loading.present();
+        this.forLoopsCompleted = 0;
+        this.companyIdentified = false;
+        var count = this.arrayEmails.length;
+        for (var i = 0; i < count; i++) {
+            this.emailStringVerification = this.email.indexOf(this.arrayEmails[i]);
+            console.log(this.emailStringVerification);
+            if (this.emailStringVerification > -1) {
+                this.companyIdentified = true;
+                this.rightEmailOnDatabase = this.arrayEmails[i];
+                this.afDB.database.ref('allCities/' + this.cityVar + '/allPlaces').once('value').then(function (snap) {
+                    var obj = snap.val();
+                    Object.getOwnPropertyNames(obj).forEach(function (key) {
+                        if (obj[key].email === _this.rightEmailOnDatabase) {
+                            console.log("la empresa es " + obj[key].name);
+                            _this.company = obj[key].name;
+                            obj[key].zones.forEach(function (zone) {
+                                _this.zones.push(zone);
+                            });
+                        }
+                    });
+                }).then(function () {
+                    if (!_this.signupGroup.controls['isChecked'].value === true) {
+                        loading.dismiss();
+                        var alert_2 = _this.alertCtrl.create({
+                            title: 'No aceptaste nuestros términos y condiciones',
+                            subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
+                            buttons: ['OK']
+                        });
+                        alert_2.present();
                     }
                     else {
-                        console.log('go to the f*cking hell');
-                    }
-                }
-            });
-        }).then(function () {
-            _this.toastConfirmation();
-        });
-    };
-    ProfilePage.prototype.toastConfirmation = function () {
-        var toast = this.toastCtrl.create({
-            message: 'Información actualizada',
-            duration: 1000,
-            position: 'bottom'
-        });
-        toast.present();
-    };
-    ProfilePage.prototype.deleteAccount = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Eliminar Cuenta',
-            message: "\u00BFEstas segur@ que deseas eliminar esta cuenta? si tienes cuenta en WAYPOOL DRIVER tambi\u00E9n se eliminar\u00E1",
-            buttons: [
-                {
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: function () {
-                    }
-                },
-                {
-                    text: 'Eliminar',
-                    handler: function () {
-                        _this.afDB.database.ref('allCities/' + _this.user.city + '/allPlaces/' + _this.user.company + '/zones').once('value').then(function (snap) {
-                            var obj = snap.val();
-                            Object.getOwnPropertyNames(obj).forEach(function (key) {
-                                _this.SignupService.deleteAccount(obj[key], _this.userUid);
-                            });
-                        }).then(function () {
-                            _this.AngularFireAuth.auth.currentUser.delete().then(function () {
-                                console.log('user has been deleted');
+                        var userName = _this.signupGroup.controls['name'].value;
+                        var userLastName = _this.signupGroup.controls['lastname'].value;
+                        var userPhone = _this.signupGroup.controls['phone'].value;
+                        var userEmail = _this.signupGroup.controls['email'].value;
+                        var userPassword = _this.signupGroup.controls['password'].value;
+                        var userCarModel = _this.signupGroup.controls['carModel'].value;
+                        var userPlateNumber = _this.signupGroup.controls['plateNumber'].value;
+                        var usercarColor = _this.signupGroup.controls['color'].value;
+                        _this.car = {
+                            carModel: userCarModel,
+                            plateNumber: userPlateNumber,
+                            color: usercarColor
+                        };
+                        // saving data in variable
+                        _this.user = {
+                            name: userName,
+                            lastname: userLastName,
+                            email: userEmail,
+                            phone: '+57' + userPhone,
+                            createdBy: 'driver',
+                            company: _this.company,
+                            city: _this.cityVar,
+                            //this sets documents true by default//
+                            documents: {
+                                license: true,
+                                id: true
+                            }
+                        };
+                        // this.SignUpService.userPlace = this.userPlace;
+                        if (_this.signupGroup.controls['password'].value === _this.signupGroup.controls['passwordconf'].value) {
+                            _this.authenticationService.registerWithEmail(userEmail, userPassword).then(function () {
+                                if (!_this.user.userId) {
+                                    _this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
+                                        if (user) {
+                                            user.getIdToken().then(function (token) {
+                                                _this.user.tokenId = token;
+                                            });
+                                            if (!_this.user.userId) {
+                                                _this.user.userId = user.uid;
+                                            }
+                                            _this.zones.forEach(function (zone) {
+                                                _this.SignUpService.saveUser(zone, _this.user);
+                                            });
+                                            _this.afDB.database.ref('allCities/' + _this.cityVar + '/allPlaces/' + _this.company + '/location').once('value').then(function (snap) {
+                                                console.log(snap.val());
+                                                snap.val().forEach(function (location) {
+                                                    _this.SignUpService.setFixedLocationCoordinates(location.zone, _this.user.userId, location.lat, location.lng);
+                                                    _this.SignUpService.setFixedLocationName(location.zone, _this.user.userId, location.name);
+                                                    _this.SignUpService.addCarProfile(location.zone, _this.user.userId, _this.car);
+                                                    _this.SignUpService.addPlaceZone(location.zone, _this.user.userId);
+                                                });
+                                            }).then(function () {
+                                                _this.SignUpService.saveUserInAllUsers(_this.company, _this.user.userId, _this.cityVar);
+                                            });
+                                            //send text message with code - LATER ON
+                                            // this.sendVerificationCode(this.user.userId);
+                                            // this.app.getRootNav().push('LoginPage');
+                                        }
+                                        else {
+                                            console.log('there is no user');
+                                        }
+                                    });
+                                }
+                                ;
+                                //sending email verification and verifying whether email is verified or not
+                                _this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
+                                    if (user) {
+                                        if (user.emailVerified == false) {
+                                            user.sendEmailVerification();
+                                            loading.dismiss();
+                                            var alert_3 = _this.alertCtrl.create({
+                                                title: '¡REGISTRO EXITOSO!',
+                                                subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
+                                                buttons: [
+                                                    {
+                                                        text: 'OK',
+                                                        handler: function () {
+                                                            _this.afDB.database.ref('allCities/' + _this.cityVar + '/allPlaces/' + _this.company + '/zones').once('value').then(function (snap) {
+                                                                _this.navCtrl.push('SchedulePage', { defaultZone: snap.val()[0] });
+                                                            });
+                                                        }
+                                                    }
+                                                ]
+                                            });
+                                            alert_3.present();
+                                            console.log("verification email has been sent");
+                                        }
+                                        else {
+                                            console.log("verification email has not been sent or the email is already verified");
+                                        }
+                                    }
+                                    else {
+                                        console.log('there is no user');
+                                    }
+                                });
                             }).catch(function (error) {
-                                console.log('error:', error);
+                                loading.dismiss();
+                                if (error.code === "auth/email-already-in-use") {
+                                    var alert_4 = _this.alertCtrl.create({
+                                        title: 'ya existe una cuenta con este correo',
+                                        subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
+                                        buttons: ['OK']
+                                    });
+                                    alert_4.present();
+                                }
                             });
-                        }).then(function () {
-                            _this.navCtrl.setRoot('LoginPage');
-                            var toast = _this.toastCtrl.create({
-                                message: "Acabas de eliminar esta cuenta, si deseas volver a ser parte de la comunidad por favor reg\u00EDstrate de nuevo",
-                                showCloseButton: true,
-                                closeButtonText: 'Ok'
+                        }
+                        else {
+                            loading.dismiss();
+                            var alert_5 = _this.alertCtrl.create({
+                                title: 'Oops!',
+                                subTitle: 'las contraseñas no coinciden, intenta de nuevo',
+                                buttons: ['OK']
                             });
-                            toast.present();
-                        });
+                            alert_5.present();
+                        }
                     }
-                }
-            ]
-        });
-        alert.present();
+                });
+            }
+            loading.dismiss();
+            this.noCompanyIdentified(count);
+        }
     };
-    ProfilePage.prototype.showInfoProfile = function (user) {
-        this.name = user.name;
-        this.lastname = user.lastname;
-        this.emailComplete = user.email + user.fixedemail;
-        console.log(this.emailComplete);
+    DriverSignupPage.prototype.sendVerificationCode = function (userId) {
+        this.navCtrl.push('SchedulePage', { userId: userId });
     };
-    ProfilePage.prototype.changePassword = function () {
-        var _this = this;
-        this.AngularFireAuth.auth.sendPasswordResetEmail(this.emailUser).then(function () {
-            var alert = _this.alertCtrl.create({
-                title: 'Revisa tu email',
-                subTitle: 'te enviamos un correo donde podras reestablecer tu contraseña',
-                buttons: ['OK']
-            });
-            alert.present();
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    ProfilePage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    };
-    ProfilePage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
+    ], DriverSignupPage.prototype, "content", void 0);
+    DriverSignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-profile',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-profile/profile.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title>PERFIL</ion-title>\n    </ion-navbar>\n  </ion-header>\n<ion-content class="bg-light">\n    <ion-item style="position: relative;z-index: 2;">\n        <ion-avatar item-start>\n            <img src="assets/imgs/userPicture.png">\n        </ion-avatar>\n        <div class="name">\n            <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n            </h2>\n            <p *ngIf=\'user.verifiedPerson\' class="text-theme">VERIFICADO\n                <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n            </p>\n        </div>\n        \n    </ion-item>\n    \n    <div >\n        <ion-list >\n              \n                     \n            <div class="bg-white" padding>\n\n                <ion-list no-lines class="form-list">\n                    <ion-item>\n                        <ion-label floating >Nombre</ion-label>\n                        <ion-input type="text" [(ngModel)]="user.name" readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating >Apellido</ion-label>\n                        <ion-input type="text" [(ngModel)]="user.lastname" readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>Número Telefónico Actual</ion-label>\n                        <ion-input type="number"  [(ngModel)]="user.phone" readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label stacked>Número Telefónico Nuevo</ion-label>\n                        <ion-input type="number" placeholder="modifica aqui tu número" [(ngModel)]="phone"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>Email</ion-label>\n                        <ion-input type="text"  [(ngModel)]="emailComplete"  readonly></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label stacked >Sobre mi</ion-label>\n                        <ion-textarea placeholder="tu carrera, pasiones, skills"  [(ngModel)]="user.about"></ion-textarea>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label stacked>URL de interés</ion-label>\n                        <ion-input type="text" placeholder="¿qué quieres que vean sobre ti?" [(ngModel)]="user.url" ></ion-input>\n                    </ion-item>\n\n\n                </ion-list>\n            </div>\n            <div padding-top padding-left padding-right text-center>\n                <p>\n                    <button class="btn text-theme rounded bg-white" style="width: 100%;margin-bottom: 8px;" (click)="saveChanges()">Guardar Cambios</button>\n\n                    <button class="btn text-theme rounded bg-white" style="width: 100%;    margin-bottom: 8px;" (click)="changePassword()" >Cambiar Contraseña</button>\n                    <button class="btn text-white rounded bg-red" style="width: 100%;    margin-bottom: 8px;" (click)="deleteAccount()">Eliminar Cuenta</button>\n              \n                </p>\n\n            </div>\n        </ion-list>\n        \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-profile/profile.html"*/
+            selector: 'driver-page-signup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/signup/driverSignup.html"*/'<ion-header class="transparent">\n    <ion-navbar>\n        <ion-title><span class="text-theme"></span></ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n\n\n    <ion-content>\n\n        <form [formGroup]="signupGroup" (ngSubmit)="verification()">\n        <div>\n            <div class="">\n                <ion-row>\n                    <ion-col class="name-fild">\n                        <ion-list class="form" style="margin-bottom: 0">\n                            <ion-item>\n                                <ion-label></ion-label>\n                                <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>\n                            </ion-item>\n                            <ion-item>\n                                <ion-label></ion-label>\n                                <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>\n                            </ion-item>\n                            <ion-item>\n                                <ion-label  text-right >selecciona tu ciudad</ion-label>\n                                    <ion-select (ionChange)="onChange()" [(ngModel)]="cityVar" formControlName="city">\n                                        <ion-option *ngFor="let city of cities">{{city.name}}</ion-option>\n                                    </ion-select>\n                            </ion-item>\n                        </ion-list>\n                    </ion-col>\n                </ion-row>\n                <div>\n                    <ion-row>\n                        <ion-col class="name-fild-2">\n                            <ion-list class="form">\n                                <ion-item class="editable-email">\n                                        <ion-label></ion-label>\n                                            <ion-input type="text" text-right [(ngModel)]=\'email\' formControlName="email" placeholder= "email"></ion-input>\n                                        </ion-item>\n                                </ion-list>\n                        </ion-col>\n                    </ion-row>\n                </div>\n\n                <ion-list class="form" style="margin-bottom: 0">\n                    <ion-item>\n                            <ion-label  fixed><span style="font-weight: bold; color: red;">(mínimo 6 caracteres)</span></ion-label>\n                            <ion-input type="password"  text-right formControlName="password" placeholder= "Escribe tu contraseña" minlength="6"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label></ion-label>\n                        <ion-input type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label></ion-label>\n                        <ion-input type="text" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>\n                    </ion-item>\n                </ion-list>\n                <ion-list>\n \n                    <ion-row class="col-car">\n                        <ion-col class="name-fild-2">\n                            <ion-list class="form">\n                                <ion-item class="carModel">\n                                        <ion-label></ion-label>\n                                            <ion-input type="text" text-right formControlName="carModel" placeholder= "marca de carro"></ion-input>\n                                        </ion-item>\n                                </ion-list>\n                        </ion-col>\n                        <ion-col class="name-fild-2">\n                            <ion-list class="form">\n                                <ion-item class="plateNumber">\n                                        <ion-input type="text"  text-right formControlName="plateNumber" placeholder= "placa de carro" ></ion-input>\n                                </ion-item>\n                            </ion-list>\n                        </ion-col>               \n                    </ion-row>     \n                            <ion-list class="form">\n                                    <ion-item class="form" class="plateNumber" >\n                                            <ion-input type="text"  text-right formControlName="color" placeholder= "Color de carro" class="name-fild-2"></ion-input>\n                                        </ion-item>\n\n                                        <ion-item>\n                                            <ion-label>Por favor lee y acepta nuestro términos y condiciones</ion-label>\n                                            <ion-checkbox formControlName="isChecked" ></ion-checkbox>\n                                        </ion-item>\n                                        <ion-item>\n                                            <p>Ver <a href="https://waypooltech.wordpress.com/">términos y condiciones</a></p>                                        </ion-item>\n                                </ion-list>\n                   \n                </ion-list>\n                        <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">Continuar</button>\n                        <p text-center>¿ya estás registrado? <strong class="text-theme" (click)="login()">Inicia Sesión</strong></p>\n            </div>\n        </div>\n    </form>\n    </ion-content>\n    \n\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/signup/driverSignup.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_3__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["AngularFireDatabase"]])
-    ], ProfilePage);
-    return ProfilePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_6__services_d_window_service__["a" /* DriverWindowService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
+    ], DriverSignupPage);
+    return DriverSignupPage;
 }());
 
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=driverSignup.js.map
 
 /***/ })
 

@@ -14,8 +14,8 @@ export class DriverSignUpService {
     constructor(public afDB: AngularFireDatabase, public AngularFireAuth: AngularFireAuth){
     }
 
-   public getMyInfo(place, userId){
-    return this.afDB.object(place + '/drivers/'+userId).valueChanges();
+   public getMyInfo(userId){
+    return this.afDB.object('/usersTest/'+userId).valueChanges();
     }
 
 
@@ -46,30 +46,30 @@ export class DriverSignUpService {
      }
 
     
-    public pushDocsL(place, userId){
-       this.afDB.database.ref(place + '/drivers/'+userId+'/documents').update({
-           license: false
-       })
-    }
+    // public pushDocsC(place, userId){
+    //    this.afDB.database.ref(place + '/drivers/'+userId+'/documents').update({
+    //        license: false
+    //    })
+    // }
 
 
-    public pushDocsCarne(place, userId){
-        this.afDB.database.ref(place + '/drivers/'+userId+'/documents').update({
+    public pushDocsCarne(userId){
+        this.afDB.database.ref('/drivers/'+userId+'/documents').update({
             carne: false
         })
-        this.afDB.database.ref(place + '/users/'+userId+'/documents').update({
+        this.afDB.database.ref('/users/'+userId+'/documents').update({
             carne: false
         })
      }
 
 
 
-    public pushDocsId(place, userId){
-        this.afDB.database.ref(place + '/drivers/'+userId+'/documents').update({
-            id: false
+    public pushDocsId( userId){
+        this.afDB.database.ref( '/drivers/'+userId+'/documents').update({
+            idVerification: false
         })
-        this.afDB.database.ref(place + '/users/'+userId+'/documents').update({
-            id: false
+        this.afDB.database.ref( '/users/'+userId+'/documents').update({
+            idVerification: false
         })
      }
      public emailVerificationMessage(place, user){

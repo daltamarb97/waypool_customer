@@ -59,30 +59,30 @@ export class DriverCarRegistrationLoginPage {
     
     this.SignUpService.userPlace = this.defaultZone;
 
-    this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.driver).takeUntil(this.unsubscribe).subscribe(user=>{
-      this.driverInfo = user
-      if(this.driverInfo.documents){
-        if(this.driverInfo.documents.license == true ){
-          this.picToViewLicense = "assets/imgs/v2.3.png";
-          this.picToView =  "assets/imgs/v2.3.png";
-        }else if(this.driverInfo.documents.id == true ){
-          this.picToViewId = "assets/imgs/_v4.3.png";
-        }else if(this.driverInfo.documents.license == false){
-          this.picToViewLicense = "assets/imgs/v2.2.png";
-          this.picToView =  "assets/imgs/v2.2.png";
-          this.showContinue = true;
-        }else if(this.driverInfo.documents.id == false ){
-          this.picToViewId = "assets/imgs/v4.2.png";
-          this.showContinue = true;
-        }else if(this.driverInfo.documents.license == undefined ){
-          this.picToViewLicense = "assets/imgs/v2.png";
-          this.picToView =  "assets/imgs/v2.png";
-        }else if(this.driverInfo.documents.id == undefined ){
-          this.picToViewId = "assets/imgs/v4.png";
+    // this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.driver).takeUntil(this.unsubscribe).subscribe(user=>{
+    //   this.driverInfo = user
+    //   if(this.driverInfo.documents){
+    //     if(this.driverInfo.documents.license == true ){
+    //       this.picToViewLicense = "assets/imgs/v2.3.png";
+    //       this.picToView =  "assets/imgs/v2.3.png";
+    //     }else if(this.driverInfo.documents.id == true ){
+    //       this.picToViewId = "assets/imgs/_v4.3.png";
+    //     }else if(this.driverInfo.documents.license == false){
+    //       this.picToViewLicense = "assets/imgs/v2.2.png";
+    //       this.picToView =  "assets/imgs/v2.2.png";
+    //       this.showContinue = true;
+    //     }else if(this.driverInfo.documents.id == false ){
+    //       this.picToViewId = "assets/imgs/v4.2.png";
+    //       this.showContinue = true;
+    //     }else if(this.driverInfo.documents.license == undefined ){
+    //       this.picToViewLicense = "assets/imgs/v2.png";
+    //       this.picToView =  "assets/imgs/v2.png";
+    //     }else if(this.driverInfo.documents.id == undefined ){
+    //       this.picToViewId = "assets/imgs/v4.png";
           
-        }
-      }
-    })
+    //     }
+    //   }
+    // })
   }
 
   ionViewDidLeave(){
@@ -140,7 +140,7 @@ export class DriverCarRegistrationLoginPage {
           if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
 
           }else{
-            this.SignUpService.pushDocsL(obj[key], this.driver);
+            // this.SignUpService.pushDocsL(obj[key], this.driver);
           }
         })
       })
@@ -204,7 +204,7 @@ export class DriverCarRegistrationLoginPage {
           if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
             
           }else{
-            this.SignUpService.pushDocsId(obj[key], this.driver);
+            // this.SignUpService.pushDocsId(obj[key], this.driver);
           }
         }) 
       })

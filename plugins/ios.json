@@ -7,24 +7,26 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-fcm-with-dependecy-updated": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    "call-number": {
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
+    },
+    "cordova-clipboard": {
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
     "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+      "PACKAGE_NAME": "com.waypoolsas.waypool"
     },
-<<<<<<< HEAD
-    "mx.ferreyra.callnumber": {
-=======
-    "cordova-sqlite-storage": {
->>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     }
   },
   "dependent_plugins": {}

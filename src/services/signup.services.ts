@@ -13,11 +13,19 @@ export class SignUpService {
 
     }
 
-    public saveUser(user, place){
-        this.afDB.database.ref(place + '/users/'+ user.userId).update(user);
-        this.afDB.database.ref(place + '/drivers/'+ user.userId).update(user);
+    public saveUser(user){
+        this.afDB.database.ref('/users/'+ user.userId).update(user);
+        this.afDB.database.ref('/drivers/'+ user.userId).update(user);
 
     }
+
+    public saveUserTest(user){
+        this.afDB.database.ref('/usersTest/'+ user.userId).update(user);
+        this.afDB.database.ref('/driversTest/'+ user.userId).update(user);
+
+    }
+
+    
 
     public getAllCities(){
        return this.afDB.list('allCities/').valueChanges()
@@ -61,8 +69,8 @@ export class SignUpService {
         return this.afDB.list('/drivers').valueChanges();
     }
 
-     public getMyInfo(userId, place){
-        return this.afDB.object(place + '/users/'+ userId).valueChanges();
+     public getMyInfo(userId){
+        return this.afDB.object('/usersTest/'+ userId).valueChanges();
         }
 
     public getSaveTrip(userId, place){
@@ -79,9 +87,9 @@ export class SignUpService {
             }
 
 
-            public saveUserInAllUsers(place, user, city){
+            public saveUserInAllUsers(user, city){
                 this.afDB.database.ref('/allUsers/'+ user).update({
-                    place: place,
+                  
                     city: city
                 });
                 

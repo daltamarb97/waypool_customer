@@ -24,10 +24,12 @@ export class MyApp {
   alertInternet:any;
   pagesUser:any=[];
   pagesDriver:any=[];
+
   showUser:boolean;
   userId:any;
+  wanttodrive:any=[];
   constructor(public alertCtrl: AlertController, statusBar: StatusBar, splashScreen: SplashScreen, private geolocation: Geolocation, private platform: Platform, private fcm: FCM, public toastController: ToastController, private firebase: Firebase, private afDB: AngularFireDatabase, public loadingCtrl: LoadingController) {
-   
+    this.wanttodrive = [{component:'DriverFindridePage'}];
     this.pagesUser = [
       
       {title:'Mis viajes',component:'ReservetripPage', icon:'md-paper'},
@@ -36,7 +38,6 @@ export class MyApp {
       {title:'Soporte',component:'HelpPage',icon:'help'},
       {title:'Instrucciones',component:'WalkthroughPage',icon:'alert'},
       {title:'Modo Bicicleta',component:'BikeModePage', icon:'md-bicycle'},
-      {title:'Pasar a Pooler',component:'DriverFindridePage',icon:'speedometer'},    
     ]
 
     this.pagesDriver = [
@@ -221,12 +222,12 @@ export class MyApp {
       })
       
     }else{
-      this.nav.push(page.component)
+      this.nav.push(page.component);
     }
     
   } 
 
-
+ 
 }
       
  

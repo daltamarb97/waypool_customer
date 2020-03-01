@@ -5,37 +5,15 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
-		0EC11BEDE57B4D13BA17D932 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55B2ACAA8244EF8B095163C /* AVFoundation.framework */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		22E9DC36C0BE4D24A145AD4F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E31B3D73EBF40FA85A73328 /* libsqlite3.0.tbd */; };
-		26747B5EF955400285F4B759 /* AppDelegate+FCMPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F5356076A4444EB1BA1BBB /* AppDelegate+FCMPlugin.m */; };
-		2FEEB1A4F7B84B96AF4EAB2F /* FCMPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999ED366B324AE29297528F /* FCMPlugin.m */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
-		3871D6929BDD45E7B4439810 /* UIImage+CropScaleOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A971422064CC1B4341A61 /* UIImage+CropScaleOrientation.m */; };
-		57AB1F423CC44CBF83C5FBBD /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B677219E23A44ED9B05FD146 /* CDVJpegHeaderWriter.m */; };
-		69F49B92243D459B87C6F6B8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCAC2D253B1459AB1645418 /* AddressBook.framework */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
-		7BFDBD8523954FCBB633BC92 /* CDVCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E955E552FC94F329D697BB9 /* CDVCamera.m */; };
-		7CB47801F10142FC8FB85E00 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB6EA24866246929AEF35A8 /* CoreLocation.framework */; };
-		82A0EC30A71C4FBD9AA66A0B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB126014BA93432596460CB3 /* Security.framework */; };
-		8C08FA7C663A43CEA9DBFD61 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 265D57A7816C4E33B1DCA293 /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		96B6543D0A0E552E10317DA4 /* libPods-Waypool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F680AD3DE2C59CCB5CA951 /* libPods-Waypool.a */; };
-		D03BC423239C4F2EB48CA769 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9557877064AB4ADB9FE0E33D /* libc++.tbd */; };
-		EC0554586B2344619A95EB40 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EDE965D9C5A451D818CF193 /* GoogleService-Info.plist */; };
-		EE1F05FCF32A4DCC9E62C347 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4CB0FFDAB24657B9D083EA /* libz.tbd */; };
-<<<<<<< HEAD
-		EFAC6E8246954C5B9A35C9A8 /* CFCallNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = B3133DCF6F464670BAE713C4 /* CFCallNumber.m */; };
-		F2B53C2AD2DC4B1DBDC6DEE9 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D880CDF750054894974C4897 /* CDVLocation.m */; };
-=======
-		BFBABB9A9A4E4248ABDCA115 /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E64ABD91C5429D8525DA11 /* SQLitePlugin.m */; };
-		8D00E320997140678A3FE945 /* PSPDFThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B00C5A2BECA54149ACC7C8A0 /* PSPDFThreadSafeMutableDictionary.m */; settings = {COMPILER_FLAGS = "-w"; }; };
-		2B836B461DBA4174A5E95FF5 /* sqlite3.c in Resources */ = {isa = PBXBuildFile; fileRef = 59CF1F563C614C80A0FF8CBB /* sqlite3.c */; settings = {COMPILER_FLAGS = "-w -DSQLITE_THREADSAFE=1 -DSQLITE_DEFAULT_SYNCHRONOUS=3 -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_OMIT_DECLTYPE -DSQLITE_OMIT_DEPRECATED -DSQLITE_OMIT_PROGRESS_CALLBACK -DSQLITE_OMIT_SHARED_CACHE -DSQLITE_TEMP_STORE=2 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_DEFAULT_PAGE_SIZE=1024"; }; };
->>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,15 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0207DA571B56EA530066E2B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Waypool/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		0E4371CDB6D64ABF9DE1ABCE /* UIImage+CropScaleOrientation.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "UIImage+CropScaleOrientation.h"; path = "cordova-plugin-camera/UIImage+CropScaleOrientation.h"; sourceTree = "<group>"; };
-		17525AF8F58642A3ACC86492 /* CDVCamera.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVCamera.h; path = "cordova-plugin-camera/CDVCamera.h"; sourceTree = "<group>"; };
+		0207DA571B56EA530066E2B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Waypool/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Waypool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waypool.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1EDE965D9C5A451D818CF193 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Resources/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		22C011DCCEDB40A29D804093 /* CFCallNumber.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CFCallNumber.h; path = mx.ferreyra.callnumber/CFCallNumber.h; sourceTree = "<group>"; };
-		265D57A7816C4E33B1DCA293 /* ImageIO.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* Waypool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Waypool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
@@ -81,41 +54,13 @@
 		3047A50F1AB8059700498E2A /* build-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-debug.xcconfig"; path = "cordova/build-debug.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
-		31F647F0125441199EFD170D /* CDVExif.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVExif.h; path = "cordova-plugin-camera/CDVExif.h"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Waypool-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Waypool-Prefix.pch"; sourceTree = "<group>"; };
-		32F680AD3DE2C59CCB5CA951 /* libPods-Waypool.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Waypool.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		465032D0EA7E0672903857D7 /* Pods-Waypool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waypool.debug.xcconfig"; path = "Target Support Files/Pods-Waypool/Pods-Waypool.debug.xcconfig"; sourceTree = "<group>"; };
-		6621DB7028E1A1ACED1001CA /* Pods-Waypool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waypool.release.xcconfig"; path = "Target Support Files/Pods-Waypool/Pods-Waypool.release.xcconfig"; sourceTree = "<group>"; };
-		6999ED366B324AE29297528F /* FCMPlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = FCMPlugin.m; path = "cordova-plugin-fcm-with-dependecy-updated/FCMPlugin.m"; sourceTree = "<group>"; };
-		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = Waypool/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		6E31B3D73EBF40FA85A73328 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		6F9A971422064CC1B4341A61 /* UIImage+CropScaleOrientation.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CropScaleOrientation.m"; path = "cordova-plugin-camera/UIImage+CropScaleOrientation.m"; sourceTree = "<group>"; };
-		7B2488955ECE43568B28BDEF /* AppDelegate+FCMPlugin.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+FCMPlugin.h"; path = "cordova-plugin-fcm-with-dependecy-updated/AppDelegate+FCMPlugin.h"; sourceTree = "<group>"; };
-		7E955E552FC94F329D697BB9 /* CDVCamera.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVCamera.m; path = "cordova-plugin-camera/CDVCamera.m"; sourceTree = "<group>"; };
+		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = "Waypool/CDVLaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Waypool-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Waypool-Info.plist"; path = "Waypool/Waypool-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
-		9557877064AB4ADB9FE0E33D /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		ACCAC2D253B1459AB1645418 /* AddressBook.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		B3133DCF6F464670BAE713C4 /* CFCallNumber.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CFCallNumber.m; path = mx.ferreyra.callnumber/CFCallNumber.m; sourceTree = "<group>"; };
-		B677219E23A44ED9B05FD146 /* CDVJpegHeaderWriter.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVJpegHeaderWriter.m; path = "cordova-plugin-camera/CDVJpegHeaderWriter.m"; sourceTree = "<group>"; };
-		C3D3A3E4E4854F2FA2FA7E2D /* CDVLocation.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVLocation.h; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; };
-		D880CDF750054894974C4897 /* CDVLocation.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVLocation.m; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; };
-		DB126014BA93432596460CB3 /* Security.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		DDB6EA24866246929AEF35A8 /* CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		DDD77D1A755F4767933FE391 /* CDVJpegHeaderWriter.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVJpegHeaderWriter.h; path = "cordova-plugin-camera/CDVJpegHeaderWriter.h"; sourceTree = "<group>"; };
-		DE4CB0FFDAB24657B9D083EA /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		E55B2ACAA8244EF8B095163C /* AVFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
-		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		F0E375B8092C4BF0A874EF2C /* FCMPlugin.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = FCMPlugin.h; path = "cordova-plugin-fcm-with-dependecy-updated/FCMPlugin.h"; sourceTree = "<group>"; };
-		F4F5356076A4444EB1BA1BBB /* AppDelegate+FCMPlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+FCMPlugin.m"; path = "cordova-plugin-fcm-with-dependecy-updated/AppDelegate+FCMPlugin.m"; sourceTree = "<group>"; };
-		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = Waypool/config.xml; sourceTree = "<group>"; };
-		39E64ABD91C5429D8525DA11 /* SQLitePlugin.m */ = {isa = PBXFileReference; name = "SQLitePlugin.m"; path = "cordova-sqlite-storage/SQLitePlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		B00C5A2BECA54149ACC7C8A0 /* PSPDFThreadSafeMutableDictionary.m */ = {isa = PBXFileReference; name = "PSPDFThreadSafeMutableDictionary.m"; path = "cordova-sqlite-storage/PSPDFThreadSafeMutableDictionary.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		59CF1F563C614C80A0FF8CBB /* sqlite3.c */ = {isa = PBXFileReference; name = "sqlite3.c"; path = "cordova-sqlite-storage/sqlite3.c"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A0EF6CC8A41C42D688F5726E /* SQLitePlugin.h */ = {isa = PBXFileReference; name = "SQLitePlugin.h"; path = "cordova-sqlite-storage/SQLitePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		15EECD945C9C42F697379B1F /* PSPDFThreadSafeMutableDictionary.h */ = {isa = PBXFileReference; name = "PSPDFThreadSafeMutableDictionary.h"; path = "cordova-sqlite-storage/PSPDFThreadSafeMutableDictionary.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		7A5AEB4F37E44466BEA5FED8 /* sqlite3.h */ = {isa = PBXFileReference; name = "sqlite3.h"; path = "cordova-sqlite-storage/sqlite3.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Waypool/config.xml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,15 +69,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
-				D03BC423239C4F2EB48CA769 /* libc++.tbd in Frameworks */,
-				EE1F05FCF32A4DCC9E62C347 /* libz.tbd in Frameworks */,
-				69F49B92243D459B87C6F6B8 /* AddressBook.framework in Frameworks */,
-				22E9DC36C0BE4D24A145AD4F /* libsqlite3.0.tbd in Frameworks */,
-				82A0EC30A71C4FBD9AA66A0B /* Security.framework in Frameworks */,
-				7CB47801F10142FC8FB85E00 /* CoreLocation.framework in Frameworks */,
-				8C08FA7C663A43CEA9DBFD61 /* ImageIO.framework in Frameworks */,
-				0EC11BEDE57B4D13BA17D932 /* AVFoundation.framework in Frameworks */,
-				96B6543D0A0E552E10317DA4 /* libPods-Waypool.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +85,7 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 			);
 			name = Classes;
-			path = Waypool/Classes;
+			path = "Waypool/Classes";
 			sourceTree = SOURCE_ROOT;
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -173,7 +109,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				5C521DD31C01AFD638F0C2B4 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -186,7 +121,7 @@
 				ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */,
 			);
 			name = "Other Sources";
-			path = Waypool;
+			path = "Waypool";
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -196,24 +131,14 @@
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* Waypool-Info.plist */,
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
-				1EDE965D9C5A451D818CF193 /* GoogleService-Info.plist */,
 			);
 			name = Resources;
-			path = Waypool/Resources;
+			path = "Waypool/Resources";
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9557877064AB4ADB9FE0E33D /* libc++.tbd */,
-				DE4CB0FFDAB24657B9D083EA /* libz.tbd */,
-				ACCAC2D253B1459AB1645418 /* AddressBook.framework */,
-				6E31B3D73EBF40FA85A73328 /* libsqlite3.0.tbd */,
-				DB126014BA93432596460CB3 /* Security.framework */,
-				DDB6EA24866246929AEF35A8 /* CoreLocation.framework */,
-				265D57A7816C4E33B1DCA293 /* ImageIO.framework */,
-				E55B2ACAA8244EF8B095163C /* AVFoundation.framework */,
-				32F680AD3DE2C59CCB5CA951 /* libPods-Waypool.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,43 +165,10 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				6999ED366B324AE29297528F /* FCMPlugin.m */,
-				F4F5356076A4444EB1BA1BBB /* AppDelegate+FCMPlugin.m */,
-				F0E375B8092C4BF0A874EF2C /* FCMPlugin.h */,
-				7B2488955ECE43568B28BDEF /* AppDelegate+FCMPlugin.h */,
-				6F9A971422064CC1B4341A61 /* UIImage+CropScaleOrientation.m */,
-				7E955E552FC94F329D697BB9 /* CDVCamera.m */,
-				B677219E23A44ED9B05FD146 /* CDVJpegHeaderWriter.m */,
-				0E4371CDB6D64ABF9DE1ABCE /* UIImage+CropScaleOrientation.h */,
-				17525AF8F58642A3ACC86492 /* CDVCamera.h */,
-				DDD77D1A755F4767933FE391 /* CDVJpegHeaderWriter.h */,
-				31F647F0125441199EFD170D /* CDVExif.h */,
-<<<<<<< HEAD
-				D880CDF750054894974C4897 /* CDVLocation.m */,
-				C3D3A3E4E4854F2FA2FA7E2D /* CDVLocation.h */,
-				B3133DCF6F464670BAE713C4 /* CFCallNumber.m */,
-				22C011DCCEDB40A29D804093 /* CFCallNumber.h */,
-=======
-				39E64ABD91C5429D8525DA11 /* SQLitePlugin.m */,
-				B00C5A2BECA54149ACC7C8A0 /* PSPDFThreadSafeMutableDictionary.m */,
-				59CF1F563C614C80A0FF8CBB /* sqlite3.c */,
-				A0EF6CC8A41C42D688F5726E /* SQLitePlugin.h */,
-				15EECD945C9C42F697379B1F /* PSPDFThreadSafeMutableDictionary.h */,
-				7A5AEB4F37E44466BEA5FED8 /* sqlite3.h */,
->>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
 			);
 			name = Plugins;
-			path = Waypool/Plugins;
+			path = "Waypool/Plugins";
 			sourceTree = SOURCE_ROOT;
-		};
-		5C521DD31C01AFD638F0C2B4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				465032D0EA7E0672903857D7 /* Pods-Waypool.debug.xcconfig */,
-				6621DB7028E1A1ACED1001CA /* Pods-Waypool.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
 		};
 		EB87FDF11871DA420020F90C /* Staging */ = {
 			isa = PBXGroup;
@@ -294,7 +186,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Waypool" */;
 			buildPhases = (
-				8DE78D1B9DF63AB905A59600 /* [CP] Check Pods Manifest.lock */,
 				304B58A110DAC018002A0835 /* Copy www directory */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -305,8 +196,8 @@
 			dependencies = (
 				301BF551109A68C00062928A /* PBXTargetDependency */,
 			);
-			name = Waypool;
-			productName = Waypool;
+			name = "Waypool";
+			productName = "Waypool";
 			productReference = 1D6058910D05DD3D006BFB54 /* Waypool.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -319,7 +210,6 @@
 				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 6W4HCW64U3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -328,11 +218,7 @@
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
-			knownRegions = (
-				en,
-			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
-			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
@@ -372,7 +258,6 @@
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
-				EC0554586B2344619A95EB40 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,28 +279,6 @@
 			shellScript = "NODEJS_PATH=/usr/local/bin; NVM_NODE_PATH=~/.nvm/versions/node/`nvm version 2>/dev/null`/bin; N_NODE_PATH=`find /usr/local/n/versions/node/* -maxdepth 0 -type d 2>/dev/null | tail -1`/bin; XCODE_NODE_PATH=`xcode-select --print-path`/usr/share/xcs/Node/bin; PATH=$NODEJS_PATH:$NVM_NODE_PATH:$N_NODE_PATH:$XCODE_NODE_PATH:$PATH && node cordova/lib/copy-www-build-step.js";
 			showEnvVarsInLog = 0;
 		};
-		8DE78D1B9DF63AB905A59600 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Waypool-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -426,19 +289,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				2FEEB1A4F7B84B96AF4EAB2F /* FCMPlugin.m in Sources */,
-				26747B5EF955400285F4B759 /* AppDelegate+FCMPlugin.m in Sources */,
-				3871D6929BDD45E7B4439810 /* UIImage+CropScaleOrientation.m in Sources */,
-				7BFDBD8523954FCBB633BC92 /* CDVCamera.m in Sources */,
-				57AB1F423CC44CBF83C5FBBD /* CDVJpegHeaderWriter.m in Sources */,
-<<<<<<< HEAD
-				F2B53C2AD2DC4B1DBDC6DEE9 /* CDVLocation.m in Sources */,
-				EFAC6E8246954C5B9A35C9A8 /* CFCallNumber.m in Sources */,
-=======
-				BFBABB9A9A4E4248ABDCA115 /* SQLitePlugin.m in Sources */,
-				8D00E320997140678A3FE945 /* PSPDFThreadSafeMutableDictionary.m in Sources */,
-				2B836B461DBA4174A5E95FF5 /* sqlite3.c in Resources */,
->>>>>>> d0a4bdf01fcf078413412f9d3e11c69b237abd39
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,18 +305,14 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 465032D0EA7E0672903857D7 /* Pods-Waypool.debug.xcconfig */;
+			baseConfigurationReference = 3047A50F1AB8059700498E2A /* build-debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 6W4HCW64U3;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -476,30 +322,22 @@
 				INFOPLIST_FILE = "Waypool/Waypool-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.waypoolsas.waypool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waypoolsas.waypooluser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6621DB7028E1A1ACED1001CA /* Pods-Waypool.release.xcconfig */;
+			baseConfigurationReference = 3047A5101AB8059700498E2A /* build-release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = 6W4HCW64U3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Waypool/Waypool-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -507,11 +345,8 @@
 				INFOPLIST_FILE = "Waypool/Waypool-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.waypoolsas.waypool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waypoolsas.waypooluser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -520,8 +355,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3047A5111AB8059700498E2A /* build.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -554,12 +387,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waypoolsas.waypool;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waypoolsas.waypooluser;
 			};
 			name = Debug;
 		};
@@ -567,8 +397,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3047A5111AB8059700498E2A /* build.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -599,11 +427,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waypoolsas.waypool;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waypoolsas.waypooluser;
 			};
 			name = Release;
 		};

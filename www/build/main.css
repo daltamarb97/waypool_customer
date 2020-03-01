@@ -25707,7 +25707,7 @@ li,
 }
 
 .text-theme {
-  color: #3fb1df;
+  color: #001127;
 }
 
 .text-theme-driver {
@@ -25739,7 +25739,7 @@ li,
 }
 
 .bg-theme {
-  background: #3fb1df;
+  background: #001127;
 }
 
 .bg-theme-driver {
@@ -25780,8 +25780,8 @@ li,
 
 .tab-button[aria-selected=true],
 .tab-button[aria-selected=true] .tab-button-icon {
-  color: #3fb1df !important;
-  border-color: #3fb1df !important;
+  color: #001127 !important;
+  border-color: #001127 !important;
 }
 
 .tab-button-icon-driver {
@@ -25897,7 +25897,7 @@ li,
 }
 
 .header.bg-theme .toolbar-background {
-  background: #3fb1df !important;
+  background: #001127 !important;
 }
 
 .header.bg-theme .text-center {
@@ -30136,7 +30136,6 @@ page-confirmtrip .hot {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 5px 15px;
 }
 
 .ios page-findride .search .card-content .searchbar-search-icon {
@@ -30234,6 +30233,14 @@ page-confirmtrip .hot {
   flex-direction: row;
 }
 
+.ios page-findride .buttonSelectionMode {
+  width: 35%;
+  border-radius: 0;
+  margin: -4px;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+}
+
 .md page-findride .search {
   border-radius: 10px;
   margin: 10px 0;
@@ -30245,7 +30252,6 @@ page-confirmtrip .hot {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0px 15px;
 }
 
 .md page-findride .search .card-content .searchbar-search-icon {
@@ -30253,8 +30259,8 @@ page-confirmtrip .hot {
 }
 
 .md page-findride .search .card-content .searchbar-input {
-  padding: 17px  !important;
-  -webkit-box-shadow: none !important;
+  padding: 12px;
+  -webkit-box-shadow: none;
   box-shadow: none !important;
   font-size: 1.25rem;
 }
@@ -30341,6 +30347,14 @@ page-confirmtrip .hot {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+}
+
+.md page-findride .buttonSelectionMode {
+  width: 35%;
+  border-radius: 0;
+  margin: -4px;
+  -webkit-box-shadow: 0px 0px 0px rgba(255, 255, 255, 0) !important;
+  box-shadow: 0px 0px 0px rgba(255, 255, 255, 0) !important;
 }
 
 page-findride .search {

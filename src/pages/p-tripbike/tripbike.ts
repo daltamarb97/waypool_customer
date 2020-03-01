@@ -47,6 +47,9 @@ export class TripbikePage {
   testCoords : any = [];
   distance:any;
   trip:any;
+  lat: any;
+  lng: any;
+  watch: any;
   constructor(public navCtrl: NavController,public alertCtrl: AlertController,private MetricsService:MetricsService,public TripsService:TripsService,public toastCtrl: ToastController,private callNumber: CallNumber,public navParams: NavParams,private SignUpService: SignUpService, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, private afDB: AngularFireDatabase) {
     this.markers = [];
     // this.testCoords = [
@@ -182,24 +185,69 @@ export class TripbikePage {
     }
     startTracking() {
 
-      this.trackedRoute = [];
+    //   this.trackedRoute = [];
    
-      this.positionSubscription = this.geolocation.watchPosition()
-        .pipe(
-          filter((p) => p.coords !== undefined) //Filter Out Errors
-        )
-        .subscribe(data => {
-          setTimeout(() => {
-            this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
-            this.redrawPath(this.trackedRoute,data);
-            console.log(data);
+    //   this.positionSubscription = this.geolocation.watchPosition({enableHighAccuracy: true, timeout: 1000})
+    //     .pipe(
+    //       filter((p) => p.coords !== undefined) //Filter Out Errors
+    //     )
+    //     .subscribe(data => {
+    //       setTimeout(() => {
+    //         this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
+    //         this.redrawPath(this.trackedRoute,data);
+    //         console.log(data);
             
-          }, 0);
-        });
+    //       }, 0);
+    //     });
+
+
+        
+    // // Background Tracking
+
+    // let config = {
+    //   desiredAccuracy: 0,
+    //   stationaryRadius: 20,
+    //   distanceFilter: 5, 
+    //   debug: true,
+    //   interval: 2000 
+    // };
+    
+    // this.backgroundGeolocation.configure(config).subscribe((location) => {
+
+    //   console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
+
+    //   // Run update inside of Angular's zone
+    //   this.zone.run(() => {
+    //     this.lat = location.latitude;
+    //     this.lng = location.longitude;
+    //   });
+    //   this.trackedRoute.push({ lat: location.latitude, lng: location.longitude });
+
+    //   this.redrawPathForBG(this.trackedRoute,location);
+
+    // }, (err) => {
+
+    //   console.log(err);
+
+    // });
+
+    // // Turn ON the background-geolocation system.
+    // this.backgroundGeolocation.start();
+
+
+    // // Foreground Tracking
+
+ 
+
+
+
+
+
+        
    
     }
    
-    redrawPath(path,data) {
+     redrawPath(path,data) {
       if (this.currentMapTrack) {
         this.currentMapTrack.setMap(null);
       }
@@ -214,8 +262,7 @@ export class TripbikePage {
           strokeWeight: 3
         });
         this.deleteMarkers();
-        let coordsForMarker = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
-        this.addMarker(coordsForMarker);
+        
 
         this.currentMapTrack.setMap(this.map);
         // this.addMarker(pathForMarker);
@@ -223,7 +270,32 @@ export class TripbikePage {
 
            }
           }
-  
+          
+          //draw path for background geolocation
+          redrawPathForBG(path,position) {
+            if (this.currentMapTrack) {
+              this.currentMapTrack.setMap(null);
+            }
+            console.log(path.length > 1);
+            
+            if (path.length > 1) {
+              this.currentMapTrack = new google.maps.Polyline({
+                path: path,
+                geodesic: true,
+                strokeColor: '#4BB543',
+                strokeOpacity: 1.0,
+                strokeWeight: 3
+              });
+              this.deleteMarkers();
+              let coordsForMarker = new google.maps.LatLng(position.latitude,position.longitude);
+              this.addMarker(coordsForMarker);
+      
+              this.currentMapTrack.setMap(this.map);
+              // this.addMarker(pathForMarker);
+              this.setMapOnAll(this.map);
+      
+                 }
+                }
   
     addMarker(coordsForMarker) {
       let marker = new google.maps.Marker({
@@ -282,7 +354,8 @@ export class TripbikePage {
       
 
       // this.storage.set('routes', this.previousTracks);
-      
+      // this.backgroundGeolocation.finish();
+
       this.positionSubscription.unsubscribe();
       this.TripsService.recordTripsInBike(this.SignUpService.userPlace,this.userUid,today,newRoute,this.origin,this.destination,this.distance)
       this.MetricsService.metricTripsInBikes(this.SignUpService.userPlace,this.userUid,today,newRoute,this.origin,this.destination,this.distance)

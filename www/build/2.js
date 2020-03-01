@@ -17301,8 +17301,7 @@ webpackContext.id = 832;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_angularfire2_database__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_signup_services__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operators__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_metrics_service__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_metrics_service__ = __webpack_require__(361);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17312,7 +17311,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -17438,18 +17436,41 @@ var TripbikePage = /** @class */ (function () {
     TripbikePage.prototype.goToWaze = function () {
     };
     TripbikePage.prototype.startTracking = function () {
-        var _this = this;
-        this.trackedRoute = [];
-        this.positionSubscription = this.geolocation.watchPosition()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_11_rxjs_operators__["filter"])(function (p) { return p.coords !== undefined; }) //Filter Out Errors
-        )
-            .subscribe(function (data) {
-            setTimeout(function () {
-                _this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
-                _this.redrawPath(_this.trackedRoute, data);
-                console.log(data);
-            }, 0);
-        });
+        //   this.trackedRoute = [];
+        //   this.positionSubscription = this.geolocation.watchPosition({enableHighAccuracy: true, timeout: 1000})
+        //     .pipe(
+        //       filter((p) => p.coords !== undefined) //Filter Out Errors
+        //     )
+        //     .subscribe(data => {
+        //       setTimeout(() => {
+        //         this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
+        //         this.redrawPath(this.trackedRoute,data);
+        //         console.log(data);
+        //       }, 0);
+        //     });
+        // // Background Tracking
+        // let config = {
+        //   desiredAccuracy: 0,
+        //   stationaryRadius: 20,
+        //   distanceFilter: 5, 
+        //   debug: true,
+        //   interval: 2000 
+        // };
+        // this.backgroundGeolocation.configure(config).subscribe((location) => {
+        //   console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
+        //   // Run update inside of Angular's zone
+        //   this.zone.run(() => {
+        //     this.lat = location.latitude;
+        //     this.lng = location.longitude;
+        //   });
+        //   this.trackedRoute.push({ lat: location.latitude, lng: location.longitude });
+        //   this.redrawPathForBG(this.trackedRoute,location);
+        // }, (err) => {
+        //   console.log(err);
+        // });
+        // // Turn ON the background-geolocation system.
+        // this.backgroundGeolocation.start();
+        // // Foreground Tracking
     };
     TripbikePage.prototype.redrawPath = function (path, data) {
         if (this.currentMapTrack) {
@@ -17465,7 +17486,27 @@ var TripbikePage = /** @class */ (function () {
                 strokeWeight: 3
             });
             this.deleteMarkers();
-            var coordsForMarker = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
+            this.currentMapTrack.setMap(this.map);
+            // this.addMarker(pathForMarker);
+            this.setMapOnAll(this.map);
+        }
+    };
+    //draw path for background geolocation
+    TripbikePage.prototype.redrawPathForBG = function (path, position) {
+        if (this.currentMapTrack) {
+            this.currentMapTrack.setMap(null);
+        }
+        console.log(path.length > 1);
+        if (path.length > 1) {
+            this.currentMapTrack = new google.maps.Polyline({
+                path: path,
+                geodesic: true,
+                strokeColor: '#4BB543',
+                strokeOpacity: 1.0,
+                strokeWeight: 3
+            });
+            this.deleteMarkers();
+            var coordsForMarker = new google.maps.LatLng(position.latitude, position.longitude);
             this.addMarker(coordsForMarker);
             this.currentMapTrack.setMap(this.map);
             // this.addMarker(pathForMarker);
@@ -17513,6 +17554,7 @@ var TripbikePage = /** @class */ (function () {
         var newRoute = { finished: new Date().getTime(), path: this.trackedRoute };
         console.log(newRoute);
         // this.storage.set('routes', this.previousTracks);
+        // this.backgroundGeolocation.finish();
         this.positionSubscription.unsubscribe();
         this.TripsService.recordTripsInBike(this.SignUpService.userPlace, this.userUid, today, newRoute, this.origin, this.destination, this.distance);
         this.MetricsService.metricTripsInBikes(this.SignUpService.userPlace, this.userUid, today, newRoute, this.origin, this.destination, this.distance);
@@ -17580,9 +17622,9 @@ var TripbikePage = /** @class */ (function () {
     ], TripbikePage.prototype, "mapElement", void 0);
     TripbikePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tripbike',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-tripbike/tripbike.html"*/'<ion-header >\n    <ion-navbar class="bg-green">\n        <ion-title style="overflow: visible;">DISFRUTA EL VIAJE\n\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n        <ion-card class="cardOnTrip">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}.\n                        </h2>\n                       \n                    </div>\n                    <div class="more">\n                        <h2 class="text-theme">\n                            <!-- <ion-icon name="md-more"></ion-icon> -->\n                        </h2>\n                    </div>\n                </ion-item>\n                <ion-card-content>\n                    <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{origin}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{destination}}</p>\n                    </div>\n                    Distancia a recorrer: {{distance}} KM\n                    <ion-row>\n                           <!-- <div text-left>\n                                <button class="btn bg-theme rounded full text-white" (click)="goToWaze(user.origin)">waze</button>                               \n                            </div>  -->                      \n                                <!-- <button class="btn bg-yellow rounded full text-white"><ion-icon name="chatboxes" class="text-white"></ion-icon></button> -->\n                                \n                            <button  class="btn bg-green rounded full text-white" (click)="finishTrip()">Terminar Viaje</button> \n                            <button  class="btn bg-red rounded full text-white" (click)="cancelTrip()">Cancelar Viaje</button>                      \n                     \n                    </ion-row>\n                </ion-card-content>             \n            </ion-card>\n    <div #map id="map"></div>   \n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-tripbike/tripbike.html"*/
+            selector: 'page-tripbike',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-tripbike\tripbike.html"*/'<ion-header >\n\n    <ion-navbar class="bg-green">\n\n        <ion-title style="overflow: visible;">DISFRUTA EL VIAJE\n\n\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bg-light">\n\n        <ion-card class="cardOnTrip">\n\n                <ion-item>\n\n                    <ion-avatar item-start>\n\n                        <img src="assets/imgs/userPicture.png">\n\n                    </ion-avatar>\n\n                    <div class="name">\n\n                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}.\n\n                        </h2>\n\n                       \n\n                    </div>\n\n                    <div class="more">\n\n                        <h2 class="text-theme">\n\n                            <!-- <ion-icon name="md-more"></ion-icon> -->\n\n                        </h2>\n\n                    </div>\n\n                </ion-item>\n\n                <ion-card-content>\n\n                    <div class="ride-detail">\n\n                        <p>\n\n                            <span class="icon-location bg-theme"></span>{{origin}}</p>\n\n                        <p>\n\n                            <span class="icon-location bg-yellow"></span>{{destination}}</p>\n\n                    </div>\n\n                    Distancia a recorrer: {{distance}} KM\n\n                    <ion-row>\n\n                           <!-- <div text-left>\n\n                                <button class="btn bg-theme rounded full text-white" (click)="goToWaze(user.origin)">waze</button>                               \n\n                            </div>  -->                      \n\n                                <!-- <button class="btn bg-yellow rounded full text-white"><ion-icon name="chatboxes" class="text-white"></ion-icon></button> -->\n\n                                \n\n                            <button  class="btn bg-green rounded full text-white" (click)="finishTrip()">Terminar Viaje</button> \n\n                            <button  class="btn bg-red rounded full text-white" (click)="cancelTrip()">Cancelar Viaje</button>                      \n\n                     \n\n                    </ion-row>\n\n                </ion-card-content>             \n\n            </ion-card>\n\n    <div #map id="map"></div>   \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-tripbike\tripbike.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_12__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_7__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_10__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_geolocation___["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__["AngularFireDatabase"]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_11__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_7__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_10__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_geolocation___["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_2__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__["AngularFireDatabase"]])
     ], TripbikePage);
     return TripbikePage;
 }());

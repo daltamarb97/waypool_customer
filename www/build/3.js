@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 701:
+/***/ 702:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FindridePassPageModule", function() { return FindridePassPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__findride__ = __webpack_require__(894);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__findride__ = __webpack_require__(895);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17282,7 +17282,7 @@ webpackContext.id = 832;
 
 /***/ }),
 
-/***/ 894:
+/***/ 895:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17368,7 +17368,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 var FindridePassPage = /** @class */ (function () {
-    function FindridePassPage(navCtrl, MetricsService, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, geofireService, SignUpService, modalCtrl, app, afDB, TripsService, instanceService, platform, fcm, firebase, loadingCtrl, viewCtril) {
+    function FindridePassPage(navCtrl, MetricsService, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, geofireService, SignUpService, modalCtrl, app, afDB, TripsService, instanceService, platform, fcm, firebase, loadingCtrl, viewCtril, renderer) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.MetricsService = MetricsService;
@@ -17389,6 +17389,7 @@ var FindridePassPage = /** @class */ (function () {
         this.firebase = firebase;
         this.loadingCtrl = loadingCtrl;
         this.viewCtril = viewCtril;
+        this.renderer = renderer;
         // waypoints variables
         this.directionsService = null;
         this.directionsDisplay = null;
@@ -17407,6 +17408,9 @@ var FindridePassPage = /** @class */ (function () {
         this.usingGeolocation = false;
         this.keyDetectedInGeofireOrigin = false;
         this.keyDetectedInGeofireDestination = false;
+        this.bikeMode = false;
+        this.carpoolMode = false;
+        this.passengerMode = true;
         this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
         this.geocoder = new google.maps.Geocoder;
         this.autocompleteMyPos = { input: '' };
@@ -17429,18 +17433,6 @@ var FindridePassPage = /** @class */ (function () {
                 console.log(snapshot.val().multipleLocations);
                 _this.zonesToIterate = snapshot.val().zones;
                 console.log(_this.zonesToIterate);
-                // if user closed app at myRide before finishing a trip, this will delete the garbage 
-                // Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
-                //   this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').once('value').then((snapOnTrip)=>{
-                //     if(snapOnTrip.val() === false || snapOnTrip.val() === undefined || snapOnTrip.val() === null){
-                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/saveTrip/').remove();
-                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/trip/').remove();
-                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/availableReserves/').remove();
-                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/keyTrip/').remove();
-                //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').remove();
-                //     }
-                //   })
-                // })
                 //logica de instrucciones 
                 _this.afDB.database.ref(snapshot.val().zones[0] + '/users/' + _this.userUid).once('value').then(function (snapWalkthr) {
                     if (snapWalkthr.val().shownInstructions === true) {
@@ -17881,7 +17873,7 @@ var FindridePassPage = /** @class */ (function () {
         this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).once('value').then(function (snapBlock) {
             if (snapBlock.val().blockPayment === true) {
                 _this.loading.dismiss();
-                var alert_1 = _this.alertCtrl.create({
+                var alert = _this.alertCtrl.create({
                     title: 'Tienes un saldo pendiente por pagar',
                     subTitle: 'Para seguir disfrutando de Waypool debes pagar el saldo pendiente de tus viajes pasados, estas perjudicando a varias personas de tu comunidad',
                     buttons: [
@@ -17897,18 +17889,18 @@ var FindridePassPage = /** @class */ (function () {
                         }
                     ]
                 });
-                alert_1.present();
+                alert.present();
             }
             else {
                 if (_this.user.trips) {
                     if (_this.user.onTrip == true) {
                         _this.loading.dismiss();
-                        var alert_2 = _this.alertCtrl.create({
+                        var alert = _this.alertCtrl.create({
                             title: 'Estas actualmente en un viaje',
                             subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
                             buttons: ['OK']
                         });
-                        alert_2.present();
+                        alert.present();
                     }
                     else {
                         try {
@@ -18535,20 +18527,89 @@ var FindridePassPage = /** @class */ (function () {
         }.bind(this));
     };
     FindridePassPage.prototype.goToBikeMode = function () {
-        console.log(this.user);
-        this.navCtrl.push('BikeModePage', { user: this.user });
+        // console.log(this.user);
+        // this.navCtrl.push('BikeModePage',{user:this.user})
+        this.bikeMode = true;
+        this.carpoolMode = false;
+        this.passengerMode = false;
+        console.log(this.bikeMode);
+        console.log(this.passengerMode);
+        this.bikeModeIsSelected();
+    };
+    FindridePassPage.prototype.goToCarpoolMode = function () {
+        this.bikeMode = false;
+        this.carpoolMode = true;
+        this.passengerMode = false;
+        this.carModeIsSelected();
+    };
+    FindridePassPage.prototype.goToPassengerMode = function () {
+        this.bikeMode = false;
+        this.carpoolMode = false;
+        this.passengerMode = true;
+        console.log(this.bikeMode);
+        console.log(this.passengerMode);
+        this.passengerModeIsSelected();
+    };
+    FindridePassPage.prototype.bikeModeIsSelected = function () {
+        this.renderer.setElementStyle(this.carButton.nativeElement, 'background-color', '#fff7f7');
+        this.renderer.setElementStyle(this.bikeButton.nativeElement, 'background-color', '#001127');
+        this.renderer.setElementStyle(this.passengerButton.nativeElement, 'background-color', '#fff7f7');
+        this.renderer.setElementStyle(this.iconCar.nativeElement, 'color', '#001127');
+        this.renderer.setElementStyle(this.iconBike.nativeElement, 'color', '#ffffff');
+        this.renderer.setElementStyle(this.iconPassenger.nativeElement, 'color', '#001127');
+    };
+    FindridePassPage.prototype.passengerModeIsSelected = function () {
+        this.renderer.setElementStyle(this.carButton.nativeElement, 'background-color', '#fff7f7');
+        this.renderer.setElementStyle(this.passengerButton.nativeElement, 'background-color', '#001127');
+        this.renderer.setElementStyle(this.bikeButton.nativeElement, 'background-color', '#fff7f7');
+        this.renderer.setElementStyle(this.iconCar.nativeElement, 'color', '#001127');
+        this.renderer.setElementStyle(this.iconPassenger.nativeElement, 'color', '#ffffff');
+        this.renderer.setElementStyle(this.iconBike.nativeElement, 'color', '#001127');
+    };
+    FindridePassPage.prototype.carModeIsSelected = function () {
+        this.renderer.setElementStyle(this.bikeButton.nativeElement, 'background-color', '#fff7f7');
+        this.renderer.setElementStyle(this.carButton.nativeElement, 'background-color', '#001127');
+        this.renderer.setElementStyle(this.passengerButton.nativeElement, 'background-color', '#fff7f7');
+        this.renderer.setElementStyle(this.iconBike.nativeElement, 'color', '#001127');
+        this.renderer.setElementStyle(this.iconCar.nativeElement, 'color', '#ffffff');
+        this.renderer.setElementStyle(this.iconPassenger.nativeElement, 'color', '#001127');
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], FindridePassPage.prototype, "mapElement", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('carButton', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], FindridePassPage.prototype, "carButton", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('passengerButton', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], FindridePassPage.prototype, "passengerButton", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('bikeButton', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], FindridePassPage.prototype, "bikeButton", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('iconCar', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], FindridePassPage.prototype, "iconCar", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('iconPassenger', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], FindridePassPage.prototype, "iconPassenger", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('iconBike', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], FindridePassPage.prototype, "iconBike", void 0);
     FindridePassPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-findride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-findride/findride.html"*/'\n<ion-header class="bg-theme">\n  <ion-navbar>\n      <button ion-button menuToggle>\n          <ion-icon name="menu" style="color: white;"></ion-icon>\n        \n        </button>\n      <ion-title>WAYPOOL</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content  padding>\n   \n \n    <ion-card class="search">\n          \n        <ion-card-content>\n            <span class="dot bg-theme"></span>\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n          \n            <ion-list   [hidden]="autocompleteItems.length == 0">\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n                  {{ item.description }}\n                </ion-item>\n              </ion-list>\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n        </ion-card-content>\n        <ion-card-content>\n            <span class="dot bg-yellow"></span>           \n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n              {{ item.description }}\n            </ion-item>\n          </ion-list>\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n        </ion-card-content>\n        \n    </ion-card>\n  \n <div #map id="map"></div>  \n    \n    \n<ion-row class="rowOfButtons">\n\n  <div class="btn-footer btn-left">\n      <button class="btn rounded bg-darkblue text-white myReservesButton" style="width: 100%" (click)="goToMyReserves()" >Mis Viajes</button> \n  </div>\n  <div class="btn-right">\n      <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%">Buscar</button>\n\n  </div>\n  <div class="btn-right">\n\n</div>\n</ion-row>\n\n<div *ngIf="onTrip" >\n    <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;\n     position:absolute;\n     bottom: 0px ;\n     left: 0px ;\n     height: 51px; \n     font-size: large;\n   " (click)="goToTrip() " >VIAJE EN CURSO\n    </button>\n</div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/p-findride/findride.html"*/
+            selector: 'page-findride',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-findride\findride.html"*/'\n\n<ion-header class="bg-theme">\n\n  <ion-navbar>\n\n      <button ion-button menuToggle>\n\n          <ion-icon name="menu" style="color: white;"></ion-icon>\n\n        \n\n        </button>\n\n      <ion-title>WAYPOOL</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content  padding>\n\n   \n\n \n\n    <ion-card class="search">\n\n      <ion-list style="    display: flex; justify-content: center;">\n\n        <button class="btn rounded bg-theme text-white buttonSelectionMode" #carButton  (click)="goToCarpoolMode()" >\n\n          <ion-icon #iconCar  name="car" ></ion-icon>      \n\n        </button> \n\n        <button class="btn rounded bg-theme text-white buttonSelectionMode " #passengerButton  (click)="goToPassengerMode()">\n\n          <ion-icon #iconPassenger name="people" ></ion-icon>      \n\n    \n\n        </button>  \n\n        <button class="btn rounded bg-theme text-white buttonSelectionMode" #bikeButton (click)="goToBikeMode()" >\n\n          <ion-icon #iconBike name="bicycle" ></ion-icon>      \n\n    \n\n        </button>  \n\n     </ion-list>\n\n        <ion-card-content>\n\n            <span class="dot bg-theme"></span>\n\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n\n          \n\n            <ion-list   [hidden]="autocompleteItems.length == 0">\n\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n\n                  {{ item.description }}\n\n                </ion-item>\n\n              </ion-list>\n\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n        </ion-card-content>\n\n        <ion-card-content>\n\n            <span class="dot bg-yellow"></span>           \n\n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n\n              {{ item.description }}\n\n            </ion-item>\n\n          </ion-list>\n\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n\n\n        </ion-card-content>\n\n        \n\n    </ion-card>\n\n  \n\n <div #map id="map"></div>  \n\n    \n\n    \n\n<ion-row class="rowOfButtons">\n\n\n\n  \n\n  <div class="btn-right" *ngIf="carpoolMode">\n\n      <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%"> Ofrecer </button>\n\n\n\n  </div>\n\n  <div class="btn-right" *ngIf="passengerMode">\n\n    <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%">Buscar</button>\n\n\n\n</div>\n\n<div class="btn-right" *ngIf="bikeMode">\n\n  <button (click)="listride()" class="btn rounded bg-theme text-white " style="width: 100%">Iniciar Viaje</button>\n\n\n\n</div>\n\n</ion-row>\n\n\n\n<div *ngIf="onTrip" >\n\n    <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;\n\n     position:absolute;\n\n     bottom: 0px ;\n\n     left: 0px ;\n\n     height: 51px; \n\n     font-size: large;\n\n   " (click)="goToTrip() " >VIAJE EN CURSO\n\n    </button>\n\n</div>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-findride\findride.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_15__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ViewController */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_15__services_metrics_service__["a" /* MetricsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_15__services_metrics_service__["a" /* MetricsService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ModalController */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"]) === "function" && _o || Object, typeof (_p = typeof __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */]) === "function" && _p || Object, typeof (_q = typeof __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */]) === "function" && _q || Object, typeof (_r = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* Platform */]) === "function" && _r || Object, typeof (_s = typeof __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */]) === "function" && _s || Object, typeof (_t = typeof __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */]) === "function" && _t || Object, typeof (_u = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */]) === "function" && _u || Object, typeof (_v = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ViewController */]) === "function" && _v || Object, typeof (_w = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */]) === "function" && _w || Object])
     ], FindridePassPage);
     return FindridePassPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w;
 }());
 
 //# sourceMappingURL=findride.js.map

@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef,NgZone } from '@angular/core';
+import { Component, ViewChild, ElementRef,NgZone,Renderer } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage, App, ToastController, LoadingController } from 'ionic-angular';
 import { sendCoordsService } from '../../services/sendCoords.service';
@@ -27,7 +27,15 @@ declare var google;
 export class FindridePassPage {
  
   @ViewChild('map') mapElement: ElementRef;
-  
+  @ViewChild('carButton',{read:ElementRef}) carButton;
+  @ViewChild('passengerButton',{read:ElementRef}) passengerButton;
+  @ViewChild('bikeButton',{read:ElementRef}) bikeButton;
+  @ViewChild('iconCar',{read:ElementRef}) iconCar;
+
+  @ViewChild('iconPassenger',{read:ElementRef}) iconPassenger;
+
+  @ViewChild('iconBike',{read:ElementRef}) iconBike;
+
   map: any;
   markers: any;
   // geofire
@@ -107,7 +115,10 @@ export class FindridePassPage {
   keyDetectedInGeofireDestination:boolean = false;
   thereAreReserves:boolean;
   saveTrip:any;
- constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase, public loadingCtrl: LoadingController, public viewCtril: ViewController ) {
+  bikeMode:boolean = false;
+  carpoolMode:boolean = false;
+  passengerMode:boolean = true;
+ constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase, public loadingCtrl: LoadingController, public viewCtril: ViewController,public renderer: Renderer ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -139,19 +150,7 @@ export class FindridePassPage {
         this.zonesToIterate = snapshot.val().zones;
         console.log(this.zonesToIterate);
 
-        // if user closed app at myRide before finishing a trip, this will delete the garbage 
-        // Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
-        //   this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').once('value').then((snapOnTrip)=>{
-        //     if(snapOnTrip.val() === false || snapOnTrip.val() === undefined || snapOnTrip.val() === null){
-        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/saveTrip/').remove();
-        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/trip/').remove();
-        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/availableReserves/').remove();
-        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/keyTrip/').remove();
-        //       this.afDB.database.ref(this.zonesToIterate[key] + '/users/' + this.userUid + '/onTrip/').remove();
-
-        //     }
-        //   })
-        // })
+ 
 
 
         //logica de instrucciones 
@@ -693,6 +692,7 @@ geocodeLatLng(latLng,inputName) {
 
 
 listride(){
+  
     this.loading = this.loadingCtrl.create({
       spinner: 'crescent',
       content: `
@@ -1509,11 +1509,63 @@ listride(){
    }.bind(this))
   }
       goToBikeMode(){
-        console.log(this.user);
+        // console.log(this.user);
         
-        this.navCtrl.push('BikeModePage',{user:this.user})
+        // this.navCtrl.push('BikeModePage',{user:this.user})
+        this.bikeMode = true;
+        this.carpoolMode = false;
+        this.passengerMode = false;
+        console.log(this.bikeMode);
+        console.log(this.passengerMode);
+        this.bikeModeIsSelected();
       }
+      goToCarpoolMode(){
+        this.bikeMode = false;
+        this.carpoolMode = true;
+        this.passengerMode = false;
+        this.carModeIsSelected();
 
+      }
+      goToPassengerMode(){
+        this.bikeMode = false;
+        this.carpoolMode = false;
+        this.passengerMode = true;
+        console.log(this.bikeMode);
+        console.log(this.passengerMode);
+        this.passengerModeIsSelected();
+
+      }
+      bikeModeIsSelected(){
+        this.renderer.setElementStyle(this.carButton.nativeElement,'background-color','#fff7f7')
+        this.renderer.setElementStyle(this.bikeButton.nativeElement,'background-color','#001127')
+        this.renderer.setElementStyle(this.passengerButton.nativeElement,'background-color','#fff7f7')
+      
+        this.renderer.setElementStyle(this.iconCar.nativeElement,'color','#001127')
+        this.renderer.setElementStyle(this.iconBike.nativeElement,'color','#ffffff')
+        this.renderer.setElementStyle(this.iconPassenger.nativeElement,'color','#001127')
+
+      
+      
+      }
+      passengerModeIsSelected(){
+        this.renderer.setElementStyle(this.carButton.nativeElement,'background-color','#fff7f7')
+        this.renderer.setElementStyle(this.passengerButton.nativeElement,'background-color','#001127')
+        this.renderer.setElementStyle(this.bikeButton.nativeElement,'background-color','#fff7f7')
+
+        this.renderer.setElementStyle(this.iconCar.nativeElement,'color','#001127')
+        this.renderer.setElementStyle(this.iconPassenger.nativeElement,'color','#ffffff')
+        this.renderer.setElementStyle(this.iconBike.nativeElement,'color','#001127')
+      }
+      carModeIsSelected(){
+        this.renderer.setElementStyle(this.bikeButton.nativeElement,'background-color','#fff7f7')
+        this.renderer.setElementStyle(this.carButton.nativeElement,'background-color','#001127')
+        this.renderer.setElementStyle(this.passengerButton.nativeElement,'background-color','#fff7f7')
+
+        this.renderer.setElementStyle(this.iconBike.nativeElement,'color','#001127')
+        this.renderer.setElementStyle(this.iconCar.nativeElement,'color','#ffffff')
+        this.renderer.setElementStyle(this.iconPassenger.nativeElement,'color','#001127')
+
+      }
 }
    
     

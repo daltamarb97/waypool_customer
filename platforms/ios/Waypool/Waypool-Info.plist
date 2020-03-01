@@ -24,27 +24,10 @@
 	<string>3.0.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Necesitamos acceso a tu camara para que nos puedas enviar tus fotos de documentos</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Usado para conectarte con otros usuarios de Waypool y asi brindarte un mejor servicio</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Usado para conectarte con otros usuarios de Waypool y asi brindarte un mejor servicio</string>
 	<key>NSMainNibFile</key>
-	<string></string>
+	<string/>
 	<key>NSMainNibFile~ipad</key>
-	<string></string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Accedemos a tus imagenes para que sea más fácil para ti mandarnos tu documentos</string>
-	<key>UIInterfaceOrientation</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
+	<string/>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
@@ -57,5 +40,22 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>UIInterfaceOrientation</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Necesitamos acceso a tu camara para que nos puedas enviar tus fotos de documentos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Accedemos a tus imagenes para que sea más fácil para ti mandarnos tu documentos</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Usado para conectarte con otros usuarios de Waypool y asi brindarte un mejor servicio</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Usado para conectarte con otros usuarios de Waypool y asi brindarte un mejor servicio</string>
 </dict>
 </plist>

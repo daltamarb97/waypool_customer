@@ -66,7 +66,7 @@ export class DriverPickupPage {
     this.bounds = new google.maps.LatLngBounds();
     this.geocoder = new google.maps.Geocoder();
 
-    this.SignUpService.getMyInfoDriver(this.SignUpService.userPlace, this.driverUid).takeUntil(this.unsubscribe)
+    this.SignUpService.getMyInfoDriver(this.driverUid).takeUntil(this.unsubscribe)
 		.subscribe(userDriver => {
 			this.userDriver = userDriver;
 			console.log(this.userDriver);

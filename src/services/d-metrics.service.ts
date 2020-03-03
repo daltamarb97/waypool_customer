@@ -9,9 +9,9 @@ export class DriverMetricsService {
     }
 
 
-    public createdReserves(place,driver,car,house,placeD,precio,startHour,typeOfReserve){
+    public createdReserves(driver,car,house,placeD,precio,startHour,typeOfReserve){
     //send every reserve that were created
-    this.afDB.database.ref('data/allReservesCreated/'+place).push({
+    this.afDB.database.ref('data/allReservesCreated/').push({
         driver: driver,
         car:car,
         house:house,
@@ -19,7 +19,7 @@ export class DriverMetricsService {
         price:precio,
         startHour:startHour,
         type: typeOfReserve,
-        place:place
+     
 
       });
 

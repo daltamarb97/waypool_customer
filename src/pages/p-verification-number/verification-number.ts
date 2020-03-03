@@ -24,7 +24,7 @@ export class VerificationNumberPage {
     console.log(this.userId);
     console.log(this.signUpService.userPlace);
 
-    this.signUpService.getMyInfo(this.userId, this.signUpService.userPlace).takeUntil(this.unsubscribe).subscribe(user => {
+    this.signUpService.getMyInfo(this.userId).takeUntil(this.unsubscribe).subscribe(user => {
       this.userInfo = user;
       console.log(this.userInfo);
     })

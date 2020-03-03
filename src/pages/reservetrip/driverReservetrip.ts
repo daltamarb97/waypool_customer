@@ -49,7 +49,7 @@ export class DriverReservetripPage{
   reserveTime:any;
   constructor(public navCtrl: NavController, public SignUpService: DriverSignUpService,public loadingCtrl: LoadingController,public TripsService:DriverTripsService , private app: App,public sendCoordsService: DriverSendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: DriverGeofireService, public afDB: AngularFireDatabase, public instances: DriverInstancesService, public sendUsersService: DriverSendUsersService, public toastCtrl: ToastController, private geoFireService: DriverGeofireService, private MetricsService: DriverMetricsService) {
     this.geocoder = new google.maps.Geocoder;
-    this.SignUpService.getMyInfoDriver(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+    this.SignUpService.getMyInfoDriver( this.userUid).takeUntil(this.unsubscribe)
 		.subscribe(userDriver => {
 			this.userDriver = userDriver;
 			console.log(this.userDriver);
@@ -183,8 +183,8 @@ export class DriverReservetripPage{
                 // this.navCtrl.pop();
   
                 // steps needed to get LMU right
-                 this.geofireService.deleteUserGeofireDest(this.SignUpService.userPlace, tripKeyTrip);
-                 this.geofireService.deleteUserGeofireOr(this.SignUpService.userPlace, tripKeyTrip);
+                 this.geofireService.deleteUserGeofireDest( tripKeyTrip);
+                 this.geofireService.deleteUserGeofireOr( tripKeyTrip);
 
                  this.TripsService.deleteReserve(this.SignUpService.userPlace,tripKeyTrip,this.userUid); 
 

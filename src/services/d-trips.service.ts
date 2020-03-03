@@ -16,13 +16,13 @@ export class DriverTripsService {
             //get trip in Trip's node
             return  this.afDB.list(place + '/trips/'+driverUid+'/'+ keyTrip+'/pendingUsers').valueChanges();
         } 
-        getKeyTrip(place, driverUid){
+        getKeyTrip( driverUid){
           //get key of driver's trip
-          return  this.afDB.object(place + '/drivers/'+driverUid+'/keyTrip').valueChanges();
+          return  this.afDB.object( '/driversTest/'+driverUid+'/keyTrip').valueChanges();
       }
        
-     public getOnTrip(place, userUid){
-      return  this.afDB.object(place + '/drivers/'+ userUid+'/onTrip').valueChanges();
+     public getOnTrip( userUid){
+      return  this.afDB.object( '/driversTest/'+ userUid+'/onTrip').valueChanges();
 
      }
      
@@ -89,8 +89,8 @@ export class DriverTripsService {
           }
 
 
-          public deleteAllReserves(place,driverUid){
-            this.afDB.database.ref(place + '/reserves/'+driverUid).remove();
+          public deleteAllReserves(driverUid){
+            this.afDB.database.ref('/reserves/'+driverUid).remove();
 
           }
 
@@ -175,9 +175,9 @@ export class DriverTripsService {
              //erase trip in trip's node
             this.afDB.database.ref(place + '/trips/'+driverUid+'/'+ keyTrip).remove();
         }
-        public setOnTripFalse(place, driverUid){           
+        public setOnTripFalse(driverUid){           
           // set false to onTrip instance in driver's node
-          this.afDB.database.ref(place + '/drivers/'+driverUid).update({
+          this.afDB.database.ref('/driversTest/'+driverUid).update({
             onTrip:false
           });  
         }
@@ -246,9 +246,9 @@ export class DriverTripsService {
       
         }
        
-       public eraseKeyTrip(place, driverUid){           
+       public eraseKeyTrip(driverUid){           
           // erase keyTrip in driver's node
-          this.afDB.database.ref(place + '/drivers/' + driverUid +'/keyTrip').remove();
+          this.afDB.database.ref( '/driversTest/' + driverUid +'/keyTrip').remove();
         }
        public cancelUserFromTrip(place, driverUid,keyTrip,userId){ 
     

@@ -99,8 +99,8 @@ public clickedDirectionMessageCancel(userId){
 }
 
 
-public isVerifiedPerson (place, userId){
-    this.afDB.database.ref(place + '/drivers/' + userId).update({
+public isVerifiedPerson ( userId){
+    this.afDB.database.ref('/driversTest/' + userId).update({
         verifiedPerson: true
     })
 }
@@ -114,8 +114,8 @@ public ToggleStatusOnline (place, userId){
     })
 }
 
-public ToggleStatusOffline (place, userId){
-    this.afDB.database.ref(place + '/drivers/' + userId).update({
+public ToggleStatusOffline ( userId){
+    this.afDB.database.ref( '/driversTest/' + userId).update({
         toggleStatus: 'offline'
     })
 

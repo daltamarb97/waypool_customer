@@ -1,14 +1,14 @@
 webpackJsonp([19],{
 
-/***/ 676:
+/***/ 677:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverPublicProfilePageModule", function() { return DriverPublicProfilePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverRatetripPageModule", function() { return DriverRatetripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driver_public_profile__ = __webpack_require__(865);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverRatetrip__ = __webpack_require__(867);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,41 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverPublicProfilePageModule = /** @class */ (function () {
-    function DriverPublicProfilePageModule() {
+var DriverRatetripPageModule = /** @class */ (function () {
+    function DriverRatetripPageModule() {
     }
-    DriverPublicProfilePageModule = __decorate([
+    DriverRatetripPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driver_public_profile__["a" /* DriverPublicProfilePage */],
+                __WEBPACK_IMPORTED_MODULE_2__driverRatetrip__["a" /* DriverRatetripPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driver_public_profile__["a" /* DriverPublicProfilePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverRatetrip__["a" /* DriverRatetripPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driver_public_profile__["a" /* DriverPublicProfilePage */]
+                __WEBPACK_IMPORTED_MODULE_2__driverRatetrip__["a" /* DriverRatetripPage */]
             ]
         })
-    ], DriverPublicProfilePageModule);
-    return DriverPublicProfilePageModule;
+    ], DriverRatetripPageModule);
+    return DriverRatetripPageModule;
 }());
 
-//# sourceMappingURL=driver-public-profile.module.js.map
+//# sourceMappingURL=driverRatetrip.module.js.map
 
 /***/ }),
 
-/***/ 865:
+/***/ 867:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverPublicProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverRatetripPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_sendFeedback_service__ = __webpack_require__(363);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,36 +69,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the PublicProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var DriverPublicProfilePage = /** @class */ (function () {
-    function DriverPublicProfilePage(navCtrl, modalCtrl, toastCtrl, alertCtrl, AngularFireAuth, authenticationService, SignupService, navParams) {
+var DriverRatetripPage = /** @class */ (function () {
+    function DriverRatetripPage(navCtrl, navParams, SignUpServices, afDB, SignUpService, AngularFireAuth, sendfeedback, alertCtrl) {
         this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
-        this.toastCtrl = toastCtrl;
-        this.alertCtrl = alertCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.authenticationService = authenticationService;
-        this.SignupService = SignupService;
         this.navParams = navParams;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["Subject"];
-        this.passenger = this.navParams.get('passenger');
-        console.log(this.passenger);
+        this.SignUpServices = SignUpServices;
+        this.afDB = afDB;
+        this.SignUpService = SignUpService;
+        this.AngularFireAuth = AngularFireAuth;
+        this.sendfeedback = sendfeedback;
+        this.alertCtrl = alertCtrl;
+        this.userDriverUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.userDriver = {};
+        this.title = 'calificacion de viaje';
+        this.today = Date.now();
+        this.userDriver = this.navParams.get('user');
+        this.trip = this.navParams.get('trip');
     }
-    DriverPublicProfilePage = __decorate([
+    DriverRatetripPage.prototype.sendEmail = function () {
+        if (this.experience === null || this.experience === undefined) {
+            this.experience = 'no hay feedback';
+            this.sendfeedback.sendFeedback(this.SignUpService.userPlace, this.title, this.experience, this.userDriver.name, this.userDriver.lastname, this.userDriver.phone, this.userDriverUid);
+            this.navCtrl.setRoot('DriverFindridePage');
+        }
+        else {
+            this.sendfeedback.sendFeedback(this.SignUpService.userPlace, this.title, this.experience, this.userDriver.name, this.userDriver.lastname, this.userDriver.phone, this.userDriverUid);
+            this.navCtrl.setRoot('DriverFindridePage');
+        }
+    };
+    DriverRatetripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-public-profile',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/public-profile/driver-public-profile.html"*/'<ion-header class="bg-theme-driver">\n  <ion-navbar>\n      <ion-title>PERFIL DE {{passenger.name | uppercase}}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n<!-- <ion-row>\n        <ion-item style="position: relative;z-index: 2;">\n                <ion-avatar item-start>\n                    <img class="image" src="assets/imgs/userPicture.png">\n                </ion-avatar>\n            </ion-item>\n</ion-row> -->\n<ion-row>\n    <ion-item>\n            <div class="name">\n                    <h1> \n                        {{passenger.name |titlecase}} {{passenger.lastname |titlecase}}\n                    </h1>\n                    \n                </div>\n    </ion-item>\n \n</ion-row>\n  \n  <div class="textBox">\n      <ion-list>   \n          <div class="bg-white" padding>\n              <ion-list no-lines>\n                  <ion-item>\n                      <ion-label stacked>Número Telefónico</ion-label>\n                      <ion-input type="text" [(ngModel)]="passenger.phone" readonly></ion-input>\n                    </ion-item>\n                    <!-- PROBLEM WITH DISPLAYING THE EMAIL -->\n                  <!-- <ion-item>\n                      <ion-label stacked>Email</ion-label>\n                      <ion-input type="text" [(ngModel)]="email" readonly></ion-input>                        <ion-input type="text" [(ngModel)]="user.name" readonly></ion-input>\n                  </ion-item> -->\n                  <ion-item>\n                      <ion-label stacked >Sobre {{passenger.name}}</ion-label>\n                      <ion-input type="text" [(ngModel)]="passenger.about" readonly></ion-input>\n                    </ion-item>\n                  <ion-item>\n                      <ion-label stacked>URL de interés</ion-label>\n                      <ion-input type="text" [(ngModel)]="passenger.url" readonly></ion-input>\n                  </ion-item>\n                 \n              </ion-list>\n          </div>\n      </ion-list>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/public-profile/driver-public-profile.html"*/,
+            selector: 'driver-page-ratetrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/ratetrip/driverRatetrip.html"*/'<ion-header class="bg-theme-driver">\n    <ion-navbar>\n        <ion-title>Viaje Finalizado</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n    <ion-card class="slip">\n        <div text-center>\n            <h4 class="text-dark">¡Esperamos que hayas tenido un excelente viaje!</h4>\n            <p class="text-light">{{today | date}}\n\n        </p>\n            <h1 class="text-theme-driver">$ {{trip.price}}</h1>\n            <h4 class="text-dark">Podrás ver tu pago en el ícono<br>Ganancias</h4>\n        </div>\n    </ion-card>\n    <ion-card class="rate">\n        <div text-center>\n                <h4 class="text-dark">Cuéntanos {{userDriver.name}} como ha sido la experiencia con Waypool </h4>           \n            <div class="driver">                \n                <div class="form">\n                    <ion-list no-lines>\n                        <ion-item>\n                            <ion-textarea [(ngModel)]="experience" type="text" placeholder="Déjanos tu sugerencia" ></ion-textarea>\n                        </ion-item>\n                    </ion-list>\n                </div>\n                <p padding-top><button navPop (click)="sendEmail()" class="btn text-white bg-theme-driver rounded" style="width: 100%;">ENVIAR</button></p>\n            </div>\n        </div>\n        <!-- <ion-row>\n            <button navPop (click)="sendEmail()" class="btn text-white bg-theme rounded" style="width: 30%;">ENVIAR</button>\n\n        </ion-row> -->\n    </ion-card>\n    <p class="love"> Created with <ion-icon name="heart"></ion-icon></p> \n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/ratetrip/driverRatetrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_3__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
-    ], DriverPublicProfilePage);
-    return DriverPublicProfilePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_5__services_d_sendFeedback_service__["a" /* DriverSendFeedbackService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+    ], DriverRatetripPage);
+    return DriverRatetripPage;
 }());
 
-//# sourceMappingURL=driver-public-profile.js.map
+//# sourceMappingURL=driverRatetrip.js.map
 
 /***/ })
 

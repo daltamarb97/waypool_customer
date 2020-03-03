@@ -60,8 +60,8 @@ ionViewDidLeave(){
  		}
   
 		 cancelReserve(){
-			this.geoFireService.deleteUserGeofireDest(this.SignUpService.userPlace, this.reserveKey);
-			this.geoFireService.deleteUserGeofireOr(this.SignUpService.userPlace, this.reserveKey);
+			this.geoFireService.deleteUserGeofireDest( this.reserveKey);
+			this.geoFireService.deleteUserGeofireOr( this.reserveKey);
 			this.passengers.forEach(user => {
 				this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+user.userId+'/myReserves/'+ this.reserveKey).update({
 					cancelReserve:true

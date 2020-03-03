@@ -79,8 +79,8 @@ export class DriverSignUpService {
         })
     }
 
-    public getMyInfoDriver(place, userId){
-        return this.afDB.object(place + '/drivers/' + userId).valueChanges();
+    public getMyInfoDriver( userId){
+        return this.afDB.object( '/driversTest/' + userId).valueChanges();
     }
     public getInfoUser(place, userId){
         return this.afDB.object(place+ '/users/' + userId).valueChanges();
@@ -184,8 +184,8 @@ public addPlaceZone(place, userUid){
 
 }
  
-public getCar(place, userId){
-    return this.afDB.list(place + '/drivers/'+ userId+'/cars').valueChanges();
+public getCar( userId){
+    return this.afDB.list('/driversTest/'+ userId+'/cars').valueChanges();
 
 }
 

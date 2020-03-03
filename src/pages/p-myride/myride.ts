@@ -75,7 +75,7 @@ saveTrip:any;
     })
 
 
-    this.SignUpService.getMyInfo(this.userUid,this.SignUpService.userPlace).takeUntil(this.unsubscribe)
+    this.SignUpService.getMyInfo(this.userUid,).takeUntil(this.unsubscribe)
       .subscribe(info => {
         this.user = info
         // here starts the conditionals for the trip
@@ -84,12 +84,12 @@ saveTrip:any;
         }else if(this.user.cancelTrip == true){
           this.unSubscribeServices();         
           
-          this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
+          this.TripsService.eliminateAvailableReserves(this.userUid);
           this.navCtrl.pop();
           let modal = this.modalCtrl.create('CanceltripPage');
           modal.present();  
           this.TripsService.eliminatingCancelTrip(this.SignUpService.userPlace,this.userUid);
-          this.MetricsService.cancelReserves(this.SignUpService.userPlace , this.userUid, this.trip)
+          this.MetricsService.cancelReserves(  this.userUid, this.trip)
         }
       
       
@@ -105,10 +105,10 @@ saveTrip:any;
           
           this.unSubscribeServices(); 
           this.navCtrl.setRoot('RatetripPage',{trip:this.trip})
-          this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
+          this.TripsService.eliminateAvailableReserves( this.userUid);
           
          
-          this.TripsService.eliminatingSaveTrip(this.SignUpService.userPlace,this.userUid);
+          this.TripsService.eliminatingSaveTrip(this.userUid);
         }
 
       });
@@ -217,11 +217,11 @@ this.callNumber.callNumber(number, true)
             handler: () => {
               if(this.pickedUpUsers.length === 0 || this.pickedUpUsers === undefined || this.pickedUpUsers === null) {
                 this.unSubscribeServices(); 
-                this.MetricsService.cancelReserves(this.SignUpService.userPlace,this.userUid,this.trip);
+                this.MetricsService.cancelReserves(this.userUid,this.trip);
                 this.TripsService.cancelTrip(this.SignUpService.userPlace, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
                 this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
                 this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid); 
-                this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);              
+                this.TripsService.eliminateAvailableReserves( this.userUid);              
                 this.navCtrl.pop();
 
               }
@@ -233,10 +233,10 @@ this.callNumber.callNumber(number, true)
                       console.log(pickedUp);
 
                       if(this.pickedUp === undefined || this.pickedUp === null ){
-                        this.MetricsService.cancelReserves(this.SignUpService.userPlace,this.userUid,this.trip);
+                        this.MetricsService.cancelReserves(this.userUid,this.trip);
                         this.TripsService.cancelTrip(this.SignUpService.userPlace, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
                         this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
-                        this.TripsService.eliminateAvailableReserves(this.SignUpService.userPlace, this.userUid);
+                        this.TripsService.eliminateAvailableReserves( this.userUid);
                         console.log(this.trip.keyTrip);
                         this.navCtrl.pop();
 

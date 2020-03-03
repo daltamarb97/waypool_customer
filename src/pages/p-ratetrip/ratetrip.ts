@@ -28,7 +28,7 @@ navBar: Navbar;
 unsubscribe = new Subject;
   constructor(private navCtrl: NavController,public navParams: NavParams, public sendfeedback:sendFeedbackService, public signUpService: SignUpService, public sendCoordsService: sendCoordsService, public angularFireAuth: AngularFireAuth, public alertCtrl: AlertController) {
     this.today = Date.now();
-    this.signUpService.getMyInfo( this.userUid,this.signUpService.userPlace).takeUntil(this.unsubscribe).subscribe(user=>{
+    this.signUpService.getMyInfo( this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user = user;
       console.log(this.user)
     })  

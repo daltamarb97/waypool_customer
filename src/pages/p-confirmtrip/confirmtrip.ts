@@ -40,7 +40,7 @@ export class ConfirmtripPage {
     
         
        //get the info of the driver 
-       this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
+       this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
        .subscribe( myUserInfo => {
          this.user = myUserInfo;
          console.log(this.user);  

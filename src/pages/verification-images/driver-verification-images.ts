@@ -43,7 +43,7 @@ export class DriverVerificationImagesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private camera: Camera, public AngularFireauth: AngularFireAuth, public alertCtrl: AlertController, public SignUpService:DriverSignUpService) {
     this.driver =  this.AngularFireauth.auth.currentUser.uid;
 
-    this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.driver).subscribe(user=>{
+    this.SignUpService.getMyInfoDriver( this.driver).subscribe(user=>{
       this.driverInfo = user
       if(this.driverInfo.documents){
         if(this.driverInfo.documents.carne == true ){
@@ -107,7 +107,7 @@ export class DriverVerificationImagesPage {
 
       this.picToViewCarne = "assets/imgs/v2.2.png";
       this.picToView = "assets/imgs/v2.2.png";
-      this.SignUpService.pushDocsCarne(this.SignUpService.userPlace, this.driver);
+      this.SignUpService.pushDocsCarne( this.driver);
       
 
      }, (err) => {
@@ -151,7 +151,7 @@ export class DriverVerificationImagesPage {
       
       this.picToViewId = "assets/imgs/v4.2.png";
       this.picToView = "assets/imgs/v4.2.png";
-      this.SignUpService.pushDocsId(this.SignUpService.userPlace, this.driver);
+      this.SignUpService.pushDocsId( this.driver);
 
       
 

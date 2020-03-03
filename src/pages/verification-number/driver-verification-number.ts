@@ -25,7 +25,7 @@ export class DrverVerificationNumberPage {
   code(){
     this.authenticationService.deleteResendCode(this.signUpService.userPlace, this.userId);
     this.authenticationService.sendVerificationCodeToFirebase(this.signUpService.userPlace, this.userId, this.confText);
-    this.signUpService.getMyInfo(this.signUpService.userPlace, this.userId).subscribe(driver => {
+    this.signUpService.getMyInfo( this.userId).subscribe(driver => {
       this.driverInfo = driver;
 
       if(this.driverInfo.verificationCodeApproval === true){

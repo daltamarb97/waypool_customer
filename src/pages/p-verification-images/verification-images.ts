@@ -42,7 +42,7 @@ export class VerificationImagesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public AngularFireauth: AngularFireAuth, public alertCtrl: AlertController, public SignUpService:SignUpService, private camera: Camera, public loadingCtrl:LoadingController) {
     this.user =  this.AngularFireauth.auth.currentUser.uid;
 
-    this.SignUpService.getMyInfo(this.user, this.SignUpService.userPlace).subscribe(user=>{
+    this.SignUpService.getMyInfo(this.user).subscribe(user=>{
       this.userInfo = user
       if(this.userInfo.documents){
         if(this.userInfo.documents.carne == true ){

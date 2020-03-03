@@ -87,8 +87,8 @@ constructor(public afDB: AngularFireDatabase, private AngularFireAuth: AngularFi
 ///////////
 
 
-setGeofireOrNEWTEST(Place, key, lat, lng){
-  this.dbRef = this.afDB.database.ref(Place + '/geofireOr/' );
+setGeofireOrNEWTEST( key, lat, lng){
+  this.dbRef = this.afDB.database.ref('/geofireOr/' );
   this.geoFire = new GeoFire(this.dbRef); 
 
           this.geoFire.set(key, [lat, lng]).then(function(){
@@ -100,8 +100,8 @@ setGeofireOrNEWTEST(Place, key, lat, lng){
    
 }
 
-setGeofireDestNEWTEST(Place, key, lat, lng){
-  this.dbRef = this.afDB.database.ref(Place + '/geofireDest/' );
+setGeofireDestNEWTEST( key, lat, lng){
+  this.dbRef = this.afDB.database.ref( '/geofireDest/' );
   this.geoFire = new GeoFire(this.dbRef); 
 
           this.geoFire.set(key, [lat, lng]).then(function(){
@@ -109,8 +109,18 @@ setGeofireDestNEWTEST(Place, key, lat, lng){
              }, function(error){
             console.log('error: ' + error)
              });
+}
 
 
+setGeofireRoute( key, lat, lng){
+  this.dbRef = this.afDB.database.ref( '/geofireRoute/' );
+  this.geoFire = new GeoFire(this.dbRef); 
+
+          this.geoFire.set(key, [lat, lng]).then(function(){
+              console.log('location updated');
+             }, function(error){
+            console.log('error: ' + error)
+             });
 }
 
 
@@ -218,8 +228,8 @@ public onTripUserListRide(driverId, userId){
   });
 }
 
-deleteUserGeofireDest(Place, keyTrip){
-  this.afDB.database.ref(Place + '/geofireDest/' + keyTrip).remove().then(()=>{
+deleteUserGeofireDest( keyTrip){
+  this.afDB.database.ref('/geofireDest/' + keyTrip).remove().then(()=>{
       console.log("GeofireDest succesfully removed");
   }).catch(error =>{
       console.log(error);
@@ -229,9 +239,28 @@ deleteUserGeofireDest(Place, keyTrip){
 }
 
 
+deleteUserGeofireRoute( keyTrip){
+  this.afDB.database.ref('/geofireRoute/' + keyTrip).remove().then(()=>{
+      console.log("GeofireRoute succesfully removed");
+  }).catch(error =>{
+      console.log(error);
+  })
+  
+  
+}
 
-deleteUserGeofireOr(Place, keyTrip){
-  this.afDB.database.ref(Place + '/geofireOr/' + keyTrip).remove().then(()=>{
+deleteUserReserve( userId, keyTrip){
+  this.afDB.database.ref('/reserves/' + userId + '/' + keyTrip).remove().then(()=>{
+      console.log("reserve succesfully removed");
+  }).catch(error =>{
+      console.log(error);
+  })
+  
+  
+}
+
+deleteUserGeofireOr( keyTrip){
+  this.afDB.database.ref('/geofireOr/' + keyTrip).remove().then(()=>{
       console.log("GeofireOr succesfully removed");
   }).catch(error =>{
       console.log(error);

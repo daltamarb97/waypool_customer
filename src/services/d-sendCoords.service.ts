@@ -51,9 +51,9 @@ constructor(public afDB: AngularFireDatabase){
              
             
         }
-   public pushcoordinatesDrivers(place, user , dest, or){
+   public pushcoordinatesDrivers(user , dest, or){
      
-    this.afDB.database.ref(place + '/drivers/'+ user+'/trips').update({
+    this.afDB.database.ref('/driversTest/'+ user+'/trips').update({
         origin: or,
         destination: dest,
         

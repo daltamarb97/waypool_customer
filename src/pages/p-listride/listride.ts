@@ -32,7 +32,7 @@ export class ListridePage {
   noReserve:boolean = false;
   constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
-    this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe).subscribe(user=>{
+    this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user = user;   
       
     })

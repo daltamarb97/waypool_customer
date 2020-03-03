@@ -40,7 +40,7 @@ tripState:any;
 clearToDeleteDriver:boolean = false;
   constructor(public navCtrl: NavController,public SignUpService:DriverSignUpService,public actionSheetCtrl: ActionSheetController,public TripsService:DriverTripsService,public modalCtrl: ModalController,public toastCtrl: ToastController,public alertCtrl:AlertController,public navParams: NavParams,private callNumber: CallNumber,public sendCoordsService: DriverSendCoordsService,private AngularFireAuth: AngularFireAuth, public sendUsersService: DriverSendUsersService, public geofireServices: DriverGeofireService, private afDB: AngularFireDatabase) {
 		//get driver information to get the keyTrip
-		this.SignUpService.getMyInfoDriver(this.SignUpService.userPlace, this.driverUid).takeUntil(this.unsubscribe)
+		this.SignUpService.getMyInfoDriver( this.driverUid).takeUntil(this.unsubscribe)
 			.subscribe(userDriver => {
 				this.userDriver = userDriver;
 				if (this.userDriver.keyTrip === null || this.userDriver.onTrip === false) {

@@ -19,6 +19,20 @@ export class MetricsService {
     });
 
    }   
+
+
+   public createdInstantRoutes( userUid,dest,or){
+    //send every reserve that were created
+    this.afDB.database.ref('data/createdInstantRoutes/').push({
+    
+      dest:dest,
+      or:or,
+      userId:userUid
+    });
+
+   }
+
+
    public metricTripsInBikes(place,userUid,date,route,or,dest,distance){
     //send every reserve that were created
     this.afDB.database.ref('data/tripsInBikes/'+place).push({

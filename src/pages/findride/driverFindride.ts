@@ -655,7 +655,13 @@ centerMap(){
    confirmPrice(keyReserve){
     //  this.doGeoquery = false;
      
-      let modal = this.modalCtrl.create('DriverConfirmpricePage', {keyReserve: keyReserve});
+      let modal = this.modalCtrl.create('DriverConfirmpricePage', {keyReserve: keyReserve})
+      modal.onDidDismiss(data => {
+        if(data === true){
+          this.navCtrl.push('DriverSuccessNotificationPage');
+        }
+        
+      })
       modal.present();
 
    }
@@ -699,7 +705,7 @@ centerMap(){
                   
 
                   
-                  this.afDB.database.ref('/reserves/'+ this.user).push({
+                  this.afDB.database.ref('/reservesTest/'+ this.user).push({
                     driver: this.userInfo,
                     // car:this.userInfo.cars,
                     origin: this.orFirebase,
@@ -712,6 +718,8 @@ centerMap(){
                           this.MetricsService.createdInstantRoutes(this.user,this.desFirebase, this.orFirebase );
 
                          // set geofires
+                         console.log(this.myLatLng.lat(), this.myLatLng.lng());
+                         
                         this.geofireService.setGeofireOrNEWTEST( key1, this.myLatLng.lat, this.myLatLng.lng );
                         this.afDB.database.ref('/geofireOr/' + key1).update({
                           driverId: this.userInfo.userId
@@ -719,7 +727,7 @@ centerMap(){
 
                         console.log('executed geofire Or');
                         
-                        this.afDB.database.ref('/reserves/'+ this.user + '/' + key1).update({
+                        this.afDB.database.ref('/reservesTest/'+ this.user + '/' + key1).update({
                             keyTrip: key1 
                         }); 
 

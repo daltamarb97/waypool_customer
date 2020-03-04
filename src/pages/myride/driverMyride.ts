@@ -151,9 +151,9 @@ clearToDeleteDriver:boolean = false;
 
 			// Trip needs to be deleted first and then keyTrip is deleted, otherwise the trip node would still remain at the databse - REGLA DE SEGURIDAD NO LO PERMITE
 			this.afDB.database.ref(this.SignUpService.userPlace + '/trips/'+this.driverUid+'/'+ this.userDriver.keyTrip).remove().then(()=>{
-				this.TripsService.eraseKeyTrip(this.SignUpService.userPlace,this.driverUid)
+				this.TripsService.eraseKeyTrip(this.driverUid)
 			})
-			this.TripsService.setOnTripFalse(this.SignUpService.userPlace,this.driverUid);
+			this.TripsService.setOnTripFalse(this.driverUid);
 
 		
 			// this.navCtrl.setRoot(this.navCtrl.getActive().component);
@@ -170,8 +170,8 @@ clearToDeleteDriver:boolean = false;
 
 		this.geofireServices.deleteUserGeofireOrTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
 		this.geofireServices.deleteUserGeofireDestTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
-		this.TripsService.eraseKeyTrip(this.SignUpService.userPlace,this.driverUid);
-		this.TripsService.setOnTripFalse(this.SignUpService.userPlace,this.driverUid);
+		this.TripsService.eraseKeyTrip(this.driverUid);
+		this.TripsService.setOnTripFalse(this.driverUid);
 
 		this.navCtrl.pop();
 		console.log("me reproduci 2")
@@ -283,9 +283,9 @@ clearToDeleteDriver:boolean = false;
 		
 											this.TripsService.endTrip(this.SignUpService.userPlace, this.userDriver.keyTrip, this.driverUid);
 																		
-											this.TripsService.setOnTripFalse(this.SignUpService.userPlace,this.driverUid);	
+											this.TripsService.setOnTripFalse(this.driverUid);	
 											
-											this.TripsService.eraseKeyTrip(this.SignUpService.userPlace,this.driverUid);
+											this.TripsService.eraseKeyTrip(this.driverUid);
 
 										}, 6000);
 									})

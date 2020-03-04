@@ -19,7 +19,7 @@ export class DriverMorePage {
      user:any={};
      verified:boolean = false;
      constructor(public navCtrl: NavController,public modalCtrl: ModalController, public AngularFireAuth:AngularFireAuth,private authenticationService: DriverAuthenticationService,public SignupService:DriverSignUpService, public app: App) {
-          this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).subscribe(user=>{
+          this.SignupService.getMyInfoForProfile( this.userUid).subscribe(user=>{
           this.user= user;
             console.log(this.user)
 

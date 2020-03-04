@@ -23,11 +23,11 @@ export class sendCoordsService {
     public getOrigin(user){
         return  this.afDB.list('/drivers/'+ user +'/trips/origin').valueChanges();
     } 
-    public getOriginUser(place, user){
-        return  this.afDB.list(place + '/users/'+ user +'/trips/origin').valueChanges();
+    public getOriginUser( user){
+        return  this.afDB.list('/usersTest/'+ user +'/trips/origin').valueChanges();
     } 
-    public getDestinationUser(place, user){
-        return  this.afDB.list(place + '/users/'+ user +'/trips/destination').valueChanges();
+    public getDestinationUser( user){
+        return  this.afDB.list('/usersTest/'+ user +'/trips/destination').valueChanges();
     } 
     public pushCoordinatesUsers(user , dest, or){
      

@@ -30,16 +30,16 @@ export class reservesService {
 
     }
     
-    public getReserves(place, userUid){
+    public getReserves( userUid){
         //get reserves of the geofire
-        return  this.afDB.list(place + '/users/'+ userUid+'/availableReserves').valueChanges();
+        return  this.afDB.list('/usersTest/'+ userUid+'/availableReserves').valueChanges();
 
     }
 
 
-    public getSeenReservesInAvailableReserves(place, userUid){
+    public getSeenReservesInAvailableReserves( userUid){
         //get reserves of the geofire
-        return  this.afDB.list(place + '/users/'+ userUid+'/reservesSeenInAvailableReserves').valueChanges();
+        return  this.afDB.list( '/usersTest/'+ userUid+'/reservesSeenInAvailableReserves').valueChanges();
 
     }
 
@@ -60,9 +60,9 @@ export class reservesService {
         return  this.afDB.object(place + '/reserves/'+ driverUserUid +'/'+ reserveId+'/').valueChanges();
 
     }
-    public getPendingUsers(place, driverUserUid,reserveId){
+    public getPendingUsers( driverUserUid,reserveId){
         //get reserves inside reserves node
-        return  this.afDB.list(place + '/reserves/'+ driverUserUid +'/'+ reserveId+'/pendingUsers').valueChanges();
+        return  this.afDB.list('/reservesTest/'+ driverUserUid +'/'+ reserveId+'/pendingUsers').valueChanges();
 
     }
     public confirmMyExistenceInPendingUsers(place, driverUserUid,reserveId,userUid){

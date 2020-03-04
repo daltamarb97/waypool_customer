@@ -1,6 +1,6 @@
 webpackJsonp([21],{
 
-/***/ 675:
+/***/ 676:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverProfilePageModule", function() { return DriverProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverProfile__ = __webpack_require__(865);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverProfile__ = __webpack_require__(866);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var DriverProfilePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 865:
+/***/ 866:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91,57 +91,51 @@ var DriverProfilePage = /** @class */ (function () {
         this.emailUser = this.AngularFireAuth.auth.currentUser.email;
         this.user = {};
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_7_rxjs__["Subject"];
-        this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
+        this.SignupService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
             _this.user = user;
             console.log(_this.user);
             _this.showInfoProfile(user);
         });
     }
     DriverProfilePage.prototype.saveChanges = function () {
-        var _this = this;
-        this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company + '/zones').once('value').then(function (snap) {
-            var obj = snap.val();
-            Object.getOwnPropertyNames(obj).forEach(function (key) {
-                if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                }
-                else {
-                    if (_this.newPhone == null && _this.user.about == null && _this.user.url == null) {
-                    }
-                    else if (_this.newPhone == null && _this.user.about == null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfileUrl(obj[key], _this.userUid, _this.user.url);
-                    }
-                    else if (_this.newPhone == null && _this.user.about != null && _this.user.url == null) {
-                        _this.SignupService.saveInfoProfileAbout(obj[key], _this.userUid, _this.user.about);
-                    }
-                    else if (_this.newPhone != null && _this.user.about == null && _this.user.url == null) {
-                        _this.SignupService.saveInfoProfilePhone(obj[key], _this.userUid, _this.newPhone);
-                    }
-                    else if (_this.newPhone != null && _this.user.about != null && _this.user.url == null) {
-                        _this.SignupService.saveInfoProfilePhone(obj[key], _this.userUid, _this.newPhone);
-                        _this.SignupService.saveInfoProfileAbout(obj[key], _this.userUid, _this.user.about);
-                    }
-                    else if (_this.newPhone != null && _this.user.about == null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfilePhone(obj[key], _this.userUid, _this.newPhone);
-                        _this.SignupService.saveInfoProfileUrl(obj[key], _this.userUid, _this.user.url);
-                    }
-                    else if (_this.newPhone == null && _this.user.about != null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfileAbout(obj[key], _this.userUid, _this.user.about);
-                        _this.SignupService.saveInfoProfileUrl(obj[key], _this.userUid, _this.user.url);
-                        _this.navCtrl.pop();
-                    }
-                    else if (_this.newPhone != null && _this.user.about != null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfileAbout(obj[key], _this.userUid, _this.user.about);
-                        _this.SignupService.saveInfoProfileUrl(obj[key], _this.userUid, _this.user.url);
-                        _this.SignupService.saveInfoProfilePhone(obj[key], _this.userUid, _this.newPhone);
-                    }
-                    else {
-                        console.log('go to the f*cking hell');
-                    }
-                }
-            });
-        }).then(function () {
-            _this.toastConfirmation();
-        });
+        if (this.newPhone == null && this.user.about == null && this.user.url == null) {
+        }
+        else if (this.newPhone == null && this.user.about == null && this.user.url != null) {
+            this.SignupService.saveInfoProfileUrl(this.userUid, this.user.url);
+            this.toastConfirmation();
+        }
+        else if (this.newPhone == null && this.user.about != null && this.user.url == null) {
+            this.SignupService.saveInfoProfileAbout(this.userUid, this.user.about);
+            this.toastConfirmation();
+        }
+        else if (this.newPhone != null && this.user.about == null && this.user.url == null) {
+            this.SignupService.saveInfoProfilePhone(this.userUid, this.newPhone);
+            this.toastConfirmation();
+        }
+        else if (this.newPhone != null && this.user.about != null && this.user.url == null) {
+            this.SignupService.saveInfoProfilePhone(this.userUid, this.newPhone);
+            this.SignupService.saveInfoProfileAbout(this.userUid, this.user.about);
+            this.toastConfirmation();
+        }
+        else if (this.newPhone != null && this.user.about == null && this.user.url != null) {
+            this.SignupService.saveInfoProfilePhone(this.userUid, this.newPhone);
+            this.SignupService.saveInfoProfileUrl(this.userUid, this.user.url);
+            this.toastConfirmation();
+        }
+        else if (this.newPhone == null && this.user.about != null && this.user.url != null) {
+            this.SignupService.saveInfoProfileAbout(this.userUid, this.user.about);
+            this.SignupService.saveInfoProfileUrl(this.userUid, this.user.url);
+            this.toastConfirmation();
+        }
+        else if (this.newPhone != null && this.user.about != null && this.user.url != null) {
+            this.SignupService.saveInfoProfileAbout(this.userUid, this.user.about);
+            this.SignupService.saveInfoProfileUrl(this.userUid, this.user.url);
+            this.SignupService.saveInfoProfilePhone(this.userUid, this.newPhone);
+            this.toastConfirmation();
+        }
+        else {
+            console.log('go to the f*cking hell');
+        }
     };
     DriverProfilePage.prototype.toastConfirmation = function () {
         var _this = this;
@@ -162,7 +156,7 @@ var DriverProfilePage = /** @class */ (function () {
         var _this = this;
         var alert = this.alertCtrl.create({
             title: 'Eliminar Cuenta',
-            message: "\u00BFEstas segur@ que deseas eliminar esta cuenta?, si tienes cuenta en WAYPOOL USER tambi\u00E9n se eliminar\u00E1",
+            message: "\u00BFEstas segur@ que deseas eliminar esta cuenta?",
             buttons: [
                 {
                     text: 'Cancelar',
@@ -173,22 +167,22 @@ var DriverProfilePage = /** @class */ (function () {
                 {
                     text: 'Eliminar',
                     handler: function () {
-                        _this.afDB.database.ref('allCities/' + _this.user.city + '/allPlaces/' + _this.user.company + '/zones').once('value').then(function (snap) {
-                            var obj = snap.val();
-                            Object.getOwnPropertyNames(obj).forEach(function (key) {
-                                _this.SignupService.deleteAccount(obj[key], _this.userUid);
-                            });
-                        }).then(function () {
-                            //for next build, user has to have a recent login in order to delete account//
-                            _this.AngularFireAuth.auth.currentUser.delete().then(function () {
-                                console.log('user has been deleted');
-                            }).catch(function (error) {
-                                console.log('error:', error);
-                            });
+                        //for next build, user has to have a recent login in order to delete account//
+                        _this.AngularFireAuth.auth.currentUser.delete().then(function () {
+                            _this.SignupService.deleteAccount(_this.userUid);
+                            console.log('user has been deleted');
                         }).then(function () {
                             _this.navCtrl.setRoot('LoginPage');
                             var toast = _this.toastCtrl.create({
                                 message: "Acabas de eliminar esta cuenta, si deseas volver a ser parte de la comunidad por favor reg\u00EDstrate de nuevo",
+                                showCloseButton: true,
+                                closeButtonText: 'Ok'
+                            });
+                            toast.present();
+                        }).catch(function (error) {
+                            console.log('error:', error);
+                            var toast = _this.toastCtrl.create({
+                                message: "Hubo un error para eliminar tu cuenta, escribenos a soporte@waypooltech.com para que te ayudemos con este problema",
                                 showCloseButton: true,
                                 closeButtonText: 'Ok'
                             });
@@ -237,7 +231,6 @@ var DriverProfilePage = /** @class */ (function () {
                     handler: function () {
                         _this.authenticationService.logOut().then(function () {
                             console.log(__WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]().currentUser);
-                            _this.SignupService.userPlace = undefined;
                             _this.navCtrl.setRoot('LoginPage');
                         });
                     }

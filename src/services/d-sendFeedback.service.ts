@@ -10,8 +10,8 @@ constructor(public afDB: AngularFireDatabase, public alertCtrl: AlertController)
               
     }
     
-    public sendFeedback(place, title, info, name, lastname, number, userId){
-        this.afDB.database.ref(place + '/feedback/' + title +'/drivers/'+ userId).set({
+    public sendFeedback( title, info, name, lastname, number, userId){
+        this.afDB.database.ref('/feedback/' + title +'/drivers/'+ userId).set({
             info: info,
             name: name,
             lastname: lastname,

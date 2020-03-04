@@ -23,11 +23,11 @@ driverInfo:any;
   constructor( public modalCtrl: ModalController,public alertCtrl:AlertController,public navParams: NavParams,public viewCtrl: ViewController,public navCtrl: NavController,public toastCtrl: ToastController,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: DriverSignUpService) {
     this.user = this.navParams.get('user');
     
-    this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.userUid).once('value').then((snap)=>{
+    this.afDB.database.ref('/driversTest/' + this.userUid).once('value').then((snap)=>{
       this.driverInfo = snap.val();
     });
 
-    this.SignUpService.getCar(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+    this.SignUpService.getCar( this.userUid).takeUntil(this.unsubscribe)
     .subscribe( car => {
       this.carList = car;
       console.log(this.carList)
@@ -61,20 +61,23 @@ driverInfo:any;
         });
         alert.present();
       }else{
-        this.SignUpService.addCar(this.SignUpService.userPlace, this.userUid,this.carModel,this.plateNumber,this.color)
+        this.SignUpService.addCar( this.userUid,this.carModel,this.plateNumber,this.color)
       }
     }
-
-
-  this.carModel=null; 
-  this.plateNumber=null;
-  this.color=null;   
+    
+      this.carModel=null; 
+      this.plateNumber=null;
+      this.color=null;   
 
   }
+
+
  deleteCar(carKey){
    console.log(carKey)
-  this.SignUpService.deleteCar(this.SignUpService.userPlace, this.userUid,carKey)    
+  this.SignUpService.deleteCar( this.userUid,carKey)    
 }
+
+
   dismiss() {
     this.viewCtrl.dismiss();
   }  

@@ -9,7 +9,7 @@
 
 <ion-content class="bg-light" class="hideLongText" style="background-color: rgba(255, 255, 255, 0.959);">
 
-
+ 
     <div class="iconHelp">
         <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>
     </div>
@@ -38,9 +38,9 @@
         <ion-card-content>
             <div class="ride-detail">
                 <p  >
-                    <span class="icon-location bg-theme-driver"></span>{{trip.houseAddr}}</p>
+                    <span class="icon-location bg-theme-driver"></span>{{trip.origin[0]}}</p>
                 <p > 
-                    <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>
+                    <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>
             </div>
           
         </ion-card-content>
@@ -75,9 +75,9 @@
                             <ion-card-content >
                                 <div  class="ride-detail">
                                     <p>
-                                        <span class="icon-location bg-hot"></span>{{trip.houseAddr}}</p>
+                                        <span class="icon-location bg-hot"></span>{{trip.origin[0]}}</p>
                                     <p>
-                                        <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>
+                                        <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>
                                 </div>
                                 <ion-row class="center-align">  
                                         <ion-col col-2 class="detail-text text-theme-driver">
@@ -118,9 +118,9 @@
                             <ion-card-content>
                                 <div class="ride-detail">
                                     <p  >
-                                        <span class="icon-location bg-theme-driver"></span>{{trip.houseAddr}}</p>
+                                        <span class="icon-location bg-theme-driver"></span>{{trip.origin[0]}}</p>
                                     <p > 
-                                        <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>
+                                        <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>
                                 </div>
                                 <ion-row class="center-align">
                                     <!-- <ion-col col-3 class="detail-text text-theme-driver">

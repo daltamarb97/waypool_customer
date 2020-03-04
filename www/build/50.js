@@ -1,6 +1,6 @@
 webpackJsonp([50],{
 
-/***/ 703:
+/***/ 699:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverFindridePageModule", function() { return DriverFindridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverFindride__ = __webpack_require__(897);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverFindride__ = __webpack_require__(893);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var DriverFindridePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 897:
+/***/ 893:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53,16 +53,16 @@ var DriverFindridePageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_driverauthentication_service__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_d_instances_services__ = __webpack_require__(353);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_metrics_service__ = __webpack_require__(361);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_d_metrics_service__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_metrics_service__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_d_metrics_service__ = __webpack_require__(363);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -613,7 +613,13 @@ var DriverFindridePage = /** @class */ (function () {
     };
     DriverFindridePage.prototype.confirmPrice = function (keyReserve) {
         //  this.doGeoquery = false;
+        var _this = this;
         var modal = this.modalCtrl.create('DriverConfirmpricePage', { keyReserve: keyReserve });
+        modal.onDidDismiss(function (data) {
+            if (data === true) {
+                _this.navCtrl.push('DriverSuccessNotificationPage');
+            }
+        });
         modal.present();
     };
     DriverFindridePage.prototype.help = function () {
@@ -648,7 +654,7 @@ var DriverFindridePage = /** @class */ (function () {
                 }
                 else {
                     this.sendCoordsService.pushcoordinatesDrivers(this.user, this.desFirebase, this.orFirebase);
-                    this.afDB.database.ref('/reserves/' + this.user).push({
+                    this.afDB.database.ref('/reservesTest/' + this.user).push({
                         driver: this.userInfo,
                         // car:this.userInfo.cars,
                         origin: this.orFirebase,
@@ -657,12 +663,13 @@ var DriverFindridePage = /** @class */ (function () {
                         var key1 = snap1.key;
                         _this.MetricsService.createdInstantRoutes(_this.user, _this.desFirebase, _this.orFirebase);
                         // set geofires
+                        console.log(_this.myLatLng.lat(), _this.myLatLng.lng());
                         _this.geofireService.setGeofireOrNEWTEST(key1, _this.myLatLng.lat, _this.myLatLng.lng);
                         _this.afDB.database.ref('/geofireOr/' + key1).update({
                             driverId: _this.userInfo.userId
                         });
                         console.log('executed geofire Or');
-                        _this.afDB.database.ref('/reserves/' + _this.user + '/' + key1).update({
+                        _this.afDB.database.ref('/reservesTest/' + _this.user + '/' + key1).update({
                             keyTrip: key1
                         });
                         _this.geofireService.setGeofireDestNEWTEST(key1, _this.myLatLngDest.lat(), _this.myLatLngDest.lng());

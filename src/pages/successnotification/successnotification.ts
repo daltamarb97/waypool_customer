@@ -37,6 +37,7 @@ export class DriverSuccessNotificationPage {
 
 dismiss() {
   this.viewCtrl.dismiss();
+  this.navCtrl.push('DriverReservetripPage');
  
 }
 

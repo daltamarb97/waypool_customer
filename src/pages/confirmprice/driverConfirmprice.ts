@@ -68,23 +68,51 @@ export class DriverConfirmpricePage {
    placeAddress:any;
    schedules = [];
    keyReserve:any;
+   noCarAvailable:boolean = false;
+   // ESTE NGIF DEBE SER PROGRAMADO AL HACER MERGE DE LOS HORARIOS
+   itsSchedule:boolean = true;
   constructor(public navCtrl: NavController, public appCtrl: App, private MetricsService:DriverMetricsService , public PriceService:DriverPriceService,public alertCtrl: AlertController,private afDB: AngularFireDatabase,public sendUsersService: DriverSendUsersService, public SignUpService: DriverSignUpService, public sendCoordsService: DriverSendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams, private geofireService: DriverGeofireService) {
 
     this.keyReserve = this.navParams.get('keyReserve');
 
-    this.SignUpService.getCar(this.userDriverUid).takeUntil(this.unsubscribe)
-    .subscribe( car => {
-      //get cars registered
-      this.carModelList = car;
-      console.log(this.carModelList)
-    });
+    
     
     this.geocoder = new google.maps.Geocoder;
   }
 
-  ionViewDidEnter(){
-    //  this.geofireService.cancelGeoqueryPlace();
-    }
+
+  ionViewWillEnter(){
+    this.SignUpService.getCar(this.userDriverUid).takeUntil(this.unsubscribe)
+    .subscribe( car => {
+      //get cars registered
+      this.carModelList = car;
+      console.log(this.carModelList);
+
+      if(this.carModelList.length === 0){
+        this.noCarAvailable = true;
+      }
+    });
+  }
+
+
+ goToSetCars(){
+  this.afDB.database.ref('/geofireRoute/')
+  .orderByChild('keyTrip').equalTo(this.keyReserve)
+  .once('value').then(snap =>{
+   
+    snap.forEach(keyGeofire =>{
+      keyGeofire.ref.remove();
+      
+    })
+  })
+  this.geofireService.deleteUserGeofireDest(this.keyReserve);
+  this.geofireService.deleteUserGeofireOr(this.keyReserve);
+  this.geofireService.deleteUserReserve(this.userDriverUid, this.keyReserve);
+  this.unsubscribe.next();
+  this.unsubscribe.complete();
+   this.viewCtrl.dismiss();
+   this.navCtrl.push('DriverShowInfoCarPage');
+ }
   
    
 
@@ -97,109 +125,26 @@ export class DriverConfirmpricePage {
                   });
                   alert.present();
             }else{
-              this.PriceService.setPrice(this.userDriverUid,this.precio,this.car, this.keyReserve);
+              this.PriceService.setPriceAndCar(this.userDriverUid,this.precio,this.car, this.keyReserve);
               this.accepted = true;
               this.unsubscribe.next();
               this.unsubscribe.complete();
               this.viewCtrl.dismiss(this.accepted);
-
-
-              // HERE YOU ARE, DOUCHEBAG
-
-
-
-
-              //ESTO SE HARA AHORA EN LA PARTE DE HORARIO
-              // this.afDB.database.ref( '/driversTest/' + this.userDriverUid + '/schedule/').once('value').then((snapSchedule)=>{
-              //   let obj = snapSchedule.val();
-              //   console.log(obj);
-              //   Object.getOwnPropertyNames(obj).forEach((key)=>{
-              //     if(obj[key].type === 'origin'){
-              //       this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ this.userDriverUid).push({
-              //         driver: this.driverInfo,
-              //         car:this.car,
-              //         houseAddr: this.driver.houseAddress.name,
-              //         placeAddr: this.driverInfo.placeAddr,
-              //         price:this.precio,
-              //         startHour: obj[key].hour,
-              //         type: obj[key].type,
-                       
-              
-              //     }).then((snap1)=>{
-              //       const key1 = snap1.key;
-                    // this.MetricsService.createdReserves(this.driverInfo,this.car,this.navParams.data.houseAddr[0],this.navParams.data.placeAddr,this.precio, sche.,this.typeOfReserve);
-            
-              //      // set geofireOrkey 
-              //      this.geofireService.setGeofireOrNEWTEST(this.SignUpService.userPlace, key1, this.driver.houseAddress.coordinates.lat, this.driver.houseAddress.coordinates.lng );
-              //      this.afDB.database.ref(this.SignUpService.userPlace + '/geofireOr/' + key1).update({
-              //         driverId: this.driverInfo.userId
-              //      })
-              //      console.log('executed geofire Or');
-                  
-              //         this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ this.userDriverUid + '/' + key1).update({
-              //             keyTrip: key1 
-              //         }) 
-
-              //         this.accepted = true;
-              //         this.unsubscribe.next();
-              //         this.unsubscribe.complete();
-              //         this.viewCtrl.dismiss(this.accepted);
-
-              //     })
-              //     }else{
-              //       this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ this.userDriverUid).push({
-              //         driver: this.driverInfo,
-              //         car:this.driver.trips.car,
-              //         houseAddr: this.driver.houseAddress.name,
-              //         placeAddr: this.driverInfo.placeAddr,
-              //         price:this.precio,
-              //         startHour: obj[key].hour,
-              //         type: obj[key].type,
-              
-              //     }).then((snap2)=>{
-              //       const key2 = snap2.key;
-              //       // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.driverInfo,this.car,this.navParams.data.houseAddr[0],this.navParams.data.placeAddr,this.precio, sche.,this.typeOfReserve);
-            
-              //      // set geofireOrkey 
-              //      this.geofireService.setGeofireDestNEWTEST(this.SignUpService.userPlace, key2, this.driver.houseAddress.coordinates.lat, this.driver.houseAddress.coordinates.lng );
-              //      this.afDB.database.ref(this.SignUpService.userPlace + '/geofireDest/' + key2).update({
-              //         driverId: this.driverInfo.userId
-              //      })
-              //      console.log('executed geofire Dest')
-                  
-              
-              
-              //         this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ this.userDriverUid + '/' + key2).update({
-              //             keyTrip: key2 
-              //         }) 
-              //         this.accepted = true;
-              //         this.unsubscribe.next();
-              //         this.unsubscribe.complete();
-              //         this.viewCtrl.dismiss(this.accepted);
-
-              //     })                    
-              //     }
-                  
-              //   })
-                
-              // })
-           }
-
-     
+           }   
 }; 
+
+
+
         
   dismiss() {
-     // this.unsubscribe.next();
-    // this.unsubscribe.unsubscribe();
-    this.afDB.database.ref('/geofireRoute/').once('value').then(snap =>{
-      let obj = snap.val();
-
-      Object.getOwnPropertyNames(obj).forEach(key =>{
-        console.log(obj[key]);
+ 
+    this.afDB.database.ref('/geofireRoute/')
+    .orderByChild('keyTrip').equalTo(this.keyReserve)
+    .once('value').then(snap =>{
+     
+      snap.forEach(keyGeofire =>{
+        keyGeofire.ref.remove();
         
-        // if(obj[key].keyTrip === this.keyReserve){
-        //   this.geofireService.deleteUserGeofireRoute(obj[key]);
-        // }
       })
     })
     this.geofireService.deleteUserGeofireDest(this.keyReserve);

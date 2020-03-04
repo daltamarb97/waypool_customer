@@ -29,7 +29,7 @@ unsubscribe = new Subject;
 
     console.log(this.reserve.driver.userId);
     
-    this.SignUpService.getMyInfoForProfile(this.SignUpService.userPlace,this.userUid).takeUntil(this.unsubscribe).subscribe(info =>{
+    this.SignUpService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(info =>{
       this.driver = info
       console.log(this.driver)
     })
@@ -111,7 +111,7 @@ unsubscribe = new Subject;
           {
             text: 'Reportar',
             handler: () => {
-            this.sendFeedbackService.sendFeedback(this.SignUpService.userPlace,'Reporte_de_chat',this.chats,this.driver.name,this.driver.lastname,this.driver.phone,this.userUid)               
+            this.sendFeedbackService.sendFeedback('Reporte_de_chat',this.chats,this.driver.name,this.driver.lastname,this.driver.phone,this.userUid)               
             const toast = this.toastCtrl.create({
               message: 'Haz reportado este chat',
               showCloseButton: true,

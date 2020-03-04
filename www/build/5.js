@@ -1,6 +1,6 @@
 webpackJsonp([5],{
 
-/***/ 691:
+/***/ 694:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverMyridePageModule", function() { return DriverMyridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverMyride__ = __webpack_require__(885);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverMyride__ = __webpack_require__(888);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17282,7 +17282,7 @@ webpackContext.id = 833;
 
 /***/ }),
 
-/***/ 885:
+/***/ 888:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17294,11 +17294,11 @@ webpackContext.id = 833;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_sendUsers_service__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__ = __webpack_require__(362);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_d_signup_service__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment__ = __webpack_require__(704);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_trips_service__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_trips_service__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_database__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_angularfire2_database__);
@@ -17443,9 +17443,9 @@ var DriverMyridePage = /** @class */ (function () {
             // this.TripsService.endTrip(this.SignUpService.userPlace, this.userDriver.keyTrip, this.driverUid);
             // Trip needs to be deleted first and then keyTrip is deleted, otherwise the trip node would still remain at the databse - REGLA DE SEGURIDAD NO LO PERMITE
             this.afDB.database.ref(this.SignUpService.userPlace + '/trips/' + this.driverUid + '/' + this.userDriver.keyTrip).remove().then(function () {
-                _this.TripsService.eraseKeyTrip(_this.SignUpService.userPlace, _this.driverUid);
+                _this.TripsService.eraseKeyTrip(_this.driverUid);
             });
-            this.TripsService.setOnTripFalse(this.SignUpService.userPlace, this.driverUid);
+            this.TripsService.setOnTripFalse(this.driverUid);
             // this.navCtrl.setRoot(this.navCtrl.getActive().component);
             var modal = this.modalCtrl.create('DriverCanceltripPage');
             modal.present();
@@ -17457,8 +17457,8 @@ var DriverMyridePage = /** @class */ (function () {
             this.TripsService.endTrip(this.SignUpService.userPlace, this.userDriver.keyTrip, this.driverUid);
             this.geofireServices.deleteUserGeofireOrTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
             this.geofireServices.deleteUserGeofireDestTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
-            this.TripsService.eraseKeyTrip(this.SignUpService.userPlace, this.driverUid);
-            this.TripsService.setOnTripFalse(this.SignUpService.userPlace, this.driverUid);
+            this.TripsService.eraseKeyTrip(this.driverUid);
+            this.TripsService.setOnTripFalse(this.driverUid);
             this.navCtrl.pop();
             console.log("me reproduci 2");
             var modal = this.modalCtrl.create('DriverCanceltripPage');
@@ -17547,8 +17547,8 @@ var DriverMyridePage = /** @class */ (function () {
                                 setTimeout(function () {
                                     _this.TripsService.eliminateTripState(_this.SignUpService.userPlace, _this.userDriver.keyTrip, _this.driverUid);
                                     _this.TripsService.endTrip(_this.SignUpService.userPlace, _this.userDriver.keyTrip, _this.driverUid);
-                                    _this.TripsService.setOnTripFalse(_this.SignUpService.userPlace, _this.driverUid);
-                                    _this.TripsService.eraseKeyTrip(_this.SignUpService.userPlace, _this.driverUid);
+                                    _this.TripsService.setOnTripFalse(_this.driverUid);
+                                    _this.TripsService.eraseKeyTrip(_this.driverUid);
                                 }, 6000);
                             });
                             _this.navCtrl.pop();

@@ -29,7 +29,7 @@ emailUser = this.AngularFireAuth.auth.currentUser.email;
 user:any={};
 unsubscribe = new Subject;
 constructor(public navCtrl: NavController, public modalCtrl: ModalController,public toastCtrl: ToastController,public alertCtrl:AlertController, public AngularFireAuth:AngularFireAuth,private authenticationService: DriverAuthenticationService,public SignupService:DriverSignUpService, private afDB: AngularFireDatabase) {  
-  this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
+  this.SignupService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user= user;
       
         console.log(this.user)
@@ -42,51 +42,45 @@ constructor(public navCtrl: NavController, public modalCtrl: ModalController,pub
 
   saveChanges(){
     
-
-    this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company + '/zones').once('value').then((snap)=>{
-      let obj = snap.val();
-      Object.getOwnPropertyNames(obj).forEach((key)=>{
-
-        if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
-          
-        }else{
-          if(this.newPhone == null && this.user.about == null && this.user.url == null){
+    if(this.newPhone == null && this.user.about == null && this.user.url == null){
                
-          }else if(this.newPhone == null && this.user.about == null && this.user.url != null){
-            this.SignupService.saveInfoProfileUrl(obj[key], this.userUid,this.user.url);
-            
-          }else if(this.newPhone == null && this.user.about != null && this.user.url == null){
-            this.SignupService.saveInfoProfileAbout(obj[key], this.userUid,this.user.about);
-            
-          }else if(this.newPhone != null && this.user.about == null && this.user.url == null){
-            this.SignupService.saveInfoProfilePhone(obj[key], this.userUid,this.newPhone);
-            
-          }else if(this.newPhone != null && this.user.about != null && this.user.url == null){
-            this.SignupService.saveInfoProfilePhone(obj[key], this.userUid,this.newPhone);
-            this.SignupService.saveInfoProfileAbout(obj[key], this.userUid,this.user.about);
-            
-          }else if(this.newPhone != null && this.user.about == null && this.user.url != null){
-            this.SignupService.saveInfoProfilePhone(obj[key], this.userUid,this.newPhone);
-            this.SignupService.saveInfoProfileUrl(obj[key], this.userUid,this.user.url);
-            
-          }else if(this.newPhone == null && this.user.about != null && this.user.url != null){
-            this.SignupService.saveInfoProfileAbout(obj[key], this.userUid,this.user.about);
-            this.SignupService.saveInfoProfileUrl(obj[key], this.userUid,this.user.url);
-            
-            this.navCtrl.pop(); 
-          }else if(this.newPhone != null && this.user.about != null && this.user.url != null){
-            this.SignupService.saveInfoProfileAbout(obj[key], this.userUid,this.user.about);
-            this.SignupService.saveInfoProfileUrl(obj[key], this.userUid,this.user.url);
-            this.SignupService.saveInfoProfilePhone(obj[key], this.userUid, this.newPhone);
-            
-          }else{
-            console.log('go to the f*cking hell');
-          }
-        }
-      }) 
-    }).then(()=>{
+    }else if(this.newPhone == null && this.user.about == null && this.user.url != null){
+      this.SignupService.saveInfoProfileUrl( this.userUid,this.user.url);
       this.toastConfirmation();
-    })
+
+    }else if(this.newPhone == null && this.user.about != null && this.user.url == null){
+      this.SignupService.saveInfoProfileAbout( this.userUid,this.user.about);
+      this.toastConfirmation();
+
+    }else if(this.newPhone != null && this.user.about == null && this.user.url == null){
+      this.SignupService.saveInfoProfilePhone( this.userUid,this.newPhone);
+      this.toastConfirmation();
+
+    }else if(this.newPhone != null && this.user.about != null && this.user.url == null){
+      this.SignupService.saveInfoProfilePhone( this.userUid,this.newPhone);
+      this.SignupService.saveInfoProfileAbout( this.userUid,this.user.about);
+      this.toastConfirmation();
+
+    }else if(this.newPhone != null && this.user.about == null && this.user.url != null){
+      this.SignupService.saveInfoProfilePhone( this.userUid,this.newPhone);
+      this.SignupService.saveInfoProfileUrl( this.userUid,this.user.url);
+      this.toastConfirmation();
+
+    }else if(this.newPhone == null && this.user.about != null && this.user.url != null){
+      this.SignupService.saveInfoProfileAbout( this.userUid,this.user.about);
+      this.SignupService.saveInfoProfileUrl( this.userUid,this.user.url);
+      this.toastConfirmation();
+
+    }else if(this.newPhone != null && this.user.about != null && this.user.url != null){
+      this.SignupService.saveInfoProfileAbout( this.userUid,this.user.about);
+      this.SignupService.saveInfoProfileUrl( this.userUid,this.user.url);
+      this.SignupService.saveInfoProfilePhone( this.userUid, this.newPhone);
+      this.toastConfirmation();
+
+    }else{
+      console.log('go to the f*cking hell');
+    }
+
   }
 
     toastConfirmation(){
@@ -108,7 +102,7 @@ constructor(public navCtrl: NavController, public modalCtrl: ModalController,pub
     deleteAccount(){
       let alert = this.alertCtrl.create({
         title: 'Eliminar Cuenta',
-        message: `¿Estas segur@ que deseas eliminar esta cuenta?, si tienes cuenta en WAYPOOL USER también se eliminará`,
+        message: `¿Estas segur@ que deseas eliminar esta cuenta?`,
         buttons: [
           {
             text: 'Cancelar',
@@ -120,20 +114,13 @@ constructor(public navCtrl: NavController, public modalCtrl: ModalController,pub
           { 
             text: 'Eliminar',
             handler: () => {
-             
-              this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company + '/zones').once('value').then((snap)=>{
-                let obj = snap.val();
-                Object.getOwnPropertyNames(obj).forEach((key)=>{
-                  this.SignupService.deleteAccount(obj[key], this.userUid)
-                })
+              
+              //for next build, user has to have a recent login in order to delete account//
+              this.AngularFireAuth.auth.currentUser.delete().then(()=>{
+                this.SignupService.deleteAccount( this.userUid);
+                console.log('user has been deleted');
               }).then(()=>{
-                //for next build, user has to have a recent login in order to delete account//
-                this.AngularFireAuth.auth.currentUser.delete().then(()=>{
-                  console.log('user has been deleted');
-                }).catch((error)=>{
-                  console.log('error:', error)
-                })
-              }).then(()=>{
+
                 this.navCtrl.setRoot('LoginPage')
 
                 const toast = this.toastCtrl.create({
@@ -142,6 +129,17 @@ constructor(public navCtrl: NavController, public modalCtrl: ModalController,pub
                   closeButtonText: 'Ok'
                 });
                 toast.present();
+
+              }).catch((error)=>{
+                console.log('error:', error);
+
+                const toast = this.toastCtrl.create({
+                  message: `Hubo un error para eliminar tu cuenta, escribenos a soporte@waypooltech.com para que te ayudemos con este problema`,
+                  showCloseButton: true,
+                  closeButtonText: 'Ok'
+                });
+                toast.present();
+
               })
             }
           }
@@ -190,7 +188,7 @@ constructor(public navCtrl: NavController, public modalCtrl: ModalController,pub
           handler: () => {
             this.authenticationService.logOut().then(()=>{
               console.log(firebase.auth().currentUser);
-              this.SignupService.userPlace = undefined;
+           
               this.navCtrl.setRoot('LoginPage');
             })
           }

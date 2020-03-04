@@ -1,6 +1,6 @@
 webpackJsonp([39],{
 
-/***/ 693:
+/***/ 691:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListridePageModule", function() { return ListridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listride__ = __webpack_require__(887);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listride__ = __webpack_require__(885);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ListridePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 887:
+/***/ 885:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -106,20 +106,20 @@ var ListridePage = /** @class */ (function () {
         this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
             _this.user = user;
         });
-        this.sendCoordsService.getOriginUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+        this.sendCoordsService.getOriginUser(this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (originUser) {
             _this.locationOriginUser = originUser;
             // this.locationOrigin.push(origin)
             console.log(originUser);
         });
-        this.sendCoordsService.getDestinationUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+        this.sendCoordsService.getDestinationUser(this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (destinationUser) {
             _this.locationDestinationUser = destinationUser;
             // this.locationOrigin.push(origin)
             console.log(destinationUser);
         });
         console.log(this.SignUpService.userPlace);
-        this.reservesService.getReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+        this.reservesService.getReserves(this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (reserves) {
             // this.initiatedTrips = [];
             // this.reservesAvailable = [];
@@ -136,22 +136,22 @@ var ListridePage = /** @class */ (function () {
             // this.presentLoadingCustom(this.ReservesGeofire);
             _this.getAvailableReserves();
         });
-        this.reservesService.getSeenReservesInAvailableReserves(this.SignUpService.userPlace, this.userUid).subscribe(function (reserve) {
+        this.reservesService.getSeenReservesInAvailableReserves(this.userUid).subscribe(function (reserve) {
             _this.reservesAvailable = reserve;
             console.log(_this.reservesAvailable);
         });
-        this.reservesService.getSeenReservesInAvailableReservesLMU(this.SignUpService.userPlace, this.userUid).subscribe(function (reserve) {
-            _this.initiatedTrips = reserve;
-            console.log(_this.initiatedTrips);
-        });
+        // this.reservesService.getSeenReservesInAvailableReservesLMU(this.SignUpService.userPlace, this.userUid).subscribe((reserve)=>{
+        //   this.initiatedTrips = reserve;
+        //   console.log(this.initiatedTrips);
+        // })
     }
     ListridePage.prototype.ionViewDidLeave = function () {
         this.unSubscribeServices();
         console.log(this.SignUpService.userPlace);
         console.log("me active");
-        this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace, this.userUid);
-        this.TripsService.eliminateSeenAvailableReserves(this.SignUpService.userPlace, this.userUid);
-        this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace, this.userUid);
+        this.TripsService.eliminateAvailableUsers(this.userUid);
+        this.TripsService.eliminateSeenAvailableReserves(this.userUid);
+        // this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
     };
     // getMyReserves(){
     // }
@@ -162,18 +162,18 @@ var ListridePage = /** @class */ (function () {
         //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
         console.log(this.ReservesGeofire);
         this.ReservesGeofire.forEach(function (reserveGeofire) {
-            _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + reserveGeofire.driverId + '/' + reserveGeofire.keyReserve).once('value').then(function (snapReserve) {
+            _this.afDB.database.ref('/reservesTest/' + reserveGeofire.driverId + '/' + reserveGeofire.keyReserve).once('value').then(function (snapReserve) {
                 var obj = snapReserve.val();
                 console.log(obj);
-                _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/reservesSeenInAvailableReserves/').remove().then(function () {
-                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/reservesSeenInAvailableReserves/' + reserveGeofire.keyReserve).update(obj);
+                _this.afDB.database.ref('/usersTest/' + _this.userUid + '/reservesSeenInAvailableReserves/').remove().then(function () {
+                    _this.afDB.database.ref('/usersTest/' + _this.userUid + '/reservesSeenInAvailableReserves/' + reserveGeofire.keyReserve).update(obj);
                 });
             });
             if (reserveGeofire.LMU == true) {
-                _this.afDB.database.ref(_this.SignUpService.userPlace + '/trips/' + reserveGeofire.driverId + '/' + reserveGeofire.keyReserve).once('value').then(function (snapTripLMU) {
+                _this.afDB.database.ref('/trips/' + reserveGeofire.driverId + '/' + reserveGeofire.keyReserve).once('value').then(function (snapTripLMU) {
                     var obj = snapTripLMU.val();
-                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/reservesSeenInAvailableReservesLMU/').remove().then(function () {
-                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid + '/reservesSeenInAvailableReservesLMU/' + reserveGeofire.keyReserve).update(obj);
+                    _this.afDB.database.ref('/usersTest/' + _this.userUid + '/reservesSeenInAvailableReservesLMU/').remove().then(function () {
+                        _this.afDB.database.ref('/usersTest/' + _this.userUid + '/reservesSeenInAvailableReservesLMU/' + reserveGeofire.keyReserve).update(obj);
                     });
                     // this.initiatedTrips.push(this.reserveLMU);
                     // console.log(this.initiatedTrips);  
@@ -190,7 +190,7 @@ var ListridePage = /** @class */ (function () {
     };
     ListridePage.prototype.confirmpopup = function (reserve) {
         var _this = this;
-        this.reservesService.getPendingUsers(this.SignUpService.userPlace, reserve.driver.userId, reserve.keyTrip).takeUntil(this.unsubscribe)
+        this.reservesService.getPendingUsers(reserve.driver.userId, reserve.keyTrip).takeUntil(this.unsubscribe)
             .subscribe(function (pendingUsers) {
             _this.pendingUsers = pendingUsers;
             console.log(pendingUsers);
@@ -202,9 +202,9 @@ var ListridePage = /** @class */ (function () {
                 if (accepted) {
                     _this.unSubscribeServices();
                     _this.navCtrl.pop();
-                    _this.TripsService.eliminateAvailableUsers(_this.SignUpService.userPlace, _this.userUid);
-                    _this.TripsService.eliminateSeenAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
-                    _this.TripsService.eliminateSeenAvailableReservesLMU(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminateAvailableUsers(_this.userUid);
+                    _this.TripsService.eliminateSeenAvailableReserves(_this.userUid);
+                    //  this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
                     _this.navCtrl.push('ReservetripPage');
                 }
             });
@@ -230,9 +230,9 @@ var ListridePage = /** @class */ (function () {
                 if (accepted) {
                     _this.unSubscribeServices();
                     _this.navCtrl.pop();
-                    _this.TripsService.eliminateAvailableUsers(_this.SignUpService.userPlace, _this.userUid);
-                    _this.TripsService.eliminateSeenAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
-                    _this.TripsService.eliminateSeenAvailableReservesLMU(_this.SignUpService.userPlace, _this.userUid);
+                    _this.TripsService.eliminateAvailableUsers(_this.userUid);
+                    _this.TripsService.eliminateSeenAvailableReserves(_this.userUid);
+                    //  this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
                     _this.navCtrl.push('ReservetripPage');
                 }
             });
@@ -248,9 +248,9 @@ var ListridePage = /** @class */ (function () {
             if (accepted) {
                 _this.unSubscribeServices();
                 _this.navCtrl.pop();
-                _this.TripsService.eliminateAvailableUsers(_this.SignUpService.userPlace, _this.userUid);
-                _this.TripsService.eliminateSeenAvailableReserves(_this.SignUpService.userPlace, _this.userUid);
-                _this.TripsService.eliminateSeenAvailableReservesLMU(_this.SignUpService.userPlace, _this.userUid);
+                _this.TripsService.eliminateAvailableUsers(_this.userUid);
+                _this.TripsService.eliminateSeenAvailableReserves(_this.userUid);
+                // this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
                 _this.navCtrl.push('MyridePage');
             }
         });
@@ -293,7 +293,7 @@ var ListridePage = /** @class */ (function () {
     };
     ListridePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-listride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-listride/listride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar >\n\n        <ion-title class="Title">ESCOGE TU COMPAÑERO\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light" class="hideLongText" style="        background-color: rgba(255, 255, 255, 0.959);\n">\n    <ion-row class="center-align bg-white flow-ride">\n        <ion-col *ngFor = "let originUser of locationOriginUser"  class="hideLongText" col-5>\n            <h2>Origen</h2> {{originUser}}\n        </ion-col>\n        <ion-col col-2 text-center>\n            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">\n        </ion-col>\n        <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>\n            <h2>Destino</h2> {{destinationUser}}\n        </ion-col>\n    </ion-row>\n    <div class="iconHelp">\n        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>\n\n    </div>\n    \n    <div [ngSwitch]="noReserve" >\n        <img *ngSwitchCase=true src="assets/imgs/noreserveavailable.png">\n\n\n\n\n        <ng-container *ngSwitchCase=false>\n                <div style="display: flex;flex-direction: column;">\n                        <ion-card *ngFor = "let trip of initiatedTrips">\n                                <ion-item>\n                                    <ion-avatar item-start>\n                                        <img class="animated infinite pulse" src="assets/imgs/carOrange.png">\n                                    </ion-avatar>\n                                   \n                                    <div class="name">\n                                       \n                                        <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase }}\n                                            <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                                            <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n                                        </h2>\n                                        <p>{{trip.car}}</p>\n                                        \n                \n                                    </div>\n                                    <div class="more">\n                                        <h2 class="text text-hot">                        \n                                         $ {{trip.price}}                          \n                                        </h2>\n                                       \n                                    </div>\n                                </ion-item>\n                                <ion-card-content >\n                                  \n                                    <ion-row class="center-align">  \n                                        <ion-col center text-center col-6 text-right style="margin-left: auto;">\n                                                <h2 class="text text-hot animated infinite pulse">                        \n                                                        Viaje en curso                         \n                                                     </h2>  \n                                                               \n                                        </ion-col>                \n                                        \n                                        <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                            <button class="btn bg-hot rounded full text-white" (click)="enterTrip(trip)"style="font-size: 1.5rem;">Unirme</button>\n                                                </ion-col>\n                                    </ion-row>\n                                </ion-card-content>\n                            </ion-card>\n                </div>\n\n            <div style="display: flex;flex-direction: column;width: 96%;">\n                    <ion-card *ngFor = "let reserve of reservesAvailable">\n                            <ion-item>\n                                <ion-avatar item-start>\n                                    <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                                </ion-avatar>                   \n                                <div class="name">                      \n                                    <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase }} \n                                        <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{reserve.driver.company}}</ion-badge>\n            \n                                    </h2>\n            \n                                    <p>{{reserve.car}}</p> \n                                    \n                                </div>\n                                <div class="more">\n                                    <h2 class="text text-theme">                        \n                                        $ {{reserve.price}}                         \n                                    </h2>\n              \n                                </div>\n                            </ion-item>\n                            <ion-card-content>                  \n                                <ion-row class="center-align">  \n                                            <h2 class="text text-dark">                        \n                                                Hora: {{reserve.startHour}}                             \n                                            </h2>                    \n                                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                        <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Unirme</button>\n                                    </ion-col>\n                                </ion-row>\n                            </ion-card-content>\n                        </ion-card>\n                    </div>\n       \n            \n        </ng-container>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-listride/listride.html"*/
+            selector: 'page-listride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-listride/listride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar >\n\n        <ion-title class="Title">ESCOGE TU COMPAÑERO\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light" class="hideLongText" style="        background-color: rgba(255, 255, 255, 0.959);\n">\n    <ion-row class="center-align bg-white flow-ride">\n        <ion-col *ngFor = "let originUser of locationOriginUser"  class="hideLongText" col-5>\n            <h2>Origen</h2> {{originUser}}\n        </ion-col>\n        <ion-col col-2 text-center>\n            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">\n        </ion-col>\n        <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>\n            <h2>Destino</h2> {{destinationUser}}\n        </ion-col> \n    </ion-row>\n    <div class="iconHelp">\n        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>\n\n    </div>\n    \n    <div [ngSwitch]="noReserve" >\n        <img *ngSwitchCase=true src="assets/imgs/noreserveavailable.png">\n\n\n\n\n        <ng-container *ngSwitchCase=false>\n                <div style="display: flex;flex-direction: column;">\n                        <ion-card *ngFor = "let trip of initiatedTrips">\n                                <ion-item>\n                                    <ion-avatar item-start>\n                                        <img class="animated infinite pulse" src="assets/imgs/carOrange.png">\n                                    </ion-avatar>\n                                   \n                                    <div class="name">\n                                       \n                                        <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase }}\n                                            <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                                            <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n                                        </h2>\n                                        <p>{{trip.car}}</p>\n                                        \n                \n                                    </div>\n                                    <div class="more">\n                                        <h2 class="text text-hot">                        \n                                         $ {{trip.price}}                          \n                                        </h2>\n                                       \n                                    </div>\n                                </ion-item>\n                                <ion-card-content >\n                                  \n                                    <ion-row class="center-align">  \n                                        <ion-col center text-center col-6 text-right style="margin-left: auto;">\n                                                <h2 class="text text-hot animated infinite pulse">                        \n                                                        Viaje en curso                         \n                                                     </h2>  \n                                                               \n                                        </ion-col>                \n                                        \n                                        <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                            <button class="btn bg-hot rounded full text-white" (click)="enterTrip(trip)"style="font-size: 1.5rem;">Unirme</button>\n                                                </ion-col>\n                                    </ion-row>\n                                </ion-card-content>\n                            </ion-card>\n                </div>\n\n            <div style="display: flex;flex-direction: column;width: 96%;">\n                    <ion-card *ngFor = "let reserve of reservesAvailable">\n                            <ion-item>\n                                <ion-avatar item-start>\n                                    <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                                </ion-avatar>                   \n                                <div class="name">                      \n                                    <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase }} \n                                        <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{reserve.driver.company}}</ion-badge>\n            \n                                    </h2>\n            \n                                    <p>{{reserve.car}}</p> \n                                    \n                                </div>\n                                <div class="more">\n                                    <h2 class="text text-theme">                        \n                                        $ {{reserve.price}}                         \n                                    </h2>\n              \n                                </div>\n                            </ion-item>\n                            <ion-card-content>                  \n                                <ion-row class="center-align">  \n                                            <h2 class="text text-dark">                        \n                                                Hora: {{reserve.startHour}}                             \n                                            </h2>                    \n                                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                        <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Unirme</button>\n                                    </ion-col>\n                                </ion-row>\n                            </ion-card-content>\n                        </ion-card>\n                    </div>\n       \n            \n        </ng-container>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-listride/listride.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_8__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */]])
     ], ListridePage);

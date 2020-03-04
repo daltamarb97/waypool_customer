@@ -23,19 +23,19 @@ export class DriverPriceService {
            
         })
    }    
-    public setPrice( user,price,car, keyReserve){
+    public setPriceAndCar( user,price,car, keyReserve){
         
-      firebase.database().ref('/driversTest/' + user+'/trips').update({
+      firebase.database().ref('/reservesTest/' + user + '/' + keyReserve).update({
          price:price, 
          car:car,
         
       })
 
 
-      firebase.database().ref('/reseves/' + user + '/' + keyReserve).update({
-        price:price, 
-         car:car,
-      })
+      // firebase.database().ref('/resevesTest/' + user + '/' + keyReserve).update({
+      //   price:price, 
+      //    car:car,
+      // })
      }
 
      public saveTripToReserves(driverUid,or,dest,timeLeaving,price,car,note,driver){

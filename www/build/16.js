@@ -1,6 +1,6 @@
 webpackJsonp([16],{
 
-/***/ 679:
+/***/ 680:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverShowInfoCarPageModule", function() { return DriverShowInfoCarPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__showinfocar__ = __webpack_require__(869);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__showinfocar__ = __webpack_require__(870);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var DriverShowInfoCarPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 869:
+/***/ 870:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85,10 +85,10 @@ var DriverShowInfoCarPage = /** @class */ (function () {
         this.carList = [];
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["Subject"];
         this.user = this.navParams.get('user');
-        this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.userUid).once('value').then(function (snap) {
+        this.afDB.database.ref('/driversTest/' + this.userUid).once('value').then(function (snap) {
             _this.driverInfo = snap.val();
         });
-        this.SignUpService.getCar(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+        this.SignUpService.getCar(this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (car) {
             _this.carList = car;
             console.log(_this.carList);
@@ -118,7 +118,7 @@ var DriverShowInfoCarPage = /** @class */ (function () {
                 alert_2.present();
             }
             else {
-                this.SignUpService.addCar(this.SignUpService.userPlace, this.userUid, this.carModel, this.plateNumber, this.color);
+                this.SignUpService.addCar(this.userUid, this.carModel, this.plateNumber, this.color);
             }
         }
         this.carModel = null;
@@ -127,7 +127,7 @@ var DriverShowInfoCarPage = /** @class */ (function () {
     };
     DriverShowInfoCarPage.prototype.deleteCar = function (carKey) {
         console.log(carKey);
-        this.SignUpService.deleteCar(this.SignUpService.userPlace, this.userUid, carKey);
+        this.SignUpService.deleteCar(this.userUid, carKey);
     };
     DriverShowInfoCarPage.prototype.dismiss = function () {
         this.viewCtrl.dismiss();

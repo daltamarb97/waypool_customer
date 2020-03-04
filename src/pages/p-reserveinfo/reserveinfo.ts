@@ -40,7 +40,7 @@ export class ReserveinfoPage {
 
   
 
-      this.reservesService.getPendingUsers(this.signUpService.userPlace,this.driverUid,this.reserveKey).takeUntil(this.unsubscribe)
+      this.reservesService.getPendingUsers(this.driverUid,this.reserveKey).takeUntil(this.unsubscribe)
         .subscribe( users => {
 			this.passengers = users;			
 			console.log(this.passengers);

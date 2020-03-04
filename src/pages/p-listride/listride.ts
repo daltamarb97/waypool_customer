@@ -28,7 +28,7 @@ export class ListridePage {
   tripsReserved:any =[];
   reserveLMU:any;
   unsubscribe = new Subject;
-  pendingUsers:any = [];
+  pendingUsers:any = []; 
   noReserve:boolean = false;
   constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
@@ -37,13 +37,13 @@ export class ListridePage {
       
     })
     
-    this.sendCoordsService.getOriginUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+    this.sendCoordsService.getOriginUser( this.userUid).takeUntil(this.unsubscribe)
     .subscribe( originUser => {
       this.locationOriginUser = originUser;
       // this.locationOrigin.push(origin)
       console.log(originUser);
     });
-    this.sendCoordsService.getDestinationUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+    this.sendCoordsService.getDestinationUser( this.userUid).takeUntil(this.unsubscribe)
         .subscribe( destinationUser => {
           this.locationDestinationUser = destinationUser;
           // this.locationOrigin.push(origin)
@@ -54,7 +54,7 @@ export class ListridePage {
         
 
 
-        this.reservesService.getReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)    
+        this.reservesService.getReserves( this.userUid).takeUntil(this.unsubscribe)    
         .subscribe(reserves => {
           // this.initiatedTrips = [];
           // this.reservesAvailable = [];
@@ -75,18 +75,18 @@ export class ListridePage {
         });
 
 
-        this.reservesService.getSeenReservesInAvailableReserves(this.SignUpService.userPlace, this.userUid).subscribe((reserve)=>{
+        this.reservesService.getSeenReservesInAvailableReserves( this.userUid).subscribe((reserve)=>{
           this.reservesAvailable = reserve;
           console.log(this.reservesAvailable);
           
         })
 
 
-        this.reservesService.getSeenReservesInAvailableReservesLMU(this.SignUpService.userPlace, this.userUid).subscribe((reserve)=>{
-          this.initiatedTrips = reserve;
-          console.log(this.initiatedTrips);
+        // this.reservesService.getSeenReservesInAvailableReservesLMU(this.SignUpService.userPlace, this.userUid).subscribe((reserve)=>{
+        //   this.initiatedTrips = reserve;
+        //   console.log(this.initiatedTrips);
           
-        })
+        // })
      
   
   }
@@ -98,9 +98,9 @@ export class ListridePage {
     console.log(this.SignUpService.userPlace);
     
     console.log("me active")
-    this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
-    this.TripsService.eliminateSeenAvailableReserves(this.SignUpService.userPlace,this.userUid);
-    this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
+    this.TripsService.eliminateAvailableUsers(this.userUid);
+    this.TripsService.eliminateSeenAvailableReserves(this.userUid);
+    // this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
   }
 
 
@@ -117,20 +117,20 @@ export class ListridePage {
     console.log(this.ReservesGeofire);
       
     this.ReservesGeofire.forEach(reserveGeofire => {        
-        this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ reserveGeofire.driverId +'/'+ reserveGeofire.keyReserve).once('value').then((snapReserve)=>{
+        this.afDB.database.ref('/reservesTest/'+ reserveGeofire.driverId +'/'+ reserveGeofire.keyReserve).once('value').then((snapReserve)=>{
           let obj = snapReserve.val();
           console.log(obj);
-          this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/reservesSeenInAvailableReserves/').remove().then(()=>{
-            this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/reservesSeenInAvailableReserves/'+ reserveGeofire.keyReserve).update(obj);
+          this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReserves/').remove().then(()=>{
+            this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReserves/'+ reserveGeofire.keyReserve).update(obj);
           })
         })
 
         if(reserveGeofire.LMU == true){
           
-          this.afDB.database.ref(this.SignUpService.userPlace + '/trips/'+reserveGeofire.driverId+'/'+ reserveGeofire.keyReserve).once('value').then((snapTripLMU)=>{
+          this.afDB.database.ref('/trips/'+reserveGeofire.driverId+'/'+ reserveGeofire.keyReserve).once('value').then((snapTripLMU)=>{
             let obj = snapTripLMU.val();
-            this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/reservesSeenInAvailableReservesLMU/').remove().then(()=>{
-              this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid +'/reservesSeenInAvailableReservesLMU/'+ reserveGeofire.keyReserve).update(obj);
+            this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReservesLMU/').remove().then(()=>{
+              this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReservesLMU/'+ reserveGeofire.keyReserve).update(obj);
             })
             // this.initiatedTrips.push(this.reserveLMU);
             // console.log(this.initiatedTrips);  
@@ -157,7 +157,7 @@ export class ListridePage {
 
  
  confirmpopup(reserve){
-   this.reservesService.getPendingUsers(this.SignUpService.userPlace,reserve.driver.userId,reserve.keyTrip).takeUntil(this.unsubscribe)
+   this.reservesService.getPendingUsers(reserve.driver.userId,reserve.keyTrip).takeUntil(this.unsubscribe)
     .subscribe(pendingUsers=>{
       this.pendingUsers = pendingUsers
       console.log(pendingUsers);
@@ -171,9 +171,9 @@ export class ListridePage {
         if(accepted){
           this.unSubscribeServices();
          this.navCtrl.pop();
-         this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
-         this.TripsService.eliminateSeenAvailableReserves(this.SignUpService.userPlace,this.userUid);
-         this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
+         this.TripsService.eliminateAvailableUsers(this.userUid);
+         this.TripsService.eliminateSeenAvailableReserves(this.userUid);
+        //  this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
 
          this.navCtrl.push('ReservetripPage');
         }
@@ -200,9 +200,9 @@ export class ListridePage {
         if(accepted){
           this.unSubscribeServices();
          this.navCtrl.pop();
-         this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
-         this.TripsService.eliminateSeenAvailableReserves(this.SignUpService.userPlace,this.userUid);
-         this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
+         this.TripsService.eliminateAvailableUsers(this.userUid);
+         this.TripsService.eliminateSeenAvailableReserves(this.userUid);
+        //  this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
 
          this.navCtrl.push('ReservetripPage');
         }
@@ -223,9 +223,9 @@ export class ListridePage {
     if(accepted){
         this.unSubscribeServices();
         this.navCtrl.pop();
-        this.TripsService.eliminateAvailableUsers(this.SignUpService.userPlace,this.userUid);
-        this.TripsService.eliminateSeenAvailableReserves(this.SignUpService.userPlace,this.userUid);
-        this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
+        this.TripsService.eliminateAvailableUsers(this.userUid);
+        this.TripsService.eliminateSeenAvailableReserves(this.userUid);
+        // this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
 
         this.navCtrl.push('MyridePage');
       }

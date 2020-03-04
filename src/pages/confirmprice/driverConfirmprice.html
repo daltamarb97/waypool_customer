@@ -5,7 +5,7 @@
 
         <ion-card-content>
             <div class="ride-detail">
-                    <p> Este valor se replicará en todos los viajes en tu horario </p>
+                    <p *ngIf= 'itsSchedule'> Este valor se replicará en todos los viajes en tu horario </p>
 
                 <ion-item class="form">
                     <ion-label floating>Precio Por Persona</ion-label>
@@ -24,6 +24,7 @@
             </div> -->
         </ion-card-content>
         <ion-card-content>
+                <p *ngIf = 'noCarAvailable'>No tienes ningún carro registrado aún, <span style="font-weight: bold; color: red; text-decoration: underline red" (click) = 'goToSetCars()' >hazlo aquí</span> </p>
                 <ion-row style="margin-top: 14px;    display: flex;
                 justify-content: center">
                    <ion-list>

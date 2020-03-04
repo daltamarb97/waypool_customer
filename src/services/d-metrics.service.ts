@@ -24,9 +24,9 @@ export class DriverMetricsService {
       });
 
    }   
-   public tripsInitiated(place, driverUid,keyTrip,trip){
+   public tripsInitiated( driverUid,keyTrip,trip){
     //send every trip that were initiated
-  this.afDB.database.ref('data/allTripsInitiated/'+place).push(trip);
+  this.afDB.database.ref('data/allTripsInitiated/').push(trip);
 
     } 
 

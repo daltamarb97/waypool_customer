@@ -155,16 +155,16 @@ export class TripsService {
  }
    
      
-     public eliminateAvailableUsers(place, userUid){    
+     public eliminateAvailableUsers( userUid){    
       //eliminate keyTrip from user's node to eliminate access to that reserve
-    this.afDB.database.ref(place + '/users/'+userUid+'/availableReserves/').remove();
+    this.afDB.database.ref( '/usersTest/'+userUid+'/availableReserves/').remove();
 
    } 
 
 
-   public eliminateSeenAvailableReserves(place, userUid){    
+   public eliminateSeenAvailableReserves( userUid){    
     //eliminate keyTrip from user's node to eliminate access to that reserve
-  this.afDB.database.ref(place + '/users/'+userUid+'/reservesSeenInAvailableReserves/').remove();
+  this.afDB.database.ref('/usersTest/'+userUid+'/reservesSeenInAvailableReserves/').remove();
 
  } 
 

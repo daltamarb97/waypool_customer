@@ -239,7 +239,7 @@ deleteUserGeofireDest( keyTrip){
 }
 
 
-deleteUserGeofireRoute( keyTrip){
+deleteUserGeofireRoute( keyTrip, ){
   this.afDB.database.ref('/geofireRoute/' + keyTrip).remove().then(()=>{
       console.log("GeofireRoute succesfully removed");
   }).catch(error =>{
@@ -250,7 +250,7 @@ deleteUserGeofireRoute( keyTrip){
 }
 
 deleteUserReserve( userId, keyTrip){
-  this.afDB.database.ref('/reserves/' + userId + '/' + keyTrip).remove().then(()=>{
+  this.afDB.database.ref('/reservesTest/' + userId + '/' + keyTrip).remove().then(()=>{
       console.log("reserve succesfully removed");
   }).catch(error =>{
       console.log(error);

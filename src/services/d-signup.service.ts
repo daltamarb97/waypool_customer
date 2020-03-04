@@ -124,46 +124,46 @@ export class DriverSignUpService {
     }
 
     
-    public getMyInfoForProfile(place, userId){
-        return this.afDB.object(place + '/drivers/'+ userId).valueChanges();
+    public getMyInfoForProfile( userId){
+        return this.afDB.object('/driversTest/'+ userId).valueChanges();
         }
 
         
-public saveInfoProfilePhone(place, userUid,phone){
+public saveInfoProfilePhone( userUid,phone){
    //permite configurar la información del perfil
-this.afDB.database.ref(place + '/drivers/'+ userUid).update({
+this.afDB.database.ref('/driversTest/'+ userUid).update({
     phone:phone
     });
 }
 
-public saveInfoProfileAbout(place, userUid,about){
+public saveInfoProfileAbout( userUid,about){
     //permite configurar la información del perfil
- this.afDB.database.ref(place + '/drivers/'+ userUid).update({
+ this.afDB.database.ref( '/driversTest/'+ userUid).update({
      about:about 
      });
  }
 
- public saveInfoProfileUrl(place, userUid,url){
+ public saveInfoProfileUrl( userUid,url){
     //permite configurar la información del perfil
- this.afDB.database.ref(place + '/drivers/'+ userUid).update({
+ this.afDB.database.ref( '/driversTest/'+ userUid).update({
      url:url
      });
  }
 
 
-public deleteAccount(place, userUid){
-    this.afDB.database.ref(place + '/drivers/'+userUid).remove();
-    this.afDB.database.ref(place + '/users/'+userUid).remove();
+public deleteAccount(userUid){
+    this.afDB.database.ref('/driversTest/'+userUid).remove();
+    this.afDB.database.ref('/usersTest/'+userUid).remove();
 }
 
-public addCar(place, DriverUid,carModel,plateNumber,color){
-    this.afDB.database.ref(place + '/drivers/'+DriverUid+'/cars/').push({
+public addCar( DriverUid,carModel,plateNumber,color){
+    this.afDB.database.ref('/driversTest/'+DriverUid+'/cars/').push({
         carModel:carModel,
         plateNumber:plateNumber,
         color:color
     }).then((snap)=>{
         const key = snap.key;
-        this.afDB.database.ref(place + '/drivers/'+ DriverUid + '/cars/' + key).update({
+        this.afDB.database.ref( '/driversTest/'+ DriverUid + '/cars/' + key).update({
             keyCar: key 
         })
 
@@ -171,9 +171,11 @@ public addCar(place, DriverUid,carModel,plateNumber,color){
 }
 
 
-public deleteCar(place, driverUid,carKey){
-    this.afDB.database.ref(place + '/drivers/'+driverUid +'/cars/'+ carKey).remove();
+public deleteCar( driverUid,carKey){
+    this.afDB.database.ref( '/driversTest/'+driverUid +'/cars/'+ carKey).remove();
 }
+
+
 public addCarProfile(place, userUid,car){
     this.afDB.database.ref(place + '/drivers/'+userUid+'/cars/').push(car)
 }

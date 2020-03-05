@@ -16,8 +16,15 @@
               
                   <ion-row class="center-align row" style="margin-left: 16px; justify-content: flex-end;" >
                     
-                      <button  #buttonDisconected class="btn rounded bg-red  text-white buttonDisconected" (click)="disconectDriver()" >Offline</button>
-                      <button #buttonConected  class="btn  text-white buttonConected" (click)="conectDriver()" >Online</button>
+                      <button  #buttonDisconected class="btn bg-theme rounded text-white buttonDisconected" style="border-radius:25px; height: 40px;"  *ngIf="showConectedButton" (click)="conectDriver()" >
+                        <ion-icon  name="calendar"></ion-icon>
+                           PUBLICAR HORARIO
+
+                      </button>
+                      <button #buttonConected  class="btn  text-white buttonConected" (click)="disconectDriver()" style="border-radius: 25px;height: 40px; border-color: green;" *ngIf="!showConectedButton" >
+                        <ion-icon  name="calendar"></ion-icon>
+
+                        HORARIO PUBLICADO </button>
                     
                     
                 </ion-row>
@@ -38,10 +45,9 @@
 
       <ion-card class="search" >
           <ion-card-content>
-              <span style=" z-index: 1;position: relative;" class="text-light search-text">Casa &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>
 
               <span class="dot bg-theme-driver"></span>
-              <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" id="input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Cóloca la dirección de tu casa"></ion-searchbar>
+              <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" id="input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Cóloca tu origen"></ion-searchbar>
 
               <ion-list   [hidden]="autocompleteItems.length == 0">
                   <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">
@@ -52,7 +58,6 @@
           </ion-card-content>
 
           <ion-card-content>
-            <span style=" z-index: 1;position: relative;" class="text-light search-text">Oficina &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>
 
               <span class="dot bg-yellow"></span>           
              <ion-searchbar  [(ngModel)]="autocompleteMyDest.input"  id="input2" (click)="updateSearchResultsMyDest()" placeholder="Cóloca tu destino"></ion-searchbar>
@@ -63,10 +68,13 @@
                 {{ item.name }}
               </ion-item>
             </ion-list>
-  
+            
            </ion-card-content>
            
       </ion-card>
+      <div style="display: flex; justify-content: center;">
+        <button (click)="CreateOneTrip()" class="btn rounded bg-theme text-white " style="width: 50%">Publicar Viaje</button>   
+      </div>
       <!-- <ion-avatar item-end>
           <img style="height: 15%; width: 15%;" src="assets/imgs/centermap.png" (click)="centerMap()">
       </ion-avatar> -->

@@ -17,8 +17,12 @@ export class DriverSignUpService {
    public getMyInfo(place, userId){
     return this.afDB.object(place + '/drivers/'+userId).valueChanges();
     }
-
-
+    public getToggleStatus(place, userId){
+        return this.afDB.object(place + '/drivers/'+userId+'/toggleStatus/').valueChanges();
+        }
+    public getMyOriginAndDestination(place, userId){
+        return this.afDB.object(place + '/drivers/'+userId+'/trips/').valueChanges();
+        }
     // public getInfoAboutMyPlace( userId){
     //     return this.afDB.object('/allUsers/' + userId).valueChanges();
     //     }

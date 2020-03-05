@@ -27,7 +27,7 @@ export class DriverFindridePage {
 
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('buttonConected',{read:ElementRef}) buttonConected;
-  @ViewChild('buttonDisconected',{read:ElementRef}) buttonDisconected;
+  @ViewChild('buttonDshowConectedButton',{read:ElementRef}) buttonDshowConectedButton;
 
   map: any;
   markers: any;
@@ -86,7 +86,7 @@ export class DriverFindridePage {
   keyTrip:any; 
   onTrip:any;
   token:any;
-  isConected:boolean = false;
+  showConectedButton:boolean = true;
   positionDest:any;
   positionOr:any;
   lat:any;
@@ -96,7 +96,6 @@ export class DriverFindridePage {
   myReserves = [];
   geocoordinatesHouse:any;
   checked:boolean = false;
-  isDisconected:boolean;
   driverReserves: any;
   fullReserves = [];
   multipleDestinations:any = [];
@@ -108,6 +107,7 @@ export class DriverFindridePage {
   destName: any;
   multipleLocations:boolean;
   zonesToIterate:any;
+  toggleStatus: any;
 
   constructor( private geofireService: DriverGeofireService,public TripsService:DriverTripsService, public afDB: AngularFireDatabase, public navCtrl: NavController,public SignUpService:DriverSignUpService,public modalCtrl: ModalController,private authenticationService: DriverAuthenticationService, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: DriverSendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private toastCtrl: ToastController, private app: App, private sendUsersService: DriverSendUsersService, public instancesService: DriverInstancesService, public firebaseNative: Firebase, private platform: Platform, private fcm: FCM, public loadingCtrl: LoadingController, public renderer: Renderer ) {
 
@@ -214,18 +214,16 @@ export class DriverFindridePage {
         const inputs2: any = document.getElementById("input2").getElementsByTagName("INPUT");
         inputs2[0].disabled=true;
     
-        if(this.userInfo.toggleStatus === 'online'){
-          // this.checked = true;
-          this.isConected = true;
-          this.isDisconected = false;
-          this.changeColorOnline();
-          this.disable();
-        }else{
-          this.isConected = false;
-          this.isDisconected = true;
-          this.changeColorOffline();
-          this.enable();
-        }
+        // if(this.userInfo.toggleStatus === 'online'){
+        //   // this.checked = true;
+        //   this.showConectedButton = false;
+        //   this.changeColorOnline();
+        //   this.disable();
+        // }else{
+        //   this.showConectedButton = true;
+        //   this.changeColorOffline();
+        //   this.enable();
+        // }
         if (this.userInfo.houseAddress === undefined || this.userInfo.houseAddress === null) {
           this.pushOriginPage();
     
@@ -271,7 +269,18 @@ export class DriverFindridePage {
          this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.user).subscribe(user=>{
            this.userInfo = user;
           console.log(this.userInfo);
+          this.userInfo
+          this.toggleStatus = this.userInfo.toggleStatus; 
           
+          if(this.toggleStatus === 'online'){
+            this.showConectedButton = false;
+            console.log("estoy online");
+            
+          }else{
+            this.showConectedButton = true;
+            console.log("estoy offline");
+    
+          }
          }) 
         })
 }else{
@@ -378,18 +387,16 @@ export class DriverFindridePage {
         const inputs2: any = document.getElementById("input2").getElementsByTagName("INPUT");
         inputs2[0].disabled=true;
     
-        if(this.userInfo.toggleStatus === 'online'){
-          // this.checked = true;
-          this.isConected = true;
-          this.isDisconected = false;
-          this.changeColorOnline();
-          this.disable();
-        }else{
-          this.isConected = false;
-          this.isDisconected = true;
-          this.changeColorOffline();
-          this.enable();
-        }
+        // if(this.userInfo.toggleStatus === 'online'){
+        //   // this.checked = true;
+        //   this.showConectedButton = false;
+        //   this.changeColorOnline();
+        //   this.disable();
+        // }else{
+        //   this.showConectedButton = true;
+        //   this.changeColorOffline();
+        //   this.enable();
+        // }
         if (this.userInfo.houseAddress === undefined || this.userInfo.houseAddress === null) {
           this.pushOriginPage();
     
@@ -568,8 +575,6 @@ console.log(  this.positionDest.lat);
       });
       alert.present();
   } else {
-      this.isConected = true;
-      this.isDisconected = false;
 
       if (this.currentUser.emailVerified == false) {
           const alert = this.alertCtrl.create({
@@ -578,9 +583,6 @@ console.log(  this.positionDest.lat);
               buttons: ['OK']
           });
           alert.present();
-          this.isConected = false;
-          this.isDisconected = true;
-          this.changeColorOffline();
       } else {
 
           if (this.userInfo.documents) {
@@ -605,9 +607,7 @@ console.log(  this.positionDest.lat);
                           }
                           if (this.autocompleteMyPos.input == '' || this.autocompleteMyDest.input == '' ) {
                               this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tengas las dirección de tu casa y oficina sea correcta', 'Ok');
-                              this.isConected = false;
-                              this.isDisconected = true;
-                              this.changeColorOffline();
+                             
                               // this.clearMarkers();
                               // this.directionsDisplay.setDirections({routes: []});
                               // this.loadMap();
@@ -615,7 +615,8 @@ console.log(  this.positionDest.lat);
                               console.log(this.houseAddress[0]);
                               console.log(this.geocoordinatesHouse.latOr);
                               console.log(this.autocompleteMyPos.input);
-
+                              console.log("llegue aquí");
+                              
                               //wait to get name and coordinates for confirmPricePage when the geofire starts
                               this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.user + '/houseAddress/').update({
                                   name: this.houseAddress[0]
@@ -638,7 +639,6 @@ console.log(  this.positionDest.lat);
                                       if (accepted) {
                                           this.instancesService.ToggleStatusOnline(this.SignUpService.userPlace, this.user);
                                           this.changeColorOnline();
-
                                           console.log("estoy true")
                                           this.disable();
                                           console.log(this.userInfo.fixedLocation.name);
@@ -675,8 +675,6 @@ console.log(  this.positionDest.lat);
                           cssClass: 'alertDanger'
                       });
                       alert.present();
-                      this.isConected = false;
-                      this.isDisconected = true;
                       this.changeColorOffline();
                   }
 
@@ -704,8 +702,6 @@ console.log(  this.positionDest.lat);
                   });
                   alert.present();
               }
-              this.isConected = false;
-              this.isDisconected = true;
               this.changeColorOffline();
           } else {
               let alert = this.alertCtrl.create({
@@ -728,8 +724,6 @@ console.log(  this.positionDest.lat);
                   cssClass: 'alertDanger'
               });
               alert.present();
-              this.isConected = false;
-              this.isDisconected = true;
               this.changeColorOffline();
           }
       }
@@ -748,6 +742,8 @@ console.log(  this.positionDest.lat);
 disconectDriver(){
   if(this.userInfo.toggleStatus === 'offline'){ 
     //do nothing
+    console.log("desconectado");
+    
   }else{
 
     //get all reserves from driver
@@ -759,8 +755,6 @@ disconectDriver(){
       
        //este if sirve para saber si si hay reservas y no crashear la app al desconectarse
       if(snapReserve.val() === null || snapReserve.val() === undefined ){
-        this.isConected = false;
-        this.isDisconected = true;
         this.changeColorOffline();
         this.instancesService.ToggleStatusOffline(this.SignUpService.userPlace, this.user);
         this.enable();
@@ -789,8 +783,6 @@ disconectDriver(){
 
       //este if sirve para saber si si hay reservas y no crashear la app al desconectarse
       if(this.driverReserves === null || this.driverReserves === undefined){
-        this.isConected = false;
-        this.isDisconected = true;
         this.changeColorOffline();
         this.instancesService.ToggleStatusOffline(this.SignUpService.userPlace, this.user);
         this.enable();
@@ -798,8 +790,6 @@ disconectDriver(){
 
       }else{
         if( this.fullReserves.length === 0 ||  this.fullReserves.length === undefined ){
-          this.isConected = false;
-        this.isDisconected = true;
         this.changeColorOffline();
         // this.autocompleteMyDest.input = '';
 
@@ -1151,8 +1141,6 @@ geocodeLatLng(latLng,inputName) {
           {
             text: 'Offline :(',
             handler: () => {
-              this.isConected = false;
-              this.isDisconected = true;
               this.changeColorOffline();
               this.autocompleteMyDest.input = '';
 
@@ -1181,35 +1169,39 @@ geocodeLatLng(latLng,inputName) {
     }
 
     changeColorOnline(){
-      this.renderer.setElementStyle(this.buttonConected.nativeElement,'background-color','green')
-      this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-width','2px')
-      this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-style','solid')
-      this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-color','green')
+      // this.renderer.setElementStyle(this.buttonConected.nativeElement,'background-color','green')
+      // this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-width','2px')
+      // this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-style','solid')
+      // this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-color','green')
     
-      this.renderer.setElementStyle(this.buttonDisconected.nativeElement,'border-width','2px')
-      this.renderer.setElementStyle(this.buttonDisconected.nativeElement,'border-style','solid')
-      this.renderer.setElementStyle(this.buttonDisconected.nativeElement,'border-color','green')
+      // this.renderer.setElementStyle(this.buttonDshowConectedButton.nativeElement,'border-width','2px')
+      // this.renderer.setElementStyle(this.buttonDshowConectedButton.nativeElement,'border-style','solid')
+      // this.renderer.setElementStyle(this.buttonDshowConectedButton.nativeElement,'border-color','green')
     
-      this.renderer.setElementStyle(this.buttonDisconected.nativeElement,'background-color','transparent')
-      this.renderer.setElementStyle(this.buttonDisconected.nativeElement,'font-color','#bfbfbf')
+      // this.renderer.setElementStyle(this.buttonDshowConectedButton.nativeElement,'background-color','transparent')
+      // this.renderer.setElementStyle(this.buttonDshowConectedButton.nativeElement,'font-color','#bfbfbf')
     
       this.showPopup();
     }
     changeColorOffline(){
-      this.renderer.setElementStyle(this.buttonDisconected.nativeElement,'border-width','2px')
-      this.renderer.setElementStyle(this.buttonDisconected.nativeElement,'background-color','rgb(167, 23, 23)')
-      this.renderer.setElementStyle(this.buttonDisconected.nativeElement,'border-style','solid')
-      this.renderer.setElementStyle(this.buttonDisconected.nativeElement,'border-color','rgb(167, 23, 23)')
+      // this.renderer.setElementStyle(this.buttonDshowConectedButton.nativeElement,'border-width','2px')
+      // this.renderer.setElementStyle(this.buttonDshowConectedButton.nativeElement,'background-color','rgb(167, 23, 23)')
+      // this.renderer.setElementStyle(this.buttonDshowConectedButton.nativeElement,'border-style','solid')
+      // this.renderer.setElementStyle(this.buttonDshowConectedButton.nativeElement,'border-color','rgb(167, 23, 23)')
     
-      this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-width','2px')
-      this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-style','solid')
-      this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-color','rgb(167, 23, 23)')
-      this.renderer.setElementStyle(this.buttonConected.nativeElement,'background-color','transparent')
-      this.renderer.setElementStyle(this.buttonConected.nativeElement,'font-color','#bfbfbf')
+      // this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-width','2px')
+      // this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-style','solid')
+      // this.renderer.setElementStyle(this.buttonConected.nativeElement,'border-color','rgb(167, 23, 23)')
+      // this.renderer.setElementStyle(this.buttonConected.nativeElement,'background-color','transparent')
+      // this.renderer.setElementStyle(this.buttonConected.nativeElement,'font-color','#bfbfbf')
 
     }
     pushOriginPage(){
       this.navCtrl.push('DriverSpecifyOriginPage')
+    }
+    CreateOneTrip(){
+      this.navCtrl.push('oneTripPricePage')
+
     }
 
 }

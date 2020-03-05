@@ -5,10 +5,10 @@ webpackJsonp([14],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverSignupPageModule", function() { return DriverSignupPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverSpecifyOriginPageModule", function() { return DriverSpecifyOriginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverSignup__ = __webpack_require__(890);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__specifyorigin__ = __webpack_require__(892);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,45 +18,49 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverSignupPageModule = /** @class */ (function () {
-    function DriverSignupPageModule() {
+var DriverSpecifyOriginPageModule = /** @class */ (function () {
+    function DriverSpecifyOriginPageModule() {
     }
-    DriverSignupPageModule = __decorate([
+    DriverSpecifyOriginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverSignup__["a" /* DriverSignupPage */],
+                __WEBPACK_IMPORTED_MODULE_2__specifyorigin__["a" /* DriverSpecifyOriginPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverSignup__["a" /* DriverSignupPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__specifyorigin__["a" /* DriverSpecifyOriginPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverSignup__["a" /* DriverSignupPage */]
+                __WEBPACK_IMPORTED_MODULE_2__specifyorigin__["a" /* DriverSpecifyOriginPage */]
             ]
         })
-    ], DriverSignupPageModule);
-    return DriverSignupPageModule;
+    ], DriverSpecifyOriginPageModule);
+    return DriverSpecifyOriginPageModule;
 }());
 
-//# sourceMappingURL=driverSignup.module.js.map
+//# sourceMappingURL=specifyorigin.module.js.map
 
 /***/ }),
 
-/***/ 890:
+/***/ 892:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSignupPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSpecifyOriginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_window_service__ = __webpack_require__(372);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation___ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_driverauthentication_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_d_instances_services__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__ = __webpack_require__(204);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,277 +71,276 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
-// import { VerificationPage } from '../verification/verification';
-// import { AngularFireDatabase } from '@angular/fire/database';
-
+// import { TabsPage } from '../tabs/tabs';
+// import { Geofence } from '@ionic-native/geofence';
 
 
 
 
+// import { authenticationService } from '../../services/driverauthentication.service';
+
+// import { Geofence } from '@ionic-native/geofence';
 
 
 
 
-var DriverSignupPage = /** @class */ (function () {
-    function DriverSignupPage(navCtrl, formBuilder, authenticationService, SignUpService, alertCtrl, AngularFireAuth, navParams, windowService, app, afDB, loadingCtrl) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.formBuilder = formBuilder;
-        this.authenticationService = authenticationService;
-        this.SignUpService = SignUpService;
-        this.alertCtrl = alertCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.navParams = navParams;
-        this.windowService = windowService;
-        this.app = app;
+
+
+
+
+var DriverSpecifyOriginPage = /** @class */ (function () {
+    function DriverSpecifyOriginPage(geofireService, TripsService, afDB, navCtrl, SignUpService, modalCtrl, authenticationService, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, toastCtrl, app, sendUsersService, instancesService, firebaseNative, platform, fcm, loadingCtrl, renderer) {
+        this.geofireService = geofireService;
+        this.TripsService = TripsService;
         this.afDB = afDB;
+        this.navCtrl = navCtrl;
+        this.SignUpService = SignUpService;
+        this.modalCtrl = modalCtrl;
+        this.authenticationService = authenticationService;
+        this.geolocation = geolocation;
+        this.zone = zone;
+        this.sendCoordsService = sendCoordsService;
+        this.AngularFireAuth = AngularFireAuth;
+        this.alertCtrl = alertCtrl;
+        this.toastCtrl = toastCtrl;
+        this.app = app;
+        this.sendUsersService = sendUsersService;
+        this.instancesService = instancesService;
+        this.firebaseNative = firebaseNative;
+        this.platform = platform;
+        this.fcm = fcm;
         this.loadingCtrl = loadingCtrl;
-        this.user = {};
-        this.car = {};
-        this.tokenId = '';
-        this.userId = '';
-        this.isReadonly = true;
-        this.cities = [];
-        this.showReadonly = true;
-        // onlyEmail:any;
-        this.arrayEmails = [];
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_7_rxjs__["Subject"];
-        this.zones = [];
-        this.forLoopsCompleted = 0;
-        this.companyIdentified = false;
-        this.signupGroup = this.formBuilder.group({
-            name: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            lastname: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            email: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            password: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            passwordconf: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            phone: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            carModel: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            plateNumber: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            color: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            city: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            isChecked: [true, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]
-        });
+        this.renderer = renderer;
+        // waypoints variables
+        this.directionsService = null;
+        this.directionsDisplay = null;
+        this.bounds = null;
+        this.myLatLng = [];
+        //firebase 
+        this.trip = {};
+        this.tripId = null;
+        this.user = this.AngularFireAuth.auth.currentUser.uid;
+        this.currentUser = this.AngularFireAuth.auth.currentUser;
+        this.driverInfo = {};
+        this.geoInfo1 = {};
+        this.geoInfo2 = {};
+        //variables for geofire reserves
+        this.reserves = [];
+        this.locationUniversity = {};
+        this.isConected = false;
+        this.schedules = [];
+        this.myReserves = [];
+        this.checked = false;
+        this.fullReserves = [];
+        this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
         this.geocoder = new google.maps.Geocoder;
-        // this.SignUpService.pushEmails('uninorte', '@uninorte.edu.co');
-        // this.SignUpService.pushEmails('uninorte', '@jhggh.edu.co');
-        this.SignUpService.getAllCities().takeUntil(this.unsubscribe)
-            .subscribe(function (cities) {
-            _this.cities = cities;
-            console.log(_this.cities);
+        this.autocompleteMyPos = { input: '' };
+        this.autocompleteMyDest = { input: '' };
+        this.autocompleteItems = [];
+        this.autocompleteItems2 = [];
+        this.directionsService = new google.maps.DirectionsService();
+        this.directionsDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true,
         });
-    }
-    DriverSignupPage.prototype.onChange = function () {
+        this.bounds = new google.maps.LatLngBounds();
+        this.markers = [];
+        //meter datos por el id del firebase
+        console.log(this.SignUpService.userPlace);
+    } // END OF CONSTRUCTOR
+    DriverSpecifyOriginPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        this.arrayEmails = [];
-        this.afDB.database.ref('allCities/' + this.cityVar + '/allPlaces').once('value').then(function (snap) {
-            var obj = snap.val();
-            Object.getOwnPropertyNames(obj).forEach(function (key) {
-                _this.arrayEmails.push(obj[key].email);
-                console.log(_this.arrayEmails);
-            });
+        this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.user).once('value').then(function (snap) {
+            _this.city = snap.val().city;
+            _this.company = snap.val().company;
+            console.log(_this.SignUpService.userPlace);
+            _this.loadMap();
         });
     };
-    DriverSignupPage.prototype.noCompanyIdentified = function (numberToExecute) {
-        ++this.forLoopsCompleted;
-        if (this.forLoopsCompleted === numberToExecute) {
-            if (this.companyIdentified === false) {
-                var alert_1 = this.alertCtrl.create({
-                    title: 'El correo que ingresaste no concuerda con el de ninguna empresa de la red de Waypool',
-                    subTitle: 'Revisa si escribiste el correo bien o si tu empresa no está en Waypool, envianos un correo a team@waypooltech.com',
-                    buttons: ['OK']
-                });
-                alert_1.present();
-            }
-        }
-    };
-    DriverSignupPage.prototype.scrolling = function () {
-        this.content.scrollTo(30, 0);
-    };
-    ;
-    DriverSignupPage.prototype.login = function () {
-        this.navCtrl.setRoot('LoginPage');
-    };
-    DriverSignupPage.prototype.verification = function () {
+    DriverSpecifyOriginPage.prototype.loadMap = function () {
         var _this = this;
-        //put this loading in user as well in next update//
-        var loading = this.loadingCtrl.create({
-            spinner: 'crescent',
-            content: "\n              <div class=\"custom-spinner-container\">\n                <div class=\"custom-spinner-box\"></div>\n              </div>"
-        });
-        loading.present();
-        this.forLoopsCompleted = 0;
-        this.companyIdentified = false;
-        var count = this.arrayEmails.length;
-        for (var i = 0; i < count; i++) {
-            this.emailStringVerification = this.email.indexOf(this.arrayEmails[i]);
-            console.log(this.emailStringVerification);
-            if (this.emailStringVerification > -1) {
-                this.companyIdentified = true;
-                this.rightEmailOnDatabase = this.arrayEmails[i];
-                this.afDB.database.ref('allCities/' + this.cityVar + '/allPlaces').once('value').then(function (snap) {
-                    var obj = snap.val();
-                    Object.getOwnPropertyNames(obj).forEach(function (key) {
-                        if (obj[key].email === _this.rightEmailOnDatabase) {
-                            console.log("la empresa es " + obj[key].name);
-                            _this.company = obj[key].name;
-                            obj[key].zones.forEach(function (zone) {
-                                _this.zones.push(zone);
-                            });
-                        }
-                    });
-                }).then(function () {
-                    if (!_this.signupGroup.controls['isChecked'].value === true) {
-                        loading.dismiss();
-                        var alert_2 = _this.alertCtrl.create({
-                            title: 'No aceptaste nuestros términos y condiciones',
-                            subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
-                            buttons: ['OK']
-                        });
-                        alert_2.present();
-                    }
-                    else {
-                        var userName = _this.signupGroup.controls['name'].value;
-                        var userLastName = _this.signupGroup.controls['lastname'].value;
-                        var userPhone = _this.signupGroup.controls['phone'].value;
-                        var userEmail = _this.signupGroup.controls['email'].value;
-                        var userPassword = _this.signupGroup.controls['password'].value;
-                        var userCarModel = _this.signupGroup.controls['carModel'].value;
-                        var userPlateNumber = _this.signupGroup.controls['plateNumber'].value;
-                        var usercarColor = _this.signupGroup.controls['color'].value;
-                        _this.car = {
-                            carModel: userCarModel,
-                            plateNumber: userPlateNumber,
-                            color: usercarColor
-                        };
-                        // saving data in variable
-                        _this.user = {
-                            name: userName,
-                            lastname: userLastName,
-                            email: userEmail,
-                            phone: '+57' + userPhone,
-                            createdBy: 'driver',
-                            company: _this.company,
-                            city: _this.cityVar,
-                            //this sets documents true by default//
-                            documents: {
-                                license: true,
-                                id: true
+        //check if user have houseAddress
+        // this gets current position and set the camera of the map and put a marker in your location
+        this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then(function (position) {
+            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            console.log(latLng);
+            var mapOptions = {
+                center: latLng,
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoomControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                rotateControl: false,
+                fullscreenControl: false,
+                styles: [
+                    {
+                        featureType: 'poi',
+                        elementType: 'labels.icon',
+                        stylers: [
+                            {
+                                visibility: 'off'
                             }
-                        };
-                        // this.SignUpService.userPlace = this.userPlace;
-                        if (_this.signupGroup.controls['password'].value === _this.signupGroup.controls['passwordconf'].value) {
-                            _this.authenticationService.registerWithEmail(userEmail, userPassword).then(function () {
-                                if (!_this.user.userId) {
-                                    _this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
-                                        if (user) {
-                                            user.getIdToken().then(function (token) {
-                                                _this.user.tokenId = token;
-                                            });
-                                            if (!_this.user.userId) {
-                                                _this.user.userId = user.uid;
-                                            }
-                                            _this.zones.forEach(function (zone) {
-                                                _this.SignUpService.saveUser(zone, _this.user);
-                                            });
-                                            _this.afDB.database.ref('allCities/' + _this.cityVar + '/allPlaces/' + _this.company + '/location').once('value').then(function (snap) {
-                                                console.log(snap.val());
-                                                snap.val().forEach(function (location) {
-                                                    _this.SignUpService.setFixedLocationCoordinates(location.zone, _this.user.userId, location.lat, location.lng);
-                                                    _this.SignUpService.setFixedLocationName(location.zone, _this.user.userId, location.name);
-                                                    _this.SignUpService.addCarProfile(location.zone, _this.user.userId, _this.car);
-                                                    _this.SignUpService.addPlaceZone(location.zone, _this.user.userId);
-                                                });
-                                            }).then(function () {
-                                                _this.SignUpService.saveUserInAllUsers(_this.company, _this.user.userId, _this.cityVar);
-                                            });
-                                            //send text message with code - LATER ON
-                                            // this.sendVerificationCode(this.user.userId);
-                                            // this.app.getRootNav().push('LoginPage');
-                                        }
-                                        else {
-                                            console.log('there is no user');
-                                        }
-                                    });
-                                }
-                                ;
-                                //sending email verification and verifying whether email is verified or not
-                                _this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
-                                    if (user) {
-                                        if (user.emailVerified == false) {
-                                            user.sendEmailVerification();
-                                            loading.dismiss();
-                                            var alert_3 = _this.alertCtrl.create({
-                                                title: '¡REGISTRO EXITOSO!',
-                                                subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
-                                                buttons: [
-                                                    {
-                                                        text: 'OK',
-                                                        handler: function () {
-                                                            _this.afDB.database.ref('allCities/' + _this.cityVar + '/allPlaces/' + _this.company + '/zones').once('value').then(function (snap) {
-                                                                _this.navCtrl.push('SchedulePage', { defaultZone: snap.val()[0] });
-                                                            });
-                                                        }
-                                                    }
-                                                ]
-                                            });
-                                            alert_3.present();
-                                            console.log("verification email has been sent");
-                                        }
-                                        else {
-                                            console.log("verification email has not been sent or the email is already verified");
-                                        }
-                                    }
-                                    else {
-                                        console.log('there is no user');
-                                    }
-                                });
-                            }).catch(function (error) {
-                                loading.dismiss();
-                                if (error.code === "auth/email-already-in-use") {
-                                    var alert_4 = _this.alertCtrl.create({
-                                        title: 'ya existe una cuenta con este correo',
-                                        subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
-                                        buttons: ['OK']
-                                    });
-                                    alert_4.present();
-                                }
-                            });
-                        }
-                        else {
-                            loading.dismiss();
-                            var alert_5 = _this.alertCtrl.create({
-                                title: 'Oops!',
-                                subTitle: 'las contraseñas no coinciden, intenta de nuevo',
-                                buttons: ['OK']
-                            });
-                            alert_5.present();
-                        }
+                        ]
                     }
+                ]
+            };
+            //creates the map and give options
+            _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
+            _this.myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+            _this.markerGeolocation = new google.maps.Marker({
+                map: _this.map,
+                animation: google.maps.Animation.DROP,
+                position: latLng,
+                draggable: true,
+                icon: { url: "assets/imgs/house.png",
+                    scaledSize: new google.maps.Size(70, 70)
+                }
+            });
+            _this.markers.push(_this.markerGeolocation);
+            _this.geocoordinatesHouse = { lat: position.coords.latitude, lng: position.coords.longitude };
+            //allow the marker to be draged and changed the position
+            _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    //autocomplete of myPosition searchbar
+    DriverSpecifyOriginPage.prototype.updateSearchResultsMyPos = function () {
+        var _this = this;
+        if (this.autocompleteMyPos.input == '') {
+            this.autocompleteItems = [];
+            return;
+        }
+        this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteMyPos.input, componentRestrictions: { country: 'co' } }, function (predictions, status) {
+            _this.autocompleteItems = [];
+            if (predictions) {
+                _this.zone.run(function () {
+                    predictions.forEach(function (prediction) {
+                        _this.autocompleteItems.push(prediction);
+                    });
                 });
             }
-            loading.dismiss();
-            this.noCompanyIdentified(count);
-        }
+        });
     };
-    DriverSignupPage.prototype.sendVerificationCode = function (userId) {
-        this.navCtrl.push('SchedulePage', { userId: userId });
+    ////select result of my position searchbar
+    DriverSpecifyOriginPage.prototype.selectSearchResultMyPos = function (item) {
+        var _this = this;
+        this.autocompleteItems = [];
+        this.clearMarkers();
+        this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+                // let position = {
+                //     lat: results[0].geometry.location.lat,
+                //     lng: results[0].geometry.location.lng
+                // };
+                _this.markerGeolocation = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: _this.map,
+                    draggable: true,
+                    icon: { url: "assets/imgs/house.png",
+                        scaledSize: new google.maps.Size(70, 70)
+                    },
+                    animation: google.maps.Animation.DROP,
+                });
+                _this.geocoordinatesHouse = { latOr: results[0].geometry.location.lat(), lngOr: results[0].geometry.location.lng() };
+                console.log(_this.geocoordinatesHouse);
+                console.log(_this.positionDest);
+                _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
+                _this.markers.push(_this.markerGeolocation);
+                _this.map.setCenter(results[0].geometry.location);
+                console.log(results[0].geometry.location);
+                console.log(_this.positionDest);
+                _this.autocompleteMyPos.input = [item.description];
+                // this.map.fitBounds(this.bounds);
+            }
+        });
+    };
+    ////select result of my destination searchbar
+    ////////Markers
+    DriverSpecifyOriginPage.prototype.clearMarkers = function () {
+        for (var i = 0; i < this.markers.length; i++) {
+            this.markers[i].setMap(null);
+        }
+        this.markers = [];
+    };
+    DriverSpecifyOriginPage.prototype.dragMarkerOr = function (marker, inputName) {
+        //allow origin marker to be draged and calculate route with the new position
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latOr = marker.getPosition().lat();
+            var lngOr = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            var latLngOr = { latOr: latOr, lngOr: lngOr };
+            console.log(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            console.log(_this.positionDest);
+            _this.geocoordinatesHouse = latLngOr;
+        });
+    };
+    DriverSpecifyOriginPage.prototype.geocodeLatLng = function (latLng, inputName) {
+        this.geocoder.geocode({ 'location': latLng }, function (results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    inputName.input = [results[0].formatted_address];
+                }
+                else {
+                    alert('No results found');
+                }
+            }
+            else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
+    };
+    DriverSpecifyOriginPage.prototype.sendLocation = function () {
+        var _this = this;
+        this.houseAddress = this.autocompleteMyPos.input;
+        this.afDB.database.ref('allCities/' + this.city + '/allPlaces/' + this.company + '/zones').once('value').then(function (snap) {
+            var obj = snap.val();
+            console.log(obj);
+            Object.getOwnPropertyNames(obj).forEach(function (key) {
+                if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
+                }
+                else {
+                    _this.afDB.database.ref(obj[key] + '/drivers/' + _this.user + '/houseAddress/').update({
+                        name: _this.houseAddress[0]
+                    }).then(function (data) {
+                        _this.afDB.database.ref(obj[key] + '/drivers/' + _this.user + '/houseAddress/coordinates').update({
+                            lat: _this.geocoordinatesHouse.latOr,
+                            lng: _this.geocoordinatesHouse.lngOr
+                        });
+                    });
+                }
+            });
+        }).then(function () {
+            _this.navCtrl.setRoot('DriverFindridePage');
+        });
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
-    ], DriverSignupPage.prototype, "content", void 0);
-    DriverSignupPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], DriverSpecifyOriginPage.prototype, "mapElement", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('buttonConected', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], DriverSpecifyOriginPage.prototype, "buttonConected", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('buttonDisconected', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], DriverSpecifyOriginPage.prototype, "buttonDisconected", void 0);
+    DriverSpecifyOriginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-signup',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\signup\driverSignup.html"*/'<ion-header class="transparent">\n\n    <ion-navbar>\n\n        <ion-title><span class="text-theme"></span></ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n\n\n\n\n    <ion-content>\n\n\n\n        <form [formGroup]="signupGroup" (ngSubmit)="verification()">\n\n        <div>\n\n            <div class="">\n\n                <ion-row>\n\n                    <ion-col class="name-fild">\n\n                        <ion-list class="form" style="margin-bottom: 0">\n\n                            <ion-item>\n\n                                <ion-label></ion-label>\n\n                                <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>\n\n                            </ion-item>\n\n                            <ion-item>\n\n                                <ion-label></ion-label>\n\n                                <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>\n\n                            </ion-item>\n\n                            <ion-item>\n\n                                <ion-label  text-right >selecciona tu ciudad</ion-label>\n\n                                    <ion-select (ionChange)="onChange()" [(ngModel)]="cityVar" formControlName="city">\n\n                                        <ion-option *ngFor="let city of cities">{{city.name}}</ion-option>\n\n                                    </ion-select>\n\n                            </ion-item>\n\n                        </ion-list>\n\n                    </ion-col>\n\n                </ion-row>\n\n                <div>\n\n                    <ion-row>\n\n                        <ion-col class="name-fild-2">\n\n                            <ion-list class="form">\n\n                                <ion-item class="editable-email">\n\n                                        <ion-label></ion-label>\n\n                                            <ion-input type="text" text-right [(ngModel)]=\'email\' formControlName="email" placeholder= "email"></ion-input>\n\n                                        </ion-item>\n\n                                </ion-list>\n\n                        </ion-col>\n\n                    </ion-row>\n\n                </div>\n\n\n\n                <ion-list class="form" style="margin-bottom: 0">\n\n                    <ion-item>\n\n                            <ion-label  fixed><span style="font-weight: bold; color: red;">(mínimo 6 caracteres)</span></ion-label>\n\n                            <ion-input type="password"  text-right formControlName="password" placeholder= "Escribe tu contraseña" minlength="6"></ion-input>\n\n                    </ion-item>\n\n                    <ion-item>\n\n                        <ion-label></ion-label>\n\n                        <ion-input type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>\n\n                    </ion-item>\n\n                    <ion-item>\n\n                        <ion-label></ion-label>\n\n                        <ion-input type="text" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>\n\n                    </ion-item>\n\n                </ion-list>\n\n                <ion-list>\n\n \n\n                    <ion-row class="col-car">\n\n                        <ion-col class="name-fild-2">\n\n                            <ion-list class="form">\n\n                                <ion-item class="carModel">\n\n                                        <ion-label></ion-label>\n\n                                            <ion-input type="text" text-right formControlName="carModel" placeholder= "marca de carro"></ion-input>\n\n                                        </ion-item>\n\n                                </ion-list>\n\n                        </ion-col>\n\n                        <ion-col class="name-fild-2">\n\n                            <ion-list class="form">\n\n                                <ion-item class="plateNumber">\n\n                                        <ion-input type="text"  text-right formControlName="plateNumber" placeholder= "placa de carro" ></ion-input>\n\n                                </ion-item>\n\n                            </ion-list>\n\n                        </ion-col>               \n\n                    </ion-row>     \n\n                            <ion-list class="form">\n\n                                    <ion-item class="form" class="plateNumber" >\n\n                                            <ion-input type="text"  text-right formControlName="color" placeholder= "Color de carro" class="name-fild-2"></ion-input>\n\n                                        </ion-item>\n\n\n\n                                        <ion-item>\n\n                                            <ion-label>Por favor lee y acepta nuestro términos y condiciones</ion-label>\n\n                                            <ion-checkbox formControlName="isChecked" ></ion-checkbox>\n\n                                        </ion-item>\n\n                                        <ion-item>\n\n                                            <p>Ver <a href="https://waypooltech.wordpress.com/">términos y condiciones</a></p>                                        </ion-item>\n\n                                </ion-list>\n\n                   \n\n                </ion-list>\n\n                        <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">Continuar</button>\n\n                        <p text-center>¿ya estás registrado? <strong class="text-theme" (click)="login()">Inicia Sesión</strong></p>\n\n            </div>\n\n        </div>\n\n    </form>\n\n    </ion-content>\n\n    \n\n\n\n\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\signup\driverSignup.html"*/
+            selector: 'driver-page-specifyorigin',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\specifyorigin\driverSpecifyorigin.html"*/'\n\n\n\n\n\n\n\n<ion-content  padding>\n\n      <h5 class="text-theme-driver" style="font-weight: bold;">DIRECCIÓN DE TU HOGAR</h5>\n\n      <ion-card class="search" >\n\n          <ion-card-content>\n\n              <span style=" z-index: 1;position: relative;" class="text-light search-text">Tu casa &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>\n\n\n\n              <span class="dot bg-theme-driver"></span>\n\n              <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" id="input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Cóloca la dirección de tu casa"></ion-searchbar>\n\n\n\n              <ion-list   [hidden]="autocompleteItems.length == 0">\n\n                  <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n\n                    {{ item.description }}\n\n                  </ion-item>\n\n                </ion-list>\n\n                <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n          </ion-card-content>\n\n\n\n           \n\n      </ion-card>\n\n      <!-- <ion-avatar item-end>\n\n          <img style="height: 15%; width: 15%;" src="assets/imgs/centermap.png" (click)="centerMap()">\n\n      </ion-avatar> -->\n\n      <div style="display: flex; justify-content: center;">    \n\n          <button class="btn text-white bg-theme-driver rounded" style="width: 80%;" (click)="sendLocation()">Listo</button>\n\n      </div>\n\n   <div #map id="map"></div>  \n\n</ion-content>\n\n\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\specifyorigin\driverSpecifyorigin.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_6__services_d_window_service__["a" /* DriverWindowService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
-    ], DriverSignupPage);
-    return DriverSignupPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_8__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation___["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_11__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */]])
+    ], DriverSpecifyOriginPage);
+    return DriverSpecifyOriginPage;
 }());
 
-//# sourceMappingURL=driverSignup.js.map
+//# sourceMappingURL=specifyorigin.js.map
 
 /***/ })
 

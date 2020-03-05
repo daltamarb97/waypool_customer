@@ -1,14 +1,14 @@
 webpackJsonp([46],{
 
-/***/ 652:
+/***/ 700:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverMorePageModule", function() { return DriverMorePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FindridePassPageModule", function() { return FindridePassPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverMore__ = __webpack_require__(841);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bikemode__ = __webpack_require__(895);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,42 +18,51 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverMorePageModule = /** @class */ (function () {
-    function DriverMorePageModule() {
+var FindridePassPageModule = /** @class */ (function () {
+    function FindridePassPageModule() {
     }
-    DriverMorePageModule = __decorate([
+    FindridePassPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */],
+                __WEBPACK_IMPORTED_MODULE_2__bikemode__["a" /* BikeModePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__bikemode__["a" /* BikeModePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */]
+                __WEBPACK_IMPORTED_MODULE_2__bikemode__["a" /* BikeModePage */]
             ]
         })
-    ], DriverMorePageModule);
-    return DriverMorePageModule;
+    ], FindridePassPageModule);
+    return FindridePassPageModule;
 }());
 
-//# sourceMappingURL=driverMore.module.js.map
+//# sourceMappingURL=bikemode.module.js.map
 
 /***/ }),
 
-/***/ 841:
+/***/ 895:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverMorePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BikeModePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_geofire__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_trips_service__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_instances_service__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__ = __webpack_require__(204);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,60 +74,452 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// import { UploadPage } from '../upload/upload';
 
 
 
 
-var DriverMorePage = /** @class */ (function () {
-    function DriverMorePage(navCtrl, modalCtrl, AngularFireAuth, authenticationService, SignupService, app) {
-        var _this = this;
+
+
+
+
+
+
+
+
+var BikeModePage = /** @class */ (function () {
+    function BikeModePage(navCtrl, navParams, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, geofireService, SignUpService, modalCtrl, app, afDB, TripsService, instanceService, platform, fcm, firebase, loadingCtrl, viewCtril) {
         this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
+        this.navParams = navParams;
+        this.geolocation = geolocation;
+        this.zone = zone;
+        this.sendCoordsService = sendCoordsService;
         this.AngularFireAuth = AngularFireAuth;
-        this.authenticationService = authenticationService;
-        this.SignupService = SignupService;
+        this.alertCtrl = alertCtrl;
+        this.geofireService = geofireService;
+        this.SignUpService = SignUpService;
+        this.modalCtrl = modalCtrl;
         this.app = app;
+        this.afDB = afDB;
+        this.TripsService = TripsService;
+        this.instanceService = instanceService;
+        this.platform = platform;
+        this.fcm = fcm;
+        this.firebase = firebase;
+        this.loadingCtrl = loadingCtrl;
+        this.viewCtril = viewCtril;
+        // waypoints variables
+        this.directionsService = null;
+        this.directionsDisplay = null;
+        this.bounds = null;
+        this.myLatLng = [];
+        this.tripId = null;
+        this.locationPlace = {};
+        this.onTrip = false;
+        //variables for geoquery
+        this.geocoordinatesDest = {};
+        this.geocoordinatesOr = {};
+        this.geofireOriginConfirmed = false;
+        this.geofireDestinationConfirmed = false;
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.user = {};
-        this.verified = false;
-        this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).subscribe(function (user) {
-            _this.user = user;
-            console.log(_this.user);
-            if (_this.user.verifiedPerson === true) {
-                _this.verified = true;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_10_rxjs__["Subject"];
+        this.usingGeolocation = false;
+        this.keyDetectedInGeofireOrigin = false;
+        this.keyDetectedInGeofireDestination = false;
+        this.user = this.navParams.get('user');
+        this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+        this.geocoder = new google.maps.Geocoder;
+        this.autocompleteMyPos = { input: '' };
+        this.autocompleteMyDest = { input: '' };
+        this.autocompleteItems = [];
+        this.autocompleteItems2 = [];
+        this.directionsService = new google.maps.DirectionsService();
+        this.directionsDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true,
+        });
+        this.bounds = new google.maps.LatLngBounds();
+        this.markers = [];
+        // initialize the plugin
+        console.log(this.SignUpService.userPlace);
+        /// logica keyReserves para myreserves
+    } // END OF CONSTRUCTOR
+    // }
+    BikeModePage.prototype.ionViewDidLoad = function () {
+        this.loadMap();
+    };
+    BikeModePage.prototype.loadMap = function () {
+        // this gets current position and set the camera of the map and put a marker in your location
+        var _this = this;
+        this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then(function (position) {
+            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var mapOptions = {
+                center: latLng,
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoomControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                rotateControl: false,
+                fullscreenControl: false,
+                styles: [
+                    {
+                        featureType: 'poi',
+                        elementType: 'labels.icon',
+                        stylers: [
+                            {
+                                visibility: 'off'
+                            }
+                        ]
+                    }
+                ]
+            };
+            //creates the map and give options
+            _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
+            _this.myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+            _this.myLatLngOr = {
+                lat: _this.myLatLng.lat,
+                lng: _this.myLatLng.lng
+            };
+            _this.usingGeolocation = true;
+            _this.markerGeolocation = new google.maps.Marker({
+                map: _this.map,
+                animation: google.maps.Animation.DROP,
+                position: latLng,
+                draggable: true,
+                icon: { url: "assets/imgs/bicimarker.png",
+                    scaledSize: new google.maps.Size(90, 90)
+                }
+            });
+            _this.markers.push(_this.markerGeolocation);
+            _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
+            //to reverse-geocode position
+            _this.geocodeLatLng(latLng, _this.autocompleteMyPos);
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    BikeModePage.prototype.calculateRoute = function (positionOr, positionDest) {
+        //tutorial ngclassroom https://blog.ng-classroom.com/blog/ionic2/directions-google-js-ionic/
+        var _this = this;
+        this.bounds.extend(this.myLatLng);
+        this.map.fitBounds(this.bounds);
+        this.directionsService.route({
+            origin: positionOr,
+            destination: positionDest,
+            travelMode: google.maps.TravelMode.DRIVING,
+            avoidTolls: true
+        }, function (response, status) {
+            //render
+            if (status === google.maps.DirectionsStatus.OK) {
+                _this.directionsDisplay.setDirections(response);
+            }
+            else {
+                alert('Could not display directions due to: ' + status);
             }
         });
-    }
-    DriverMorePage.prototype.profile = function () {
-        this.app.getRootNav().push('DriverProfilePage');
     };
-    DriverMorePage.prototype.showInfoCars = function () {
-        var modal = this.modalCtrl.create('DriverShowInfoCarPage', { user: this.user });
-        modal.present();
+    BikeModePage.prototype.calculateDistance = function (positionOr, positionDest) {
+        var _this = this;
+        this.distanceInMeters = google.maps.geometry.spherical.computeDistanceBetween(positionOr, positionDest);
+        setTimeout(function () {
+            console.log('the distance in meters is ' + _this.distanceInMeters);
+        }, 1000);
     };
-    DriverMorePage.prototype.terms = function () {
-        this.navCtrl.push('DriverTermsPage');
+    //autocomplete of myPosition searchbar
+    BikeModePage.prototype.updateSearchResultsMyPos = function () {
+        var _this = this;
+        if (this.autocompleteMyPos.input == '') {
+            this.autocompleteItems = [];
+            return;
+        }
+        this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteMyPos.input, componentRestrictions: { country: 'co' } }, function (predictions, status) {
+            _this.autocompleteItems = [];
+            if (predictions) {
+                _this.zone.run(function () {
+                    predictions.forEach(function (prediction) {
+                        _this.autocompleteItems.push(prediction);
+                    });
+                });
+            }
+        });
     };
-    DriverMorePage.prototype.help = function () {
-        this.navCtrl.push('DriverHelpPage');
+    ////autocomplete of my destination
+    BikeModePage.prototype.updateSearchResultsMyDest = function () {
+        var _this = this;
+        if (this.autocompleteMyDest.input == '') {
+            this.autocompleteItems2 = [];
+            return;
+        }
+        this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteMyDest.input, componentRestrictions: { country: 'co' } }, function (predictions, status) {
+            _this.autocompleteItems2 = [];
+            if (predictions) {
+                _this.zone.run(function () {
+                    predictions.forEach(function (prediction) {
+                        _this.autocompleteItems2.push(prediction);
+                    });
+                });
+            }
+        });
     };
-    DriverMorePage.prototype.logout = function () {
-        this.authenticationService.logOut();
-        console.log(__WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]().currentUser);
-        this.SignupService.userPlace = undefined;
-        this.navCtrl.setRoot('LoginPage');
+    ////select result of my position searchbar
+    BikeModePage.prototype.selectSearchResultMyPos = function (item) {
+        var _this = this;
+        this.autocompleteItems = [];
+        this.clearMarkers();
+        this.autocompleteMyDest.input = '';
+        this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+                // let position = {
+                //     lat: results[0].geometry.location.lat,
+                //     lng: results[0].geometry.location.lng
+                // };
+                _this.markerGeolocation = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: _this.map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/bicimarker.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    },
+                });
+                _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
+                _this.markers.push(_this.markerGeolocation);
+                _this.map.setCenter(results[0].geometry.location);
+                _this.autocompleteMyPos.input = [item.description];
+                _this.directionsDisplay.setMap(null);
+                _this.myLatLngOr = results[0].geometry.location;
+                _this.usingGeolocation = false;
+                console.log(_this.myLatLngOr);
+            }
+        });
     };
-    DriverMorePage = __decorate([
+    ////select result of my destination searchbar
+    BikeModePage.prototype.selectSearchResultMyDest = function (item) {
+        var _this = this;
+        this.autocompleteItems2 = [];
+        if (this.markerDest !== undefined) {
+            this.markerDest.setMap(null);
+        }
+        this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+                // let position = {
+                //   latitude: results[0].geometry.location.lat,
+                //   longitude: results[0].geometry.location.lng
+                // };
+                var position = new google.maps.LatLng(results[0].geometry.location.lat, results[0].geometry.location.lng);
+                console.log(position);
+                _this.markerDest = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: _this.map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/marker-destination2.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    }
+                });
+                console.log(position);
+                _this.map.fitBounds(_this.bounds);
+                _this.markers.push(_this.markerDest);
+                _this.map.setCenter(results[0].geometry.location);
+                console.log(results[0].geometry.location);
+                _this.autocompleteMyDest.input = [item.description];
+                _this.dragMarkerDest(_this.markerDest, _this.autocompleteMyDest);
+                _this.directionsDisplay.setMap(_this.map);
+                _this.myLatLngDest = results[0].geometry.location;
+                _this.calculateRoute(_this.markerGeolocation.position, results[0].geometry.location);
+                _this.calculateDistance(_this.markerGeolocation.position, results[0].geometry.location);
+            }
+        });
+    };
+    ////////Markers
+    BikeModePage.prototype.clearMarkers = function () {
+        for (var i = 0; i < this.markers.length; i++) {
+            console.log(this.markers[i]);
+            this.markers[i].setMap(null);
+        }
+        this.markers = [];
+    };
+    BikeModePage.prototype.dragMarkerDest = function (marker, inputName) {
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            _this.map.setCenter(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            _this.calculateRoute(_this.markerGeolocation.position, latLng);
+            console.log(latLng);
+            _this.calculateDistance(_this.markerGeolocation.position, new google.maps.LatLng({
+                lat: latLng.lat,
+                lng: latLng.lng
+            }));
+        });
+    };
+    BikeModePage.prototype.dragMarkerOr = function (marker, inputName) {
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            _this.map.setCenter(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            if (_this.autocompleteMyDest.input == undefined || _this.autocompleteMyDest.input == '') {
+                console.log("funciona");
+            }
+            else {
+                _this.calculateRoute(latLng, _this.markerDest.position);
+                _this.calculateDistance(new google.maps.LatLng({
+                    lat: latLng.lat,
+                    lng: latLng.lng
+                }), _this.markerDest.position);
+            }
+        });
+    };
+    BikeModePage.prototype.geocodeLatLng = function (latLng, inputName) {
+        this.geocoder.geocode({ 'location': latLng }, function (results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    console.log(results[0].formatted_address);
+                    inputName.input = [results[0].formatted_address];
+                }
+                else {
+                    alert('No results found');
+                }
+            }
+            else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
+    };
+    BikeModePage.prototype.listride = function () {
+        var _this = this;
+        this.loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: "\n        <div class=\"custom-spinner-container\">\n          <div class=\"custom-spinner-box\"></div>\n        </div>"
+        });
+        this.loading.present();
+        console.log(this.myLatLngOr);
+        console.log(this.usingGeolocation);
+        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).once('value').then(function (snapBlock) {
+            if (snapBlock.val().blockPayment === true) {
+                _this.loading.dismiss();
+                var alert_1 = _this.alertCtrl.create({
+                    title: 'Tienes un saldo pendiente por pagar',
+                    subTitle: 'Para seguir disfrutando de Waypool debes pagar el saldo pendiente de tus viajes pasados, estas perjudicando a varias personas de tu comunidad',
+                    buttons: [
+                        {
+                            text: 'No lo quiero hacer ahora',
+                            role: 'cancel',
+                        },
+                        {
+                            text: 'Ir a Mi Saldo',
+                            handler: function () {
+                                _this.app.getRootNav().push('WalletPage');
+                            }
+                        }
+                    ]
+                });
+                alert_1.present();
+            }
+            else {
+                _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid).once('value').then(function (snap) {
+                    var user = snap.val();
+                    console.log(user);
+                    // check if user is on trip
+                    if (user.onTrip == true) {
+                        _this.loading.dismiss();
+                        var alert_2 = _this.alertCtrl.create({
+                            title: 'Estas actualmente en un viaje',
+                            subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
+                            buttons: ['OK']
+                        });
+                        alert_2.present();
+                    }
+                    else {
+                        try {
+                            _this.desFirebase = _this.autocompleteMyDest.input;
+                            _this.orFirebase = _this.autocompleteMyPos.input;
+                            console.log(_this.desFirebase[0]);
+                            if (_this.autocompleteMyDest.input == '' || _this.autocompleteMyPos.input == '') {
+                                _this.loading.dismiss();
+                                _this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
+                                _this.clearMarkers();
+                                _this.directionsDisplay.setDirections({ routes: [] });
+                            }
+                            else {
+                                //starts trip in bike-mode
+                                _this.navCtrl.push('TripbikePage', { user: user, origin: _this.autocompleteMyPos.input, destination: _this.autocompleteMyDest.input, orCoords: _this.myLatLngOr, destCoords: _this.myLatLngDest, distance: _this.distanceInMeters });
+                                _this.loading.dismiss();
+                            }
+                            //      
+                        }
+                        catch (error) {
+                        }
+                    }
+                });
+            }
+        });
+    };
+    BikeModePage.prototype.presentAlert = function (title, text, button) {
+        var alert = this.alertCtrl.create({
+            title: title,
+            subTitle: text,
+            buttons: [button]
+        });
+        alert.present();
+    };
+    BikeModePage.prototype.goToMyReserves = function () {
+        this.app.getRootNav().push('ReservetripPage');
+    };
+    BikeModePage.prototype.goToTrip = function () {
+        // go to trip      
+        if (this.onTrip === true) {
+            console.log('DISPARADOR');
+            var modal = this.modalCtrl.create('MyridePage');
+            modal.present();
+        }
+        else {
+            console.log("es undefined");
+        }
+    };
+    // set geoquery that determines if the person is in place
+    BikeModePage.prototype.setGeofirePlaceWithDest = function (place, radius, lat, lng, userId) {
+        this.dbRef = this.afDB.database.ref(place + '/geofirePlace/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_8_geofire__(this.dbRef);
+        this.geoqueryU = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
+        });
+        console.log('geoquery place added');
+    };
+    // set geoquery that determines if the person is in place
+    BikeModePage.prototype.setGeofirePlaceWithOr = function (place, radius, lat, lng, userId) {
+        this.dbRef = this.afDB.database.ref(place + '/geofirePlace/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_8_geofire__(this.dbRef);
+        this.geoqueryU = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
+        });
+        console.log('geoquery place added');
+    };
+    BikeModePage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], BikeModePage.prototype, "mapElement", void 0);
+    BikeModePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-more',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\more\driverMore.html"*/'<ion-header class="bg-theme-driver">\n\n    <ion-navbar>\n\n        <ion-title class="text-center">PERFIL</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bg-light" >\n\n    <ion-item>\n\n        \n\n                <ion-avatar item-start>\n\n                        <img src="assets/imgs/userPicture.png">\n\n                    </ion-avatar>\n\n                    <div class="name">\n\n                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n\n                            <ion-icon *ngIf = \'verified\' name="ios-checkmark-circle" class="text-theme-driver"></ion-icon>\n\n                        </h2>\n\n                        <p (click)="profile()">Editar Perfil</p>\n\n                    </div>\n\n        \n\n        \n\n        \n\n    </ion-item>\n\n\n\n    <ion-list no-lines>\n\n        <!-- <button ion-item (click)="reviews()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="ios-star"></ion-icon>\n\n            </ion-avatar>\n\n            Mis calificaciones (Próximamente)\n\n        </button> -->\n\n        <button ion-item (click)="showInfoCars()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="car"></ion-icon>\n\n            </ion-avatar>\n\n            Mis Vehículos        \n\n        </button>\n\n       \n\n        <!-- <button ion-item (click)="docs()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-paper"></ion-icon>\n\n            </ion-avatar>\n\n            Tus documentos\n\n        </button> -->\n\n        <!-- <button ion-item (click)="earn()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-share"></ion-icon>\n\n            </ion-avatar>\n\n            Refiérenos y Ganas (Próximamente)\n\n        </button>\n\n        <button ion-item (click)="ratevroom()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-thumbs-up"></ion-icon>\n\n            </ion-avatar>\n\n            Cálifica a Waypool (Próximamente)\n\n        </button> -->\n\n        <button ion-item (click)="help()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-alert"></ion-icon>\n\n            </ion-avatar>\n\n           Soporte \n\n        </button>\n\n        <button ion-item (click)="terms()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-paper"></ion-icon>\n\n            </ion-avatar>\n\n            Terminos y Condiciones\n\n        </button>\n\n    </ion-list>\n\n  \n\n    \n\n    <!-- <ion-list no-lines>\n\n        <button ion-item (click)="logout()" text-center><h2 class="text-theme"><strong>Salir de mi cuenta</strong></h2></button>\n\n\n\n    </ion-list> -->\n\n    <p class="love">Desarrollado con  <ion-icon name="heart"></ion-icon></p> \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\more\driverMore.html"*/
+            selector: 'page-bikemode',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-bikemode\bikemode.html"*/'\n\n<ion-header  >\n\n  <ion-navbar class="bg-green" style="overflow: visible;" >\n\n      \n\n      <ion-title >MODO BICICLETA</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content  padding>\n\n   \n\n \n\n    <ion-card class="search">\n\n          \n\n        <ion-card-content>\n\n            <span class="dot bg-green"></span>\n\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n\n          \n\n            <ion-list   [hidden]="autocompleteItems.length == 0">\n\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n\n                  {{ item.description }}\n\n                </ion-item>\n\n              </ion-list>\n\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n        </ion-card-content>\n\n        <ion-card-content>\n\n            <span class="dot bg-yellow"></span>           \n\n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n\n              {{ item.description }}\n\n            </ion-item>\n\n          </ion-list>\n\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n\n\n        </ion-card-content>\n\n        \n\n    </ion-card>\n\n  \n\n <div #map id="map"></div>  \n\n    \n\n    \n\n\n\n  \n\n      <button (click)="listride()" class="btn rounded bg-green text-white " style="width: 100%">INICIAR VIAJE</button>\n\n\n\n  \n\n \n\n \n\n<div *ngIf="onTrip" >\n\n    <button class="btn rounded bg-green text-white animated infinite pulse" style=" width: 100% ;\n\n     position:absolute;\n\n     bottom: 0px ;\n\n     left: 0px ;\n\n     height: 51px; \n\n     font-size: large;\n\n   " (click)="goToTrip() " >VIAJE EN CURSO\n\n    </button>\n\n</div>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-bikemode\bikemode.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
-    ], DriverMorePage);
-    return DriverMorePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ViewController */]])
+    ], BikeModePage);
+    return BikeModePage;
 }());
 
-//# sourceMappingURL=driverMore.js.map
+//# sourceMappingURL=bikemode.js.map
 
 /***/ })
 

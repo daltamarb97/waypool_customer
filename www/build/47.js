@@ -1,14 +1,14 @@
 webpackJsonp([47],{
 
-/***/ 651:
+/***/ 653:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverLoginPageModule", function() { return DriverLoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "oneTripPricePageModule", function() { return oneTripPricePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverLogin__ = __webpack_require__(840);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__onetripprice__ = __webpack_require__(844);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,41 +18,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverLoginPageModule = /** @class */ (function () {
-    function DriverLoginPageModule() {
+var oneTripPricePageModule = /** @class */ (function () {
+    function oneTripPricePageModule() {
     }
-    DriverLoginPageModule = __decorate([
+    oneTripPricePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverLogin__["a" /* DriverLoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__onetripprice__["a" /* oneTripPricePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverLogin__["a" /* DriverLoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__onetripprice__["a" /* oneTripPricePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverLogin__["a" /* DriverLoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__onetripprice__["a" /* oneTripPricePage */]
             ]
         })
-    ], DriverLoginPageModule);
-    return DriverLoginPageModule;
+    ], oneTripPricePageModule);
+    return oneTripPricePageModule;
 }());
 
-//# sourceMappingURL=driverLogin.module.js.map
+//# sourceMappingURL=onetripprice.module.js.map
 
 /***/ }),
 
-/***/ 840:
+/***/ 844:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverLoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return oneTripPricePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_sendCoords_service__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_sendUsers_service__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_d_price_service__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_geofire_services__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_metrics_service__ = __webpack_require__(365);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,129 +74,131 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import * as firebase from 'firebase';
-// import { SignUpService } from '../../services/signup.service';
-var DriverLoginPage = /** @class */ (function () {
-    // userFirebase = this.AngularFireAuth.auth.currentUser;
-    function DriverLoginPage(navCtrl, authenticationService, alertCtrl, AngularFireAuth, navParams, formBuilder, SignUpService, platform, loadingCtrl) {
+
+
+
+
+
+var oneTripPricePage = /** @class */ (function () {
+    function oneTripPricePage(navCtrl, appCtrl, MetricsService, PriceService, alertCtrl, afDB, sendUsersService, SignUpService, sendCoordsService, modalCtrl, AngularFireAuth, viewCtrl, navParams, geofireService) {
+        // this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/' + this.userDriverUid).once('value').then((snap)=>{
+        //   console.log(snap.val());
         var _this = this;
         this.navCtrl = navCtrl;
-        this.authenticationService = authenticationService;
+        this.appCtrl = appCtrl;
+        this.MetricsService = MetricsService;
+        this.PriceService = PriceService;
         this.alertCtrl = alertCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.navParams = navParams;
-        this.formBuilder = formBuilder;
+        this.afDB = afDB;
+        this.sendUsersService = sendUsersService;
         this.SignUpService = SignUpService;
-        this.platform = platform;
-        this.loadingCtrl = loadingCtrl;
-        this.email = '';
-        this.auth = this.AngularFireAuth.auth;
-        this.loginGroup = this.formBuilder.group({
-            email: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
-            password: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required]
+        this.sendCoordsService = sendCoordsService;
+        this.modalCtrl = modalCtrl;
+        this.AngularFireAuth = AngularFireAuth;
+        this.viewCtrl = viewCtrl;
+        this.navParams = navParams;
+        this.geofireService = geofireService;
+        this.userDriverUid = this.AngularFireAuth.auth.currentUser.uid;
+        //variable for get data in function
+        this.driver = {};
+        //variable to transfer data from driver to this one
+        this.driverInfo = {};
+        this.driverInfoNote = {};
+        this.buttonColor = '#0fc874';
+        this.buttonColor2 = '#0fc874';
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
+        this.carModelList = [];
+        this.nowHour = new Date();
+        this.geocoordinatesDest = {};
+        this.geocoordinatesOr = {};
+        this.schedules = [];
+        //   let obj = snap.val();
+        //   Object.getOwnPropertyNames(obj).forEach(key => {
+        //    console.log(obj[key]);
+        //   });
+        // })
+        //hay dos variables, driver y driver2 lo cual significa que debo llamar a la info del driver en dos ocasiones distintas, cuando hay nota y cuando no
+        this.SignUpService.getCar(this.SignUpService.userPlace, this.userDriverUid).takeUntil(this.unsubscribe)
+            .subscribe(function (car) {
+            //get cars registered
+            _this.carModelList = car;
+            console.log(_this.carModelList);
         });
-        if (this.auth.currentUser) {
-            this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.auth.currentUser.uid).subscribe(function (driver) {
-                _this.driverInfo = driver;
-            });
-        }
+        this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.userDriverUid).takeUntil(this.unsubscribe).subscribe(function (driver) {
+            _this.driver = driver;
+            console.log(_this.driver);
+            _this.driverInfo.houseAddr = _this.driver.houseAddress.name;
+            _this.driverInfo.placeAddr = _this.driver.fixedLocation.name;
+            _this.driverInfo.name = _this.driver.name;
+            _this.driverInfo.lastname = _this.driver.lastname;
+            _this.driverInfo.phone = _this.driver.phone;
+            _this.driverInfo.userId = _this.driver.userId;
+            _this.driverInfo.verifiedPerson = _this.driver.verifiedPerson;
+            _this.driverInfo.place = _this.driver.place;
+            _this.driverInfo.company = _this.driver.company,
+                _this.driverInfo.city = _this.driver.city;
+            console.log('got info here');
+        });
+        this.geocoder = new google.maps.Geocoder;
     }
-    DriverLoginPage.prototype.signup = function () {
-        this.navCtrl.push('DSignupPage');
+    oneTripPricePage.prototype.ionViewDidEnter = function () {
+        this.geofireService.cancelGeoqueryPlace();
     };
-    ;
-    DriverLoginPage.prototype.resetPassword = function (email) {
-        if (this.loginGroup.controls['email'].value == '') {
+    oneTripPricePage.prototype.setPriceDriver = function () {
+        var _this = this;
+        if (this.precio == null || this.precio == '' || this.car == null || this.car == '' || this.startHour == '' || this.startHour == null) {
             var alert_1 = this.alertCtrl.create({
-                title: 'no hay ningun email',
-                subTitle: 'ingresa un email para resetear tu contraseña',
+                title: 'Informacion Incompleta',
+                subTitle: 'No haz colocado el precio por el que estas dispuesto a compatir tu viaje o no haz especificado en que carro te moverás',
                 buttons: ['OK']
             });
             alert_1.present();
-            console.log("reset password email hasn't been sent");
         }
         else {
-            this.auth.sendPasswordResetEmail(this.loginGroup.controls['email'].value);
-            var alert_2 = this.alertCtrl.create({
-                title: 'revisa tu email',
-                subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
-                buttons: ['OK']
+            this.PriceService.setPrice(this.SignUpService.userPlace, this.userDriverUid, this.precio, this.car);
+            this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/' + this.userDriverUid).push({
+                driver: this.driverInfo,
+                car: this.car,
+                houseAddr: this.driver.houseAddress.name,
+                placeAddr: this.driverInfo.placeAddr,
+                price: this.precio,
+                startHour: this.startHour
+            }).then(function (snap1) {
+                _this.accepted = true;
+                _this.unsubscribe.next();
+                _this.unsubscribe.complete();
+                _this.viewCtrl.dismiss(_this.accepted);
+                //   const key1 = snap1.key;
+                //   // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.driverInfo,this.car,this.navParams.data.houseAddr[0],this.navParams.data.placeAddr,this.precio, sche.,this.typeOfReserve);
+                //  // set geofireOrkey 
+                //  this.geofireService.setGeofireOrNEWTEST(this.SignUpService.userPlace, key1, this.driver.houseAddress.coordinates.lat, this.driver.houseAddress.coordinates.lng );
+                //  this.afDB.database.ref(this.SignUpService.userPlace + '/geofireOr/' + key1).update({
+                //     driverId: this.driverInfo.userId
+                //  })
+                //  console.log('executed geofire Or');
+                //     this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ this.userDriverUid + '/' + key1).update({
+                //         keyTrip: key1 
+                //     }) 
             });
-            alert_2.present();
-            console.log("reset password email has been sent");
         }
-        ;
     };
-    ;
-    DriverLoginPage.prototype.logIn = function () {
-        var _this = this;
-        var loading = this.loadingCtrl.create({
-            spinner: 'crescent',
-            content: "\n              <div class=\"custom-spinner-container\">\n                <div class=\"custom-spinner-box\"></div>\n              </div>"
-        });
-        loading.present();
-        this.receivedUser = this.navParams.data;
-        var email = this.loginGroup.controls['email'].value;
-        var password = this.loginGroup.controls['password'].value;
-        this.authenticationService.loginWithEmail(email, password).then(function (data) {
-            console.log(data);
-            if (data.user.emailVerified == false) {
-                loading.dismiss();
-                var alert_3 = _this.alertCtrl.create({
-                    title: 'Oops!',
-                    subTitle: 'por favor verifica tu email',
-                    buttons: ['OK']
-                });
-                alert_3.present();
-            }
-            else {
-                // let metadata = this.auth.currentUser.metadata;
-                // if(metadata.creationTime === metadata.lastSignInTime){
-                //     console.log(metadata.creationTime);
-                //     console.log(metadata.lastSignInTime);
-                //     this.navCtrl.push('CarRegistrationLoginPage');
-                //     setTimeout(()=>{
-                //         if(this.navCtrl.getActive().id === 'LoginPage'){
-                //             this.navCtrl.push('CarRegistrationLoginPage');
-                //         }else{
-                //             console.log('actuo el abservable')
-                //         }
-                //     }, 500)
-                // }
-                setTimeout(function () {
-                    if (_this.navCtrl.getActive().id === 'DriverLoginPage') {
-                        loading.dismiss();
-                        _this.navCtrl.setRoot('DriverFindridePage');
-                    }
-                    else {
-                        loading.dismiss();
-                        console.log('actuo el abservable');
-                    }
-                }, 500);
-                _this.authenticationService.getStatus;
-            }
-            ;
-        }).catch(function (error) {
-            loading.dismiss();
-            var alert = _this.alertCtrl.create({
-                title: 'Oops!',
-                subTitle: 'El usuario o la contraseña están incorrectas',
-                buttons: ['OK']
-            });
-            alert.present();
-            console.log(error);
-        });
+    oneTripPricePage.prototype.dismiss = function () {
+        // this.unsubscribe.next();
+        // this.unsubscribe.unsubscribe();
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+        this.viewCtrl.dismiss();
     };
-    DriverLoginPage = __decorate([
+    oneTripPricePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-login',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\login\driverLogin.html"*/'<ion-header class="transparent">\n\n    <ion-navbar hide-tabs>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <div class="logo">\n\n        <img src="assets/imgs/logo waypool gris-01.png" alt="logo">\n\n    </div>\n\n\n\n<div class="bg-white login">\n\n    <div >\n\n     <div [formGroup]="loginGroup" >\n\n        <ion-list class="form">\n\n            <ion-item>\n\n                <ion-label></ion-label>\n\n                <ion-input type="email"  text-right  formControlName="email" placeholder= "email"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label></ion-label>\n\n                <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>\n\n            </ion-item>\n\n        </ion-list>\n\n    </div>\n\n    <button ion-button full class="bg-theme-driver text-white btn rounded" (click)="logIn()" [disabled]="!loginGroup.valid">ENTRAR</button>\n\n    <button ion-button full class="bg-darkblue text-white btn rounded" (click)="signup()" >REGÍSTRATE</button>\n\n\n\n\n\n            <ion-row style="padding-top: 8px;">\n\n                <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme-driver"> contraseña?</strong></small></ion-col>\n\n            </ion-row>\n\n\n\n\n\n        </div>\n\n\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\login\driverLogin.html"*/
+            selector: 'driver-page-onetripprice',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\onetripprice\onetripprice.html"*/'<ion-content>\n\n    <ion-card>\n\n            <img src="assets/imgs/detallesviaje.png" width="100px" style="display:inline-block" height="150px"/>\n\n            <ion-icon name="close-circle" class="close-icon text-white"  (click)="dismiss()"></ion-icon>\n\n\n\n        <ion-card-content>\n\n            <div class="ride-detail">\n\n                    <p> Escribe el valor por persona que quieres recibir, coloca 0 si quieres hacerlo gratis </p>\n\n\n\n                <ion-item class="form">\n\n                    <ion-label floating>Precio Por Persona</ion-label>\n\n                    <ion-input type="number" [(ngModel)]="precio"></ion-input>\n\n                  </ion-item>                \n\n            </div>\n\n        </ion-card-content>\n\n\n\n        <ion-card-content>\n\n            <!-- <div class="ride-detail no-before">\n\n                <p><small>Recuerda:</small>\n\n                    <ion-icon name="md-calendar" class="icon-location"></ion-icon>\n\n                  - Precio Recomendado: 2500 </p>\n\n        \n\n                <p>- Tus compañeros te pagarán en efectivo, evita colocar precios que requieran mucho vuelto, lleva dinero suficiente para dar vueltas.</p>\n\n            </div> -->\n\n        </ion-card-content>\n\n        <ion-card-content>\n\n                <ion-row style="margin-top: 14px;    display: flex;\n\n                justify-content: center">\n\n                   <ion-list>\n\n                        <ion-item>\n\n                          <ion-label>Escoge el carro:</ion-label>\n\n                          <ion-select [(ngModel)]="car">\n\n                                <ion-option *ngFor="let car of carModelList" >{{car.carModel}} | {{car.plateNumber}} | {{car.color}}</ion-option>\n\n                       \n\n                          </ion-select>\n\n                        </ion-item>\n\n                      </ion-list>\n\n                </ion-row>\n\n                \n\n                <ion-row style="margin-top: 14px;    display: flex;\n\n            justify-content: center">\n\n                <ion-list>\n\n             <h2 text-center>Coloca la hora a la que te vas:</h2>\n\n                    <div style="    border-color: black;\n\n                    border-style: solid;">\n\n\n\n                    <ion-item>\n\n                        <ion-label>Hora:</ion-label>\n\n                <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>\n\n                </ion-item>\n\n\n\n                </div>\n\n                    \n\n                </ion-list>                    \n\n            </ion-row>\n\n       \n\n            <div class="seats">\n\n                \n\n                <ion-row style="margin-top: 14px;    display: flex;\n\n                justify-content: center">\n\n                   \n\n                    <ion-col col-8>\n\n                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setPriceDriver()">Publicar</button>\n\n                    </ion-col>\n\n                </ion-row>\n\n               \n\n\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\onetripprice\onetripprice.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
-    ], DriverLoginPage);
-    return DriverLoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_10__services_d_metrics_service__["a" /* DriverMetricsService */], __WEBPACK_IMPORTED_MODULE_7__services_d_price_service__["a" /* DriverPriceService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_6__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_8__services_d_geofire_services__["a" /* DriverGeofireService */]])
+    ], oneTripPricePage);
+    return oneTripPricePage;
 }());
 
-//# sourceMappingURL=driverLogin.js.map
+//# sourceMappingURL=onetripprice.js.map
 
 /***/ })
 

@@ -25,10 +25,43 @@
     <div [ngSwitch]="schedule">
       <div *ngSwitchCase="'makeYourOwn'">
 
+        <p text-center padding-top margin-top>Cóloca tu ruta diaria para publicar tus viajes automáticamente</p>
+        <ion-row class="center-align row" style="margin-left: 16px; justify-content: center; height: 40px;" >
+                    
+            <button  #buttonDisconected class="btn bg-theme rounded text-white buttonConnected"   *ngIf="!showConectedButton" (click)="conectDriver()" >
+              <ion-icon  name="calendar"></ion-icon>
+                 PUBLICAR HORARIO
 
+            </button>
+            <button #buttonConected  class="btn bg-theme text-white buttonDisconnected" (click)="disconectDriver()" style="border-radius: 25px;border-color: green;height: 40px; border-color: green;" *ngIf="showConectedButton" >
+              <ion-icon  name="calendar"></ion-icon>
 
+              HORARIO PUBLICADO </button>
+          
+          
+      </ion-row>
+        <ion-card class="search" >
+            <ion-card-content>
+  
+                <span class="dot bg-theme-driver"></span>
+                <ion-searchbar placeholder="Cóloca tu origen"  [(ngModel)]="autocompleteMyPos.input" (click)="createRoute()"></ion-searchbar>
+  
+              
+                  <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->
+            </ion-card-content>
+  
+            <ion-card-content>
+  
+                <span class="dot bg-yellow"></span>           
+               <ion-searchbar  [(ngModel)]="autocompleteMyDest.input"  id="input2" (click)="createRoute()" placeholder="Cóloca tu destino"></ion-searchbar>
+              
+             </ion-card-content>
+             
+        </ion-card>
         <p text-center padding-top margin-top>Agrega cada una de las horas en las que vas de tu casa al trabajo/universidad o viceversa</p>
-
+        <div style="display: flex; justify-content: center;">
+            <button class="btn text-white bg-theme-driver rounded" style="width: 40%;" (click)='makeSchedule()' (click)="goFindride()">Agregar</button>
+        </div>
             <ion-card *ngFor = "let sche of schedules" (click) = 'removeTime(sche)' style="border-radius: 5%;" >
                     <ng-container>
                         <ion-card-content style="display: flex; ">
@@ -41,28 +74,6 @@
                     </ng-container>
                 </ion-card>
 
-
-                <ion-row *ngIf= 'showButtonWorkSchedule'>
-                        <ion-col>
-                            <p padding-top class="btn-box"><button class="btn text-white bg-theme-driver rounded" style="width: 80%;" (click)="goFindride()">Continuar</button></p>
-                        </ion-col>
-                    </ion-row>
-
-                    <ion-row >
-                        <div style="position: relative">
-                                <p style="position: fixed; bottom: 10px; width:100%; text-align: left" class="skipText"  (click)="skipSchedule()"> No lo quiero hacer ahora </p>
-
-                        </div>
-                       
-                    </ion-row>
-
-
-
-
-
-          <ion-fab bottom right>
-              <button ion-fab (click)='makeSchedule()'><ion-icon name="add"></ion-icon></button>
-            </ion-fab>
       </div>
 
 

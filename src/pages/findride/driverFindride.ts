@@ -112,6 +112,7 @@ export class DriverFindridePage {
   zonesToIterate:any;
   pointsAlongRoute = [];
   indexesOfPointsAlongRoute = [];
+  usingGeolocation:boolean = false;
 
   constructor( private geofireService: DriverGeofireService,public TripsService:DriverTripsService, public afDB: AngularFireDatabase, public navCtrl: NavController,public SignUpService:DriverSignUpService,public modalCtrl: ModalController,private authenticationService: DriverAuthenticationService, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: DriverSendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private toastCtrl: ToastController, private app: App, private sendUsersService: DriverSendUsersService, public instancesService: DriverInstancesService, public firebaseNative: Firebase, private platform: Platform, private fcm: FCM, public loadingCtrl: LoadingController, public renderer: Renderer, private MetricsService: MetricsService, private DriverMetricsService: DriverMetricsService ) {
 
@@ -322,7 +323,7 @@ loadMap(){
      //creates the map and give options
        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
        this.myLatLng = {lat: position.coords.latitude , lng: position.coords.longitude};
- 
+       this.usingGeolocation = true;
        this.markerGeolocation = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
@@ -485,6 +486,8 @@ loadMap(){
        this.markers.push( this.markerGeolocation);
        this.map.setCenter(results[0].geometry.location);
        console.log(results[0].geometry.location)
+       this.myLatLng = results[0].geometry.location;
+       this.usingGeolocation = false;
        this.autocompleteMyPos.input=[item.description]
        this.autocompleteMyDest.input=''
        this.directionsDisplay.setMap(null)
@@ -718,18 +721,32 @@ centerMap(){
                           this.MetricsService.createdInstantRoutes(this.user,this.desFirebase, this.orFirebase );
 
                          // set geofires
-                         console.log(this.myLatLng.lat(), this.myLatLng.lng());
                          
-                        this.geofireService.setGeofireOrNEWTEST( key1, this.myLatLng.lat, this.myLatLng.lng );
-                        this.afDB.database.ref('/geofireOr/' + key1).update({
-                          driverId: this.userInfo.userId
-                        });
+                         
+                         if(this.usingGeolocation === true){
+                          this.geofireService.setGeofireOrNEWTEST( key1, this.myLatLng.lat, this.myLatLng.lng );
+                          this.afDB.database.ref('/geofireOr/' + key1).update({
+                            driverId: this.userInfo.userId
+                          });
 
-                        console.log('executed geofire Or');
+                          console.log('executed geofire Or');
                         
-                        this.afDB.database.ref('/reservesTest/'+ this.user + '/' + key1).update({
-                            keyTrip: key1 
-                        }); 
+                          this.afDB.database.ref('/reservesTest/'+ this.user + '/' + key1).update({
+                              keyTrip: key1 
+                          });
+                         }else{
+                          this.geofireService.setGeofireOrNEWTEST( key1, this.myLatLng.lat(), this.myLatLng.lng() );
+                          this.afDB.database.ref('/geofireOr/' + key1).update({
+                            driverId: this.userInfo.userId
+                          });
+
+                          console.log('executed geofire Or');
+                        
+                          this.afDB.database.ref('/reservesTest/'+ this.user + '/' + key1).update({
+                              keyTrip: key1 
+                          });
+                         }
+                         
 
                         this.geofireService.setGeofireDestNEWTEST( key1, this.myLatLngDest.lat(), this.myLatLngDest.lng() );
                         this.afDB.database.ref('/geofireDest/' + key1).update({

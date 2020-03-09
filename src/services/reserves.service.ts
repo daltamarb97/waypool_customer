@@ -43,6 +43,16 @@ export class reservesService {
 
     }
 
+
+    public getSeenReservesInAvailableReservesRoute( userUid){
+        //get reserves of the geofire
+        return  this.afDB.list( '/usersTest/'+ userUid+'/reservesSeenInAvailableReservesRoute').valueChanges();
+
+    }
+
+
+    
+
     public getSeenReservesInAvailableReservesLMU(place, userUid){
         //get reserves of the geofire
         return  this.afDB.list(place + '/users/'+ userUid+'/reservesSeenInAvailableReservesLMU').valueChanges();

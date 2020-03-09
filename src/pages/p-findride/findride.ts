@@ -113,14 +113,11 @@ export class FindridePassPage {
   saveTrip:any;
   pointsAlongRoute = [];
   pointsToGeofire = [];
-  keyTripForGeofireInRouteOr:any;
-  driverIdForGeofireInRouteOr:any;
   keyTripForGeofireInRouteDest:any;
   driverIdForGeofireInRouteDest:any;
   keysIdentifiedInOrigin = [];
   keysIdentifiedInOriginRoute = [];
-  userForAvailableReserves:any;
-  pushInArrayOfKeys:boolean = false;
+
  constructor(public navCtrl: NavController, private MetricsService:MetricsService ,public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private geofireService: geofireService, private SignUpService: SignUpService, public modalCtrl: ModalController, private app: App, public afDB: AngularFireDatabase, private TripsService: TripsService, public instanceService: instancesService, private platform: Platform, private fcm: FCM, private firebase: Firebase, public loadingCtrl: LoadingController, public viewCtril: ViewController ) {
   
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -776,16 +773,54 @@ listride(){
                 setTimeout(() => {
                   if(this.geofireOriginConfirmed === false && this.geofireOriginConfirmedOnRoute === false){
 
-                    console.log('cancela todo porque no entro nada');
+                    this.geofireDestinationConfirmed = false
+                    this.geofireDestinationConfirmedOnRoute= false
+                    this.geofireOriginConfirmed= false
+                    this.geofireOriginConfirmedOnRoute= false
+                    this.geoquery1.cancel();
+                    this.geoquery2.cancel();
+                    this.geoqueryRoute.cancel();
+                    if(this.usingGeolocation === true){
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                    }else{
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+
+                    }
+                    
                     this.loading.dismiss();                        
                   }else if(this.geofireDestinationConfirmedOnRoute === false && this.geofireDestinationConfirmed === false){
-                    console.log('cancela todo porque no entro nada');
+                    this.geofireDestinationConfirmed = false
+                    this.geofireDestinationConfirmedOnRoute= false
+                    this.geofireOriginConfirmed= false
+                    this.geofireOriginConfirmedOnRoute= false
+                    this.geoquery1.cancel();
+                    this.geoquery2.cancel();
+                    this.geoqueryRoute.cancel();
+                    if(this.usingGeolocation === true){
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                    }else{
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+
+                    }
                     this.loading.dismiss();
                   } else{
                     moment.locale('es'); //to make the date be in spanish  
                     let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
                     // this.MetricsService.createdReserves(this.userUid,today,this.desFirebase,this.orFirebase);
-                    this.navCtrl.push('ListridePage');
+                    
+                    this.geofireDestinationConfirmed = false
+                    this.geofireDestinationConfirmedOnRoute= false
+                    this.geofireOriginConfirmed= false
+                    this.geofireOriginConfirmedOnRoute= false
+                    this.geoquery1.cancel();
+                    this.geoquery2.cancel();
+                    this.geoqueryRoute.cancel();
+                    if(this.usingGeolocation === true){
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                    }else{
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+
+                    }
                     this.loading.dismiss();
                   }
                 }, 5000);
@@ -995,6 +1030,7 @@ listride(){
 
       this.keysIdentifiedInOriginRoute.forEach(element =>{
         if(element.keyTrip === key){
+          this.geofireDestinationConfirmed = true;
           this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).once('value')
           .then((snapshot)=>{
             if(snapshot.val()){
@@ -1027,7 +1063,7 @@ listride(){
         this.afDB.database.ref('allCities/' + this.userInfo.city ).once('value').then((snap)=>{
           
           this.indexesOfPointsAlongRoute.forEach(index=>{
-         
+            
             this.setGeofireRouteDest(snap.val().geofireRoute, this.pointsAlongRoute[index].lat, this.pointsAlongRoute[index].lng, userId);
 
           })
@@ -1080,12 +1116,35 @@ listride(){
           this.driverIdForGeofireInRouteDest = snap.val().driverId;
         }).then(()=>{
 
-
           this.keysIdentifiedInOrigin.forEach(element => {
-            if(element.keyTrip === this.keyTripForGeofireInRouteDest){   
+            if(element.keyTrip === this.keyTripForGeofireInRouteDest){
               this.geofireDestinationConfirmedOnRoute = true;
-              if(element.orRouteConf === true){ 
-                  this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + this.keyTripForGeofireInRouteDest).once('value')
+              
+              this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + this.keyTripForGeofireInRouteDest).once('value')
+              .then((snapConf)=>{
+                if(snapConf.val()){
+                  console.log('te voy a dejar relajado ya que ya te identifiqué');
+
+                }else{
+
+                  this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + this.keyTripForGeofireInRouteDest).update({
+                    keyReserve: this.keyTripForGeofireInRouteDest,
+                    driverId: this.driverIdForGeofireInRouteDest,
+                    onRouteDestination: true,
+                   })
+
+                }
+              })
+               
+            }
+          });
+    
+    
+          this.keysIdentifiedInOriginRoute.forEach(element =>{
+            if(element.keyTrip === this.keyTripForGeofireInRouteDest){
+              this.geofireDestinationConfirmedOnRoute = true;
+
+              this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + this.keyTripForGeofireInRouteDest).once('value')
                   .then((snapConf)=>{
                     if(snapConf.val()){
                       console.log('te voy a dejar relajado ya que ya te identifiqué');  
@@ -1094,56 +1153,18 @@ listride(){
                         keyReserve: this.keyTripForGeofireInRouteDest,
                         driverId: this.driverIdForGeofireInRouteDest,
                         onRouteDestination: true,
-                        onRouteOrigin: true
+                        onRouteOrigin: true 
                        })
   
                     }
                   })
-                  
-        
-              
-                
-               }else{
-                  
-                  this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + this.keyTripForGeofireInRouteDest).once('value')
-                  .then((snapConf)=>{
-                    if(snapConf.val()){
-                      console.log('te voy a dejar relajado ya que ya te identifiqué');
-  
-                    }else{
-  
-                      this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + this.keyTripForGeofireInRouteDest).update({
-                        keyReserve: this.keyTripForGeofireInRouteDest,
-                        driverId: this.driverIdForGeofireInRouteDest,
-                        onRouteDestination: true,
-                       })
-  
-                    }
-                  })
-              
-              }
-            }
-          }); 
 
-          
+            }
+          })
+        
         })
                 
       }.bind(this))
-
-
-
-
-      this.geoqueryRoute.on("ready", function(){
-
-        if(this.geofireDestinationConfirmedOnRoute === false && this.geofireDestinationConfirmed === false ){
-          console.log('cancela todo porque no entro nada');
-          this.loading.dismiss();
-        }else{
-         
-        }
-        
-      }.bind(this))
-              
 
     }
 

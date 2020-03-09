@@ -1,6 +1,6 @@
 webpackJsonp([39],{
 
-/***/ 693:
+/***/ 699:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListridePageModule", function() { return ListridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listride__ = __webpack_require__(887);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listride__ = __webpack_require__(893);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,23 +41,25 @@ var ListridePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 887:
+/***/ 893:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListridePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_reserves_service__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_trips_service__ = __webpack_require__(358);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_geofire__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_geofire___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_geofire__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_geoFire_service__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_trips_service__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -77,9 +79,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ListridePage = /** @class */ (function () {
-    function ListridePage(navCtrl, app, TripsService, loadingCtrl, toastCtrl, reservesService, AngularFireAuth, afDB, SignUpService, sendCoordsService, modalCtrl, geoFireService) {
+    function ListridePage(navParams, navCtrl, app, TripsService, loadingCtrl, toastCtrl, reservesService, AngularFireAuth, afDB, SignUpService, sendCoordsService, modalCtrl, geoFireService, alertCtrl) {
         var _this = this;
+        this.navParams = navParams;
         this.navCtrl = navCtrl;
         this.app = app;
         this.TripsService = TripsService;
@@ -92,33 +96,38 @@ var ListridePage = /** @class */ (function () {
         this.sendCoordsService = sendCoordsService;
         this.modalCtrl = modalCtrl;
         this.geoFireService = geoFireService;
+        this.alertCtrl = alertCtrl;
         this.reservesAvailable = [];
-        this.initiatedTrips = [];
+        this.routeTrips = [];
         this.locationDestinationUser = [];
         this.locationOriginUser = [];
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
         this.ReservesGeofire = [];
         this.tripsReserved = [];
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_10_rxjs__["Subject"];
         this.pendingUsers = [];
         this.noReserve = false;
+        this.pointsAlongRoute = [];
+        this.indexesOfPointsAlongRoute = [];
+        this.geofireOriginConfirmed = false;
+        this.geofireOriginConfirmedOnRoute = false;
+        this.geofireDestinationConfirmed = false;
+        this.geofireDestinationConfirmedOnRoute = false;
+        this.keysIdentifiedInOrigin = [];
+        this.keysIdentifiedInOriginRoute = [];
+        this.showRoute = false;
+        this.showNearby = true;
         console.log("AQUI EMPIEZA");
-        this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
-            _this.user = user;
+        this.afDB.database.ref('usersTest/' + this.userUid).once('value').then(function (snap) {
+            _this.user = snap.val();
+            console.log(_this.user);
         });
-        this.sendCoordsService.getOriginUser(this.userUid).takeUntil(this.unsubscribe)
-            .subscribe(function (originUser) {
-            _this.locationOriginUser = originUser;
-            // this.locationOrigin.push(origin)
-            console.log(originUser);
-        });
-        this.sendCoordsService.getDestinationUser(this.userUid).takeUntil(this.unsubscribe)
-            .subscribe(function (destinationUser) {
-            _this.locationDestinationUser = destinationUser;
-            // this.locationOrigin.push(origin)
-            console.log(destinationUser);
-        });
-        console.log(this.SignUpService.userPlace);
+        this.latOr = this.navParams.get('latOr');
+        this.lngOr = this.navParams.get('lngOr');
+        this.latDest = this.navParams.get('latDest');
+        this.lngDest = this.navParams.get('lngDest');
+        this.pointsAlongRoute = this.navParams.get('pointsAlongRoute');
+        this.indexesOfPointsAlongRoute = this.navParams.get('indexesOfPointsAlongRoute');
         this.reservesService.getReserves(this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (reserves) {
             // this.initiatedTrips = [];
@@ -140,21 +149,44 @@ var ListridePage = /** @class */ (function () {
             _this.reservesAvailable = reserve;
             console.log(_this.reservesAvailable);
         });
-        // this.reservesService.getSeenReservesInAvailableReservesLMU(this.SignUpService.userPlace, this.userUid).subscribe((reserve)=>{
-        //   this.initiatedTrips = reserve;
-        //   console.log(this.initiatedTrips);
-        // })
+        this.reservesService.getSeenReservesInAvailableReservesRoute(this.userUid).subscribe(function (reserve) {
+            _this.routeTrips = reserve;
+            console.log(_this.reservesAvailable);
+        });
     }
     ListridePage.prototype.ionViewDidLeave = function () {
         this.unSubscribeServices();
-        console.log(this.SignUpService.userPlace);
         console.log("me active");
         this.TripsService.eliminateAvailableUsers(this.userUid);
         this.TripsService.eliminateSeenAvailableReserves(this.userUid);
+        this.TripsService.eliminateSeenAvailableReservesRoute(this.userUid);
         // this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
     };
-    // getMyReserves(){
-    // }
+    ListridePage.prototype.doRefresh = function (event) {
+        var _this = this;
+        this.afDB.database.ref('allCities/' + this.user.city).once('value').then(function (snapGeoquery) {
+            _this.setGeofireOr(snapGeoquery.val().geofireOr, _this.latOr, _this.lngOr, _this.userUid, snapGeoquery.val().geofireDest, _this.latDest, _this.lngDest);
+            _this.indexesOfPointsAlongRoute.forEach(function (index) {
+                _this.setGeofireRouteOrigin(snapGeoquery.val().geofireRoute, _this.pointsAlongRoute[index].lat, _this.pointsAlongRoute[index].lng, snapGeoquery.val().geofireDest, _this.latDest, _this.lngDest, _this.userUid);
+            });
+        });
+        setTimeout(function () {
+            _this.geoquery1.cancel();
+            _this.geoquery2.cancel();
+            _this.geoqueryRoute.cancel();
+            if (_this.geofireDestinationConfirmed === false && _this.geofireDestinationConfirmedOnRoute === false) {
+                var alert = _this.alertCtrl.create({
+                    title: 'No hay nuevos poolers compartiendo sus viajes',
+                    subTitle: 'Intenta más tarde',
+                    buttons: ['OK']
+                });
+                alert.present();
+            }
+            else {
+            }
+            event.complete();
+        }, 5000);
+    };
     ListridePage.prototype.getAvailableReserves = function () {
         var _this = this;
         //bring reserves that i have entered to hide them in listride
@@ -169,24 +201,25 @@ var ListridePage = /** @class */ (function () {
                     _this.afDB.database.ref('/usersTest/' + _this.userUid + '/reservesSeenInAvailableReserves/' + reserveGeofire.keyReserve).update(obj);
                 });
             });
-            if (reserveGeofire.LMU == true) {
-                _this.afDB.database.ref('/trips/' + reserveGeofire.driverId + '/' + reserveGeofire.keyReserve).once('value').then(function (snapTripLMU) {
+            if (reserveGeofire.onRouteDestination == true || reserveGeofire.onRouteOrigin == true) {
+                _this.afDB.database.ref('/reservesTest/' + reserveGeofire.driverId + '/' + reserveGeofire.keyReserve).once('value').then(function (snapTripLMU) {
                     var obj = snapTripLMU.val();
-                    _this.afDB.database.ref('/usersTest/' + _this.userUid + '/reservesSeenInAvailableReservesLMU/').remove().then(function () {
-                        _this.afDB.database.ref('/usersTest/' + _this.userUid + '/reservesSeenInAvailableReservesLMU/' + reserveGeofire.keyReserve).update(obj);
+                    _this.afDB.database.ref('/usersTest/' + _this.userUid + '/reservesSeenInAvailableReservesRoute/').remove().then(function () {
+                        _this.afDB.database.ref('/usersTest/' + _this.userUid + '/reservesSeenInAvailableReservesRoute/' + reserveGeofire.keyReserve).update(obj);
                     });
-                    // this.initiatedTrips.push(this.reserveLMU);
-                    // console.log(this.initiatedTrips);  
                 });
             }
         });
     };
-    ListridePage.prototype.ionViewDidLoad = function () {
-        // this.geoFireService.getDriversAvailableForUser(this.userUid)
-        //   .subscribe(drivers=>{
-        //       this.driversAvailable = drivers;
-        //       console.log(this.driversAvailable);
-        //   })
+    ListridePage.prototype.nearby = function () {
+        console.log('aqui pongo los que estan cerca');
+        this.showRoute = false;
+        this.showNearby = true;
+    };
+    ListridePage.prototype.route = function () {
+        console.log('aqui pongo los que estan en ruta');
+        this.showNearby = false;
+        this.showRoute = true;
     };
     ListridePage.prototype.confirmpopup = function (reserve) {
         var _this = this;
@@ -204,6 +237,7 @@ var ListridePage = /** @class */ (function () {
                     _this.navCtrl.pop();
                     _this.TripsService.eliminateAvailableUsers(_this.userUid);
                     _this.TripsService.eliminateSeenAvailableReserves(_this.userUid);
+                    _this.TripsService.eliminateSeenAvailableReservesRoute(_this.userUid);
                     //  this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
                     _this.navCtrl.push('ReservetripPage');
                 }
@@ -232,6 +266,7 @@ var ListridePage = /** @class */ (function () {
                     _this.navCtrl.pop();
                     _this.TripsService.eliminateAvailableUsers(_this.userUid);
                     _this.TripsService.eliminateSeenAvailableReserves(_this.userUid);
+                    _this.TripsService.eliminateSeenAvailableReservesRoute(_this.userUid);
                     //  this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
                     _this.navCtrl.push('ReservetripPage');
                 }
@@ -250,6 +285,7 @@ var ListridePage = /** @class */ (function () {
                 _this.navCtrl.pop();
                 _this.TripsService.eliminateAvailableUsers(_this.userUid);
                 _this.TripsService.eliminateSeenAvailableReserves(_this.userUid);
+                _this.TripsService.eliminateSeenAvailableReservesRoute(_this.userUid);
                 // this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
                 _this.navCtrl.push('MyridePage');
             }
@@ -261,27 +297,6 @@ var ListridePage = /** @class */ (function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     };
-    // presentLoadingCustom(array){
-    //   let loading = this.loadingCtrl.create({
-    //     spinner: 'crescent',
-    //     content: `
-    //       <div class="custom-spinner-container">
-    //         <div class="custom-spinner-box"></div>
-    //       </div>`,
-    //     duration: 3000
-    //   });
-    //   loading.onDidDismiss(() => {
-    //      console.log(array)
-    //     if(array.length === 0){
-    //       //there are no reserves to show
-    //       this.noReserve = true;
-    //     }else{
-    //       //there are reserves
-    //         this.noReserve = false;  
-    //     }
-    //   });
-    //   loading.present();
-    // }
     ListridePage.prototype.help = function () {
         var toast = this.toastCtrl.create({
             message: 'Estos son los conductores que se van a tu misma zona. Podrás ver sus horas en las que se van y unirte en su viaje',
@@ -291,13 +306,219 @@ var ListridePage = /** @class */ (function () {
         });
         toast.present();
     };
+    ////////////// GEOQUERYS FUNCTIONS //////////////////
+    //geoquery origin
+    ListridePage.prototype.setGeofireOr = function (radiusOr, latOr, lngOr, userId, radiusDest, latDest, lngDest) {
+        var dbRef = this.afDB.database.ref('/geofireOr/');
+        var geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(dbRef);
+        this.geoquery2 = geoFire.query({
+            center: [latOr, lngOr],
+            radius: radiusOr
+        });
+        this.keyEnteredOr(radiusDest, latDest, lngDest, userId);
+        this.keyExitedOr(userId);
+        console.log('geoquery or added');
+    };
+    ListridePage.prototype.keyEnteredOr = function (radiusDest, latDest, lngDest, userId) {
+        // var keyEnteredOr = false;
+        this.geoquery2.on("key_entered", function (key, location, distance) {
+            //  console.log(key);
+            //  keyEnteredOr = true;
+            this.geofireOriginConfirmed = true;
+            var orRouteConf = false;
+            this.keysIdentifiedInOrigin.push({ keyTrip: key, orRouteConf: orRouteConf });
+            if (this.geoquery1) {
+            }
+            else {
+                this.setGeofireDest(radiusDest, latDest, lngDest, userId);
+            }
+        }.bind(this));
+    };
+    ListridePage.prototype.keyExitedOr = function (userId) {
+        this.geoquery2.on("key_exited", function (key) {
+            this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).remove();
+        }.bind(this));
+    };
+    //geoquery origin in route
+    ListridePage.prototype.setGeofireRouteOrigin = function (radiusRoute, lat, lng, radiusDest, latDest, lngDest, userId) {
+        var dbRef = this.afDB.database.ref('/geofireRoute/');
+        var geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(dbRef);
+        this.geoqueryRoute = geoFire.query({
+            center: [lat, lng],
+            radius: radiusRoute
+        });
+        this.keyEnteredRouteOrigin(userId, radiusDest, latDest, lngDest);
+        this.keyExitedRouteOrigin(userId);
+        console.log('geoquery or added');
+    };
+    ListridePage.prototype.keyEnteredRouteOrigin = function (userId, radiusDest, latDest, lngDest) {
+        this.geoqueryRoute.on("key_entered", function (key, location, distance) {
+            var _this = this;
+            this.geofireOriginConfirmedOnRoute = true;
+            var orRouteConf = true;
+            this.afDB.database.ref('/geofireRoute/' + key).once('value').then(function (snap) {
+                // quede aqui, para verificar que las key identificadas son iguales
+                var keyTrip = snap.val().keyTrip;
+                _this.keysIdentifiedInOriginRoute.push({
+                    keyTrip: keyTrip,
+                    orRouteConf: orRouteConf
+                });
+            }).then(function () {
+                if (_this.geoquery1) {
+                }
+                else {
+                    _this.setGeofireDest(radiusDest, latDest, lngDest, userId);
+                }
+            });
+        }.bind(this));
+    };
+    ListridePage.prototype.keyExitedRouteOrigin = function (userId) {
+        this.geoquery2.on("key_exited", function (key) {
+            this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).remove();
+        }.bind(this));
+    };
+    //geoquery destination
+    ListridePage.prototype.setGeofireDest = function (radiusDest, latDest, lngDest, userId) {
+        console.log('se prendio geoquery destination, debo salir una sóla vez');
+        console.log(this.keysIdentifiedInOrigin);
+        var dbRef = this.afDB.database.ref('/geofireDest/');
+        var geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(dbRef);
+        this.geoquery1 = geoFire.query({
+            center: [latDest, lngDest],
+            radius: radiusDest
+        });
+        this.keyEnteredDest(userId);
+        this.keyExitedDest(userId);
+        console.log('geoquery dest added');
+    };
+    ListridePage.prototype.keyEnteredDest = function (userId) {
+        this.geoquery1.on("key_entered", function (key, location, distance) {
+            var _this = this;
+            console.log(key);
+            this.keysIdentifiedInOrigin.forEach(function (element) {
+                if (element.keyTrip === key) {
+                    _this.geofireDestinationConfirmed = true;
+                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
+                        keyReserve: key,
+                    }).then(function () {
+                        return _this.afDB.database.ref('/geofireDest/' + key).once('value').then(function (snap) {
+                            _this.driverOnNodeDest = snap.val();
+                            _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
+                                driverId: _this.driverOnNodeDest.driverId
+                            });
+                        });
+                    });
+                }
+            });
+            this.keysIdentifiedInOriginRoute.forEach(function (element) {
+                if (element.keyTrip === key) {
+                    _this.geofireDestinationConfirmed = true;
+                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).once('value')
+                        .then(function (snapshot) {
+                        if (snapshot.val()) {
+                        }
+                        else {
+                            _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
+                                keyReserve: key,
+                                onRouteOrigin: true
+                            }).then(function () {
+                                return _this.afDB.database.ref('/geofireDest/' + key).once('value').then(function (snap) {
+                                    _this.driverOnNodeDest = snap.val();
+                                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
+                                        driverId: _this.driverOnNodeDest.driverId
+                                    });
+                                });
+                            });
+                        }
+                    });
+                }
+            });
+        }.bind(this));
+        this.geoquery1.on("ready", function () {
+            var _this = this;
+            this.afDB.database.ref('allCities/' + this.user.city).once('value').then(function (snap) {
+                _this.indexesOfPointsAlongRoute.forEach(function (index) {
+                    _this.setGeofireRouteDest(snap.val().geofireRoute, _this.pointsAlongRoute[index].lat, _this.pointsAlongRoute[index].lng, userId);
+                });
+            });
+        }.bind(this));
+    };
+    ListridePage.prototype.keyExitedDest = function (userId) {
+        this.geoquery1.on("key_exited", function (key) {
+            this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).remove();
+        }.bind(this));
+    };
+    //geoquery destination in route
+    ListridePage.prototype.setGeofireRouteDest = function (radius, lat, lng, userId) {
+        var dbRef = this.afDB.database.ref('/geofireRoute/');
+        var geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(dbRef);
+        this.geoqueryRoute = geoFire.query({
+            center: [lat, lng],
+            radius: radius
+        });
+        this.keyEnteredRouteDest(userId);
+        this.keyExitedRouteDest(userId);
+    };
+    ListridePage.prototype.keyEnteredRouteDest = function (userId) {
+        this.geoqueryRoute.on("key_entered", function (key, location, distance) {
+            var _this = this;
+            this.afDB.database.ref('/geofireRoute/' + key).once('value').then(function (snap) {
+                _this.keyTripForGeofireInRouteDest = snap.val().keyTrip;
+                _this.driverIdForGeofireInRouteDest = snap.val().driverId;
+            }).then(function () {
+                _this.keysIdentifiedInOrigin.forEach(function (element) {
+                    if (element.keyTrip === _this.keyTripForGeofireInRouteDest) {
+                        _this.geofireDestinationConfirmedOnRoute = true;
+                        _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).once('value')
+                            .then(function (snapConf) {
+                            if (snapConf.val()) {
+                                console.log('te voy a dejar relajado ya que ya te identifiqué');
+                            }
+                            else {
+                                _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).update({
+                                    keyReserve: _this.keyTripForGeofireInRouteDest,
+                                    driverId: _this.driverIdForGeofireInRouteDest,
+                                    onRouteDestination: true,
+                                });
+                            }
+                        });
+                    }
+                });
+                _this.keysIdentifiedInOriginRoute.forEach(function (element) {
+                    if (element.keyTrip === _this.keyTripForGeofireInRouteDest) {
+                        _this.geofireDestinationConfirmedOnRoute = true;
+                        _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).once('value')
+                            .then(function (snapConf) {
+                            if (snapConf.val()) {
+                                console.log('te voy a dejar relajado ya que ya te identifiqué');
+                            }
+                            else {
+                                _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).update({
+                                    keyReserve: _this.keyTripForGeofireInRouteDest,
+                                    driverId: _this.driverIdForGeofireInRouteDest,
+                                    onRouteDestination: true,
+                                    onRouteOrigin: true
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+        }.bind(this));
+    };
+    ListridePage.prototype.keyExitedRouteDest = function (userId) {
+        this.geoquery2.on("key_exited", function (key) {
+            this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).remove();
+        }.bind(this));
+    };
     ListridePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-listride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-listride/listride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar >\n\n        <ion-title class="Title">ESCOGE TU COMPAÑERO\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light" class="hideLongText" style="        background-color: rgba(255, 255, 255, 0.959);\n">\n    <ion-row class="center-align bg-white flow-ride">\n        <ion-col *ngFor = "let originUser of locationOriginUser"  class="hideLongText" col-5>\n            <h2>Origen</h2> {{originUser}}\n        </ion-col>\n        <ion-col col-2 text-center>\n            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">\n        </ion-col>\n        <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>\n            <h2>Destino</h2> {{destinationUser}}\n        </ion-col> \n    </ion-row>\n    <div class="iconHelp">\n        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>\n\n    </div>\n    \n    <div [ngSwitch]="noReserve" >\n        <img *ngSwitchCase=true src="assets/imgs/noreserveavailable.png">\n\n\n\n\n        <ng-container *ngSwitchCase=false>\n                <div style="display: flex;flex-direction: column;">\n                        <ion-card *ngFor = "let trip of initiatedTrips">\n                                <ion-item>\n                                    <ion-avatar item-start>\n                                        <img class="animated infinite pulse" src="assets/imgs/carOrange.png">\n                                    </ion-avatar>\n                                   \n                                    <div class="name">\n                                       \n                                        <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase }}\n                                            <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                                            <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n                                        </h2>\n                                        <p>{{trip.car}}</p>\n                                        \n                \n                                    </div>\n                                    <div class="more">\n                                        <h2 class="text text-hot">                        \n                                         $ {{trip.price}}                          \n                                        </h2>\n                                       \n                                    </div>\n                                </ion-item>\n                                <ion-card-content >\n                                  \n                                    <ion-row class="center-align">  \n                                        <ion-col center text-center col-6 text-right style="margin-left: auto;">\n                                                <h2 class="text text-hot animated infinite pulse">                        \n                                                        Viaje en curso                         \n                                                     </h2>  \n                                                               \n                                        </ion-col>                \n                                        \n                                        <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                            <button class="btn bg-hot rounded full text-white" (click)="enterTrip(trip)"style="font-size: 1.5rem;">Unirme</button>\n                                                </ion-col>\n                                    </ion-row>\n                                </ion-card-content>\n                            </ion-card>\n                </div>\n\n            <div style="display: flex;flex-direction: column;width: 96%;">\n                    <ion-card *ngFor = "let reserve of reservesAvailable">\n                            <ion-item>\n                                <ion-avatar item-start>\n                                    <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                                </ion-avatar>                   \n                                <div class="name">                      \n                                    <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase }} \n                                        <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{reserve.driver.company}}</ion-badge>\n            \n                                    </h2>\n            \n                                    <p>{{reserve.car}}</p> \n                                    \n                                </div>\n                                <div class="more">\n                                    <h2 class="text text-theme">                        \n                                        $ {{reserve.price}}                         \n                                    </h2>\n              \n                                </div>\n                            </ion-item>\n                            <ion-card-content>                  \n                                <ion-row class="center-align">  \n                                            <h2 class="text text-dark">                        \n                                                Hora: {{reserve.startHour}}                             \n                                            </h2>                    \n                                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                        <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Unirme</button>\n                                    </ion-col>\n                                </ion-row>\n                            </ion-card-content>\n                        </ion-card>\n                    </div>\n       \n            \n        </ng-container>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-listride/listride.html"*/
+            selector: 'page-listride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-listride/listride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar >\n\n        <ion-title class="Title">ESCOGE TU COMPAÑERO\n        </ion-title>\n    </ion-navbar>\n\n    <ion-row class="center-align bg-theme flow-ride">\n            <ion-segment>\n                    <ion-segment-button value="nearby" (ionSelect)="nearby()">\n                      Cerca de ti\n                    </ion-segment-button>\n                    <ion-segment-button value="route" (ionSelect)="route()">\n                      Pasa por tu ruta\n                    </ion-segment-button>\n             </ion-segment>\n    </ion-row>\n    \n</ion-header>\n\n\n<ion-content class="bg-light" class="hideLongText" style="        background-color: rgba(255, 255, 255, 0.959);">\n    <!-- <ion-row class="center-align bg-white flow-ride">\n        <ion-col *ngFor = "let originUser of locationOriginUser"  class="hideLongText" col-5>\n            <h2>Origen</h2> {{originUser}}\n        </ion-col>\n        <ion-col col-2 text-center>\n            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">\n        </ion-col>\n        <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>\n            <h2>Destino</h2> {{destinationUser}}\n        </ion-col> \n    </ion-row> -->\n\n    \n    \n    \n    \n    <div [ngSwitch]="noReserve" >\n        <div *ngSwitchCase=true >\n                <img src="assets/imgs/noreserveavailable.png">\n                <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">\n                    <ion-refresher-content\n                      pullingIcon="arrow-dropdown"\n                      pullingText="Pull to refresh"\n                      refreshingSpinner="circles"\n                      refreshingText="Refreshing...">\n                    </ion-refresher-content>\n                  </ion-refresher>\n        </div>\n        \n\n\n        <div *ngSwitchCase=false>\n\n                <div class="iconHelp">\n                        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>\n                \n                    </div>\n                <ng-container>\n                    \n                        <div style="display: flex;flex-direction: column;" *ngIf=\'showRoute\'>\n                                <ion-card *ngFor = "let trip of routeTrips">\n                                        <ion-item>\n                                            <ion-avatar item-start>\n                                                <img class="animated infinite pulse" src="assets/imgs/carOrange.png">\n                                            </ion-avatar>\n                                           \n                                            <div class="name">\n                                               \n                                                <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase }}\n                                                    <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                                                    <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n                                                </h2>\n                                                <p>{{trip.car}}</p>\n                                                \n                        \n                                            </div>\n                                            <div class="more">\n                                                <h2 class="text text-hot">                        \n                                                 $ {{trip.price}}                          \n                                                </h2>\n                                               \n                                            </div>\n                                        </ion-item>\n                                        <ion-card-content >\n                                          \n                                            <ion-row class="center-align">  \n                                                <ion-col center text-center col-6 text-right style="margin-left: auto;">\n                                                        <h2 class="text text-hot animated infinite pulse">                        \n                                                                Viaje en curso                         \n                                                             </h2>  \n                                                                       \n                                                </ion-col>                \n                                                \n                                                <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                                    <button class="btn bg-hot rounded full text-white" (click)="enterTrip(trip)"style="font-size: 1.5rem;">Unirme</button>\n                                                        </ion-col>\n                                            </ion-row>\n                                        </ion-card-content>\n                                    </ion-card>\n                        </div>\n        \n                    <div style="display: flex;flex-direction: column;width: 96%;" *ngIf=\'showNearby\'>\n                            <ion-card *ngFor = "let reserve of reservesAvailable">\n                                    <ion-item>\n                                        <ion-avatar item-start>\n                                            <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                                        </ion-avatar>                   \n                                        <div class="name">                      \n                                            <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase }} \n                                                <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                                                <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{reserve.driver.company}}</ion-badge>\n                    \n                                            </h2>\n                    \n                                            <p>{{reserve.car}}</p> \n                                            \n                                        </div>\n                                        <div class="more">\n                                            <h2 class="text text-theme">                        \n                                                $ {{reserve.price}}                         \n                                            </h2>\n                      \n                                        </div>\n                                    </ion-item>\n                                    <ion-card-content>                  \n                                        <ion-row class="center-align">  \n                                                    <h2 class="text text-dark">                        \n                                                        Hora: {{reserve.startHour}}                             \n                                                    </h2>                    \n                                            <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                                <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Unirme</button>\n                                            </ion-col>\n                                        </ion-row>\n                                    </ion-card-content>\n                                </ion-card>\n                            </div>\n               \n                    \n                </ng-container>\n\n\n        </div>\n        \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-listride/listride.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_8__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__["AngularFireAuth"]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_6__services_geoFire_service__["a" /* geofireService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_geoFire_service__["a" /* geofireService */]) === "function" && _o || Object, typeof (_p = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _p || Object])
     ], ListridePage);
     return ListridePage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
 }());
 
 //# sourceMappingURL=listride.js.map

@@ -17412,7 +17412,6 @@ var FindridePassPage = /** @class */ (function () {
         this.pointsToGeofire = [];
         this.keysIdentifiedInOrigin = [];
         this.keysIdentifiedInOriginRoute = [];
-        this.pushInArrayOfKeys = false;
         this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
         this.geocoder = new google.maps.Geocoder;
         this.autocompleteMyPos = { input: '' };
@@ -17936,18 +17935,54 @@ var FindridePassPage = /** @class */ (function () {
                             }).then(function () {
                                 setTimeout(function () {
                                     if (_this.geofireOriginConfirmed === false && _this.geofireOriginConfirmedOnRoute === false) {
-                                        console.log('cancela todo porque no entro nada');
+                                        _this.geofireDestinationConfirmed = false;
+                                        _this.geofireDestinationConfirmedOnRoute = false;
+                                        _this.geofireOriginConfirmed = false;
+                                        _this.geofireOriginConfirmedOnRoute = false;
+                                        _this.geoquery1.cancel();
+                                        _this.geoquery2.cancel();
+                                        _this.geoqueryRoute.cancel();
+                                        if (_this.usingGeolocation === true) {
+                                            _this.navCtrl.push('ListridePage', { latOr: _this.myLatLngOr.lat, lngOr: _this.myLatLngOr.lng, latDest: _this.myLatLngDest.lat(), lngDest: _this.myLatLngDest.lng(), pointsAlongRoute: _this.pointsAlongRoute, indexesOfPointsAlongRoute: _this.indexesOfPointsAlongRoute });
+                                        }
+                                        else {
+                                            _this.navCtrl.push('ListridePage', { latOr: _this.myLatLngOr.lat(), lngOr: _this.myLatLngOr.lng(), latDest: _this.myLatLngDest.lat(), lngDest: _this.myLatLngDest.lng(), pointsAlongRoute: _this.pointsAlongRoute, indexesOfPointsAlongRoute: _this.indexesOfPointsAlongRoute });
+                                        }
                                         _this.loading.dismiss();
                                     }
                                     else if (_this.geofireDestinationConfirmedOnRoute === false && _this.geofireDestinationConfirmed === false) {
-                                        console.log('cancela todo porque no entro nada');
+                                        _this.geofireDestinationConfirmed = false;
+                                        _this.geofireDestinationConfirmedOnRoute = false;
+                                        _this.geofireOriginConfirmed = false;
+                                        _this.geofireOriginConfirmedOnRoute = false;
+                                        _this.geoquery1.cancel();
+                                        _this.geoquery2.cancel();
+                                        _this.geoqueryRoute.cancel();
+                                        if (_this.usingGeolocation === true) {
+                                            _this.navCtrl.push('ListridePage', { latOr: _this.myLatLngOr.lat, lngOr: _this.myLatLngOr.lng, latDest: _this.myLatLngDest.lat(), lngDest: _this.myLatLngDest.lng(), pointsAlongRoute: _this.pointsAlongRoute, indexesOfPointsAlongRoute: _this.indexesOfPointsAlongRoute });
+                                        }
+                                        else {
+                                            _this.navCtrl.push('ListridePage', { latOr: _this.myLatLngOr.lat(), lngOr: _this.myLatLngOr.lng(), latDest: _this.myLatLngDest.lat(), lngDest: _this.myLatLngDest.lng(), pointsAlongRoute: _this.pointsAlongRoute, indexesOfPointsAlongRoute: _this.indexesOfPointsAlongRoute });
+                                        }
                                         _this.loading.dismiss();
                                     }
                                     else {
                                         __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
                                         var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
                                         // this.MetricsService.createdReserves(this.userUid,today,this.desFirebase,this.orFirebase);
-                                        _this.navCtrl.push('ListridePage');
+                                        _this.geofireDestinationConfirmed = false;
+                                        _this.geofireDestinationConfirmedOnRoute = false;
+                                        _this.geofireOriginConfirmed = false;
+                                        _this.geofireOriginConfirmedOnRoute = false;
+                                        _this.geoquery1.cancel();
+                                        _this.geoquery2.cancel();
+                                        _this.geoqueryRoute.cancel();
+                                        if (_this.usingGeolocation === true) {
+                                            _this.navCtrl.push('ListridePage', { latOr: _this.myLatLngOr.lat, lngOr: _this.myLatLngOr.lng, latDest: _this.myLatLngDest.lat(), lngDest: _this.myLatLngDest.lng(), pointsAlongRoute: _this.pointsAlongRoute, indexesOfPointsAlongRoute: _this.indexesOfPointsAlongRoute });
+                                        }
+                                        else {
+                                            _this.navCtrl.push('ListridePage', { latOr: _this.myLatLngOr.lat(), lngOr: _this.myLatLngOr.lng(), latDest: _this.myLatLngDest.lat(), lngDest: _this.myLatLngDest.lng(), pointsAlongRoute: _this.pointsAlongRoute, indexesOfPointsAlongRoute: _this.indexesOfPointsAlongRoute });
+                                        }
                                         _this.loading.dismiss();
                                     }
                                 }, 5000);
@@ -18095,6 +18130,7 @@ var FindridePassPage = /** @class */ (function () {
             });
             this.keysIdentifiedInOriginRoute.forEach(function (element) {
                 if (element.keyTrip === key) {
+                    _this.geofireDestinationConfirmed = true;
                     _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).once('value')
                         .then(function (snapshot) {
                         if (snapshot.val()) {
@@ -18151,48 +18187,41 @@ var FindridePassPage = /** @class */ (function () {
                 _this.keysIdentifiedInOrigin.forEach(function (element) {
                     if (element.keyTrip === _this.keyTripForGeofireInRouteDest) {
                         _this.geofireDestinationConfirmedOnRoute = true;
-                        if (element.orRouteConf === true) {
-                            _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).once('value')
-                                .then(function (snapConf) {
-                                if (snapConf.val()) {
-                                    console.log('te voy a dejar relajado ya que ya te identifiqué');
-                                }
-                                else {
-                                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).update({
-                                        keyReserve: _this.keyTripForGeofireInRouteDest,
-                                        driverId: _this.driverIdForGeofireInRouteDest,
-                                        onRouteDestination: true,
-                                        onRouteOrigin: true
-                                    });
-                                }
-                            });
-                        }
-                        else {
-                            _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).once('value')
-                                .then(function (snapConf) {
-                                if (snapConf.val()) {
-                                    console.log('te voy a dejar relajado ya que ya te identifiqué');
-                                }
-                                else {
-                                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).update({
-                                        keyReserve: _this.keyTripForGeofireInRouteDest,
-                                        driverId: _this.driverIdForGeofireInRouteDest,
-                                        onRouteDestination: true,
-                                    });
-                                }
-                            });
-                        }
+                        _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).once('value')
+                            .then(function (snapConf) {
+                            if (snapConf.val()) {
+                                console.log('te voy a dejar relajado ya que ya te identifiqué');
+                            }
+                            else {
+                                _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).update({
+                                    keyReserve: _this.keyTripForGeofireInRouteDest,
+                                    driverId: _this.driverIdForGeofireInRouteDest,
+                                    onRouteDestination: true,
+                                });
+                            }
+                        });
+                    }
+                });
+                _this.keysIdentifiedInOriginRoute.forEach(function (element) {
+                    if (element.keyTrip === _this.keyTripForGeofireInRouteDest) {
+                        _this.geofireDestinationConfirmedOnRoute = true;
+                        _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).once('value')
+                            .then(function (snapConf) {
+                            if (snapConf.val()) {
+                                console.log('te voy a dejar relajado ya que ya te identifiqué');
+                            }
+                            else {
+                                _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).update({
+                                    keyReserve: _this.keyTripForGeofireInRouteDest,
+                                    driverId: _this.driverIdForGeofireInRouteDest,
+                                    onRouteDestination: true,
+                                    onRouteOrigin: true
+                                });
+                            }
+                        });
                     }
                 });
             });
-        }.bind(this));
-        this.geoqueryRoute.on("ready", function () {
-            if (this.geofireDestinationConfirmedOnRoute === false && this.geofireDestinationConfirmed === false) {
-                console.log('cancela todo porque no entro nada');
-                this.loading.dismiss();
-            }
-            else {
-            }
         }.bind(this));
     };
     FindridePassPage.prototype.keyExitedRouteDest = function (userId) {

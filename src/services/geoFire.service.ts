@@ -414,6 +414,8 @@ keyEnteredDest( userId, place ){
         return this.afDB.object('allPlaces/' + place ).valueChanges();
     }
 
+    
+
     // set a new node on firebase which is the location of the university
     setLocationPlace(place, key, lat, lng){
     this.dbRef = this.afDB.database.ref(place + '/geofirePlace/' );

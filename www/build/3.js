@@ -17410,6 +17410,9 @@ var FindridePassPage = /** @class */ (function () {
         this.indexesOfPointsAlongRoute = [];
         this.pointsAlongRoute = [];
         this.pointsToGeofire = [];
+        this.keysIdentifiedInOrigin = [];
+        this.keysIdentifiedInOriginRoute = [];
+        this.pushInArrayOfKeys = false;
         this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
         this.geocoder = new google.maps.Geocoder;
         this.autocompleteMyPos = { input: '' };
@@ -17427,6 +17430,16 @@ var FindridePassPage = /** @class */ (function () {
             _this.userInfo = snap.val();
             console.log(_this.userInfo);
         });
+        // this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe).subscribe(availableNode=>{
+        //   this.userForAvailableReserves = availableNode;
+        //   if(this.userForAvailableReserves.availableReserves){
+        //       this.navCtrl.push('ListridePage').then(()=>{
+        //         this.loading.dismiss();
+        //         this.unsubscribe.next();
+        //         this.unsubscribe.complete();
+        //       })  
+        //   }
+        // })
         /// logica keyReserves para myreserves
         // if user closed app at myRide before finishing a trip, this will delete the garbage 
         // Object.getOwnPropertyNames(this.zonesToIterate).forEach((key)=>{
@@ -17908,89 +17921,37 @@ var FindridePassPage = /** @class */ (function () {
                                 _this.afDB.database.ref('allCities/' + _this.userInfo.city).once('value').then(function (snapGeoquery) {
                                     if (_this.usingGeolocation === true) {
                                         _this.setGeofireOr(snapGeoquery.val().geofireOr, _this.myLatLngOr.lat, _this.myLatLngOr.lng, _this.userUid, snapGeoquery.val().geofireDest, _this.myLatLngDest.lat(), _this.myLatLngDest.lng());
-                                        setTimeout(function () {
-                                            if (_this.geofireOriginConfirmed === false) {
-                                                _this.indexesOfPointsAlongRoute.forEach(function (index) {
-                                                    _this.setGeofireRouteOrigin(snapGeoquery.val().geofireRoute, _this.pointsAlongRoute[index].lat, _this.pointsAlongRoute[index].lng, snapGeoquery.val().geofireDest, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
-                                                });
-                                            }
-                                        }, 2000);
-                                        // setTimeout(() => {
-                                        //   if(this.geofireOriginConfirmed !== true){
-                                        //     this.indexesOfPointsAlongRoute.forEach(index => {
-                                        //       this.setGeofireRouteOrigin(snapGeoquery.val().geofireRoute, this.pointsAlongRoute[index].lat, this.pointsAlongRoute[index].lng, this.userUid)
-                                        //     });
-                                        //   }else{
-                                        //   }
-                                        // }, 1000);
-                                        console.log('executed geofire Or');
+                                        _this.indexesOfPointsAlongRoute.forEach(function (index) {
+                                            _this.setGeofireRouteOrigin(snapGeoquery.val().geofireRoute, _this.pointsAlongRoute[index].lat, _this.pointsAlongRoute[index].lng, snapGeoquery.val().geofireDest, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
+                                        });
                                     }
                                     else {
                                         console.log(_this.myLatLngOr.lat(), _this.myLatLngOr.lng());
-                                        //LETS TEST THIS ANOTHER WAY
                                         _this.setGeofireOr(snapGeoquery.val().geofireOr, _this.myLatLngOr.lat(), _this.myLatLngOr.lng(), _this.userUid, snapGeoquery.val().geofireDest, _this.myLatLngDest.lat(), _this.myLatLngDest.lng());
-                                        setTimeout(function () {
-                                            if (_this.geofireOriginConfirmed === false) {
-                                                _this.indexesOfPointsAlongRoute.forEach(function (index) {
-                                                    _this.setGeofireRouteOrigin(snapGeoquery.val().geofireRoute, _this.pointsAlongRoute[index].lat, _this.pointsAlongRoute[index].lng, snapGeoquery.val().geofireDest, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
-                                                });
-                                            }
-                                        }, 2000);
-                                        //   setTimeout(() => {
-                                        //     if(this.geofireOriginConfirmed !== true){
-                                        //       this.indexesOfPointsAlongRoute.forEach(index => {
-                                        //         this.setGeofireRouteOrigin(snapGeoquery.val().geofireRoute, this.pointsAlongRoute[index].lat, this.pointsAlongRoute[index].lng, this.userUid)
-                                        //       });
-                                        //     }else{
-                                        //     }
-                                        //   }, 1000);
-                                        // console.log('executed geofire Or');  
+                                        _this.indexesOfPointsAlongRoute.forEach(function (index) {
+                                            _this.setGeofireRouteOrigin(snapGeoquery.val().geofireRoute, _this.pointsAlongRoute[index].lat, _this.pointsAlongRoute[index].lng, snapGeoquery.val().geofireDest, _this.myLatLngDest.lat(), _this.myLatLngDest.lng(), _this.userUid);
+                                        });
                                     }
-                                    // setTimeout(() => {
-                                    //   if(this.geofireOriginConfirmed === true || this.geofireOriginConfirmedOnRoute === true){
-                                    //     this.setGeofireDest(snapGeoquery.val().geofireDest, this.myLatLngDest.lat(), this.myLatLngDest.lng(), this.userUid);
-                                    //     setTimeout(() => {
-                                    //       if(this.geofireDestinationConfirmed !== true){
-                                    //         this.indexesOfPointsAlongRoute.forEach(index=>{
-                                    //           this.setGeofireRouteDest(snapGeoquery.val().geofireRoute, this.pointsAlongRoute[index].lat, this.pointsAlongRoute[index].lat, this.userUid)
-                                    //         })
-                                    //       }else{
-                                    //       }
-                                    //     }, 1000);
-                                    //   }else{
-                                    //     this.loading.dismiss();
-                                    //     this.presentAlert('No hay ningún pooler pasando por tu ubicación en este momento','Por favor intentalo más tarde','Ok') 
-                                    //     console.log(this.geofireDestinationConfirmed, this.geofireOriginConfirmed);
-                                    //   }
-                                    // }, 3000);
                                 });
+                            }).then(function () {
+                                setTimeout(function () {
+                                    if (_this.geofireOriginConfirmed === false && _this.geofireOriginConfirmedOnRoute === false) {
+                                        console.log('cancela todo porque no entro nada');
+                                        _this.loading.dismiss();
+                                    }
+                                    else if (_this.geofireDestinationConfirmedOnRoute === false && _this.geofireDestinationConfirmed === false) {
+                                        console.log('cancela todo porque no entro nada');
+                                        _this.loading.dismiss();
+                                    }
+                                    else {
+                                        __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
+                                        var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
+                                        // this.MetricsService.createdReserves(this.userUid,today,this.desFirebase,this.orFirebase);
+                                        _this.navCtrl.push('ListridePage');
+                                        _this.loading.dismiss();
+                                    }
+                                }, 5000);
                             });
-                            // si no hay nada disponible
-                            // setTimeout(() => {
-                            //   if(this.geofireOriginConfirmed === false && this.geofireOriginConfirmedOnRoute === false){
-                            //   }else{
-                            //     if(this.geofireDestinationConfirmed === false && this.geofireDestinationConfirmedOnRoute === false){
-                            //       this.loading.dismiss();
-                            //       this.presentAlert('No te sirve la ruta de ningún pooler en este momento','Por favor intentalo más tarde','Ok') 
-                            //       console.log(this.geofireDestinationConfirmed, this.geofireOriginConfirmed);
-                            //     }else{
-                            //       moment.locale('es'); //to make the date be in spanish  
-                            //     let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
-                            //     console.log(today)
-                            //     this.MetricsService.createdReserves(this.userUid,today,this.desFirebase,this.orFirebase);
-                            //     this.loading.dismiss();
-                            //     this.geofireOriginConfirmed = false;
-                            //     this.geofireOriginConfirmedOnRoute = false;
-                            //     this.geofireDestinationConfirmed = false;
-                            //     this.geofireDestinationConfirmedOnRoute = false;
-                            //     this.geoquery1.cancel();
-                            //     this.geoquery2.cancel();
-                            //     this.geoqueryRoute.cancel();
-                            //     this.navCtrl.push('ListridePage');
-                            //     console.log("se ejecuto");
-                            //     }
-                            //   } 
-                            // }, 3000);
                         }
                     }
                     catch (error) {
@@ -18044,38 +18005,17 @@ var FindridePassPage = /** @class */ (function () {
     FindridePassPage.prototype.keyEnteredOr = function (radiusDest, latDest, lngDest, userId) {
         // var keyEnteredOr = false;
         this.geoquery2.on("key_entered", function (key, location, distance) {
-            console.log(key);
+            //  console.log(key);
             //  keyEnteredOr = true;
             this.geofireOriginConfirmed = true;
             var orRouteConf = false;
-            this.setGeofireDest(radiusDest, latDest, lngDest, userId, orRouteConf);
-            //   this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).update({
-            //   keyReserve: key
-            //  }).then(()=>{
-            //    //get driverId from geofireOr node
-            //     return this.afDB.database.ref('/geofireOr/'+ key).once('value').then((snap) => {
-            //         this.driverOnNodeOr = snap.val();
-            //         this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
-            //             driverId: this.driverOnNodeOr.driverId
-            //         })  
-            //     })
-            //  }).then(()=>{
-            //   console.log(this.viewCtril.name)
-            //   moment.locale('es'); //to make the date be in spanish  
-            //   let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
-            //   console.log(today)
-            //   this.MetricsService.createdReserves(this.userUid,today,this.desFirebase,this.orFirebase);
-            //   console.log("se ejecuto")
-            //  })
+            this.keysIdentifiedInOrigin.push({ keyTrip: key, orRouteConf: orRouteConf });
+            if (this.geoquery1) {
+            }
+            else {
+                this.setGeofireDest(radiusDest, latDest, lngDest, userId);
+            }
         }.bind(this));
-        //  this.geoquery2.on("ready", function(){
-        //    if(keyEnteredOr === false){
-        //     //  console.log('que pasó');
-        //      console.log(radiusOrRoute, latOrRoute, lngOrRoute, radiusDest,  latDest, lngDest, userId, radiusDestRoute, latDestRoute, lngDestRoute);
-        //      this.setGeofireRouteOrigin(radiusOrRoute, latOrRoute, lngOrRoute, radiusDest,  latDest, lngDest, userId, radiusDestRoute, latDestRoute, lngDestRoute );
-        //    }
-        //   //  console.log('ESTO debe ser false y es: ' + keyEnteredOr);
-        //  })
     };
     FindridePassPage.prototype.keyExitedOr = function (userId) {
         this.geoquery2.on("key_exited", function (key) {
@@ -18090,41 +18030,29 @@ var FindridePassPage = /** @class */ (function () {
             center: [lat, lng],
             radius: radiusRoute
         });
-        this.keyEnteredRouteOrigin(userId, radiusDest, latDest, lngDest, radiusRoute, lat, lng);
+        this.keyEnteredRouteOrigin(userId, radiusDest, latDest, lngDest);
         this.keyExitedRouteOrigin(userId);
         console.log('geoquery or added');
     };
-    FindridePassPage.prototype.keyEnteredRouteOrigin = function (userId, radiusDest, latDest, lngDest, radiusRoute, latRoute, lngRoute) {
+    FindridePassPage.prototype.keyEnteredRouteOrigin = function (userId, radiusDest, latDest, lngDest) {
         this.geoqueryRoute.on("key_entered", function (key, location, distance) {
-            console.log('algo entro en query ruta origin');
+            var _this = this;
             this.geofireOriginConfirmedOnRoute = true;
             var orRouteConf = true;
-            this.setGeofireDest(radiusDest, latDest, lngDest, userId, orRouteConf);
-            // this.afDB.database.ref( '/geofireRoute/' + key).once('value').then((snap)=>{
-            //   this.keyTripForGeofireInRouteOr = snap.val().keyTrip;
-            //   this.driverIdForGeofireInRouteOr = snap.val().driverId;
-            // }).then(()=>{
-            //   this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + this.keyTripForGeofireInRouteOr).update({
-            //     keyReserve: this.keyTripForGeofireInRouteOr,
-            //     driverId: this.driverIdForGeofireInRouteOr,
-            //     onRouteOrigin: true
-            //    }).then(()=>{
-            //     console.log(this.viewCtril.name)
-            //     moment.locale('es'); //to make the date be in spanish  
-            //     let today = moment().format('MMMM Do , h:mm:ss a'); //set actual date
-            //     console.log(today)
-            //     this.MetricsService.createdReserves(this.userUid,today,this.desFirebase,this.orFirebase);
-            //     console.log("se ejecuto")
-            //    })
-            // })
-        }.bind(this));
-        this.geoqueryRoute.on("ready", function () {
-            console.log(this.geofireOriginConfirmedOnRoute);
-            if (this.geofireOriginConfirmedOnRoute === false) {
-                console.log('cancela todo porque no entro nada');
-                this.loading.dismiss();
-            }
-            //  console.log('ESTO debe ser false y es: ' + keyEnteredOr);
+            this.afDB.database.ref('/geofireRoute/' + key).once('value').then(function (snap) {
+                // quede aqui, para verificar que las key identificadas son iguales
+                var keyTrip = snap.val().keyTrip;
+                _this.keysIdentifiedInOriginRoute.push({
+                    keyTrip: keyTrip,
+                    orRouteConf: orRouteConf
+                });
+            }).then(function () {
+                if (_this.geoquery1) {
+                }
+                else {
+                    _this.setGeofireDest(radiusDest, latDest, lngDest, userId);
+                }
+            });
         }.bind(this));
     };
     FindridePassPage.prototype.keyExitedRouteOrigin = function (userId) {
@@ -18133,80 +18061,69 @@ var FindridePassPage = /** @class */ (function () {
         }.bind(this));
     };
     //geoquery destination
-    FindridePassPage.prototype.setGeofireDest = function (radiusDest, latDest, lngDest, userId, orRouteConf) {
+    FindridePassPage.prototype.setGeofireDest = function (radiusDest, latDest, lngDest, userId) {
+        console.log('se prendio geoquery destination, debo salir una sóla vez');
+        console.log(this.keysIdentifiedInOrigin);
         var dbRef = this.afDB.database.ref('/geofireDest/');
         var geoFire = new __WEBPACK_IMPORTED_MODULE_8_geofire__(dbRef);
         this.geoquery1 = geoFire.query({
             center: [latDest, lngDest],
             radius: radiusDest
         });
-        this.keyEnteredDest(userId, orRouteConf);
+        this.keyEnteredDest(userId);
         this.keyExitedDest(userId);
         console.log('geoquery dest added');
     };
-    FindridePassPage.prototype.keyEnteredDest = function (userId, orRouteConf) {
-        var keyEnteredDest = false;
+    FindridePassPage.prototype.keyEnteredDest = function (userId) {
         this.geoquery1.on("key_entered", function (key, location, distance) {
             var _this = this;
             console.log(key);
-            keyEnteredDest = true;
-            this.geofireDestinationConfirmed = true;
-            //  this.afDB.list( + '/geofireDest/'+ key).valueChanges().subscribe((driverOnNode)=>{
-            //     this.driverOnNodeDest = driverOnNode;
-            // })
-            if (orRouteConf === true) {
-                this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
-                    keyReserve: key,
-                    onRouteOrigin: true
-                }).then(function () {
-                    return _this.afDB.database.ref('/geofireDest/' + key).once('value').then(function (snap) {
-                        _this.driverOnNodeDest = snap.val();
-                        _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
-                            driverId: _this.driverOnNodeDest.driverId
+            this.keysIdentifiedInOrigin.forEach(function (element) {
+                if (element.keyTrip === key) {
+                    _this.geofireDestinationConfirmed = true;
+                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
+                        keyReserve: key,
+                    }).then(function () {
+                        return _this.afDB.database.ref('/geofireDest/' + key).once('value').then(function (snap) {
+                            _this.driverOnNodeDest = snap.val();
+                            _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
+                                driverId: _this.driverOnNodeDest.driverId
+                            });
                         });
                     });
-                }).then(function () {
-                    __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
-                    var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
-                    console.log(today);
-                    _this.MetricsService.createdReserves(_this.userUid, today, _this.desFirebase, _this.orFirebase);
-                    _this.loading.dismiss();
-                    _this.navCtrl.push('ListridePage');
-                    console.log("se ejecuto");
-                });
-            }
-            else {
-                this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
-                    keyReserve: key,
-                }).then(function () {
-                    return _this.afDB.database.ref('/geofireDest/' + key).once('value').then(function (snap) {
-                        _this.driverOnNodeDest = snap.val();
-                        _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
-                            driverId: _this.driverOnNodeDest.driverId
-                        });
+                }
+            });
+            this.keysIdentifiedInOriginRoute.forEach(function (element) {
+                if (element.keyTrip === key) {
+                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).once('value')
+                        .then(function (snapshot) {
+                        if (snapshot.val()) {
+                        }
+                        else {
+                            _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
+                                keyReserve: key,
+                                onRouteOrigin: true
+                            }).then(function () {
+                                return _this.afDB.database.ref('/geofireDest/' + key).once('value').then(function (snap) {
+                                    _this.driverOnNodeDest = snap.val();
+                                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + key).update({
+                                        driverId: _this.driverOnNodeDest.driverId
+                                    });
+                                });
+                            });
+                        }
                     });
-                }).then(function () {
-                    __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
-                    var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
-                    console.log(today);
-                    _this.MetricsService.createdReserves(_this.userUid, today, _this.desFirebase, _this.orFirebase);
-                    _this.loading.dismiss();
-                    _this.navCtrl.push('ListridePage');
-                    console.log("se ejecuto");
-                });
-            }
+                }
+            });
         }.bind(this));
         this.geoquery1.on("ready", function () {
             var _this = this;
-            if (keyEnteredDest === false) {
-                this.afDB.database.ref('allCities/' + this.userInfo.city).once('value').then(function (snap) {
-                    _this.indexesOfPointsAlongRoute.forEach(function (index) {
-                        _this.setGeofireRouteDest(snap.val().geofireRoute, _this.indexesOfPointsAlongRoute[index].lat, _this.indexesOfPointsAlongRoute[index].lng, userId, orRouteConf);
-                    });
+            this.afDB.database.ref('allCities/' + this.userInfo.city).once('value').then(function (snap) {
+                _this.indexesOfPointsAlongRoute.forEach(function (index) {
+                    _this.setGeofireRouteDest(snap.val().geofireRoute, _this.pointsAlongRoute[index].lat, _this.pointsAlongRoute[index].lng, userId);
                 });
-            }
-            //  console.log('ESTO debe ser false y es: ' + keyEnteredOr);
-        });
+            });
+        }.bind(this));
     };
     FindridePassPage.prototype.keyExitedDest = function (userId) {
         this.geoquery1.on("key_exited", function (key) {
@@ -18214,72 +18131,69 @@ var FindridePassPage = /** @class */ (function () {
         }.bind(this));
     };
     //geoquery destination in route
-    FindridePassPage.prototype.setGeofireRouteDest = function (radius, lat, lng, userId, orRouteConf) {
+    FindridePassPage.prototype.setGeofireRouteDest = function (radius, lat, lng, userId) {
         var dbRef = this.afDB.database.ref('/geofireRoute/');
         var geoFire = new __WEBPACK_IMPORTED_MODULE_8_geofire__(dbRef);
         this.geoqueryRoute = geoFire.query({
             center: [lat, lng],
             radius: radius
         });
-        this.keyEnteredRouteDest(userId, orRouteConf);
+        this.keyEnteredRouteDest(userId);
         this.keyExitedRouteDest(userId);
-        console.log('geoquery or added');
     };
-    FindridePassPage.prototype.keyEnteredRouteDest = function (userId, orRouteConf) {
+    FindridePassPage.prototype.keyEnteredRouteDest = function (userId) {
         this.geoqueryRoute.on("key_entered", function (key, location, distance) {
             var _this = this;
-            this.geofireDestinationConfirmedOnRoute = true;
-            if (orRouteConf === true) {
-                this.afDB.database.ref('/geofireRoute/' + key).once('value').then(function (snap) {
-                    _this.keyTripForGeofireInRouteDest = snap.val().keyTrip;
-                    _this.driverIdForGeofireInRouteDest = snap.val().driverId;
-                }).then(function () {
-                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteOr).update({
-                        keyReserve: _this.keyTripForGeofireInRouteDest,
-                        driverId: _this.driverIdForGeofireInRouteDest,
-                        onRouteDestination: true,
-                        onRouteOrigin: true
-                    }).then(function () {
-                        console.log(_this.viewCtril.name);
-                        __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
-                        var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
-                        console.log(today);
-                        _this.MetricsService.createdReserves(_this.userUid, today, _this.desFirebase, _this.orFirebase);
-                        _this.loading.dismiss();
-                        _this.navCtrl.push('ListridePage');
-                        console.log("se ejecuto");
-                    });
+            this.afDB.database.ref('/geofireRoute/' + key).once('value').then(function (snap) {
+                _this.keyTripForGeofireInRouteDest = snap.val().keyTrip;
+                _this.driverIdForGeofireInRouteDest = snap.val().driverId;
+            }).then(function () {
+                _this.keysIdentifiedInOrigin.forEach(function (element) {
+                    if (element.keyTrip === _this.keyTripForGeofireInRouteDest) {
+                        _this.geofireDestinationConfirmedOnRoute = true;
+                        if (element.orRouteConf === true) {
+                            _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).once('value')
+                                .then(function (snapConf) {
+                                if (snapConf.val()) {
+                                    console.log('te voy a dejar relajado ya que ya te identifiqué');
+                                }
+                                else {
+                                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).update({
+                                        keyReserve: _this.keyTripForGeofireInRouteDest,
+                                        driverId: _this.driverIdForGeofireInRouteDest,
+                                        onRouteDestination: true,
+                                        onRouteOrigin: true
+                                    });
+                                }
+                            });
+                        }
+                        else {
+                            _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).once('value')
+                                .then(function (snapConf) {
+                                if (snapConf.val()) {
+                                    console.log('te voy a dejar relajado ya que ya te identifiqué');
+                                }
+                                else {
+                                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteDest).update({
+                                        keyReserve: _this.keyTripForGeofireInRouteDest,
+                                        driverId: _this.driverIdForGeofireInRouteDest,
+                                        onRouteDestination: true,
+                                    });
+                                }
+                            });
+                        }
+                    }
                 });
-            }
-            else {
-                this.afDB.database.ref('/geofireRoute/' + key).once('value').then(function (snap) {
-                    _this.keyTripForGeofireInRouteDest = snap.val().keyTrip;
-                    _this.driverIdForGeofireInRouteDest = snap.val().driverId;
-                }).then(function () {
-                    _this.afDB.database.ref('/usersTest/' + userId + '/availableReserves/' + _this.keyTripForGeofireInRouteOr).update({
-                        keyReserve: _this.keyTripForGeofireInRouteDest,
-                        driverId: _this.driverIdForGeofireInRouteDest,
-                        onRouteDestination: true,
-                    }).then(function () {
-                        console.log(_this.viewCtril.name);
-                        __WEBPACK_IMPORTED_MODULE_14_moment__["locale"]('es'); //to make the date be in spanish  
-                        var today = __WEBPACK_IMPORTED_MODULE_14_moment__().format('MMMM Do , h:mm:ss a'); //set actual date
-                        console.log(today);
-                        _this.MetricsService.createdReserves(_this.userUid, today, _this.desFirebase, _this.orFirebase);
-                        _this.loading.dismiss();
-                        _this.navCtrl.push('ListridePage');
-                        console.log("se ejecuto");
-                    });
-                });
-            }
+            });
         }.bind(this));
         this.geoqueryRoute.on("ready", function () {
-            if (this.geofireDestinationConfirmedOnRoute === false) {
+            if (this.geofireDestinationConfirmedOnRoute === false && this.geofireDestinationConfirmed === false) {
                 console.log('cancela todo porque no entro nada');
                 this.loading.dismiss();
             }
-            //  console.log('ESTO debe ser false y es: ' + keyEnteredOr);
-        });
+            else {
+            }
+        }.bind(this));
     };
     FindridePassPage.prototype.keyExitedRouteDest = function (userId) {
         this.geoquery2.on("key_exited", function (key) {

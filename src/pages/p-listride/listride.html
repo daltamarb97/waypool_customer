@@ -6,12 +6,16 @@
     </ion-navbar>
 
     <ion-row class="center-align bg-theme flow-ride">
-            <ion-segment>
+            <ion-segment [(ngModel)]="segment">
                     <ion-segment-button value="nearby" (ionSelect)="nearby()">
                       Cerca de ti
+                      <ion-badge color="danger" *ngIf='showNearby'>{{reservesAvailable.length}}</ion-badge>
                     </ion-segment-button>
+                    
                     <ion-segment-button value="route" (ionSelect)="route()">
                       Pasa por tu ruta
+                      <ion-badge color="danger" *ngIf='showRoute'>{{routeTrips.length}}</ion-badge>
+
                     </ion-segment-button>
              </ion-segment>
     </ion-row>
@@ -20,21 +24,7 @@
 
 
 <ion-content class="bg-light" class="hideLongText" style="        background-color: rgba(255, 255, 255, 0.959);">
-    <!-- <ion-row class="center-align bg-white flow-ride">
-        <ion-col *ngFor = "let originUser of locationOriginUser"  class="hideLongText" col-5>
-            <h2>Origen</h2> {{originUser}}
-        </ion-col>
-        <ion-col col-2 text-center>
-            <img src="assets/imgs/baseline_compare_arrows_black_36dp.png">
-        </ion-col>
-        <ion-col *ngFor = "let destinationUser of locationDestinationUser"  class="hideLongText" col-5>
-            <h2>Destino</h2> {{destinationUser}}
-        </ion-col> 
-    </ion-row> -->
-
-    
-    
-    
+        
     
     <div [ngSwitch]="noReserve" >
         <div *ngSwitchCase=true >
@@ -61,7 +51,51 @@
                     
                         <div style="display: flex;flex-direction: column;" *ngIf='showRoute'>
                                 <ion-card *ngFor = "let trip of routeTrips">
+
                                         <ion-item>
+                                                <ion-avatar item-start>
+                                                    <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
+                                                </ion-avatar>                   
+                                                <div class="name">                      
+                                                    <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase }} 
+                                                        <ion-icon  *ngIf='trip.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                                                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>
+                            
+                                                    </h2>
+                            
+                                                    <p>{{trip.car}}</p> 
+                                                    
+                                                </div>
+                                                <div class="more">
+                                                    <h2 class="text text-theme">                        
+                                                        $ {{trip.price}}                         
+                                                    </h2>
+                              
+                                                </div>
+                                            </ion-item>
+                                            <ion-card-content>                  
+                                                <ion-row class="center-align">
+                                                    <ion-col>
+
+                                                            <h3 class="text text-dark">                        
+                                                                    Hora: {{trip.startHour}}                             
+                                                                </h3>
+                                                    </ion-col> 
+                                                    
+                                                    <ion-col>
+
+                                                            <h3 class="text text-dark">                        
+                                                                    El pooler está a {{trip.distance | number }} metros de ti.                    
+                                                                </h3>
+                                                    </ion-col> 
+                                                                                
+                                                    <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                                                        <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Unirme</button>
+                                                    </ion-col>
+                                                </ion-row>
+                                            </ion-card-content>
+
+                                        <!-- <ion-item>
                                             <ion-avatar item-start>
                                                 <img class="animated infinite pulse" src="assets/imgs/carOrange.png">
                                             </ion-avatar>
@@ -97,7 +131,7 @@
                                                     <button class="btn bg-hot rounded full text-white" (click)="enterTrip(trip)"style="font-size: 1.5rem;">Unirme</button>
                                                         </ion-col>
                                             </ion-row>
-                                        </ion-card-content>
+                                        </ion-card-content> -->
                                     </ion-card>
                         </div>
         

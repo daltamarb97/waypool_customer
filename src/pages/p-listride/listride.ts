@@ -10,6 +10,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { reservesService } from '../../services/reserves.service';
 import { TripsService } from '../../services/trips.service';
 import { Subject } from 'rxjs';
+import { setDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 @IonicPage()
 
 @Component({
@@ -54,8 +55,19 @@ export class ListridePage {
   keysIdentifiedInOriginRoute = [];
   showRoute:boolean = false;
   showNearby:boolean = true;
+  segment:any;
+  loading:any;
   constructor(public navParams: NavParams, public navCtrl: NavController,private app:App,public TripsService:TripsService,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService, public alertCtrl: AlertController ) {
   console.log("AQUI EMPIEZA")
+
+  this.loading = this.loadingCtrl.create({
+    spinner: 'bubbles',
+    content: `
+      <div class="custom-spinner-container">
+        <div class="custom-spinner-box"></div>
+      </div>`
+      });
+  this.loading.present();
 
     this.afDB.database.ref('usersTest/' + this.userUid).once('value').then((snap)=>{
       this.user = snap.val();
@@ -88,7 +100,10 @@ export class ListridePage {
               this.noReserve = false;  
           }
           // this.presentLoadingCustom(this.ReservesGeofire);
-          this.getAvailableReserves();
+          
+            this.getAvailableReserves();
+         
+          
 
         });
 
@@ -96,14 +111,46 @@ export class ListridePage {
         this.reservesService.getSeenReservesInAvailableReserves( this.userUid).subscribe((reserve)=>{
           this.reservesAvailable = reserve;
           console.log(this.reservesAvailable);
+
           
         })
 
         this.reservesService.getSeenReservesInAvailableReservesRoute( this.userUid).subscribe((reserve)=>{
           this.routeTrips = reserve;
-          console.log(this.reservesAvailable);
+          console.log(this.routeTrips);
           
+          this.getButtonStarter()
         })
+
+
+        
+          
+       
+        
+  }
+
+
+  getButtonStarter(){
+    
+    if(this.reservesAvailable.length !== 0 && this.routeTrips.length === 0){
+
+      
+      this.segment = 'nearby';
+      this.nearby()
+    }else if(this.routeTrips.length !== 0 && this.reservesAvailable.length === 0){
+
+      this.segment = 'route';
+      this.route();
+
+    }else if(this.routeTrips.length !== 0 && this.reservesAvailable.length !== 0){
+      this.segment = 'nearby';
+      this.nearby();
+    }
+
+  
+      this.loading.dismiss();
+
+    
   }
 
  
@@ -156,31 +203,41 @@ export class ListridePage {
 
 
 
-  getAvailableReserves(){ 
+     getAvailableReserves(){ 
         //bring reserves that i have entered to hide them in listride
     // this.reservesAvailable = [];
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
     console.log(this.ReservesGeofire);
       
     this.ReservesGeofire.forEach(reserveGeofire => {        
-        this.afDB.database.ref('/reservesTest/'+ reserveGeofire.driverId +'/'+ reserveGeofire.keyReserve).once('value').then((snapReserve)=>{
-          let obj = snapReserve.val();
-          console.log(obj);
-          this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReserves/').remove().then(()=>{
-            this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReserves/'+ reserveGeofire.keyReserve).update(obj);
-          })
-        })
+        
 
         if(reserveGeofire.onRouteDestination == true || reserveGeofire.onRouteOrigin == true){
           
-          this.afDB.database.ref('/reservesTest/'+reserveGeofire.driverId+'/'+ reserveGeofire.keyReserve).once('value').then((snapTripLMU)=>{
-            let obj = snapTripLMU.val();
+          this.afDB.database.ref('/reservesTest/'+reserveGeofire.driverId+'/'+ reserveGeofire.keyReserve).once('value').then((snapTripRoute)=>{
+            let obj = snapTripRoute.val();
             this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReservesRoute/').remove().then(()=>{
-              this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReservesRoute/'+ reserveGeofire.keyReserve).update(obj);
+              this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReservesRoute/'+ reserveGeofire.keyReserve).update(obj)
+              .then(()=>{
+                this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReservesRoute/'+ reserveGeofire.keyReserve).update({distance: (reserveGeofire.distance*1000)})
+              })
             })
             
              
           })
+
+      }else{
+
+        this.afDB.database.ref('/reservesTest/'+ reserveGeofire.driverId +'/'+ reserveGeofire.keyReserve).once('value').then((snapReserve)=>{
+          let obj = snapReserve.val();
+          console.log(obj);
+          this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReserves/').remove().then(()=>{
+            this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReserves/'+ reserveGeofire.keyReserve).update(obj)
+            .then(()=>{
+              this.afDB.database.ref('/usersTest/'+ this.userUid +'/reservesSeenInAvailableReserves/'+ reserveGeofire.keyReserve).update({distance: (reserveGeofire.distance*1000)})
+            })
+          })
+        })
 
       }
   })

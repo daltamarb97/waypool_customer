@@ -29,7 +29,7 @@ exports.newMessageInReserveUser = functions.database.ref(`/{university}/reserves
 
 
 
-exports.newMessageInTripsUser = functions.database.ref(`/{university}/trips/{userId}/{reserveKey}/chat/messages/{messageId}`).onCreate((snap, context) =>{
+exports.newMessageInTripsUser = functions.database.ref(`/{university}/tripsTest/{userId}/{reserveKey}/chat/messages/{messageId}`).onCreate((snap, context) =>{
     const university = context.params.university;
     const userId = context.params.userId;
 

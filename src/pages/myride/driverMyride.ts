@@ -62,7 +62,7 @@ clearToDeleteDriver:boolean = false;
 		console.log(this.lastMinuteUsers)
 		console.log("1")
 
-		this.TripsService.getLastMinuteUsers(this.SignUpService.userPlace, keyTrip,driverUid).takeUntil(this.unsubscribe)
+		this.TripsService.getLastMinuteUsers( keyTrip,driverUid).takeUntil(this.unsubscribe)
 			.subscribe(users => {
 				this.lastMinuteUsers = users;
 				//verify if user info exist 
@@ -77,7 +77,7 @@ clearToDeleteDriver:boolean = false;
 							console.log("TE QUERIAS REPETIR PERO NOOOOO")
 
 						}else{
-							this.TripsService.noRepeatLMU(this.SignUpService.userPlace, this.driverUid,keyTrip,userLastMinute.userId)
+							this.TripsService.noRepeatLMU( this.driverUid,keyTrip,userLastMinute.userId)
 							console.log(userLastMinute);
 							console.log(this.lastMinuteUsers)
 							console.log("3")
@@ -99,7 +99,7 @@ clearToDeleteDriver:boolean = false;
 	getTrip( keyTrip, driverUid) {
 		// this.getLastMinuteUsers(this.userDriver.keyTrip, this.userDriver.userId);
 		this.getLastMinuteUsers(keyTrip, driverUid);
-		this.TripsService.getTrip(this.SignUpService.userPlace, keyTrip, driverUid).takeUntil(this.unsubscribe)
+		this.TripsService.getTrip( keyTrip, driverUid).takeUntil(this.unsubscribe)
 			.subscribe(trip => {
         console.log('se repitio?')
 			
@@ -121,14 +121,14 @@ clearToDeleteDriver:boolean = false;
 	
 	getPendingAndPickedUpUsers(keyTrip, driverUid) {
 
-		this.TripsService.getPendingUsers(this.SignUpService.userPlace, keyTrip, driverUid).takeUntil(this.unsubscribe)
+		this.TripsService.getPendingUsers( keyTrip, driverUid).takeUntil(this.unsubscribe)
 			.subscribe(user => {
 				this.pendingUsers = user;
 				console.log(this.pendingUsers);
 				this.conditionalsOnTrip();
 
 			});
-		this.TripsService.getPickedUpUsers(this.SignUpService.userPlace, keyTrip, driverUid).takeUntil(this.unsubscribe)
+		this.TripsService.getPickedUpUsers( keyTrip, driverUid).takeUntil(this.unsubscribe)
 			.subscribe(user => {
 				this.pickedUpUsers = user;
 				console.log(this.pickedUpUsers);
@@ -144,13 +144,13 @@ clearToDeleteDriver:boolean = false;
 		if (this.trip.pendingUsers === undefined && this.trip.pickedUpUsers === undefined && this.trip.cancelUsers === undefined) {
 			// erase trip because driver decide to cancel
 			this.unSubscribeServices();
-			this.geofireServices.deleteUserGeofireOrTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
-			this.geofireServices.deleteUserGeofireDestTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
+			this.geofireServices.deleteUserGeofireOrTrip( this.userDriver.keyTrip);
+			this.geofireServices.deleteUserGeofireDestTrip( this.userDriver.keyTrip);
 			this.navCtrl.pop();
 			// this.TripsService.endTrip(this.SignUpService.userPlace, this.userDriver.keyTrip, this.driverUid);
 
 			// Trip needs to be deleted first and then keyTrip is deleted, otherwise the trip node would still remain at the databse - REGLA DE SEGURIDAD NO LO PERMITE
-			this.afDB.database.ref(this.SignUpService.userPlace + '/trips/'+this.driverUid+'/'+ this.userDriver.keyTrip).remove().then(()=>{
+			this.afDB.database.ref('/tripsTest/'+this.driverUid+'/'+ this.userDriver.keyTrip).remove().then(()=>{
 				this.TripsService.eraseKeyTrip(this.driverUid)
 			})
 			this.TripsService.setOnTripFalse(this.driverUid);
@@ -166,10 +166,10 @@ clearToDeleteDriver:boolean = false;
 		if (this.trip.pendingUsers === undefined && this.trip.pickedUpUsers === undefined && this.trip.cancelUsers !== undefined) {
 		// erase trip because there is no one to picked Up
 		this.unSubscribeServices();
-		this.TripsService.endTrip(this.SignUpService.userPlace,this.userDriver.keyTrip, this.driverUid);
+		this.TripsService.endTrip(this.userDriver.keyTrip, this.driverUid);
 
-		this.geofireServices.deleteUserGeofireOrTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
-		this.geofireServices.deleteUserGeofireDestTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
+		this.geofireServices.deleteUserGeofireOrTrip( this.userDriver.keyTrip);
+		this.geofireServices.deleteUserGeofireDestTrip( this.userDriver.keyTrip);
 		this.TripsService.eraseKeyTrip(this.driverUid);
 		this.TripsService.setOnTripFalse(this.driverUid);
 
@@ -234,54 +234,54 @@ clearToDeleteDriver:boolean = false;
 									moment.locale('es'); //to make the date be in spanish  
 
 									let today = moment().format('MMMM Do YYYY, h:mm:ss a'); //set actual date
-									this.afDB.database.ref(this.SignUpService.userPlace + '/trips/'+ this.driverUid+'/'+ this.userDriver.keyTrip).update({
+									this.afDB.database.ref('/tripsTest/'+ this.driverUid+'/'+ this.userDriver.keyTrip).update({
 									  DestinationTime:today
 									}).then((snap)=>{
 										this.unSubscribeServices();
-										this.geofireServices.deleteUserGeofireOrTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
-										this.geofireServices.deleteUserGeofireDestTrip(this.SignUpService.userPlace, this.userDriver.keyTrip);
+										this.geofireServices.deleteUserGeofireOrTrip( this.userDriver.keyTrip);
+										this.geofireServices.deleteUserGeofireDestTrip( this.userDriver.keyTrip);
 										this.pickedUpUsers.forEach(user => {
-											this.TripsService.sentTripUser(this.SignUpService.userPlace,user.userId,this.trip)
-											this.TripsService.endTripForUsers(this.SignUpService.userPlace,user.userId);			
-											this.TripsService.setOnTripFalseUser(this.SignUpService.userPlace,user.userId);
-											this.TripsService.eliminateKeyTripUser(this.SignUpService.userPlace,user.userId);
+											this.TripsService.sentTripUser(user.userId,this.trip)
+											this.TripsService.endTripForUsers(user.userId);			
+											this.TripsService.setOnTripFalseUser(user.userId);
+											this.TripsService.eliminateKeyTripUser(user.userId);
+											this.TripsService.saveTripOnRecordsUser( user.userId, this.trip, this.userDriver.keyTrip);
 
-											this.afDB.database.ref('allCities/' + this.userDriver.city + '/allPlaces/' + user.company + '/zones').once('value').then((snapUser)=>{
-												let obj = snapUser.val();
-												Object.getOwnPropertyNames(obj).forEach((key)=>{
+											// this.afDB.database.ref('allCities/' + this.userDriver.city + '/allPlaces/' + user.company + '/zones').once('value').then((snapUser)=>{
+											// 	let obj = snapUser.val();
+											// 	Object.getOwnPropertyNames(obj).forEach((key)=>{
 										
-												if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
+											// 	if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
 													
-												}else{
-													this.TripsService.saveTripOnRecordsUser(obj[key], user.userId, this.trip, this.userDriver.keyTrip);
-												}
-												}) 
-											})
+											// 	}else{
+											// 	}
+											// 	}) 
+											// })
 										});
 
-										this.TripsService.allTrips(this.SignUpService.userPlace,this.driverUid,this.userDriver.keyTrip,this.trip);
+										this.TripsService.allTrips(this.driverUid,this.userDriver.keyTrip,this.trip);
+										this.TripsService.saveTripOnRecords(this.driverUid, this.trip, this.userDriver.keyTrip);
 
 										// here I have to save the trip for this driver in every zone he is, it doesnt matter if the user is not operating in certain zone in the moment
-											this.afDB.database.ref('allCities/' + this.userDriver.city + '/allPlaces/' + this.userDriver.company + '/zones').once('value').then((snap)=>{
-												let obj = snap.val();
-												Object.getOwnPropertyNames(obj).forEach((key)=>{
+											// this.afDB.database.ref('allCities/' + this.userDriver.city + '/allPlaces/' + this.userDriver.company + '/zones').once('value').then((snap)=>{
+											// 	let obj = snap.val();
+											// 	Object.getOwnPropertyNames(obj).forEach((key)=>{
 										
-												if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
+											// 	if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
 													
-												}else{
+											// 	}else{
 
-													this.TripsService.saveTripOnRecords(obj[key],this.driverUid, this.trip, this.userDriver.keyTrip);
 
-												}
-												}) 
-											})							 
+											// 	}
+											// 	}) 
+											// })							 
 											///////////																									
 																			
 								    }).then(()=>{
 										setTimeout(() => {
-											this.TripsService.eliminateTripState(this.SignUpService.userPlace,this.userDriver.keyTrip,this.driverUid);
+											this.TripsService.eliminateTripState(this.userDriver.keyTrip,this.driverUid);
 		
-											this.TripsService.endTrip(this.SignUpService.userPlace, this.userDriver.keyTrip, this.driverUid);
+											this.TripsService.endTrip( this.userDriver.keyTrip, this.driverUid);
 																		
 											this.TripsService.setOnTripFalse(this.driverUid);	
 											
@@ -348,9 +348,9 @@ clearToDeleteDriver:boolean = false;
 				{
 					text: 'Eliminar',
 					handler: () => {
-						this.TripsService.cancelUserFromTrip(this.SignUpService.userPlace, this.driverUid, this.trip.keyTrip, userId);
-						this.TripsService.setOnTripFalseUser(this.SignUpService.userPlace,userId);
-						this.TripsService.eliminateKeyTripUser(this.SignUpService.userPlace,userId);
+						this.TripsService.cancelUserFromTrip( this.driverUid, this.trip.keyTrip, userId);
+						this.TripsService.setOnTripFalseUser(userId);
+						this.TripsService.eliminateKeyTripUser(userId);
 						this.presentToast(`Haz eliminado a ${nameUser} de tu viaje`, 3000, 'bottom')
 					 
 					}

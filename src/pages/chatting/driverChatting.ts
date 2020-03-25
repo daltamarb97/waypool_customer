@@ -43,7 +43,7 @@ unsubscribe = new Subject;
   
   }
   getChatFromTrip(){
-    this.chatsService.getChatsFromTrip(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId)
+    this.chatsService.getChatsFromTrip(this.reserve.keyTrip,this.reserve.driver.userId)
     .takeUntil(this.unsubscribe).subscribe( chat => {
     
       this.chats = chat;
@@ -53,7 +53,7 @@ unsubscribe = new Subject;
   });
   }
   getChatFromReserve(){
-    this.chatsService.getChatsFromReserve(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId)
+    this.chatsService.getChatsFromReserve(this.reserve.keyTrip,this.reserve.driver.userId)
     .takeUntil(this.unsubscribe).subscribe( chat => {
     
       this.chats = chat;
@@ -149,12 +149,12 @@ unsubscribe = new Subject;
   sendMessageForTrip(){
      console.log(this.isTrip);
     
-    this.chatsService.pushMessageUserInTrip(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId,this.userUid,this.message,this.driver.name);
+    this.chatsService.pushMessageUserInTrip(this.reserve.keyTrip,this.reserve.driver.userId,this.userUid,this.message,this.driver.name);
     this.message = '';    
     this.scrollToBottom();
   }
   sendMessageForReserve(){
-    this.chatsService.pushMessageUserInReserve(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId,this.userUid,this.message,this.driver.name);
+    this.chatsService.pushMessageUserInReserve(this.reserve.keyTrip,this.reserve.driver.userId,this.userUid,this.message,this.driver.name);
     this.message = '';    
     this.scrollToBottom();
   }

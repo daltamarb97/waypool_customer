@@ -8,17 +8,17 @@ export class chatsService {
     constructor(public afDB: AngularFireDatabase, public AngularFireAuth: AngularFireAuth){
     }
 
-    public getChatsFromReserve(place,reserveKey,driverUid){
+    public getChatsFromReserve(reserveKey,driverUid){
       //trae todos los chats del usuario
-      return  this.afDB.list(place+'/reserves/'+driverUid+'/'+reserveKey+'/chat/messages/').valueChanges();
+      return  this.afDB.list('/reservesTest/'+driverUid+'/'+reserveKey+'/chat/messages/').valueChanges();
   } 
-  public getChatsFromTrip(place,reserveKey,driverUid){
+  public getChatsFromTrip(reserveKey,driverUid){
     //trae todos los chats del usuario
-    return  this.afDB.list(place+'/trips/'+driverUid+'/'+reserveKey+'/chat/messages/').valueChanges();
+    return  this.afDB.list('/tripsTest/'+driverUid+'/'+reserveKey+'/chat/messages/').valueChanges();
 } 
-public pushMessageUserInReserve(place,reserveKey,driverUid,userUid,message,name){
+public pushMessageUserInReserve(reserveKey,driverUid,userUid,message,name){
   //envía todos los chats del usuario
-this.afDB.database.ref(place+'/reserves/'+driverUid+'/'+reserveKey+'/chat/messages/').push({
+this.afDB.database.ref('/reservesTest/'+driverUid+'/'+reserveKey+'/chat/messages/').push({
   message:message,
   uid:userUid,
   name:name
@@ -26,9 +26,9 @@ this.afDB.database.ref(place+'/reserves/'+driverUid+'/'+reserveKey+'/chat/messag
 });
 }    
 
-public pushMessageUserInTrip(place,reserveKey,driverUid,userUid,message,name){
+public pushMessageUserInTrip(reserveKey,driverUid,userUid,message,name){
 //envía todos los chats del usuario
-this.afDB.database.ref(place+'/trips/'+driverUid+'/'+reserveKey+'/chat/messages/').push({
+this.afDB.database.ref('/tripsTest/'+driverUid+'/'+reserveKey+'/chat/messages/').push({
   message:message,
   uid:userUid,
   name:name

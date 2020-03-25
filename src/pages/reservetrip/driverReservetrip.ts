@@ -58,7 +58,7 @@ export class DriverReservetripPage{
       
     this.sendUsersService.getTripsOfReserves(this.userUid).takeUntil(this.unsubscribe)
     .subscribe( tripsReserves => {
-      console.log(this.SignUpService.userPlace)
+      // console.log(this.SignUpService.userPlace)
       this.tripsReserves = tripsReserves;
       console.log(tripsReserves);
       if(this.tripsReserves.length === 0){
@@ -185,6 +185,18 @@ export class DriverReservetripPage{
                 // steps needed to get LMU right
                  this.geofireService.deleteUserGeofireDest( tripKeyTrip);
                  this.geofireService.deleteUserGeofireOr( tripKeyTrip);
+                 this.afDB.database.ref('geofireRoute/').once('value').then((snapRouteKeys)=>{
+                   let obj = snapRouteKeys.val();
+
+                   Object.getOwnPropertyNames(obj).forEach((key)=>{
+                     if(obj[key].keyTrip === tripKeyTrip){
+                      this.geofireService.deleteUserGeofireRoute(key)
+                      
+                      
+                     }
+                   })
+                 })
+                
 
                  this.TripsService.deleteReserve(tripKeyTrip,this.userUid); 
 

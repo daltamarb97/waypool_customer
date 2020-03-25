@@ -11,7 +11,7 @@ constructor(public afDB: AngularFireDatabase){
     }
     
 public showOnDriverInstance(driverId, user){
-    this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + user).update({
+    this.afDB.database.ref('/drivers/' + driverId + '/tripsTest/usersListRide/' + user).update({
         showDriver: true
     }, (error)=>{
         if(error){

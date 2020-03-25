@@ -1,6 +1,6 @@
 webpackJsonp([44],{
 
-/***/ 655:
+/***/ 657:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChattingPageModule", function() { return ChattingPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chatting__ = __webpack_require__(845);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chatting__ = __webpack_require__(848);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ChattingPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 845:
+/***/ 848:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50,7 +50,7 @@ var ChattingPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_chat_service__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_chat_service__ = __webpack_require__(369);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendFeedback_service__ = __webpack_require__(365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
@@ -88,7 +88,7 @@ var ChattingPage = /** @class */ (function () {
         this.reserve = this.navParams.get('reserve');
         this.isTrip = this.navParams.get('isTrip');
         console.log(this.reserve.driver.userId);
-        this.SignUpService.getMyInfoForProfile(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe).subscribe(function (info) {
+        this.SignUpService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(function (info) {
             _this.user = info;
             console.log(_this.user);
         });
@@ -101,7 +101,7 @@ var ChattingPage = /** @class */ (function () {
     }
     ChattingPage.prototype.getChatFromTrip = function () {
         var _this = this;
-        this.chatsService.getChatsFromTrip(this.SignUpService.userPlace, this.reserve.keyTrip, this.reserve.driver.userId)
+        this.chatsService.getChatsFromTrip(this.reserve.keyTrip, this.reserve.driver.userId)
             .takeUntil(this.unsubscribe).subscribe(function (chat) {
             _this.chats = chat;
             console.log(_this.chats);
@@ -110,7 +110,7 @@ var ChattingPage = /** @class */ (function () {
     };
     ChattingPage.prototype.getChatFromReserve = function () {
         var _this = this;
-        this.chatsService.getChatsFromReserve(this.SignUpService.userPlace, this.reserve.keyTrip, this.reserve.driver.userId)
+        this.chatsService.getChatsFromReserve(this.reserve.keyTrip, this.reserve.driver.userId)
             .takeUntil(this.unsubscribe).subscribe(function (chat) {
             _this.chats = chat;
             console.log(_this.chats);
@@ -168,7 +168,7 @@ var ChattingPage = /** @class */ (function () {
                 {
                     text: 'Reportar',
                     handler: function () {
-                        _this.sendFeedbackService.sendFeedback(_this.SignUpService.userPlace, 'Reporte_de_chat', _this.chats, _this.user.name, _this.user.lastname, _this.user.phone, _this.userUid);
+                        _this.sendFeedbackService.sendFeedback('Reporte_de_chat', _this.chats, _this.user.name, _this.user.lastname, _this.user.phone, _this.userUid);
                         var toast = _this.toastCtrl.create({
                             message: 'Haz reportado este chat',
                             showCloseButton: true,
@@ -203,12 +203,12 @@ var ChattingPage = /** @class */ (function () {
     };
     ChattingPage.prototype.sendMessageForTrip = function () {
         console.log(this.isTrip);
-        this.chatsService.pushMessageUserInTrip(this.SignUpService.userPlace, this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.user.name);
+        this.chatsService.pushMessageUserInTrip(this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.user.name);
         this.message = '';
         this.scrollToBottom();
     };
     ChattingPage.prototype.sendMessageForReserve = function () {
-        this.chatsService.pushMessageUserInReserve(this.SignUpService.userPlace, this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.user.name);
+        this.chatsService.pushMessageUserInReserve(this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.user.name);
         this.message = '';
         this.scrollToBottom();
     };

@@ -27846,6 +27846,52 @@ driver-page-detailsreserve .item-ios ion-avatar ion-img, driver-page-detailsrese
   border-radius: 0%;
 }
 
+page-earn .card {
+  width: 100%;
+  margin: 0;
+  position: relative;
+  margin-top: -40px !important;
+  height: 80px;
+}
+
+page-earn .card p {
+  font-size: 1.2rem !important;
+}
+
+page-earn .card h6 {
+  font-size: 2.3rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 5px;
+  padding-top: 5px;
+}
+
+page-earn h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+page-earn p {
+  font-size: 1.4rem;
+}
+
+page-earn ion-col a {
+  font-size: 30px;
+  color: #fff !important;
+  display: block;
+  text-align: center;
+  border-radius: 10px;
+  line-height: 50px;
+  width: 50px;
+}
+
+page-earn .scroll-content {
+  margin-top: 0 !important;
+}
+
+page-earn .text-white {
+  color: #fff !important;
+}
+
 .ios driver-page-findride .search {
   border-radius: 10px;
   margin: 10px 0;
@@ -27940,7 +27986,7 @@ driver-page-detailsreserve .item-ios ion-avatar ion-img, driver-page-detailsrese
 }
 
 .ios driver-page-findride .btn-right {
-  width: 49%;
+  width: 100%;
 }
 
 .ios driver-page-findride .rowOfButtons {

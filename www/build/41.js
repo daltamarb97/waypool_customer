@@ -1,6 +1,6 @@
 webpackJsonp([41],{
 
-/***/ 659:
+/***/ 661:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmtripPageModule", function() { return ConfirmtripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmtrip__ = __webpack_require__(849);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmtrip__ = __webpack_require__(852);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ConfirmtripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 849:
+/***/ 852:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -120,7 +120,7 @@ var ConfirmtripPage = /** @class */ (function () {
                 alert_1.present();
             }
         });
-        this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
+        this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip).takeUntil(this.unsubscribe)
             .subscribe(function (usersInPendingusers) {
             _this.usersInPending = usersInPendingusers;
             _this.usersInPending.forEach(function (user) {
@@ -132,9 +132,9 @@ var ConfirmtripPage = /** @class */ (function () {
         });
     }
     ConfirmtripPage.prototype.goToRide = function () {
-        this.geoFireService.saveKey(this.SignUpService.userPlace, this.trip.keyTrip, this.trip.driver.userId, this.userUid);
-        this.reservesService.setOnTrip(this.SignUpService.userPlace, this.userUid);
-        this.TripsService.joinTrip(this.SignUpService.userPlace, this.trip.keyTrip, this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.verifiedPerson, this.user.trips.distanceToGoInKM);
+        this.geoFireService.saveKey(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
+        this.reservesService.setOnTrip(this.userUid);
+        this.TripsService.joinTrip(this.trip.keyTrip, this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.verifiedPerson, this.user.trips.distanceToGoInKM);
         // this.geoFireService.removeKeyGeofire(this.userUid);
         //OLD
         // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
@@ -145,16 +145,16 @@ var ConfirmtripPage = /** @class */ (function () {
     ConfirmtripPage.prototype.dismissX = function () {
         var _this = this;
         this.viewCtrl.dismiss();
-        this.geoFireService.deleteKey(this.SignUpService.userPlace, this.userUid);
-        this.geoFireService.deleteDriverFromLMU(this.SignUpService.userPlace, this.userUid, this.trip.keyTrip);
-        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).once('value').then(function (snap) {
+        this.geoFireService.deleteKey(this.userUid);
+        this.geoFireService.deleteDriverFromLMU(this.userUid, this.trip.keyTrip);
+        this.afDB.database.ref('/usersTest/' + this.userUid).once('value').then(function (snap) {
             if (snap.val().onTrip) {
-                _this.geoFireService.setOntripFalse(_this.SignUpService.userPlace, _this.userUid);
+                _this.geoFireService.setOntripFalse(_this.userUid);
             }
             else {
             }
         });
-        this.TripsService.getOutFromLMU(this.SignUpService.userPlace, this.trip.keyTrip, this.trip.driver.userId, this.userUid);
+        this.TripsService.getOutFromLMU(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
     };
     ConfirmtripPage.prototype.dismiss = function () {
         this.viewCtrl.dismiss(this.accepted);

@@ -93,7 +93,7 @@ export class VerificationImagesPage {
 
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-      const picturesDrivers = storage().ref(this.SignUpService.userPlace + '/verificationDocuments/' + this.user + '/' + this.data);
+      const picturesDrivers = storage().ref('/verificationDocuments/' + this.user + '/' + this.data);
 
 
       
@@ -119,7 +119,7 @@ export class VerificationImagesPage {
 
       this.picToViewCarne = "assets/imgs/v2.2.png";
       this.picToView = "assets/imgs/v2.2.png";
-      this.SignUpService.pushDocsCarne(this.SignUpService.userPlace, this.user);
+      this.SignUpService.pushDocsCarne( this.user);
       
 
      }, (err) => {
@@ -149,7 +149,7 @@ export class VerificationImagesPage {
 
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-      const picturesDrivers = storage().ref(this.SignUpService.userPlace + '/verificationDocuments/' + this.user + '/' + this.data);
+      const picturesDrivers = storage().ref('/verificationDocuments/' + this.user + '/' + this.data);
 
 
 
@@ -175,7 +175,7 @@ export class VerificationImagesPage {
       
       this.picToViewId = "assets/imgs/v4.2.png";
       this.picToView = "assets/imgs/v4.2.png";
-      this.SignUpService.pushDocsId(this.SignUpService.userPlace, this.user);
+      this.SignUpService.pushDocsId( this.user);
 
       
 

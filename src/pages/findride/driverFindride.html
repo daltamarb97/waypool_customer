@@ -26,6 +26,8 @@
            
  
           </ion-buttons> 
+
+          <ion-title>WAYPOOL</ion-title>
        
     </ion-navbar>
 
@@ -39,7 +41,7 @@
     <ion-card class="search">
           
         <ion-card-content>
-            <span class="dot bg-theme"></span>
+            <span class="dot bg-theme-driver"></span>
             <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>
           
             <ion-list   [hidden]="autocompleteItems.length == 0">
@@ -77,14 +79,14 @@
             
             </div> -->
             <div class="btn-right">
-                <button (click)="listride()" class="btn rounded bg-theme text-white" style="width: 100%">Publicar Viaje</button>
+                <button (click)="listride()" class="btn rounded bg-theme-driver text-white" style="width: 100%">Share my commute</button>
 
             </div>
            
-          </ion-row>
+          </ion-row> 
 
           <div *ngIf="onTrip" >
-            <button class="btn rounded bg-theme text-white animated infinite pulse" style=" width: 100% ;
+            <button class="btn rounded bg-theme-driver text-white animated infinite pulse" style=" width: 100% ;
             position: fixed ;
             bottom: 0px ;
             left: 0px ;

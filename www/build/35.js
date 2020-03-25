@@ -1,6 +1,6 @@
 webpackJsonp([35],{
 
-/***/ 663:
+/***/ 666:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(853);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(857);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ProfilePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 853:
+/***/ 857:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87,7 +87,7 @@ var ProfilePage = /** @class */ (function () {
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
         this.user = {};
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["Subject"];
-        this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
+        this.SignupService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
             _this.user = user;
             console.log(_this.user);
             _this.showInfoProfile(user);
@@ -105,36 +105,36 @@ var ProfilePage = /** @class */ (function () {
                         _this.navCtrl.pop();
                     }
                     else if (_this.phone == null && _this.user.about == null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
+                        _this.SignupService.saveInfoProfileUrl(_this.userUid, _this.user.url);
                         _this.navCtrl.pop();
                     }
                     else if (_this.phone == null && _this.user.about != null && _this.user.url == null) {
-                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
+                        _this.SignupService.saveInfoProfileAbout(_this.userUid, _this.user.about);
                         _this.navCtrl.pop();
                     }
                     else if (_this.phone != null && _this.user.about == null && _this.user.url == null) {
-                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
+                        _this.SignupService.saveInfoProfilePhone(_this.userUid, _this.phone);
                         _this.navCtrl.pop();
                     }
                     else if (_this.phone != null && _this.user.about != null && _this.user.url == null) {
-                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
-                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
+                        _this.SignupService.saveInfoProfilePhone(_this.userUid, _this.phone);
+                        _this.SignupService.saveInfoProfileAbout(_this.userUid, _this.user.about);
                         _this.navCtrl.pop();
                     }
                     else if (_this.phone != null && _this.user.about == null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
-                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
+                        _this.SignupService.saveInfoProfilePhone(_this.userUid, _this.phone);
+                        _this.SignupService.saveInfoProfileUrl(_this.userUid, _this.user.url);
                         _this.navCtrl.pop();
                     }
                     else if (_this.phone == null && _this.user.about != null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
-                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
+                        _this.SignupService.saveInfoProfileAbout(_this.userUid, _this.user.about);
+                        _this.SignupService.saveInfoProfileUrl(_this.userUid, _this.user.url);
                         _this.navCtrl.pop();
                     }
                     else if (_this.phone != null && _this.user.about != null && _this.user.url != null) {
-                        _this.SignupService.saveInfoProfileAbout(_this.SignupService.userPlace, _this.userUid, _this.user.about);
-                        _this.SignupService.saveInfoProfileUrl(_this.SignupService.userPlace, _this.userUid, _this.user.url);
-                        _this.SignupService.saveInfoProfilePhone(_this.SignupService.userPlace, _this.userUid, _this.phone);
+                        _this.SignupService.saveInfoProfileAbout(_this.userUid, _this.user.about);
+                        _this.SignupService.saveInfoProfileUrl(_this.userUid, _this.user.url);
+                        _this.SignupService.saveInfoProfilePhone(_this.userUid, _this.phone);
                         _this.navCtrl.pop();
                     }
                     else {
@@ -171,9 +171,7 @@ var ProfilePage = /** @class */ (function () {
                     handler: function () {
                         _this.afDB.database.ref('allCities/' + _this.user.city + '/allPlaces/' + _this.user.company + '/zones').once('value').then(function (snap) {
                             var obj = snap.val();
-                            Object.getOwnPropertyNames(obj).forEach(function (key) {
-                                _this.SignupService.deleteAccount(obj[key], _this.userUid);
-                            });
+                            _this.SignupService.deleteAccount(_this.userUid);
                         }).then(function () {
                             _this.AngularFireAuth.auth.currentUser.delete().then(function () {
                                 console.log('user has been deleted');

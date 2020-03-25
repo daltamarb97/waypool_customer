@@ -8,14 +8,14 @@ import { AlertController, ToastController } from "ionic-angular";
 export class SignUpService {
 
     //gloabl variable for place identifaction
-    userPlace:any;
+    
     constructor(public afDB: AngularFireDatabase, public toastCtrl: ToastController){
 
     }
 
     public saveUser(user){
-        this.afDB.database.ref('/users/'+ user.userId).update(user);
-        this.afDB.database.ref('/drivers/'+ user.userId).update(user);
+        this.afDB.database.ref('/usersTest/'+ user.userId).update(user);
+        this.afDB.database.ref('/driversTest/'+ user.userId).update(user);
 
     }
 
@@ -38,27 +38,27 @@ export class SignUpService {
     
     public saveDriver(user){
         //erase this one, it just for testing
-        this.afDB.database.ref('drivers/'+ user.userId).set(user);
+        this.afDB.database.ref('driversTest/'+ user.userId).set(user);
     }
     
 
-     public pushDocsCarne(place, userId){
-        this.afDB.database.ref(place + '/drivers/'+userId+'/documents').update({
+     public pushDocsCarne( userId){
+        this.afDB.database.ref( '/driversTest/'+userId+'/documents').update({
             carne: false
         })
 
-        this.afDB.database.ref(place + '/users/'+userId+'/documents').update({
+        this.afDB.database.ref( '/usersTest/'+userId+'/documents').update({
             carne: false
         })
      }
 
 
-    public pushDocsId(place, userId){
-        this.afDB.database.ref(place + '/drivers/'+userId+'/documents').update({
+    public pushDocsId( userId){
+        this.afDB.database.ref( '/driversTest/'+userId+'/documents').update({
             id: false
         })
 
-        this.afDB.database.ref(place + '/users/'+userId+'/documents').update({
+        this.afDB.database.ref( '/usersTest/'+userId+'/documents').update({
             id: false
         })
      }
@@ -74,7 +74,7 @@ export class SignUpService {
         }
 
     public getSaveTrip(userId, place){
-            return this.afDB.object(place + '/users/'+ userId + '/saveTrip/').valueChanges();
+            return this.afDB.object( '/usersTest/'+ userId + '/saveTrip/').valueChanges();
             }
 
         public getEmails(enterprise){
@@ -82,13 +82,13 @@ export class SignUpService {
          }
 
 
-        public checkMyReserves(place, userId){
-            return this.afDB.list(place + '/users/'+ userId + '/myReserves').valueChanges();
+        public checkMyReserves( userId){
+            return this.afDB.list('/usersTest/'+ userId + '/myReserves').valueChanges();
             }
 
 
             public saveUserInAllUsers(user, city){
-                this.afDB.database.ref('/allUsers/'+ user).update({
+                this.afDB.database.ref('/allusersTest/'+ user).update({
                   
                     city: city
                 });
@@ -99,23 +99,23 @@ export class SignUpService {
 
 
         public getInfoDriver(userDriverId){
-            return this.afDB.object('drivers/'+ userDriverId).valueChanges();
+            return this.afDB.object('driversTest/'+ userDriverId).valueChanges();
             }
     
 
 
-    public  deleteAccount(place, userId){
-        this.afDB.database.ref(place + '/users/'+userId).remove();
-        this.afDB.database.ref(place + '/drivers/'+userId).remove();
+    public  deleteAccount( userId){
+        this.afDB.database.ref( '/usersTest/'+userId).remove();
+        this.afDB.database.ref( '/driversTest/'+userId).remove();
 
         } 
-public getMyInfoForProfile(place, userId){
-            return this.afDB.object(place + '/users/'+ userId).valueChanges();
+public getMyInfoForProfile( userId){
+            return this.afDB.object( '/usersTest/'+ userId).valueChanges();
             }
 
 
    public saveInfoProfile(userUid,phone, about){
-    this.afDB.database.ref('/users/'+ userUid).update({
+    this.afDB.database.ref('/usersTest/'+ userUid).update({
         phone:phone,
         about: about
         
@@ -126,54 +126,54 @@ public getMyInfoForProfile(place, userId){
         })
    }
 
-   public saveInfoProfileUrl(place, userUid,url){
+   public saveInfoProfileUrl( userUid,url){
     //permite configurar la información del perfil
- this.afDB.database.ref(place + '/users/'+ userUid).update({
+ this.afDB.database.ref( '/usersTest/'+ userUid).update({
      url:url
      });
  }
 
- public saveInfoProfileAbout(place, userUid,about){
+ public saveInfoProfileAbout( userUid,about){
     //permite configurar la información del perfil
- this.afDB.database.ref(place + '/users/'+ userUid).update({
+ this.afDB.database.ref( '/usersTest/'+ userUid).update({
      about:about 
      });
  }
 
- public saveInfoProfilePhone(place, userUid,phone){
+ public saveInfoProfilePhone( userUid,phone){
     //permite configurar la información del perfil
- this.afDB.database.ref(place + '/users/'+ userUid).update({
+ this.afDB.database.ref( '/usersTest/'+ userUid).update({
      phone:phone
      });
  }
 
- setFixedLocationCoordinates(place, user, lat, lng){
-    this.afDB.database.ref(place + '/users/' + user + '/fixedLocation/coordinates').update({
+ setFixedLocationCoordinates( user, lat, lng){
+    this.afDB.database.ref( '/usersTest/' + user + '/fixedLocation/coordinates').update({
         lat: lat,
         lng:lng
     })
 
-    this.afDB.database.ref(place + '/drivers/' + user + '/fixedLocation/coordinates').update({
+    this.afDB.database.ref( '/driversTest/' + user + '/fixedLocation/coordinates').update({
         lat: lat,
         lng:lng
     })
 }
 
-setFixedLocationName(place, user, name){
-    this.afDB.database.ref(place + '/users/' + user + '/fixedLocation').update({
+setFixedLocationName( user, name){
+    this.afDB.database.ref( '/usersTest/' + user + '/fixedLocation').update({
         name: name
     })
 
-    this.afDB.database.ref(place + '/drivers/' + user + '/fixedLocation').update({
+    this.afDB.database.ref( '/driversTest/' + user + '/fixedLocation').update({
         name: name
     })
 }
 
 
-    public addPlaceZone(place, userUid){
-        this.afDB.database.ref(place + '/drivers/'+ userUid).update({place: place});
-        this.afDB.database.ref(place + '/users/'+ userUid).update({place: place});
+    // public addPlaceZone( userUid){
+    //     this.afDB.database.ref( '/driversTest/'+ userUid).update({place: place});
+    //     this.afDB.database.ref( '/usersTest/'+ userUid).update({place: place});
 
-    }
+    // }
 
 }

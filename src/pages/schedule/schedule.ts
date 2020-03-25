@@ -49,21 +49,21 @@ export class DriverSchedulePage {
     this.userId = this.angularFireAuth.auth.currentUser.uid;
 
     if(this.defaultZone){
-      this.signUpService.userPlace = this.defaultZone;
+      // this.signUpService.userPlace = this.defaultZone;
     }else{
       
     }
 
-        this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then((snap)=>{
+        this.afDB.database.ref( '/driversTest/' + this.userId).once('value').then((snap)=>{
           this.userInfo = snap.val();
         })
 
 
-        this.signUpService.getSchedule(this.signUpService.userPlace, this.userId).subscribe(hour => {
+        this.signUpService.getSchedule( this.userId).subscribe(hour => {
           this.schedules = hour;
           console.log(this.schedules);
           if(this.schedules.length !== 0){
-            this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId + '/scheduleType/').once('value').then((snap)=>{
+            this.afDB.database.ref( '/driversTest/' + this.userId + '/scheduleType/').once('value').then((snap)=>{
               if(snap.val() === 'picture'){
 
               }else{
@@ -78,10 +78,10 @@ export class DriverSchedulePage {
 
 
   makeSchedule(){
-    console.log(     this.signUpService.userPlace);
+    
     console.log(     this.userId);
 
-    this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId ).once('value').then((snap)=>{
+    this.afDB.database.ref( '/driversTest/' + this.userId ).once('value').then((snap)=>{
         if(snap.val().toggleStatus === 'online'){
           const alert = this.alertCtrl.create({
             title: 'Para añadir un nuevo horario debes estar offline',
@@ -109,7 +109,7 @@ export class DriverSchedulePage {
 
   removeTime(sche){
 
-    this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId ).once('value').then((snap)=>{
+    this.afDB.database.ref( '/driversTest/' + this.userId ).once('value').then((snap)=>{
       if(snap.val().toggleStatus === 'online'){
         const alert = this.alertCtrl.create({
           title: 'Para eliminar este horario debes estar offline',
@@ -139,14 +139,7 @@ export class DriverSchedulePage {
     this.camera.getPicture(this.optionsCamera).then((imageData) => {
       this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then((snap)=>{
         let obj = snap.val();
-        Object.getOwnPropertyNames(obj).forEach((key)=>{
-
-          if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
-
-          }else{
-            this.instances.scheduleTypePicture(obj[key], this.userId);
-          }
-        })
+        this.instances.scheduleTypePicture( this.userId);
       })
 
       let loading = this.loadingCtrl.create({
@@ -218,17 +211,8 @@ export class DriverSchedulePage {
       pictureSchedule.putString(base64Image, 'data_url').then(()=>{
         loading.dismiss();
 
-        this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then((snap)=>{
-          let obj = snap.val();
-          Object.getOwnPropertyNames(obj).forEach((key)=>{
-            
-            if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
-
-            }else{
-              this.instances.scheduleTypePicture(obj[key], this.userId);
-            }  
-          })
-        })
+        this.instances.scheduleTypePicture( this.userId);
+     
 
         const alert = this.alertCtrl.create({
           title: '¡HECHO!',
@@ -267,16 +251,7 @@ export class DriverSchedulePage {
   goFindride(){
     this.skipSchedule();
 
-    this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then((snap)=>{
-      let obj = snap.val();
-      Object.getOwnPropertyNames(obj).forEach((key)=>{
-        
-        if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
+    this.instances.scheduleTypeManual( this.userId);   
 
-        }else{
-          this.instances.scheduleTypeManual(obj[key], this.userId);        
-        } 
-      })
-    })
   }
 }

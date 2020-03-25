@@ -13,7 +13,7 @@ export class DriverChatsPage {
   driverUid=this.AngularFireAuth.auth.currentUser.uid;
   pickingUsers:any = [];
   constructor(public navCtrl: NavController,public sendUsersService: DriverSendUsersService,private AngularFireAuth: AngularFireAuth, public signUpService: DriverSignUpService) {
-    this.sendUsersService.getUsersOnTrip(this.signUpService.userPlace, this.driverUid)
+    this.sendUsersService.getUsersOnTrip( this.driverUid)
     .subscribe( user => {
       
         this.pickingUsers = user;

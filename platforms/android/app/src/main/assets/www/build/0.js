@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 695:
+/***/ 696:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverReservetripPageModule", function() { return DriverReservetripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverReservetrip__ = __webpack_require__(888);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverReservetrip__ = __webpack_require__(891);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 703:
+/***/ 706:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var require;//! moment.js
@@ -1896,7 +1896,7 @@ var DriverReservetripPageModule = /** @class */ (function () {
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(832)("./" + name);
+                __webpack_require__(835)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -4647,17 +4647,17 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(831)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(834)(module)))
 
 /***/ }),
 
-/***/ 704:
+/***/ 707:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4729,13 +4729,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 705:
+/***/ 708:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4869,13 +4869,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 706:
+/***/ 709:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4933,13 +4933,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 707:
+/***/ 710:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4997,13 +4997,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 708:
+/***/ 711:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5124,13 +5124,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 709:
+/***/ 712:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5188,13 +5188,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 710:
+/***/ 713:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5297,13 +5297,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 711:
+/***/ 714:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5361,13 +5361,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 712:
+/***/ 715:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5471,13 +5471,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 713:
+/***/ 716:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5608,13 +5608,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 714:
+/***/ 717:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5703,13 +5703,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 715:
+/***/ 718:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5766,13 +5766,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 716:
+/***/ 719:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5890,13 +5890,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 717:
+/***/ 720:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6014,13 +6014,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 718:
+/***/ 721:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6127,13 +6127,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 719:
+/***/ 722:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6283,13 +6283,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 720:
+/***/ 723:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6376,13 +6376,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 721:
+/***/ 724:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6553,13 +6553,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 722:
+/***/ 725:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6621,13 +6621,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 723:
+/***/ 726:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6706,13 +6706,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 724:
+/***/ 727:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6771,13 +6771,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 725:
+/***/ 728:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6852,13 +6852,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 726:
+/***/ 729:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6933,13 +6933,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 727:
+/***/ 730:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7014,13 +7014,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 728:
+/***/ 731:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7118,13 +7118,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 729:
+/***/ 732:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7223,13 +7223,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 730:
+/***/ 733:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7295,13 +7295,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 731:
+/***/ 734:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7367,13 +7367,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 732:
+/***/ 735:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7435,13 +7435,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 733:
+/***/ 736:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7507,13 +7507,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 734:
+/***/ 737:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7579,13 +7579,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 735:
+/***/ 738:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7646,13 +7646,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 736:
+/***/ 739:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7718,13 +7718,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 737:
+/***/ 740:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7794,13 +7794,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 738:
+/***/ 741:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7891,13 +7891,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 739:
+/***/ 742:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7988,13 +7988,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 740:
+/***/ 743:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8085,13 +8085,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 741:
+/***/ 744:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8170,13 +8170,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 742:
+/***/ 745:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8241,13 +8241,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 743:
+/***/ 746:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8352,13 +8352,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 744:
+/***/ 747:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8466,13 +8466,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 745:
+/***/ 748:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8531,13 +8531,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 746:
+/***/ 749:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8619,13 +8619,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 747:
+/***/ 750:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8698,13 +8698,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 748:
+/***/ 751:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8781,13 +8781,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 749:
+/***/ 752:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8861,13 +8861,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 750:
+/***/ 753:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8943,13 +8943,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 751:
+/***/ 754:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9024,13 +9024,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 752:
+/***/ 755:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9106,13 +9106,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 753:
+/***/ 756:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9234,13 +9234,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 754:
+/***/ 757:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9363,13 +9363,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 755:
+/***/ 758:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9465,13 +9465,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 756:
+/***/ 759:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9594,13 +9594,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 757:
+/***/ 760:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9753,13 +9753,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 758:
+/***/ 761:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9868,13 +9868,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 759:
+/***/ 762:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9968,13 +9968,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 760:
+/***/ 763:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10055,13 +10055,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 761:
+/***/ 764:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10192,13 +10192,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 762:
+/***/ 765:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10266,13 +10266,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 763:
+/***/ 766:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10340,13 +10340,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 764:
+/***/ 767:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10437,13 +10437,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 765:
+/***/ 768:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10524,13 +10524,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 766:
+/***/ 769:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10618,13 +10618,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 767:
+/***/ 770:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10710,13 +10710,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 768:
+/***/ 771:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10825,13 +10825,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 769:
+/***/ 772:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10956,13 +10956,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 773:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11042,13 +11042,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 774:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11166,13 +11166,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 775:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11258,13 +11258,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 773:
+/***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11399,13 +11399,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 774:
+/***/ 777:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11474,13 +11474,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 775:
+/***/ 778:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11597,13 +11597,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 776:
+/***/ 779:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11699,13 +11699,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 777:
+/***/ 780:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11816,13 +11816,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 778:
+/***/ 781:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11885,13 +11885,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 779:
+/***/ 782:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11980,13 +11980,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 780:
+/***/ 783:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12066,13 +12066,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 781:
+/***/ 784:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12175,13 +12175,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 782:
+/***/ 785:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12340,13 +12340,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 783:
+/***/ 786:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12427,13 +12427,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 784:
+/***/ 787:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12514,13 +12514,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 785:
+/***/ 788:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12579,13 +12579,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 786:
+/***/ 789:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12677,13 +12677,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 787:
+/***/ 790:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12744,13 +12744,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 788:
+/***/ 791:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12872,13 +12872,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 789:
+/***/ 792:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12964,13 +12964,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 790:
+/***/ 793:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13056,13 +13056,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 791:
+/***/ 794:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13121,13 +13121,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 792:
+/***/ 795:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13250,13 +13250,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 793:
+/***/ 796:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13381,13 +13381,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 794:
+/***/ 797:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13451,13 +13451,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 795:
+/***/ 798:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13517,13 +13517,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 796:
+/***/ 799:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13597,13 +13597,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 797:
+/***/ 800:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13784,13 +13784,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 798:
+/***/ 801:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13887,13 +13887,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 799:
+/***/ 802:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13952,13 +13952,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 800:
+/***/ 803:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14028,13 +14028,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 801:
+/***/ 804:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14189,13 +14189,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 802:
+/***/ 805:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14367,13 +14367,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 803:
+/***/ 806:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14440,13 +14440,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 804:
+/***/ 807:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14556,13 +14556,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 805:
+/***/ 808:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14672,13 +14672,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 806:
+/***/ 809:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14765,13 +14765,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 807:
+/***/ 810:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14839,13 +14839,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 808:
+/***/ 811:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14903,13 +14903,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 809:
+/***/ 812:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15037,13 +15037,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 810:
+/***/ 813:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15131,13 +15131,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 811:
+/***/ 814:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15203,13 +15203,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 812:
+/***/ 815:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15324,13 +15324,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 813:
+/***/ 816:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15396,13 +15396,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 814:
+/***/ 817:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15463,13 +15463,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 815:
+/***/ 818:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15590,12 +15590,12 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 816:
+/***/ 819:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15689,13 +15689,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 817:
+/***/ 820:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15785,13 +15785,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 818:
+/***/ 821:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15848,13 +15848,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 819:
+/***/ 822:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15911,13 +15911,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 820:
+/***/ 823:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js language configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16035,13 +16035,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 821:
+/***/ 824:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16194,13 +16194,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 822:
+/***/ 825:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16297,13 +16297,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 823:
+/***/ 826:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16360,13 +16360,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 824:
+/***/ 827:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16423,13 +16423,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 825:
+/***/ 828:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16507,13 +16507,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 826:
+/***/ 829:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16580,13 +16580,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 827:
+/***/ 830:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16645,13 +16645,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 828:
+/***/ 831:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16760,13 +16760,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 829:
+/***/ 832:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16868,13 +16868,13 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 830:
+/***/ 833:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(703)) :
+    true ? factory(__webpack_require__(706)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16976,7 +16976,7 @@ var DriverReservetripPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 831:
+/***/ 834:
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17005,264 +17005,264 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 832:
+/***/ 835:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 704,
-	"./af.js": 704,
-	"./ar": 705,
-	"./ar-dz": 706,
-	"./ar-dz.js": 706,
-	"./ar-kw": 707,
-	"./ar-kw.js": 707,
-	"./ar-ly": 708,
-	"./ar-ly.js": 708,
-	"./ar-ma": 709,
-	"./ar-ma.js": 709,
-	"./ar-sa": 710,
-	"./ar-sa.js": 710,
-	"./ar-tn": 711,
-	"./ar-tn.js": 711,
-	"./ar.js": 705,
-	"./az": 712,
-	"./az.js": 712,
-	"./be": 713,
-	"./be.js": 713,
-	"./bg": 714,
-	"./bg.js": 714,
-	"./bm": 715,
-	"./bm.js": 715,
-	"./bn": 716,
-	"./bn.js": 716,
-	"./bo": 717,
-	"./bo.js": 717,
-	"./br": 718,
-	"./br.js": 718,
-	"./bs": 719,
-	"./bs.js": 719,
-	"./ca": 720,
-	"./ca.js": 720,
-	"./cs": 721,
-	"./cs.js": 721,
-	"./cv": 722,
-	"./cv.js": 722,
-	"./cy": 723,
-	"./cy.js": 723,
-	"./da": 724,
-	"./da.js": 724,
-	"./de": 725,
-	"./de-at": 726,
-	"./de-at.js": 726,
-	"./de-ch": 727,
-	"./de-ch.js": 727,
-	"./de.js": 725,
-	"./dv": 728,
-	"./dv.js": 728,
-	"./el": 729,
-	"./el.js": 729,
-	"./en-SG": 730,
-	"./en-SG.js": 730,
-	"./en-au": 731,
-	"./en-au.js": 731,
-	"./en-ca": 732,
-	"./en-ca.js": 732,
-	"./en-gb": 733,
-	"./en-gb.js": 733,
-	"./en-ie": 734,
-	"./en-ie.js": 734,
-	"./en-il": 735,
-	"./en-il.js": 735,
-	"./en-nz": 736,
-	"./en-nz.js": 736,
-	"./eo": 737,
-	"./eo.js": 737,
-	"./es": 738,
-	"./es-do": 739,
-	"./es-do.js": 739,
-	"./es-us": 740,
-	"./es-us.js": 740,
-	"./es.js": 738,
-	"./et": 741,
-	"./et.js": 741,
-	"./eu": 742,
-	"./eu.js": 742,
-	"./fa": 743,
-	"./fa.js": 743,
-	"./fi": 744,
-	"./fi.js": 744,
-	"./fo": 745,
-	"./fo.js": 745,
-	"./fr": 746,
-	"./fr-ca": 747,
-	"./fr-ca.js": 747,
-	"./fr-ch": 748,
-	"./fr-ch.js": 748,
-	"./fr.js": 746,
-	"./fy": 749,
-	"./fy.js": 749,
-	"./ga": 750,
-	"./ga.js": 750,
-	"./gd": 751,
-	"./gd.js": 751,
-	"./gl": 752,
-	"./gl.js": 752,
-	"./gom-latn": 753,
-	"./gom-latn.js": 753,
-	"./gu": 754,
-	"./gu.js": 754,
-	"./he": 755,
-	"./he.js": 755,
-	"./hi": 756,
-	"./hi.js": 756,
-	"./hr": 757,
-	"./hr.js": 757,
-	"./hu": 758,
-	"./hu.js": 758,
-	"./hy-am": 759,
-	"./hy-am.js": 759,
-	"./id": 760,
-	"./id.js": 760,
-	"./is": 761,
-	"./is.js": 761,
-	"./it": 762,
-	"./it-ch": 763,
-	"./it-ch.js": 763,
-	"./it.js": 762,
-	"./ja": 764,
-	"./ja.js": 764,
-	"./jv": 765,
-	"./jv.js": 765,
-	"./ka": 766,
-	"./ka.js": 766,
-	"./kk": 767,
-	"./kk.js": 767,
-	"./km": 768,
-	"./km.js": 768,
-	"./kn": 769,
-	"./kn.js": 769,
-	"./ko": 770,
-	"./ko.js": 770,
-	"./ku": 771,
-	"./ku.js": 771,
-	"./ky": 772,
-	"./ky.js": 772,
-	"./lb": 773,
-	"./lb.js": 773,
-	"./lo": 774,
-	"./lo.js": 774,
-	"./lt": 775,
-	"./lt.js": 775,
-	"./lv": 776,
-	"./lv.js": 776,
-	"./me": 777,
-	"./me.js": 777,
-	"./mi": 778,
-	"./mi.js": 778,
-	"./mk": 779,
-	"./mk.js": 779,
-	"./ml": 780,
-	"./ml.js": 780,
-	"./mn": 781,
-	"./mn.js": 781,
-	"./mr": 782,
-	"./mr.js": 782,
-	"./ms": 783,
-	"./ms-my": 784,
-	"./ms-my.js": 784,
-	"./ms.js": 783,
-	"./mt": 785,
-	"./mt.js": 785,
-	"./my": 786,
-	"./my.js": 786,
-	"./nb": 787,
-	"./nb.js": 787,
-	"./ne": 788,
-	"./ne.js": 788,
-	"./nl": 789,
-	"./nl-be": 790,
-	"./nl-be.js": 790,
-	"./nl.js": 789,
-	"./nn": 791,
-	"./nn.js": 791,
-	"./pa-in": 792,
-	"./pa-in.js": 792,
-	"./pl": 793,
-	"./pl.js": 793,
-	"./pt": 794,
-	"./pt-br": 795,
-	"./pt-br.js": 795,
-	"./pt.js": 794,
-	"./ro": 796,
-	"./ro.js": 796,
-	"./ru": 797,
-	"./ru.js": 797,
-	"./sd": 798,
-	"./sd.js": 798,
-	"./se": 799,
-	"./se.js": 799,
-	"./si": 800,
-	"./si.js": 800,
-	"./sk": 801,
-	"./sk.js": 801,
-	"./sl": 802,
-	"./sl.js": 802,
-	"./sq": 803,
-	"./sq.js": 803,
-	"./sr": 804,
-	"./sr-cyrl": 805,
-	"./sr-cyrl.js": 805,
-	"./sr.js": 804,
-	"./ss": 806,
-	"./ss.js": 806,
-	"./sv": 807,
-	"./sv.js": 807,
-	"./sw": 808,
-	"./sw.js": 808,
-	"./ta": 809,
-	"./ta.js": 809,
-	"./te": 810,
-	"./te.js": 810,
-	"./tet": 811,
-	"./tet.js": 811,
-	"./tg": 812,
-	"./tg.js": 812,
-	"./th": 813,
-	"./th.js": 813,
-	"./tl-ph": 814,
-	"./tl-ph.js": 814,
-	"./tlh": 815,
-	"./tlh.js": 815,
-	"./tr": 816,
-	"./tr.js": 816,
-	"./tzl": 817,
-	"./tzl.js": 817,
-	"./tzm": 818,
-	"./tzm-latn": 819,
-	"./tzm-latn.js": 819,
-	"./tzm.js": 818,
-	"./ug-cn": 820,
-	"./ug-cn.js": 820,
-	"./uk": 821,
-	"./uk.js": 821,
-	"./ur": 822,
-	"./ur.js": 822,
-	"./uz": 823,
-	"./uz-latn": 824,
-	"./uz-latn.js": 824,
-	"./uz.js": 823,
-	"./vi": 825,
-	"./vi.js": 825,
-	"./x-pseudo": 826,
-	"./x-pseudo.js": 826,
-	"./yo": 827,
-	"./yo.js": 827,
-	"./zh-cn": 828,
-	"./zh-cn.js": 828,
-	"./zh-hk": 829,
-	"./zh-hk.js": 829,
-	"./zh-tw": 830,
-	"./zh-tw.js": 830
+	"./af": 707,
+	"./af.js": 707,
+	"./ar": 708,
+	"./ar-dz": 709,
+	"./ar-dz.js": 709,
+	"./ar-kw": 710,
+	"./ar-kw.js": 710,
+	"./ar-ly": 711,
+	"./ar-ly.js": 711,
+	"./ar-ma": 712,
+	"./ar-ma.js": 712,
+	"./ar-sa": 713,
+	"./ar-sa.js": 713,
+	"./ar-tn": 714,
+	"./ar-tn.js": 714,
+	"./ar.js": 708,
+	"./az": 715,
+	"./az.js": 715,
+	"./be": 716,
+	"./be.js": 716,
+	"./bg": 717,
+	"./bg.js": 717,
+	"./bm": 718,
+	"./bm.js": 718,
+	"./bn": 719,
+	"./bn.js": 719,
+	"./bo": 720,
+	"./bo.js": 720,
+	"./br": 721,
+	"./br.js": 721,
+	"./bs": 722,
+	"./bs.js": 722,
+	"./ca": 723,
+	"./ca.js": 723,
+	"./cs": 724,
+	"./cs.js": 724,
+	"./cv": 725,
+	"./cv.js": 725,
+	"./cy": 726,
+	"./cy.js": 726,
+	"./da": 727,
+	"./da.js": 727,
+	"./de": 728,
+	"./de-at": 729,
+	"./de-at.js": 729,
+	"./de-ch": 730,
+	"./de-ch.js": 730,
+	"./de.js": 728,
+	"./dv": 731,
+	"./dv.js": 731,
+	"./el": 732,
+	"./el.js": 732,
+	"./en-SG": 733,
+	"./en-SG.js": 733,
+	"./en-au": 734,
+	"./en-au.js": 734,
+	"./en-ca": 735,
+	"./en-ca.js": 735,
+	"./en-gb": 736,
+	"./en-gb.js": 736,
+	"./en-ie": 737,
+	"./en-ie.js": 737,
+	"./en-il": 738,
+	"./en-il.js": 738,
+	"./en-nz": 739,
+	"./en-nz.js": 739,
+	"./eo": 740,
+	"./eo.js": 740,
+	"./es": 741,
+	"./es-do": 742,
+	"./es-do.js": 742,
+	"./es-us": 743,
+	"./es-us.js": 743,
+	"./es.js": 741,
+	"./et": 744,
+	"./et.js": 744,
+	"./eu": 745,
+	"./eu.js": 745,
+	"./fa": 746,
+	"./fa.js": 746,
+	"./fi": 747,
+	"./fi.js": 747,
+	"./fo": 748,
+	"./fo.js": 748,
+	"./fr": 749,
+	"./fr-ca": 750,
+	"./fr-ca.js": 750,
+	"./fr-ch": 751,
+	"./fr-ch.js": 751,
+	"./fr.js": 749,
+	"./fy": 752,
+	"./fy.js": 752,
+	"./ga": 753,
+	"./ga.js": 753,
+	"./gd": 754,
+	"./gd.js": 754,
+	"./gl": 755,
+	"./gl.js": 755,
+	"./gom-latn": 756,
+	"./gom-latn.js": 756,
+	"./gu": 757,
+	"./gu.js": 757,
+	"./he": 758,
+	"./he.js": 758,
+	"./hi": 759,
+	"./hi.js": 759,
+	"./hr": 760,
+	"./hr.js": 760,
+	"./hu": 761,
+	"./hu.js": 761,
+	"./hy-am": 762,
+	"./hy-am.js": 762,
+	"./id": 763,
+	"./id.js": 763,
+	"./is": 764,
+	"./is.js": 764,
+	"./it": 765,
+	"./it-ch": 766,
+	"./it-ch.js": 766,
+	"./it.js": 765,
+	"./ja": 767,
+	"./ja.js": 767,
+	"./jv": 768,
+	"./jv.js": 768,
+	"./ka": 769,
+	"./ka.js": 769,
+	"./kk": 770,
+	"./kk.js": 770,
+	"./km": 771,
+	"./km.js": 771,
+	"./kn": 772,
+	"./kn.js": 772,
+	"./ko": 773,
+	"./ko.js": 773,
+	"./ku": 774,
+	"./ku.js": 774,
+	"./ky": 775,
+	"./ky.js": 775,
+	"./lb": 776,
+	"./lb.js": 776,
+	"./lo": 777,
+	"./lo.js": 777,
+	"./lt": 778,
+	"./lt.js": 778,
+	"./lv": 779,
+	"./lv.js": 779,
+	"./me": 780,
+	"./me.js": 780,
+	"./mi": 781,
+	"./mi.js": 781,
+	"./mk": 782,
+	"./mk.js": 782,
+	"./ml": 783,
+	"./ml.js": 783,
+	"./mn": 784,
+	"./mn.js": 784,
+	"./mr": 785,
+	"./mr.js": 785,
+	"./ms": 786,
+	"./ms-my": 787,
+	"./ms-my.js": 787,
+	"./ms.js": 786,
+	"./mt": 788,
+	"./mt.js": 788,
+	"./my": 789,
+	"./my.js": 789,
+	"./nb": 790,
+	"./nb.js": 790,
+	"./ne": 791,
+	"./ne.js": 791,
+	"./nl": 792,
+	"./nl-be": 793,
+	"./nl-be.js": 793,
+	"./nl.js": 792,
+	"./nn": 794,
+	"./nn.js": 794,
+	"./pa-in": 795,
+	"./pa-in.js": 795,
+	"./pl": 796,
+	"./pl.js": 796,
+	"./pt": 797,
+	"./pt-br": 798,
+	"./pt-br.js": 798,
+	"./pt.js": 797,
+	"./ro": 799,
+	"./ro.js": 799,
+	"./ru": 800,
+	"./ru.js": 800,
+	"./sd": 801,
+	"./sd.js": 801,
+	"./se": 802,
+	"./se.js": 802,
+	"./si": 803,
+	"./si.js": 803,
+	"./sk": 804,
+	"./sk.js": 804,
+	"./sl": 805,
+	"./sl.js": 805,
+	"./sq": 806,
+	"./sq.js": 806,
+	"./sr": 807,
+	"./sr-cyrl": 808,
+	"./sr-cyrl.js": 808,
+	"./sr.js": 807,
+	"./ss": 809,
+	"./ss.js": 809,
+	"./sv": 810,
+	"./sv.js": 810,
+	"./sw": 811,
+	"./sw.js": 811,
+	"./ta": 812,
+	"./ta.js": 812,
+	"./te": 813,
+	"./te.js": 813,
+	"./tet": 814,
+	"./tet.js": 814,
+	"./tg": 815,
+	"./tg.js": 815,
+	"./th": 816,
+	"./th.js": 816,
+	"./tl-ph": 817,
+	"./tl-ph.js": 817,
+	"./tlh": 818,
+	"./tlh.js": 818,
+	"./tr": 819,
+	"./tr.js": 819,
+	"./tzl": 820,
+	"./tzl.js": 820,
+	"./tzm": 821,
+	"./tzm-latn": 822,
+	"./tzm-latn.js": 822,
+	"./tzm.js": 821,
+	"./ug-cn": 823,
+	"./ug-cn.js": 823,
+	"./uk": 824,
+	"./uk.js": 824,
+	"./ur": 825,
+	"./ur.js": 825,
+	"./uz": 826,
+	"./uz-latn": 827,
+	"./uz-latn.js": 827,
+	"./uz.js": 826,
+	"./vi": 828,
+	"./vi.js": 828,
+	"./x-pseudo": 829,
+	"./x-pseudo.js": 829,
+	"./yo": 830,
+	"./yo.js": 830,
+	"./zh-cn": 831,
+	"./zh-cn.js": 831,
+	"./zh-hk": 832,
+	"./zh-hk.js": 832,
+	"./zh-tw": 833,
+	"./zh-tw.js": 833
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -17278,11 +17278,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 832;
+webpackContext.id = 835;
 
 /***/ }),
 
-/***/ 888:
+/***/ 891:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17293,15 +17293,15 @@ webpackContext.id = 832;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_sendCoords_service__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_geofire_services__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_geofire_services__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_instances_services__ = __webpack_require__(353);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_moment__ = __webpack_require__(703);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_moment__ = __webpack_require__(706);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_d_metrics_service__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_d_metrics_service__ = __webpack_require__(364);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17358,13 +17358,13 @@ var DriverReservetripPage = /** @class */ (function () {
         this.reserveUser = [];
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
         this.geocoder = new google.maps.Geocoder;
-        this.SignUpService.getMyInfoDriver(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+        this.SignUpService.getMyInfoDriver(this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (userDriver) {
             _this.userDriver = userDriver;
             console.log(_this.userDriver);
         });
         //get personal info of the driver
-        this.sendUsersService.getTripsOfReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+        this.sendUsersService.getTripsOfReserves(this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (tripsReserves) {
             console.log(_this.SignUpService.userPlace);
             _this.tripsReserves = tripsReserves;
@@ -17453,67 +17453,66 @@ var DriverReservetripPage = /** @class */ (function () {
                                 toast.present();
                             }
                             else {
-                                _this.TripsService.setOnTrip(_this.SignUpService.userPlace, _this.userUid);
+                                _this.TripsService.setOnTrip(_this.userUid);
                                 console.log(tripKeyTrip);
-                                _this.TripsService.pushKeyInDriver(_this.SignUpService.userPlace, tripKeyTrip, _this.userUid);
-                                _this.TripsService.startTrip(_this.SignUpService.userPlace, tripKeyTrip, _this.userUid, trip);
-                                _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + _this.userUid + '/' + tripKeyTrip + '/pendingUsers').once('value').then(function (snapReserve) {
+                                _this.TripsService.pushKeyInDriver(tripKeyTrip, _this.userUid);
+                                _this.TripsService.startTrip(tripKeyTrip, _this.userUid, trip);
+                                _this.afDB.database.ref('/reservesTest/' + _this.userUid + '/' + tripKeyTrip + '/pendingUsers').once('value').then(function (snapReserve) {
                                     _this.reserveUser = snapReserve.val();
                                     console.log(_this.reserveUser);
                                     var obj = _this.reserveUser;
                                     Object.getOwnPropertyNames(obj).forEach(function (key) {
                                         console.log(obj[key]);
                                         //create ontrip, keyTrip, etc.. in users
-                                        _this.TripsService.startTripForUsers(_this.SignUpService.userPlace, tripKeyTrip, obj[key].userId, _this.userUid);
+                                        _this.TripsService.startTripForUsers(tripKeyTrip, obj[key].userId, _this.userUid);
                                         //eliminate reserve of myReserves in user's node
-                                        _this.TripsService.eliminateKeyUser(_this.SignUpService.userPlace, obj[key].userId, tripKeyTrip);
+                                        _this.TripsService.eliminateKeyUser(obj[key].userId, tripKeyTrip);
                                         console.log(obj[key].userId);
                                     });
                                 }).then(function () {
                                     // this.navCtrl.pop();
                                     // steps needed to get LMU right
-                                    _this.geofireService.deleteUserGeofireDest(_this.SignUpService.userPlace, tripKeyTrip);
-                                    _this.geofireService.deleteUserGeofireOr(_this.SignUpService.userPlace, tripKeyTrip);
-                                    _this.TripsService.deleteReserve(_this.SignUpService.userPlace, tripKeyTrip, _this.userUid);
-                                    if (trip.type == 'origin') {
-                                        // geocoding of addresses 
-                                        console.log(trip.houseAddr[0][0]);
-                                        console.log(trip.houseAddr[0]);
-                                        console.log(trip.houseAddr);
-                                        _this.geocoder.geocode({ 'address': trip.houseAddr }, function (results, status) {
-                                            if (status === 'OK') {
-                                                _this.geocoordinatesOr = {
-                                                    lat: results[0].geometry.location.lat(),
-                                                    lng: results[0].geometry.location.lng()
-                                                };
-                                            }
-                                            // set geofirekey for LMU
-                                            _this.geofireService.setGeofireOrOnTrip(_this.SignUpService.userPlace, tripKeyTrip, _this.geocoordinatesOr.lat, _this.geocoordinatesOr.lng);
-                                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/geofireOrTrip/' + tripKeyTrip).update({
-                                                driverId: _this.userUid
-                                            });
-                                            console.log('executed geofire Or on Trip');
-                                        });
-                                    }
-                                    else if (trip.type == 'destination') {
-                                        // geocoding of addresses 
-                                        _this.geocoder.geocode({ 'address': trip.placeAddr }, function (results, status) {
-                                            if (status === 'OK') {
-                                                _this.geocoordinatesDest = {
-                                                    lat: results[0].geometry.location.lat(),
-                                                    lng: results[0].geometry.location.lng()
-                                                };
-                                            }
-                                            // set geofirekey for LMU
-                                            _this.geofireService.setGeofireDestOnTrip(_this.SignUpService.userPlace, tripKeyTrip, _this.geocoordinatesDest.lat, _this.geocoordinatesDest.lng);
-                                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/geofireDestTrip/' + tripKeyTrip).update({
-                                                driverId: _this.userUid
-                                            });
-                                            console.log('executed geofire Dest on Trip');
-                                        });
-                                    }
+                                    _this.geofireService.deleteUserGeofireDest(tripKeyTrip);
+                                    _this.geofireService.deleteUserGeofireOr(tripKeyTrip);
+                                    _this.TripsService.deleteReserve(tripKeyTrip, _this.userUid);
+                                    //  if(trip.type == 'origin'){
+                                    // geocoding of addresses 
+                                    //  console.log(trip.houseAddr[0][0]);
+                                    //  console.log(trip.houseAddr[0]);
+                                    //  console.log(trip.houseAddr);
+                                    //  this.geocoder.geocode({'address': trip.houseAddr}, (results, status)=>{
+                                    //    if(status==='OK'){
+                                    //      this.geocoordinatesOr={
+                                    //      lat:results[0].geometry.location.lat(),
+                                    //      lng: results[0].geometry.location.lng()
+                                    //       }
+                                    //     }
+                                    //     // set geofirekey for LMU
+                                    //       this.geofireService.setGeofireOrOnTrip(this.SignUpService.userPlace, tripKeyTrip, this.geocoordinatesOr.lat, this.geocoordinatesOr.lng);
+                                    //       this.afDB.database.ref(this.SignUpService.userPlace + '/geofireOrTrip/' + tripKeyTrip).update({
+                                    //       driverId: this.userUid
+                                    //     })
+                                    //     console.log('executed geofire Or on Trip')
+                                    //   })
+                                    //  }else if(trip.type == 'destination'){
+                                    //   // geocoding of addresses 
+                                    //   this.geocoder.geocode({'address': trip.placeAddr}, (results, status)=>{
+                                    //     if(status==='OK'){
+                                    //       this.geocoordinatesDest={
+                                    //       lat:results[0].geometry.location.lat(),
+                                    //       lng: results[0].geometry.location.lng()
+                                    //        }
+                                    //      }
+                                    //      // set geofirekey for LMU
+                                    //      this.geofireService.setGeofireDestOnTrip(this.SignUpService.userPlace, tripKeyTrip, this.geocoordinatesDest.lat, this.geocoordinatesDest.lng);
+                                    //      this.afDB.database.ref(this.SignUpService.userPlace + '/geofireDestTrip/' + tripKeyTrip).update({
+                                    //        driverId: this.userUid
+                                    //      })
+                                    //      console.log('executed geofire Dest on Trip')
+                                    //    })
+                                    //  }
                                     _this.navCtrl.push('DriverMyridePage');
-                                    _this.MetricsService.tripsInitiated(_this.SignUpService.userPlace, _this.userUid, tripKeyTrip, trip);
+                                    _this.MetricsService.tripsInitiated(_this.userUid, tripKeyTrip, trip);
                                 });
                             }
                         }
@@ -17566,7 +17565,7 @@ var DriverReservetripPage = /** @class */ (function () {
     };
     DriverReservetripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-reservetrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/reservetrip/driverReservetrip.html"*/'\n<ion-header class="bg-theme-driver title">\n    <ion-navbar >\n        <ion-title >Mis Viajes\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content class="bg-light" class="hideLongText" style="background-color: rgba(255, 255, 255, 0.959);">\n\n\n    <div class="iconHelp">\n        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>\n    </div>\n<div style="display: flex;flex-direction: column;    width: 96%;">\n    <img *ngIf="noReserve" src="assets/imgs/noreserve.png">\n\n    <ion-card  *ngFor = "let trip of tripsReserves">\n\n        <ng-container *ngIf="trip.pendingUsers === undefined;else showReserveBlock">\n\n            <ion-item>\n                                                 \n            <div class="name">\n\n                <h2>                     <ion-badge  class="badge bg-darkblue">Viaje vacío</ion-badge>                                  \n                    Hora: {{trip.startHour}}            \n                </h2>\n            </div>\n            <div class="more">                              \n                            <h2 class="text text-theme-driver">                        \n                                $ {{trip.price}}                          \n                            </h2>                       \n                     \n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p  >\n                    <span class="icon-location bg-theme-driver"></span>{{trip.houseAddr}}</p>\n                <p > \n                    <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n            </div>\n          \n        </ion-card-content>\n              </ng-container>    \n               <!-- //////////////////////////////////////////// -->\n              <ng-template #showReserveBlock>\n                    <ng-container *ngIf="trip.isLate; else noLateBlock">\n                            <ion-item>\n                                <ion-avatar item-start>\n                                    <img class="animated infinite pulse" src="assets/imgs/stopwatch2.png">\n                                </ion-avatar>\n                               \n                                <div class="name">\n                                   \n                                    <div class="name">\n                                            <h2 class="text text-dark animated infinite pulse">                        \n                                                    Inicio de viaje: {{trip.startHour}}     \n                                           </h2>  \n                                                 \n                \n                                    </div>\n                                   \n                                    <p>{{trip.car}}</p>\n                                </div>\n                                <div class="more">\n                                    <h2 class="text text-hot">                        \n                                     $ {{trip.price}}                          \n                                    </h2>\n                                   \n                                </div>\n                            </ion-item>\n                            <ion-card-content >\n                                <div  class="ride-detail">\n                                    <p>\n                                        <span class="icon-location bg-hot"></span>{{trip.houseAddr}}</p>\n                                    <p>\n                                        <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n                                </div>\n                                <ion-row class="center-align">  \n                                        <ion-col col-2 class="detail-text text-theme-driver">\n                                            </ion-col>\n                                            <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                                    <button class="btn bg-hot rounded full text-white"  (click)="seePassengers(trip.keyTrip)">DETALLES</button>\n                                                </ion-col>\n                                              \n                                            <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                                <button  class="btn bg-theme-driver rounded full text-white" (click)="startTrip(trip.keyTrip,trip)">\n                                                     INICIAR VIAJE\n                                                </button>\n                                             </ion-col>\n                                            \n                                            <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                                </ion-col>\n                                            \n                                </ion-row>\n                            </ion-card-content>\n                        </ng-container>\n                        <ng-template #noLateBlock>\n                            <div></div>\n                            <ion-item>\n                                    <ion-avatar item-start>\n                                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                                    </ion-avatar>                                   \n                                <div class="name">\n                                    <h2>Hora: {{trip.startHour}}            \n                                    </h2>\n                                </div>\n                                <div class="more">                              \n                                                <h2 class="text text-theme-driver">                        \n                                                    $ {{trip.price}}                          \n                                                </h2>                       \n                                         \n                                </div>\n                            </ion-item>\n                            <ion-card-content>\n                                <div class="ride-detail">\n                                    <p  >\n                                        <span class="icon-location bg-theme-driver"></span>{{trip.houseAddr}}</p>\n                                    <p > \n                                        <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n                                </div>\n                                <ion-row class="center-align">\n                                    <!-- <ion-col col-3 class="detail-text text-theme-driver">\n                                        3 seats\n                                    </ion-col> -->\n                                    <ion-col col-3 class="detail-text text-theme-driver">\n                                            <button class="btn bg-darkblue rounded full text-white" (click)="enterChat(trip)">Chat</button>\n                                    </ion-col>\n                                    \n                                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                        <button class="btn bg-darkblue rounded full text-white" (click)="seePassengers(trip.keyTrip)">Detalles</button>\n                                    </ion-col>\n                                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                        <button class="btn bg-theme-driver rounded full text-white" (click)="startTrip(trip.keyTrip,trip)">INICIAR VIAJE</button>\n                                     </ion-col>\n                                    \n                                </ion-row>\n                            </ion-card-content>\n                        </ng-template>\n                  </ng-template>\n  \n\n</ion-card>\n\n</div>\n    \n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/reservetrip/driverReservetrip.html"*/
+            selector: 'driver-page-reservetrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/reservetrip/driverReservetrip.html"*/'\n<ion-header class="bg-theme-driver title">\n    <ion-navbar >\n        <ion-title >Mis Viajes\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content class="bg-light" class="hideLongText" style="background-color: rgba(255, 255, 255, 0.959);">\n\n \n    <div class="iconHelp">\n        <ion-icon (click)="help()" name="arrow-dropdown-circle"></ion-icon>\n    </div>\n<div style="display: flex;flex-direction: column;    width: 96%;">\n    <img *ngIf="noReserve" src="assets/imgs/noreserve.png">\n\n    <ion-card  *ngFor = "let trip of tripsReserves">\n\n        <ng-container *ngIf="trip.pendingUsers === undefined;else showReserveBlock">\n\n            <ion-item>\n                                                 \n            <div class="name">\n\n                <h2>                     <ion-badge  class="badge bg-darkblue">Viaje vacío</ion-badge>                                  \n                    Hora: {{trip.startHour}}            \n                </h2>\n            </div>\n            <div class="more">                              \n                            <h2 class="text text-theme-driver">                        \n                                $ {{trip.price}}                          \n                            </h2>                       \n                     \n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p  >\n                    <span class="icon-location bg-theme-driver"></span>{{trip.origin[0]}}</p>\n                <p > \n                    <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>\n            </div>\n          \n        </ion-card-content>\n              </ng-container>    \n               <!-- //////////////////////////////////////////// -->\n              <ng-template #showReserveBlock>\n                    <ng-container *ngIf="trip.isLate; else noLateBlock">\n                            <ion-item>\n                                <ion-avatar item-start>\n                                    <img class="animated infinite pulse" src="assets/imgs/stopwatch2.png">\n                                </ion-avatar>\n                               \n                                <div class="name">\n                                   \n                                    <div class="name">\n                                            <h2 class="text text-dark animated infinite pulse">                        \n                                                    Inicio de viaje: {{trip.startHour}}     \n                                           </h2>  \n                                                 \n                \n                                    </div>\n                                   \n                                    <p>{{trip.car}}</p>\n                                </div>\n                                <div class="more">\n                                    <h2 class="text text-hot">                        \n                                     $ {{trip.price}}                          \n                                    </h2>\n                                   \n                                </div>\n                            </ion-item>\n                            <ion-card-content >\n                                <div  class="ride-detail">\n                                    <p>\n                                        <span class="icon-location bg-hot"></span>{{trip.origin[0]}}</p>\n                                    <p>\n                                        <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>\n                                </div>\n                                <ion-row class="center-align">  \n                                        <ion-col col-2 class="detail-text text-theme-driver">\n                                            </ion-col>\n                                            <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                                    <button class="btn bg-hot rounded full text-white"  (click)="seePassengers(trip.keyTrip)">DETALLES</button>\n                                                </ion-col>\n                                              \n                                            <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                                <button  class="btn bg-theme-driver rounded full text-white" (click)="startTrip(trip.keyTrip,trip)">\n                                                     INICIAR VIAJE\n                                                </button>\n                                             </ion-col>\n                                            \n                                            <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                                </ion-col>\n                                            \n                                </ion-row>\n                            </ion-card-content>\n                        </ng-container>\n                        <ng-template #noLateBlock>\n                            <div></div>\n                            <ion-item>\n                                    <ion-avatar item-start>\n                                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                                    </ion-avatar>                                   \n                                <div class="name">\n                                    <h2>Hora: {{trip.startHour}}            \n                                    </h2>\n                                </div>\n                                <div class="more">                              \n                                                <h2 class="text text-theme-driver">                        \n                                                    $ {{trip.price}}                          \n                                                </h2>                       \n                                         \n                                </div>\n                            </ion-item>\n                            <ion-card-content>\n                                <div class="ride-detail">\n                                    <p  >\n                                        <span class="icon-location bg-theme-driver"></span>{{trip.origin[0]}}</p>\n                                    <p > \n                                        <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>\n                                </div>\n                                <ion-row class="center-align">\n                                    <!-- <ion-col col-3 class="detail-text text-theme-driver">\n                                        3 seats\n                                    </ion-col> -->\n                                    <ion-col col-3 class="detail-text text-theme-driver">\n                                            <button class="btn bg-darkblue rounded full text-white" (click)="enterChat(trip)">Chat</button>\n                                    </ion-col>\n                                    \n                                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                        <button class="btn bg-darkblue rounded full text-white" (click)="seePassengers(trip.keyTrip)">Detalles</button>\n                                    </ion-col>\n                                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n                                        <button class="btn bg-theme-driver rounded full text-white" (click)="startTrip(trip.keyTrip,trip)">INICIAR VIAJE</button>\n                                     </ion-col>\n                                    \n                                </ion-row>\n                            </ion-card-content>\n                        </ng-template>\n                  </ng-template>\n  \n\n</ion-card>\n\n</div>\n    \n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/reservetrip/driverReservetrip.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_3__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_8__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_5__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_12__services_d_metrics_service__["a" /* DriverMetricsService */]])
     ], DriverReservetripPage);

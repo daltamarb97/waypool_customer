@@ -8,8 +8,8 @@ export class sendFeedbackService {
 constructor(public afDB: AngularFireDatabase){
               
     }
-    public sendFeedback(place, title, info, name, lastname, number, userId){
-        this.afDB.database.ref(place + '/feedback/' + title +'/users/'+ userId).update({
+    public sendFeedback( title, info, name, lastname, number, userId){
+        this.afDB.database.ref('/feedback/' + title +'/users/'+ userId).update({
             info: info,
             name: name,
             lastname: lastname,

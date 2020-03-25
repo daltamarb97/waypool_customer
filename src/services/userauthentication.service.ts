@@ -25,27 +25,27 @@ export class authenticationService{
         return this.angularFireAuth.auth.signOut();
     } 
 
-    deleteResendCode(place, userId){
-        this.afDB.database.ref(place + '/users/' + userId + '/resendVerificationCode/' ).remove();
+    deleteResendCode( userId){
+        this.afDB.database.ref( '/usersTest/' + userId + '/resendVerificationCode/' ).remove();
      }
 
-     sendVerificationCodeToFirebase(place, userId, code){
-        this.afDB.database.ref(place + '/users/' + userId).update({
+     sendVerificationCodeToFirebase( userId, code){
+        this.afDB.database.ref( '/usersTest/' + userId).update({
             verificationCode: code
         })
     }
 
-    deleteVerificationCode(place, userId){
-        this.afDB.database.ref(place + '/users/' + userId + '/verificationCode/' ).remove();
+    deleteVerificationCode( userId){
+        this.afDB.database.ref( '/usersTest/' + userId + '/verificationCode/' ).remove();
      }
 
-     deleteverificationCodeApproval(place, userId){
-        this.afDB.database.ref(place + '/users/' + userId + '/verificationCodeApproval/' ).remove();
+     deleteverificationCodeApproval( userId){
+        this.afDB.database.ref( '/usersTest/' + userId + '/verificationCodeApproval/' ).remove();
      }
 
 
-     resendVerificationCode(place, userId){
-        this.afDB.database.ref(place + '/users/' + userId).update({
+     resendVerificationCode( userId){
+        this.afDB.database.ref( '/usersTest/' + userId).update({
             resendVerificationCode: true
         })
     }

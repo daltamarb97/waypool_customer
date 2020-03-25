@@ -62,8 +62,10 @@
     <key>NSCameraUsageDescription</key>
     <string>Necesitamos acceso a tu camara para que nos puedas enviar tus fotos de documentos</string>
     <key>NSPhotoLibraryUsageDescription</key>
-    <string>Accedemos a tus imagenes para que sea más fácil para ti mandarnos tu documentos</string>
+    <string>This app requires photo library access to function properly.</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>Usado para conectarte con otros usuarios de Waypool y asi brindarte un mejor servicio</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>This app requires photo library access to function properly.</string>
   </dict>
 </plist>

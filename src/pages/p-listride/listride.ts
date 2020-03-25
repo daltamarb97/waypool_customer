@@ -57,6 +57,7 @@ export class ListridePage {
   showNearby:boolean = true;
   segment:any;
   loading:any;
+  geoquerysTEST =[]
   constructor(public navParams: NavParams, public navCtrl: NavController,private app:App,public TripsService:TripsService,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService, public alertCtrl: AlertController ) {
   console.log("AQUI EMPIEZA")
 
@@ -74,14 +75,15 @@ export class ListridePage {
       console.log(this.user);
       
   })
-
+    this.geoquerysTEST = this.navParams.get('geoquerysTEST')
     this.latOr = this.navParams.get('latOr');
     this.lngOr = this.navParams.get('lngOr');
     this.latDest = this.navParams.get('latDest');
     this.lngDest = this.navParams.get('lngDest');
     this.pointsAlongRoute = this.navParams.get('pointsAlongRoute');
     this.indexesOfPointsAlongRoute = this.navParams.get('indexesOfPointsAlongRoute');
-           
+    console.log('esto deberia ser null o 0 y es: ' + this.geoquerysTEST);
+    
 
 
         this.reservesService.getReserves( this.userUid).takeUntil(this.unsubscribe)    

@@ -17,29 +17,29 @@ export class DriverAuthenticationService{
         return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
      }
 
-     sendVerificationCodeToFirebase(place, userId, code){
-         this.afDB.database.ref(place + '/drivers/' + userId).update({
+     sendVerificationCodeToFirebase( userId, code){
+         this.afDB.database.ref( '/driversTest/' + userId).update({
              verificationCode: code
          })
      }
 
-     deleteVerificationCode(place, userId){
-        this.afDB.database.ref(place + '/drivers/' + userId + '/verificationCode/' ).remove();
+     deleteVerificationCode( userId){
+        this.afDB.database.ref( '/driversTest/' + userId + '/verificationCode/' ).remove();
      }
 
-     resendVerificationCode(place, userId){
-        this.afDB.database.ref(place + '/drivers/' + userId).update({
+     resendVerificationCode( userId){
+        this.afDB.database.ref( '/driversTest/' + userId).update({
             resendVerificationCode: true
         })
     }
 
 
-    deleteverificationCodeApproval(place, userId){
-        this.afDB.database.ref(place + '/drivers/' + userId + '/verificationCodeApproval/' ).remove();
+    deleteverificationCodeApproval( userId){
+        this.afDB.database.ref( '/driversTest/' + userId + '/verificationCodeApproval/' ).remove();
      }
 
-     deleteResendCode(place, userId){
-        this.afDB.database.ref(place + '/drivers/' + userId + '/resendVerificationCode/' ).remove();
+     deleteResendCode( userId){
+        this.afDB.database.ref( '/driversTest/' + userId + '/resendVerificationCode/' ).remove();
      }
 
      

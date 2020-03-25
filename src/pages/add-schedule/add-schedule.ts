@@ -30,7 +30,7 @@ export class DriverAddSchedulePage {
   
     this.userId = this.angularFireAuth.auth.currentUser.uid;
 
-    this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then((snap)=>{
+    this.afDB.database.ref( '/driversTest/' + this.userId).once('value').then((snap)=>{
       this.userInfo = snap.val();
     })
   }

@@ -1,14 +1,14 @@
 webpackJsonp([48],{
 
-/***/ 650:
+/***/ 654:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverHelpPageModule", function() { return DriverHelpPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverLoginPageModule", function() { return DriverLoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverHelp__ = __webpack_require__(839);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverLogin__ = __webpack_require__(845);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverHelpPageModule = /** @class */ (function () {
-    function DriverHelpPageModule() {
+var DriverLoginPageModule = /** @class */ (function () {
+    function DriverLoginPageModule() {
     }
-    DriverHelpPageModule = __decorate([
+    DriverLoginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverHelp__["a" /* DriverHelpPage */],
+                __WEBPACK_IMPORTED_MODULE_2__driverLogin__["a" /* DriverLoginPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverHelp__["a" /* DriverHelpPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverLogin__["a" /* DriverLoginPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverHelp__["a" /* DriverHelpPage */]
+                __WEBPACK_IMPORTED_MODULE_2__driverLogin__["a" /* DriverLoginPage */]
             ]
         })
-    ], DriverHelpPageModule);
-    return DriverHelpPageModule;
+    ], DriverLoginPageModule);
+    return DriverLoginPageModule;
 }());
 
-//# sourceMappingURL=driverHelp.module.js.map
+//# sourceMappingURL=driverLogin.module.js.map
 
 /***/ }),
 
-/***/ 839:
+/***/ 845:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverHelpPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverLoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,45 +64,133 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var DriverHelpPage = /** @class */ (function () {
-    function DriverHelpPage(navCtrl) {
+
+
+
+
+// import * as firebase from 'firebase';
+// import { SignUpService } from '../../services/signup.service';
+var DriverLoginPage = /** @class */ (function () {
+    // userFirebase = this.AngularFireAuth.auth.currentUser;
+    function DriverLoginPage(navCtrl, authenticationService, alertCtrl, AngularFireAuth, navParams, formBuilder, SignUpService, platform, loadingCtrl) {
+        var _this = this;
         this.navCtrl = navCtrl;
+        this.authenticationService = authenticationService;
+        this.alertCtrl = alertCtrl;
+        this.AngularFireAuth = AngularFireAuth;
+        this.navParams = navParams;
+        this.formBuilder = formBuilder;
+        this.SignUpService = SignUpService;
+        this.platform = platform;
+        this.loadingCtrl = loadingCtrl;
+        this.email = '';
+        this.auth = this.AngularFireAuth.auth;
+        this.loginGroup = this.formBuilder.group({
+            email: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
+            password: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required]
+        });
+        if (this.auth.currentUser) {
+            this.SignUpService.getMyInfoDriver(this.auth.currentUser.uid).subscribe(function (driver) {
+                _this.driverInfo = driver;
+            });
+        }
     }
-    DriverHelpPage.prototype.suggestion = function () {
-        this.typeOfSituation = 'Sugerencia';
-        this.info = 'Amamos las sugerencias ya que nos permiten mejorar cada vez más la aplicación, ¡Gracias de parte de todo el equipo de Waypool!';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    DriverLoginPage.prototype.signup = function () {
+        this.navCtrl.push('DSignupPage');
     };
-    DriverHelpPage.prototype.myAccount = function () {
-        this.typeOfSituation = 'Mi Cuenta';
-        this.info = 'Escríbenos cualquier cosa relacionada con tu cuenta';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    ;
+    DriverLoginPage.prototype.resetPassword = function (email) {
+        if (this.loginGroup.controls['email'].value == '') {
+            var alert_1 = this.alertCtrl.create({
+                title: 'no hay ningun email',
+                subTitle: 'ingresa un email para resetear tu contraseña',
+                buttons: ['OK']
+            });
+            alert_1.present();
+            console.log("reset password email hasn't been sent");
+        }
+        else {
+            this.auth.sendPasswordResetEmail(this.loginGroup.controls['email'].value);
+            var alert_2 = this.alertCtrl.create({
+                title: 'revisa tu email',
+                subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
+                buttons: ['OK']
+            });
+            alert_2.present();
+            console.log("reset password email has been sent");
+        }
+        ;
     };
-    DriverHelpPage.prototype.trip = function () {
-        this.typeOfSituation = 'Viaje';
-        this.info = '¿Haz tenido algún problema en algún viaje? ¡coloca el ID de tu viaje al comenzar el mensaje y con gusto te ayudaremos! ';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    ;
+    DriverLoginPage.prototype.logIn = function () {
+        var _this = this;
+        var loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: "\n              <div class=\"custom-spinner-container\">\n                <div class=\"custom-spinner-box\"></div>\n              </div>"
+        });
+        loading.present();
+        this.receivedUser = this.navParams.data;
+        var email = this.loginGroup.controls['email'].value;
+        var password = this.loginGroup.controls['password'].value;
+        this.authenticationService.loginWithEmail(email, password).then(function (data) {
+            console.log(data);
+            if (data.user.emailVerified == false) {
+                loading.dismiss();
+                var alert_3 = _this.alertCtrl.create({
+                    title: 'Oops!',
+                    subTitle: 'por favor verifica tu email',
+                    buttons: ['OK']
+                });
+                alert_3.present();
+            }
+            else {
+                // let metadata = this.auth.currentUser.metadata;
+                // if(metadata.creationTime === metadata.lastSignInTime){
+                //     console.log(metadata.creationTime);
+                //     console.log(metadata.lastSignInTime);
+                //     this.navCtrl.push('CarRegistrationLoginPage');
+                //     setTimeout(()=>{
+                //         if(this.navCtrl.getActive().id === 'LoginPage'){
+                //             this.navCtrl.push('CarRegistrationLoginPage');
+                //         }else{
+                //             console.log('actuo el abservable')
+                //         }
+                //     }, 500)
+                // }
+                setTimeout(function () {
+                    if (_this.navCtrl.getActive().id === 'DriverLoginPage') {
+                        loading.dismiss();
+                        _this.navCtrl.setRoot('DriverFindridePage');
+                    }
+                    else {
+                        loading.dismiss();
+                        console.log('actuo el abservable');
+                    }
+                }, 500);
+                _this.authenticationService.getStatus;
+            }
+            ;
+        }).catch(function (error) {
+            loading.dismiss();
+            var alert = _this.alertCtrl.create({
+                title: 'Oops!',
+                subTitle: 'El usuario o la contraseña están incorrectas',
+                buttons: ['OK']
+            });
+            alert.present();
+            console.log(error);
+        });
     };
-    DriverHelpPage.prototype.bug = function () {
-        this.typeOfSituation = 'Problema con la App';
-        this.info = ' Muchas gracias por informarnos de estos problemas que ayudan a mejorar la usabilidad de la App cada día mas';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
-    };
-    DriverHelpPage.prototype.paymentProblem = function () {
-        this.typeOfSituation = 'Problema de Pago';
-        this.info = '¿Haz tenido algún tipo de problema relacionado con la tarjeta con tu tarjeta de crédito? Descríbenos con detalle y nos comunicamos contigo lo más pronto posible';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
-    };
-    DriverHelpPage = __decorate([
+    DriverLoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-help',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/help/driverHelp.html"*/'<ion-header class="bg-theme-driver">\n    <ion-navbar>\n        <ion-title>Soporte</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n    <p class="textHelp" padding>¡Escoje tu situación y escríbenos con mucho detalle para poder ayudarte lo más pronto posible!. También puedes escribirnos a team@waypooltech.com</p>\n    <ion-card (click)="suggestion()">\n        <ion-card-header>\n            <h1><strong>Sugerencia</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n            Ayúdanos a mejorar el servicio  \n        </ion-card-content>\n    </ion-card>\n    <ion-card (click)="trip()">\n        <ion-card-header>\n            <h1><strong>Viaje</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n            Escríbenos cualquier sugerencia/quejas con respecto a algún viaje\n        </ion-card-content>\n    </ion-card>\n    <ion-card (click)="bug()">\n        <ion-card-header>\n            <h1><strong>Problema con la App</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n        Escríbenos cualquier problema que tengas con la App \n        </ion-card-content>\n    </ion-card>\n    <ion-card (click)="myAccount()">\n        <ion-card-header>\n            <h1><strong>Mi Cuenta</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n        ¿Tienes alguna pregunta acerca de tu cuenta? ¡Escríbenos!.\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/help/driverHelp.html"*/
+            selector: 'driver-page-login',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/login/driverLogin.html"*/'<ion-header class="transparent">\n    <ion-navbar hide-tabs>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="logo">\n        <img src="assets/imgs/logo waypool gris-01.png" alt="logo">\n    </div>\n\n<div class="bg-white login">\n    <div >\n     <div [formGroup]="loginGroup" >\n        <ion-list class="form">\n            <ion-item>\n                <ion-label></ion-label>\n                <ion-input type="email"  text-right  formControlName="email" placeholder= "email"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label></ion-label>\n                <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>\n            </ion-item>\n        </ion-list>\n    </div>\n    <button ion-button full class="bg-theme-driver text-white btn rounded" (click)="logIn()" [disabled]="!loginGroup.valid">ENTRAR</button>\n    <button ion-button full class="bg-darkblue text-white btn rounded" (click)="signup()" >REGÍSTRATE</button>\n\n\n            <ion-row style="padding-top: 8px;">\n                <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme-driver"> contraseña?</strong></small></ion-col>\n            </ion-row>\n\n\n        </div>\n\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/login/driverLogin.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]])
-    ], DriverHelpPage);
-    return DriverHelpPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
+    ], DriverLoginPage);
+    return DriverLoginPage;
 }());
 
-//# sourceMappingURL=driverHelp.js.map
+//# sourceMappingURL=driverLogin.js.map
 
 /***/ })
 

@@ -12,9 +12,9 @@ export class noteService {
     
 
    
-    public setNote(user,note, place){
+    public setNote(user,note){
         
-      firebase.database().ref(place + '/users/' + user+'/trips').update({
+      firebase.database().ref('/usersTest/' + user+'/trips').update({
          note:note 
         
       })

@@ -1,12 +1,12 @@
 <ion-header class="bg-theme">
     <ion-navbar hideBackButton="true">
-        <ion-title class="text-center">MI VIAJE</ion-title>
+        <ion-title class="text-center">ON TRIP</ion-title>
     </ion-navbar>
     
 </ion-header>
 
 <ion-content class="bg-light">
-    <p class="important">¡IMPORTANTE!: Después del viaje NO hay intercambio de efectivo.</p> 
+    <!-- <p class="important">¡IMPORTANTE!: Después del viaje NO hay intercambio de efectivo.</p>  -->
 
     <div>
         <ion-list>
@@ -16,7 +16,7 @@
                         <img src="assets/imgs/userPicture.png">
                     </ion-avatar>
                     <div class="name">
-                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock "> Yo
+                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock "> Me
                             <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
                         </h2>
                         <ng-template #itsNotMeBlock >
@@ -29,7 +29,7 @@
                         
                     </div>                   
                     <div class="more">
-                        <ion-badge class="bg-yellow">EN ESPERA</ion-badge>
+                        <ion-badge class="bg-yellow">WAITING</ion-badge>
                     </div>
                 </ion-item>
                 
@@ -40,7 +40,7 @@
                         <img src="assets/imgs/userPicture.png">
                     </ion-avatar>
                     <div class="name">
-                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock " style="font-size:1.5rem; "> Yo
+                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock " style="font-size:1.5rem; "> Me
                             <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>
                         </h2>
                         <ng-template #itsNotMeBlock >
@@ -53,7 +53,7 @@
                         
                     </div>
                     <div class="more">
-                        <ion-badge class="bg-green">RECOGIDO</ion-badge>  
+                        <ion-badge class="bg-green">PICKED UP</ion-badge>  
                     </div>
                    
                 </ion-item>
@@ -83,17 +83,27 @@
                    
                 </ion-item>
                 <ion-card-content>
-                    <div class="ride-detail">
+                    <!-- <div class="ride-detail">
                         <p>
-                            <span class="icon-location bg-theme"></span>{{trip.houseAddr}}</p>
+                            <span class="icon-location bg-theme"></span>{{trip.origin[0]}}</p>
                         <p>
-                            <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>
-                    </div>
+                            <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>
+                    </div> -->
                     <ion-row>
                       
-                            <h2 class="text text-theme" style=" display: flex; align-items: center; font-weight:600">                        
+                            <!-- <h2 class="text text-theme" style=" display: flex; align-items: center; font-weight:600">                        
                                 Hora de partida: {{trip.startHour}}                          
-                            </h2>                    
+                                
+                            </h2>                     -->
+
+                            <ion-col>
+                                <div class="ride-detail">
+                                    <p>
+                                        <span class="icon-location bg-theme"></span>{{trip.origin[0]}}</p>
+                                    <p>
+                                        <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>
+                                </div>
+                            </ion-col>
                           
                        
                             <ion-col class="detail-text">
@@ -112,7 +122,7 @@
                     <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>
                 </ion-col>
                 <ion-col class="detail-text">
-                    <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 9px; margin-right:9px;">Cancelar Viaje</button>
+                    <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 9px; margin-right:9px;">Cancel Trip</button>
                 </ion-col>
            
             </ion-row>

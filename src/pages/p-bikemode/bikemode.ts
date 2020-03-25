@@ -127,7 +127,7 @@ export class BikeModePage {
     this.markers = [];
     // initialize the plugin
   
-    console.log(this.SignUpService.userPlace);
+    // console.log(this.SignUpService.userPlace);
 
       /// logica keyReserves para myreserves
 
@@ -471,7 +471,7 @@ listride(){
     console.log(this.myLatLngOr);
     console.log(this.usingGeolocation);
     
-  this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid ).once('value').then((snapBlock)=>{
+  this.afDB.database.ref( '/usersTest/' + this.userUid ).once('value').then((snapBlock)=>{
     if(snapBlock.val().blockPayment === true){
       this.loading.dismiss();
       let alert = this.alertCtrl.create({
@@ -492,7 +492,7 @@ listride(){
       });
       alert.present();
     }else{
-      this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+ this.userUid).once('value').then((snap)=>{
+      this.afDB.database.ref('/usersTest/'+ this.userUid).once('value').then((snap)=>{
         let user = snap.val();
         console.log(user);
         

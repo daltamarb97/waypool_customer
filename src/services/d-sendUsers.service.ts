@@ -13,44 +13,44 @@ constructor(public afDB: AngularFireDatabase){
     }
     public getUsersOnListRide(userUid){
         // Get all the students from the usersListRide
-         return  this.afDB.list('/drivers/'+ userUid +'/trips/usersListRide').valueChanges();
+         return  this.afDB.list('/driversTest/'+ userUid +'/tripsTest/usersListRide').valueChanges();
      } 
      public getTripsOfReserves(userUid){
         // Get all the trips the driver have reserve
          return  this.afDB.list('/reservesTest/'+ userUid).valueChanges();
      } 
-    public getUsersOnTrip(place, userUid){
+    public getUsersOnTrip( userUid){
         // Get all the students the driver acepts in myListRidePage to be send to the students
-         return  this.afDB.list(place + '/drivers/'+ userUid +'/trips/pickingUsers').valueChanges();
+         return  this.afDB.list( '/driversTest/'+ userUid +'/tripsTest/pickingUsers').valueChanges();
      }   
 
-     public getPickUpUsers(place, userUid){
+     public getPickUpUsers( userUid){
          //get all the users from the pickUpUsers []
-        return  this.afDB.list(place + '/drivers/'+ userUid +'/trips/pickedUpUsers').valueChanges();
+        return  this.afDB.list( '/driversTest/'+ userUid +'/tripsTest/pickedUpUsers').valueChanges();
      }
      public removeReserve(driverId, keyReserve ){
         //remove the reserve done
-           this.afDB.database.ref('/reserves/'+ driverId + '/' + keyReserve).remove();
+           this.afDB.database.ref('/reservesTest/'+ driverId + '/' + keyReserve).remove();
            }
 
-           public removeUsersOnListRideTotal(place, userUid ){
+           public removeUsersOnListRideTotal( userUid ){
             //send the information of every student the driver acepts in myRide
-               this.afDB.database.ref(place + '/drivers/'+ userUid +'/trips/usersListRide/').remove();
+               this.afDB.database.ref( '/driversTest/'+ userUid +'/tripsTest/usersListRide/').remove();
 
                }
 
-           public removeUsersOnPickingUsers(place, userUid,userId ){
+           public removeUsersOnPickingUsers( userUid,userId ){
             //send the information of every student the driver acepts in myRide
-               this.afDB.database.ref(place + '/drivers/'+ userUid +'/trips/pickingUsers/'+ userId).remove();
-               this.afDB.database.ref(place + '/users/'+ userId +'/trips/pickingUsers/driver/' + userUid).remove();
+               this.afDB.database.ref( '/driversTest/'+ userUid +'/tripsTest/pickingUsers/'+ userId).remove();
+               this.afDB.database.ref( '/usersTest/'+ userId +'/tripsTest/pickingUsers/driver/' + userUid).remove();
                }
 
     
 
 
-    public pushPickingUpUsersOnDrivers(place, userUid,userId ,origin,destination,name,lastname,phone, about){
+    public pushPickingUpUsersOnDrivers( userUid,userId ,origin,destination,name,lastname,phone, about){
      //send the information of every student the driver acepts in myRide
-        this.afDB.database.ref(place + '/drivers/'+ userUid +'/trips/pickingUsers/'+ userId).update(
+        this.afDB.database.ref( '/driversTest/'+ userUid +'/tripsTest/pickingUsers/'+ userId).update(
             {
              origin: origin,
              destination: destination,
@@ -64,9 +64,9 @@ constructor(public afDB: AngularFireDatabase){
             );
 
         }
-        public pushDriverOnUsers(place, userUid,userId ,origin,destination,name,lastname,phone,price,car,about){
+        public pushDriverOnUsers( userUid,userId ,origin,destination,name,lastname,phone,price,car,about){
             //send the driver information to the students
-            this.afDB.database.ref(place + '/users/'+ userId +'/trips/pickingUsers/driver/'+ userUid).update(
+            this.afDB.database.ref( '/usersTest/'+ userId +'/tripsTest/pickingUsers/driver/'+ userUid).update(
                 {
                  origin: origin,
                  destination: destination,
@@ -85,33 +85,33 @@ constructor(public afDB: AngularFireDatabase){
     
     public pushTripOnRecordDriver(userUid){
         //historial
-        this.afDB.database.ref('/drivers/'+ userUid +'/trips').push();
+        this.afDB.database.ref('/driversTest/'+ userUid +'/trips').push();
     }
 
-   public getRecordTrips(place, userUid){
-    return  this.afDB.list(place + '/drivers/'+ userUid +'/recordTrips/').valueChanges();
+   public getRecordTrips( userUid){
+    return  this.afDB.list( '/driversTest/'+ userUid +'/recordTrips/').valueChanges();
 
    }
 
    public badgeTrue(userUid){
-       this.afDB.database.ref('/drivers/'+ userUid).update({
+       this.afDB.database.ref('/driversTest/'+ userUid).update({
            badgePicking: true
        })
    }
 
    public badgeFalse(userUid){
-    this.afDB.database.ref('/drivers/'+ userUid).update({
+    this.afDB.database.ref('/driversTest/'+ userUid).update({
         badgePicking: false
     })
 }
 public badgeTrueOntrip(userUid){
-    this.afDB.database.ref('/drivers/'+ userUid).update({
+    this.afDB.database.ref('/driversTest/'+ userUid).update({
         badgeOntrip: true
     })
 }
 
 public badgeFalseOntrip(userUid){
- this.afDB.database.ref('/drivers/'+ userUid).update({
+ this.afDB.database.ref('/driversTest/'+ userUid).update({
      badgeOntrip: false
  })
 }

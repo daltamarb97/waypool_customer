@@ -32,8 +32,8 @@ export class geofireService {
     }
 
 
-    setGeofireOr(place, radius:number, lat, lng, userId ):void{ 
-  this.dbRef = this.afDB.database.ref(place + '/geofireOr/' );
+    setGeofireOr( radius:number, lat, lng, userId ):void{ 
+  this.dbRef = this.afDB.database.ref( '/geofireOr/' );
   this.geoFire = new GeoFire(this.dbRef); 
 
   this.geoquery2 = this.geoFire.query({
@@ -41,8 +41,8 @@ export class geofireService {
     radius: radius
   })
  
-    this.keyEnteredOr( userId, place );
-    this.keyExitedOr( userId, place );
+    this.keyEnteredOr( userId );
+    this.keyExitedOr( userId );
   
   
 
@@ -62,19 +62,19 @@ cancelGeofireOr(){
 
 
 //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
-keyEnteredOr( userId, place ){
+keyEnteredOr( userId ){
     this.keyenteredOr = this.geoquery2.on("key_entered", function(key, location, distance){
      console.log(key);
 
-      this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).update({
+      this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).update({
       keyReserve: key
      }).then(()=>{
        //get driverId from geofireOr node
        
-        return this.afDB.database.ref(place + '/geofireOr/'+ key).once('value').then((snap) => {
+        return this.afDB.database.ref( '/geofireOr/'+ key).once('value').then((snap) => {
             this.driverOnNodeOr = snap.val();
 
-            this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).update({
+            this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).update({
                 driverId: this.driverOnNodeOr.driverId
     
             })  
@@ -89,18 +89,18 @@ keyEnteredOr( userId, place ){
 
 
   
-  keyExitedOr( userId, place ){
+  keyExitedOr( userId){
    
    this.keyexitedOr = this.geoquery2.on("key_exited", function(key){
-     this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).remove()
+     this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
   }
 
 
 
 
-  setGeofireDest(place, radius:number, lat, lng, userId):void{ 
-  this.dbRef = this.afDB.database.ref(place + '/geofireDest/' );
+  setGeofireDest(radius:number, lat, lng, userId):void{ 
+  this.dbRef = this.afDB.database.ref( '/geofireDest/' );
   this.geoFire = new GeoFire(this.dbRef); 
 
   this.geoquery1 = this.geoFire.query({
@@ -109,8 +109,8 @@ keyEnteredOr( userId, place ){
   })
 
   
-  this.keyEnteredDest( userId, place);
-  this.keyExitedDest(userId, place);
+  this.keyEnteredDest( userId);
+  this.keyExitedDest(userId);
 
 console.log('geoquery dest added');
 }
@@ -123,21 +123,21 @@ cancelGeofireDest(){
     }
 }
 
-keyEnteredDest( userId, place ){
+keyEnteredDest( userId ){
     this.geoquery1.on("key_entered", function(key, location, distance){
      console.log(key);
 
-     this.afDB.list(place + '/geofireDest/'+ key).valueChanges().subscribe((driverOnNode)=>{
+     this.afDB.list( '/geofireDest/'+ key).valueChanges().subscribe((driverOnNode)=>{
         this.driverOnNodeDest = driverOnNode;
     })
 
-       this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).update({
+       this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).update({
         keyReserve: key
        }).then(()=> {
-           return this.afDB.database.ref(place + '/geofireDest/'+ key).once('value').then((snap) => {
+           return this.afDB.database.ref( '/geofireDest/'+ key).once('value').then((snap) => {
             this.driverOnNodeDest = snap.val();
 
-            this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).update({
+            this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).update({
                 driverId: this.driverOnNodeDest.driverId
     
             })  
@@ -149,16 +149,16 @@ keyEnteredDest( userId, place ){
  }
  
  
- keyExitedDest(userId, place){
+ keyExitedDest(userId){
    
    this.geoquery1.on("key_exited", function(key){
-     this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).remove()
+     this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
  }
 
 
- setGeofireOrLMU(place, radius:number, lat, lng, userId):void{ 
-    this.dbRef = this.afDB.database.ref(place + '/geofireOrTrip/' );
+ setGeofireOrLMU(radius:number, lat, lng, userId):void{ 
+    this.dbRef = this.afDB.database.ref( '/geofireOrTrip/' );
     this.geoFire = new GeoFire(this.dbRef); 
   
     this.geoquery2LMU = this.geoFire.query({
@@ -166,8 +166,8 @@ keyEnteredDest( userId, place ){
       radius: radius
     })
   
-    this.keyEnteredOrLMU( userId, place );
-    this.keyExitedOrLMU( userId, place );
+    this.keyEnteredOrLMU( userId );
+    this.keyExitedOrLMU( userId );
   
     console.log('geoquery or added');
   
@@ -185,19 +185,19 @@ keyEnteredDest( userId, place ){
 
 
 
-  keyEnteredOrLMU( userId, place ){
+  keyEnteredOrLMU( userId ){
     this.geoquery2LMU.on( "key_entered", function(key, location, distance){
      console.log(key);
 
-      this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).update({
+      this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).update({
       keyReserve: key,
       LMU: true
      }).then(()=>{
        //get driverId from geofireOr node
-        return this.afDB.database.ref(place + '/geofireOrTrip/'+ key).once('value').then((snap) => {
+        return this.afDB.database.ref( '/geofireOrTrip/'+ key).once('value').then((snap) => {
             this.driverOnNodeOr = snap.val();
 
-            this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).update({
+            this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).update({
                 driverId: this.driverOnNodeOr.driverId
     
             })  
@@ -213,17 +213,17 @@ keyEnteredDest( userId, place ){
   }
   
   
-  keyExitedOrLMU( userId, place ){
+  keyExitedOrLMU( userId ){
    
    this.geoquery2LMU.on("key_exited", function(key){
-     this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).remove()
+     this.afDB.database.ref( '/users/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
   }
 
 
 
-  setGeofireDestLMU(place, radius:number, lat, lng, userId):void{ 
-    this.dbRef = this.afDB.database.ref(place + '/geofireDestTrip/' );
+  setGeofireDestLMU( radius:number, lat, lng, userId):void{ 
+    this.dbRef = this.afDB.database.ref( '/geofireDestTrip/' );
     this.geoFire = new GeoFire(this.dbRef); 
   
     this.geoquery1LMU = this.geoFire.query({
@@ -231,8 +231,8 @@ keyEnteredDest( userId, place ){
       radius: radius
     })
   
-    this.keyEnteredDestLMU( userId, place);
-    this.keyExitedDestLMU( userId, place);
+    this.keyEnteredDestLMU( userId);
+    this.keyExitedDestLMU( userId);
   
     console.log('geoquery Dest added');
   
@@ -250,19 +250,19 @@ keyEnteredDest( userId, place ){
 
 
 
-  keyEnteredDestLMU( userId, place){
+  keyEnteredDestLMU( userId){
     this.geoquery1LMU.on("key_entered", function(key, location, distance){
      console.log(key);
 
-      this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).update({
+      this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).update({
       keyReserve: key,
       LMU: true
      }).then(()=>{
        //get driverId from geofireOr node
-       return this.afDB.database.ref(place + '/geofireDestTrip/'+ key).once('value').then((snap) => {
+       return this.afDB.database.ref( '/geofireDestTrip/'+ key).once('value').then((snap) => {
         this.driverOnNodeDest = snap.val();
 
-        this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).update({
+        this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).update({
             driverId: this.driverOnNodeDest.driverId
 
             })  
@@ -275,10 +275,10 @@ keyEnteredDest( userId, place ){
   }
   
   
-  keyExitedDestLMU( userId, place){
+  keyExitedDestLMU( userId){
    
    this.geoquery1LMU.on("key_exited", function(key){
-     this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).remove()
+     this.afDB.database.ref( '/usersTest/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
   }
 
@@ -294,11 +294,11 @@ keyEnteredDest( userId, place ){
     }
 
     getDriversAvailableForUser(userId){
-       return this.afDB.list('/users/' + userId + '/trips/driversListRide/').valueChanges();
+       return this.afDB.list('/usersTest/' + userId + '/trips/driversListRide/').valueChanges();
     }
         // OLD
     // showOnDriver(driverId, userId, origin, destination, name, lastname, phone, note){
-    //     this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + userId).update({
+    //     this.afDB.database.ref('/drivers/' + driverId + '/tripsTest/usersListRide/' + userId).update({
     //         origin: origin,
     //          destination: destination,
     //          name: name,
@@ -308,35 +308,35 @@ keyEnteredDest( userId, place ){
     //          note:note,
     //     });
     // }
-    pushToMyReserve(place, keyReserve,driverId,userId){
-        this.afDB.database.ref(place +'/users/' + userId +'/myReserves/'+ keyReserve).update({
+    pushToMyReserve( keyReserve,driverId,userId){
+        this.afDB.database.ref('/usersTest/' + userId +'/myReserves/'+ keyReserve).update({
             keyReserve: keyReserve,
             driverId: driverId            
         });
     }
-    saveKey(place, keyReserve,driverId,userId){
-        this.afDB.database.ref(place +'/users/' + userId +'/keyTrip/').set({
+    saveKey(keyReserve,driverId,userId){
+        this.afDB.database.ref('/usersTest/' + userId +'/keyTrip/').set({
             keyTrip: keyReserve,
             driverId: driverId            
         });
     }
 
-    deleteKey(place,userId){
-        this.afDB.database.ref(place +'/users/' + userId +'/keyTrip/').remove();
+    deleteKey(userId){
+        this.afDB.database.ref('/usersTest/' + userId +'/keyTrip/').remove();
     }
 
-    deleteDriverFromLMU(place,userId, keyTrip){
-        this.afDB.database.ref(place +'/users/' + userId +'/availableReserves/' + keyTrip).remove();
+    deleteDriverFromLMU(userId, keyTrip){
+        this.afDB.database.ref('/usersTest/' + userId +'/availableReserves/' + keyTrip).remove();
     }
 
-    setOntripFalse(place,userId){
-        this.afDB.database.ref(place +'/users/' + userId).update({
+    setOntripFalse(userId){
+        this.afDB.database.ref('/usersTest/' + userId).update({
             onTrip: false
         })
     }
 
-    joinReserve(place, company, keyReserve,driverId, userId, origin, destination, name, lastname, phone, distance, verifiedPerson){
-        this.afDB.database.ref(place + '/reserves/' + driverId +'/'+keyReserve+ '/pendingUsers/' + userId).update({
+    joinReserve( company, keyReserve,driverId, userId, origin, destination, name, lastname, phone, distance, verifiedPerson){
+        this.afDB.database.ref( '/reservesTest/' + driverId +'/'+keyReserve+ '/pendingUsers/' + userId).update({
              origin: origin,
              destination: destination,
              name: name,
@@ -352,15 +352,15 @@ keyEnteredDest( userId, place ){
     }
 
 
-    deleteAvailableReserve(place, userId, keyReserve){
-        this.afDB.database.ref(place + '/users/'+ userId + '/availableReserves/' + keyReserve).remove()
+    deleteAvailableReserve( userId, keyReserve){
+        this.afDB.database.ref( '/usersTest/'+ userId + '/availableReserves/' + keyReserve).remove()
         .catch((err)=>{
             console.log(err)
         })
     }
 
-    deleteReserveFromAvailableReserves(place, userId, keyPush){
-        this.afDB.database.ref(place + '/users/' + userId +'/availableReserves/' + keyPush).remove();
+    deleteReserveFromAvailableReserves( userId, keyPush){
+        this.afDB.database.ref( '/usersTest/' + userId +'/availableReserves/' + keyPush).remove();
     }
 
     
@@ -403,11 +403,11 @@ keyEnteredDest( userId, place ){
     }
 
     deleteDriverListRide(userId, driverId){
-        this.afDB.database.ref('/users/' + userId + '/trips/driversListRide/' + driverId).remove();
+        this.afDB.database.ref('/usersTest/' + userId + '/trips/driversListRide/' + driverId).remove();
     }
     
     deleteDriverListRideTotal(userId){
-        this.afDB.database.ref('/users/' + userId + '/trips/driversListRide/').remove();
+        this.afDB.database.ref('/usersTest/' + userId + '/trips/driversListRide/').remove();
     }
 
     getLocationPlace(place){
@@ -417,11 +417,11 @@ keyEnteredDest( userId, place ){
     
 
     // set a new node on firebase which is the location of the university
-    setLocationPlace(place, key, lat, lng){
-    this.dbRef = this.afDB.database.ref(place + '/geofirePlace/' );
+    setLocationPlace( key, lat, lng){
+    this.dbRef = this.afDB.database.ref( '/geofirePlace/' );
     this.geoFire = new GeoFire(this.dbRef); 
       this.geoFire.set(key, [lat, lng]).then(function(){
-      console.log('location '+ place + ' updated');
+      console.log('location '+  ' updated');
       }, function(error){
       console.log('error: ' + error)
     });

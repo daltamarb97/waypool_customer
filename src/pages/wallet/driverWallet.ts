@@ -27,10 +27,10 @@ export class DriverWalletPage {
 
   constructor(public navCtrl: NavController,public toastCtrl: ToastController,public sendUsersService:DriverSendUsersService,public sendCoordsService: DriverSendCoordsService, private AngularFireAuth: AngularFireAuth, public signupService: DriverSignUpService, private afDB: AngularFireDatabase, private app: App, public modalCtrl: ModalController) {
     
-   this.afDB.database.ref(this.signupService.userPlace + '/drivers/' + this.userUid).once('value').then((snap)=>{
+   this.afDB.database.ref( '/driversTest/' + this.userUid).once('value').then((snap)=>{
     this.userInfo = snap.val();
    })
-    this.sendUsersService.getRecordTrips(this.signupService.userPlace, this.userUid)
+    this.sendUsersService.getRecordTrips( this.userUid)
     .subscribe( user => {
     
       this.recordTrips = user;

@@ -57,7 +57,7 @@ export class DriverCarRegistrationLoginPage {
     this.defaultZone = navParams.get('defaultZone');
     console.log(this.defaultZone);
     
-    this.SignUpService.userPlace = this.defaultZone;
+    // this.SignUpService.userPlace = this.defaultZone;
 
     // this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.driver).takeUntil(this.unsubscribe).subscribe(user=>{
     //   this.driverInfo = user

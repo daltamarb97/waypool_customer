@@ -600,7 +600,7 @@ loadMap(){
 
  getTrip(){
 
-    this.afDB.database.ref('/trips/'+ this.user +'/'+ this.keyTrip)
+    this.afDB.database.ref('/tripsTest/'+ this.user +'/'+ this.keyTrip)
     .once('value').then((snapshot) => {
       let trip = snapshot.val();
       console.log(trip);

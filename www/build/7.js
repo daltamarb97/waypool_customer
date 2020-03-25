@@ -1,6 +1,6 @@
 webpackJsonp([7],{
 
-/***/ 688:
+/***/ 691:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverWalletPageModule", function() { return DriverWalletPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverWallet__ = __webpack_require__(882);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverWallet__ = __webpack_require__(886);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var DriverWalletPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 882:
+/***/ 886:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92,10 +92,10 @@ var DriverWalletPage = /** @class */ (function () {
         this.pickedUpUsers = [];
         this.newNumber = 0;
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
-        this.afDB.database.ref(this.signupService.userPlace + '/drivers/' + this.userUid).once('value').then(function (snap) {
+        this.afDB.database.ref('/driversTest/' + this.userUid).once('value').then(function (snap) {
             _this.userInfo = snap.val();
         });
-        this.sendUsersService.getRecordTrips(this.signupService.userPlace, this.userUid)
+        this.sendUsersService.getRecordTrips(this.userUid)
             .subscribe(function (user) {
             _this.recordTrips = user;
             console.log(_this.recordTrips);

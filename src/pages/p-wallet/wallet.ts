@@ -21,7 +21,7 @@ export class WalletPage {
   paymentLink:any;
   total:any;
   constructor(public navCtrl: NavController,public toastCtrl: ToastController,public sendUsersService:sendUsersService,public sendCoordsService: sendCoordsService, private AngularFireAuth: AngularFireAuth, public signUpServices: SignUpService, private afDB: AngularFireDatabase, private clipboard:Clipboard) {
-    this.sendUsersService.getRecordTrips(this.signUpServices.userPlace, this.userUid).takeUntil(this.unsubscribe)
+    this.sendUsersService.getRecordTrips( this.userUid).takeUntil(this.unsubscribe)
     .subscribe( user => {
     
       this.recordTrips = user;
@@ -30,7 +30,7 @@ export class WalletPage {
 
     });
    
-   this.afDB.database.ref(this.signUpServices.userPlace + '/users/' + this.userUid).once('value').then((snapLink)=>{
+   this.afDB.database.ref( '/usersTest/' + this.userUid).once('value').then((snapLink)=>{
      if(snapLink.val().paymentLink === undefined || snapLink.val().paymentLink === null){
        console.log('no hay link');
        console.log(snapLink.val().paymentLink);
@@ -43,6 +43,9 @@ export class WalletPage {
      this.total = snapLink.val().pendingToPay;
    })
   }
+
+
+  
   help(){
     const toast = this.toastCtrl.create({
       message: 'En esta página podrás ver el historial de viajes en los que ver la hora en la que terminaste el viaje, origen y destino, y el precio que colocaste por persona',

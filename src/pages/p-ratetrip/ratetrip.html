@@ -1,23 +1,23 @@
 <ion-header class="bg-theme">
   <ion-navbar>
-      <ion-title>Viaje Finalizado</ion-title>
+      <ion-title>Trip completed</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="bg-light">
   <ion-card class="slip">
       <div text-center>
-          <h4 class="text-dark">¡Esperamos que hayas tenido un excelente viaje!</h4>
+          <h4 class="text-dark">¡We hope you had a great commute!</h4>
           <p class="text-light">{{today | date}}
 
       </p>
-          <h4 class="text-dark">el precio que pagaste por este viaje fue de:</h4>
+          <h4 class="text-dark">the price you must pay for this trip is:</h4>
           <h1 class="text-theme">$ {{trip.price}}</h1>
       </div>
   </ion-card>
   <ion-card class="rate">
       <div text-center>
-              <h4 class="text-dark">Cuéntanos {{user.name}} como ha sido la experiencia con Waypool</h4>
+              <h4 class="text-dark">{{user.name}}, please let us know how was your transportation experience with Waypool</h4>
 
          
           <div class="driver">
@@ -25,13 +25,13 @@
               <div class="form">
                   <ion-list no-lines>
                       <ion-item>
-                          <ion-textarea [(ngModel)]="experience" type="text" placeholder="Déjanos tu sugerencia" ></ion-textarea>
+                          <ion-textarea [(ngModel)]="experience" type="text" placeholder="Leave your message" ></ion-textarea>
                       </ion-item>
                   </ion-list>
               </div>
 
 
-              <p padding-top><button (click)="sendInfo()" class="btn text-white bg-theme rounded" style="width: 100%;">ENVIAR</button></p>
+              <p padding-top><button (click)="sendInfo()" class="btn text-white bg-theme rounded" style="width: 100%;">Send</button></p>
 
           </div>
       </div>

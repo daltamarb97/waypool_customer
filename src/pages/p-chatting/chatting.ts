@@ -29,7 +29,7 @@ isTrip:any;
 
     console.log(this.reserve.driver.userId);
     
-    this.SignUpService.getMyInfoForProfile(this.SignUpService.userPlace,this.userUid).takeUntil(this.unsubscribe).subscribe(info =>{
+    this.SignUpService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(info =>{
       this.user = info
       console.log(this.user)
     })
@@ -41,7 +41,7 @@ isTrip:any;
     }
   }
   getChatFromTrip(){
-    this.chatsService.getChatsFromTrip(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId)
+    this.chatsService.getChatsFromTrip(this.reserve.keyTrip,this.reserve.driver.userId)
     .takeUntil(this.unsubscribe).subscribe( chat => {
     
       this.chats = chat;
@@ -51,7 +51,7 @@ isTrip:any;
   });
   }
   getChatFromReserve(){
-    this.chatsService.getChatsFromReserve(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId)
+    this.chatsService.getChatsFromReserve(this.reserve.keyTrip,this.reserve.driver.userId)
     .takeUntil(this.unsubscribe).subscribe( chat => {
     
       this.chats = chat;
@@ -108,7 +108,7 @@ isTrip:any;
           {
             text: 'Reportar',
             handler: () => {
-            this.sendFeedbackService.sendFeedback(this.SignUpService.userPlace,'Reporte_de_chat',this.chats,this.user.name,this.user.lastname,this.user.phone,this.userUid)               
+            this.sendFeedbackService.sendFeedback('Reporte_de_chat',this.chats,this.user.name,this.user.lastname,this.user.phone,this.userUid)               
             const toast = this.toastCtrl.create({
               message: 'Haz reportado este chat',
               showCloseButton: true,
@@ -145,12 +145,12 @@ isTrip:any;
       sendMessageForTrip(){
         console.log(this.isTrip);
        
-       this.chatsService.pushMessageUserInTrip(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId,this.userUid,this.message,this.user.name);
+       this.chatsService.pushMessageUserInTrip(this.reserve.keyTrip,this.reserve.driver.userId,this.userUid,this.message,this.user.name);
        this.message = '';    
        this.scrollToBottom();
      }
      sendMessageForReserve(){
-       this.chatsService.pushMessageUserInReserve(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId,this.userUid,this.message,this.user.name);
+       this.chatsService.pushMessageUserInReserve(this.reserve.keyTrip,this.reserve.driver.userId,this.userUid,this.message,this.user.name);
        this.message = '';    
        this.scrollToBottom();
      }

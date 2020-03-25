@@ -1,7 +1,7 @@
 
 <ion-header class="bg-theme-driver title">
     <ion-navbar >
-        <ion-title >Mis Viajes
+        <ion-title >My Commutes
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -25,7 +25,8 @@
             <div class="name">
 
                 <h2>                     <ion-badge  class="badge bg-darkblue">Viaje vacío</ion-badge>                                  
-                    Hora: {{trip.startHour}}            
+                    <!-- Hora: {{trip.startHour}}             -->
+                    Trip starts at: 3:00pm 
                 </h2>
             </div>
             <div class="more">                              
@@ -83,12 +84,12 @@
                                         <ion-col col-2 class="detail-text text-theme-driver">
                                             </ion-col>
                                             <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                                    <button class="btn bg-hot rounded full text-white"  (click)="seePassengers(trip.keyTrip)">DETALLES</button>
+                                                    <button class="btn bg-hot rounded full text-white"  (click)="seePassengers(trip.keyTrip)">DETAILS</button>
                                                 </ion-col>
                                               
                                             <ion-col center text-center col-4 text-right style="margin-left: auto;">
                                                 <button  class="btn bg-theme-driver rounded full text-white" (click)="startTrip(trip.keyTrip,trip)">
-                                                     INICIAR VIAJE
+                                                     START TRIP
                                                 </button>
                                              </ion-col>
                                             

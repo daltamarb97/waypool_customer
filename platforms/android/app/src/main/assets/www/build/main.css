@@ -26659,13 +26659,13 @@ driver-page-canceltrip .text {
   font-size: 1.5rem;
 }
 
-driver-page-car-registration p {
+driver-page-user-verification p {
   font-weight: 600;
   font-size: 1.3rem;
   margin-top: 3rem !important;
 }
 
-driver-page-car-registration h2 {
+driver-page-user-verification h2 {
   margin-top: 0;
   font-weight: 600;
   position: relative;
@@ -26673,7 +26673,7 @@ driver-page-car-registration h2 {
   margin-bottom: 70px;
 }
 
-driver-page-car-registration h2::before {
+driver-page-user-verification h2::before {
   content: '';
   width: 131px;
   height: 3px;
@@ -26686,19 +26686,19 @@ driver-page-car-registration h2::before {
   left: 0;
 }
 
-driver-page-car-registration img {
+driver-page-user-verification img {
   width: 70%;
 }
 
-driver-page-car-registration .verifiy {
+driver-page-user-verification .verifiy {
   margin-top: 60px;
 }
 
-driver-page-car-registration .verifiy img {
+driver-page-user-verification .verifiy img {
   width: 50%;
 }
 
-driver-page-car-registration .btn-box {
+driver-page-user-verification .btn-box {
   position: inherit;
   width: 100%;
   bottom: 0;
@@ -26706,15 +26706,15 @@ driver-page-car-registration .btn-box {
   text-align: center;
 }
 
-driver-page-car-registration .btn-box button {
+driver-page-user-verification .btn-box button {
   margin: 0 auto;
 }
 
-driver-page-car-registration .buttonLight {
+driver-page-user-verification .buttonLight {
   color: light;
 }
 
-driver-page-car-registration .skiptext {
+driver-page-user-verification .skiptext {
   color: red;
   font-size: 10px;
   margin-left: 95px;
@@ -27124,7 +27124,7 @@ driver-page-chats .item .item-inner ion-note span {
 .md driver-page-confirmprice .card {
   width: 80%;
   margin: auto;
-  height: 400px;
+  height: 435px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -27287,7 +27287,7 @@ driver-page-chats .item .item-inner ion-note span {
 .ios driver-page-confirmprice .card {
   width: 80%;
   margin: auto;
-  height: 400px;
+  height: 435px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -27844,6 +27844,52 @@ driver-page-detailsreserve #map {
 
 driver-page-detailsreserve .item-ios ion-avatar ion-img, driver-page-detailsreserve .item-ios ion-avatar img {
   border-radius: 0%;
+}
+
+page-earn .card {
+  width: 100%;
+  margin: 0;
+  position: relative;
+  margin-top: -40px !important;
+  height: 80px;
+}
+
+page-earn .card p {
+  font-size: 1.2rem !important;
+}
+
+page-earn .card h6 {
+  font-size: 2.3rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 5px;
+  padding-top: 5px;
+}
+
+page-earn h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+page-earn p {
+  font-size: 1.4rem;
+}
+
+page-earn ion-col a {
+  font-size: 30px;
+  color: #fff !important;
+  display: block;
+  text-align: center;
+  border-radius: 10px;
+  line-height: 50px;
+  width: 50px;
+}
+
+page-earn .scroll-content {
+  margin-top: 0 !important;
+}
+
+page-earn .text-white {
+  color: #fff !important;
 }
 
 .ios driver-page-findride .search {

@@ -12,38 +12,38 @@ constructor(public afDB: AngularFireDatabase){
               
     }
     
-    public getPendingUsers(place, userUid,pushKey){
-        return  this.afDB.list(place + '/reserves/'+ userUid +'/'+pushKey+'/pendingUsers').valueChanges();
+    public getPendingUsers( userUid,pushKey){
+        return  this.afDB.list( '/reservesTest/'+ userUid +'/'+pushKey+'/pendingUsers').valueChanges();
     }
 
 
-    public confirmIfUsersIsStillInLMU(place, driverId, keyTrip, userId){
-        return this.afDB.object(place + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).valueChanges();
+    public confirmIfUsersIsStillInLMU( driverId, keyTrip, userId){
+        return this.afDB.object( '/tripsTest/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).valueChanges();
     }
     public getSpecificReserves(userUid,pushKey){
-        return  this.afDB.object('/reserves/'+ userUid +'/'+pushKey).valueChanges();
+        return  this.afDB.object('/reservesTest/'+ userUid +'/'+pushKey).valueChanges();
     } 
-    public eraseUser(place, userId,DriverUid,pushKey){
-        this.afDB.database.ref(place + '/reserves/' + DriverUid+'/'+ pushKey+'/pendingUsers/'+userId).remove()
+    public eraseUser( userId,DriverUid,pushKey){
+        this.afDB.database.ref( '/reservesTest/' + DriverUid+'/'+ pushKey+'/pendingUsers/'+userId).remove()
     }
 
 
-    public saveTripOnRecords(place, userUid,trip){
+    public saveTripOnRecords( userUid,trip){
         //save trip in recordTrips
         
-      this.afDB.database.ref(place + '/users/'+userUid+'/recordTrips/'+trip.keyTrip).update(trip);
+      this.afDB.database.ref( '/usersTest/'+userUid+'/recordTrips/'+trip.keyTrip).update(trip);
  
      }
      
-    public getDestination(place, user){
-        return  this.afDB.list(place+ '/drivers/'+ user +'/trips/destination').valueChanges();
+    public getDestination( user){
+        return  this.afDB.list( '/driversTest/'+ user +'/tripsTest/destination').valueChanges();
     } 
-    public getOrigin(place, user){
-        return  this.afDB.list(place + '/drivers/'+ user +'/trips/origin').valueChanges();
+    public getOrigin( user){
+        return  this.afDB.list( '/driversTest/'+ user +'/tripsTest/origin').valueChanges();
     }     
        public pushcoordinatesReserves(user , dest, or){
      
-    this.afDB.database.ref('drivers/'+ user+'/Reserves').push({
+    this.afDB.database.ref('driversTest/'+ user+'/Reserves').push({
         orReserve: or,
         destReserve: dest,
         
@@ -61,23 +61,23 @@ constructor(public afDB: AngularFireDatabase){
              
             
         }
-    public recordTripOnDriver(place, userUid,trip){
+    public recordTripOnDriver( userUid,trip){
       
 
-        this.afDB.database.ref(place+ '/drivers/'+ userUid + '/recordTrips/').push(trip);
+        this.afDB.database.ref( '/driversTest/'+ userUid + '/recordTrips/').push(trip);
 
     }
-    public recordTripOnUser(place, userDriverUid,trip){
+    public recordTripOnUser( userDriverUid,trip){
       
      
 
-        this.afDB.database.ref(place + '/users/'+ userDriverUid + '/recordTrips/').push(trip);
+        this.afDB.database.ref( '/usersTest/'+ userDriverUid + '/recordTrips/').push(trip);
         
     }
-    public recordTripOnWaypool(place, trip){ 
+    public recordTripOnWaypool( trip){ 
      
 
-        this.afDB.database.ref(place + '/allTrips/').push(trip);
+        this.afDB.database.ref( '/allTrips/').push(trip);
         
     }
 
@@ -85,74 +85,74 @@ constructor(public afDB: AngularFireDatabase){
     public timeOfPickedUpUser(userUid,date){
                 //set time when user is picked up in user's trips
 
-        this.afDB.database.ref('/users/'+ userUid + '/trips/').update({
+        this.afDB.database.ref('/usersTest/'+ userUid + '/tripsTest/').update({
             pickedUpTime:date
         });
 
     }
     public timeOfPickedUpDriver(userDriverUid,date,userUid){
         //set time when user is picked up in driver's trips
-        this.afDB.database.ref('/drivers/'+ userDriverUid + '/trips/pickedUpUsers/'+userUid).update({
+        this.afDB.database.ref('/driversTest/'+ userDriverUid + '/tripsTest/pickedUpUsers/'+userUid).update({
             pickedUpTime:date
         });
 
     }
     
     timeOfDestinationUser(userUid,date){
-        this.afDB.database.ref('/users/'+ userUid + '/trips/').update({
+        this.afDB.database.ref('/usersTest/'+ userUid + '/tripsTest/').update({
             DestinationTime:date
         });
     }
     pushPriceOnUser(userDriverUid,userUid,price){
-        this.afDB.database.ref('/drivers/'+ userDriverUid + '/trips/pickedUpUsers/'+userUid).update({
+        this.afDB.database.ref('/driversTest/'+ userDriverUid + '/tripsTest/pickedUpUsers/'+userUid).update({
             price:price
         });
     }
 
     public updateGeolocationOrigin(user,origin){
-        this.afDB.database.ref('drivers/' + user+'/trips').update({
+        this.afDB.database.ref('driversTest' + user+'/trips').update({
             origin:origin
         })
 
     }
-    public endTripDriverPickingUsers(place, DriverUid){
-        this.afDB.database.ref(place + '/drivers/' + DriverUid+'/trips/pickingUsers').remove()
+    public endTripDriverPickingUsers( DriverUid){
+        this.afDB.database.ref( '/driversTest/' + DriverUid+'/tripsTest/pickingUsers').remove()
     }
 
-    public eraseChatsUsers(place, userId,DriverUid){
-        this.afDB.database.ref(place + 'drivers/' + DriverUid+'/trips/pickingUsers/'+userId+'/chat').remove()
+    public eraseChatsUsers( userId,DriverUid){
+        this.afDB.database.ref( 'driversTest' + DriverUid+'/tripsTest/pickingUsers/'+userId+'/chat').remove()
     }
     
-    public endTripDriverPickedUpUsers(place, DriverUid){
-        this.afDB.database.ref(place + '/drivers/' + DriverUid+'/trips/pickedUpUsers').remove()
+    public endTripDriverPickedUpUsers( DriverUid){
+        this.afDB.database.ref( '/driversTest/' + DriverUid+'/tripsTest/pickedUpUsers').remove()
     }
     
     public endTripUserPickingUsers(userUid){
-        this.afDB.database.ref('users/' + userUid+'/trips/pickingUsers').remove()
+        this.afDB.database.ref('users/' + userUid+'/tripsTest/pickingUsers').remove()
     }
     public endTripUserPickedUpUsers(place , userUid){
-        this.afDB.database.ref(place + '/users/' + userUid+'/trips/pickedUpUsers').remove()
+        this.afDB.database.ref( '/usersTest/' + userUid+'/tripsTest/pickedUpUsers').remove()
     }
-    public endTripUserOnTripInstance(place, userUid){
-        this.afDB.database.ref(place + '/users/' + userUid+'/trips/onTrip').remove()
+    public endTripUserOnTripInstance( userUid){
+        this.afDB.database.ref( '/usersTest/' + userUid+'/tripsTest/onTrip').remove()
     }
-    public endTripUserPickupInstance(place, userUid){
-        this.afDB.database.ref(place + '/users/' + userUid+'/trips/pickedUp').remove()
+    public endTripUserPickupInstance( userUid){
+        this.afDB.database.ref( '/usersTest/' + userUid+'/tripsTest/pickedUp').remove()
     }
-    public endTripUserDriverListRide(place, userUid){
-        this.afDB.database.ref(place + '/users/' + userUid+'/trips/driverListRide').remove()
+    public endTripUserDriverListRide( userUid){
+        this.afDB.database.ref( '/usersTest/' + userUid+'/tripsTest/driverListRide').remove()
     }
     public pickUp(DriverUid,userId,user){
        
 
        // add the driver to pickedUpUsers 
-       this.afDB.database.ref('/drivers/'+ DriverUid +'/trips/pickedUpUsers/'+ userId).update(user);
+       this.afDB.database.ref('/driversTest/'+ DriverUid +'/tripsTest/pickedUpUsers/'+ userId).update(user);
 
     }
 
     // TODO: DRIVER NO PUEDE ENTRAR TODO, SOLO DRIVERINFO (UNA PARTE DEL DRIVER, PREGUNTAR DANIEL QUE INFO)
     public addReserve(driverId, name, lastname, car, dest, or, note, price, currentHour, startHour, geofireKey, type){
-        this.afDB.database.ref('/reserves/'+ driverId).push({
+        this.afDB.database.ref('/reservesTest/'+ driverId).push({
             name:name,
             lastname:lastname,
             car:car,
@@ -168,10 +168,10 @@ constructor(public afDB: AngularFireDatabase){
 
         }).then((snap)=>{
             const key = snap.key;
-            this.afDB.database.ref('/reserves/'+ driverId + '/' + key).update({
+            this.afDB.database.ref('/reservesTest/'+ driverId + '/' + key).update({
                 keyTrip: key 
             })
-            this.afDB.database.ref('/drivers/' + driverId).update({
+            this.afDB.database.ref('/driversTest/' + driverId).update({
                 keyLastReserve: key
             })
             console.log(' keylastreserve');
@@ -182,26 +182,26 @@ constructor(public afDB: AngularFireDatabase){
     public pickUpInstance(userId){       
 
         // driver add pickup instance to the user when picked up
-        this.afDB.database.ref('/users/'+ userId +'/trips').update({
+        this.afDB.database.ref('/usersTest/'+ userId +'/trips').update({
             pickedUp:true
         });
  
      }
 
      public eliminateOnTrip(userId){
-        this.afDB.database.ref('/drivers/'+ userId ).update({
+        this.afDB.database.ref('/driversTest/'+ userId ).update({
             onTrip:false
         });
     }
 
     public eliminateOnTripUser(userId){
-        this.afDB.database.ref('/users/'+ userId + '/trips' ).update({
+        this.afDB.database.ref('/usersTest/'+ userId + '/trips' ).update({
             onTrip:false
         });
     }
 
-    public pushOnTripFinalUser(place, userId){
-        this.afDB.database.ref(place + '/users/'+ userId ).update({
+    public pushOnTripFinalUser( userId){
+        this.afDB.database.ref( '/usersTest/'+ userId ).update({
             onTripFinal: true
         });
     }
@@ -211,11 +211,11 @@ constructor(public afDB: AngularFireDatabase){
       
 
                //eliminate the user from pickingUsers
-        this.afDB.database.ref('/drivers/'+ DriverUid +'/trips/pickingUsers/'+ userId).remove();
+        this.afDB.database.ref('/driversTest/'+ DriverUid +'/tripsTest/pickingUsers/'+ userId).remove();
     }
 
     public eliminatePickingUsersUser(userId){
- this.afDB.database.ref('/users/'+ userId + '/trips/pickingUsers').remove();
+ this.afDB.database.ref('/usersTest/'+ userId + '/tripsTest/pickingUsers').remove();
 }
 
     sumTotal(trip,total){

@@ -82,7 +82,7 @@ export class DriverVerificationImagesPage {
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-      const picturesDrivers = storage().ref(this.SignUpService.userPlace + '/verificationDocuments/' + this.driver + '/' + this.data);
+      const picturesDrivers = storage().ref( '/verificationDocuments/' + this.driver + '/' + this.data);
 
 
       
@@ -127,7 +127,7 @@ export class DriverVerificationImagesPage {
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-      const picturesDrivers = storage().ref(this.SignUpService.userPlace + '/verificationDocuments/' + this.driver + '/' + this.data)
+      const picturesDrivers = storage().ref( '/verificationDocuments/' + this.driver + '/' + this.data)
 
 
 

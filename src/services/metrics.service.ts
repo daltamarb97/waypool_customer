@@ -33,9 +33,9 @@ export class MetricsService {
    }
 
 
-   public metricTripsInBikes(place,userUid,date,route,or,dest,distance){
+   public metricTripsInBikes(userUid,date,route,or,dest,distance){
     //send every reserve that were created
-    this.afDB.database.ref('data/tripsInBikes/'+place).push({
+    this.afDB.database.ref('data/tripsInBikes/').push({
       date:date,
       dest:dest,
       or:or,

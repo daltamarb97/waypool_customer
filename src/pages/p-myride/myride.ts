@@ -51,9 +51,9 @@ cancelUser:any;
 saveTrip:any;
   constructor(public navCtrl: NavController,public modalCtrl: ModalController,private MetricsService:MetricsService,public alertCtrl:AlertController,public TripsService:TripsService,public toastCtrl: ToastController,public SignUpService: SignUpService,public geolocation: Geolocation,public navParams: NavParams,private AngularFireAuth:AngularFireAuth,private callNumber: CallNumber,public sendUsersService:sendUsersService, public app: App, private reservesService: reservesService, private afDB: AngularFireDatabase) {
 
-    this.TripsService.getKeyTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+    this.TripsService.getKeyTrip( this.userUid).takeUntil(this.unsubscribe)
     .subscribe(  keys => {      
-      console.log(this.SignUpService.userPlace);
+      // console.log(this.SignUpService.userPlace);
       
         this.keyTrip =  keys; 
         console.log(this.keyTrip.keyTrip);
@@ -88,7 +88,7 @@ saveTrip:any;
           this.navCtrl.pop();
           let modal = this.modalCtrl.create('CanceltripPage');
           modal.present();  
-          this.TripsService.eliminatingCancelTrip(this.SignUpService.userPlace,this.userUid);
+          this.TripsService.eliminatingCancelTrip(this.userUid);
           this.MetricsService.cancelReserves(  this.userUid, this.trip)
         }
       
@@ -123,7 +123,7 @@ saveTrip:any;
 
     console.log(this.keyTrip) 
      
-      this.TripsService.getTrip(this.SignUpService.userPlace, keyTrip,driverId).takeUntil(this.unsubscribe)
+      this.TripsService.getTrip( keyTrip,driverId).takeUntil(this.unsubscribe)
       .subscribe( info => {      
         //check if the info of the reserve is null  
         if(this.keyTrip.keyTrip === undefined || this.keyTrip.keyTrip=== null){
@@ -158,12 +158,12 @@ saveTrip:any;
   }
 
   getPendingAndPickedUpUsers(keyTrip,driverId){
-    this.TripsService.getPendingUsers(this.SignUpService.userPlace, keyTrip,driverId).takeUntil(this.unsubscribe)
+    this.TripsService.getPendingUsers( keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {      
         this.pendingUsers = user;
         console.log(this.pendingUsers);          
     });
-    this.TripsService.getPickedUpUsers(this.SignUpService.userPlace, keyTrip,driverId).takeUntil(this.unsubscribe)
+    this.TripsService.getPickedUpUsers( keyTrip,driverId).takeUntil(this.unsubscribe)
     .subscribe( user => {    
       this.pickedUpUsers = user;   
 
@@ -218,15 +218,15 @@ this.callNumber.callNumber(number, true)
               if(this.pickedUpUsers.length === 0 || this.pickedUpUsers === undefined || this.pickedUpUsers === null) {
                 this.unSubscribeServices(); 
                 this.MetricsService.cancelReserves(this.userUid,this.trip);
-                this.TripsService.cancelTrip(this.SignUpService.userPlace, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
-                this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
-                this.TripsService.eliminatingOnTrip(this.SignUpService.userPlace, this.userUid); 
+                this.TripsService.cancelTrip( this.userUid,this.trip.driver.userId,this.trip.keyTrip);
+                this.TripsService.eliminateKeyTrip( this.userUid);
+                this.TripsService.eliminatingOnTrip( this.userUid); 
                 this.TripsService.eliminateAvailableReserves( this.userUid);              
                 this.navCtrl.pop();
 
               }
 
-              this.reservesService.confirmMyExistenceInPickedupUsers(this.SignUpService.userPlace, this.trip.driver.userId, this.trip.keyTrip, this.userUid).takeUntil(this.unsubscribe)
+              this.reservesService.confirmMyExistenceInPickedupUsers( this.trip.driver.userId, this.trip.keyTrip, this.userUid).takeUntil(this.unsubscribe)
                   .subscribe(pickedUp => {
                       this.pickedUp = pickedUp;  
                       console.log(this.pickedUp);
@@ -234,8 +234,8 @@ this.callNumber.callNumber(number, true)
 
                       if(this.pickedUp === undefined || this.pickedUp === null ){
                         this.MetricsService.cancelReserves(this.userUid,this.trip);
-                        this.TripsService.cancelTrip(this.SignUpService.userPlace, this.userUid,this.trip.driver.userId,this.trip.keyTrip);
-                        this.TripsService.eliminateKeyTrip(this.SignUpService.userPlace, this.userUid);
+                        this.TripsService.cancelTrip( this.userUid,this.trip.driver.userId,this.trip.keyTrip);
+                        this.TripsService.eliminateKeyTrip( this.userUid);
                         this.TripsService.eliminateAvailableReserves( this.userUid);
                         console.log(this.trip.keyTrip);
                         this.navCtrl.pop();

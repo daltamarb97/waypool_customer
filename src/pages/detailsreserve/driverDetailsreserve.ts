@@ -40,7 +40,7 @@ console.log(this.reserveKey)
 
   
 
-      this.sendCoordsService.getPendingUsers(this.SignUpService.userPlace,  this.userUid,this.reserveKey).takeUntil(this.unsubscribe)
+      this.sendCoordsService.getPendingUsers(  this.userUid,this.reserveKey).takeUntil(this.unsubscribe)
         .subscribe( users => {
 			this.passengers = users;			
 			console.log(this.passengers);
@@ -63,12 +63,12 @@ ionViewDidLeave(){
 			this.geoFireService.deleteUserGeofireDest( this.reserveKey);
 			this.geoFireService.deleteUserGeofireOr( this.reserveKey);
 			this.passengers.forEach(user => {
-				this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+user.userId+'/myReserves/'+ this.reserveKey).update({
+				this.afDB.database.ref( '/usersTest/'+user.userId+'/myReserves/'+ this.reserveKey).update({
 					cancelReserve:true
 				});
 			});
 
-			this.TripsService.cancelReserve(this.SignUpService.userPlace, this.userUid,this.reserveKey);
+			this.TripsService.cancelReserve( this.userUid,this.reserveKey);
 			this.dismiss();
 		  }
 
@@ -112,10 +112,10 @@ ionViewDidLeave(){
 					{
 						text: 'Eliminar',
 						handler: () => {
-							this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+userId+'/myReserves/'+ this.reserveKey).update({
+							this.afDB.database.ref( '/usersTest/'+userId+'/myReserves/'+ this.reserveKey).update({
 								cancelReserve:true
 							});
-							this.sendCoordsService.eraseUser(this.SignUpService.userPlace, userId,this.userUid,this.reserveKey );
+							this.sendCoordsService.eraseUser( userId,this.userUid,this.reserveKey );
 							
 							this.dismiss();
 							this.presentToast(`Haz eliminado a ${nameUser} de tu viaje`, 3000, 'bottom')

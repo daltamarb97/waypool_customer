@@ -54,8 +54,8 @@ export class ReserveinfoPage {
 
 	
 cancelReserve(){
-	this.reservesService.cancelReserve(this.signUpService.userPlace, this.userUid,this.driverUid,this.reserveKey);
-	this.reservesService.eliminateKeyUser(this.signUpService.userPlace, this.userUid,this.reserveKey);
+	this.reservesService.cancelReserve( this.userUid,this.driverUid,this.reserveKey);
+	this.reservesService.eliminateKeyUser( this.userUid,this.reserveKey);
 	let modal = this.modalCtrl.create('CanceltripPage');
 	modal.present();  }
 

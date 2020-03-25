@@ -1,6 +1,6 @@
 webpackJsonp([14],{
 
-/***/ 697:
+/***/ 698:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverSpecifyOriginPageModule", function() { return DriverSpecifyOriginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__specifyorigin__ = __webpack_require__(891);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__specifyorigin__ = __webpack_require__(893);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var DriverSpecifyOriginPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 891:
+/***/ 893:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -145,14 +145,12 @@ var DriverSpecifyOriginPage = /** @class */ (function () {
         this.bounds = new google.maps.LatLngBounds();
         this.markers = [];
         //meter datos por el id del firebase
-        console.log(this.SignUpService.userPlace);
     } // END OF CONSTRUCTOR
     DriverSpecifyOriginPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.user).once('value').then(function (snap) {
+        this.afDB.database.ref('/driversTest/' + this.user).once('value').then(function (snap) {
             _this.city = snap.val().city;
             _this.company = snap.val().company;
-            console.log(_this.SignUpService.userPlace);
             _this.loadMap();
         });
     };

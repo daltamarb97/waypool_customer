@@ -9,7 +9,7 @@ import { clearModulesForTest } from "@angular/core/src/linker/ng_module_factory_
 export class DriverSignUpService {
     
     //gloabl variable for university identifaction
-    userPlace:any;
+    
     schedulePush:any;
     constructor(public afDB: AngularFireDatabase, public AngularFireAuth: AngularFireAuth){
     }
@@ -206,8 +206,8 @@ public pushSchedule(place, userId, hour, type, description, image){
  }
 
 
- public getSchedule(place, userId){
-    return this.afDB.list(place + '/drivers/'+userId+'/schedule/').valueChanges();
+ public getSchedule( userId){
+    return this.afDB.list( '/driversTest/'+userId+'/schedule/').valueChanges();
 
 }
 

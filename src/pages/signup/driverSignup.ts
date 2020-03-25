@@ -204,8 +204,7 @@ noCompanyIdentified(numberToExecute){
                                 }
                             };
                             
-                            
-                        // this.SignUpService.userPlace = this.userPlace;
+                  
                         
                           if(this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value){
                             this.authenticationService.registerWithEmail(userEmail, userPassword).then(() =>{

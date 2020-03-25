@@ -23,16 +23,16 @@ export class DrverVerificationNumberPage {
   }
 
   code(){
-    this.authenticationService.deleteResendCode(this.signUpService.userPlace, this.userId);
-    this.authenticationService.sendVerificationCodeToFirebase(this.signUpService.userPlace, this.userId, this.confText);
+    this.authenticationService.deleteResendCode( this.userId);
+    this.authenticationService.sendVerificationCodeToFirebase( this.userId, this.confText);
     this.signUpService.getMyInfo( this.userId).subscribe(driver => {
       this.driverInfo = driver;
 
       if(this.driverInfo.verificationCodeApproval === true){
         this.app.getRootNav().push('LoginPage');
-        this.authenticationService.deleteVerificationCode(this.signUpService.userPlace, this.userId);
+        this.authenticationService.deleteVerificationCode( this.userId);
       }else if(this.driverInfo.verificationCodeApproval === false){
-        this.authenticationService.deleteVerificationCode(this.signUpService.userPlace, this.userId);
+        this.authenticationService.deleteVerificationCode( this.userId);
         let alert = this.alertCtrl.create({
           title: 'Código Errado',
           subTitle: 'el código de verificacón está errado',
@@ -45,8 +45,8 @@ export class DrverVerificationNumberPage {
   }
 
   resendCode(){
-    this.authenticationService.deleteverificationCodeApproval(this.signUpService.userPlace, this.userId);
-    this.authenticationService.resendVerificationCode(this.signUpService.userPlace, this.userId);
+    this.authenticationService.deleteverificationCodeApproval( this.userId);
+    this.authenticationService.resendVerificationCode( this.userId);
   }
 
      

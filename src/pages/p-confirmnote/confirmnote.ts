@@ -43,13 +43,13 @@ export class ConfirmNotePage {
       this.MetricsService.createdReserves(this.userUid,today,this.dest,this.or);
       if(this.note == null || this.note == ''){
         this.note = 'No hay nota'
-        this.noteService.setNote(this.userUid, this.note, this.SignUpService.userPlace)
+        this.noteService.setNote(this.userUid, this.note)
 
         this.accepted = true;
         this.dismiss(); 
         
       } else {
-        this.noteService.setNote(this.userUid, this.note, this.SignUpService.userPlace)
+        this.noteService.setNote(this.userUid, this.note)
         this.accepted = true;
         this.dismiss();        
       }

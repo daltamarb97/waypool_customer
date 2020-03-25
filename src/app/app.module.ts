@@ -51,6 +51,7 @@ import { DriverSendUsersService } from '../services/d-sendUsers.service';
 import { DriverSignUpService } from '../services/d-signup.service';
 import { DriverTripsService } from '../services/d-trips.service';
 import { DriverWindowService } from '../services/d-window.service';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 export const firebaseConfig = {
@@ -129,7 +130,8 @@ export const firebaseConfig = {
     Camera,
     FCM,
     Firebase ,
-    Clipboard
+    Clipboard,
+    SocialSharing
   ]
 })
 export class AppModule {}

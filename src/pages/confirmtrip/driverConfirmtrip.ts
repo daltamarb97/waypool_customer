@@ -49,7 +49,7 @@ export class DriverConfirmtripPage {
     });
     
 
-    this.sendCoordsService.confirmIfUsersIsStillInLMU(this.SignUpServices.userPlace, this.userUid, this.keyTrip, this.user.userId ).takeUntil(this.unsubscribe)
+    this.sendCoordsService.confirmIfUsersIsStillInLMU( this.userUid, this.keyTrip, this.user.userId ).takeUntil(this.unsubscribe)
     .subscribe((userInLMU)=>{
       console.log(this.driver);
       
@@ -71,12 +71,12 @@ export class DriverConfirmtripPage {
   }
   rejectUser(){
     //VIOLACION ABSOLUTA
-    this.TripsService.eliminateLastMinuteUser(this.SignUpServices.userPlace, this.userUid,this.keyTrip,this.user.userId);
+    this.TripsService.eliminateLastMinuteUser(this.userUid,this.keyTrip,this.user.userId);
     console.log("nanai kukas")
-    this.geofireServices.deleteKeyUserLMU(this.SignUpServices.userPlace, this.user.userId);
-    this.geofireServices.setOntripFalseUserLMU(this.SignUpServices.userPlace,this.user.userId);
-    this.geofireServices.deleteDriverFromLMUofUser(this.SignUpServices.userPlace, this.user.userId, this.keyTrip);
-    this.TripsService.notifyLMUitsBeenRejected(this.SignUpServices.userPlace, this.user.userId)
+    this.geofireServices.deleteKeyUserLMU(this.user.userId);
+    this.geofireServices.setOntripFalseUserLMU(this.user.userId);
+    this.geofireServices.deleteDriverFromLMUofUser(this.user.userId, this.keyTrip);
+    this.TripsService.notifyLMUitsBeenRejected(this.user.userId)
   
 
 
@@ -84,8 +84,8 @@ export class DriverConfirmtripPage {
   }
 
   acceptUser(){  
-    this.TripsService.acceptLastMinute(this.SignUpServices.userPlace, this.userUid,this.keyTrip,this.user);   
-    this.TripsService.eliminateLastMinuteUser(this.SignUpServices.userPlace, this.userUid,this.keyTrip,this.user.userId); 
+    this.TripsService.acceptLastMinute( this.userUid,this.keyTrip,this.user);   
+    this.TripsService.eliminateLastMinuteUser( this.userUid,this.keyTrip,this.user.userId); 
     console.log("bienvenido al combo")
     this.dismiss();
     }

@@ -1,6 +1,6 @@
 webpackJsonp([22],{
 
-/***/ 675:
+/***/ 677:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverPaymentsInfoPageModule", function() { return DriverPaymentsInfoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__payments_info__ = __webpack_require__(865);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__payments_info__ = __webpack_require__(868);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var DriverPaymentsInfoPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 865:
+/***/ 868:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -90,7 +90,7 @@ var DriverPaymentsInfoPage = /** @class */ (function () {
             _this.bankList = snap.val();
         });
         this.userInfo = this.navParams.get('userInfo');
-        this.afDB.database.ref(this.signUpServices.userPlace + '/drivers/' + this.userInfo.userId).once('value').then(function (snap) {
+        this.afDB.database.ref('/driversTest/' + this.userInfo.userId).once('value').then(function (snap) {
             if (snap.val().bankAccount !== null && snap.val().idNumber !== null && snap.val().bankEntity !== null && snap.val().bankAccount !== undefined && snap.val().idNumber !== undefined && snap.val().bankEntity !== undefined) {
                 _this.fullInformation = true;
                 _this.showInputsToEdit = false;
@@ -115,7 +115,6 @@ var DriverPaymentsInfoPage = /** @class */ (function () {
         }
     };
     DriverPaymentsInfoPage.prototype.setPaymentInfo = function () {
-        var _this = this;
         if (this.fullInformation === true) {
             this.dismiss();
         }
@@ -130,16 +129,7 @@ var DriverPaymentsInfoPage = /** @class */ (function () {
                     alert_1.present();
                 }
                 else {
-                    this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then(function (snap) {
-                        var obj = snap.val();
-                        Object.getOwnPropertyNames(obj).forEach(function (key) {
-                            if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                            }
-                            else {
-                                _this.priceServices.sendPaymentInfo(obj[key], _this.driverId, _this.id, _this.bankAccount, _this.bankEntityOther);
-                            }
-                        });
-                    });
+                    this.priceServices.sendPaymentInfo(this.driverId, this.id, this.bankAccount, this.bankEntityOther);
                     this.dismiss();
                 }
             }
@@ -153,16 +143,7 @@ var DriverPaymentsInfoPage = /** @class */ (function () {
                     alert_2.present();
                 }
                 else {
-                    this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then(function (snap) {
-                        var obj = snap.val();
-                        Object.getOwnPropertyNames(obj).forEach(function (key) {
-                            if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                            }
-                            else {
-                                _this.priceServices.sendPaymentInfo(obj[key], _this.driverId, _this.id, _this.bankAccount, _this.bankEntity);
-                            }
-                        });
-                    });
+                    this.priceServices.sendPaymentInfo(this.driverId, this.id, this.bankAccount, this.bankEntity);
                     this.dismiss();
                 }
             }

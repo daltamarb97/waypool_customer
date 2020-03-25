@@ -36,7 +36,7 @@ console.log(this.schedule);
     this.textMessage = this.schedule.description;
 
 
-    this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then((snap)=>{
+    this.afDB.database.ref('/driversTest/' + this.userId).once('value').then((snap)=>{
       this.userInfo = snap.val();
     })
 

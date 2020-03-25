@@ -124,8 +124,8 @@ setGeofireRoute( key, lat, lng){
 }
 
 
-setGeofireOrOnTrip(Place, key, lat, lng){
-  this.dbRef = this.afDB.database.ref(Place + '/geofireOrTrip/' );
+setGeofireOrOnTrip( key, lat, lng){
+  this.dbRef = this.afDB.database.ref( '/geofireOrTrip/' );
   this.geoFire = new GeoFire(this.dbRef); 
 
           this.geoFire.set(key, [lat, lng]).then(function(){
@@ -137,8 +137,8 @@ setGeofireOrOnTrip(Place, key, lat, lng){
    
 }
 
-setGeofireDestOnTrip(Place, key, lat, lng){
-  this.dbRef = this.afDB.database.ref(Place + '/geofireDestTrip/' );
+setGeofireDestOnTrip( key, lat, lng){
+  this.dbRef = this.afDB.database.ref( '/geofireDestTrip/' );
   this.geoFire = new GeoFire(this.dbRef); 
 
           this.geoFire.set(key, [lat, lng]).then(function(){
@@ -204,7 +204,7 @@ keyExitedOr(keyReserve){
    
 
 public  getMyInfo(userId){
-  return this.afDB.object('drivers/'+userId).valueChanges();
+  return this.afDB.object('driversTest/'+userId).valueChanges();
   }
 
 public getMyReserves(driverId){
@@ -214,16 +214,16 @@ public getMyReserves(driverId){
 
 
 
-public deleteUserListRide(Place, driverId, userId){
-  this.afDB.database.ref(Place + '/drivers/' + driverId + '/trips/usersListRide/' + userId).remove();
+public deleteUserListRide( driverId, userId){
+  this.afDB.database.ref( '/driversTest/' + driverId + '/tripsTest/usersListRide/' + userId).remove();
 }
 
 public deleteUserListRideTotal(driverId){
-  this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/').remove();
+  this.afDB.database.ref('/driversTest/' + driverId + '/tripsTest/usersListRide/').remove();
 }
 
 public onTripUserListRide(driverId, userId){
-  this.afDB.database.ref('/drivers/' + driverId + '/trips/usersListRide/' + userId).update({
+  this.afDB.database.ref('/driversTest/' + driverId + '/tripsTest/usersListRide/' + userId).update({
     onTrip: true
   });
 }
@@ -239,7 +239,7 @@ deleteUserGeofireDest( keyTrip){
 }
 
 
-deleteUserGeofireRoute( keyTrip, ){
+deleteUserGeofireRoute( keyTrip ){
   this.afDB.database.ref('/geofireRoute/' + keyTrip).remove().then(()=>{
       console.log("GeofireRoute succesfully removed");
   }).catch(error =>{
@@ -271,8 +271,10 @@ deleteUserGeofireOr( keyTrip){
 
 
 
-deleteUserGeofireOrTrip(Place, keyTrip){
-  this.afDB.database.ref(Place + '/geofireOrTrip/' +  keyTrip).remove().then(()=>{
+
+
+deleteUserGeofireOrTrip( keyTrip){
+  this.afDB.database.ref( '/geofireOrTrip/' +  keyTrip).remove().then(()=>{
       console.log("geofireOrTrip succesfully removed");
   }).catch(error =>{
       console.log(error);
@@ -281,8 +283,8 @@ deleteUserGeofireOrTrip(Place, keyTrip){
 
 
 
-deleteUserGeofireDestTrip(Place, keyTrip){
-  this.afDB.database.ref(Place + '/geofireDestTrip/' + keyTrip).remove().then(()=>{
+deleteUserGeofireDestTrip( keyTrip){
+  this.afDB.database.ref( '/geofireDestTrip/' + keyTrip).remove().then(()=>{
       console.log("geofireDestTrip succesfully removed");
   }).catch(error =>{
       console.log(error);
@@ -319,8 +321,8 @@ cancelGeoqueryOr(geofirename){
 
 
 // set a new node on firebase which is the location of the Place
-setLocationPlace(place, key, lat, lng){
-  this.dbRef = this.afDB.database.ref(place + '/geofirePlace/' );
+setLocationPlace( key, lat, lng){
+  this.dbRef = this.afDB.database.ref( '/geofirePlace/' );
   this.geoFire = new GeoFire(this.dbRef); 
     this.geoFire.set(key, [lat, lng]).then(function(){
     console.log('location updated');
@@ -330,9 +332,9 @@ setLocationPlace(place, key, lat, lng){
 }
 
 // set geoquery that determines if the person is in place
-setGeofirePlace(place, radius:number, lat, lng, driverId):void{ 
+setGeofirePlace( radius:number, lat, lng, driverId):void{ 
   
-  this.dbRef = this.afDB.database.ref(place + '/geofirePlace/' );
+  this.dbRef = this.afDB.database.ref( '/geofirePlace/' );
   this.geoFire = new GeoFire(this.dbRef); 
 
   this.geoqueryP = this.geoFire.query({
@@ -340,14 +342,14 @@ setGeofirePlace(place, radius:number, lat, lng, driverId):void{
     radius: radius
   })
 
-  this.keyEnteredPlace(place, driverId);
+  this.keyEnteredPlace( driverId);
 
 console.log('geoquery place added');
 }
 
-keyEnteredPlace(place, driverId){
+keyEnteredPlace( driverId){
   this.geoqueryP.on("key_entered", function(key){
-   this.afDB.database.ref(place + '/drivers/' + driverId ).update({
+   this.afDB.database.ref( '/driversTest/' + driverId ).update({
      geofireOrigin: true
    }).then(()=>{
      console.log('geofireOrigin = true');
@@ -368,23 +370,23 @@ cancelGeoqueryPlace(){
   
 }
 
-public cancelGeofireOrigin(place, driverId){
-  this.afDB.database.ref(place + '/drivers/' + driverId).update({
+public cancelGeofireOrigin( driverId){
+  this.afDB.database.ref( '/driversTest/' + driverId).update({
     geofireOrigin: false
   }).then(()=>{
     console.log('geofireOrigin = false');
   })
 }
 
-public setHouseAddress(place, driverId, lat, lng){
-  this.afDB.database.ref(place + '/drivers/' + driverId + '/houseAddress/coordinates').update({
+public setHouseAddress( driverId, lat, lng){
+  this.afDB.database.ref( '/driversTest/' + driverId + '/houseAddress/coordinates').update({
     lat:lat,
     lng:lng
   })
 }
 
-public setHouseAddressName(place, driverId, name){
-  this.afDB.database.ref(place + '/drivers/' + driverId + '/houseAddress/').update({
+public setHouseAddressName( driverId, name){
+  this.afDB.database.ref( '/driversTest/' + driverId + '/houseAddress/').update({
     name: name
   })
 }
@@ -394,18 +396,18 @@ public getLocationPlace(place){
  }
 
 
- deleteKeyUserLMU(place,userId){
-  this.afDB.database.ref(place +'/users/' + userId +'/keyTrip/').remove();
+ deleteKeyUserLMU(userId){
+  this.afDB.database.ref('/users/' + userId +'/keyTrip/').remove();
 }
 
-setOntripFalseUserLMU(place,userId){
-  this.afDB.database.ref(place +'/users/' + userId).update({
+setOntripFalseUserLMU(userId){
+  this.afDB.database.ref('/users/' + userId).update({
       onTrip: false
   })
 }
 
-deleteDriverFromLMUofUser(place,userId, keyTrip){
-  this.afDB.database.ref(place +'/users/' + userId +'/availableReserves/' + keyTrip).remove();
+deleteDriverFromLMUofUser(userId, keyTrip){
+  this.afDB.database.ref('/users/' + userId +'/availableReserves/' + keyTrip).remove();
 }
 
 

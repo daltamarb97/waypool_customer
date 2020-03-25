@@ -40,10 +40,10 @@ unsubscribe = new Subject;
   sendInfo() {
     if(this.experience === null || this.experience === undefined){
       this.experience = 'no hay feedback'
-      this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+      this.sendfeedback.sendFeedback( this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
       this.navCtrl.setRoot('FindridePassPage')
     }else{
-      this.sendfeedback.sendFeedback(this.signUpService.userPlace, this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
+      this.sendfeedback.sendFeedback( this.title, this.experience, this.user.name, this.user.lastname, this.user.phone, this.userUid);
       this.navCtrl.setRoot('FindridePassPage');
     }
   }

@@ -41,16 +41,16 @@ export class ConfirmpopupPage {
          console.log(this.user); 
          
          
-         this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company).once('value').then((snapUser)=>{
-           if(snapUser.val().freeRidesNumber > 0){
-            this.freeRidesCompany = true;
-           }
-         })
+        //  this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company).once('value').then((snapUser)=>{
+        //    if(snapUser.val().freeRidesNumber > 0){
+        //     this.freeRidesCompany = true;
+        //    }
+        //  })
        });
 
 
        // function to get in how many reserves I am
-       this.SignUpService.checkMyReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+       this.SignUpService.checkMyReserves( this.userUid).takeUntil(this.unsubscribe)
        .subscribe( reserves => {
         this.reservesWhereIam = reserves;
         console.log(this.reservesWhereIam);
@@ -74,7 +74,7 @@ export class ConfirmpopupPage {
       alert.present();
     }else {
 
-    if(this.user.personalFreeRides && this.freeRidesCompany === true){
+    if(this.user.personalFreeRides){
       let alert = this.alertCtrl.create({
         title: 'ESTE SERÁ UN VIAJE GRATIS',
         subTitle: 'Siempre que veas este mensaje significa que no pagarás nada por el viaje al que te uniste',
@@ -82,8 +82,8 @@ export class ConfirmpopupPage {
           text: 'OK',
           handler: ()=>{ 
             console.log(this.reserve.keyTrip )
-            this.geoFireService.joinReserve(this.SignUpService.userPlace, this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
-            this.geoFireService.pushToMyReserve(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
+            this.geoFireService.joinReserve( this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
+            this.geoFireService.pushToMyReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
             this.hideButton = !this.hideButton;
             this.hideText = !this.hideText;
             this.accepted = true;  
@@ -100,8 +100,8 @@ export class ConfirmpopupPage {
       alert.present();
     }else{
       console.log(this.reserve.keyTrip )
-      this.geoFireService.joinReserve(this.SignUpService.userPlace, this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
-      this.geoFireService.pushToMyReserve(this.SignUpService.userPlace,this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
+      this.geoFireService.joinReserve( this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
+      this.geoFireService.pushToMyReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
       this.hideButton = !this.hideButton;
       this.hideText = !this.hideText;
       this.accepted = true;  

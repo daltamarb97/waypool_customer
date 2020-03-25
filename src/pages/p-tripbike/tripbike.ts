@@ -284,8 +284,8 @@ export class TripbikePage {
       // this.storage.set('routes', this.previousTracks);
       
       this.positionSubscription.unsubscribe();
-      this.TripsService.recordTripsInBike(this.SignUpService.userPlace,this.userUid,today,newRoute,this.origin,this.destination,this.distance)
-      this.MetricsService.metricTripsInBikes(this.SignUpService.userPlace,this.userUid,today,newRoute,this.origin,this.destination,this.distance)
+      this.TripsService.recordTripsInBike(this.userUid,today,newRoute,this.origin,this.destination,this.distance)
+      this.MetricsService.metricTripsInBikes(this.userUid,today,newRoute,this.origin,this.destination,this.distance)
       this.navCtrl.setRoot('FindridePassPage');
 
     }

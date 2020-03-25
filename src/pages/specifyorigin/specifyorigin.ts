@@ -130,7 +130,7 @@ export class DriverSpecifyOriginPage {
     this.markers = [];
     //meter datos por el id del firebase
 
-    console.log(this.SignUpService.userPlace);
+  
     
 
  } // END OF CONSTRUCTOR
@@ -141,10 +141,10 @@ export class DriverSpecifyOriginPage {
  ionViewDidLoad(){
 
       
-  this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.user).once('value').then((snap)=>{
+  this.afDB.database.ref( '/driversTest/' + this.user).once('value').then((snap)=>{
     this.city = snap.val().city;
     this.company = snap.val().company;
-    console.log(this.SignUpService.userPlace);
+
 
 
     this.loadMap();

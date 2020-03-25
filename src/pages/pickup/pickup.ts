@@ -45,7 +45,7 @@ export class DriverPickupPage {
     //we get the info of the users with navParams
     this.user= this.navParams.get('user');
     this.keyTrip= this.navParams.get('keyTrip'); 
-    this.TripsService.getSpecificUser(this.SignUpService.userPlace, this.keyTrip,this.driverUid,this.user.userId).takeUntil(this.unsubscribe)
+    this.TripsService.getSpecificUser(this.keyTrip,this.driverUid,this.user.userId).takeUntil(this.unsubscribe)
       .subscribe((user)=>{
         user
         if(user === undefined || user === null){
@@ -54,7 +54,7 @@ export class DriverPickupPage {
         }
       })
 
-      this.getPriceOfTrip(this.SignUpService.userPlace, this.driverUid, this.keyTrip);
+      this.getPriceOfTrip( this.driverUid, this.keyTrip);
 
 
        
@@ -83,8 +83,8 @@ export class DriverPickupPage {
   }
 
 
-  getPriceOfTrip(place, driverUid, keyTrip){
-    this.afDB.database.ref(place + '/trips/'+driverUid+'/'+ keyTrip+ '/price/').once('value').then((snapPrice)=>{
+  getPriceOfTrip( driverUid, keyTrip){
+    this.afDB.database.ref( '/tripsTest/'+driverUid+'/'+ keyTrip+ '/price/').once('value').then((snapPrice)=>{
       this.priceOfTrip = snapPrice.val();
       console.log(this.priceOfTrip);
       
@@ -264,14 +264,14 @@ export class DriverPickupPage {
 
     PickUp(){
 
-      this.TripsService.pickUp(this.SignUpService.userPlace, this.keyTrip,this.driverUid,this.user.userId,this.user);
+      this.TripsService.pickUp( this.keyTrip,this.driverUid,this.user.userId,this.user);
 
       // FREE RIDES LOGIC
-      this.afDB.database.ref('/allCities/'+ this.userDriver.city + '/allPlaces/' + this.user.company ).once('value').then((snap)=>{
-        let freeRidesCompany = snap.val().freeRidesNumber;
-        let obj = snap.val().zones;
-        if(freeRidesCompany > 0){
-          this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.user.userId).once('value').then((snapUser)=>{
+      // this.afDB.database.ref('/allCities/'+ this.userDriver.city + '/allPlaces/' + this.user.company ).once('value').then((snap)=>{
+        // let freeRidesCompany = snap.val().freeRidesNumber;
+        // let obj = snap.val().zones;
+        // if(freeRidesCompany > 0){
+          this.afDB.database.ref( '/usersTest/' + this.user.userId).once('value').then((snapUser)=>{
             let personalFreeRidesNumber = snapUser.val().personalFreeRides;
 
               if(personalFreeRidesNumber > 0){
@@ -280,78 +280,68 @@ export class DriverPickupPage {
                  //PAYMENTS LOGIC PASSENGERS
                     // REGLA DE SEGURIDAD PARA ESTO: ES VIOLACIÓN ABSOLUTA
          
-                      Object.getOwnPropertyNames(obj).forEach((key)=>{
-                        if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10 ){
-
-                        }else{
-                          this.afDB.database.ref(obj[key] + '/users/' + this.user.userId + '/pendingToPay/').once('value').then((snapUserPay)=>{
+                   
+                        
+                          this.afDB.database.ref( '/usersTest/' + this.user.userId + '/pendingToPay/').once('value').then((snapUserPay)=>{
                             if(snapUserPay.val()=== undefined || snapUserPay.val() === null){
-                              this.TripsService.sendPaymentInfoOfTripForUser(obj[key], this.user.userId, 0);
+                              this.TripsService.sendPaymentInfoOfTripForUser( this.user.userId, 0);
                               let remainingPersonalFreeRides = personalFreeRidesNumber - 1;
                               console.log(remainingPersonalFreeRides);
-                              let remainingCompanyFreeRides = freeRidesCompany - 1;
-                              console.log(remainingCompanyFreeRides);
-                              this.TripsService.reduceNumberCompanyFreeRides(this.userDriver.city, this.user.company, remainingCompanyFreeRides );
-                              this.TripsService.reduceNumberPersonalFreeRides(obj[key], this.user.userId, remainingPersonalFreeRides);
+                              // let remainingCompanyFreeRides = freeRidesCompany - 1;
+                              // console.log(remainingCompanyFreeRides);
+                              // this.TripsService.reduceNumberCompanyFreeRides(this.userDriver.city, this.user.company, remainingCompanyFreeRides );
+                              this.TripsService.reduceNumberPersonalFreeRides( this.user.userId, remainingPersonalFreeRides);
                             }else{
                               let amountToPayUser = parseInt(snapUserPay.val()) + 0;
-                              this.TripsService.sendPaymentInfoOfTripForUser(obj[key], this.user.userId, amountToPayUser); 
+                              this.TripsService.sendPaymentInfoOfTripForUser( this.user.userId, amountToPayUser); 
                               let remainingPersonalFreeRides = personalFreeRidesNumber - 1;
                               console.log(remainingPersonalFreeRides);
-                              let remainingCompanyFreeRides = freeRidesCompany - 1;
-                              console.log(remainingCompanyFreeRides);
-                              this.TripsService.reduceNumberCompanyFreeRides(this.userDriver.city, this.user.company, remainingCompanyFreeRides );
-                              this.TripsService.reduceNumberPersonalFreeRides(obj[key], this.user.userId, remainingPersonalFreeRides);
+                              // let remainingCompanyFreeRides = freeRidesCompany - 1;
+                              // console.log(remainingCompanyFreeRides);
+                              // this.TripsService.reduceNumberCompanyFreeRides(this.userDriver.city, this.user.company, remainingCompanyFreeRides );
+                              this.TripsService.reduceNumberPersonalFreeRides( this.user.userId, remainingPersonalFreeRides);
                             }
                           })
-                        }
-                      })
+                        
+                 
                     
                     ///////// TERMINA LA VIOLACION
                 
                 
               }else{
-
-                Object.getOwnPropertyNames(obj).forEach((key)=>{
-                  if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10 ){
-
-                  }else{
-                    this.afDB.database.ref(obj[key] + '/users/' + this.user.userId + '/pendingToPay/').once('value').then((snapUserPay)=>{
+                    this.afDB.database.ref( '/usersTest/' + this.user.userId + '/pendingToPay/').once('value').then((snapUserPay)=>{
                       if(snapUserPay.val()=== undefined || snapUserPay.val() === null){
-                        this.TripsService.sendPaymentInfoOfTripForUser(obj[key], this.user.userId, this.priceOfTrip);
+                        this.TripsService.sendPaymentInfoOfTripForUser( this.user.userId, this.priceOfTrip);
                 
                       }else{
                         let amountToPayUser = parseInt(snapUserPay.val()) + parseInt(this.priceOfTrip);
-                        this.TripsService.sendPaymentInfoOfTripForUser(obj[key], this.user.userId, amountToPayUser); 
+                        this.TripsService.sendPaymentInfoOfTripForUser( this.user.userId, amountToPayUser); 
                       }
                     })
                   }
-                })
-
-              }
-          
           })
-        }else{
-          console.log('no hay viaje gratis');
+        // }
+        // else{
+          // console.log('no hay viaje gratis');
 
-          Object.getOwnPropertyNames(obj).forEach((key)=>{
-            if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10 ){
+          // Object.getOwnPropertyNames(obj).forEach((key)=>{
+          //   if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10 ){
 
-            }else{
-              this.afDB.database.ref(obj[key] + '/users/' + this.user.userId + '/pendingToPay/').once('value').then((snapUserPay)=>{
-                if(snapUserPay.val()=== undefined || snapUserPay.val() === null){
-                  this.TripsService.sendPaymentInfoOfTripForUser(obj[key], this.user.userId, this.priceOfTrip);
+          //   }else{
+          //     this.afDB.database.ref(obj[key] + '/users/' + this.user.userId + '/pendingToPay/').once('value').then((snapUserPay)=>{
+          //       if(snapUserPay.val()=== undefined || snapUserPay.val() === null){
+          //         this.TripsService.sendPaymentInfoOfTripForUser( this.user.userId, this.priceOfTrip);
           
-                }else{
-                  let amountToPayUser = parseInt(snapUserPay.val()) + parseInt(this.priceOfTrip);
-                  this.TripsService.sendPaymentInfoOfTripForUser(obj[key], this.user.userId, amountToPayUser); 
-                }
-              })
-            }
-          })
+          //       }else{
+          //         let amountToPayUser = parseInt(snapUserPay.val()) + parseInt(this.priceOfTrip);
+          //         this.TripsService.sendPaymentInfoOfTripForUser( this.user.userId, amountToPayUser); 
+          //       }
+          //     })
+          //   }
+          // })
           
-        }
-      })
+        // }
+      // })
 
       ///////
 
@@ -372,26 +362,26 @@ export class DriverPickupPage {
       })
 
       // 2. KMS SAVED ON THAT SPECIFIC COMPANY BY PASSENGERS GLOBAL
-      this.afDB.database.ref('/data/kmsSavedByPassengers/'+ this.user.company + '/savedKM/' ).once('value').then((snap)=>{
-        let currentKM = snap.val();
+      // this.afDB.database.ref('/data/kmsSavedByPassengers/'+ this.user.company + '/savedKM/' ).once('value').then((snap)=>{
+      //   let currentKM = snap.val();
 
-        if(currentKM === undefined || currentKM === null){
-          this.TripsService.addSavedKMGlobalPassengers(this.userDriver.company, this.user.distance);
-        }else{
-          let savedKM = currentKM + this.user.distance;
-          this.TripsService.addSavedKMGlobalPassengers(this.userDriver.company, savedKM);
-        }
-      })
+      //   if(currentKM === undefined || currentKM === null){
+      //     this.TripsService.addSavedKMGlobalPassengers(this.userDriver.company, this.user.distance);
+      //   }else{
+      //     let savedKM = currentKM + this.user.distance;
+      //     this.TripsService.addSavedKMGlobalPassengers(this.userDriver.company, savedKM);
+      //   }
+      // })
 
 
-      // 3. KMS SAVED BY EACH POOLER OF A SPECIFIC COMPANY
-      this.afDB.database.ref('data/allTrips/'+this.userDriver.company+'/'+this.driverUid+'/savedKM/').once('value').then((snap)=>{
+      // 3. KMS SAVED BY EACH POOLER 
+      this.afDB.database.ref('data/allTrips/'+'/'+this.driverUid+'/savedKM/').once('value').then((snap)=>{
         if(snap.val() === null || snap.val() === undefined ){
-          this.afDB.database.ref('data/allTrips/'+this.userDriver.company+'/'+this.driverUid).update({
+          this.afDB.database.ref('data/allTrips/'+'/'+this.driverUid).update({
             savedKM: this.user.distance
           })
         }else{
-          this.afDB.database.ref('data/allTrips/'+this.userDriver.company+'/'+this.driverUid).update({
+          this.afDB.database.ref('data/allTrips/'+'/'+this.driverUid).update({
             savedKM: snap.val() + this.user.distance
           })
         }
@@ -399,14 +389,14 @@ export class DriverPickupPage {
 
 
 
-      // 4. KMS SAVED BY EACH PASSENGER OF A SPECIFIC COMPANY
-      this.afDB.database.ref('data/kmsSavedByPassengers/'+this.user.company+'/'+this.user.userId+'/savedKM/').once('value').then((snap)=>{
+      // 4. KMS SAVED BY EACH PASSENGER 
+      this.afDB.database.ref('data/kmsSavedByPassengers/'+'/'+this.user.userId+'/savedKM/').once('value').then((snap)=>{
         if(snap.val() === null || snap.val() === undefined ){
-          this.afDB.database.ref('data/kmsSavedByPassengers/'+this.user.company+'/'+this.user.userId).update({
+          this.afDB.database.ref('data/kmsSavedByPassengers/'+'/'+this.user.userId).update({
             savedKM: this.user.distance
           })
         }else{
-          this.afDB.database.ref('data/kmsSavedByPassengers/'+this.user.company+'/'+this.user.userId).update({
+          this.afDB.database.ref('data/kmsSavedByPassengers/'+'/'+this.user.userId).update({
             savedKM: snap.val() + this.user.distance
           })
         }
@@ -419,7 +409,7 @@ export class DriverPickupPage {
 
       //////// TERMINAR REGLA DE SEGURIDAD ////////
 
-      this.TripsService.eliminatePendingUsers(this.SignUpService.userPlace, this.keyTrip,this.driverUid,this.user.userId);
+      this.TripsService.eliminatePendingUsers( this.keyTrip,this.driverUid,this.user.userId);
       // this.sendCoordsService.pushPriceOnUser(this.useruid,this.user.userId,this.userDriver.trips.price);
       this.presentToast(`Acabas de recoger a ${this.user.name}, ¡Salúdalo por nosotros!`,4000,'top');
       // this.sendCoordsService.pickUpInstance(this.user.userId);
@@ -435,44 +425,36 @@ export class DriverPickupPage {
 
 
       //PAYMENTS LOGIC POOLERS
-      this.afDB.database.ref('allCities/' + this.userDriver.city + '/allPlaces/' + this.userDriver.company).once('value').then((snapFee)=>{
+      this.afDB.database.ref('allCities/' + this.userDriver.city).once('value').then((snapFee)=>{
         const amountToCharge = snapFee.val().feeAmount;
         if(snapFee.val().feeActive === true){
 
-          let obj = snapFee.val().zones
-          Object.getOwnPropertyNames(obj).forEach((key)=>{
-            if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10 ){
-
-            }else{
-              this.afDB.database.ref(obj[key] + '/drivers/' + this.driverUid + '/pendingToReceive/').once('value').then((snap)=>{
+          // let obj = snapFee.val().zones
+          
+              this.afDB.database.ref( '/driversTest/' + this.driverUid + '/pendingToReceive/').once('value').then((snap)=>{
                 if(snap.val() === null || snap.val() === undefined){
                   this.amountToReceive = parseInt(this.priceOfTrip) - (parseInt(this.priceOfTrip) * amountToCharge)
                 }else{
                   this.amountToReceive = (parseInt(snap.val())  + parseInt(this.priceOfTrip)) - (parseInt(this.priceOfTrip) * amountToCharge);
                 }
-                this.TripsService.sendPaymentInfoOfTrip(obj[key], this.driverUid, this.amountToReceive);
+                this.TripsService.sendPaymentInfoOfTrip( this.driverUid, this.amountToReceive);
         
               })
-            }
-          })
+            
+        
       }else{
-
-        let obj = snapFee.val().zones
-        Object.getOwnPropertyNames(obj).forEach((key)=>{
-          if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10 ){
-
-          }else{
-            this.afDB.database.ref(obj[key] + '/drivers/' + this.driverUid + '/pendingToReceive/').once('value').then((snap)=>{
+      
+            this.afDB.database.ref( '/driversTest/' + this.driverUid + '/pendingToReceive/').once('value').then((snap)=>{
               if(snap.val() === null || snap.val() === undefined){
                 this.amountToReceive = this.priceOfTrip;
               }else{
                 this.amountToReceive = parseInt(snap.val())  + parseInt(this.priceOfTrip);
               }
-              this.TripsService.sendPaymentInfoOfTrip(obj[key], this.driverUid, this.amountToReceive);
+              this.TripsService.sendPaymentInfoOfTrip( this.driverUid, this.amountToReceive);
       
             })
-          }
-        })
+          
+        
       }
    })
 }

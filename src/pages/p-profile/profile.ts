@@ -24,7 +24,7 @@ userUid=this.AngularFireAuth.auth.currentUser.uid;
 user:any={};
 unsubscribe = new Subject
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,public toastCtrl: ToastController,public alertCtrl:AlertController, public AngularFireAuth:AngularFireAuth,private authenticationService: authenticationService,public SignupService:SignUpService, private afDB: AngularFireDatabase) {  
-    this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
+    this.SignupService.getMyInfoForProfile( this.userUid).takeUntil(this.unsubscribe).subscribe(user=>{
       this.user= user;
       
         console.log(this.user)
@@ -45,36 +45,36 @@ unsubscribe = new Subject
             
             this.navCtrl.pop();
           }else if(this.phone == null && this.user.about == null && this.user.url != null){
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
+            this.SignupService.saveInfoProfileUrl( this.userUid,this.user.url);
             
             this.navCtrl.pop();
           }else if(this.phone == null && this.user.about != null && this.user.url == null){
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
+            this.SignupService.saveInfoProfileAbout( this.userUid,this.user.about);
             
             this.navCtrl.pop();
           }else if(this.phone != null && this.user.about == null && this.user.url == null){
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid,this.phone);
+            this.SignupService.saveInfoProfilePhone( this.userUid,this.phone);
             
             this.navCtrl.pop();
           }else if(this.phone != null && this.user.about != null && this.user.url == null){
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid,this.phone);
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
+            this.SignupService.saveInfoProfilePhone( this.userUid,this.phone);
+            this.SignupService.saveInfoProfileAbout( this.userUid,this.user.about);
             
             this.navCtrl.pop();
           }else if(this.phone != null && this.user.about == null && this.user.url != null){
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid,this.phone);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
+            this.SignupService.saveInfoProfilePhone( this.userUid,this.phone);
+            this.SignupService.saveInfoProfileUrl( this.userUid,this.user.url);
             
             this.navCtrl.pop();
           }else if(this.phone == null && this.user.about != null && this.user.url != null){
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
+            this.SignupService.saveInfoProfileAbout( this.userUid,this.user.about);
+            this.SignupService.saveInfoProfileUrl( this.userUid,this.user.url);
             
             this.navCtrl.pop(); 
           }else if(this.phone != null && this.user.about != null && this.user.url != null){
-            this.SignupService.saveInfoProfileAbout(this.SignupService.userPlace, this.userUid,this.user.about);
-            this.SignupService.saveInfoProfileUrl(this.SignupService.userPlace, this.userUid,this.user.url);
-            this.SignupService.saveInfoProfilePhone(this.SignupService.userPlace, this.userUid, this.phone);
+            this.SignupService.saveInfoProfileAbout( this.userUid,this.user.about);
+            this.SignupService.saveInfoProfileUrl( this.userUid,this.user.url);
+            this.SignupService.saveInfoProfilePhone( this.userUid, this.phone);
             
             this.navCtrl.pop();
           }else{
@@ -115,9 +115,8 @@ unsubscribe = new Subject
              
               this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company + '/zones').once('value').then((snap)=>{
                 let obj = snap.val();
-                Object.getOwnPropertyNames(obj).forEach((key)=>{
-                  this.SignupService.deleteAccount(obj[key], this.userUid); 
-                })
+                this.SignupService.deleteAccount( this.userUid); 
+      
               }).then(()=>{
                 this.AngularFireAuth.auth.currentUser.delete().then(()=>{
                   console.log('user has been deleted');

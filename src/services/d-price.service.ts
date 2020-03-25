@@ -65,8 +65,8 @@ export class DriverPriceService {
 
 
 
-       sendPaymentInfo(place, driverId, id, bankAccount, bankEntity){
-        this.afDB.database.ref(place + '/drivers/' + driverId).update({
+       sendPaymentInfo( driverId, id, bankAccount, bankEntity){
+        this.afDB.database.ref( '/driversTest/' + driverId).update({
           idNumber: id,
           bankAccount: bankAccount,
           bankEntity: bankEntity

@@ -1,7 +1,7 @@
 <ion-content>
     <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>
     <ion-card>
-        <h6 class="text-theme">Detalles de la Reserva</h6>
+        <h6 class="text-theme">Trip Details</h6>
         <ion-item>
             <ion-avatar item-start>
                 <img src="assets/imgs/userPicture.png">
@@ -15,11 +15,11 @@
         </ion-item>
         <ion-card-content>
             <div class="ride-detail">
-                <p><small>Origen</small>
-                    <span class="icon-location bg-theme"></span>{{reserve.houseAddr}}</p>
+                <p><small>Pick up</small>
+                    <span class="icon-location bg-theme"></span>{{reserve.origin[0]}}</p>
                 <p>
-                    <small>Destino</small>
-                    <span class="icon-location bg-yellow"></span>{{reserve.placeAddr}}</p>
+                    <small>Drop off</small>
+                    <span class="icon-location bg-yellow"></span>{{reserve.destination[0]}}</p>
             </div>
         </ion-card-content>
 
@@ -34,7 +34,7 @@
                     
                 </ion-row>
             </div>
-                <button class="btn bg-theme text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">CONFIRMAR CONDUCTOR</button>
+                <button class="btn bg-theme text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">CONFIRM DRIVER</button>
                 <p  text-center *ngIf="hideText">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> 
         </ion-card-content>
     </ion-card>

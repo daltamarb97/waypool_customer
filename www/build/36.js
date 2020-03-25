@@ -1,6 +1,6 @@
 webpackJsonp([36],{
 
-/***/ 692:
+/***/ 695:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyridePageModule", function() { return MyridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myride__ = __webpack_require__(886);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myride__ = __webpack_require__(890);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var MyridePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 886:
+/***/ 890:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -109,9 +109,9 @@ var MyridePage = /** @class */ (function () {
         this.driverExist = false;
         this.onTrip = false;
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_8_rxjs__["Subject"];
-        this.TripsService.getKeyTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+        this.TripsService.getKeyTrip(this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (keys) {
-            console.log(_this.SignUpService.userPlace);
+            // console.log(this.SignUpService.userPlace);
             _this.keyTrip = keys;
             console.log(_this.keyTrip.keyTrip);
             if (_this.keyTrip === undefined || _this.keyTrip === null) {
@@ -137,7 +137,7 @@ var MyridePage = /** @class */ (function () {
                 _this.navCtrl.pop();
                 var modal = _this.modalCtrl.create('CanceltripPage');
                 modal.present();
-                _this.TripsService.eliminatingCancelTrip(_this.SignUpService.userPlace, _this.userUid);
+                _this.TripsService.eliminatingCancelTrip(_this.userUid);
                 _this.MetricsService.cancelReserves(_this.userUid, _this.trip);
             }
             //save trip
@@ -160,7 +160,7 @@ var MyridePage = /** @class */ (function () {
         console.log(this.trip);
         // this.getTripState(keyTrip,driverId);
         console.log(this.keyTrip);
-        this.TripsService.getTrip(this.SignUpService.userPlace, keyTrip, driverId).takeUntil(this.unsubscribe)
+        this.TripsService.getTrip(keyTrip, driverId).takeUntil(this.unsubscribe)
             .subscribe(function (info) {
             //check if the info of the reserve is null  
             if (_this.keyTrip.keyTrip === undefined || _this.keyTrip.keyTrip === null) {
@@ -188,12 +188,12 @@ var MyridePage = /** @class */ (function () {
     };
     MyridePage.prototype.getPendingAndPickedUpUsers = function (keyTrip, driverId) {
         var _this = this;
-        this.TripsService.getPendingUsers(this.SignUpService.userPlace, keyTrip, driverId).takeUntil(this.unsubscribe)
+        this.TripsService.getPendingUsers(keyTrip, driverId).takeUntil(this.unsubscribe)
             .subscribe(function (user) {
             _this.pendingUsers = user;
             console.log(_this.pendingUsers);
         });
-        this.TripsService.getPickedUpUsers(this.SignUpService.userPlace, keyTrip, driverId).takeUntil(this.unsubscribe)
+        this.TripsService.getPickedUpUsers(keyTrip, driverId).takeUntil(this.unsubscribe)
             .subscribe(function (user) {
             _this.pickedUpUsers = user;
             console.log(_this.pickedUpUsers);
@@ -242,21 +242,21 @@ var MyridePage = /** @class */ (function () {
                         if (_this.pickedUpUsers.length === 0 || _this.pickedUpUsers === undefined || _this.pickedUpUsers === null) {
                             _this.unSubscribeServices();
                             _this.MetricsService.cancelReserves(_this.userUid, _this.trip);
-                            _this.TripsService.cancelTrip(_this.SignUpService.userPlace, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
-                            _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
-                            _this.TripsService.eliminatingOnTrip(_this.SignUpService.userPlace, _this.userUid);
+                            _this.TripsService.cancelTrip(_this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
+                            _this.TripsService.eliminateKeyTrip(_this.userUid);
+                            _this.TripsService.eliminatingOnTrip(_this.userUid);
                             _this.TripsService.eliminateAvailableReserves(_this.userUid);
                             _this.navCtrl.pop();
                         }
-                        _this.reservesService.confirmMyExistenceInPickedupUsers(_this.SignUpService.userPlace, _this.trip.driver.userId, _this.trip.keyTrip, _this.userUid).takeUntil(_this.unsubscribe)
+                        _this.reservesService.confirmMyExistenceInPickedupUsers(_this.trip.driver.userId, _this.trip.keyTrip, _this.userUid).takeUntil(_this.unsubscribe)
                             .subscribe(function (pickedUp) {
                             _this.pickedUp = pickedUp;
                             console.log(_this.pickedUp);
                             console.log(pickedUp);
                             if (_this.pickedUp === undefined || _this.pickedUp === null) {
                                 _this.MetricsService.cancelReserves(_this.userUid, _this.trip);
-                                _this.TripsService.cancelTrip(_this.SignUpService.userPlace, _this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
-                                _this.TripsService.eliminateKeyTrip(_this.SignUpService.userPlace, _this.userUid);
+                                _this.TripsService.cancelTrip(_this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
+                                _this.TripsService.eliminateKeyTrip(_this.userUid);
                                 _this.TripsService.eliminateAvailableReserves(_this.userUid);
                                 console.log(_this.trip.keyTrip);
                                 _this.navCtrl.pop();
@@ -279,7 +279,7 @@ var MyridePage = /** @class */ (function () {
     };
     MyridePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-myride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-myride/myride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar hideBackButton="true">\n        <ion-title class="text-center">MI VIAJE</ion-title>\n    </ion-navbar>\n    \n</ion-header>\n\n<ion-content class="bg-light">\n    <p class="important">¡IMPORTANTE!: Después del viaje NO hay intercambio de efectivo.</p> \n\n    <div>\n        <ion-list>\n            <ion-card *ngFor = "let user of pendingUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock "> Yo\n                            <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                        </h2>\n                        <ng-template #itsNotMeBlock >\n                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}\n                                <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                            </h2>\n                            <p>{{user.company}}</p>\n\n                        </ng-template>\n                        \n                    </div>                   \n                    <div class="more">\n                        <ion-badge class="bg-yellow">EN ESPERA</ion-badge>\n                    </div>\n                </ion-item>\n                \n            </ion-card>\n            <ion-card *ngFor = "let user of pickedUpUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock " style="font-size:1.5rem; "> Yo\n                            <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>\n                        </h2>\n                        <ng-template #itsNotMeBlock >\n                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}\n                                <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-green"></ion-icon>                           \n                            </h2>\n                            <p>{{user.company}}</p>\n\n                        </ng-template>\n                        \n                    </div>\n                    <div class="more">\n                        <ion-badge class="bg-green">RECOGIDO</ion-badge>  \n                    </div>\n                   \n                </ion-item>\n                \n            </ion-card>\n\n            <!-- repilica -->\n            <ion-card *ngIf="driverExist">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{trip.driver.name|titlecase}} {{trip.driver.lastname |titlecase }}\n                            <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                        </h2>\n                        \n                        <p>{{trip.car}}</p>\n                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n\n                    </div>\n                    <div class="more">\n                        <h2 class="text-theme" class="priceDriver">$ {{trip.price}}\n                        </h2>\n                    </div>                \n                   \n                </ion-item>\n                <ion-card-content>\n                    <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{trip.houseAddr}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n                    </div>\n                    <ion-row>\n                      \n                            <h2 class="text text-theme" style=" display: flex; align-items: center; font-weight:600">                        \n                                Hora de partida: {{trip.startHour}}                          \n                            </h2>                    \n                          \n                       \n                            <ion-col class="detail-text">\n                                <button class="btn bg-green rounded full text-white" style="    width: 44px;\n                                font-size: 21px;" (click)="callUser(trip.driver.phone)"><ion-icon name="ios-call" class="text-white"></ion-icon></button>\n\n                            </ion-col>\n                      \n                   \n                    </ion-row>\n                </ion-card-content>\n            </ion-card>    \n            <ion-row class="rowOfButtons" >                                 \n                \n                <ion-col class="detail-text">\n                    <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>\n                </ion-col>\n                <ion-col class="detail-text">\n                    <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 9px; margin-right:9px;">Cancelar Viaje</button>\n                </ion-col>\n           \n            </ion-row>\n\n        </ion-list>\n\n        <!-- <div *ngSwitchCase="\'map\'">\n           <div #map id="map" ></div>\n        </div> -->\n             \n\n        \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-myride/myride.html"*/
+            selector: 'page-myride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-myride/myride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar hideBackButton="true">\n        <ion-title class="text-center">ON TRIP</ion-title>\n    </ion-navbar>\n    \n</ion-header>\n\n<ion-content class="bg-light">\n    <!-- <p class="important">¡IMPORTANTE!: Después del viaje NO hay intercambio de efectivo.</p>  -->\n\n    <div>\n        <ion-list>\n            <ion-card *ngFor = "let user of pendingUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock "> Me\n                            <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                        </h2>\n                        <ng-template #itsNotMeBlock >\n                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}\n                                <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                            </h2>\n                            <p>{{user.company}}</p>\n\n                        </ng-template>\n                        \n                    </div>                   \n                    <div class="more">\n                        <ion-badge class="bg-yellow">WAITING</ion-badge>\n                    </div>\n                </ion-item>\n                \n            </ion-card>\n            <ion-card *ngFor = "let user of pickedUpUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock " style="font-size:1.5rem; "> Me\n                            <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>\n                        </h2>\n                        <ng-template #itsNotMeBlock >\n                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}\n                                <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-green"></ion-icon>                           \n                            </h2>\n                            <p>{{user.company}}</p>\n\n                        </ng-template>\n                        \n                    </div>\n                    <div class="more">\n                        <ion-badge class="bg-green">PICKED UP</ion-badge>  \n                    </div>\n                   \n                </ion-item>\n                \n            </ion-card>\n\n            <!-- repilica -->\n            <ion-card *ngIf="driverExist">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{trip.driver.name|titlecase}} {{trip.driver.lastname |titlecase }}\n                            <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                        </h2>\n                        \n                        <p>{{trip.car}}</p>\n                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n\n                    </div>\n                    <div class="more">\n                        <h2 class="text-theme" class="priceDriver">$ {{trip.price}}\n                        </h2>\n                    </div>                \n                   \n                </ion-item>\n                <ion-card-content>\n                    <!-- <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{trip.origin[0]}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>\n                    </div> -->\n                    <ion-row>\n                      \n                            <!-- <h2 class="text text-theme" style=" display: flex; align-items: center; font-weight:600">                        \n                                Hora de partida: {{trip.startHour}}                          \n                                \n                            </h2>                     -->\n\n                            <ion-col>\n                                <div class="ride-detail">\n                                    <p>\n                                        <span class="icon-location bg-theme"></span>{{trip.origin[0]}}</p>\n                                    <p>\n                                        <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>\n                                </div>\n                            </ion-col>\n                          \n                       \n                            <ion-col class="detail-text">\n                                <button class="btn bg-green rounded full text-white" style="    width: 44px;\n                                font-size: 21px;" (click)="callUser(trip.driver.phone)"><ion-icon name="ios-call" class="text-white"></ion-icon></button>\n\n                            </ion-col>\n                      \n                   \n                    </ion-row>\n                </ion-card-content>\n            </ion-card>    \n            <ion-row class="rowOfButtons" >                                 \n                \n                <ion-col class="detail-text">\n                    <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>\n                </ion-col>\n                <ion-col class="detail-text">\n                    <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 9px; margin-right:9px;">Cancel Trip</button>\n                </ion-col>\n           \n            </ion-row>\n\n        </ion-list>\n\n        <!-- <div *ngSwitchCase="\'map\'">\n           <div #map id="map" ></div>\n        </div> -->\n             \n\n        \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-myride/myride.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_11__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_7__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_2__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_9__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_10_angularfire2_database__["AngularFireDatabase"]])
     ], MyridePage);

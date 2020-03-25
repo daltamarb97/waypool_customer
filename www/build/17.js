@@ -1,6 +1,6 @@
 webpackJsonp([17],{
 
-/***/ 695:
+/***/ 682:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverSchedulePageModule", function() { return DriverSchedulePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__schedule__ = __webpack_require__(889);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__schedule__ = __webpack_require__(873);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var DriverSchedulePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 889:
+/***/ 873:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -109,18 +109,18 @@ var DriverSchedulePage = /** @class */ (function () {
         console.log(this.defaultZone);
         this.userId = this.angularFireAuth.auth.currentUser.uid;
         if (this.defaultZone) {
-            this.signUpService.userPlace = this.defaultZone;
+            // this.signUpService.userPlace = this.defaultZone;
         }
         else {
         }
-        this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then(function (snap) {
+        this.afDB.database.ref('/driversTest/' + this.userId).once('value').then(function (snap) {
             _this.userInfo = snap.val();
         });
-        this.signUpService.getSchedule(this.signUpService.userPlace, this.userId).subscribe(function (hour) {
+        this.signUpService.getSchedule(this.userId).subscribe(function (hour) {
             _this.schedules = hour;
             console.log(_this.schedules);
             if (_this.schedules.length !== 0) {
-                _this.afDB.database.ref(_this.signUpService.userPlace + '/drivers/' + _this.userId + '/scheduleType/').once('value').then(function (snap) {
+                _this.afDB.database.ref('/driversTest/' + _this.userId + '/scheduleType/').once('value').then(function (snap) {
                     if (snap.val() === 'picture') {
                     }
                     else {
@@ -135,9 +135,8 @@ var DriverSchedulePage = /** @class */ (function () {
     }
     DriverSchedulePage.prototype.makeSchedule = function () {
         var _this = this;
-        console.log(this.signUpService.userPlace);
         console.log(this.userId);
-        this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then(function (snap) {
+        this.afDB.database.ref('/driversTest/' + this.userId).once('value').then(function (snap) {
             if (snap.val().toggleStatus === 'online') {
                 var alert_1 = _this.alertCtrl.create({
                     title: 'Para añadir un nuevo horario debes estar offline',
@@ -165,7 +164,7 @@ var DriverSchedulePage = /** @class */ (function () {
     };
     DriverSchedulePage.prototype.removeTime = function (sche) {
         var _this = this;
-        this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then(function (snap) {
+        this.afDB.database.ref('/driversTest/' + this.userId).once('value').then(function (snap) {
             if (snap.val().toggleStatus === 'online') {
                 var alert_2 = _this.alertCtrl.create({
                     title: 'Para eliminar este horario debes estar offline',
@@ -196,13 +195,7 @@ var DriverSchedulePage = /** @class */ (function () {
         this.camera.getPicture(this.optionsCamera).then(function (imageData) {
             _this.afDB.database.ref('allCities/' + _this.userInfo.city + '/allPlaces/' + _this.userInfo.company + '/zones').once('value').then(function (snap) {
                 var obj = snap.val();
-                Object.getOwnPropertyNames(obj).forEach(function (key) {
-                    if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                    }
-                    else {
-                        _this.instances.scheduleTypePicture(obj[key], _this.userId);
-                    }
-                });
+                _this.instances.scheduleTypePicture(_this.userId);
             });
             var loading = _this.loadingCtrl.create({
                 spinner: 'crescent',
@@ -255,16 +248,7 @@ var DriverSchedulePage = /** @class */ (function () {
             var pictureSchedule = Object(__WEBPACK_IMPORTED_MODULE_5_firebase__["storage"])().ref(_this.userInfo.company + '/schedules/' + _this.userId);
             pictureSchedule.putString(base64Image, 'data_url').then(function () {
                 loading.dismiss();
-                _this.afDB.database.ref('allCities/' + _this.userInfo.city + '/allPlaces/' + _this.userInfo.company + '/zones').once('value').then(function (snap) {
-                    var obj = snap.val();
-                    Object.getOwnPropertyNames(obj).forEach(function (key) {
-                        if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                        }
-                        else {
-                            _this.instances.scheduleTypePicture(obj[key], _this.userId);
-                        }
-                    });
-                });
+                _this.instances.scheduleTypePicture(_this.userId);
                 var alert = _this.alertCtrl.create({
                     title: '¡HECHO!',
                     subTitle: 'ya tenemos tu horario, en las próximas horas empezarás a recibir solicitudes de compañeros de viaje',
@@ -296,18 +280,8 @@ var DriverSchedulePage = /** @class */ (function () {
         });
     };
     DriverSchedulePage.prototype.goFindride = function () {
-        var _this = this;
         this.skipSchedule();
-        this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then(function (snap) {
-            var obj = snap.val();
-            Object.getOwnPropertyNames(obj).forEach(function (key) {
-                if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                }
-                else {
-                    _this.instances.scheduleTypeManual(obj[key], _this.userId);
-                }
-            });
-        });
+        this.instances.scheduleTypeManual(this.userId);
     };
     DriverSchedulePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({

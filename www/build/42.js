@@ -1,6 +1,6 @@
 webpackJsonp([42],{
 
-/***/ 658:
+/***/ 660:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmpopupPageModule", function() { return ConfirmpopupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmpopup__ = __webpack_require__(848);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmpopup__ = __webpack_require__(851);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var ConfirmpopupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 848:
+/***/ 851:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105,14 +105,14 @@ var ConfirmpopupPage = /** @class */ (function () {
             .subscribe(function (myUserInfo) {
             _this.user = myUserInfo;
             console.log(_this.user);
-            _this.afDB.database.ref('allCities/' + _this.user.city + '/allPlaces/' + _this.user.company).once('value').then(function (snapUser) {
-                if (snapUser.val().freeRidesNumber > 0) {
-                    _this.freeRidesCompany = true;
-                }
-            });
+            //  this.afDB.database.ref('allCities/' + this.user.city + '/allPlaces/' + this.user.company).once('value').then((snapUser)=>{
+            //    if(snapUser.val().freeRidesNumber > 0){
+            //     this.freeRidesCompany = true;
+            //    }
+            //  })
         });
         // function to get in how many reserves I am
-        this.SignUpService.checkMyReserves(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+        this.SignUpService.checkMyReserves(this.userUid).takeUntil(this.unsubscribe)
             .subscribe(function (reserves) {
             _this.reservesWhereIam = reserves;
             console.log(_this.reservesWhereIam);
@@ -129,7 +129,7 @@ var ConfirmpopupPage = /** @class */ (function () {
             alert_1.present();
         }
         else {
-            if (this.user.personalFreeRides && this.freeRidesCompany === true) {
+            if (this.user.personalFreeRides) {
                 var alert_2 = this.alertCtrl.create({
                     title: 'ESTE SERÁ UN VIAJE GRATIS',
                     subTitle: 'Siempre que veas este mensaje significa que no pagarás nada por el viaje al que te uniste',
@@ -137,8 +137,8 @@ var ConfirmpopupPage = /** @class */ (function () {
                             text: 'OK',
                             handler: function () {
                                 console.log(_this.reserve.keyTrip);
-                                _this.geoFireService.joinReserve(_this.SignUpService.userPlace, _this.user.company, _this.reserve.keyTrip, _this.reserve.driver.userId, _this.userUid, _this.user.trips.origin, _this.user.trips.destination, _this.user.name, _this.user.lastname, _this.user.phone, _this.user.trips.distanceToGoInKM, _this.user.verifiedPerson);
-                                _this.geoFireService.pushToMyReserve(_this.SignUpService.userPlace, _this.reserve.keyTrip, _this.reserve.driver.userId, _this.userUid);
+                                _this.geoFireService.joinReserve(_this.user.company, _this.reserve.keyTrip, _this.reserve.driver.userId, _this.userUid, _this.user.trips.origin, _this.user.trips.destination, _this.user.name, _this.user.lastname, _this.user.phone, _this.user.trips.distanceToGoInKM, _this.user.verifiedPerson);
+                                _this.geoFireService.pushToMyReserve(_this.reserve.keyTrip, _this.reserve.driver.userId, _this.userUid);
                                 _this.hideButton = !_this.hideButton;
                                 _this.hideText = !_this.hideText;
                                 _this.accepted = true;
@@ -156,8 +156,8 @@ var ConfirmpopupPage = /** @class */ (function () {
             }
             else {
                 console.log(this.reserve.keyTrip);
-                this.geoFireService.joinReserve(this.SignUpService.userPlace, this.user.company, this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
-                this.geoFireService.pushToMyReserve(this.SignUpService.userPlace, this.reserve.keyTrip, this.reserve.driver.userId, this.userUid);
+                this.geoFireService.joinReserve(this.user.company, this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
+                this.geoFireService.pushToMyReserve(this.reserve.keyTrip, this.reserve.driver.userId, this.userUid);
                 this.hideButton = !this.hideButton;
                 this.hideText = !this.hideText;
                 this.accepted = true;
@@ -186,7 +186,7 @@ var ConfirmpopupPage = /** @class */ (function () {
     };
     ConfirmpopupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirmpopup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmpopup/confirmpopup.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>\n    <ion-card>\n        <h6 class="text-theme">Detalles de la Reserva</h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{reserve.driver.name|titlecase }} {{reserve.driver.lastname|titlecase }}\n                <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                </h2>\n                <p>{{reserve.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen</small>\n                    <span class="icon-location bg-theme"></span>{{reserve.houseAddr}}</p>\n                <p>\n                    <small>Destino</small>\n                    <span class="icon-location bg-yellow"></span>{{reserve.placeAddr}}</p>\n            </div>\n        </ion-card-content>\n\n        \n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{reserve.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-theme text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">CONFIRMAR CONDUCTOR</button>\n                <p  text-center *ngIf="hideText">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmpopup/confirmpopup.html"*/
+            selector: 'page-confirmpopup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmpopup/confirmpopup.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>\n    <ion-card>\n        <h6 class="text-theme">Trip Details</h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{reserve.driver.name|titlecase }} {{reserve.driver.lastname|titlecase }}\n                <ion-icon  *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                </h2>\n                <p>{{reserve.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Pick up</small>\n                    <span class="icon-location bg-theme"></span>{{reserve.origin[0]}}</p>\n                <p>\n                    <small>Drop off</small>\n                    <span class="icon-location bg-yellow"></span>{{reserve.destination[0]}}</p>\n            </div>\n        </ion-card-content>\n\n        \n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{reserve.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-theme text-white rounded" (click)="goToRide()" *ngIf="hideButton" style="width: 100%;margin-top: 14px;">CONFIRM DRIVER</button>\n                <p  text-center *ngIf="hideText">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmpopup/confirmpopup.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
     ], ConfirmpopupPage);

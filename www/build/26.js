@@ -1,6 +1,6 @@
 webpackJsonp([26],{
 
-/***/ 671:
+/***/ 673:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VerificationImagesPageModule", function() { return VerificationImagesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verification_images__ = __webpack_require__(861);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verification_images__ = __webpack_require__(864);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var VerificationImagesPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 861:
+/***/ 864:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -141,7 +141,7 @@ var VerificationImagesPage = /** @class */ (function () {
             });
             loading.present();
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_2_firebase__["storage"])().ref(_this.SignUpService.userPlace + '/verificationDocuments/' + _this.user + '/' + _this.data);
+            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_2_firebase__["storage"])().ref('/verificationDocuments/' + _this.user + '/' + _this.data);
             picturesDrivers.putString(base64Image, 'data_url').then(function () {
                 loading.dismiss();
                 var alert = _this.alertCtrl.create({
@@ -162,7 +162,7 @@ var VerificationImagesPage = /** @class */ (function () {
             });
             _this.picToViewCarne = "assets/imgs/v2.2.png";
             _this.picToView = "assets/imgs/v2.2.png";
-            _this.SignUpService.pushDocsCarne(_this.SignUpService.userPlace, _this.user);
+            _this.SignUpService.pushDocsCarne(_this.user);
         }, function (err) {
             console.log(err);
             var alert = _this.alertCtrl.create({
@@ -184,7 +184,7 @@ var VerificationImagesPage = /** @class */ (function () {
             });
             loading.present();
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_2_firebase__["storage"])().ref(_this.SignUpService.userPlace + '/verificationDocuments/' + _this.user + '/' + _this.data);
+            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_2_firebase__["storage"])().ref('/verificationDocuments/' + _this.user + '/' + _this.data);
             picturesDrivers.putString(base64Image, 'data_url').then(function () {
                 loading.dismiss();
                 var alert = _this.alertCtrl.create({
@@ -205,7 +205,7 @@ var VerificationImagesPage = /** @class */ (function () {
             });
             _this.picToViewId = "assets/imgs/v4.2.png";
             _this.picToView = "assets/imgs/v4.2.png";
-            _this.SignUpService.pushDocsId(_this.SignUpService.userPlace, _this.user);
+            _this.SignUpService.pushDocsId(_this.user);
         }, function (err) {
             console.log(err);
             var alert = _this.alertCtrl.create({

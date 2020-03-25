@@ -32,23 +32,24 @@ export class MyApp {
     this.wanttodrive = [{component:'DriverFindridePage'}];
     this.pagesUser = [
       
-      {title:'Mis viajes',component:'ReservetripPage', icon:'md-paper'},
-      {title: 'Billetera', component:'WalletPage',icon:'card'},
-      {title:'Mi perfil',component:'MorePage',icon:'person'},
+      {title:'My commutes',component:'ReservetripPage', icon:'md-paper'},
+      {title: 'Wallet', component:'WalletPage',icon:'card'},
+      {title:'Profile',component:'MorePage',icon:'person'},
       {title:'Soporte',component:'HelpPage',icon:'help'},
-      {title:'Instrucciones',component:'WalkthroughPage',icon:'alert'},
-      {title:'Modo Bicicleta',component:'BikeModePage', icon:'md-bicycle'},
+      {title:'Instructions',component:'WalkthroughPage',icon:'alert'},
+      {title:'Bike Mode',component:'BikeModePage', icon:'md-bicycle'},
+      {title:'Spread the voice',component:'ReferalPage', icon:'logo-whatsapp'},
     ]
 
     this.pagesDriver = [
      
-      {title:'Mis viajes',component:'DriverReservetripPage', icon:'md-paper'},
-      {title: 'Billetera', component:'DriverWalletPage',icon:'card'},
+      {title:'My commutes',component:'DriverReservetripPage', icon:'md-paper'},
+      {title: 'Wallet', component:'DriverWalletPage',icon:'card'},
       {title: 'Horario', component:'DriverSchedulePage',icon:'time'}, 
-      {title:'Mi perfil',component:'DriverMorePage',icon:'person'},
-      {title:'Instrucciones',component:'DriverWalkthroughPage',icon:'alert'},
-      {title:'Modo Bicicleta',component:'BikeModePage', icon:'md-bicycle'},
-      {title:'Pasar a Pasajero',component:'FindridePassPage',icon:'people'},    
+      {title:'Profile',component:'DriverMorePage',icon:'person'},
+      {title:'Instructions',component:'DriverWalkthroughPage',icon:'alert'},
+      {title:'Bike Mode',component:'BikeModePage', icon:'md-bicycle'},
+      {title:'Go to Passenger',component:'FindridePassPage',icon:'people'},    
     ]
 
     

@@ -1,14 +1,14 @@
 <ion-content>
     <ion-card>
-            <img src="assets/imgs/detallesviaje.png" width="100px" style="display:inline-block" height="150px"/>
+            <img src="assets/imgs/picmodales.png" width="100px" style="display:inline-block" height="150px"/>
             <ion-icon name="close-circle" class="close-icon text-white"  (click)="dismiss()"></ion-icon>
 
         <ion-card-content>
             <div class="ride-detail">
-                    <p *ngIf= 'itsSchedule'> Este valor se replicará en todos los viajes en tu horario </p>
+                    <p *ngIf= 'itsSchedule'> The price you set here is the one that every passenger will be paying you at the end of the trip </p>
 
                 <ion-item class="form">
-                    <ion-label floating>Precio Por Persona</ion-label>
+                    <ion-label floating>Price per passenger</ion-label>
                     <ion-input type="number" [(ngModel)]="precio"></ion-input>
                   </ion-item>                
             </div>
@@ -29,7 +29,7 @@
                 justify-content: center">
                    <ion-list>
                         <ion-item>
-                          <ion-label>Escoge el carro:</ion-label>
+                          <ion-label>Choose your car:</ion-label>
                           <ion-select [(ngModel)]="car">
                                 <ion-option *ngFor="let car of carModelList" >{{car.carModel}} | {{car.plateNumber}} | {{car.color}}</ion-option>
                        
@@ -46,7 +46,7 @@
                 justify-content: center">
                    
                     <ion-col col-8>
-                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setPriceDriver()">Conectarme</button>
+                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setPriceDriver()">Go Online</button>
                     </ion-col>
                 </ion-row>
                

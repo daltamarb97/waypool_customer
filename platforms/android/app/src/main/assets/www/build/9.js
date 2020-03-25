@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 684:
+/***/ 688:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DrverVerificationNumberPageModule", function() { return DrverVerificationNumberPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driver_verification_number__ = __webpack_require__(877);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driver_verification_number__ = __webpack_require__(883);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var DrverVerificationNumberPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 877:
+/***/ 883:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82,7 +82,7 @@ var DrverVerificationNumberPage = /** @class */ (function () {
         var _this = this;
         this.authenticationService.deleteResendCode(this.signUpService.userPlace, this.userId);
         this.authenticationService.sendVerificationCodeToFirebase(this.signUpService.userPlace, this.userId, this.confText);
-        this.signUpService.getMyInfo(this.signUpService.userPlace, this.userId).subscribe(function (driver) {
+        this.signUpService.getMyInfo(this.userId).subscribe(function (driver) {
             _this.driverInfo = driver;
             if (_this.driverInfo.verificationCodeApproval === true) {
                 _this.app.getRootNav().push('LoginPage');

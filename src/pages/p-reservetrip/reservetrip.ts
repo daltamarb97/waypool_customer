@@ -46,7 +46,7 @@ export class ReservetripPage{
   constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService,public loadingCtrl: LoadingController, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
     
 
-    this.reservesService.getOnTrip(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+    this.reservesService.getOnTrip( this.userUid).takeUntil(this.unsubscribe)
     .subscribe( onTrip => {
        this.onTrip = onTrip;   
        console.log(this.onTrip);
@@ -56,10 +56,11 @@ export class ReservetripPage{
         this.unSubscribeServices();
         this.navCtrl.pop();
 
-        this.geofireService.cancelGeofireDest();
-        this.geofireService.cancelGeofireOr();
-        this.geofireService.cancelGeofireDestLMU();
-        this.geofireService.cancelGeofireOrLMU();
+        //NO LONGER NECESSARY
+        // this.geofireService.cancelGeofireDest();
+        // this.geofireService.cancelGeofireOr();
+        // this.geofireService.cancelGeofireDestLMU();
+        // this.geofireService.cancelGeofireOrLMU();
         console.log("repetire");
         
         this.navCtrl.push('MyridePage');
@@ -71,7 +72,7 @@ export class ReservetripPage{
     
     
     
-    this.reservesService.getMyReservesUser(this.SignUpService.userPlace, this.userUid).takeUntil(this.unsubscribe)
+    this.reservesService.getMyReservesUser( this.userUid).takeUntil(this.unsubscribe)
     .subscribe( myReservesId => {
       console.log(this.myReserves);
       //get all reserves id (reserve push key, driverUid) of my user node
@@ -91,7 +92,7 @@ export class ReservetripPage{
               this.navCtrl.pop();
               let modal = this.modalCtrl.create('CanceltripPage');
               modal.present();
-              this.reservesService.eliminateKeyUser(this.SignUpService.userPlace, this.userUid,reserve.keyReserve);
+              this.reservesService.eliminateKeyUser( this.userUid,reserve.keyReserve);
               
 
             }
@@ -121,7 +122,7 @@ export class ReservetripPage{
     //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
     this.myReservesId.forEach(reserve => {
 
-        this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/'+ reserve.driverId +'/'+ reserve.keyReserve).once('value').then((snapReserve)=>{
+        this.afDB.database.ref( '/reservesTest/'+ reserve.driverId +'/'+ reserve.keyReserve).once('value').then((snapReserve)=>{
           this.reserve = snapReserve.val();
           console.log(this.reserve);          
           if(reserve === undefined || reserve === null){
@@ -129,6 +130,8 @@ export class ReservetripPage{
           }else{
 
             this.myReserves.push(this.reserve);
+            console.log(this.myReserves);
+            
           }
           
         })

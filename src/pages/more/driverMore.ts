@@ -51,7 +51,7 @@ export class DriverMorePage {
          logout(){
           this.authenticationService.logOut();
           console.log(firebase.auth().currentUser);
-          this.SignupService.userPlace = undefined;
+          // this.SignupService.userPlace = undefined;
           this.navCtrl.setRoot('LoginPage');
     }
     //      docs(){

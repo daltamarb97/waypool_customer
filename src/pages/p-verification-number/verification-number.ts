@@ -22,7 +22,7 @@ export class VerificationNumberPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private authenticationService: authenticationService, public alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public signUpService: SignUpService, public app: App) {
     this.userId = this.navParams.get('userId')
     console.log(this.userId);
-    console.log(this.signUpService.userPlace);
+    
 
     this.signUpService.getMyInfo(this.userId).takeUntil(this.unsubscribe).subscribe(user => {
       this.userInfo = user;
@@ -31,17 +31,17 @@ export class VerificationNumberPage {
   }
 
   code(){
-    this.authenticationService.deleteResendCode(this.signUpService.userPlace, this.userId);
-    this.authenticationService.sendVerificationCodeToFirebase(this.signUpService.userPlace, this.userId, this.confText);
-    // this.signUpService.getMyInfo(this.signUpService.userPlace, this.userId).subscribe(user => {
+    this.authenticationService.deleteResendCode( this.userId);
+    this.authenticationService.sendVerificationCodeToFirebase( this.userId, this.confText);
+    // this.signUpService.getMyInfo( this.userId).subscribe(user => {
     //   this.userInfo = user;
     //   console.log(this.userInfo);
 
       if(this.userInfo.verificationCodeApproval === true){
         this.app.getRootNav().push('LoginPage');
-        this.authenticationService.deleteVerificationCode(this.signUpService.userPlace, this.userId);
+        this.authenticationService.deleteVerificationCode( this.userId);
       }else if(this.userInfo.verificationCodeApproval === false){
-        this.authenticationService.deleteVerificationCode(this.signUpService.userPlace, this.userId);
+        this.authenticationService.deleteVerificationCode( this.userId);
         let alert = this.alertCtrl.create({
           title: 'Código Errado',
           subTitle: 'el código de verificacón está errado',
@@ -54,8 +54,8 @@ export class VerificationNumberPage {
   }
 
   resendCode(){
-    this.authenticationService.deleteverificationCodeApproval(this.signUpService.userPlace, this.userId);
-    this.authenticationService.resendVerificationCode(this.signUpService.userPlace, this.userId);
+    this.authenticationService.deleteverificationCodeApproval( this.userId);
+    this.authenticationService.resendVerificationCode( this.userId);
   }
 
   ionViewDidLeave(){

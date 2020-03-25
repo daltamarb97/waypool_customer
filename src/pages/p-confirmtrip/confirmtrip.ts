@@ -57,7 +57,7 @@ export class ConfirmtripPage {
          }
        });
 
-       this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip, this.SignUpService.userPlace).takeUntil(this.unsubscribe)
+       this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip).takeUntil(this.unsubscribe)
        .subscribe(usersInPendingusers => {
         this.usersInPending = usersInPendingusers
         this.usersInPending.forEach(user => {
@@ -72,9 +72,9 @@ export class ConfirmtripPage {
   }
   
   goToRide(){  
-    this.geoFireService.saveKey(this.SignUpService.userPlace,this.trip.keyTrip,this.trip.driver.userId, this.userUid);
-    this.reservesService.setOnTrip(this.SignUpService.userPlace,this.userUid); 
-    this.TripsService.joinTrip(this.SignUpService.userPlace, this.trip.keyTrip,this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.verifiedPerson, this.user.trips.distanceToGoInKM);
+    this.geoFireService.saveKey(this.trip.keyTrip,this.trip.driver.userId, this.userUid);
+    this.reservesService.setOnTrip(this.userUid); 
+    this.TripsService.joinTrip( this.trip.keyTrip,this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.verifiedPerson, this.user.trips.distanceToGoInKM);
     // this.geoFireService.removeKeyGeofire(this.userUid);
     //OLD
     // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
@@ -85,16 +85,16 @@ export class ConfirmtripPage {
 
     dismissX(){
       this.viewCtrl.dismiss();
-      this.geoFireService.deleteKey(this.SignUpService.userPlace, this.userUid);
-      this.geoFireService.deleteDriverFromLMU(this.SignUpService.userPlace, this.userUid, this.trip.keyTrip);
-      this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).once('value').then((snap)=>{
+      this.geoFireService.deleteKey( this.userUid);
+      this.geoFireService.deleteDriverFromLMU( this.userUid, this.trip.keyTrip);
+      this.afDB.database.ref( '/usersTest/' + this.userUid).once('value').then((snap)=>{
         if(snap.val().onTrip){
-          this.geoFireService.setOntripFalse(this.SignUpService.userPlace,this.userUid);
+          this.geoFireService.setOntripFalse(this.userUid);
         }else{
 
         }
       })
-      this.TripsService.getOutFromLMU(this.SignUpService.userPlace, this.trip.keyTrip,this.trip.driver.userId, this.userUid);
+      this.TripsService.getOutFromLMU( this.trip.keyTrip,this.trip.driver.userId, this.userUid);
 
     }
   dismiss() {

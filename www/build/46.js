@@ -1,6 +1,6 @@
 webpackJsonp([46],{
 
-/***/ 698:
+/***/ 700:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FindridePassPageModule", function() { return FindridePassPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bikemode__ = __webpack_require__(892);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bikemode__ = __webpack_require__(895);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var FindridePassPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 892:
+/***/ 895:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -139,7 +139,7 @@ var BikeModePage = /** @class */ (function () {
         this.bounds = new google.maps.LatLngBounds();
         this.markers = [];
         // initialize the plugin
-        console.log(this.SignUpService.userPlace);
+        // console.log(this.SignUpService.userPlace);
         /// logica keyReserves para myreserves
     } // END OF CONSTRUCTOR
     // }
@@ -400,7 +400,7 @@ var BikeModePage = /** @class */ (function () {
         this.loading.present();
         console.log(this.myLatLngOr);
         console.log(this.usingGeolocation);
-        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).once('value').then(function (snapBlock) {
+        this.afDB.database.ref('/usersTest/' + this.userUid).once('value').then(function (snapBlock) {
             if (snapBlock.val().blockPayment === true) {
                 _this.loading.dismiss();
                 var alert_1 = _this.alertCtrl.create({
@@ -422,7 +422,7 @@ var BikeModePage = /** @class */ (function () {
                 alert_1.present();
             }
             else {
-                _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid).once('value').then(function (snap) {
+                _this.afDB.database.ref('/usersTest/' + _this.userUid).once('value').then(function (snap) {
                     var user = snap.val();
                     console.log(user);
                     // check if user is on trip

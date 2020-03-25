@@ -1,19 +1,19 @@
 <ion-header class="bg-theme">
     <ion-navbar >
 
-        <ion-title class="Title">ESCOGE TU COMPAÑERO
+        <ion-title class="Title">PICK YOUR CREW
         </ion-title>
     </ion-navbar>
 
     <ion-row class="center-align bg-theme flow-ride">
             <ion-segment [(ngModel)]="segment">
                     <ion-segment-button value="nearby" (ionSelect)="nearby()">
-                      Cerca de ti
+                      Waypool drivers
                       <ion-badge color="danger" *ngIf='showNearby'>{{reservesAvailable.length}}</ion-badge>
                     </ion-segment-button>
                     
                     <ion-segment-button value="route" (ionSelect)="route()">
-                      Pasa por tu ruta
+                      Set up you Crew
                       <ion-badge color="danger" *ngIf='showRoute'>{{routeTrips.length}}</ion-badge>
 
                     </ion-segment-button>
@@ -78,7 +78,8 @@
                                                     <ion-col>
 
                                                             <h3 class="text text-dark">                        
-                                                                    Hora: {{trip.startHour}}                             
+                                                                    <!-- Hora: {{trip.startHour}}--> 
+                                                                    This trip starts at: 3:00 pm                          
                                                                 </h3>
                                                     </ion-col> 
                                                     
@@ -90,7 +91,7 @@
                                                     </ion-col> 
                                                                                 
                                                     <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                                        <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Unirme</button>
+                                                        <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Join Me</button>
                                                     </ion-col>
                                                 </ion-row>
                                             </ion-card-content>
@@ -161,7 +162,8 @@
                                     <ion-card-content>                  
                                         <ion-row class="center-align">  
                                                     <h2 class="text text-dark">                        
-                                                        Hora: {{reserve.startHour}}                             
+                                                        <!-- Hora: {{reserve.startHour}}                              -->
+                                                        trip starts at: 3:00pm
                                                     </h2>                    
                                             <ion-col center text-center col-4 text-right style="margin-left: auto;">
                                                 <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Unirme</button>

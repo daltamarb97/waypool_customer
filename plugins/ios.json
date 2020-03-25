@@ -27,7 +27,16 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.waypoolsas.waypooluser"
+    }
+  }
 }

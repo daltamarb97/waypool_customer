@@ -11,22 +11,22 @@ export class reservesService {
 
        }
        
-       public setOnTrip(place, userUid){        
-      this.afDB.database.ref(place + '/users/'+userUid).update({
+       public setOnTrip( userUid){        
+      this.afDB.database.ref( '/usersTest/'+userUid).update({
           onTrip:true
         });
  
      }
-    public getMyReservesUser(place, userUid){
+    public getMyReservesUser( userUid){
         //get reserves of that i have enter
-        return  this.afDB.list(place + '/users/'+ userUid+'/myReserves').valueChanges();
+        return  this.afDB.list('/usersTest/'+ userUid+'/myReserves').valueChanges();
 
     }
 
 
-    public getMyReservesSelected(place, userUid){
+    public getMyReservesSelected( userUid){
         // 
-        return  this.afDB.list(place + '/users/'+ userUid+'/myReserves').valueChanges();
+        return  this.afDB.list('/usersTest/'+ userUid+'/myReserves').valueChanges();
 
     }
     
@@ -53,21 +53,21 @@ export class reservesService {
 
     
 
-    public getSeenReservesInAvailableReservesLMU(place, userUid){
+    public getSeenReservesInAvailableReservesLMU( userUid){
         //get reserves of the geofire
-        return  this.afDB.list(place + '/users/'+ userUid+'/reservesSeenInAvailableReservesLMU').valueChanges();
+        return  this.afDB.list('/usersTest/'+ userUid+'/reservesSeenInAvailableReservesLMU').valueChanges();
 
     }
 
 
-    public getOnTrip(place, userUid){
+    public getOnTrip( userUid){
         //get reserves of the geofire
-        return  this.afDB.object(place + '/users/'+ userUid+'/onTrip').valueChanges();
+        return  this.afDB.object('/usersTest/'+ userUid+'/onTrip').valueChanges();
 
     }
-    public getMyReserves(place, driverUserUid,reserveId){
+    public getMyReserves( driverUserUid,reserveId){
         //get reserves inside reserves node
-        return  this.afDB.object(place + '/reserves/'+ driverUserUid +'/'+ reserveId+'/').valueChanges();
+        return  this.afDB.object('/reservesTest/'+ driverUserUid +'/'+ reserveId+'/').valueChanges();
 
     }
     public getPendingUsers( driverUserUid,reserveId){
@@ -75,27 +75,27 @@ export class reservesService {
         return  this.afDB.list('/reservesTest/'+ driverUserUid +'/'+ reserveId+'/pendingUsers').valueChanges();
 
     }
-    public confirmMyExistenceInPendingUsers(place, driverUserUid,reserveId,userUid){
+    public confirmMyExistenceInPendingUsers( driverUserUid,reserveId,userUid){
         //get reserves inside reserves node
-        return  this.afDB.object(place + '/reserves/'+ driverUserUid +'/'+ reserveId+'/pendingUsers/'+userUid).valueChanges();
+        return  this.afDB.object( '/reservesTest/'+ driverUserUid +'/'+ reserveId+'/pendingUsers/'+userUid).valueChanges();
 
     }
 
-    public confirmMyExistenceInPickedupUsers(place, driverId,keyTrip, userId){
+    public confirmMyExistenceInPickedupUsers( driverId,keyTrip, userId){
         //get reserves inside reserves node
-        return  this.afDB.object(place + '/trips/'+driverId+'/'+ keyTrip+'/pickedUpUsers/' + userId).valueChanges();
+        return  this.afDB.object( '/tripsTest/'+driverId+'/'+ keyTrip+'/pickedUpUsers/' + userId).valueChanges();
 
     }
 
-    public cancelReserve(place, userUid,driverUid,reserveId){
+    public cancelReserve(userUid,driverUid,reserveId){
         //eliminate user from reserve in reserve's node        
-      this.afDB.database.ref(place + '/reserves/'+ driverUid +'/'+ reserveId+'/pendingUsers/'+userUid).remove();
+      this.afDB.database.ref( '/reservesTest/'+ driverUid +'/'+ reserveId+'/pendingUsers/'+userUid).remove();
         //eliminate keyTrip from user's node to eliminate access to that reserve
 
      }
-     public eliminateKeyUser(place, userUid,reserveId){    
+     public eliminateKeyUser(userUid,reserveId){    
       //eliminate keyTrip from user's node to eliminate access to that reserve
-    this.afDB.database.ref(place + '/users/'+userUid+'/myReserves/'+ reserveId).remove();
+    this.afDB.database.ref( '/usersTest/'+userUid+'/myReserves/'+ reserveId).remove();
 
    }
    

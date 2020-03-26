@@ -1,0 +1,30 @@
+<ion-content>
+        <ion-card>
+                <img src="assets/imgs/picmodales.png" width="100px" style="display:inline-block" height="150px"/>
+                <ion-icon name="close-circle" class="close-icon text-white"  (click)="dismiss()"></ion-icon>
+    
+            <ion-card-content>
+                                <h2 text-center>Set the time this trip will start:</h2>
+                    <div style="    border-color: black;
+                    border-style: solid;">
+
+                    <ion-item>
+                        <ion-label>Time:</ion-label>
+                        <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>
+                    </ion-item>
+
+                </div>
+
+
+                <ion-row style="margin-top: 14px;    display: flex;
+                justify-content: center">
+                   
+                    <ion-col col-8>
+                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setCrew()">Create Crew</button>
+                    </ion-col>
+                </ion-row>
+                
+            </ion-card-content>
+        </ion-card>
+    </ion-content>
+    

@@ -792,6 +792,10 @@ listride(){
                       this.geoqueryRouteOrigin.cancel();
                     }
 
+                    if(this.geoqueryRouteDestination){
+                      this.geoqueryRouteDestination.cancel();
+                    }
+
                     // if(this.geoquriesRouteDestination){             
                     //   this.geoquriesRouteDestination.forEach((element, id)=>{
                     //     this.geoquriesRouteDestination[id].cancel();
@@ -820,6 +824,10 @@ listride(){
                     if(this.geoqueryRouteOrigin){
                       this.geoqueryRouteOrigin.cancel();
                     }
+
+                    if(this.geoqueryRouteDestination){
+                      this.geoqueryRouteDestination.cancel();
+                    }
        
                     if(this.usingGeolocation === true){
                       this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
@@ -846,6 +854,11 @@ listride(){
                     
                     if(this.geoqueryRouteOrigin){
                       this.geoqueryRouteOrigin.cancel();
+                    }
+
+
+                    if(this.geoqueryRouteDestination){
+                      this.geoqueryRouteDestination.cancel();
                     }
                     
                     if(this.usingGeolocation === true){

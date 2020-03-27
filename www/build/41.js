@@ -77,6 +77,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var CreateCrewPage = /** @class */ (function () {
     function CreateCrewPage(navCtrl, sendUsersService, toastCtrl, viewCtrl, afDB, SignUpService, sendCoordsService, navParams, AngularFireAuth, geoFireService, instances, alertCtrl) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.sendUsersService = sendUsersService;
         this.toastCtrl = toastCtrl;
@@ -89,21 +90,71 @@ var CreateCrewPage = /** @class */ (function () {
         this.geoFireService = geoFireService;
         this.instances = instances;
         this.alertCtrl = alertCtrl;
+        this.admin = {};
+        this.userId = this.AngularFireAuth.auth.currentUser.uid;
+        // Getting info for creating crew in DB
+        this.afDB.database.ref('/usersTest/' + this.userId).once('value').then(function (snap) {
+            if (snap.val()) {
+                _this.admin = {
+                    city: snap.val().city,
+                    comapny: snap.val().company,
+                    name: snap.val().name,
+                    lastname: snap.val().lastname,
+                    phone: snap.val().phone,
+                    userId: snap.val().userId,
+                    verifiedPerson: snap.val().verifiedPerson,
+                };
+                _this.origin = snap.val().trips.origin[0];
+                _this.destination = snap.val().trips.destination[0];
+            }
+        });
+        this.latOr = this.navParams.get('latOr');
+        this.lngOr = this.navParams.get('lngOr');
+        this.latDest = this.navParams.get('latDest');
+        this.lngDest = this.navParams.get('lngDest');
     }
     CreateCrewPage.prototype.dismiss = function () {
         this.viewCtrl.dismiss();
     };
     CreateCrewPage.prototype.setCrew = function () {
+        var _this = this;
         if (this.startHour === undefined) {
             var alert = this.alertCtrl.create({
-                title: 'No haz puesto una hora de inicio de viaje para este grupo',
+                title: 'Por favor confirma la hora a la que iniciaría este viaje',
                 buttons: ['OK']
             });
             alert.present();
         }
         else {
             //AQUI QUEDE
-            this.afDB.database.ref('');
+            this.afDB.database.ref('/crewsTest/' + this.userId).push({
+                admin: this.admin,
+                destination: {
+                    name: this.destination,
+                    coords: {
+                        lat: this.latDest,
+                        lng: this.lngDest
+                    }
+                },
+                origin: {
+                    name: this.origin,
+                    coords: {
+                        lat: this.latOr,
+                        lng: this.lngOr
+                    }
+                },
+            }).then(function (snap) {
+                _this.afDB.database.ref('/crewsTest/' + _this.userId + '/' + snap.key).update({
+                    crewId: snap.key
+                });
+            }).then(function () {
+                var alert = _this.alertCtrl.create({
+                    title: 'Eres ahora administrador de el grupo que acabaste de crear',
+                    buttons: ['OK']
+                });
+                alert.present();
+                _this.viewCtrl.dismiss();
+            });
         }
     };
     CreateCrewPage = __decorate([

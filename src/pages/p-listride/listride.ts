@@ -80,6 +80,8 @@ export class ListridePage {
       console.log(this.user);
       
   })
+
+  
     this.latOr = this.navParams.get('latOr');
     this.lngOr = this.navParams.get('lngOr');
     this.latDest = this.navParams.get('latDest');
@@ -214,7 +216,7 @@ export class ListridePage {
               buttons: ['OK']
             });
             alert.present();
-
+ 
           }else{
 
           }
@@ -296,7 +298,7 @@ export class ListridePage {
   createCrew(){
     console.log('te clickie');
     
-    let modal = this.modalCtrl.create('CreateCrewPage');
+    let modal = this.modalCtrl.create('CreateCrewPage', {latOr: this.latOr, lngOr: this.lngOr, latDest: this.latDest, lngDest: this.lngDest});
 
     modal.present();
 

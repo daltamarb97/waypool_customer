@@ -938,7 +938,7 @@ listride(){
     }
 
 
-    keyEnteredOr(radiusDest, latDest, lngDest,  userId ){
+    keyEnteredOr(radiusDest, latDest, lngDest,  userId ){ 
       // var keyEnteredOr = false;
       this.geoquery2.on("key_entered", function(key, location, distance){
         //  keyEnteredOr = true;

@@ -19,7 +19,9 @@ import { setDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 })
 export class ListridePage {
   reservesAvailable:any = [];
+  crewsAvailable:any = [];
   routeTrips:any = [];
+  routeCrews:any = [];
   locationDestinationUser:any =[];
   locationOriginUser:any =[];
   user:any;
@@ -27,11 +29,13 @@ export class ListridePage {
   test:any;
   reserve:any;
   ReservesGeofire: any =[];
+  CrewsGeofire: any =[];
   tripsReserved:any =[];
   reserveLMU:any;
   unsubscribe = new Subject;
   pendingUsers:any = []; 
   noReserve:boolean = false;
+  noCrew:boolean = false;
 
 
 
@@ -62,7 +66,9 @@ export class ListridePage {
   segmentCarpool:any;
   segmentCrew:any;
   loading:any;
-  geoquerysTEST =[]
+  showNearbyCrew:boolean = true;
+  showRouteCrew:boolean = false;
+  
   constructor(public navParams: NavParams, public navCtrl: NavController,private app:App,public TripsService:TripsService,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService, public alertCtrl: AlertController ) {
   console.log("AQUI EMPIEZA")
 
@@ -115,6 +121,31 @@ export class ListridePage {
         });
 
 
+        this.reservesService.getCrews( this.userUid).takeUntil(this.unsubscribe)    
+        .subscribe(crews => {
+          // this.initiatedTrips = [];
+       
+          
+          this.CrewsGeofire = crews; 
+          console.log(this.CrewsGeofire);
+          
+          if(this.CrewsGeofire.length === 0){
+              //there are no reserves to show
+              this.noCrew = true;
+          }else{
+              //there are reserves
+              this.noCrew = false;  
+          }
+          // this.presentLoadingCustom(this.ReservesGeofire);
+          
+            this.getAvailableCrews();
+         
+          
+
+        });
+
+
+
         this.reservesService.getSeenReservesInAvailableReserves( this.userUid).subscribe((reserve)=>{
           this.reservesAvailable = reserve;
           console.log(this.reservesAvailable);
@@ -126,44 +157,60 @@ export class ListridePage {
           this.routeTrips = reserve;
           console.log(this.routeTrips);
           
-          this.getButtonStarter()
+          // this.getButtonStarter()
         })
+
+
+        this.reservesService.getSeenCrewsInAvailableCrews( this.userUid).subscribe((crew)=>{
+          this.crewsAvailable = crew;
+          console.log(this.crewsAvailable);
+
+          
+        })
+
+        this.reservesService.getSeenCrewsInAvailableCrewsRoute( this.userUid).subscribe((crew)=>{
+          this.routeCrews = crew;
+          console.log(this.routeCrews);
+          
+          // this.getButtonStarter()
+        })
+
 
 
         
           
-       
+        this.loading.dismiss();
         
   }
 
 
-  getButtonStarter(){
+  // getButtonStarter(){
     
-    if(this.reservesAvailable.length !== 0 && this.routeTrips.length === 0){
+  //   if(this.reservesAvailable.length !== 0 && this.routeTrips.length === 0){
 
       
-      this.segment = 'carpool';
-      this.segmentCarpool = 'nearby'
-      this.carpool();
-      this.nearby();
-    }else if(this.routeTrips.length !== 0 && this.reservesAvailable.length === 0){
+  //     this.segment = 'carpool';
+  //     this.segmentCarpool = 'nearby'
+  //     this.carpool();
+  //     this.nearby();
+  //   }else if(this.routeTrips.length !== 0 && this.reservesAvailable.length === 0){
 
-      this.segment = 'carpool';
-      this.segmentCarpool = 'route'
-      this.carpool();
-      this.route();
-    }else if(this.routeTrips.length !== 0 && this.reservesAvailable.length !== 0){
-      this.segment = 'carpool';
-      this.segmentCarpool = 'nearby'
-      this.carpool();
-      this.nearby();
-    }
+  //     this.segment = 'carpool';
+  //     this.segmentCarpool = 'route'
+  //     this.carpool();
+  //     this.route();
+  //   }else if(this.routeTrips.length !== 0 && this.reservesAvailable.length !== 0){
+  //     this.segment = 'carpool';
+  //     this.segmentCarpool = 'nearby'
+  //     this.carpool();
+  //     this.nearby();
+  //   }
 
   
-      this.loading.dismiss();
+  //     this.loading.dismiss();
 
     
-  }
+  // }
 
  
 
@@ -175,7 +222,10 @@ export class ListridePage {
     this.TripsService.eliminateSeenAvailableReserves(this.userUid);
     this.TripsService.eliminateSeenAvailableReservesRoute(this.userUid);
 
-    // this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
+    this.TripsService.eliminateAvailableCrews(this.userUid);
+    this.TripsService.eliminateSeenAvailableCrews(this.userUid);
+    this.TripsService.eliminateSeenAvailableCrewsRoute(this.userUid);
+
   }
 
 
@@ -269,6 +319,49 @@ export class ListridePage {
   }
 
 
+
+  getAvailableCrews(){ 
+    //bring crews that i have entered to hide them in listride
+// this.reservesAvailable = [];
+//after getting crew id and adminId from my own user node, we used them to access the crew information in the node crews
+console.log(this.CrewsGeofire);
+  
+this.CrewsGeofire.forEach(crewGeofire => {        
+    
+
+    if(crewGeofire.onRouteDestination == true || crewGeofire.onRouteOrigin == true){
+      
+      this.afDB.database.ref('/crewsTest/'+crewGeofire.adminId+'/'+ crewGeofire.crewId).once('value').then((snapCrewRoute)=>{
+        let obj = snapCrewRoute.val();
+        this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrewsRoute/').remove().then(()=>{
+          this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrewsRoute/'+ crewGeofire.crewId).update(obj)
+          .then(()=>{
+            this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrewsRoute/'+ crewGeofire.crewId).update({distance: (crewGeofire.distance*1000)})
+          })
+        })
+        
+         
+      })
+
+  }else{
+
+    this.afDB.database.ref('/crewsTest/'+ crewGeofire.adminId+'/'+ crewGeofire.crewId).once('value').then((snapCrew)=>{
+      let obj = snapCrew.val();
+      console.log(obj);
+      this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrews/').remove().then(()=>{
+        this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrews/'+ crewGeofire.crewId).update(obj)
+        .then(()=>{
+          this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrews/'+ crewGeofire.crewId).update({distance: (crewGeofire.distance*1000)})
+        })
+      })
+    })
+
+  }
+})
+
+}
+
+
   carpool(){
 
     this.showCrew = false;
@@ -298,7 +391,7 @@ export class ListridePage {
   createCrew(){
     console.log('te clickie');
     
-    let modal = this.modalCtrl.create('CreateCrewPage', {latOr: this.latOr, lngOr: this.lngOr, latDest: this.latDest, lngDest: this.lngDest});
+    let modal = this.modalCtrl.create('CreateCrewPage', {latOr: this.latOr, lngOr: this.lngOr, latDest: this.latDest, lngDest: this.lngDest, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute, pointsAlongRoute: this.pointsAlongRoute});
 
     modal.present();
 
@@ -307,10 +400,14 @@ export class ListridePage {
 
   nearbyCrew(){
 
-  
+    this.showRouteCrew = false;
+    this.showNearbyCrew = true; 
   }
 
   routeCrew(){
+
+    this.showNearbyCrew = false;
+    this.showRouteCrew = true;
 
   }
 
@@ -334,6 +431,9 @@ export class ListridePage {
          this.TripsService.eliminateAvailableUsers(this.userUid);
          this.TripsService.eliminateSeenAvailableReserves(this.userUid);
          this.TripsService.eliminateSeenAvailableReservesRoute(this.userUid);
+         this.TripsService.eliminateAvailableCrews(this.userUid);
+         this.TripsService.eliminateSeenAvailableCrews(this.userUid);
+         this.TripsService.eliminateSeenAvailableCrewsRoute(this.userUid);
 
         //  this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
 
@@ -365,6 +465,10 @@ export class ListridePage {
          this.TripsService.eliminateAvailableUsers(this.userUid);
          this.TripsService.eliminateSeenAvailableReserves(this.userUid);
          this.TripsService.eliminateSeenAvailableReservesRoute(this.userUid);
+         this.TripsService.eliminateAvailableCrews(this.userUid);
+         this.TripsService.eliminateSeenAvailableCrews(this.userUid);
+         this.TripsService.eliminateSeenAvailableCrewsRoute(this.userUid);
+
 
         //  this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
 
@@ -390,6 +494,9 @@ export class ListridePage {
         this.TripsService.eliminateAvailableUsers(this.userUid);
         this.TripsService.eliminateSeenAvailableReserves(this.userUid);
         this.TripsService.eliminateSeenAvailableReservesRoute(this.userUid);
+        this.TripsService.eliminateAvailableCrews(this.userUid);
+        this.TripsService.eliminateSeenAvailableCrews(this.userUid);
+        this.TripsService.eliminateSeenAvailableCrewsRoute(this.userUid);
 
         // this.TripsService.eliminateSeenAvailableReservesLMU(this.SignUpService.userPlace,this.userUid)
 

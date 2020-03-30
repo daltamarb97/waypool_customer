@@ -8,6 +8,7 @@ import { sendUsersService } from '../../services/sendUsers.service';
 import { geofireService } from '../../services/geoFire.service';
 import { instancesService } from '../../services/instances.service';
 import { Subject, onErrorResumeNext } from 'rxjs';
+import { DriverGeofireService } from '../../services/d-geofire.services';
 
 @IonicPage()
 
@@ -26,7 +27,10 @@ export class CreateCrewPage {
   latDest:any;
   lngDest:any;
   admin = {};
-  constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService, public alertCtrl: AlertController) {
+  pointsAlongRoute = [];
+  indexesOfPointsAlongRoute = [];
+  count:any = 0;
+  constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService, public alertCtrl: AlertController, private geofireServicesDr: DriverGeofireService) {
       this.userId = this.AngularFireAuth.auth.currentUser.uid;
 
       // Getting info for creating crew in DB
@@ -34,7 +38,7 @@ export class CreateCrewPage {
         if(snap.val()){
           this.admin = {
             city: snap.val().city,
-            comapny: snap.val().company,
+            company: snap.val().company,
             name: snap.val().name,
             lastname: snap.val().lastname,
             phone: snap.val().phone,
@@ -54,6 +58,8 @@ export class CreateCrewPage {
     this.lngOr = this.navParams.get('lngOr');
     this.latDest = this.navParams.get('latDest');
     this.lngDest = this.navParams.get('lngDest');
+    this.pointsAlongRoute = this.navParams.get('pointsAlongRoute');
+    this.indexesOfPointsAlongRoute = this.navParams.get('indexesOfPointsAlongRoute');
   }
 
 
@@ -74,6 +80,7 @@ export class CreateCrewPage {
       //AQUI QUEDE
       this.afDB.database.ref('/crewsTest/' + this.userId).push({
         admin: this.admin,
+        startHour: this.startHour,
         destination: {
           name: this.destination,
           coords: {
@@ -89,15 +96,48 @@ export class CreateCrewPage {
           }
         },
       }).then((snap)=>{
+        const Key_Crew = snap.key;
+        this.afDB.database.ref('/crewsTest/' + this.userId + '/' + Key_Crew).update({
+          crewId: Key_Crew
+        }).then(()=>{
 
-        this.afDB.database.ref('/crewsTest/' + this.userId + '/' + snap.key).update({
-          crewId: snap.key
+                  this.geofireServicesDr.setGeofireOrCrew( Key_Crew, this.latOr, this.lngOr );
+                  this.afDB.database.ref('/geofireOrCrew/' + Key_Crew,).update({
+                    adminId: this.userId
+                  });
+
+                  console.log('executed geofire Or for crews');
+
+                this.geofireServicesDr.setGeofireDestCrew( Key_Crew, this.latDest, this.lngDest);
+                this.afDB.database.ref('/geofireDestCrew/' + Key_Crew).update({
+                  adminId: this.userId
+                });
+                
+                console.log('executed geofire dest');
+              
+              
+              this.indexesOfPointsAlongRoute.forEach(index=>{
+                  this.count++
+                  let newKey = Key_Crew.concat(this.count)
+
+                  
+                  
+                  this.geofireServicesDr.setGeofireRouteCrew(newKey, this.pointsAlongRoute[index].lat, this.pointsAlongRoute[index].lng );
+                  this.afDB.database.ref('/geofireRouteCrew/' + newKey).update({
+                    adminId: this.userId,
+                    crewId: Key_Crew
+                });
+                
+                
+              })  
+
         })
+
         
       }).then(()=>{
-
         let alert = this.alertCtrl.create({
-          title: 'Eres ahora administrador de el grupo que acabaste de crear',
+          title: 'Eres ahora administrador del crew que acabaste de crear',
+          subTitle: 'Ve a "Mis Viajes" y revisa el estado de tu crew',
           buttons: ['OK']
         }); 
         alert.present();

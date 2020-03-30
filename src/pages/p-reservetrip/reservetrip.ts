@@ -43,6 +43,11 @@ export class ReservetripPage{
   onTrip:any;
   unsubscribe = new Subject;
   noReserve:boolean;
+  segment:any;
+  showCarpool:boolean;
+  showCrew:boolean;
+  myCrews = [];
+
   constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService,public loadingCtrl: LoadingController, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
     
 
@@ -56,11 +61,7 @@ export class ReservetripPage{
         this.unSubscribeServices();
         this.navCtrl.pop();
 
-        //NO LONGER NECESSARY
-        // this.geofireService.cancelGeofireDest();
-        // this.geofireService.cancelGeofireOr();
-        // this.geofireService.cancelGeofireDestLMU();
-        // this.geofireService.cancelGeofireOrLMU();
+
         console.log("repetire");
         
         this.navCtrl.push('MyridePage');
@@ -103,6 +104,16 @@ export class ReservetripPage{
 
     }) 
 
+
+    this.afDB.database.ref('crewsTest/' + this.userUid).once('value').then((snap)=>{
+      let obj = snap.val();
+      Object.getOwnPropertyNames(obj).forEach((key)=>{
+        this.myCrews.push(obj[key]);
+      })
+    }).then(()=>{
+      console.log(this.myCrews);
+      
+    })
   }
 
 
@@ -110,6 +121,30 @@ export class ReservetripPage{
   ionViewDidLoad(){
     
     
+  }
+
+
+  enterChatCrew(crew){
+    console.log('quiero chat, el crew es: ' + crew);
+    
+  }
+
+
+  crewDetails(){
+    console.log('quiero ver los detalles del crew');
+    
+  }
+
+  carpool(){
+    this.showCrew = false;
+    this.showCarpool = true;
+  }
+
+
+  crew(){
+
+    this.showCarpool= false;
+    this.showCrew= true;
   }
 
 
@@ -153,53 +188,54 @@ enterChat(reserve) {
   })
   modal.present();
 }
-// confirmreserve(reserveKey,driverUid){
-//      //TODAVÍA NO
-
-
-// }
 
 
 
-unSubscribeServices(){
-  this.unsubscribe.next();
-  this.unsubscribe.complete();
-}  
+      unSubscribeServices(){
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+      }  
 
 
 
-help() {
-    const toast = this.toastCtrl.create({
-        message: 'Aquí te saldrán las personas que quieren irse contigo',
-        showCloseButton: true,
-        closeButtonText: 'OK',
-        position: 'top'
-    });
-    toast.present();
-}
-presentLoadingCustom() {
-  let loading = this.loadingCtrl.create({
-    spinner: 'crescent',
-    content: `
-      <div class="custom-spinner-container">
-        <div class="custom-spinner-box"></div>
-      </div>`,
-    duration: 250
-  });
+      help() {
+          const toast = this.toastCtrl.create({
+              message: 'Aquí te saldrán las personas que quieren irse contigo',
+              showCloseButton: true,
+              closeButtonText: 'OK',
+              position: 'top'
+          });
+          toast.present();
+      }
 
-  loading.onDidDismiss(() => {
-    this.noReserve = true;
 
-  });
 
-  loading.present();
-}
+      presentLoadingCustom() {
+        let loading = this.loadingCtrl.create({
+          spinner: 'crescent',
+          content: `
+            <div class="custom-spinner-container">
+              <div class="custom-spinner-box"></div>
+            </div>`,
+          duration: 250
+        });
 
-ionViewDidLeave(){
-  this.unsubscribe.next();
-  this.unsubscribe.complete();
+        loading.onDidDismiss(() => {
+          this.noReserve = true;
 
-}
+        });
+
+        loading.present();
+      }
+
+
+
+
+    ionViewDidLeave(){
+      this.unsubscribe.next();
+      this.unsubscribe.complete();
+
+    }
 
 }
 

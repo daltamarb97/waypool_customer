@@ -96,8 +96,18 @@ setGeofireOrNEWTEST( key, lat, lng){
              }, function(error){
             console.log('error: ' + error)
              });
+}
 
-   
+
+setGeofireOrCrew( key, lat, lng){
+  this.dbRef = this.afDB.database.ref('/geofireOrCrew/' );
+  this.geoFire = new GeoFire(this.dbRef); 
+
+          this.geoFire.set(key, [lat, lng]).then(function(){
+              console.log('location updated');
+             }, function(error){
+            console.log('error: ' + error)
+             });
 }
 
 setGeofireDestNEWTEST( key, lat, lng){
@@ -112,6 +122,19 @@ setGeofireDestNEWTEST( key, lat, lng){
 }
 
 
+setGeofireDestCrew( key, lat, lng){
+  this.dbRef = this.afDB.database.ref( '/geofireDestCrew/' );
+  this.geoFire = new GeoFire(this.dbRef); 
+
+          this.geoFire.set(key, [lat, lng]).then(function(){
+              console.log('location updated');
+             }, function(error){
+            console.log('error: ' + error)
+             });
+}
+
+
+
 setGeofireRoute( key, lat, lng){
   this.dbRef = this.afDB.database.ref( '/geofireRoute/' );
   this.geoFire = new GeoFire(this.dbRef); 
@@ -122,6 +145,20 @@ setGeofireRoute( key, lat, lng){
             console.log('error: ' + error)
              });
 }
+
+
+
+setGeofireRouteCrew( key, lat, lng){
+  this.dbRef = this.afDB.database.ref( '/geofireRouteCrew/' );
+  this.geoFire = new GeoFire(this.dbRef); 
+
+          this.geoFire.set(key, [lat, lng]).then(function(){
+              console.log('location updated');
+             }, function(error){
+            console.log('error: ' + error)
+             });
+}
+
 
 
 setGeofireOrOnTrip( key, lat, lng){

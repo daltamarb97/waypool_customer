@@ -24,6 +24,10 @@ export class reservesService {
     }
 
 
+ 
+
+
+
     public getMyReservesSelected( userUid){
         // 
         return  this.afDB.list('/usersTest/'+ userUid+'/myReserves').valueChanges();
@@ -36,12 +40,28 @@ export class reservesService {
 
     }
 
+    public getCrews( userUid){
+        //get reserves of the geofire
+        return  this.afDB.list('/usersTest/'+ userUid+'/availableCrews').valueChanges();
+
+    }
+
 
     public getSeenReservesInAvailableReserves( userUid){
         //get reserves of the geofire
         return  this.afDB.list( '/usersTest/'+ userUid+'/reservesSeenInAvailableReserves').valueChanges();
 
     }
+
+    public getSeenCrewsInAvailableCrews( userUid){
+        //get reserves of the geofire
+        return  this.afDB.list( '/usersTest/'+ userUid+'/crewsSeenInAvailableCrews').valueChanges();
+
+    }
+
+
+
+    
 
 
     public getSeenReservesInAvailableReservesRoute( userUid){
@@ -50,6 +70,15 @@ export class reservesService {
 
     }
 
+
+    public getSeenCrewsInAvailableCrewsRoute( userUid){
+        //get reserves of the geofire
+        return  this.afDB.list( '/usersTest/'+ userUid+'/crewsSeenInAvailableCrewsRoute').valueChanges();
+
+    }
+
+
+    
 
     
 

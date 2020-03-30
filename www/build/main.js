@@ -186,13 +186,25 @@ var reservesService = /** @class */ (function () {
         //get reserves of the geofire
         return this.afDB.list('/usersTest/' + userUid + '/availableReserves').valueChanges();
     };
+    reservesService.prototype.getCrews = function (userUid) {
+        //get reserves of the geofire
+        return this.afDB.list('/usersTest/' + userUid + '/availableCrews').valueChanges();
+    };
     reservesService.prototype.getSeenReservesInAvailableReserves = function (userUid) {
         //get reserves of the geofire
         return this.afDB.list('/usersTest/' + userUid + '/reservesSeenInAvailableReserves').valueChanges();
     };
+    reservesService.prototype.getSeenCrewsInAvailableCrews = function (userUid) {
+        //get reserves of the geofire
+        return this.afDB.list('/usersTest/' + userUid + '/crewsSeenInAvailableCrews').valueChanges();
+    };
     reservesService.prototype.getSeenReservesInAvailableReservesRoute = function (userUid) {
         //get reserves of the geofire
         return this.afDB.list('/usersTest/' + userUid + '/reservesSeenInAvailableReservesRoute').valueChanges();
+    };
+    reservesService.prototype.getSeenCrewsInAvailableCrewsRoute = function (userUid) {
+        //get reserves of the geofire
+        return this.afDB.list('/usersTest/' + userUid + '/crewsSeenInAvailableCrewsRoute').valueChanges();
     };
     reservesService.prototype.getSeenReservesInAvailableReservesLMU = function (userUid) {
         //get reserves of the geofire
@@ -260,11 +272,11 @@ webpackEmptyAsyncContext.id = 239;
 
 var map = {
 	"../pages/add-schedule/add-schedule.module": [
-		649,
+		645,
 		61
 	],
 	"../pages/canceltrip/driverCanceltrip.module": [
-		645,
+		646,
 		60
 	],
 	"../pages/car-registration-login/car-registration-login.module": [
@@ -280,15 +292,15 @@ var map = {
 		57
 	],
 	"../pages/chatting/driverChatting.module": [
-		646,
+		648,
 		56
 	],
 	"../pages/confirmprice/driverConfirmprice.module": [
-		650,
+		649,
 		55
 	],
 	"../pages/confirmtrip/driverConfirmtrip.module": [
-		648,
+		650,
 		54
 	],
 	"../pages/detailsreserve/driverDetailsreserve.module": [
@@ -308,11 +320,11 @@ var map = {
 		50
 	],
 	"../pages/login/driverLogin.module": [
-		654,
+		655,
 		49
 	],
 	"../pages/more/driverMore.module": [
-		655,
+		654,
 		48
 	],
 	"../pages/myride/driverMyride.module": [
@@ -364,11 +376,11 @@ var map = {
 		39
 	],
 	"../pages/p-login/login.module": [
-		665,
+		664,
 		38
 	],
 	"../pages/p-more/more.module": [
-		664,
+		665,
 		37
 	],
 	"../pages/p-myride/myride.module": [
@@ -404,15 +416,15 @@ var map = {
 		29
 	],
 	"../pages/p-tabs/tabs.module": [
-		673,
+		672,
 		28
 	],
 	"../pages/p-terms/terms.module": [
-		672,
+		673,
 		27
 	],
 	"../pages/p-tripbike/tripbike.module": [
-		697,
+		698,
 		2
 	],
 	"../pages/p-verification-images/verification-images.module": [
@@ -456,7 +468,7 @@ var map = {
 		18
 	],
 	"../pages/reservetrip/driverReservetrip.module": [
-		699,
+		697,
 		0
 	],
 	"../pages/schedule/schedule.module": [
@@ -468,11 +480,11 @@ var map = {
 		16
 	],
 	"../pages/signup/driverSignup.module": [
-		698,
+		700,
 		15
 	],
 	"../pages/specifyorigin/specifyorigin.module": [
-		700,
+		699,
 		14
 	],
 	"../pages/successnotification/successnotification.module": [
@@ -496,15 +508,15 @@ var map = {
 		10
 	],
 	"../pages/verification-number/driver-verification-number.module": [
-		690,
+		691,
 		9
 	],
 	"../pages/walkthrough/driverWalkthrough.module": [
-		692,
+		690,
 		8
 	],
 	"../pages/wallet/driverWallet.module": [
-		691,
+		692,
 		7
 	]
 };
@@ -1557,6 +1569,345 @@ var DriverSendUsersService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverGeofireService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_geofire__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_geofire___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_geofire__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var DriverGeofireService = /** @class */ (function () {
+    function DriverGeofireService(afDB, AngularFireAuth) {
+        // this.driverUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.afDB = afDB;
+        this.AngularFireAuth = AngularFireAuth;
+    }
+    // setGeofireDest( radius:number, lat, lng, geofirename, driverId, keyReserve):void{ 
+    //   this.proofToCancelDest = this.variableName(geofirename);
+    //   this.dbRef = this.afDB.database.ref('geofireDest/' );
+    //   this.geoFire = new GeoFire(this.dbRef); 
+    //   this.geoquery1 = this.geoFire.query({
+    //     center: [lat, lng],
+    //     radius: radius
+    //   })
+    //   this.keyEnteredDest( driverId, keyReserve);
+    //   this.keyExitedDest(keyReserve);
+    // console.log('geoquery dest added');
+    // }
+    // variableName(variable){
+    //   var variableName = variable;
+    //   return variableName;
+    // }
+    // setGeofireOr( radius:number, lat, lng, geofirename, driverId, keyReserve):void{ 
+    //   this.proofToCancelOr = this.variableName(geofirename);
+    //   this.dbRef = this.afDB.database.ref('geofireOr/' );
+    //   this.geoFire = new GeoFire(this.dbRef); 
+    //   this.geoquery2 = this.geoFire.query({
+    //     center: [lat, lng],
+    //     radius: radius
+    //   })
+    //   this.keyEnteredOr( driverId, keyReserve);
+    //   this.keyExitedOr(keyReserve);
+    //   // if(this.geoquery1){
+    //   //   this.geoquery1.cancel();
+    //   // }
+    //   console.log('geoquery or added');
+    // }
+    ///////////
+    DriverGeofireService.prototype.setGeofireOrNEWTEST = function (key, lat, lng) {
+        this.dbRef = this.afDB.database.ref('/geofireOr/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoFire.set(key, [lat, lng]).then(function () {
+            console.log('location updated');
+        }, function (error) {
+            console.log('error: ' + error);
+        });
+    };
+    DriverGeofireService.prototype.setGeofireOrCrew = function (key, lat, lng) {
+        this.dbRef = this.afDB.database.ref('/geofireOrCrew/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoFire.set(key, [lat, lng]).then(function () {
+            console.log('location updated');
+        }, function (error) {
+            console.log('error: ' + error);
+        });
+    };
+    DriverGeofireService.prototype.setGeofireDestNEWTEST = function (key, lat, lng) {
+        this.dbRef = this.afDB.database.ref('/geofireDest/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoFire.set(key, [lat, lng]).then(function () {
+            console.log('location updated');
+        }, function (error) {
+            console.log('error: ' + error);
+        });
+    };
+    DriverGeofireService.prototype.setGeofireDestCrew = function (key, lat, lng) {
+        this.dbRef = this.afDB.database.ref('/geofireDestCrew/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoFire.set(key, [lat, lng]).then(function () {
+            console.log('location updated');
+        }, function (error) {
+            console.log('error: ' + error);
+        });
+    };
+    DriverGeofireService.prototype.setGeofireRoute = function (key, lat, lng) {
+        this.dbRef = this.afDB.database.ref('/geofireRoute/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoFire.set(key, [lat, lng]).then(function () {
+            console.log('location updated');
+        }, function (error) {
+            console.log('error: ' + error);
+        });
+    };
+    DriverGeofireService.prototype.setGeofireRouteCrew = function (key, lat, lng) {
+        this.dbRef = this.afDB.database.ref('/geofireRouteCrew/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoFire.set(key, [lat, lng]).then(function () {
+            console.log('location updated');
+        }, function (error) {
+            console.log('error: ' + error);
+        });
+    };
+    DriverGeofireService.prototype.setGeofireOrOnTrip = function (key, lat, lng) {
+        this.dbRef = this.afDB.database.ref('/geofireOrTrip/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoFire.set(key, [lat, lng]).then(function () {
+            console.log('location updated');
+        }, function (error) {
+            console.log('error: ' + error);
+        });
+    };
+    DriverGeofireService.prototype.setGeofireDestOnTrip = function (key, lat, lng) {
+        this.dbRef = this.afDB.database.ref('/geofireDestTrip/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoFire.set(key, [lat, lng]).then(function () {
+            console.log('location updated');
+        }, function (error) {
+            console.log('error: ' + error);
+        });
+    };
+    ////////////////////
+    //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
+    DriverGeofireService.prototype.keyEnteredDest = function (driverId, keyReserve) {
+        this.geoquery1.on("key_entered", function (key, location, distance) {
+            var _this = this;
+            console.log(key);
+            setTimeout(function () {
+                _this.afDB.database.ref('/users/' + key + '/availableReserves/' + keyReserve).update({
+                    driverId: driverId,
+                    keyReserve: keyReserve
+                });
+                console.log('keyentered here');
+            }, 3000);
+        }.bind(this));
+    };
+    DriverGeofireService.prototype.keyExitedDest = function (keyReserve) {
+        this.geoquery1.on("key_exited", function (key) {
+            this.afDB.database.ref('/users/' + key + '/availableReserves/' + keyReserve).remove();
+        }.bind(this));
+    };
+    //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
+    DriverGeofireService.prototype.keyEnteredOr = function (driverId, keyReserve) {
+        this.geoquery2.on("key_entered", function (key, location, distance) {
+            console.log(key);
+            this.afDB.database.ref('/users/' + key + '/availableReserves/' + keyReserve).update({
+                driverId: driverId,
+                keyReserve: keyReserve
+            });
+            this.afDB.database.ref('/reservesInfoInCaseOfCancelling/' + driverId + '/' + keyReserve).push({
+                userId: key
+            });
+        }.bind(this));
+    };
+    DriverGeofireService.prototype.keyExitedOr = function (keyReserve) {
+        this.geoquery2.on("key_exited", function (key) {
+            this.afDB.database.ref('/users/' + key + '/availableReserves/' + keyReserve).remove();
+        }.bind(this));
+    };
+    DriverGeofireService.prototype.getMyInfo = function (userId) {
+        return this.afDB.object('driversTest/' + userId).valueChanges();
+    };
+    DriverGeofireService.prototype.getMyReserves = function (driverId) {
+        return this.afDB.list('/reserves/' + driverId).valueChanges();
+    };
+    DriverGeofireService.prototype.deleteUserListRide = function (driverId, userId) {
+        this.afDB.database.ref('/driversTest/' + driverId + '/tripsTest/usersListRide/' + userId).remove();
+    };
+    DriverGeofireService.prototype.deleteUserListRideTotal = function (driverId) {
+        this.afDB.database.ref('/driversTest/' + driverId + '/tripsTest/usersListRide/').remove();
+    };
+    DriverGeofireService.prototype.onTripUserListRide = function (driverId, userId) {
+        this.afDB.database.ref('/driversTest/' + driverId + '/tripsTest/usersListRide/' + userId).update({
+            onTrip: true
+        });
+    };
+    DriverGeofireService.prototype.deleteUserGeofireDest = function (keyTrip) {
+        this.afDB.database.ref('/geofireDest/' + keyTrip).remove().then(function () {
+            console.log("GeofireDest succesfully removed");
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    DriverGeofireService.prototype.deleteUserGeofireRoute = function (keyTrip) {
+        this.afDB.database.ref('/geofireRoute/' + keyTrip).remove().then(function () {
+            console.log("GeofireRoute succesfully removed");
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    DriverGeofireService.prototype.deleteUserReserve = function (userId, keyTrip) {
+        this.afDB.database.ref('/reservesTest/' + userId + '/' + keyTrip).remove().then(function () {
+            console.log("reserve succesfully removed");
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    DriverGeofireService.prototype.deleteUserGeofireOr = function (keyTrip) {
+        this.afDB.database.ref('/geofireOr/' + keyTrip).remove().then(function () {
+            console.log("GeofireOr succesfully removed");
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    DriverGeofireService.prototype.deleteUserGeofireOrTrip = function (keyTrip) {
+        this.afDB.database.ref('/geofireOrTrip/' + keyTrip).remove().then(function () {
+            console.log("geofireOrTrip succesfully removed");
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    DriverGeofireService.prototype.deleteUserGeofireDestTrip = function (keyTrip) {
+        this.afDB.database.ref('/geofireDestTrip/' + keyTrip).remove().then(function () {
+            console.log("geofireDestTrip succesfully removed");
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    DriverGeofireService.prototype.getInfoUser = function (userId) {
+        return this.afDB.object('users/' + userId).valueChanges();
+    };
+    DriverGeofireService.prototype.cancelGeoqueryDest = function (geofirename) {
+        if (this.proofToCancelDest === geofirename) {
+            if (this.geoquery1) {
+                this.geoquery1.cancel();
+                console.log('geoqueryDest deleted');
+            }
+            else {
+                console.log('dont dest query');
+            }
+        }
+    };
+    DriverGeofireService.prototype.cancelGeoqueryOr = function (geofirename) {
+        if (this.proofToCancelOr === geofirename) {
+            if (this.geoquery2) {
+                this.geoquery2.cancel();
+                console.log('geoqueryOr deleted');
+            }
+            else {
+                console.log('dont or query');
+            }
+        }
+    };
+    // set a new node on firebase which is the location of the Place
+    DriverGeofireService.prototype.setLocationPlace = function (key, lat, lng) {
+        this.dbRef = this.afDB.database.ref('/geofirePlace/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoFire.set(key, [lat, lng]).then(function () {
+            console.log('location updated');
+        }, function (error) {
+            console.log('error: ' + error);
+        });
+    };
+    // set geoquery that determines if the person is in place
+    DriverGeofireService.prototype.setGeofirePlace = function (radius, lat, lng, driverId) {
+        this.dbRef = this.afDB.database.ref('/geofirePlace/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
+        this.geoqueryP = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
+        });
+        this.keyEnteredPlace(driverId);
+        console.log('geoquery place added');
+    };
+    DriverGeofireService.prototype.keyEnteredPlace = function (driverId) {
+        this.geoqueryP.on("key_entered", function (key) {
+            this.afDB.database.ref('/driversTest/' + driverId).update({
+                geofireOrigin: true
+            }).then(function () {
+                console.log('geofireOrigin = true');
+            });
+            console.log(key + ' detected');
+        }.bind(this));
+    };
+    DriverGeofireService.prototype.cancelGeoqueryPlace = function () {
+        if (this.geoqueryP) {
+            this.geoqueryP.cancel();
+            console.log('geoqueryU deleted');
+        }
+        else {
+            console.log('dont uni query');
+        }
+    };
+    DriverGeofireService.prototype.cancelGeofireOrigin = function (driverId) {
+        this.afDB.database.ref('/driversTest/' + driverId).update({
+            geofireOrigin: false
+        }).then(function () {
+            console.log('geofireOrigin = false');
+        });
+    };
+    DriverGeofireService.prototype.setHouseAddress = function (driverId, lat, lng) {
+        this.afDB.database.ref('/driversTest/' + driverId + '/houseAddress/coordinates').update({
+            lat: lat,
+            lng: lng
+        });
+    };
+    DriverGeofireService.prototype.setHouseAddressName = function (driverId, name) {
+        this.afDB.database.ref('/driversTest/' + driverId + '/houseAddress/').update({
+            name: name
+        });
+    };
+    DriverGeofireService.prototype.getLocationPlace = function (place) {
+        return this.afDB.object('/allPlaces/' + place).valueChanges();
+    };
+    DriverGeofireService.prototype.deleteKeyUserLMU = function (userId) {
+        this.afDB.database.ref('/users/' + userId + '/keyTrip/').remove();
+    };
+    DriverGeofireService.prototype.setOntripFalseUserLMU = function (userId) {
+        this.afDB.database.ref('/users/' + userId).update({
+            onTrip: false
+        });
+    };
+    DriverGeofireService.prototype.deleteDriverFromLMUofUser = function (userId, keyTrip) {
+        this.afDB.database.ref('/users/' + userId + '/availableReserves/' + keyTrip).remove();
+    };
+    DriverGeofireService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]])
+    ], DriverGeofireService);
+    return DriverGeofireService;
+}());
+
+//# sourceMappingURL=d-geofire.services.js.map
+
+/***/ }),
+
+/***/ 354:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return sendUsersService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
@@ -1629,7 +1980,7 @@ var sendUsersService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 354:
+/***/ 355:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1679,7 +2030,7 @@ var instancesService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 355:
+/***/ 356:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1813,7 +2164,7 @@ var DriverInstancesService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 356:
+/***/ 357:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2076,318 +2427,6 @@ var DriverTripsService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 357:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverGeofireService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_geofire__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_geofire___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_geofire__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var DriverGeofireService = /** @class */ (function () {
-    function DriverGeofireService(afDB, AngularFireAuth) {
-        // this.driverUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.afDB = afDB;
-        this.AngularFireAuth = AngularFireAuth;
-    }
-    // setGeofireDest( radius:number, lat, lng, geofirename, driverId, keyReserve):void{ 
-    //   this.proofToCancelDest = this.variableName(geofirename);
-    //   this.dbRef = this.afDB.database.ref('geofireDest/' );
-    //   this.geoFire = new GeoFire(this.dbRef); 
-    //   this.geoquery1 = this.geoFire.query({
-    //     center: [lat, lng],
-    //     radius: radius
-    //   })
-    //   this.keyEnteredDest( driverId, keyReserve);
-    //   this.keyExitedDest(keyReserve);
-    // console.log('geoquery dest added');
-    // }
-    // variableName(variable){
-    //   var variableName = variable;
-    //   return variableName;
-    // }
-    // setGeofireOr( radius:number, lat, lng, geofirename, driverId, keyReserve):void{ 
-    //   this.proofToCancelOr = this.variableName(geofirename);
-    //   this.dbRef = this.afDB.database.ref('geofireOr/' );
-    //   this.geoFire = new GeoFire(this.dbRef); 
-    //   this.geoquery2 = this.geoFire.query({
-    //     center: [lat, lng],
-    //     radius: radius
-    //   })
-    //   this.keyEnteredOr( driverId, keyReserve);
-    //   this.keyExitedOr(keyReserve);
-    //   // if(this.geoquery1){
-    //   //   this.geoquery1.cancel();
-    //   // }
-    //   console.log('geoquery or added');
-    // }
-    ///////////
-    DriverGeofireService.prototype.setGeofireOrNEWTEST = function (key, lat, lng) {
-        this.dbRef = this.afDB.database.ref('/geofireOr/');
-        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
-        this.geoFire.set(key, [lat, lng]).then(function () {
-            console.log('location updated');
-        }, function (error) {
-            console.log('error: ' + error);
-        });
-    };
-    DriverGeofireService.prototype.setGeofireDestNEWTEST = function (key, lat, lng) {
-        this.dbRef = this.afDB.database.ref('/geofireDest/');
-        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
-        this.geoFire.set(key, [lat, lng]).then(function () {
-            console.log('location updated');
-        }, function (error) {
-            console.log('error: ' + error);
-        });
-    };
-    DriverGeofireService.prototype.setGeofireRoute = function (key, lat, lng) {
-        this.dbRef = this.afDB.database.ref('/geofireRoute/');
-        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
-        this.geoFire.set(key, [lat, lng]).then(function () {
-            console.log('location updated');
-        }, function (error) {
-            console.log('error: ' + error);
-        });
-    };
-    DriverGeofireService.prototype.setGeofireOrOnTrip = function (key, lat, lng) {
-        this.dbRef = this.afDB.database.ref('/geofireOrTrip/');
-        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
-        this.geoFire.set(key, [lat, lng]).then(function () {
-            console.log('location updated');
-        }, function (error) {
-            console.log('error: ' + error);
-        });
-    };
-    DriverGeofireService.prototype.setGeofireDestOnTrip = function (key, lat, lng) {
-        this.dbRef = this.afDB.database.ref('/geofireDestTrip/');
-        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
-        this.geoFire.set(key, [lat, lng]).then(function () {
-            console.log('location updated');
-        }, function (error) {
-            console.log('error: ' + error);
-        });
-    };
-    ////////////////////
-    //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
-    DriverGeofireService.prototype.keyEnteredDest = function (driverId, keyReserve) {
-        this.geoquery1.on("key_entered", function (key, location, distance) {
-            var _this = this;
-            console.log(key);
-            setTimeout(function () {
-                _this.afDB.database.ref('/users/' + key + '/availableReserves/' + keyReserve).update({
-                    driverId: driverId,
-                    keyReserve: keyReserve
-                });
-                console.log('keyentered here');
-            }, 3000);
-        }.bind(this));
-    };
-    DriverGeofireService.prototype.keyExitedDest = function (keyReserve) {
-        this.geoquery1.on("key_exited", function (key) {
-            this.afDB.database.ref('/users/' + key + '/availableReserves/' + keyReserve).remove();
-        }.bind(this));
-    };
-    //JUAN DAVID: created a sub-node "availableRserves" inside users node, so they are able to read the reserves from their node
-    DriverGeofireService.prototype.keyEnteredOr = function (driverId, keyReserve) {
-        this.geoquery2.on("key_entered", function (key, location, distance) {
-            console.log(key);
-            this.afDB.database.ref('/users/' + key + '/availableReserves/' + keyReserve).update({
-                driverId: driverId,
-                keyReserve: keyReserve
-            });
-            this.afDB.database.ref('/reservesInfoInCaseOfCancelling/' + driverId + '/' + keyReserve).push({
-                userId: key
-            });
-        }.bind(this));
-    };
-    DriverGeofireService.prototype.keyExitedOr = function (keyReserve) {
-        this.geoquery2.on("key_exited", function (key) {
-            this.afDB.database.ref('/users/' + key + '/availableReserves/' + keyReserve).remove();
-        }.bind(this));
-    };
-    DriverGeofireService.prototype.getMyInfo = function (userId) {
-        return this.afDB.object('driversTest/' + userId).valueChanges();
-    };
-    DriverGeofireService.prototype.getMyReserves = function (driverId) {
-        return this.afDB.list('/reserves/' + driverId).valueChanges();
-    };
-    DriverGeofireService.prototype.deleteUserListRide = function (driverId, userId) {
-        this.afDB.database.ref('/driversTest/' + driverId + '/tripsTest/usersListRide/' + userId).remove();
-    };
-    DriverGeofireService.prototype.deleteUserListRideTotal = function (driverId) {
-        this.afDB.database.ref('/driversTest/' + driverId + '/tripsTest/usersListRide/').remove();
-    };
-    DriverGeofireService.prototype.onTripUserListRide = function (driverId, userId) {
-        this.afDB.database.ref('/driversTest/' + driverId + '/tripsTest/usersListRide/' + userId).update({
-            onTrip: true
-        });
-    };
-    DriverGeofireService.prototype.deleteUserGeofireDest = function (keyTrip) {
-        this.afDB.database.ref('/geofireDest/' + keyTrip).remove().then(function () {
-            console.log("GeofireDest succesfully removed");
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    DriverGeofireService.prototype.deleteUserGeofireRoute = function (keyTrip) {
-        this.afDB.database.ref('/geofireRoute/' + keyTrip).remove().then(function () {
-            console.log("GeofireRoute succesfully removed");
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    DriverGeofireService.prototype.deleteUserReserve = function (userId, keyTrip) {
-        this.afDB.database.ref('/reservesTest/' + userId + '/' + keyTrip).remove().then(function () {
-            console.log("reserve succesfully removed");
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    DriverGeofireService.prototype.deleteUserGeofireOr = function (keyTrip) {
-        this.afDB.database.ref('/geofireOr/' + keyTrip).remove().then(function () {
-            console.log("GeofireOr succesfully removed");
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    DriverGeofireService.prototype.deleteUserGeofireOrTrip = function (keyTrip) {
-        this.afDB.database.ref('/geofireOrTrip/' + keyTrip).remove().then(function () {
-            console.log("geofireOrTrip succesfully removed");
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    DriverGeofireService.prototype.deleteUserGeofireDestTrip = function (keyTrip) {
-        this.afDB.database.ref('/geofireDestTrip/' + keyTrip).remove().then(function () {
-            console.log("geofireDestTrip succesfully removed");
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    DriverGeofireService.prototype.getInfoUser = function (userId) {
-        return this.afDB.object('users/' + userId).valueChanges();
-    };
-    DriverGeofireService.prototype.cancelGeoqueryDest = function (geofirename) {
-        if (this.proofToCancelDest === geofirename) {
-            if (this.geoquery1) {
-                this.geoquery1.cancel();
-                console.log('geoqueryDest deleted');
-            }
-            else {
-                console.log('dont dest query');
-            }
-        }
-    };
-    DriverGeofireService.prototype.cancelGeoqueryOr = function (geofirename) {
-        if (this.proofToCancelOr === geofirename) {
-            if (this.geoquery2) {
-                this.geoquery2.cancel();
-                console.log('geoqueryOr deleted');
-            }
-            else {
-                console.log('dont or query');
-            }
-        }
-    };
-    // set a new node on firebase which is the location of the Place
-    DriverGeofireService.prototype.setLocationPlace = function (key, lat, lng) {
-        this.dbRef = this.afDB.database.ref('/geofirePlace/');
-        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
-        this.geoFire.set(key, [lat, lng]).then(function () {
-            console.log('location updated');
-        }, function (error) {
-            console.log('error: ' + error);
-        });
-    };
-    // set geoquery that determines if the person is in place
-    DriverGeofireService.prototype.setGeofirePlace = function (radius, lat, lng, driverId) {
-        this.dbRef = this.afDB.database.ref('/geofirePlace/');
-        this.geoFire = new __WEBPACK_IMPORTED_MODULE_2_geofire__(this.dbRef);
-        this.geoqueryP = this.geoFire.query({
-            center: [lat, lng],
-            radius: radius
-        });
-        this.keyEnteredPlace(driverId);
-        console.log('geoquery place added');
-    };
-    DriverGeofireService.prototype.keyEnteredPlace = function (driverId) {
-        this.geoqueryP.on("key_entered", function (key) {
-            this.afDB.database.ref('/driversTest/' + driverId).update({
-                geofireOrigin: true
-            }).then(function () {
-                console.log('geofireOrigin = true');
-            });
-            console.log(key + ' detected');
-        }.bind(this));
-    };
-    DriverGeofireService.prototype.cancelGeoqueryPlace = function () {
-        if (this.geoqueryP) {
-            this.geoqueryP.cancel();
-            console.log('geoqueryU deleted');
-        }
-        else {
-            console.log('dont uni query');
-        }
-    };
-    DriverGeofireService.prototype.cancelGeofireOrigin = function (driverId) {
-        this.afDB.database.ref('/driversTest/' + driverId).update({
-            geofireOrigin: false
-        }).then(function () {
-            console.log('geofireOrigin = false');
-        });
-    };
-    DriverGeofireService.prototype.setHouseAddress = function (driverId, lat, lng) {
-        this.afDB.database.ref('/driversTest/' + driverId + '/houseAddress/coordinates').update({
-            lat: lat,
-            lng: lng
-        });
-    };
-    DriverGeofireService.prototype.setHouseAddressName = function (driverId, name) {
-        this.afDB.database.ref('/driversTest/' + driverId + '/houseAddress/').update({
-            name: name
-        });
-    };
-    DriverGeofireService.prototype.getLocationPlace = function (place) {
-        return this.afDB.object('/allPlaces/' + place).valueChanges();
-    };
-    DriverGeofireService.prototype.deleteKeyUserLMU = function (userId) {
-        this.afDB.database.ref('/users/' + userId + '/keyTrip/').remove();
-    };
-    DriverGeofireService.prototype.setOntripFalseUserLMU = function (userId) {
-        this.afDB.database.ref('/users/' + userId).update({
-            onTrip: false
-        });
-    };
-    DriverGeofireService.prototype.deleteDriverFromLMUofUser = function (userId, keyTrip) {
-        this.afDB.database.ref('/users/' + userId + '/availableReserves/' + keyTrip).remove();
-    };
-    DriverGeofireService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]])
-    ], DriverGeofireService);
-    return DriverGeofireService;
-}());
-
-//# sourceMappingURL=d-geofire.services.js.map
-
-/***/ }),
-
 /***/ 358:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2526,13 +2565,25 @@ var TripsService = /** @class */ (function () {
         //eliminate keyTrip from user's node to eliminate access to that reserve
         this.afDB.database.ref('/usersTest/' + userUid + '/availableReserves/').remove();
     };
+    TripsService.prototype.eliminateAvailableCrews = function (userUid) {
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+        this.afDB.database.ref('/usersTest/' + userUid + '/availableCrews/').remove();
+    };
     TripsService.prototype.eliminateSeenAvailableReserves = function (userUid) {
         //eliminate keyTrip from user's node to eliminate access to that reserve
         this.afDB.database.ref('/usersTest/' + userUid + '/reservesSeenInAvailableReserves/').remove();
     };
+    TripsService.prototype.eliminateSeenAvailableCrews = function (userUid) {
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+        this.afDB.database.ref('/usersTest/' + userUid + '/crewsSeenInAvailableCrews/').remove();
+    };
     TripsService.prototype.eliminateSeenAvailableReservesRoute = function (userUid) {
         //eliminate keyTrip from user's node to eliminate access to that reserve
         this.afDB.database.ref('/usersTest/' + userUid + '/reservesSeenInAvailableReservesRoute/').remove();
+    };
+    TripsService.prototype.eliminateSeenAvailableCrewsRoute = function (userUid) {
+        //eliminate keyTrip from user's node to eliminate access to that reserve
+        this.afDB.database.ref('/usersTest/' + userUid + '/crewsSeenInAvailableCrewsRoute/').remove();
     };
     TripsService.prototype.eliminateSeenAvailableReservesLMU = function (userUid) {
         //eliminate keyTrip from user's node to eliminate access to that reserve
@@ -2563,9 +2614,10 @@ var TripsService = /** @class */ (function () {
     };
     TripsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]) === "function" && _b || Object])
     ], TripsService);
     return TripsService;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=trips.service.js.map
@@ -3191,12 +3243,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_firebase__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geolocation__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_sendCoords_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_sendUsers_service__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_sendUsers_service__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_note_service__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_call_number__ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_geoFire_service__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_common__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_instances_service__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_instances_service__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_signup_services__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_native_geocoder_ngx__ = __webpack_require__(642);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_email_composer_ngx__ = __webpack_require__(371);
@@ -3212,15 +3264,15 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__ionic_native_clipboard___ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__services_d_chat_service__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__services_d_geofire_services__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__services_d_instances_services__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__services_d_geofire_services__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__services_d_instances_services__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__services_d_metrics_service__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__services_d_price_service__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_d_sendCoords_service__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_d_sendFeedback_service__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__services_d_sendUsers_service__ = __webpack_require__(352);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__services_d_trips_service__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__services_d_trips_service__ = __webpack_require__(357);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__services_d_window_service__ = __webpack_require__(373);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_social_sharing__ = __webpack_require__(368);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3296,17 +3348,17 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/canceltrip/driverCanceltrip.module#DriverCanceltripPageModule', name: 'DriverCanceltripPage', segment: 'driverCanceltrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/chatting/driverChatting.module#DriverChattingPageModule', name: 'DriverChattingPage', segment: 'driverChatting', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/chats/driverChats.module#DriverChatsPageModule', name: 'DriverChatsPage', segment: 'driverChats', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/confirmtrip/driverConfirmtrip.module#DriverConfirmtripPageModule', name: 'DriverConfirmtripPage', segment: 'driverConfirmtrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-schedule/add-schedule.module#DriverAddSchedulePageModule', name: 'DriverAddSchedulePage', segment: 'add-schedule', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/canceltrip/driverCanceltrip.module#DriverCanceltripPageModule', name: 'DriverCanceltripPage', segment: 'driverCanceltrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/chats/driverChats.module#DriverChatsPageModule', name: 'DriverChatsPage', segment: 'driverChats', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/chatting/driverChatting.module#DriverChattingPageModule', name: 'DriverChattingPage', segment: 'driverChatting', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmprice/driverConfirmprice.module#DriverConfirmpricePageModule', name: 'DriverConfirmpricePage', segment: 'driverConfirmprice', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmtrip/driverConfirmtrip.module#DriverConfirmtripPageModule', name: 'DriverConfirmtripPage', segment: 'driverConfirmtrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/detailsreserve/driverDetailsreserve.module#DriverDetailsReservePagePageModule', name: 'DriverDetailsReservePage', segment: 'driverDetailsreserve', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/earn/earn.module#ReferalPageModule', name: 'ReferalPage', segment: 'earn', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/driverHelp.module#DriverHelpPageModule', name: 'DriverHelpPage', segment: 'driverHelp', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/driverLogin.module#DriverLoginPageModule', name: 'DriverLoginPage', segment: 'driverLogin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/more/driverMore.module#DriverMorePageModule', name: 'DriverMorePage', segment: 'driverMore', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/driverLogin.module#DriverLoginPageModule', name: 'DriverLoginPage', segment: 'driverLogin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-canceltrip/canceltrip.module#CanceltripPageModule', name: 'CanceltripPage', segment: 'canceltrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule', name: 'ConfirmReservationPage', segment: 'confirm-reservation', priority: 'low', defaultHistory: [] },
@@ -3315,16 +3367,16 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-createcrew/createcrew.module#CreateCrewPageModule', name: 'CreateCrewPage', segment: 'createcrew', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-public-profile/public-profile.module#PublicProfilePageModule', name: 'PublicProfilePage', segment: 'public-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-reserveinfo/reserveinfo.module#ConfirmreservationPageModule', name: 'ReserveinfoPage', segment: 'reserveinfo', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-verification-images/verification-images.module#VerificationImagesPageModule', name: 'VerificationImagesPage', segment: 'verification-images', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-walkthrough/walkthrough.module#WalkthroughPageModule', name: 'WalkthroughPage', segment: 'walkthrough', priority: 'low', defaultHistory: [] },
@@ -3341,17 +3393,17 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/terms/driverTerms.module#DriverTermsPageModule', name: 'DriverTermsPage', segment: 'driverTerms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/type-of-login/type-of-login.module#TypeOfLoginPageModule', name: 'TypeOfLoginPage', segment: 'type-of-login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-images/driver-verification-images.module#DriverVerificationImagesPageModule', name: 'DriverVerificationImagesPage', segment: 'driver-verification-images', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/walkthrough/driverWalkthrough.module#DriverWalkthroughPageModule', name: 'DriverWalkthroughPage', segment: 'driverWalkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-number/driver-verification-number.module#DrverVerificationNumberPageModule', name: 'DrverVerificationNumberPage', segment: 'driver-verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/driverWallet.module#DriverWalletPageModule', name: 'DriverWalletPage', segment: 'driverWallet', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/walkthrough/driverWalkthrough.module#DriverWalkthroughPageModule', name: 'DriverWalkthroughPage', segment: 'driverWalkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/car-registration/car-registration.module#DriverUserVerificationPageModule', name: 'DriverUserVerificationPage', segment: 'car-registration', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/car-registration-login/car-registration-login.module#DriverCarRegistrationPageModule', name: 'DriverCarRegistrationLoginPage', segment: 'car-registration-login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/myride/driverMyride.module#DriverMyridePageModule', name: 'DriverMyridePage', segment: 'driverMyride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-tripbike/tripbike.module#TripbikePageModule', name: 'TripbikePage', segment: 'tripbike', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/signup/driverSignup.module#DriverSignupPageModule', name: 'DriverSignupPage', segment: 'driverSignup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reservetrip/driverReservetrip.module#DriverReservetripPageModule', name: 'DriverReservetripPage', segment: 'driverReservetrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-tripbike/tripbike.module#TripbikePageModule', name: 'TripbikePage', segment: 'tripbike', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/specifyorigin/specifyorigin.module#DriverSpecifyOriginPageModule', name: 'DriverSpecifyOriginPage', segment: 'specifyorigin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/signup/driverSignup.module#DriverSignupPageModule', name: 'DriverSignupPage', segment: 'driverSignup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-bikemode/bikemode.module#FindridePassPageModule', name: 'BikeModePage', segment: 'bikemode', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pickup/pickup.module#DriverPickupPageModule', name: 'DriverPickupPage', segment: 'pickup', priority: 'low', defaultHistory: [] },

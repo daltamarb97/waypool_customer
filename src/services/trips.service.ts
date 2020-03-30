@@ -161,6 +161,13 @@ export class TripsService {
 
    } 
 
+   public eliminateAvailableCrews( userUid){    
+    //eliminate keyTrip from user's node to eliminate access to that reserve
+  this.afDB.database.ref( '/usersTest/'+userUid+'/availableCrews/').remove();
+
+ } 
+
+
 
    public eliminateSeenAvailableReserves( userUid){    
     //eliminate keyTrip from user's node to eliminate access to that reserve
@@ -169,12 +176,26 @@ export class TripsService {
  } 
 
 
+ public eliminateSeenAvailableCrews( userUid){    
+  //eliminate keyTrip from user's node to eliminate access to that reserve
+this.afDB.database.ref('/usersTest/'+userUid+'/crewsSeenInAvailableCrews/').remove();
+
+} 
+
+
 
  public eliminateSeenAvailableReservesRoute( userUid){    
   //eliminate keyTrip from user's node to eliminate access to that reserve
 this.afDB.database.ref('/usersTest/'+userUid+'/reservesSeenInAvailableReservesRoute/').remove();
 
 } 
+
+
+public eliminateSeenAvailableCrewsRoute( userUid){    
+  //eliminate keyTrip from user's node to eliminate access to that reserve
+this.afDB.database.ref('/usersTest/'+userUid+'/crewsSeenInAvailableCrewsRoute/').remove();
+
+}
 
 
  public eliminateSeenAvailableReservesLMU( userUid){    

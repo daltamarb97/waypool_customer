@@ -24,61 +24,70 @@
 
 
     
-<img *ngIf="noReserve" src="assets/imgs/noreserve.png">
 
 
-<div style="display: flex;flex-direction: column;    width: 96%" *ngIf = 'showCarpool'>
-    <ion-card *ngFor = "let reserve of myReserves">  
-        <ion-item> 
-                <ion-avatar item-start>
-                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
-                    </ion-avatar>
-                <div class="name">
-                   
-                    <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase  }}
-                        <ion-icon *ngIf='reserve.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
-                    </h2>
-                </div>
 
-                <div class="more"> 
-                        <h2 class="text text-theme">                        
-                                $ {{reserve.price}}                          
-                            </h2> 
-                </div>
-            </ion-item>
-            <ion-card-content>
-                <div class="ride-detail">
-                    <p  >
-                        <span class="icon-location bg-theme"></span>{{reserve.origin[0]}}</p>
-                    <p > 
-                        <span class="icon-location bg-yellow"></span>{{reserve.destination[0]}}</p>
-                </div>
-                <ion-row class="center-align">
-                    <!-- <ion-col col-3 class="detail-text text-theme">
-                        3 seats
-                    </ion-col> -->
+<div *ngIf = 'showCarpool'>
+
+    <img *ngIf="noReserve" src="assets/imgs/noreserve.png">
+
+    <div style="display: flex;flex-direction: column; width: 96%" >
+
+            <ion-card *ngFor = "let reserve of myReserves">  
+                    <ion-item> 
+                            <ion-avatar item-start>
+                                    <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
+                                </ion-avatar>
+                            <div class="name">
+                               
+                                <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase  }}
+                                    <ion-icon *ngIf='reserve.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                                </h2>
+                            </div>
+            
+                            <div class="more"> 
+                                    <h2 class="text text-theme">                        
+                                            $ {{reserve.price}}                          
+                                        </h2> 
+                            </div>
+                        </ion-item>
+                        <ion-card-content>
+                            <div class="ride-detail">
+                                <p  >
+                                    <span class="icon-location bg-theme"></span>{{reserve.origin[0]}}</p>
+                                <p > 
+                                    <span class="icon-location bg-yellow"></span>{{reserve.destination[0]}}</p>
+                            </div>
+                            <ion-row class="center-align">
+                                <!-- <ion-col col-3 class="detail-text text-theme">
+                                    3 seats
+                                </ion-col> -->
+                                
+                                <ion-col col-4  >
                     
-                    <ion-col col-4  >
-        
-                            <h2 style="font-size: 1.8rem;
-                            font-weight: 600;" >Hora {{reserve.startHour |titlecase}} 
-                            </h2>
-                            
-                    </ion-col>
-                    <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                        <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            
-                    </ion-col>
-                    <ion-col center text-center col-4 text-right >
-                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>
-                    </ion-col> 
-                </ion-row>
-            </ion-card-content>
-        
-</ion-card>
+                                        <h2 style="font-size: 1.8rem;
+                                        font-weight: 600;" >Hora {{reserve.startHour |titlecase}} 
+                                        </h2>
+                                        
+                                </ion-col>
+                                <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                                    <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            
+                                </ion-col>
+                                <ion-col center text-center col-4 text-right >
+                                    <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>
+                                </ion-col> 
+                            </ion-row>
+                        </ion-card-content>
+                    
+            </ion-card>
+    </div>
+    
 
 </div>
 
 <div *ngIf= 'showCrew'>
+
+    <img *ngIf="noCrew" src="assets/imgs/noreserve.png">
 
     <ion-card *ngFor = "let crew of myCrews">  
         <ion-item> 
@@ -89,6 +98,56 @@
                    
                     <h2>{{crew.admin.name| titlecase}} {{crew.admin.lastname| titlecase  }}
                         <ion-icon *ngIf='crew.admin.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> Administrador</ion-badge>
+
+                    </h2>
+                </div>
+
+                <!-- <div class="more"> 
+                        <h2 class="text text-theme">                        
+                                $ {{reserve.price}}                          
+                            </h2>  -->
+                <!-- </div> -->
+            </ion-item>
+            <ion-card-content>
+                <div class="ride-detail">
+                    <p  >
+                        <span class="icon-location bg-theme"></span>{{crew.origin.name}}</p>
+                    <p > 
+                        <span class="icon-location bg-yellow"></span>{{crew.destination.name}}</p>
+                </div>
+                <ion-row class="center-align">
+   
+                    <ion-col col-4  >
+        
+                            <h2 style="font-size: 1.8rem;
+                            font-weight: 600;" >Hora {{crew.startHour |titlecase}} 
+                            </h2>
+                            
+                    </ion-col>
+                    <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                        <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChatCrew(crew)">Chat</button>            
+                    </ion-col>
+                    <ion-col center text-center col-4 text-right >
+                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="crewDetails()">Detalles</button>
+                    </ion-col> 
+                </ion-row>
+            </ion-card-content>
+        
+</ion-card>
+
+
+<ion-card *ngFor = "let crew of myCrewsMember">  
+        <ion-item> 
+                <ion-avatar item-start>
+                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
+                    </ion-avatar>
+                <div class="name">
+                   
+                    <h2>{{crew.admin.name| titlecase}} {{crew.admin.lastname| titlecase  }}
+                        <ion-icon *ngIf='crew.admin.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> Miembro </ion-badge>
+
                     </h2>
                 </div>
 

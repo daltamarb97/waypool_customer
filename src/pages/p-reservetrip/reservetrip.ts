@@ -43,10 +43,13 @@ export class ReservetripPage{
   onTrip:any;
   unsubscribe = new Subject;
   noReserve:boolean;
+  noCrew:boolean;
   segment:any;
   showCarpool:boolean;
   showCrew:boolean;
   myCrews = [];
+  myCrewsMember = [];
+  myCrewsMemberKeys = [];
 
   constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService,public loadingCtrl: LoadingController, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
     
@@ -106,21 +109,54 @@ export class ReservetripPage{
 
 
     this.afDB.database.ref('crewsTest/' + this.userUid).once('value').then((snap)=>{
+
       let obj = snap.val();
-      Object.getOwnPropertyNames(obj).forEach((key)=>{
-        this.myCrews.push(obj[key]);
-      })
+      if(obj){
+        this.noCrew = false;
+        Object.getOwnPropertyNames(obj).forEach((key)=>{
+          this.myCrews.push(obj[key]);
+        })
+
+      }else{
+        this.noCrew = true;
+      }
+      
     }).then(()=>{
       console.log(this.myCrews);
       
     })
+
+
+    this.afDB.database.ref('usersTest/' + this.userUid + '/crewsInside/').once('value').then((snap)=>{
+
+      let obj = snap.val();
+      if(obj){
+        this.noCrew = false;
+        Object.getOwnPropertyNames(obj).forEach((key)=>{
+          this.myCrewsMemberKeys.push(obj[key]);
+        })
+
+      }else{
+        this.noCrew = true;
+      }
+      
+    }).then(()=>{
+      this.getInfoFromCrews()
+      
+    })
+
   }
 
 
 
-  ionViewDidLoad(){
-    
-    
+  getInfoFromCrews(){
+    for(let key of this.myCrewsMemberKeys){
+
+      this.afDB.database.ref('crewsTest/' + key.adminId + '/' + key.crewId).once('value')
+        .then((snap)=>{
+          this.myCrewsMember.push(snap.val())
+        })
+    }
   }
 
 
@@ -138,6 +174,7 @@ export class ReservetripPage{
   carpool(){
     this.showCrew = false;
     this.showCarpool = true;
+    this.noCrew = false;
   }
 
 
@@ -145,6 +182,7 @@ export class ReservetripPage{
 
     this.showCarpool= false;
     this.showCrew= true;
+    this.noReserve = false;
   }
 
 

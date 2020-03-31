@@ -334,10 +334,16 @@ this.CrewsGeofire.forEach(crewGeofire => {
       this.afDB.database.ref('/crewsTest/'+crewGeofire.adminId+'/'+ crewGeofire.crewId).once('value').then((snapCrewRoute)=>{
         let obj = snapCrewRoute.val();
         this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrewsRoute/').remove().then(()=>{
-          this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrewsRoute/'+ crewGeofire.crewId).update(obj)
+          if(crewGeofire.adminId === this.userUid){
+            console.log('yo te cree');
+            
+          }else{
+            this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrewsRoute/'+ crewGeofire.crewId).update(obj)
           .then(()=>{
             this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrewsRoute/'+ crewGeofire.crewId).update({distance: (crewGeofire.distance*1000)})
           })
+          }
+          
         })
         
          
@@ -349,10 +355,16 @@ this.CrewsGeofire.forEach(crewGeofire => {
       let obj = snapCrew.val();
       console.log(obj);
       this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrews/').remove().then(()=>{
-        this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrews/'+ crewGeofire.crewId).update(obj)
+        if(crewGeofire.adminId === this.userUid){
+          console.log('yo te cree');
+          
+        }else{
+          this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrews/'+ crewGeofire.crewId).update(obj)
         .then(()=>{
           this.afDB.database.ref('/usersTest/'+ this.userUid +'/crewsSeenInAvailableCrews/'+ crewGeofire.crewId).update({distance: (crewGeofire.distance*1000)})
         })
+        }
+        
       })
     })
 
@@ -530,6 +542,41 @@ this.CrewsGeofire.forEach(crewGeofire => {
   }
 
 
+
+  joinCrew(crew){
+    let userToCrew = {
+      city: this.user.city,
+      company: this.user.company,
+      email: this.user.email,
+      name: this.user.name,
+      lastname: this.user.lastname,
+      phone: this.user.phone,
+      userId: this.user.userId,
+      verifiedPerson: this.user.verifiedPerson
+    }
+    this.afDB.database.ref('/crewsTest/' + crew.admin.userId + '/' + crew.crewId + '/members').push(userToCrew)
+      .then((snap)=>{
+        const keyPushCrew = snap.key
+
+        this.afDB.database.ref('/usersTest/' + this.userUid + '/crewsInside/' + keyPushCrew )
+          .update({
+            adminId: crew.admin.userId,
+            crewId: crew.crewId
+          }).then(()=>{
+
+            let alert = this.alertCtrl.create({
+              title: 'Bienvenido a este grupo!!',
+              subTitle: 'Mira los detalles del grupo en "Mis Viajes"',
+              buttons: ['OK']
+            });
+            alert.present();
+            
+          })
+
+      })
+    
+
+  }
 
 
 

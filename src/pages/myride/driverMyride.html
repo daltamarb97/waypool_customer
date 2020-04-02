@@ -1,17 +1,15 @@
 <ion-header class="bg-theme-driver">
     <ion-navbar>
-        <ion-title class="text-center">VIAJE EN CURSO
-           
+        <ion-title class="text-center">VIAJE EN CURSO          
             <ion-icon name="help-circle-outline" class="text-white" (click)="help() " style="margin-left: auto;float: right;"></ion-icon> 
         </ion-title>
-
-    </ion-navbar>
-    
+    </ion-navbar>  
 </ion-header>
 
 <ion-content class="bg-light"> 
-        <p class="important">No se intercambia efectivo durante el viaje </p> 
-       
+        <p class="important">No se intercambia efectivo durante el viaje7 </p> 
+        <div #map id="map"></div>  
+
       
         <ion-list >
             <ion-card *ngFor = "let user of pendingUsers">
@@ -35,9 +33,9 @@
                 <ion-card-content>
                     <div class="ride-detail">
                         <p><small></small>
-                            <span class="icon-location bg-theme-driver"></span>{{user.origin}}</p>
+                            <span class="icon-location bg-theme-driver"></span>{{user.origin.name}}</p>
                         <p><small></small>
-                            <span class="icon-location bg-yellow"></span>{{user.destination}}</p>
+                            <span class="icon-location bg-yellow"></span>{{user.destination.name}}</p>
                     </div>
                     <ion-row>
                         
@@ -75,9 +73,9 @@
                     <ion-card-content>
                         <div class="ride-detail">
                             <p>
-                                <span class="icon-location bg-theme-driver"></span>{{user.origin}}</p>
+                                <span class="icon-location bg-theme-driver"></span>{{user.origin.name}}</p>
                             <p>
-                                <span class="icon-location bg-yellow"></span>{{user.destination}}</p>
+                                <span class="icon-location bg-yellow"></span>{{user.destination.name}}</p>
                         </div>
                        
                     </ion-card-content>

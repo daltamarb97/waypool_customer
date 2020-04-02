@@ -1,6 +1,6 @@
 webpackJsonp([5],{
 
-/***/ 691:
+/***/ 699:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverMyridePageModule", function() { return DriverMyridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverMyride__ = __webpack_require__(886);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverMyride__ = __webpack_require__(894);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17282,7 +17282,7 @@ webpackContext.id = 834;
 
 /***/ }),
 
-/***/ 886:
+/***/ 894:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17302,6 +17302,8 @@ webpackContext.id = 834;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_database__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geolocation__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operators__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17323,10 +17325,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var DriverMyridePage = /** @class */ (function () {
-    function DriverMyridePage(navCtrl, SignUpService, actionSheetCtrl, TripsService, modalCtrl, toastCtrl, alertCtrl, navParams, callNumber, sendCoordsService, AngularFireAuth, sendUsersService, geofireServices, afDB) {
+    function DriverMyridePage(navCtrl, geolocation, SignUpService, actionSheetCtrl, TripsService, modalCtrl, toastCtrl, alertCtrl, navParams, callNumber, sendCoordsService, AngularFireAuth, sendUsersService, geofireServices, afDB) {
         var _this = this;
         this.navCtrl = navCtrl;
+        this.geolocation = geolocation;
         this.SignUpService = SignUpService;
         this.actionSheetCtrl = actionSheetCtrl;
         this.TripsService = TripsService;
@@ -17341,6 +17346,8 @@ var DriverMyridePage = /** @class */ (function () {
         this.geofireServices = geofireServices;
         this.afDB = afDB;
         this.hideImage = false;
+        this.PendingUsersForWaypoints = [];
+        this.pickedUpUsersForWaypoints = [];
         this.pendingUsers = [];
         this.pickedUpUsers = [];
         this.ride = "today";
@@ -17348,59 +17355,85 @@ var DriverMyridePage = /** @class */ (function () {
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_10_rxjs__["Subject"];
         this.lastMinuteUsers = [];
         this.clearToDeleteDriver = false;
-        //get driver information to get the keyTrip
-        this.SignUpService.getMyInfoDriver(this.SignUpService.userPlace, this.driverUid).takeUntil(this.unsubscribe)
-            .subscribe(function (userDriver) {
-            _this.userDriver = userDriver;
-            if (_this.userDriver.keyTrip === null || _this.userDriver.onTrip === false) {
-                //do nothing
-                console.log("que dijiste corone");
-                console.log(_this.userDriver.keyTrip);
-            }
-            else {
-                _this.getTrip(_this.userDriver.keyTrip, _this.userDriver.userId); //get keyTrip  
-                // corregir esta vuelta, no debiera estar ontrip true
-            }
+        this.directionsService = null;
+        this.bounds = null;
+        this.myLatLng = [];
+        this.waypoints = [];
+        this.directionsDisplay = null;
+        this.trackedRoute = [];
+        this.previousTracks = [];
+        this.currentMapTrack = null;
+        this.testCoords = [];
+        this.biciMarkers = [];
+        this.directionsService = new google.maps.DirectionsService();
+        // var polyline = new google.maps.Polyline({
+        // 	strokeColor: '#001127',
+        //  strokeOpacity: 0.4,
+        //  strokeWeight: 5
+        // 	});
+        this.directionsDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true,
+        });
+        // this.directionsDisplay.setOptions({polylineOptions: polyline})
+        this.bounds = new google.maps.LatLngBounds();
+        this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.driverUid + '/').once('value').then(function (snap) {
+            var obj = snap.val();
+            console.log(obj);
+            _this.userDriver = obj;
+            _this.getTrip(_this.userDriver.keyTrip, _this.userDriver.userId); //get keyTrip  
+            // corregir esta vuelta, no debiera estar ontrip true	
         });
     }
-    DriverMyridePage.prototype.getLastMinuteUsers = function (keyTrip, driverUid) {
+    DriverMyridePage.prototype.ionViewDidLoad = function () {
+        this.loadMap();
+    };
+    DriverMyridePage.prototype.loadMap = function () {
         var _this = this;
-        // this.lastMinuteUsers = [];
-        console.log(this.lastMinuteUsers);
-        console.log("1");
-        this.TripsService.getLastMinuteUsers(this.SignUpService.userPlace, keyTrip, driverUid).takeUntil(this.unsubscribe)
-            .subscribe(function (users) {
-            _this.lastMinuteUsers = users;
-            //verify if user info exist 
-            console.log(_this.lastMinuteUsers);
-            console.log("2");
-            if (_this.lastMinuteUsers.length === 0) {
-                // do nothing
-            }
-            else {
-                _this.lastMinuteUsers.forEach(function (userLastMinute) {
-                    if (userLastMinute.noRepeat === true) {
-                        console.log("TE QUERIAS REPETIR PERO NOOOOO");
+        //check if user have houseAddress
+        // this gets current position and set the camera of the map and put a marker in your location
+        this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then(function (position) {
+            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            console.log(latLng);
+            var mapOptions = {
+                center: latLng,
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoomControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                rotateControl: false,
+                fullscreenControl: false,
+                styles: [
+                    {
+                        featureType: 'poi',
+                        elementType: 'labels.icon',
+                        stylers: [
+                            {
+                                visibility: 'off'
+                            }
+                        ]
                     }
-                    else {
-                        _this.TripsService.noRepeatLMU(_this.SignUpService.userPlace, _this.driverUid, keyTrip, userLastMinute.userId);
-                        console.log(userLastMinute);
-                        console.log(_this.lastMinuteUsers);
-                        console.log("3");
-                        var modal = _this.modalCtrl.create('DriverConfirmtripPage', {
-                            user: userLastMinute,
-                            keyTrip: _this.userDriver.keyTrip
-                        });
-                        modal.present();
-                    }
-                });
-            }
+                ]
+            };
+            //creates the map and give options
+            _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
+            _this.myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+            _this.startTracking();
+            //    this.markerDest = new google.maps.Marker({
+            //     position: this.positionDest,
+            //     map: this.map,
+            //     animation: google.maps.Animation.DROP,
+            //        icon: {         url: "assets/imgs/workworkbuilding.png",
+            //     scaledSize: new google.maps.Size(250, 250)    
+            //      }})   
+            //   this.markers.push(this.markerGeolocation);
+        }, function (err) {
+            console.log(err);
         });
     };
     DriverMyridePage.prototype.getTrip = function (keyTrip, driverUid) {
         var _this = this;
-        // this.getLastMinuteUsers(this.userDriver.keyTrip, this.userDriver.userId);
-        this.getLastMinuteUsers(keyTrip, driverUid);
         this.TripsService.getTrip(this.SignUpService.userPlace, keyTrip, driverUid).takeUntil(this.unsubscribe)
             .subscribe(function (trip) {
             console.log('se repitio?');
@@ -17420,15 +17453,111 @@ var DriverMyridePage = /** @class */ (function () {
         var _this = this;
         this.TripsService.getPendingUsers(this.SignUpService.userPlace, keyTrip, driverUid).takeUntil(this.unsubscribe)
             .subscribe(function (user) {
+            if (_this.pendingUsers.length === 0 && _this.pickedUpUsers.length === 0) {
+                _this.PendingUsersForWaypoints = user;
+                console.log(_this.PendingUsersForWaypoints);
+                console.log("WAYPOINTS ENTRING");
+                _this.PendingUsersForWaypoints.forEach(function (user) {
+                    _this.waypoints.push({ location: user.orCoords, stopover: true });
+                    _this.directionsDisplay.setMap(_this.map);
+                    _this.calculateRoute("markerForWaypointsUsers");
+                    //To change the color of the line for each Waypoint (later)
+                    // 	var polyline = new google.maps.Polyline({
+                    // 		strokeColor: '#C00',
+                    // 		strokeOpacity: 0.7,
+                    // 		strokeWeight: 5
+                    // 		});
+                    // 		directionsDisplay = new google.maps.DirectionsRenderer();
+                    // 		directionsDisplay.setOptions({polylineOptions: polyline});
+                });
+            }
             _this.pendingUsers = user;
             console.log(_this.pendingUsers);
             _this.conditionalsOnTrip();
         });
         this.TripsService.getPickedUpUsers(this.SignUpService.userPlace, keyTrip, driverUid).takeUntil(this.unsubscribe)
             .subscribe(function (user) {
+            console.log(user);
+            if (_this.pendingUsers.length === 0 && user.length !== 0) {
+                console.log(" FUNCIONAAAAAAAAAAAAAAAAAA");
+                _this.pickedUpUsersForWaypoints = user;
+                console.log(_this.pickedUpUsersForWaypoints);
+                _this.waypoints = [];
+                _this.pickedUpUsersForWaypoints.forEach(function (user) {
+                    _this.waypoints.push({ location: user.destCoords, stopover: true });
+                    _this.directionsDisplay.setMap(_this.map);
+                    _this.calculateRoute("markerForWaypointsOffices");
+                });
+            }
             _this.pickedUpUsers = user;
             console.log(_this.pickedUpUsers);
             _this.conditionalsOnTrip();
+        });
+    };
+    DriverMyridePage.prototype.calculateRoute = function (conditionForMarker) {
+        var _this = this;
+        console.log(this.trip.origin.name);
+        console.log(this.trip.origin.coords);
+        this.markerGeolocation = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.DROP,
+            position: this.trip.origin.coords,
+            icon: { url: "assets/imgs/house.png",
+                scaledSize: new google.maps.Size(70, 70)
+            }
+        });
+        this.markerDest = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.DROP,
+            position: this.trip.destination.coords,
+            icon: { url: "assets/imgs/workbuilding.png",
+                scaledSize: new google.maps.Size(150, 150)
+            }
+        });
+        console.log(this.trip.origin.name);
+        // this.bounds.extend(this.myLatLng);
+        this.waypoints.forEach(function (waypoint) {
+            var point = new google.maps.LatLng(waypoint.location.lat, waypoint.location.lng);
+            _this.bounds.extend(point);
+            if (conditionForMarker === "markerForWaypointsUsers") {
+                var markerWaypointUser = new google.maps.Marker({
+                    map: _this.map,
+                    animation: google.maps.Animation.DROP,
+                    position: point,
+                    icon: { url: "assets/imgs/bicimarker.png",
+                        scaledSize: new google.maps.Size(70, 70)
+                    }
+                });
+            }
+            else if (conditionForMarker === "markerForWaypointsOffices") {
+                console.log(" FUNCIONAAAAAAAAAAAAAAAAAA");
+                var markerWaypointOffice = new google.maps.Marker({
+                    map: _this.map,
+                    animation: google.maps.Animation.DROP,
+                    position: point,
+                    icon: { url: "assets/imgs/workbuilding.png",
+                        scaledSize: new google.maps.Size(70, 70)
+                    }
+                });
+            }
+        });
+        this.map.fitBounds(this.bounds);
+        console.log(JSON.stringify(this.trip.origin.name));
+        console.log(JSON.stringify(this.trip.destination.name));
+        this.directionsService.route({
+            origin: JSON.stringify(this.trip.origin.name),
+            destination: JSON.stringify(this.trip.destination.name),
+            waypoints: this.waypoints,
+            optimizeWaypoints: true,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, function (response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                console.log(response);
+                _this.directionsDisplay.setDirections(response);
+            }
+            else {
+                alert('Could not display directions due to: ' + status);
+            }
         });
     };
     DriverMyridePage.prototype.conditionalsOnTrip = function () {
@@ -17645,11 +17774,67 @@ var DriverMyridePage = /** @class */ (function () {
         });
         toast.present();
     };
+    DriverMyridePage.prototype.goToWaze = function () {
+    };
+    DriverMyridePage.prototype.startTracking = function () {
+        var _this = this;
+        this.trackedRoute = [];
+        this.positionSubscription = this.geolocation.watchPosition({ enableHighAccuracy: true })
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_13_rxjs_operators__["filter"])(function (p) { return p.coords !== undefined; }) //Filter Out Errors
+        )
+            .subscribe(function (data) {
+            setTimeout(function () {
+                _this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
+                _this.moveMarker(_this.trackedRoute, data);
+                console.log(data);
+            }, 0);
+        });
+    };
+    DriverMyridePage.prototype.moveMarker = function (path, data) {
+        if (path.length > 1) {
+            this.deleteBiciMarkers();
+            var coordsForMarker = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
+            this.addMarker(coordsForMarker);
+            // this.addMarker(pathForMarker);
+        }
+    };
+    DriverMyridePage.prototype.addMarker = function (coordsForMarker) {
+        var marker = new google.maps.Marker({
+            position: coordsForMarker,
+            map: this.map,
+            icon: { url: "assets/imgs/bicimarker.png",
+                scaledSize: new google.maps.Size(90, 90)
+            }
+        });
+        this.biciMarkers.push(marker);
+    };
+    // showHistoryRoute(route) {
+    //   this.redrawPath(route);
+    // }
+    // setMapOnAll(map) {
+    //   for (var i = 0; i < this.markers.length; i++) {
+    //     this.markers[i].setMap(map);
+    //   }
+    // }
+    // setMapOnAll(map) {
+    //   for (var i = 0; i < this.markers.length; i++) {
+    //     this.markers[i].setMap(map);
+    //   }
+    // }
+    DriverMyridePage.prototype.deleteBiciMarkers = function () {
+        for (var i = 0; i < this.biciMarkers.length; i++) {
+            this.biciMarkers[i].setMap(null);
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], DriverMyridePage.prototype, "mapElement", void 0);
     DriverMyridePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-myride',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\myride\driverMyride.html"*/'<ion-header class="bg-theme-driver">\n\n    <ion-navbar>\n\n        <ion-title class="text-center">VIAJE EN CURSO\n\n           \n\n            <ion-icon name="help-circle-outline" class="text-white" (click)="help() " style="margin-left: auto;float: right;"></ion-icon> \n\n        </ion-title>\n\n\n\n    </ion-navbar>\n\n    \n\n</ion-header>\n\n\n\n<ion-content class="bg-light"> \n\n        <p class="important">No se intercambia efectivo durante el viaje </p> \n\n       \n\n      \n\n        <ion-list >\n\n            <ion-card *ngFor = "let user of pendingUsers">\n\n                <ion-item>\n\n                    <ion-avatar item-start>\n\n                        <img src="assets/imgs/userPicture.png">\n\n                    </ion-avatar>\n\n                    <div class="name">\n\n                        <h2>{{user.name |titlecase}} {{user.lastname | titlecase}}.\n\n                          <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-darkblue"></ion-icon>\n\n                          <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n\n\n\n\n\n                        </h2>\n\n                    </div>\n\n                    <div class="more">\n\n                            <ion-icon name="md-more" (click)="presentActionSheet(user.userId,user.name)"></ion-icon>\n\n\n\n                    </div>\n\n                </ion-item>\n\n                <ion-card-content>\n\n                    <div class="ride-detail">\n\n                        <p><small></small>\n\n                            <span class="icon-location bg-theme-driver"></span>{{user.origin}}</p>\n\n                        <p><small></small>\n\n                            <span class="icon-location bg-yellow"></span>{{user.destination}}</p>\n\n                    </div>\n\n                    <ion-row>\n\n                        \n\n                                <ion-col class="detail-text">\n\n                                        <button class="btn bg-yellow rounded full text-white"(click)="callUser(user.phone)"><ion-icon name="ios-call" class="text-white"></ion-icon></button>\n\n            \n\n                                    </ion-col>\n\n                        <ion-col col-5>\n\n                            <button class="btn bg-theme-driver rounded full text-white" (click)="goToRide(user)">Ir a Recoger/Dejar</button>\n\n                        </ion-col>\n\n                    </ion-row>\n\n                </ion-card-content>         \n\n\n\n                \n\n            </ion-card>\n\n            \n\n            \n\n            \n\n            <ion-card *ngFor = "let user of pickedUpUsers">\n\n                    <ion-item>\n\n                        <ion-avatar item-start>\n\n                            <img src="assets/imgs/userPicture.png">\n\n                        </ion-avatar>\n\n                        <div class="name">\n\n                            <h2 >{{user.name |titlecase}} {{user.lastname | titlecase}}.\n\n                            </h2>\n\n                            <p>{{user.company}}</p>\n\n\n\n                        </div>\n\n                        <div class="more">                       \n\n                                <ion-badge  class="badge bg-darkblue">RECOGIDO</ion-badge>                                  \n\n                                    \n\n                        </div>\n\n                    </ion-item>\n\n                    <ion-card-content>\n\n                        <div class="ride-detail">\n\n                            <p>\n\n                                <span class="icon-location bg-theme-driver"></span>{{user.origin}}</p>\n\n                            <p>\n\n                                <span class="icon-location bg-yellow"></span>{{user.destination}}</p>\n\n                        </div>\n\n                       \n\n                    </ion-card-content>\n\n                   \n\n        \n\n                    \n\n                </ion-card> \n\n\n\n            \n\n                <ion-row class="rowOfButtons" >                                 \n\n                \n\n                    <ion-col class="detail-text">\n\n                        <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>\n\n                    </ion-col>\n\n                    <ion-col class="detail-text">\n\n                        <button class="btn bg-theme-driver text-white rounded"  (click)="endTrip()" style="width: 93%;margin-top: 14px;margin-left: 9px; margin-right: 9px;">Finalizar Viaje</button>\n\n                    </ion-col>\n\n               \n\n                </ion-row>\n\n        </ion-list>\n\n        \n\n\n\n\n\n\n\n            \n\n            \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\myride\driverMyride.html"*/
+            selector: 'driver-page-myride',template:/*ion-inline-start:"C:\Users\danie\waypool_costumer\src\pages\myride\driverMyride.html"*/'<ion-header class="bg-theme-driver">\n\n    <ion-navbar>\n\n        <ion-title class="text-center">VIAJE EN CURSO          \n\n            <ion-icon name="help-circle-outline" class="text-white" (click)="help() " style="margin-left: auto;float: right;"></ion-icon> \n\n        </ion-title>\n\n    </ion-navbar>  \n\n</ion-header>\n\n\n\n<ion-content class="bg-light"> \n\n        <p class="important">No se intercambia efectivo durante el viaje7 </p> \n\n        <div #map id="map"></div>  \n\n\n\n      \n\n        <ion-list >\n\n            <ion-card *ngFor = "let user of pendingUsers">\n\n                <ion-item>\n\n                    <ion-avatar item-start>\n\n                        <img src="assets/imgs/userPicture.png">\n\n                    </ion-avatar>\n\n                    <div class="name">\n\n                        <h2>{{user.name |titlecase}} {{user.lastname | titlecase}}.\n\n                          <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-darkblue"></ion-icon>\n\n                          <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n\n\n\n\n\n                        </h2>\n\n                    </div>\n\n                    <div class="more">\n\n                            <ion-icon name="md-more" (click)="presentActionSheet(user.userId,user.name)"></ion-icon>\n\n\n\n                    </div>\n\n                </ion-item>\n\n                <ion-card-content>\n\n                    <div class="ride-detail">\n\n                        <p><small></small>\n\n                            <span class="icon-location bg-theme-driver"></span>{{user.origin.name}}</p>\n\n                        <p><small></small>\n\n                            <span class="icon-location bg-yellow"></span>{{user.destination.name}}</p>\n\n                    </div>\n\n                    <ion-row>\n\n                        \n\n                                <ion-col class="detail-text">\n\n                                        <button class="btn bg-yellow rounded full text-white"(click)="callUser(user.phone)"><ion-icon name="ios-call" class="text-white"></ion-icon></button>\n\n            \n\n                                    </ion-col>\n\n                        <ion-col col-5>\n\n                            <button class="btn bg-theme-driver rounded full text-white" (click)="goToRide(user)">Ir a Recoger/Dejar</button>\n\n                        </ion-col>\n\n                    </ion-row>\n\n                </ion-card-content>         \n\n\n\n                \n\n            </ion-card>\n\n            \n\n            \n\n            \n\n            <ion-card *ngFor = "let user of pickedUpUsers">\n\n                    <ion-item>\n\n                        <ion-avatar item-start>\n\n                            <img src="assets/imgs/userPicture.png">\n\n                        </ion-avatar>\n\n                        <div class="name">\n\n                            <h2 >{{user.name |titlecase}} {{user.lastname | titlecase}}.\n\n                            </h2>\n\n                            <p>{{user.company}}</p>\n\n\n\n                        </div>\n\n                        <div class="more">                       \n\n                                <ion-badge  class="badge bg-darkblue">RECOGIDO</ion-badge>                                  \n\n                                    \n\n                        </div>\n\n                    </ion-item>\n\n                    <ion-card-content>\n\n                        <div class="ride-detail">\n\n                            <p>\n\n                                <span class="icon-location bg-theme-driver"></span>{{user.origin.name}}</p>\n\n                            <p>\n\n                                <span class="icon-location bg-yellow"></span>{{user.destination.name}}</p>\n\n                        </div>\n\n                       \n\n                    </ion-card-content>\n\n                   \n\n        \n\n                    \n\n                </ion-card> \n\n\n\n            \n\n                <ion-row class="rowOfButtons" >                                 \n\n                \n\n                    <ion-col class="detail-text">\n\n                        <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>\n\n                    </ion-col>\n\n                    <ion-col class="detail-text">\n\n                        <button class="btn bg-theme-driver text-white rounded"  (click)="endTrip()" style="width: 93%;margin-top: 14px;margin-left: 9px; margin-right: 9px;">Finalizar Viaje</button>\n\n                    </ion-col>\n\n               \n\n                </ion-row>\n\n        </ion-list>\n\n        \n\n\n\n\n\n\n\n            \n\n            \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\waypool_costumer\src\pages\myride\driverMyride.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_7__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_9__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_2__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_11_angularfire2_database__["AngularFireDatabase"]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_7__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_9__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_2__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_11_angularfire2_database__["AngularFireDatabase"]])
     ], DriverMyridePage);
     return DriverMyridePage;
 }());

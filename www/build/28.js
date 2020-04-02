@@ -65,7 +65,7 @@ var TabsPage = /** @class */ (function () {
         // this.goConfirmUniversity();
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-tabs\tabs.html"*/'<ion-tabs tabsHideOnSubPages="false" [selectedIndex]="1">\n\n\n\n    <ion-tab [root]="tab3Root" tabIcon="md-list"  tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab1Root"  tabIcon="md-car" tabsHideOnSubPages="false"></ion-tab>\n\n\n\n    <ion-tab [root]="tab4Root" tabIcon="md-person" tabsHideOnSubPages="false"></ion-tab>\n\n</ion-tabs>\n\n '/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-tabs\tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\danie\waypool_costumer\src\pages\p-tabs\tabs.html"*/'<ion-tabs tabsHideOnSubPages="false" [selectedIndex]="1">\n\n\n\n    <ion-tab [root]="tab3Root" tabIcon="md-list"  tabsHideOnSubPages="false"></ion-tab>\n\n    <ion-tab [root]="tab1Root"  tabIcon="md-car" tabsHideOnSubPages="false"></ion-tab>\n\n\n\n    <ion-tab [root]="tab4Root" tabIcon="md-person" tabsHideOnSubPages="false"></ion-tab>\n\n</ion-tabs>\n\n '/*ion-inline-end:"C:\Users\danie\waypool_costumer\src\pages\p-tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);

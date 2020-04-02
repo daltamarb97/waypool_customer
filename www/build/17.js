@@ -166,11 +166,11 @@ var DriverSchedulePage = /** @class */ (function () {
         console.log(this.userId);
         this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then(function (snap) {
             if (snap.val().toggleStatus === 'online') {
-                var alert = _this.alertCtrl.create({
+                var alert_1 = _this.alertCtrl.create({
                     title: 'Para añadir un nuevo horario debes estar offline',
                     buttons: ['OK']
                 });
-                alert.present();
+                alert_1.present();
             }
             else {
                 var modal = _this.modalCtrl.create('DriverAddSchedulePage');
@@ -186,11 +186,11 @@ var DriverSchedulePage = /** @class */ (function () {
         var _this = this;
         this.afDB.database.ref(this.signUpService.userPlace + '/drivers/' + this.userId).once('value').then(function (snap) {
             if (snap.val().toggleStatus === 'online') {
-                var alert = _this.alertCtrl.create({
+                var alert_2 = _this.alertCtrl.create({
                     title: 'Para eliminar este horario debes estar offline',
                     buttons: ['OK']
                 });
-                alert.present();
+                alert_2.present();
             }
             else {
                 var modal = _this.modalCtrl.create('DriverRemoveSchedulePage', {
@@ -199,11 +199,11 @@ var DriverSchedulePage = /** @class */ (function () {
                 modal.onDidDismiss(function (accepted) {
                     if (accepted) {
                         // this.navCtrl.push('ListridePage');
-                        var alert = _this.alertCtrl.create({
+                        var alert_3 = _this.alertCtrl.create({
                             title: 'Este horario ha sido eliminado',
                             buttons: ['OK']
                         });
-                        alert.present();
+                        alert_3.present();
                     }
                 });
                 modal.present();
@@ -317,21 +317,21 @@ var DriverSchedulePage = /** @class */ (function () {
     DriverSchedulePage.prototype.conectDriver = function () {
         var _this = this;
         if (this.toggleStatus === 'online') {
-            var alert = this.alertCtrl.create({
+            var alert_4 = this.alertCtrl.create({
                 title: '¡Ya estas conectado!',
                 subTitle: 'Si deseas cambiar el precio de tus viajes, desconectate y vuelvete a conectar',
                 buttons: ['OK']
             });
-            alert.present();
+            alert_4.present();
         }
         else {
             if (this.currentUser.emailVerified == false) {
-                var alert = this.alertCtrl.create({
+                var alert_5 = this.alertCtrl.create({
                     title: 'Oops!',
                     subTitle: 'por favor verifica tu email',
                     buttons: ['OK']
                 });
-                alert.present();
+                alert_5.present();
             }
             else {
                 if (this.userInfo.documents) {
@@ -362,7 +362,7 @@ var DriverSchedulePage = /** @class */ (function () {
                             }
                         }
                         else {
-                            var alert = this.alertCtrl.create({
+                            var alert_6 = this.alertCtrl.create({
                                 title: 'No tienes ningún horario',
                                 subTitle: 'Por favor arma tu horario o mandanos foto del horario',
                                 buttons: [{
@@ -380,11 +380,11 @@ var DriverSchedulePage = /** @class */ (function () {
                                 ],
                                 cssClass: 'alertDanger'
                             });
-                            alert.present();
+                            alert_6.present();
                         }
                     }
                     else {
-                        var alert = this.alertCtrl.create({
+                        var alert_7 = this.alertCtrl.create({
                             title: '¡oh-uh!',
                             subTitle: 'faltan documentos por subir, dirigete al menú, luego a tus documentos y completa el envío. Si ya los subiste, espera a que el equipo de Waypool te verifique.',
                             buttons: [{
@@ -402,11 +402,11 @@ var DriverSchedulePage = /** @class */ (function () {
                             ],
                             cssClass: 'alertDanger'
                         });
-                        alert.present();
+                        alert_7.present();
                     }
                 }
                 else {
-                    var alert = this.alertCtrl.create({
+                    var alert_8 = this.alertCtrl.create({
                         title: '¡oh-oh!',
                         subTitle: 'faltan documentos por subir, dirigete al menú, luego a tus documentos y completa el envío. Si ya los subiste, espera a que el equipo de Waypool te verifique.',
                         buttons: [{
@@ -424,7 +424,7 @@ var DriverSchedulePage = /** @class */ (function () {
                         ],
                         cssClass: 'alertDanger'
                     });
-                    alert.present();
+                    alert_8.present();
                 }
             }
         }
@@ -528,12 +528,11 @@ var DriverSchedulePage = /** @class */ (function () {
     };
     DriverSchedulePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-schedule',template:/*ion-inline-start:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\schedule\driverschedule.html"*/'<!--\n\n  Generated template for the SchedulePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header class="bg-theme-driver">\n\n    <ion-navbar>\n\n        <ion-title class="text-center">MI HORARIO</ion-title>\n\n    </ion-navbar>\n\n    <div padding-left padding-right>\n\n        <ion-segment [(ngModel)]="schedule">\n\n            <ion-segment-button value=makeYourOwn>\n\n                Arma tu horario\n\n            </ion-segment-button>\n\n            <ion-segment-button value="picture">\n\n                Foto de mi horario\n\n            </ion-segment-button>\n\n        </ion-segment>\n\n    </div>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="bg-light">\n\n    <div [ngSwitch]="schedule">\n\n      <div *ngSwitchCase="\'makeYourOwn\'">\n\n\n\n        <p text-center padding-top margin-top>Cóloca tu ruta diaria para publicar tus viajes automáticamente</p>\n\n        <ion-row class="center-align row" style="margin-left: 16px; justify-content: center; height: 40px;" >\n\n                    \n\n            <button  #buttonDisconected class="btn bg-theme rounded text-white buttonConnected"   *ngIf="!showConectedButton" (click)="conectDriver()" >\n\n              <ion-icon  name="calendar"></ion-icon>\n\n                 PUBLICAR HORARIO\n\n\n\n            </button>\n\n            <button #buttonConected  class="btn bg-theme text-white buttonDisconnected" (click)="disconectDriver()" style="border-radius: 25px;border-color: green;height: 40px; border-color: green;" *ngIf="showConectedButton" >\n\n              <ion-icon  name="calendar"></ion-icon>\n\n\n\n              HORARIO PUBLICADO </button>\n\n          \n\n          \n\n      </ion-row>\n\n        <ion-card class="search" >\n\n            <ion-card-content>\n\n  \n\n                <span class="dot bg-theme-driver"></span>\n\n                <ion-searchbar placeholder="Cóloca tu origen"  [(ngModel)]="autocompleteMyPos.input" (click)="createRoute()"></ion-searchbar>\n\n  \n\n              \n\n                  <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n            </ion-card-content>\n\n  \n\n            <ion-card-content>\n\n  \n\n                <span class="dot bg-yellow"></span>           \n\n               <ion-searchbar  [(ngModel)]="autocompleteMyDest.input"  id="input2" (click)="createRoute()" placeholder="Cóloca tu destino"></ion-searchbar>\n\n              \n\n             </ion-card-content>\n\n             \n\n        </ion-card>\n\n        <p text-center padding-top margin-top>Agrega cada una de las horas en las que vas de tu casa al trabajo/universidad o viceversa</p>\n\n        <div style="display: flex; justify-content: center;">\n\n            <button class="btn text-white bg-theme-driver rounded" style="width: 40%;" (click)=\'makeSchedule()\' (click)="goFindride()">Agregar</button>\n\n        </div>\n\n            <ion-card *ngFor = "let sche of schedules" (click) = \'removeTime(sche)\' style="border-radius: 5%;" >\n\n                    <ng-container>\n\n                        <ion-card-content style="display: flex; ">\n\n                            <img [src]="sche.image"  style="height:50px; width:150px;     margin-right: 20px;" />\n\n                            <p>Destino: {{ sche.description }} <br> Hora: <span style="color:#3fb1df;">{{ sche.hour}}</span></p>\n\n\n\n                                                                       \n\n                            \n\n                        </ion-card-content>\n\n                    </ng-container>\n\n                </ion-card>\n\n\n\n      </div>\n\n\n\n\n\n      <div *ngSwitchCase="\'picture\'">\n\n            <p text-center padding-top margin-top>Toma un screenshot o una foto de tu <span style="color:#3fb1df;">HORARIO</span>, mándanoslo y haremos el resto por ti</p>\n\n        \n\n            <div text-center class="verifiy">\n\n                <img src="assets/imgs/v1.png">\n\n            </div>\n\n            <ion-row>\n\n                <ion-col>\n\n                    <p padding-top class="btn-box"><button class="btn text-white bg-theme-driver rounded" style="width: 80%;" (click)="usageCameraSchedule()">Tomar Foto de horario</button></p>\n\n                </ion-col>\n\n\n\n                <ion-col>\n\n                        <p padding-top class="btn-box"><button class="btn text-white bg-theme-driver rounded" style="width: 80%;" (click)="accessLibrary()">Subir Foto de galería</button></p>\n\n                    </ion-col>\n\n            </ion-row>\n\n            <br>\n\n            <br>\n\n            <br>\n\n            <ion-row>\n\n                \n\n                    <p padding-top class="skipText"  (click)="skipSchedule()"> No lo quiero hacer ahora </p>\n\n               \n\n            </ion-row>\n\n      </div>\n\n      \n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Daniel\Documents\waypool\prod\latest\waypool_costumer\src\pages\schedule\driverschedule.html"*/,
+            selector: 'driver-page-schedule',template:/*ion-inline-start:"C:\Users\danie\waypool_costumer\src\pages\schedule\driverschedule.html"*/'<!--\n\n  Generated template for the SchedulePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header class="bg-theme-driver">\n\n    <ion-navbar>\n\n        <ion-title class="text-center">MI HORARIO</ion-title>\n\n    </ion-navbar>\n\n    <div padding-left padding-right>\n\n        <ion-segment [(ngModel)]="schedule">\n\n            <ion-segment-button value=makeYourOwn>\n\n                Arma tu horario\n\n            </ion-segment-button>\n\n            <ion-segment-button value="picture">\n\n                Foto de mi horario\n\n            </ion-segment-button>\n\n        </ion-segment>\n\n    </div>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="bg-light">\n\n    <div [ngSwitch]="schedule">\n\n      <div *ngSwitchCase="\'makeYourOwn\'">\n\n\n\n        <p text-center padding-top margin-top>Cóloca tu ruta diaria para publicar tus viajes automáticamente</p>\n\n        <ion-row class="center-align row" style="margin-left: 16px; justify-content: center; height: 40px;" >\n\n                    \n\n            <button  #buttonDisconected class="btn bg-theme rounded text-white buttonConnected"   *ngIf="!showConectedButton" (click)="conectDriver()" >\n\n              <ion-icon  name="calendar"></ion-icon>\n\n                 PUBLICAR HORARIO\n\n\n\n            </button>\n\n            <button #buttonConected  class="btn bg-theme text-white buttonDisconnected" (click)="disconectDriver()" style="border-radius: 25px;border-color: green;height: 40px; border-color: green;" *ngIf="showConectedButton" >\n\n              <ion-icon  name="calendar"></ion-icon>\n\n\n\n              HORARIO PUBLICADO </button>\n\n          \n\n          \n\n      </ion-row>\n\n        <ion-card class="search" >\n\n            <ion-card-content>\n\n  \n\n                <span class="dot bg-theme-driver"></span>\n\n                <ion-searchbar placeholder="Cóloca tu origen"  [(ngModel)]="autocompleteMyPos.input" (click)="createRoute()"></ion-searchbar>\n\n  \n\n              \n\n                  <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n            </ion-card-content>\n\n  \n\n            <ion-card-content>\n\n  \n\n                <span class="dot bg-yellow"></span>           \n\n               <ion-searchbar  [(ngModel)]="autocompleteMyDest.input"  id="input2" (click)="createRoute()" placeholder="Cóloca tu destino"></ion-searchbar>\n\n              \n\n             </ion-card-content>\n\n             \n\n        </ion-card>\n\n        <p text-center padding-top margin-top>Agrega cada una de las horas en las que vas de tu casa al trabajo/universidad o viceversa</p>\n\n        <div style="display: flex; justify-content: center;">\n\n            <button class="btn text-white bg-theme-driver rounded" style="width: 40%;" (click)=\'makeSchedule()\' (click)="goFindride()">Agregar</button>\n\n        </div>\n\n            <ion-card *ngFor = "let sche of schedules" (click) = \'removeTime(sche)\' style="border-radius: 5%;" >\n\n                    <ng-container>\n\n                        <ion-card-content style="display: flex; ">\n\n                            <img [src]="sche.image"  style="height:50px; width:150px;     margin-right: 20px;" />\n\n                            <p>Destino: {{ sche.description }} <br> Hora: <span style="color:#3fb1df;">{{ sche.hour}}</span></p>\n\n\n\n                                                                       \n\n                            \n\n                        </ion-card-content>\n\n                    </ng-container>\n\n                </ion-card>\n\n\n\n      </div>\n\n\n\n\n\n      <div *ngSwitchCase="\'picture\'">\n\n            <p text-center padding-top margin-top>Toma un screenshot o una foto de tu <span style="color:#3fb1df;">HORARIO</span>, mándanoslo y haremos el resto por ti</p>\n\n        \n\n            <div text-center class="verifiy">\n\n                <img src="assets/imgs/v1.png">\n\n            </div>\n\n            <ion-row>\n\n                <ion-col>\n\n                    <p padding-top class="btn-box"><button class="btn text-white bg-theme-driver rounded" style="width: 80%;" (click)="usageCameraSchedule()">Tomar Foto de horario</button></p>\n\n                </ion-col>\n\n\n\n                <ion-col>\n\n                        <p padding-top class="btn-box"><button class="btn text-white bg-theme-driver rounded" style="width: 80%;" (click)="accessLibrary()">Subir Foto de galería</button></p>\n\n                    </ion-col>\n\n            </ion-row>\n\n            <br>\n\n            <br>\n\n            <br>\n\n            <ion-row>\n\n                \n\n                    <p padding-top class="skipText"  (click)="skipSchedule()"> No lo quiero hacer ahora </p>\n\n               \n\n            </ion-row>\n\n      </div>\n\n      \n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\waypool_costumer\src\pages\schedule\driverschedule.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"]) === "function" && _o || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"]])
     ], DriverSchedulePage);
     return DriverSchedulePage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
 }());
 
 //# sourceMappingURL=schedule.js.map

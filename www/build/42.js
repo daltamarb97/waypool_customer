@@ -1,14 +1,14 @@
 webpackJsonp([42],{
 
-/***/ 661:
+/***/ 666:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmtripPageModule", function() { return ConfirmtripPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GroupDetailPageModule", function() { return GroupDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmtrip__ = __webpack_require__(853);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__groupdetail__ = __webpack_require__(862);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,48 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ConfirmtripPageModule = /** @class */ (function () {
-    function ConfirmtripPageModule() {
+var GroupDetailPageModule = /** @class */ (function () {
+    function GroupDetailPageModule() {
     }
-    ConfirmtripPageModule = __decorate([
+    GroupDetailPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */],
+                __WEBPACK_IMPORTED_MODULE_2__groupdetail__["a" /* GroupDetailPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__groupdetail__["a" /* GroupDetailPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]
+                __WEBPACK_IMPORTED_MODULE_2__groupdetail__["a" /* GroupDetailPage */]
             ]
         })
-    ], ConfirmtripPageModule);
-    return ConfirmtripPageModule;
+    ], GroupDetailPageModule);
+    return GroupDetailPageModule;
 }());
 
-//# sourceMappingURL=confirmtrip.module.js.map
+//# sourceMappingURL=groupdetail.module.js.map
 
 /***/ }),
 
-/***/ 853:
+/***/ 862:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmtripPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GroupDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_instances_service__ = __webpack_require__(355);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_trips_service__ = __webpack_require__(358);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__ = __webpack_require__(202);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -71,118 +59,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-var ConfirmtripPage = /** @class */ (function () {
-    function ConfirmtripPage(navCtrl, reservesService, sendUsersService, TripsService, toastCtrl, viewCtrl, afDB, SignUpService, sendCoordsService, navParams, AngularFireAuth, geoFireService, instances, alertCtrl) {
-        var _this = this;
+var GroupDetailPage = /** @class */ (function () {
+    function GroupDetailPage(navCtrl, modalCtrl) {
         this.navCtrl = navCtrl;
-        this.reservesService = reservesService;
-        this.sendUsersService = sendUsersService;
-        this.TripsService = TripsService;
-        this.toastCtrl = toastCtrl;
-        this.viewCtrl = viewCtrl;
-        this.afDB = afDB;
-        this.SignUpService = SignUpService;
-        this.sendCoordsService = sendCoordsService;
-        this.navParams = navParams;
-        this.AngularFireAuth = AngularFireAuth;
-        this.geoFireService = geoFireService;
-        this.instances = instances;
-        this.alertCtrl = alertCtrl;
-        this.user = {};
-        this.button = true;
-        this.text = false;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
-        this.myRideActivation = false;
-        this.trip = this.navParams.get('trip');
-        console.log(this.reserve);
-        //get the info of the driver 
-        this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
-            .subscribe(function (myUserInfo) {
-            _this.user = myUserInfo;
-            console.log(_this.user);
-            if (_this.user.cancelModalLMU === true) {
-                _this.dismiss();
-                var alert_1 = _this.alertCtrl.create({
-                    title: 'Escoge otro viaje',
-                    buttons: ['OK']
-                });
-                alert_1.present();
-            }
-        });
-        this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip).takeUntil(this.unsubscribe)
-            .subscribe(function (usersInPendingusers) {
-            _this.usersInPending = usersInPendingusers;
-            _this.usersInPending.forEach(function (user) {
-                if (user.userId === _this.userUid) {
-                    _this.accepted = true;
-                    _this.dismiss();
-                }
-            });
-        });
+        this.modalCtrl = modalCtrl;
     }
-    ConfirmtripPage.prototype.goToRide = function () {
-        this.geoFireService.saveKey(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
-        this.reservesService.setOnTrip(this.userUid);
-        this.TripsService.joinTrip(this.trip.keyTrip, this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.verifiedPerson, this.user.trips.distanceToGoInKM);
-        // this.geoFireService.removeKeyGeofire(this.userUid);
-        //OLD
-        // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
-        // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
-        this.button = false;
-        this.text = true;
+    GroupDetailPage.prototype.seeMembers = function () {
+        this.navCtrl.push('MembersGroupPage');
     };
-    ConfirmtripPage.prototype.dismissX = function () {
-        var _this = this;
-        this.viewCtrl.dismiss();
-        this.geoFireService.deleteKey(this.userUid);
-        this.geoFireService.deleteDriverFromLMU(this.userUid, this.trip.keyTrip);
-        this.afDB.database.ref('/usersTest/' + this.userUid).once('value').then(function (snap) {
-            if (snap.val().onTrip) {
-                _this.geoFireService.setOntripFalse(_this.userUid);
-            }
-            else {
+    //  confirmpopup(){
+    //     let modal = this.modalCtrl.create(ConfirmpopupPage);
+    //     modal.present();
+    //  }
+    GroupDetailPage.prototype.changeTransportation = function () {
+        var modal = this.modalCtrl.create('ChangeCarPage');
+        modal.onDidDismiss(function (accepted) {
+            if (accepted) {
             }
         });
-        this.TripsService.getOutFromLMU(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
+        modal.present();
     };
-    ConfirmtripPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss(this.accepted);
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-        if (this.trip.type === 'origin') {
-            this.geoFireService.cancelGeofireOr();
-            this.geoFireService.cancelGeofireOrLMU();
-        }
-        else if (this.trip.type === 'destination') {
-            this.geoFireService.cancelGeofireDest();
-            this.geoFireService.cancelGeofireDestLMU();
-        }
+    GroupDetailPage.prototype.searchFindDrivers = function () {
+        this.navCtrl.push('MembersGroupPage');
     };
-    ConfirmtripPage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    };
-    ConfirmtripPage = __decorate([
+    GroupDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirmtrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmtrip/confirmtrip.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>\n    <ion-card>\n        <h6 class="text-hot hot">Viaje Iniciado </h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{trip.driver.name|titlecase }} {{trip.driver.lastname|titlecase }}\n                    <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                </h2>\n                <p>{{trip.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen del viaje</small>\n                    <span class="icon-location bg-hot"></span>{{trip.houseAddr}}</p>\n                <p>\n                    <small>Destino del viaje</small>\n                    <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n            </div>\n        </ion-card-content>\n\n        \n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{trip.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-hot text-white rounded" (click)="goToRide()" *ngIf="button" style="width: 100%;margin-top: 14px;">Enviar Solicitud </button>\n                <p  text-center *ngIf="text">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmtrip/confirmtrip.html"*/
+            selector: 'page-groupdetail',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-groupdetail/groupdetail.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title>MI VIAJE</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bh-light">\n    <ion-card>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/face-1.jpg">\n            </ion-avatar>\n            <div class="name">\n                <h2>Creador: David Johnson\n                    <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                </h2>\n                <p class="company">Bancolombia</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen</small>\n                    <span class="icon-location bg-theme"></span>Villa Campestre</p>\n                <p>\n                    <small>Destino</small>\n                    <span class="icon-location bg-yellow"></span>Bancolombia Calle 51B</p>\n            </div>\n        </ion-card-content>\n    </ion-card>\n    <ion-card>\n        <ion-card-content>\n            <div class="seats">\n                <h6 class="text-theme">Conductor</h6>\n                <ion-row style="display: flex;flex-direction: row;">\n                 \n                    <ion-col style="display: flex;flex-direction: column;" col-3>\n                        <ion-avatar style="border-radius: 15%;" #imageTaxi>\n                            <p text-center class="texto1">Taxi</p>   \n                                <img class="house"  src="assets/imgs/carfuture.png" (click)="selectImageTaxi()"/>       \n                        </ion-avatar>\n                        <button class="btn bg-theme text-white rounded" (click)="changeTransportation()" style="width: 100%; font-size: 10px;\n                        height: 23px;">Cambiar</button>\n\n                    </ion-col>\n                    <ion-col style="display: flex;flex-direction: column;margin-left: 30px;" col-7>\n                        <button class="btn bg-theme text-white rounded" (click)="seeMembers()" style="width: 100%;margin-top: 16px;">Buscar Conductor</button>\n                        <button class="btn bg-theme text-white rounded" (click)="seeMembers()" style="width: 100%;margin-top: 16px;">Ver compañeros de viaje</button>                       \n               \n                    </ion-col>\n                  </ion-row>\n            </div>\n        </ion-card-content>\n    </ion-card>\n    <ion-card>\n        <ion-card-content>\n            <div class="ride-detail no-before">\n                <h6 class="text-theme">Detalles</h6>\n                \n                <p><small>Hora de salida:</small>\n                    <ion-icon name="md-time" class="icon-location"></ion-icon>\n                     12:30pm</p>\n                    <p><small>Nota</small>\n                        <ion-icon name="md-create" class="icon-location"></ion-icon>\n                        Dinero exacto por favor\n                    <p>\n            </div>\n        </ion-card-content>\n    </ion-card>\n    <ion-card>\n        <ion-card-content>\n            <div class="ride-detail no-before">\n                <h6 class="text-theme">¿Ya tienes que almorzar?<ion-badge class="bg-yellow" >Patrocinado</ion-badge>\n                </h6>\n                \n                <p><small>Hora de salida:</small>\n                    <ion-icon name="md-time" class="icon-location"></ion-icon>\n                     12:30pm</p>\n                    <p><small>Nota<ion-icon name="md-create"></ion-icon></small>\n                        Dinero exacto por favor\n                    <p>\n            </div>\n        </ion-card-content>\n    </ion-card>\n    \n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-groupdetail/groupdetail.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_10__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
-    ], ConfirmtripPage);
-    return ConfirmtripPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]])
+    ], GroupDetailPage);
+    return GroupDetailPage;
 }());
 
-//# sourceMappingURL=confirmtrip.js.map
+//# sourceMappingURL=groupdetail.js.map
 
 /***/ })
 

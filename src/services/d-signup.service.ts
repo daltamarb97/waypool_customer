@@ -17,14 +17,18 @@ export class DriverSignUpService {
    public getMyInfo(userId){
     return this.afDB.object('/usersTest/'+userId).valueChanges();
     }
-
-
+    public getToggleStatus( userId){
+        return this.afDB.object('/driversTest/'+userId+'/toggleStatus/').valueChanges();
+        }
+    public getMyOriginAndDestination( userId){
+        return this.afDB.object('/driversTest/'+userId+'/trips/').valueChanges();
+        }
     // public getInfoAboutMyPlace( userId){
     //     return this.afDB.object('/allUsers/' + userId).valueChanges();
     //     }
 
-    public getInfoPlace(place){
-        return this.afDB.object('/allPlaces/' + place).valueChanges()
+    public getInfoPlace(){
+        return this.afDB.object('/allPlaces/'  ).valueChanges()
      }
 
      public getAllPlaces(){
@@ -46,18 +50,18 @@ export class DriverSignUpService {
      }
 
     
-    // public pushDocsC(place, userId){
-    //    this.afDB.database.ref(place + '/drivers/'+userId+'/documents').update({
+    // public pushDocsC(, userId){
+    //    this.afDB.database.ref( + '/driversTest/'+userId+'/documents').update({
     //        license: false
     //    })
     // }
 
 
     public pushDocsCarne(userId){
-        this.afDB.database.ref('/drivers/'+userId+'/documents').update({
+        this.afDB.database.ref('/driversTest/'+userId+'/documents').update({
             carne: false
         })
-        this.afDB.database.ref('/users/'+userId+'/documents').update({
+        this.afDB.database.ref('/usersTest/'+userId+'/documents').update({
             carne: false
         })
      }
@@ -65,16 +69,16 @@ export class DriverSignUpService {
 
 
     public pushDocsId( userId){
-        this.afDB.database.ref( '/drivers/'+userId+'/documents').update({
+        this.afDB.database.ref( '/driversTest/'+userId+'/documents').update({
             idVerification: false
         })
-        this.afDB.database.ref( '/users/'+userId+'/documents').update({
+        this.afDB.database.ref( '/usersTest/'+userId+'/documents').update({
             idVerification: false
         })
      }
-     public emailVerificationMessage(place, user){
+     public emailVerificationMessage( user){
 
-        this.afDB.database.ref(place + '/drivers/' + user).update({
+        this.afDB.database.ref(  '/driversTest/' + user).update({
             emailVerificationMessage: true
         })
     }
@@ -82,43 +86,35 @@ export class DriverSignUpService {
     public getMyInfoDriver( userId){
         return this.afDB.object( '/driversTest/' + userId).valueChanges();
     }
-    public getInfoUser(place, userId){
-        return this.afDB.object(place+ '/users/' + userId).valueChanges();
+    public getInfoUser(userId){
+        return this.afDB.object( '/usersTest/' + userId).valueChanges();
     }
     
-    public async saveUser(place, user){
-        this.afDB.database.ref(place + '/drivers/'+ user.userId).update(user);
-        this.afDB.database.ref(place + '/users/'+ user.userId).update(user);
+    public async saveUser( user){
+        this.afDB.database.ref(  '/driversTest/'+ user.userId).update(user);
+        this.afDB.database.ref(  '/usersTest/'+ user.userId).update(user);
 
     }
 
-    public saveUserInAllUsers(place, user, city){
-        this.afDB.database.ref('/allUsers/'+ user).update({
-            place: place, 
-            city: city
-        });
-        
 
-    }
-
-    setFixedLocationCoordinates(place, user, lat, lng){
-        this.afDB.database.ref(place + '/drivers/' + user + '/fixedLocation/coordinates').update({
+    setFixedLocationCoordinates(user, lat, lng){
+        this.afDB.database.ref(  '/driversTest/' + user + '/fixedLocation/coordinates').update({
             lat: lat,
             lng:lng,
         })
 
-        this.afDB.database.ref(place + '/users/' + user + '/fixedLocation/coordinates').update({
+        this.afDB.database.ref(  '/usersTest/' + user + '/fixedLocation/coordinates').update({
             lat: lat,
             lng:lng,
         })
     }
 
-    setFixedLocationName(place, user, name){
-        this.afDB.database.ref(place + '/drivers/' + user + '/fixedLocation').update({
+    setFixedLocationName( user, name){
+        this.afDB.database.ref(  '/driversTest/' + user + '/fixedLocation').update({
             name: name
         })
 
-        this.afDB.database.ref(place + '/users/' + user + '/fixedLocation').update({
+        this.afDB.database.ref(  '/usersTest/' + user + '/fixedLocation').update({
             name: name
         })
     }
@@ -176,15 +172,10 @@ public deleteCar( driverUid,carKey){
 }
 
 
-public addCarProfile(place, userUid,car){
-    this.afDB.database.ref(place + '/drivers/'+userUid+'/cars/').push(car)
+public addCarProfile( userUid,car){
+    this.afDB.database.ref(  '/driversTest/'+userUid+'/cars/').push(car)
 }
 
-public addPlaceZone(place, userUid){
-    this.afDB.database.ref(place + '/drivers/'+ userUid).update({place: place});
-    this.afDB.database.ref(place + '/users/'+ userUid).update({place: place});
-
-}
  
 public getCar( userId){
     return this.afDB.list('/driversTest/'+ userId+'/cars').valueChanges();
@@ -192,14 +183,14 @@ public getCar( userId){
 }
 
 
-public pushSchedule(place, userId, hour, type, description, image){
-    this.schedulePush = this.afDB.database.ref(place + '/drivers/'+userId+'/schedule/').push({
+public pushSchedule( userId, hour, type, description, image){
+    this.schedulePush = this.afDB.database.ref(  '/driversTest/'+userId+'/schedule/').push({
         hour: hour, 
         type: type,
         description: description,
         image: image
     }).then((snap)=>{
-        this.schedulePush = this.schedulePush = this.afDB.database.ref(place + '/drivers/'+userId+'/schedule/'+ snap.key).update({
+        this.schedulePush = this.schedulePush = this.afDB.database.ref(  '/driversTest/'+userId+'/schedule/'+ snap.key).update({
             key: snap.key
         })
     })
@@ -211,8 +202,8 @@ public pushSchedule(place, userId, hour, type, description, image){
 
 }
 
-public removeSchedule(place, userId, key){
-     this.afDB.database.ref(place + '/drivers/'+userId+'/schedule/'+ key).remove();
+public removeSchedule( userId, key){
+     this.afDB.database.ref(  '/driversTest/'+userId+'/schedule/'+ key).remove();
        
 }
 }

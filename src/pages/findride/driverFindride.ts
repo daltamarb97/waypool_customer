@@ -29,7 +29,7 @@ export class DriverFindridePage {
 
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('buttonConected',{read:ElementRef}) buttonConected;
-  @ViewChild('buttonDisconected',{read:ElementRef}) buttonDisconected;
+  @ViewChild('buttonDshowConectedButton',{read:ElementRef}) buttonDshowConectedButton;
 
   map: any;
   markers: any;
@@ -88,7 +88,7 @@ export class DriverFindridePage {
   keyTrip:any; 
   onTrip:any;
   token:any;
-  isConected:boolean = false;
+  showConectedButton:boolean = true;
   positionDest:any;
   positionOr:any;
   lat:any;
@@ -98,7 +98,6 @@ export class DriverFindridePage {
   myReserves = [];
   geocoordinatesHouse:any;
   checked:boolean = false;
-  isDisconected:boolean;
   driverReserves: any;
   fullReserves = [];
   multipleDestinations:any = [];

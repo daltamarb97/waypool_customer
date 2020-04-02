@@ -21,10 +21,13 @@
               "count": 1,
               "mode": "merge",
               "id": "config.xml"
+<<<<<<< HEAD
             },
             {
               "xml": "<string>This app requires photo library access to function properly.</string>",
               "count": 1
+=======
+>>>>>>> origin/newMyRide
             }
           ],
           "NSLocationAlwaysUsageDescription": [
@@ -38,6 +41,7 @@
           "NSLocationWhenInUseUsageDescription": [
             {
               "xml": "<string>Usado para conectarte con otros usuarios de Waypool y asi brindarte un mejor servicio</string>",
+<<<<<<< HEAD
               "count": 7
             }
           ],
@@ -102,6 +106,8 @@
           "aps-environment": [
             {
               "xml": "<string>production</string>",
+=======
+>>>>>>> origin/newMyRide
               "count": 1
             }
           ]
@@ -109,6 +115,7 @@
       }
     }
   },
+<<<<<<< HEAD
   "installed_plugins": {
     "call-number": {
       "PACKAGE_NAME": "com.waypoolsas.waypool"
@@ -265,3 +272,8 @@
     "cordova-plugin-x-socialsharing": "5.6.4"
   }
 }
+=======
+  "installed_plugins": {},
+  "dependent_plugins": {}
+}
+>>>>>>> origin/newMyRide

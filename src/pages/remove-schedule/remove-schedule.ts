@@ -50,22 +50,10 @@ console.log(this.schedule);
 
   remove(){
 
+    this.signUpService.removeSchedule( this.userId, this.schedule.key);
+    this.afDB.database.ref('allSchedules/'+this.userId+'/'+ this.schedule.key).remove(); 
+    this.dismiss();
 
-    this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then((snap)=>{
-      let obj = snap.val();
-      Object.getOwnPropertyNames(obj).forEach((key)=>{
-
-        if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
-
-        }else{
-          this.signUpService.removeSchedule(obj[key], this.userId, this.schedule.key);
-        } 
-
-      })
-    }).then(()=>{
-      this.afDB.database.ref('allSchedules/'+this.userId+'/'+ this.schedule.key).remove(); 
-      this.dismiss();
-    })
   }
 
 }

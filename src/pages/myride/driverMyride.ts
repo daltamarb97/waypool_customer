@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef,ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController, IonicPage, App, ModalController, ActionSheetController, NavPop } from 'ionic-angular';
 
 
@@ -13,8 +13,11 @@ import { DriverSignUpService } from '../../services/d-signup.service';
 import * as moment from 'moment';
 import { DriverTripsService } from '../../services/d-trips.service';
 import { ThrowStmt } from '@angular/compiler';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Geolocation } from '@ionic-native/geolocation';
+import { filter } from 'rxjs/operators';
+declare var google;
 
 @IonicPage()
 @Component({
@@ -22,9 +25,11 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'driverMyride.html'
 })
 export class DriverMyridePage {
+@ViewChild('map') mapElement: ElementRef;
 
  hideImage:boolean = false;
-
+ PendingUsersForWaypoints:any = [];
+ pickedUpUsersForWaypoints:any=[]
  pendingUsers:any = [];
  pickedUpUsers:any = [];
 
@@ -38,67 +43,108 @@ unsubscribe = new Subject;
 lastMinuteUsers:any =[];
 tripState:any;
 clearToDeleteDriver:boolean = false;
-  constructor(public navCtrl: NavController,public SignUpService:DriverSignUpService,public actionSheetCtrl: ActionSheetController,public TripsService:DriverTripsService,public modalCtrl: ModalController,public toastCtrl: ToastController,public alertCtrl:AlertController,public navParams: NavParams,private callNumber: CallNumber,public sendCoordsService: DriverSendCoordsService,private AngularFireAuth: AngularFireAuth, public sendUsersService: DriverSendUsersService, public geofireServices: DriverGeofireService, private afDB: AngularFireDatabase) {
-		//get driver information to get the keyTrip
-		this.SignUpService.getMyInfoDriver( this.driverUid).takeUntil(this.unsubscribe)
-			.subscribe(userDriver => {
-				this.userDriver = userDriver;
-				if (this.userDriver.keyTrip === null || this.userDriver.onTrip === false) {
-					//do nothing
-					console.log("que dijiste corone");
-					console.log(this.userDriver.keyTrip);
-				} else {
-					this.getTrip( this.userDriver.keyTrip, this.userDriver.userId); //get keyTrip  
-					// corregir esta vuelta, no debiera estar ontrip true
-				}
-				
+directionsService: any = null;
+bounds: any = null;
+myLatLng: any=[];
+waypoints: any = [];
+
+myLatLngDest:any;
+  directionsDisplay: any = null;map: any;
+markers: any;
+markerGeolocation:any;
+markerDest:any;
+trackedRoute = [];
+previousTracks = [];
+currentMapTrack = null;
+positionSubscription: Subscription;
+testCoords : any = [];
+distance:any;
+lat: any;
+lng: any;
+watch: any;
+biciMarkers:any = []
+
+  constructor(public navCtrl: NavController, public geolocation: Geolocation,public SignUpService:DriverSignUpService,public actionSheetCtrl: ActionSheetController,public TripsService:DriverTripsService,public modalCtrl: ModalController,public toastCtrl: ToastController,public alertCtrl:AlertController,public navParams: NavParams,private callNumber: CallNumber,public sendCoordsService: DriverSendCoordsService,private AngularFireAuth: AngularFireAuth, public sendUsersService: DriverSendUsersService, public geofireServices: DriverGeofireService, private afDB: AngularFireDatabase) {
+	this.directionsService = new google.maps.DirectionsService();
+	// var polyline = new google.maps.Polyline({
+	// 	strokeColor: '#001127',
+	//  strokeOpacity: 0.4,
+	//  strokeWeight: 5
+	// 	});
+	this.directionsDisplay = new google.maps.DirectionsRenderer({
+		suppressMarkers: true,
+	});
+	// this.directionsDisplay.setOptions({polylineOptions: polyline})
+
+    this.bounds = new google.maps.LatLngBounds();
+	this.afDB.database.ref('/driversTest/'+this.driverUid+'/').once('value').then((snap)=>{
+			let obj = snap.val();
+			console.log(obj);
+			this.userDriver=obj;		
+			this.getTrip( this.userDriver.keyTrip, this.userDriver.userId); //get keyTrip  
+					// corregir esta vuelta, no debiera estar ontrip true	
 			});
 
-
 	}
-
-	getLastMinuteUsers(keyTrip, driverUid) {
-		// this.lastMinuteUsers = [];
-		console.log(this.lastMinuteUsers)
-		console.log("1")
-
-		this.TripsService.getLastMinuteUsers( keyTrip,driverUid).takeUntil(this.unsubscribe)
-			.subscribe(users => {
-				this.lastMinuteUsers = users;
-				//verify if user info exist 
-				console.log(this.lastMinuteUsers)
-				console.log("2")
-
-				if (this.lastMinuteUsers.length === 0) {
-					// do nothing
-				} else {					
-					this.lastMinuteUsers.forEach(userLastMinute => {
-						if(userLastMinute.noRepeat === true){
-							console.log("TE QUERIAS REPETIR PERO NOOOOO")
-
-						}else{
-							this.TripsService.noRepeatLMU( this.driverUid,keyTrip,userLastMinute.userId)
-							console.log(userLastMinute);
-							console.log(this.lastMinuteUsers)
-							console.log("3")
+	ionViewDidLoad(){
+		this.loadMap();
+	}
+	loadMap(){
+		//check if user have houseAddress
+	 // this gets current position and set the camera of the map and put a marker in your location
+	 this.geolocation.getCurrentPosition({enableHighAccuracy: true}).then((position) => {
 	
-							let modal = this.modalCtrl.create('DriverConfirmtripPage', {
-								user: userLastMinute,
-								keyTrip: this.userDriver.keyTrip
-							});
-							modal.present();
-						}
-						
-					});				
-				}
-			});			
-	}
+	  let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	  console.log(latLng);
+	
+	  let mapOptions = {
+		  center: latLng,
+		  zoom: 17,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP,
+		  zoomControl: false,
+			mapTypeControl: false,
+			scaleControl: false,
+			streetViewControl: false,
+			rotateControl: false,
+			fullscreenControl: false,
+			styles: [
+			  {
+				featureType: 'poi',
+				elementType: 'labels.icon',
+				stylers: [
+				  {
+					visibility: 'off'
+				  }
+				]
+			  }
+			]
+		}
+	//creates the map and give options
+	  this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+	  this.myLatLng = {lat: position.coords.latitude , lng: position.coords.longitude};
+	  this.startTracking();
+	
+	  
+	//    this.markerDest = new google.maps.Marker({
+    //     position: this.positionDest,
+    //     map: this.map,
+    //     animation: google.maps.Animation.DROP,
+    //        icon: {         url: "assets/imgs/workworkbuilding.png",
+    //     scaledSize: new google.maps.Size(250, 250)    
+    //      }})   
+	//   this.markers.push(this.markerGeolocation);
+	
+	  },(err) => {
+	  console.log(err);    
+	 });
+		
+	
+	  }
+
 
 
 
 	getTrip( keyTrip, driverUid) {
-		// this.getLastMinuteUsers(this.userDriver.keyTrip, this.userDriver.userId);
-		this.getLastMinuteUsers(keyTrip, driverUid);
 		this.TripsService.getTrip( keyTrip, driverUid).takeUntil(this.unsubscribe)
 			.subscribe(trip => {
         console.log('se repitio?')
@@ -123,22 +169,130 @@ clearToDeleteDriver:boolean = false;
 
 		this.TripsService.getPendingUsers( keyTrip, driverUid).takeUntil(this.unsubscribe)
 			.subscribe(user => {
+				if (this.pendingUsers.length === 0 && this.pickedUpUsers.length === 0) {
+
+					this.PendingUsersForWaypoints = user;
+					console.log(this.PendingUsersForWaypoints);
+					console.log("WAYPOINTS ENTRING");
+
+					this.PendingUsersForWaypoints.forEach(user => {
+						this.waypoints.push({location:user.orCoords,stopover:true});
+						this.directionsDisplay.setMap(this.map);
+						this.calculateRoute("markerForWaypointsUsers");
+					
+						//To change the color of the line for each Waypoint (later)
+					// 	var polyline = new google.maps.Polyline({
+					// 		strokeColor: '#C00',
+					// 		strokeOpacity: 0.7,
+					// 		strokeWeight: 5
+					// 		});
+					// 		directionsDisplay = new google.maps.DirectionsRenderer();
+					// 		directionsDisplay.setOptions({polylineOptions: polyline});
+					});
+				}
 				this.pendingUsers = user;
 				console.log(this.pendingUsers);
 				this.conditionalsOnTrip();
-
+				
 			});
 		this.TripsService.getPickedUpUsers( keyTrip, driverUid).takeUntil(this.unsubscribe)
 			.subscribe(user => {
+				console.log(user);
+				
+				if (this.pendingUsers.length === 0 && user.length !== 0) {
+					console.log(" FUNCIONAAAAAAAAAAAAAAAAAA");
+					this.pickedUpUsersForWaypoints = user;
+					console.log(this.pickedUpUsersForWaypoints);
+					
+					this.waypoints=[];
+					this.pickedUpUsersForWaypoints.forEach(user => {
+
+						this.waypoints.push({location:user.destCoords,stopover:true});
+						this.directionsDisplay.setMap(this.map);
+						this.calculateRoute("markerForWaypointsOffices");
+					});
+				}
 				this.pickedUpUsers = user;
 				console.log(this.pickedUpUsers);
 				this.conditionalsOnTrip();
-
 			});
-
+	
+			
 		      
 	}
-
+	 calculateRoute(conditionForMarker){
+		console.log(this.trip.origin.name);
+		console.log(this.trip.origin.coords);
+		this.markerGeolocation = new google.maps.Marker({
+			map: this.map,
+			animation: google.maps.Animation.DROP,
+			position: this.trip.origin.coords,
+			icon: {         url: "assets/imgs/house.png",
+			scaledSize: new google.maps.Size(70, 70)
+		  }
+		  });
+		this.markerDest = new google.maps.Marker({
+			map: this.map,
+			animation: google.maps.Animation.DROP,
+			position: this.trip.destination.coords,
+			icon: {         url: "assets/imgs/workbuilding.png",
+			scaledSize: new google.maps.Size(150, 150)
+		  }
+		  });
+    console.log(this.trip.origin.name);
+	
+		
+		// this.bounds.extend(this.myLatLng);
+			
+		this.waypoints.forEach(waypoint => {
+		var point = new google.maps.LatLng(waypoint.location.lat, waypoint.location.lng);
+		this.bounds.extend(point);
+		if (conditionForMarker === "markerForWaypointsUsers") {
+			let markerWaypointUser = new google.maps.Marker({
+				map: this.map,
+				animation: google.maps.Animation.DROP,
+				position: point,
+				icon: {         url: "assets/imgs/bicimarker.png",
+				scaledSize: new google.maps.Size(70, 70)
+			  }
+			  });
+		} else if (conditionForMarker === "markerForWaypointsOffices"){
+			console.log(" FUNCIONAAAAAAAAAAAAAAAAAA");
+			
+			let markerWaypointOffice = new google.maps.Marker({
+				map: this.map,
+				animation: google.maps.Animation.DROP,
+				position: point,
+				icon: {         url: "assets/imgs/workbuilding.png",
+				scaledSize: new google.maps.Size(70, 70)
+			  }
+			});
+	
+		}
+		});
+	
+		this.map.fitBounds(this.bounds);
+	console.log(JSON.stringify(this.trip.origin.name));
+	console.log(JSON.stringify(this.trip.destination.name));
+	
+		this.directionsService.route({
+		  origin:JSON.stringify(this.trip.origin.name),
+		  destination:JSON.stringify(this.trip.destination.name),
+		  waypoints: this.waypoints,
+		  optimizeWaypoints: true,
+		  travelMode: google.maps.TravelMode.DRIVING
+				}, (response, status)=> {
+			if(status === google.maps.DirectionsStatus.OK) {
+				console.log(response);
+				this.directionsDisplay.setDirections(response);
+				
+			  }else{
+				alert('Could not display directions due to: ' + status);
+			  }
+		});  
+	  
+	  }
+	
 	 conditionalsOnTrip(){
 		 console.log("sirvio")
 		if (this.trip.pendingUsers === undefined && this.trip.pickedUpUsers === undefined && this.trip.cancelUsers === undefined) {
@@ -390,6 +544,78 @@ clearToDeleteDriver:boolean = false;
 		});
 		toast.present();
 	}
+	goToWaze(){
+   
+    }
+    startTracking() {
 
+      this.trackedRoute = [];
+   
+      this.positionSubscription = this.geolocation.watchPosition({enableHighAccuracy:true})
+        .pipe(
+          filter((p) => p.coords !== undefined) //Filter Out Errors
+        )
+        .subscribe(data => {
+          setTimeout(() => {
+			this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
+			this.moveMarker(this.trackedRoute,data)
+            console.log(data);
+            
+          }, 0);
+        });
+   
+    }
+   
+    moveMarker(path,data) {
+     
+      
+      if (path.length > 1) {
+       
+        this.deleteBiciMarkers();
+        let coordsForMarker = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
+        this.addMarker(coordsForMarker);
+
+        // this.addMarker(pathForMarker);
+
+           }
+          }
+  
+  
+    addMarker(coordsForMarker) {
+      let marker = new google.maps.Marker({
+        position:coordsForMarker,
+        map: this.map,
+        icon: {         url: "assets/imgs/bicimarker.png",
+        scaledSize: new google.maps.Size(90,90)    
+
+          }
+      });
+      this.biciMarkers.push(marker);
+    }
+   
+
+    // showHistoryRoute(route) {
+    //   this.redrawPath(route);
+    // }
+    
+
+    
+    // setMapOnAll(map) {
+    //   for (var i = 0; i < this.markers.length; i++) {
+    //     this.markers[i].setMap(map);
+    //   }
+    // }
+    
+ 
+    // setMapOnAll(map) {
+    //   for (var i = 0; i < this.markers.length; i++) {
+    //     this.markers[i].setMap(map);
+    //   }
+    // }
+    deleteBiciMarkers() {
+		for (var i = 0; i < this.biciMarkers.length; i++) {
+			this.biciMarkers[i].setMap(null);
+	  }
+        }
 	
 }

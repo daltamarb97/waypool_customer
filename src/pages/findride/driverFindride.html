@@ -13,21 +13,26 @@
                 <!-- <ion-toggle [(ngModel)]="isConected" [checked]="isConected" (ionChange)="conectDriver()"></ion-toggle> -->
 
                   <!-- <div><p class="text-white">Conectado</p></div> -->
-<!--               
+              
                   <ion-row class="center-align row" style="margin-left: 16px; justify-content: flex-end;" >
                     
-                      <button  #buttonDisconected class="btn rounded bg-red  text-white buttonDisconected" (click)="disconectDriver()" >Offline</button>
-                      <button #buttonConected  class="btn  text-white buttonConected" (click)="conectDriver()" >Online</button>
+                      <button  #buttonDisconected class="btn bg-theme rounded text-white buttonDisconected" style="border-radius:25px; height: 40px;"  *ngIf="showConectedButton" (click)="conectDriver()" >
+                        <ion-icon  name="calendar"></ion-icon>
+                           PUBLICAR HORARIO
+
+                      </button>
+                      <button #buttonConected  class="btn  text-white buttonConected" (click)="disconectDriver()" style="border-radius: 25px;height: 40px; border-color: green;" *ngIf="!showConectedButton" >
+                        <ion-icon  name="calendar"></ion-icon>
+
+                        HORARIO PUBLICADO </button>
                     
                     
-                </ion-row> -->
+                </ion-row>
               </ion-item>
 
            
  
           </ion-buttons> 
-
-          <ion-title>WAYPOOL</ion-title>
        
     </ion-navbar>
 

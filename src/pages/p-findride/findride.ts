@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef,NgZone } from '@angular/core';
+import { Component, ViewChild, ElementRef,NgZone,Renderer } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage, App, ToastController, LoadingController } from 'ionic-angular';
 import { sendCoordsService } from '../../services/sendCoords.service';
@@ -28,7 +28,9 @@ declare var google;
 export class FindridePassPage {
  
   @ViewChild('map') mapElement: ElementRef;
-  
+ 
+ 
+
   map: any;
   markers: any;
   // geofire
@@ -674,6 +676,7 @@ geocodeLatLng(latLng,inputName) {
 
 
 listride(){
+  
     this.loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: `
@@ -1846,9 +1849,10 @@ keyEnteredOrCrew(radiusDestCrew, latDest, lngDest,  userId ){
       goToBikeMode(){
         console.log(this.user);
         
-        this.navCtrl.push('BikeModePage',{user:this.user})
+        this.navCtrl.push('CreateGroupPage')
       }
-
+     
+     
 }
    
     

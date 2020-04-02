@@ -10,10 +10,10 @@
       <button menuClose ion-item *ngFor="let p of pagesUser" (click)="openPage(p)">
         <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      
 
-        {{p.title}}                
-      </button>
-    <img src="assets/imgs/wannadriveen.png"  *ngFor="let p of wanttodrive" (click)="openPage(p)" alt="">
-    </ion-list>
+          {{p.title}}                
+        </button>
+      <img src="assets/imgs/wanttodrive.png"  *ngFor="let p of wanttodrive" (click)="openPage(p)" alt="">
+      </ion-list>
 
     <!-- driver -->
     <ion-list *ngIf='showUser === false'>

@@ -168,14 +168,34 @@
     "is_top_level": true,
     "variables": {}
   },
+<<<<<<< HEAD
   "cordova-plugin-x-socialsharing": {
     "source": {
       "type": "registry",
       "id": "cordova-plugin-x-socialsharing@^5.6.4"
+=======
+  "cordova-plugin-mauron85-background-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-mauron85-background-geolocation@alpha"
+>>>>>>> origin/newMyRide
     },
     "is_top_level": true,
     "variables": {}
   },
+<<<<<<< HEAD
+=======
+  "cordova-plugin-x-socialsharing": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-x-socialsharing"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
+    }
+  },
+>>>>>>> origin/newMyRide
   "es6-promise-plugin": {
     "source": {
       "type": "registry",

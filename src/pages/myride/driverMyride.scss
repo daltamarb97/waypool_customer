@@ -1,4 +1,10 @@
 driver-page-myride {
+    #map {
+        width: 100%;
+        height: 70%;
+        display: block;
+        
+      }
     .rowOfButtons{
         display: flex;
         flex-direction:row; 

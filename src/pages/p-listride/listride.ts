@@ -519,7 +519,9 @@ this.CrewsGeofire.forEach(crewGeofire => {
    //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
    }
 
-
+   createGroup(){
+    this.navCtrl.push('CreateGroupPage',{origin:this.locationOriginUser,destination:this.locationDestinationUser})
+    }
 
 
 

@@ -22,7 +22,19 @@ export class DriverPriceService {
            car:car,
            
         })
-   }    
+   }
+
+   
+   public setPrice( user,price,car){
+        
+    firebase.database().ref( '/driversTest/' + user + '/trips').update({
+       price:price, 
+       car:car,
+      
+    })
+   }
+
+
     public setPriceAndCar( user,price,car, keyReserve){
         
       firebase.database().ref('/reservesTest/' + user + '/' + keyReserve).update({

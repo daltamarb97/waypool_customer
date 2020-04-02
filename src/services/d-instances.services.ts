@@ -8,8 +8,8 @@ constructor(public afDB: AngularFireDatabase){
               
     }
     
-public turnOntripUsers(place, user){
-    this.afDB.database.ref(place + '/usersTest/' + user + '/tripsTest/').update({
+public turnOntripUsers( user){
+    this.afDB.database.ref(  '/usersTest/' + user + '/tripsTest/').update({
         onTrip: true
     }, (error)=>{
         if(error){
@@ -20,8 +20,8 @@ public turnOntripUsers(place, user){
     })
 } 
 
-public turnOntripUsersFalse(place, user){
-    this.afDB.database.ref(place + '/usersTest/' + user + '/tripsTest/').update({
+public turnOntripUsersFalse( user){
+    this.afDB.database.ref(  '/usersTest/' + user + '/tripsTest/').update({
         onTrip: false
     }, (error)=>{
         if(error){
@@ -105,13 +105,11 @@ public isVerifiedPerson ( userId){
     })
 }
 
-public ToggleStatusOnline (place, userId){
-    this.afDB.database.ref(place + '/driversTest/' + userId).update({
+public ToggleStatusOnline ( userId){
+    this.afDB.database.ref(  '/driversTest/' + userId).update({
         toggleStatus: 'online'
     })
-    this.afDB.database.ref('allUsers/' + userId).update({
-        toggleOnline: place
-    })
+
 }
 
 public ToggleStatusOffline ( userId){

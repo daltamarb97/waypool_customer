@@ -22,7 +22,11 @@
   "_resolved": "https://registry.npmjs.org/es6-promise-plugin/-/es6-promise-plugin-4.2.2.tgz",
   "_shasum": "cfa0cc1383d91f999a62a2bbf4bd97bec305e0ac",
   "_spec": "es6-promise-plugin@^4.1.0",
+<<<<<<< HEAD
   "_where": "/Users/juandavidjaramillo/Documents/waypool_costumer",
+=======
+  "_where": "C:\\Users\\Daniel\\Documents\\waypool\\prod\\latest\\waypool_costumer",
+>>>>>>> origin/newMyRide
   "author": "",
   "bugs": {
     "url": "https://github.com/vstirbu/PromisesPlugin/issues"

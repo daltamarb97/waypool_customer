@@ -15,7 +15,6 @@
             // display: flex;
            
             align-items: center;        
-              padding: 5px 15px;
 
             .searchbar-search-icon {
                 display: none;
@@ -97,6 +96,11 @@
     display: flex;
     flex-direction:row; 
   }
+  .buttonSelectionMode{
+    width: 35%; border-radius: 0;margin: -4px;
+    -webkit-box-shadow:0px 0px 0px rgba(0, 0, 0, 0) !important;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+  } 
       }
 }
 
@@ -111,14 +115,13 @@
             // display: flex;
            
             align-items: center;         
-              padding: 0px 15px;
   
             .searchbar-search-icon {
                 display: none;
             }
             .searchbar-input {
-                padding: 17px  !important;
-                -webkit-box-shadow: none !important;
+                padding: 12px  ;
+                -webkit-box-shadow: none ;
                 box-shadow: none !important;
                 font-size: 1.25rem;
             }
@@ -193,7 +196,13 @@
     display: flex;
     flex-direction:row; 
   }
+  .buttonSelectionMode{
+    width: 35%; border-radius: 0;margin: -4px;
+    // -webkit-box-shadow:0px 0px 0px rgba(0, 0, 0, 0) !important;
+    box-shadow: 0px 0px 0px rgba(255, 255, 255, 0) !important;
+  } 
       }
+    
 }
 // default values not depending on the platform
 page-findride {

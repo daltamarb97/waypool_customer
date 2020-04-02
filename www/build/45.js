@@ -1,14 +1,14 @@
 webpackJsonp([45],{
 
-/***/ 657:
+/***/ 662:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChattingPageModule", function() { return ChattingPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmtripPageModule", function() { return ConfirmtripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chatting__ = __webpack_require__(849);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmtrip__ = __webpack_require__(858);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,42 +18,48 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ChattingPageModule = /** @class */ (function () {
-    function ChattingPageModule() {
+var ConfirmtripPageModule = /** @class */ (function () {
+    function ConfirmtripPageModule() {
     }
-    ChattingPageModule = __decorate([
+    ConfirmtripPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */],
+                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */]
+                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]
             ]
         })
-    ], ChattingPageModule);
-    return ChattingPageModule;
+    ], ConfirmtripPageModule);
+    return ConfirmtripPageModule;
 }());
 
-//# sourceMappingURL=chatting.module.js.map
+//# sourceMappingURL=confirmtrip.module.js.map
 
 /***/ }),
 
-/***/ 849:
+/***/ 858:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChattingPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmtripPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_chat_service__ = __webpack_require__(369);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendFeedback_service__ = __webpack_require__(365);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_instances_service__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_trips_service__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__ = __webpack_require__(202);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,162 +76,113 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ChattingPage = /** @class */ (function () {
-    function ChattingPage(navCtrl, sendFeedbackService, toastCtrl, SignUpService, alertCtrl, actionSheetCtrl, chatsService, navParams, AngularFireAuth) {
+
+
+
+
+
+var ConfirmtripPage = /** @class */ (function () {
+    function ConfirmtripPage(navCtrl, reservesService, sendUsersService, TripsService, toastCtrl, viewCtrl, afDB, SignUpService, sendCoordsService, navParams, AngularFireAuth, geoFireService, instances, alertCtrl) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.sendFeedbackService = sendFeedbackService;
+        this.reservesService = reservesService;
+        this.sendUsersService = sendUsersService;
+        this.TripsService = TripsService;
         this.toastCtrl = toastCtrl;
+        this.viewCtrl = viewCtrl;
+        this.afDB = afDB;
         this.SignUpService = SignUpService;
-        this.alertCtrl = alertCtrl;
-        this.actionSheetCtrl = actionSheetCtrl;
-        this.chatsService = chatsService;
+        this.sendCoordsService = sendCoordsService;
         this.navParams = navParams;
         this.AngularFireAuth = AngularFireAuth;
+        this.geoFireService = geoFireService;
+        this.instances = instances;
+        this.alertCtrl = alertCtrl;
+        this.user = {};
+        this.button = true;
+        this.text = false;
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.chats = [];
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
-        this.reserve = this.navParams.get('reserve');
-        this.isTrip = this.navParams.get('isTrip');
-        console.log(this.reserve.driver.userId);
-        this.SignUpService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(function (info) {
-            _this.user = info;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
+        this.myRideActivation = false;
+        this.trip = this.navParams.get('trip');
+        console.log(this.reserve);
+        //get the info of the driver 
+        this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (myUserInfo) {
+            _this.user = myUserInfo;
             console.log(_this.user);
-        });
-        if (this.isTrip === true) {
-            this.getChatFromTrip();
-        }
-        else {
-            this.getChatFromReserve();
-        }
-    }
-    ChattingPage.prototype.getChatFromTrip = function () {
-        var _this = this;
-        this.chatsService.getChatsFromTrip(this.reserve.keyTrip, this.reserve.driver.userId)
-            .takeUntil(this.unsubscribe).subscribe(function (chat) {
-            _this.chats = chat;
-            console.log(_this.chats);
-            _this.scrollToBottom();
-        });
-    };
-    ChattingPage.prototype.getChatFromReserve = function () {
-        var _this = this;
-        this.chatsService.getChatsFromReserve(this.reserve.keyTrip, this.reserve.driver.userId)
-            .takeUntil(this.unsubscribe).subscribe(function (chat) {
-            _this.chats = chat;
-            console.log(_this.chats);
-            _this.scrollToBottom();
-        });
-    };
-    ChattingPage.prototype.scrollToBottom = function () {
-        var _this = this;
-        setTimeout(function () {
-            if (_this.content.scrollToBottom) {
-                _this.content.scrollToBottom();
+            if (_this.user.cancelModalLMU === true) {
+                _this.dismiss();
+                var alert_1 = _this.alertCtrl.create({
+                    title: 'Escoge otro viaje',
+                    buttons: ['OK']
+                });
+                alert_1.present();
             }
-        }, 400);
+        });
+        this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip).takeUntil(this.unsubscribe)
+            .subscribe(function (usersInPendingusers) {
+            _this.usersInPending = usersInPendingusers;
+            _this.usersInPending.forEach(function (user) {
+                if (user.userId === _this.userUid) {
+                    _this.accepted = true;
+                    _this.dismiss();
+                }
+            });
+        });
+    }
+    ConfirmtripPage.prototype.goToRide = function () {
+        this.geoFireService.saveKey(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
+        this.reservesService.setOnTrip(this.userUid);
+        this.TripsService.joinTrip(this.trip.keyTrip, this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.verifiedPerson, this.user.trips.distanceToGoInKM);
+        // this.geoFireService.removeKeyGeofire(this.userUid);
+        //OLD
+        // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
+        // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
+        this.button = false;
+        this.text = true;
     };
-    ChattingPage.prototype.ionViewDidLeave = function () {
+    ConfirmtripPage.prototype.dismissX = function () {
+        var _this = this;
+        this.viewCtrl.dismiss();
+        this.geoFireService.deleteKey(this.userUid);
+        this.geoFireService.deleteDriverFromLMU(this.userUid, this.trip.keyTrip);
+        this.afDB.database.ref('/usersTest/' + this.userUid).once('value').then(function (snap) {
+            if (snap.val().onTrip) {
+                _this.geoFireService.setOntripFalse(_this.userUid);
+            }
+            else {
+            }
+        });
+        this.TripsService.getOutFromLMU(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
+    };
+    ConfirmtripPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss(this.accepted);
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+        if (this.trip.type === 'origin') {
+            this.geoFireService.cancelGeofireOr();
+            this.geoFireService.cancelGeofireOrLMU();
+        }
+        else if (this.trip.type === 'destination') {
+            this.geoFireService.cancelGeofireDest();
+            this.geoFireService.cancelGeofireDestLMU();
+        }
+    };
+    ConfirmtripPage.prototype.ionViewDidLeave = function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     };
-    ChattingPage.prototype.more = function () {
-        var _this = this;
-        var actionSheet = this.actionSheetCtrl.create({
-            title: 'Opciones',
-            buttons: [
-                {
-                    text: 'Reportar Chat',
-                    role: 'destructive',
-                    handler: function () {
-                        _this.reportChat();
-                    }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
-                }
-            ]
-        });
-        actionSheet.present();
-    };
-    ChattingPage.prototype.reportChat = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Reportar',
-            message: 'Reportar este chat es completamente anónimo a tus compañeros y lo revisaremos de inmediato.',
-            buttons: [
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
-                },
-                {
-                    text: 'Reportar',
-                    handler: function () {
-                        _this.sendFeedbackService.sendFeedback('Reporte_de_chat', _this.chats, _this.user.name, _this.user.lastname, _this.user.phone, _this.userUid);
-                        var toast = _this.toastCtrl.create({
-                            message: 'Haz reportado este chat',
-                            showCloseButton: true,
-                            closeButtonText: 'OK',
-                            position: 'top'
-                        });
-                        toast.present();
-                    }
-                }
-            ]
-        });
-        alert.present();
-    };
-    ChattingPage.prototype.sendMessage = function () {
-        if (this.message === undefined || this.message === null) {
-            var toast = this.toastCtrl.create({
-                message: 'No puedes enviar un mensaje vacío',
-                showCloseButton: true,
-                closeButtonText: 'OK',
-                position: 'top'
-            });
-            toast.present();
-        }
-        else {
-            if (this.isTrip === true) {
-                this.sendMessageForTrip();
-            }
-            else {
-                this.sendMessageForReserve();
-            }
-        }
-    };
-    ChattingPage.prototype.sendMessageForTrip = function () {
-        console.log(this.isTrip);
-        this.chatsService.pushMessageUserInTrip(this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.user.name);
-        this.message = '';
-        this.scrollToBottom();
-    };
-    ChattingPage.prototype.sendMessageForReserve = function () {
-        this.chatsService.pushMessageUserInReserve(this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.user.name);
-        this.message = '';
-        this.scrollToBottom();
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
-    ], ChattingPage.prototype, "content", void 0);
-    ChattingPage = __decorate([
+    ConfirmtripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-chatting',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-chatting/chatting.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-item>\n            <ion-icon name="arrow-back" style="font-size: 33px"  class="text-white" end-item navPop></ion-icon>\n            <ion-title class="text-white">CHAT GRUPAL</ion-title>\n            <ion-icon name="more" (click)="more()" end-item item-end class="text-white"></ion-icon>\n\n        </ion-item>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding class="chat-bg">\n        <p style="margin-top: 0px;">Este es un chat grupal donde podrás hablar con tus compañeros de viaje</p>       \n\n    <div class="chatbox"*ngFor="let chat of chats">\n            <div  class="cb" >        \n                    <div>                        \n                         <div *ngIf="userUid === chat.uid" class="chat chat-left bg-theme text-white"  text-left padding float-right style="max-width: 70%;text-align: left">\n                            <!-- its driver message -->\n                             <p>{{chat.message}}</p>       \n                       </div>                       \n                   </div>                    \n                </div>\n                <div class="cb">            \n                    <div>   \n                        <div *ngIf="chat.uid === this.reserve.driver.userId; else isOtherPerson" class="chat chat-right bg-white text-dark"style="max-width: 70%" text-left padding float-left>  \n                         <!-- its user message --> \n                             <h6 class="driverText" style="display: flex" ><ion-icon name="car" style="margin-right: 4px;color:#0081ad "></ion-icon> {{chat.name}}</h6>                         \n                             <p>{{chat.message}}</p>                            \n                         </div>\n                         <ng-template #isOtherPerson >\n                            <div *ngIf="chat.uid !== userUid" class="chat chat-right bg-white text-dark" style="max-width: 70%;text-align: left" text-right padding float-left>  \n                                <!-- its user message --> \n                                    <h6 class="driverText" style="display: flex; color:#4BB543;">{{chat.name | titlecase}}</h6>                         \n                                    <p>{{chat.message}}</p>                            \n                                </div>\n                        </ng-template>\n                    </div>                  \n                </div>\n               \n    </div>\n   \n   \n</ion-content>\n<ion-footer class="fixed-bottom">\n        \n                <ion-list inset>\n                    <ion-item>\n                        <ion-input type="text" placeholder="Escribe tu mensaje" [(ngModel)]="message" autofocus (keyup.enter)="sendMessage()"></ion-input>\n                  \n                       <button class="text-theme" item-right (click)="sendMessage()"> <ion-icon name="md-send" ></ion-icon></button>\n                    </ion-item>\n                </ion-list>\n            \n      \n  \n</ion-footer> '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-chatting/chatting.html"*/
+            selector: 'page-confirmtrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmtrip/confirmtrip.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>\n    <ion-card>\n        <h6 class="text-hot hot">Viaje Iniciado </h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{trip.driver.name|titlecase }} {{trip.driver.lastname|titlecase }}\n                    <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                </h2>\n                <p>{{trip.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen del viaje</small>\n                    <span class="icon-location bg-hot"></span>{{trip.houseAddr}}</p>\n                <p>\n                    <small>Destino del viaje</small>\n                    <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n            </div>\n        </ion-card-content>\n\n        \n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{trip.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-hot text-white rounded" (click)="goToRide()" *ngIf="button" style="width: 100%;margin-top: 14px;">Enviar Solicitud </button>\n                <p  text-center *ngIf="text">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmtrip/confirmtrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__services_sendFeedback_service__["a" /* sendFeedbackService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_3__services_chat_service__["a" /* chatsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
-    ], ChattingPage);
-    return ChattingPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_10__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+    ], ConfirmtripPage);
+    return ConfirmtripPage;
 }());
 
-//# sourceMappingURL=chatting.js.map
+//# sourceMappingURL=confirmtrip.js.map
 
 /***/ })
 

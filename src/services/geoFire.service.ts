@@ -345,7 +345,8 @@ keyEnteredDest( userId ){
              userId: userId,
              distance:distance,
              verifiedPerson: verifiedPerson,
-             company:company       
+             company:company
+
         }).catch((err)=>{
             console.log(err)
         })

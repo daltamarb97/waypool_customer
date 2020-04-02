@@ -1,14 +1,14 @@
 webpackJsonp([48],{
 
-/***/ 655:
+/***/ 658:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverMorePageModule", function() { return DriverMorePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChattingPageModule", function() { return ChattingPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverMore__ = __webpack_require__(847);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chatting__ = __webpack_require__(854);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,42 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverMorePageModule = /** @class */ (function () {
-    function DriverMorePageModule() {
+var ChattingPageModule = /** @class */ (function () {
+    function ChattingPageModule() {
     }
-    DriverMorePageModule = __decorate([
+    ChattingPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */],
+                __WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */]
+                __WEBPACK_IMPORTED_MODULE_2__chatting__["a" /* ChattingPage */]
             ]
         })
-    ], DriverMorePageModule);
-    return DriverMorePageModule;
+    ], ChattingPageModule);
+    return ChattingPageModule;
 }());
 
-//# sourceMappingURL=driverMore.module.js.map
+//# sourceMappingURL=chatting.module.js.map
 
 /***/ }),
 
-/***/ 847:
+/***/ 854:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverMorePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChattingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_chat_service__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_sendFeedback_service__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,60 +65,167 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// import { UploadPage } from '../upload/upload';
 
 
 
 
-var DriverMorePage = /** @class */ (function () {
-    function DriverMorePage(navCtrl, modalCtrl, AngularFireAuth, authenticationService, SignupService, app) {
+
+var ChattingPage = /** @class */ (function () {
+    function ChattingPage(navCtrl, sendFeedbackService, toastCtrl, SignUpService, alertCtrl, actionSheetCtrl, chatsService, navParams, AngularFireAuth) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
+        this.sendFeedbackService = sendFeedbackService;
+        this.toastCtrl = toastCtrl;
+        this.SignUpService = SignUpService;
+        this.alertCtrl = alertCtrl;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.chatsService = chatsService;
+        this.navParams = navParams;
         this.AngularFireAuth = AngularFireAuth;
-        this.authenticationService = authenticationService;
-        this.SignupService = SignupService;
-        this.app = app;
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.user = {};
-        this.verified = false;
-        this.SignupService.getMyInfoForProfile(this.userUid).subscribe(function (user) {
-            _this.user = user;
+        this.chats = [];
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
+        this.reserve = this.navParams.get('reserve');
+        this.isTrip = this.navParams.get('isTrip');
+        console.log(this.reserve.driver.userId);
+        this.SignUpService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(function (info) {
+            _this.user = info;
             console.log(_this.user);
-            if (_this.user.verifiedPerson === true) {
-                _this.verified = true;
-            }
         });
+        if (this.isTrip === true) {
+            this.getChatFromTrip();
+        }
+        else {
+            this.getChatFromReserve();
+        }
     }
-    DriverMorePage.prototype.profile = function () {
-        this.app.getRootNav().push('DriverProfilePage');
+    ChattingPage.prototype.getChatFromTrip = function () {
+        var _this = this;
+        this.chatsService.getChatsFromTrip(this.reserve.keyTrip, this.reserve.driver.userId)
+            .takeUntil(this.unsubscribe).subscribe(function (chat) {
+            _this.chats = chat;
+            console.log(_this.chats);
+            _this.scrollToBottom();
+        });
     };
-    DriverMorePage.prototype.showInfoCars = function () {
-        var modal = this.modalCtrl.create('DriverShowInfoCarPage', { user: this.user });
-        modal.present();
+    ChattingPage.prototype.getChatFromReserve = function () {
+        var _this = this;
+        this.chatsService.getChatsFromReserve(this.reserve.keyTrip, this.reserve.driver.userId)
+            .takeUntil(this.unsubscribe).subscribe(function (chat) {
+            _this.chats = chat;
+            console.log(_this.chats);
+            _this.scrollToBottom();
+        });
     };
-    DriverMorePage.prototype.terms = function () {
-        this.navCtrl.push('DriverTermsPage');
+    ChattingPage.prototype.scrollToBottom = function () {
+        var _this = this;
+        setTimeout(function () {
+            if (_this.content.scrollToBottom) {
+                _this.content.scrollToBottom();
+            }
+        }, 400);
     };
-    DriverMorePage.prototype.help = function () {
-        this.navCtrl.push('DriverHelpPage');
+    ChattingPage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     };
-    DriverMorePage.prototype.logout = function () {
-        this.authenticationService.logOut();
-        console.log(__WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]().currentUser);
-        // this.SignupService.userPlace = undefined;
-        this.navCtrl.setRoot('LoginPage');
+    ChattingPage.prototype.more = function () {
+        var _this = this;
+        var actionSheet = this.actionSheetCtrl.create({
+            title: 'Opciones',
+            buttons: [
+                {
+                    text: 'Reportar Chat',
+                    role: 'destructive',
+                    handler: function () {
+                        _this.reportChat();
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () {
+                        console.log('Cancel clicked');
+                    }
+                }
+            ]
+        });
+        actionSheet.present();
     };
-    DriverMorePage = __decorate([
+    ChattingPage.prototype.reportChat = function () {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            title: 'Reportar',
+            message: 'Reportar este chat es completamente anónimo a tus compañeros y lo revisaremos de inmediato.',
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Reportar',
+                    handler: function () {
+                        _this.sendFeedbackService.sendFeedback('Reporte_de_chat', _this.chats, _this.user.name, _this.user.lastname, _this.user.phone, _this.userUid);
+                        var toast = _this.toastCtrl.create({
+                            message: 'Haz reportado este chat',
+                            showCloseButton: true,
+                            closeButtonText: 'OK',
+                            position: 'top'
+                        });
+                        toast.present();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
+    ChattingPage.prototype.sendMessage = function () {
+        if (this.message === undefined || this.message === null) {
+            var toast = this.toastCtrl.create({
+                message: 'No puedes enviar un mensaje vacío',
+                showCloseButton: true,
+                closeButtonText: 'OK',
+                position: 'top'
+            });
+            toast.present();
+        }
+        else {
+            if (this.isTrip === true) {
+                this.sendMessageForTrip();
+            }
+            else {
+                this.sendMessageForReserve();
+            }
+        }
+    };
+    ChattingPage.prototype.sendMessageForTrip = function () {
+        console.log(this.isTrip);
+        this.chatsService.pushMessageUserInTrip(this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.user.name);
+        this.message = '';
+        this.scrollToBottom();
+    };
+    ChattingPage.prototype.sendMessageForReserve = function () {
+        this.chatsService.pushMessageUserInReserve(this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.user.name);
+        this.message = '';
+        this.scrollToBottom();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
+    ], ChattingPage.prototype, "content", void 0);
+    ChattingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-more',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/more/driverMore.html"*/'<ion-header class="bg-theme-driver">\n    <ion-navbar>\n        <ion-title class="text-center">PERFIL</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light" >\n    <ion-item>\n        \n                <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n                            <ion-icon *ngIf = \'verified\' name="ios-checkmark-circle" class="text-theme-driver"></ion-icon>\n                        </h2>\n                        <p (click)="profile()">Editar Perfil</p>\n                    </div>\n        \n        \n        \n    </ion-item>\n\n    <ion-list no-lines>\n        <!-- <button ion-item (click)="reviews()">\n            <ion-avatar item-start>\n                <ion-icon name="ios-star"></ion-icon>\n            </ion-avatar>\n            Mis calificaciones (Próximamente)\n        </button> -->\n        <button ion-item (click)="showInfoCars()">\n            <ion-avatar item-start>\n                <ion-icon name="car"></ion-icon>\n            </ion-avatar>\n            Mis Vehículos        \n        </button>\n       \n        <!-- <button ion-item (click)="docs()">\n            <ion-avatar item-start>\n                <ion-icon name="md-paper"></ion-icon>\n            </ion-avatar>\n            Tus documentos\n        </button> -->\n        <!-- <button ion-item (click)="earn()">\n            <ion-avatar item-start>\n                <ion-icon name="md-share"></ion-icon>\n            </ion-avatar>\n            Refiérenos y Ganas (Próximamente)\n        </button>\n        <button ion-item (click)="ratevroom()">\n            <ion-avatar item-start>\n                <ion-icon name="md-thumbs-up"></ion-icon>\n            </ion-avatar>\n            Cálifica a Waypool (Próximamente)\n        </button> -->\n        <button ion-item (click)="help()">\n            <ion-avatar item-start>\n                <ion-icon name="md-alert"></ion-icon>\n            </ion-avatar>\n           Soporte \n        </button>\n        <button ion-item (click)="terms()">\n            <ion-avatar item-start>\n                <ion-icon name="md-paper"></ion-icon>\n            </ion-avatar>\n            Terminos y Condiciones\n        </button>\n    </ion-list>\n  \n    \n    <!-- <ion-list no-lines>\n        <button ion-item (click)="logout()" text-center><h2 class="text-theme"><strong>Salir de mi cuenta</strong></h2></button>\n\n    </ion-list> -->\n    <p class="love">Desarrollado con  <ion-icon name="heart"></ion-icon></p> \n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/more/driverMore.html"*/
+            selector: 'page-chatting',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-chatting/chatting.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-item>\n            <ion-icon name="arrow-back" style="font-size: 33px"  class="text-white" end-item navPop></ion-icon>\n            <ion-title class="text-white">CHAT GRUPAL</ion-title>\n            <ion-icon name="more" (click)="more()" end-item item-end class="text-white"></ion-icon>\n\n        </ion-item>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding class="chat-bg">\n        <p style="margin-top: 0px;">Este es un chat grupal donde podrás hablar con tus compañeros de viaje</p>       \n\n    <div class="chatbox"*ngFor="let chat of chats">\n            <div  class="cb" >        \n                    <div>                        \n                         <div *ngIf="userUid === chat.uid" class="chat chat-left bg-theme text-white"  text-left padding float-right style="max-width: 70%;text-align: left">\n                            <!-- its driver message -->\n                             <p>{{chat.message}}</p>       \n                       </div>                       \n                   </div>                    \n                </div>\n                <div class="cb">            \n                    <div>   \n                        <div *ngIf="chat.uid === this.reserve.driver.userId; else isOtherPerson" class="chat chat-right bg-white text-dark"style="max-width: 70%" text-left padding float-left>  \n                         <!-- its user message --> \n                             <h6 class="driverText" style="display: flex" ><ion-icon name="car" style="margin-right: 4px;color:#0081ad "></ion-icon> {{chat.name}}</h6>                         \n                             <p>{{chat.message}}</p>                            \n                         </div>\n                         <ng-template #isOtherPerson >\n                            <div *ngIf="chat.uid !== userUid" class="chat chat-right bg-white text-dark" style="max-width: 70%;text-align: left" text-right padding float-left>  \n                                <!-- its user message --> \n                                    <h6 class="driverText" style="display: flex; color:#4BB543;">{{chat.name | titlecase}}</h6>                         \n                                    <p>{{chat.message}}</p>                            \n                                </div>\n                        </ng-template>\n                    </div>                  \n                </div>\n               \n    </div>\n   \n   \n</ion-content>\n<ion-footer class="fixed-bottom">\n        \n                <ion-list inset>\n                    <ion-item>\n                        <ion-input type="text" placeholder="Escribe tu mensaje" [(ngModel)]="message" autofocus (keyup.enter)="sendMessage()"></ion-input>\n                  \n                       <button class="text-theme" item-right (click)="sendMessage()"> <ion-icon name="md-send" ></ion-icon></button>\n                    </ion-item>\n                </ion-list>\n            \n      \n  \n</ion-footer> '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-chatting/chatting.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
-    ], DriverMorePage);
-    return DriverMorePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__services_sendFeedback_service__["a" /* sendFeedbackService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_3__services_chat_service__["a" /* chatsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
+    ], ChattingPage);
+    return ChattingPage;
 }());
 
-//# sourceMappingURL=driverMore.js.map
+//# sourceMappingURL=chatting.js.map
 
 /***/ })
 

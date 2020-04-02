@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
+<<<<<<< HEAD
 <widget id="com.waypoolsas.waypooluser" version="3.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+=======
+<widget id="com.waypoolsas.waypooluser" version="3.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+>>>>>>> origin/newMyRide
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -19,6 +23,7 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
+<<<<<<< HEAD
     <feature name="CallNumber">
         <param name="ios-package" value="CFCallNumber" />
     </feature>
@@ -35,6 +40,8 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
+=======
+>>>>>>> origin/newMyRide
     <name>Waypool</name>
     <description>carsharing app</description>
     <author email="team@waypooltech.com" href="https://waypooltech.com/">Waypool SAS</author>
@@ -74,7 +81,6 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
-    <preference name="CameraUsesGeolocation" value="false" />
     <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
     <preference name="phonegap-version" value="cli-6.4.0" />
     <preference name="ScrollEnabled" value="false" />
@@ -87,6 +93,7 @@
     <preference name="ShowSplashScreen" value="true" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="orientation" value="portrait" />
+<<<<<<< HEAD
     <feature name="SplashScreen">
         <param name="ios-package" value="CDVSplashScreen" />
         <param name="onload" value="true" />
@@ -95,4 +102,6 @@
         <param name="ios-package" value="SocialSharing" />
         <param name="onload" value="true" />
     </feature>
+=======
+>>>>>>> origin/newMyRide
 </widget>

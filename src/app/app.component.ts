@@ -223,7 +223,7 @@ export class MyApp {
       })
       
     }else{
-      this.nav.push(page.component)
+      this.nav.push(page.component);
     }
     
   } 

@@ -1,14 +1,14 @@
 webpackJsonp([14],{
 
-/***/ 700:
+/***/ 701:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverSpecifyOriginPageModule", function() { return DriverSpecifyOriginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverSpecifyRoutePageModule", function() { return DriverSpecifyRoutePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__specifyorigin__ = __webpack_require__(896);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__specifyroute__ = __webpack_require__(901);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,47 +18,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverSpecifyOriginPageModule = /** @class */ (function () {
-    function DriverSpecifyOriginPageModule() {
+var DriverSpecifyRoutePageModule = /** @class */ (function () {
+    function DriverSpecifyRoutePageModule() {
     }
-    DriverSpecifyOriginPageModule = __decorate([
+    DriverSpecifyRoutePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__specifyorigin__["a" /* DriverSpecifyOriginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__specifyroute__["a" /* DriverSpecifyRoutePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__specifyorigin__["a" /* DriverSpecifyOriginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__specifyroute__["a" /* DriverSpecifyRoutePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__specifyorigin__["a" /* DriverSpecifyOriginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__specifyroute__["a" /* DriverSpecifyRoutePage */]
             ]
         })
-    ], DriverSpecifyOriginPageModule);
-    return DriverSpecifyOriginPageModule;
+    ], DriverSpecifyRoutePageModule);
+    return DriverSpecifyRoutePageModule;
 }());
 
-//# sourceMappingURL=specifyorigin.module.js.map
+//# sourceMappingURL=specifyroute.module.js.map
 
 /***/ }),
 
-/***/ 896:
+/***/ 901:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSpecifyOriginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSpecifyRoutePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation___ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_d_instances_services__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_driverauthentication_service__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_d_instances_services__ = __webpack_require__(352);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__ = __webpack_require__(204);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -88,10 +88,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var DriverSpecifyOriginPage = /** @class */ (function () {
-    function DriverSpecifyOriginPage(geofireService, TripsService, afDB, navCtrl, SignUpService, modalCtrl, authenticationService, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, toastCtrl, app, sendUsersService, instancesService, firebaseNative, platform, fcm, loadingCtrl, renderer) {
+var DriverSpecifyRoutePage = /** @class */ (function () {
+    function DriverSpecifyRoutePage(geofireService, TripsService, viewCtrl, afDB, navCtrl, SignUpService, modalCtrl, authenticationService, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, toastCtrl, app, sendUsersService, instancesService, firebaseNative, platform, fcm, loadingCtrl, renderer) {
         this.geofireService = geofireService;
         this.TripsService = TripsService;
+        this.viewCtrl = viewCtrl;
         this.afDB = afDB;
         this.navCtrl = navCtrl;
         this.SignUpService = SignUpService;
@@ -146,7 +147,7 @@ var DriverSpecifyOriginPage = /** @class */ (function () {
         this.markers = [];
         //meter datos por el id del firebase
     } // END OF CONSTRUCTOR
-    DriverSpecifyOriginPage.prototype.ionViewDidLoad = function () {
+    DriverSpecifyRoutePage.prototype.ionViewDidLoad = function () {
         var _this = this;
         this.afDB.database.ref('/driversTest/' + this.user).once('value').then(function (snap) {
             _this.city = snap.val().city;
@@ -154,13 +155,11 @@ var DriverSpecifyOriginPage = /** @class */ (function () {
             _this.loadMap();
         });
     };
-    DriverSpecifyOriginPage.prototype.loadMap = function () {
-        var _this = this;
-        //check if user have houseAddress
+    DriverSpecifyRoutePage.prototype.loadMap = function () {
         // this gets current position and set the camera of the map and put a marker in your location
+        var _this = this;
         this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then(function (position) {
             var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            console.log(latLng);
             var mapOptions = {
                 center: latLng,
                 zoom: 17,
@@ -186,25 +185,29 @@ var DriverSpecifyOriginPage = /** @class */ (function () {
             //creates the map and give options
             _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
             _this.myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+            _this.myLatLngOr = {
+                lat: _this.myLatLng.lat,
+                lng: _this.myLatLng.lng
+            };
             _this.markerGeolocation = new google.maps.Marker({
                 map: _this.map,
                 animation: google.maps.Animation.DROP,
                 position: latLng,
                 draggable: true,
-                icon: { url: "assets/imgs/house.png",
-                    scaledSize: new google.maps.Size(70, 70)
+                icon: { url: "assets/imgs/marker-origin.png",
+                    scaledSize: new google.maps.Size(90, 90)
                 }
             });
             _this.markers.push(_this.markerGeolocation);
-            _this.geocoordinatesHouse = { lat: position.coords.latitude, lng: position.coords.longitude };
-            //allow the marker to be draged and changed the position
             _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
+            //to reverse-geocode position
+            _this.geocodeLatLng(latLng, _this.autocompleteMyPos);
         }, function (err) {
             console.log(err);
         });
     };
     //autocomplete of myPosition searchbar
-    DriverSpecifyOriginPage.prototype.updateSearchResultsMyPos = function () {
+    DriverSpecifyRoutePage.prototype.updateSearchResultsMyPos = function () {
         var _this = this;
         if (this.autocompleteMyPos.input == '') {
             this.autocompleteItems = [];
@@ -221,11 +224,31 @@ var DriverSpecifyOriginPage = /** @class */ (function () {
             }
         });
     };
+    ////show destinations
+    ////autocomplete of my destination
+    DriverSpecifyRoutePage.prototype.updateSearchResultsMyDest = function () {
+        var _this = this;
+        if (this.autocompleteMyDest.input == '') {
+            this.autocompleteItems2 = [];
+            return;
+        }
+        this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteMyDest.input, componentRestrictions: { country: 'co' } }, function (predictions, status) {
+            _this.autocompleteItems2 = [];
+            if (predictions) {
+                _this.zone.run(function () {
+                    predictions.forEach(function (prediction) {
+                        _this.autocompleteItems2.push(prediction);
+                    });
+                });
+            }
+        });
+    };
     ////select result of my position searchbar
-    DriverSpecifyOriginPage.prototype.selectSearchResultMyPos = function (item) {
+    DriverSpecifyRoutePage.prototype.selectSearchResultMyPos = function (item) {
         var _this = this;
         this.autocompleteItems = [];
         this.clearMarkers();
+        this.autocompleteMyDest.input = '';
         this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
             if (status === 'OK' && results[0]) {
                 // let position = {
@@ -236,33 +259,86 @@ var DriverSpecifyOriginPage = /** @class */ (function () {
                     position: results[0].geometry.location,
                     map: _this.map,
                     draggable: true,
-                    icon: { url: "assets/imgs/house.png",
-                        scaledSize: new google.maps.Size(70, 70)
-                    },
                     animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/marker-origin.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    },
                 });
-                _this.geocoordinatesHouse = { latOr: results[0].geometry.location.lat(), lngOr: results[0].geometry.location.lng() };
-                console.log(_this.geocoordinatesHouse);
-                console.log(_this.positionDest);
                 _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
                 _this.markers.push(_this.markerGeolocation);
                 _this.map.setCenter(results[0].geometry.location);
-                console.log(results[0].geometry.location);
-                console.log(_this.positionDest);
                 _this.autocompleteMyPos.input = [item.description];
-                // this.map.fitBounds(this.bounds);
+                _this.directionsDisplay.setMap(null);
+                _this.myLatLngOr = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
+                console.log(_this.myLatLngOr);
             }
         });
     };
     ////select result of my destination searchbar
+    DriverSpecifyRoutePage.prototype.selectSearchResultMyDest = function (item) {
+        var _this = this;
+        this.autocompleteItems2 = [];
+        if (this.markerDest !== undefined) {
+            this.markerDest.setMap(null);
+        }
+        this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+                // let position = {
+                //   latitude: results[0].geometry.location.lat,
+                //   longitude: results[0].geometry.location.lng
+                // };
+                var position = new google.maps.LatLng(results[0].geometry.location.lat, results[0].geometry.location.lng);
+                console.log(position);
+                _this.markerDest = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: _this.map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/marker-destination2.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    }
+                });
+                console.log(position);
+                _this.map.fitBounds(_this.bounds);
+                _this.markers.push(_this.markerDest);
+                _this.map.setCenter(results[0].geometry.location);
+                _this.autocompleteMyDest.input = [item.description];
+                _this.dragMarkerDest(_this.markerDest, _this.autocompleteMyDest);
+                _this.directionsDisplay.setMap(_this.map);
+                _this.myLatLngDest = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
+                console.log(_this.myLatLngDest);
+                _this.calculateRoute(_this.markerGeolocation.position, results[0].geometry.location);
+            }
+        });
+    };
+    DriverSpecifyRoutePage.prototype.calculateRoute = function (positionOr, positionDest) {
+        //tutorial ngclassroom https://blog.ng-classroom.com/blog/ionic2/directions-google-js-ionic/
+        var _this = this;
+        this.bounds.extend(this.myLatLng);
+        this.map.fitBounds(this.bounds);
+        this.directionsService.route({
+            origin: positionOr,
+            destination: positionDest,
+            travelMode: google.maps.TravelMode.DRIVING,
+            avoidTolls: true
+        }, function (response, status) {
+            //render
+            if (status === google.maps.DirectionsStatus.OK) {
+                _this.directionsDisplay.setDirections(response);
+            }
+            else {
+                alert('Could not display directions due to: ' + status);
+            }
+        });
+    };
     ////////Markers
-    DriverSpecifyOriginPage.prototype.clearMarkers = function () {
+    DriverSpecifyRoutePage.prototype.clearMarkers = function () {
         for (var i = 0; i < this.markers.length; i++) {
             this.markers[i].setMap(null);
         }
         this.markers = [];
     };
-    DriverSpecifyOriginPage.prototype.dragMarkerOr = function (marker, inputName) {
+    DriverSpecifyRoutePage.prototype.dragMarkerOr = function (marker, inputName) {
         //allow origin marker to be draged and calculate route with the new position
         var _this = this;
         google.maps.event.addListener(marker, 'dragend', function (evt) {
@@ -271,14 +347,26 @@ var DriverSpecifyOriginPage = /** @class */ (function () {
             var latOr = marker.getPosition().lat();
             var lngOr = marker.getPosition().lng();
             var latLng = { lat: lat, lng: lng };
-            var latLngOr = { latOr: latOr, lngOr: lngOr };
+            var latLngOr = { lat: latOr, lng: lngOr };
             console.log(latLng);
             _this.geocodeLatLng(latLng, inputName);
             console.log(_this.positionDest);
             _this.geocoordinatesHouse = latLngOr;
         });
     };
-    DriverSpecifyOriginPage.prototype.geocodeLatLng = function (latLng, inputName) {
+    DriverSpecifyRoutePage.prototype.dragMarkerDest = function (marker, inputName) {
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            _this.map.setCenter(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            _this.calculateRoute(_this.markerGeolocation.position, latLng);
+            _this.myLatLngDest = latLng;
+        });
+    };
+    DriverSpecifyRoutePage.prototype.geocodeLatLng = function (latLng, inputName) {
         this.geocoder.geocode({ 'location': latLng }, function (results, status) {
             if (status === 'OK') {
                 if (results[0]) {
@@ -293,9 +381,12 @@ var DriverSpecifyOriginPage = /** @class */ (function () {
             }
         });
     };
-    DriverSpecifyOriginPage.prototype.sendLocation = function () {
+    DriverSpecifyRoutePage.prototype.sendLocation = function () {
         var _this = this;
-        this.houseAddress = this.autocompleteMyPos.input;
+        console.log(this.myLatLngDest);
+        console.log(this.myLatLngOr);
+        this.origin = this.autocompleteMyPos.input;
+        this.destination = this.autocompleteMyDest.input;
         this.afDB.database.ref('allCities/' + this.city + '/allPlaces/' + this.company + '/zones').once('value').then(function (snap) {
             var obj = snap.val();
             console.log(obj);
@@ -304,41 +395,40 @@ var DriverSpecifyOriginPage = /** @class */ (function () {
                 }
                 else {
                     _this.afDB.database.ref(obj[key] + '/drivers/' + _this.user + '/houseAddress/').update({
-                        name: _this.houseAddress[0]
+                        name: _this.origin[0]
                     }).then(function (data) {
                         _this.afDB.database.ref(obj[key] + '/drivers/' + _this.user + '/houseAddress/coordinates').update({
-                            lat: _this.geocoordinatesHouse.latOr,
-                            lng: _this.geocoordinatesHouse.lngOr
+                            lat: _this.myLatLngOr.lat,
+                            lng: _this.myLatLngOr.lng
+                        });
+                        _this.afDB.database.ref(obj[key] + '/drivers/' + _this.user + '/fixedLocation/').update({
+                            name: _this.destination[0]
+                        });
+                        _this.afDB.database.ref(obj[key] + '/drivers/' + _this.user + '/fixedLocation/coordinates').update({
+                            lat: _this.myLatLngDest.lat,
+                            lng: _this.myLatLngDest.lng
                         });
                     });
                 }
             });
         }).then(function () {
-            _this.navCtrl.setRoot('DriverFindridePage');
+            _this.navCtrl.pop();
         });
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('map'),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], DriverSpecifyOriginPage.prototype, "mapElement", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('buttonConected', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", Object)
-    ], DriverSpecifyOriginPage.prototype, "buttonConected", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('buttonDisconected', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", Object)
-    ], DriverSpecifyOriginPage.prototype, "buttonDisconected", void 0);
-    DriverSpecifyOriginPage = __decorate([
+    ], DriverSpecifyRoutePage.prototype, "mapElement", void 0);
+    DriverSpecifyRoutePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-specifyorigin',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/specifyorigin/driverSpecifyorigin.html"*/'\n\n\n\n<ion-content  padding>\n      <h5 class="text-theme-driver" style="font-weight: bold;">DIRECCIÓN DE TU HOGAR</h5>\n      <ion-card class="search" >\n          <ion-card-content>\n              <span style=" z-index: 1;position: relative;" class="text-light search-text">Tu casa &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>\n\n              <span class="dot bg-theme-driver"></span>\n              <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" id="input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Cóloca la dirección de tu casa"></ion-searchbar>\n\n              <ion-list   [hidden]="autocompleteItems.length == 0">\n                  <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n                    {{ item.description }}\n                  </ion-item>\n                </ion-list>\n                <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n          </ion-card-content>\n\n           \n      </ion-card>\n      <!-- <ion-avatar item-end>\n          <img style="height: 15%; width: 15%;" src="assets/imgs/centermap.png" (click)="centerMap()">\n      </ion-avatar> -->\n      <div style="display: flex; justify-content: center;">    \n          <button class="btn text-white bg-theme-driver rounded" style="width: 80%;" (click)="sendLocation()">Listo</button>\n      </div>\n   <div #map id="map"></div>  \n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/specifyorigin/driverSpecifyorigin.html"*/
+            selector: 'driver-page-specifyroute',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/specifyroute/specifyroute.html"*/'<ion-header class="bg-theme">\n  <ion-navbar>\n      <ion-title class="text-center">Especifica tu ruta</ion-title>\n  </ion-navbar>\n  \n</ion-header>\n\n\n\n\n<ion-content  padding>\n      <h5 class="text-theme-driver" style="font-weight: bold;">Cóloca tu ruta diariaal trabajo</h5>\n      <ion-card class="search">\n      \n          <ion-card-content>\n              <span class="dot bg-theme"></span>\n              <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n            \n              <ion-list   [hidden]="autocompleteItems.length == 0">\n                  <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n                    {{ item.description }}\n                  </ion-item>\n                </ion-list>\n                <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n          </ion-card-content>\n          <ion-card-content>\n              <span class="dot bg-yellow"></span>           \n             <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n  \n              <ion-list   [hidden]="autocompleteItems2.length == 0">\n              <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n                {{ item.description }}\n              </ion-item>\n            </ion-list>\n              <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n  \n          </ion-card-content>\n          \n      </ion-card>\n      <!-- <ion-avatar item-end>\n          <img style="height: 15%; width: 15%;" src="assets/imgs/centermap.png" (click)="centerMap()">\n      </ion-avatar> -->\n      <div style="display: flex; justify-content: center;">    \n          <button class="btn text-white bg-theme-driver rounded" style="width: 80%;" (click)="sendLocation()">Listo</button>\n      </div>\n   <div #map id="map"></div>  \n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/specifyroute/specifyroute.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_8__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation___["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_11__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */]])
-    ], DriverSpecifyOriginPage);
-    return DriverSpecifyOriginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_8__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation___["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_11__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */]])
+    ], DriverSpecifyRoutePage);
+    return DriverSpecifyRoutePage;
 }());
 
-//# sourceMappingURL=specifyorigin.js.map
+//# sourceMappingURL=specifyroute.js.map
 
 /***/ })
 

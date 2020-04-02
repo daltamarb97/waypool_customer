@@ -21,6 +21,17 @@
     
 </ion-header>
 
+ <div [ngSwitch]="ride">
+            <ng-container *ngSwitchCase="'driver'">
+    <ion-card >
+        <ion-item>
+            <ion-avatar item-start>
+                <img style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
+            </ion-avatar>
+            <div class="name">
+                <h2>Daniel Altamar
+                    <ion-icon  name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                    <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> Bancolombia</ion-badge>
 
 <ion-content class="bg-light" class="hideLongText" style="        background-color: rgba(255, 255, 255, 0.959);">
         
@@ -29,6 +40,7 @@
                         
                             <div [ngSwitch]="noCrew">
 
+                <p>Mazda | KHX089 | Plateado</p>
 
                                     <div *ngSwitchCase=true >
                                             <img src="assets/imgs/noreserveavailable.png">

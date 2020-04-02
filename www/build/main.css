@@ -25707,7 +25707,7 @@ li,
 }
 
 .text-theme {
-  color: #3fb1df;
+  color: #001127;
 }
 
 .text-theme-driver {
@@ -25739,7 +25739,7 @@ li,
 }
 
 .bg-theme {
-  background: #3fb1df;
+  background: #001127;
 }
 
 .bg-theme-driver {
@@ -25780,8 +25780,8 @@ li,
 
 .tab-button[aria-selected=true],
 .tab-button[aria-selected=true] .tab-button-icon {
-  color: #3fb1df !important;
-  border-color: #3fb1df !important;
+  color: #001127 !important;
+  border-color: #001127 !important;
 }
 
 .tab-button-icon-driver {
@@ -25897,7 +25897,7 @@ li,
 }
 
 .header.bg-theme .toolbar-background {
-  background: #3fb1df !important;
+  background: #001127 !important;
 }
 
 .header.bg-theme .text-center {
@@ -28005,31 +28005,27 @@ page-earn .text-white {
   background: transparent;
 }
 
-.ios .item-ios.item-block .item-inner {
-  border-bottom: 0;
-}
-
-.ios .buttonDisconected {
-  border-radius: 17px 0 0 17px;
-  height: 29px;
+.ios driver-page-findride .buttonDisconected {
+  border-radius: 25px;
+  width: 230px;
+  height: 40px;
   margin: 0;
   border-width: 2px;
-  -webkit-transition: 0.15s linear;
-  transition: 0.15s linear;
   border-style: solid;
-  border-color: red;
 }
 
-.ios .buttonConected {
-  border-radius: 0 17px 17px 0;
-  height: 29px;
+.ios driver-page-findride .buttonConected {
+  border-radius: 25px;
+  width: 230px;
+  height: 40px;
   margin: 0;
-  -webkit-transition: 0.15s linear;
-  transition: 0.15s linear;
   background-color: transparent;
   border-width: 2px;
   border-style: solid;
-  border-color: red;
+}
+
+.md {
+  border-bottom: 0;
 }
 
 .md driver-page-findride .search {
@@ -28145,31 +28141,34 @@ page-earn .text-white {
   background: transparent;
 }
 
-.md .item-md.item-block .item-inner {
-  border-bottom: 0;
-}
-
-.md .item-md.item-block .item-inner .buttonDisconected {
-  border-radius: 17px 0 0 17px;
-  height: 29px;
+.md .buttonDisconected {
+  width: 230px;
+  height: 50px;
   margin: 0;
+  border-radius: 25px;
   border-width: 1.5px;
   -webkit-transition: 0.15s linear;
   transition: 0.15s linear;
+  border-color: green;
   border-style: solid;
-  border-color: #a71717;
 }
 
-.md .item-md.item-block .item-inner .buttonConected {
-  border-radius: 0 17px 17px 0;
-  height: 29px;
+.md .buttonConected {
+  width: 230px;
+  height: 50px;
   margin: 0;
+  border-radius: 25px;
+  border-color: green;
   -webkit-transition: 0.15s linear;
   transition: 0.15s linear;
   background-color: transparent;
   border-width: 1.5px;
   border-style: solid;
-  border-color: #a71717;
+}
+
+.md .iconHeader {
+  height: 35px;
+  width: 35px;
 }
 
 driver-page-help p {
@@ -28194,79 +28193,6 @@ driver-page-help ion-card-header h1 {
 
 driver-page-help ion-card-header h1 ion-icon {
   float: right;
-}
-
-driver-page-login .love {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-driver-page-login .option-login {
-  font-size: 1.1rem;
-  font-weight: 500;
-  position: relative;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-driver-page-login .option-login::after, driver-page-login .option-login::before {
-  content: '';
-  display: block;
-  width: 50px;
-  position: absolute;
-  height: 1px;
-  background: #eee;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-
-driver-page-login .option-login::after {
-  left: auto;
-  right: 0;
-}
-
-driver-page-login .login {
-  position: fixed;
-  bottom: -10px;
-  width: 100%;
-  padding: 25px;
-  height: 355px;
-}
-
-driver-page-login .logo {
-  margin: 0% auto;
-  height: calc(50vh - 70px);
-  position: relative;
-}
-
-driver-page-login .logo img {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-driver-page-login .bg-background-img {
-  background-position-y: -100px;
-}
-
-driver-page-login button img {
-  width: 24px;
-}
-
-driver-page-login .col {
-  font-weight: 500;
-  font-size: larger !important;
 }
 
 driver-page-more ion-item {
@@ -28364,6 +28290,12 @@ driver-page-more .love {
   -ms-flex-pack: center;
   justify-content: center;
   color: #4d5853;
+}
+
+driver-page-myride #map {
+  width: 100%;
+  height: 70%;
+  display: block;
 }
 
 driver-page-myride .rowOfButtons {
@@ -28572,6 +28504,332 @@ driver-page-myride .imagenTitle {
   color: #737373;
   text-align: center;
   position: absolute;
+}
+
+.md driver-page-onetripprice .close-icon {
+  font-size: 3rem;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+.md driver-page-onetripprice .card-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 26px !important;
+  padding-right: 26px !important;
+}
+
+.md driver-page-onetripprice .content {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.md driver-page-onetripprice .card {
+  width: 80%;
+  margin: auto;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+}
+
+.md driver-page-onetripprice .card h6 {
+  color: #000;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.md driver-page-onetripprice .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+.md driver-page-onetripprice .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.md driver-page-onetripprice .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+.md driver-page-onetripprice .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+.md driver-page-onetripprice ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+.md driver-page-onetripprice ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.md driver-page-onetripprice ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  position: relative;
+  color: #252525;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+.md driver-page-onetripprice ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+.md driver-page-onetripprice ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+.md driver-page-onetripprice ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+.md driver-page-onetripprice ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+.md driver-page-onetripprice ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.md driver-page-onetripprice ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+.md driver-page-onetripprice .seats .rate {
+  font-weight: 700;
+  color: #0fc874;
+}
+
+.md driver-page-onetripprice .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+.md driver-page-onetripprice .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #0fc874;
+  border-radius: 10px;
+  color: #0fc874;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.md driver-page-onetripprice .seats .seats-tag ion-icon {
+  font-size: 2rem;
+}
+
+.md driver-page-onetripprice .seats .seats-tag strong {
+  margin: auto;
+  color: #000;
+}
+
+.ios driver-page-onetripprice .close-icon {
+  font-size: 3rem;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+.ios driver-page-onetripprice .card-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 26px !important;
+  padding-right: 26px !important;
+}
+
+.ios driver-page-onetripprice .content {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ios driver-page-onetripprice .card {
+  width: 80%;
+  margin: auto;
+  height: 400px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+}
+
+.ios driver-page-onetripprice .card h6 {
+  color: #000;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.ios driver-page-onetripprice .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+.ios driver-page-onetripprice .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.ios driver-page-onetripprice .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+.ios driver-page-onetripprice .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+.ios driver-page-onetripprice ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+.ios driver-page-onetripprice ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.ios driver-page-onetripprice ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  position: relative;
+  color: #252525;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+.ios driver-page-onetripprice ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+.ios driver-page-onetripprice ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+.ios driver-page-onetripprice ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+.ios driver-page-onetripprice ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+.ios driver-page-onetripprice ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.ios driver-page-onetripprice ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+.ios driver-page-onetripprice .seats .rate {
+  font-weight: 700;
+  color: #0fc874;
+}
+
+.ios driver-page-onetripprice .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+.ios driver-page-onetripprice .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #0fc874;
+  border-radius: 10px;
+  color: #0fc874;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.ios driver-page-onetripprice .seats .seats-tag ion-icon {
+  font-size: 2rem;
+}
+
+.ios driver-page-onetripprice .seats .seats-tag strong {
+  margin: auto;
+  color: #000;
 }
 
 .ios page-bikemode ion-header .navbar {
@@ -29143,6 +29401,517 @@ page-canceltrip .hot-title {
 
 page-canceltrip .text {
   font-size: 1.5rem;
+}
+
+.md page-changecar .col1 {
+  margin-left: 20px;
+}
+
+.md page-changecar .col2 {
+  margin-left: 40px;
+}
+
+.md page-changecar .texto1 {
+  margin-top: 10px;
+}
+
+.md page-changecar .close-icon {
+  font-size: 3rem;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+.md page-changecar .card-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 26px !important;
+  padding-right: 26px !important;
+}
+
+.md page-changecar .content {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.md page-changecar .card {
+  width: 80%;
+  margin: auto;
+  height: 350px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+}
+
+.md page-changecar .card h6 {
+  color: #000;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.md page-changecar .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+.md page-changecar .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.md page-changecar .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+.md page-changecar .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+.md page-changecar ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+.md page-changecar ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.md page-changecar ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  position: relative;
+  color: #252525;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+.md page-changecar ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+.md page-changecar ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+.md page-changecar ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+.md page-changecar ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+.md page-changecar ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.md page-changecar ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+.md page-changecar .seats .rate {
+  font-weight: 700;
+  color: #0fc874;
+}
+
+.md page-changecar .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+.md page-changecar .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #0fc874;
+  border-radius: 10px;
+  color: #0fc874;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.md page-changecar .seats .seats-tag ion-icon {
+  font-size: 2rem;
+}
+
+.md page-changecar .seats .seats-tag strong {
+  margin: auto;
+  color: #000;
+}
+
+.ios page-changecar .close-icon {
+  font-size: 3rem;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+.ios page-changecar .card-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 26px !important;
+  padding-right: 26px !important;
+}
+
+.ios page-changecar .content {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ios page-changecar .card {
+  width: 80%;
+  margin: auto;
+  height: 350px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+}
+
+.ios page-changecar .card h6 {
+  color: #000;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.ios page-changecar .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+.ios page-changecar .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.ios page-changecar .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+.ios page-changecar .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+.ios page-changecar ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+.ios page-changecar ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.ios page-changecar ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  position: relative;
+  color: #252525;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+.ios page-changecar ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+.ios page-changecar ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+.ios page-changecar ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+.ios page-changecar ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+.ios page-changecar ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.ios page-changecar ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+.ios page-changecar .seats .rate {
+  font-weight: 700;
+  color: #0fc874;
+}
+
+.ios page-changecar .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+.ios page-changecar .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #0fc874;
+  border-radius: 10px;
+  color: #0fc874;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.ios page-changecar .seats .seats-tag ion-icon {
+  font-size: 2rem;
+}
+
+.ios page-changecar .seats .seats-tag strong {
+  margin: auto;
+  color: #000;
+}
+
+.ios .house {
+  height: 100;
+  width: 100px;
+}
+
+.ios .work {
+  height: 140px;
+  width: 100px;
+}
+
+page-changecar .close-icon {
+  font-size: 3rem;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+page-changecar .card-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 26px !important;
+  padding-right: 26px !important;
+}
+
+page-changecar .content {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+page-changecar .card {
+  width: 80%;
+  margin: auto;
+  height: 520px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+}
+
+page-changecar .card h6 {
+  color: #000;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+page-changecar .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+page-changecar .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+page-changecar .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+page-changecar .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+page-changecar ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+page-changecar ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+page-changecar ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  position: relative;
+  color: #252525;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+page-changecar ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+page-changecar ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+page-changecar ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+page-changecar ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+page-changecar ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+page-changecar ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+page-changecar .seats .rate {
+  font-weight: 700;
+  color: #0fc874;
+}
+
+page-changecar .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+page-changecar .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #0fc874;
+  border-radius: 10px;
+  color: #0fc874;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-changecar .seats .seats-tag ion-icon {
+  font-size: 2rem;
+}
+
+page-changecar .seats .seats-tag strong {
+  margin: auto;
+  color: #000;
 }
 
 .md page-chatting .label {
@@ -30493,6 +31262,160 @@ page-confirmtrip .hot {
   color: #000;
 }
 
+page-creategroup .card {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  margin-bottom: 6px;
+  margin-top: 6px;
+}
+
+page-creategroup .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+page-creategroup .card ion-item .name h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+page-creategroup .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+page-creategroup .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+page-creategroup ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+page-creategroup ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+page-creategroup ion-card-content .ride-detail h6 {
+  margin: 1.5rem 0 .5rem;
+  color: #0fc874;
+  padding-left: 45px;
+}
+
+page-creategroup ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  position: relative;
+  color: #252525;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+page-creategroup ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+page-creategroup ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+page-creategroup ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+page-creategroup ion-card-content .ride-detail::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: #555;
+  position: absolute;
+  left: 5px;
+  bottom: 25px;
+}
+
+page-creategroup ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+page-creategroup ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+page-creategroup ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+page-creategroup .seats .rate {
+  font-weight: 700;
+  color: #0fc874;
+}
+
+page-creategroup .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+page-creategroup .seats h6 {
+  color: #0fc874;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+page-creategroup .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #0fc874;
+  border-radius: 10px;
+  color: #0fc874;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-creategroup .seats .seats-tag ion-icon {
+  font-size: 2rem;
+}
+
+page-creategroup .seats .seats-tag strong {
+  margin: auto;
+  color: #000;
+}
+
 .ios page-findride ion-header .navbar {
   background: transparent;
 }
@@ -30508,7 +31431,6 @@ page-confirmtrip .hot {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 5px 15px;
 }
 
 .ios page-findride .search .card-content .searchbar-search-icon {
@@ -30606,6 +31528,14 @@ page-confirmtrip .hot {
   flex-direction: row;
 }
 
+.ios page-findride .buttonSelectionMode {
+  width: 35%;
+  border-radius: 0;
+  margin: -4px;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+}
+
 .md page-findride .search {
   border-radius: 10px;
   margin: 10px 0;
@@ -30617,7 +31547,6 @@ page-confirmtrip .hot {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0px 15px;
 }
 
 .md page-findride .search .card-content .searchbar-search-icon {
@@ -30625,8 +31554,8 @@ page-confirmtrip .hot {
 }
 
 .md page-findride .search .card-content .searchbar-input {
-  padding: 17px  !important;
-  -webkit-box-shadow: none !important;
+  padding: 12px;
+  -webkit-box-shadow: none;
   box-shadow: none !important;
   font-size: 1.25rem;
 }
@@ -30713,6 +31642,14 @@ page-confirmtrip .hot {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+}
+
+.md page-findride .buttonSelectionMode {
+  width: 35%;
+  border-radius: 0;
+  margin: -4px;
+  -webkit-box-shadow: 0px 0px 0px rgba(255, 255, 255, 0) !important;
+  box-shadow: 0px 0px 0px rgba(255, 255, 255, 0) !important;
 }
 
 page-findride .search {
@@ -30849,6 +31786,157 @@ page-findride .rowOfButtons {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+}
+
+page-groupdetail .card {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  margin-bottom: 6px;
+  margin-top: 6px;
+}
+
+page-groupdetail .card ion-item .name {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+page-groupdetail .card ion-item .name h2 {
+  font-size: 1.9rem;
+  font-weight: 600;
+}
+
+page-groupdetail .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+page-groupdetail .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+page-groupdetail .card ion-item .company {
+  font-size: 1.3rem;
+}
+
+page-groupdetail ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+page-groupdetail ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+page-groupdetail ion-card-content .ride-detail h6 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+page-groupdetail ion-card-content .ride-detail p {
+  font-size: 1.6rem;
+  padding-left: 10px;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-left: 45px;
+}
+
+page-groupdetail ion-card-content .ride-detail p small {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  color: #9E9E9E;
+}
+
+page-groupdetail ion-card-content .ride-detail p small ion-icon {
+  float: right;
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+page-groupdetail ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+  color: #9E9E9E;
+}
+
+page-groupdetail ion-card-content .ride-detail::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: #555;
+  position: absolute;
+  left: 5px;
+  bottom: 25px;
+}
+
+page-groupdetail ion-card-content .ride-detail.no-before::before {
+  display: none;
+}
+
+page-groupdetail ion-card-content .detail-text {
+  font-size: 1.23rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+page-groupdetail ion-card-content .full.btn {
+  width: 100%;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 35px;
+}
+
+page-groupdetail .seats .rate {
+  font-weight: 700;
+  color: #0fc874;
+}
+
+page-groupdetail .seats .rate small {
+  font-weight: 300;
+  color: #9E9E9E;
+  display: block;
+}
+
+page-groupdetail .seats h6 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+page-groupdetail .seats .seats-tag {
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #0fc874;
+  border-radius: 10px;
+  color: #0fc874;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-groupdetail .seats .seats-tag strong {
+  margin: auto;
+  color: #000;
 }
 
 page-help p {
@@ -31138,6 +32226,214 @@ page-login .my-checkbox {
 
 page-login button img {
   width: 24px;
+}
+
+page-membersgroup p.text-light {
+  padding: 10px 15px 0;
+  font-size: 1.2rem;
+}
+
+page-membersgroup .card {
+  margin-left: 0;
+  margin-right: 0;
+  width: 90%;
+  margin: 5%;
+  border-radius: 5%;
+}
+
+page-membersgroup .card ion-item .name {
+  width: calc(100% - 70px);
+  display: inline-block;
+}
+
+page-membersgroup .card ion-item .name h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+page-membersgroup .card ion-item .name h2 ion-icon {
+  margin-left: 5px;
+}
+
+page-membersgroup .card ion-item .more {
+  text-align: center;
+  font-size: 21px;
+  width: 65px;
+  display: inline-block;
+}
+
+page-membersgroup .card ion-item .more .badge {
+  position: absolute;
+  right: 21px;
+}
+
+page-membersgroup .card ion-item .more h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0fc874;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+page-membersgroup .card ion-item .more h2 ion-icon {
+  margin-left: 5px;
+  font-size: 2rem;
+  margin-left: auto;
+  color: #222;
+}
+
+page-membersgroup .card ion-item p {
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: 400;
+}
+
+page-membersgroup ion-card-content {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+page-membersgroup ion-card-content .ride-detail {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+page-membersgroup ion-card-content .ride-detail p {
+  font-size: 1.2rem;
+  padding-left: 43px;
+  position: relative;
+  color: #777;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+page-membersgroup ion-card-content .ride-detail p .icon-location {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: 0;
+  margin: auto;
+}
+
+page-membersgroup ion-card-content .ride-detail::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: #555;
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+page-membersgroup ion-card-content .detail-text {
+  height: 4.5rem;
+  font-size: 1rem;
+  color: #bfbfbf;
+  text-transform: none;
+}
+
+page-membersgroup ion-card-content .detail-text h2 {
+  color: #0fc874;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+page-membersgroup ion-card-content .full.btn {
+  float: right;
+  margin-right: 5px;
+  text-transform: capitalize;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 32px;
+  font-size: 1.1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+page-membersgroup ion-card-content .full.btn .icon {
+  font-size: 2rem;
+}
+
+page-membersgroup ion-card-content .status {
+  display: block;
+  width: 26px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+}
+
+page-membersgroup ion-card-content .status img {
+  width: 100%;
+}
+
+page-membersgroup .col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+page-membersgroup .lineWithText {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 4.5rem;
+  font-size: 1rem;
+  color: #bfbfbf;
+  text-transform: none;
+}
+
+page-membersgroup .deleteIcon {
+  font-weight: 900;
+}
+
+page-membersgroup .important {
+  margin: 14px;
+  text-align: left;
+  color: #4d5853;
+}
+
+page-membersgroup .message {
+  color: #4d5853;
+}
+
+page-membersgroup .imagenViajes {
+  color: #777;
+}
+
+page-membersgroup .imagenTitle {
+  color: #737373;
+  text-align: center;
+  position: absolute;
+}
+
+page-membersgroup #map {
+  width: 100%;
+  height: 200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+page-membersgroup .item-ios ion-avatar ion-img, page-membersgroup .item-ios ion-avatar img {
+  border-radius: 0%;
 }
 
 page-more ion-item {
@@ -35366,6 +36662,77 @@ driver-page-schedule .skipText {
   padding-left: 63px;
 }
 
+driver-page-schedule .search {
+  border-radius: 10px;
+}
+
+driver-page-schedule .search .card-content {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px 15px;
+}
+
+driver-page-schedule .search .card-content .searchbar-search-icon {
+  display: none;
+}
+
+driver-page-schedule .search .card-content .searchbar-input {
+  padding: 17px  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 1.25rem;
+}
+
+driver-page-schedule .search .card-content .searchbar {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+driver-page-schedule .search .card-content .dot {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -20px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+driver-page-schedule .search .card-content .dot.icons {
+  border-radius: 0;
+}
+
+driver-page-schedule .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+driver-page-schedule .search .item-ios {
+  font-size: 1.25rem;
+}
+
+driver-page-schedule .search span.search-text {
+  width: 140px;
+  font-size: 1.3rem;
+  text-align: right;
+}
+
+driver-page-schedule .buttonDisconnected {
+  border-radius: 25px;
+  border-color: red;
+  height: 40px;
+  border-width: 1px;
+}
+
 driver-page-showinfocar .close-icon {
   font-size: 3rem;
   right: 10px;
@@ -35600,82 +36967,6 @@ driver-page-showinfocar .item-md ion-avatar ion-img, driver-page-showinfocar .it
   overflow: hidden;
   width: 70px;
   height: 70px;
-}
-
-driver-page-signup .login {
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  padding: 25px;
-  padding-bottom: 0;
-  height: 615px;
-}
-
-driver-page-signup .logo {
-  margin: 0% auto;
-  height: calc(50vh - 70px);
-  position: relative;
-}
-
-driver-page-signup .logo img {
-  position: absolute;
-  width: 144px;
-  height: 144px;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-driver-page-signup .bg-background-img {
-  background-position-y: -100px;
-}
-
-driver-page-signup .click-img {
-  padding-left: 0;
-  text-align: center;
-  position: relative;
-  max-width: 96px;
-  height: 96px;
-}
-
-driver-page-signup .click-img .form {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-color: #0000;
-  margin: 0;
-}
-
-driver-page-signup .click-img .form ion-icon {
-  position: absolute;
-  font-size: 3rem;
-  color: #888;
-  width: 3rem;
-  height: 3rem;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-driver-page-signup .name-fild {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-driver-page-signup .col {
-  width: 2px;
-}
-
-driver-page-signup .login {
-  padding: 7px;
-}
-
-driver-page-signup .col-car {
-  padding: 10px;
 }
 
 .ios driver-page-specifyorigin .search {
@@ -35928,6 +37219,286 @@ driver-page-signup .col-car {
 }
 
 .md driver-page-specifyorigin ion-header[transparent] .toolbar-background {
+  background: transparent;
+}
+
+.md .item-md.item-block .item-inner {
+  border-bottom: 0;
+}
+
+.md .item-md.item-block .item-inner .buttonDisconected {
+  border-radius: 17px 0 0 17px;
+  height: 29px;
+  margin: 0;
+  border-width: 1.5px;
+  -webkit-transition: 0.15s linear;
+  transition: 0.15s linear;
+  border-style: solid;
+  border-color: #a71717;
+}
+
+.md .item-md.item-block .item-inner .buttonConected {
+  border-radius: 0 17px 17px 0;
+  height: 29px;
+  margin: 0;
+  -webkit-transition: 0.15s linear;
+  transition: 0.15s linear;
+  background-color: transparent;
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: #a71717;
+}
+
+.ios driver-page-specifyroute .search {
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.ios driver-page-specifyroute .search .card-content {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 5px 15px;
+}
+
+.ios driver-page-specifyroute .search .card-content .searchbar-search-icon {
+  display: none;
+}
+
+.ios driver-page-specifyroute .search .card-content .searchbar-input {
+  padding: 17px  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 1.25rem;
+}
+
+.ios driver-page-specifyroute .search .card-content .searchbar {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.ios driver-page-specifyroute .search .card-content .dot {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -10px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+.ios driver-page-specifyroute .search .card-content .dot.icons {
+  border-radius: 0;
+}
+
+.ios driver-page-specifyroute .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+.ios driver-page-specifyroute .search .item-ios {
+  font-size: 1.25rem;
+}
+
+.ios driver-page-specifyroute .search span.search-text {
+  width: 140px;
+  font-size: 1.3rem;
+  text-align: right;
+}
+
+.ios driver-page-specifyroute .scroll {
+  height: 100%;
+}
+
+.ios driver-page-specifyroute #map {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+}
+
+.ios driver-page-specifyroute .findRideText {
+  text-align: center;
+}
+
+.ios driver-page-specifyroute .alert {
+  font-weight: bold;
+}
+
+.ios driver-page-specifyroute .btn-left {
+  margin-right: 5px;
+  width: 49%;
+}
+
+.ios driver-page-specifyroute .btn-right {
+  width: 49%;
+}
+
+.ios driver-page-specifyroute .rowOfButtons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.ios driver-page-specifyroute ion-header[transparent] .toolbar-background {
+  background: transparent;
+}
+
+.ios .item-ios.item-block .item-inner {
+  border-bottom: 0;
+}
+
+.ios .buttonDisconected {
+  border-radius: 17px 0 0 17px;
+  height: 29px;
+  margin: 0;
+  border-width: 2px;
+  -webkit-transition: 0.15s linear;
+  transition: 0.15s linear;
+  border-style: solid;
+  border-color: red;
+}
+
+.ios .buttonConected {
+  border-radius: 0 17px 17px 0;
+  height: 29px;
+  margin: 0;
+  -webkit-transition: 0.15s linear;
+  transition: 0.15s linear;
+  background-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-color: red;
+}
+
+.md driver-page-specifyroute .search {
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.md driver-page-specifyroute .search .card-content {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px 15px;
+}
+
+.md driver-page-specifyroute .search .card-content .searchbar-search-icon {
+  display: none;
+}
+
+.md driver-page-specifyroute .search .card-content .searchbar-input {
+  padding: 17px  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 1.25rem;
+}
+
+.md driver-page-specifyroute .search .card-content .searchbar {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.md driver-page-specifyroute .search .card-content .dot {
+  min-width: 10px;
+  min-height: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 10px;
+  margin-bottom: -17px !important;
+  bottom: -20px;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+}
+
+.md driver-page-specifyroute .search .card-content .dot.icons {
+  border-radius: 0;
+}
+
+.md driver-page-specifyroute .search .ion-list {
+  margin: 0;
+  font-size: 130rem;
+}
+
+.md driver-page-specifyroute .search .item-ios {
+  font-size: 1.25rem;
+}
+
+.md driver-page-specifyroute .search span.search-text {
+  width: 140px;
+  font-size: 1.3rem;
+  text-align: right;
+}
+
+.md driver-page-specifyroute .scroll {
+  height: 100%;
+}
+
+.md driver-page-specifyroute #map {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+}
+
+.md driver-page-specifyroute .findRideText {
+  text-align: center;
+}
+
+.md driver-page-specifyroute .alert {
+  font-weight: bold;
+}
+
+.md driver-page-specifyroute .btn-left {
+  margin-right: 5px;
+  width: 49%;
+}
+
+.md driver-page-specifyroute .btn-right {
+  width: 49%;
+}
+
+.md driver-page-specifyroute .rowOfButtons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.md driver-page-specifyroute ion-header[transparent] .toolbar-background {
   background: transparent;
 }
 

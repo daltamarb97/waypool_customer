@@ -1,14 +1,14 @@
 webpackJsonp([41],{
 
-/***/ 662:
+/***/ 665:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateCrewPageModule", function() { return CreateCrewPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HelpPageModule", function() { return HelpPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createcrew__ = __webpack_require__(854);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__help__ = __webpack_require__(861);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,46 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CreateCrewPageModule = /** @class */ (function () {
-    function CreateCrewPageModule() {
+var HelpPageModule = /** @class */ (function () {
+    function HelpPageModule() {
     }
-    CreateCrewPageModule = __decorate([
+    HelpPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__createcrew__["a" /* CreateCrewPage */],
+                __WEBPACK_IMPORTED_MODULE_2__help__["a" /* HelpPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__createcrew__["a" /* CreateCrewPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__help__["a" /* HelpPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__createcrew__["a" /* CreateCrewPage */]
+                __WEBPACK_IMPORTED_MODULE_2__help__["a" /* HelpPage */]
             ]
         })
-    ], CreateCrewPageModule);
-    return CreateCrewPageModule;
+    ], HelpPageModule);
+    return HelpPageModule;
 }());
 
-//# sourceMappingURL=createcrew.module.js.map
+//# sourceMappingURL=help.module.js.map
 
 /***/ }),
 
-/***/ 854:
+/***/ 861:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateCrewPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelpPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_instances_service__ = __webpack_require__(355);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_geofire_services__ = __webpack_require__(353);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -69,135 +59,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
-
-
-
-
-var CreateCrewPage = /** @class */ (function () {
-    function CreateCrewPage(navCtrl, sendUsersService, toastCtrl, viewCtrl, afDB, SignUpService, sendCoordsService, navParams, AngularFireAuth, geoFireService, instances, alertCtrl, geofireServicesDr) {
-        var _this = this;
+var HelpPage = /** @class */ (function () {
+    function HelpPage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.sendUsersService = sendUsersService;
-        this.toastCtrl = toastCtrl;
-        this.viewCtrl = viewCtrl;
-        this.afDB = afDB;
-        this.SignUpService = SignUpService;
-        this.sendCoordsService = sendCoordsService;
-        this.navParams = navParams;
-        this.AngularFireAuth = AngularFireAuth;
-        this.geoFireService = geoFireService;
-        this.instances = instances;
-        this.alertCtrl = alertCtrl;
-        this.geofireServicesDr = geofireServicesDr;
-        this.admin = {};
-        this.pointsAlongRoute = [];
-        this.indexesOfPointsAlongRoute = [];
-        this.count = 0;
-        this.userId = this.AngularFireAuth.auth.currentUser.uid;
-        // Getting info for creating crew in DB
-        this.afDB.database.ref('/usersTest/' + this.userId).once('value').then(function (snap) {
-            if (snap.val()) {
-                _this.admin = {
-                    city: snap.val().city,
-                    company: snap.val().company,
-                    name: snap.val().name,
-                    lastname: snap.val().lastname,
-                    phone: snap.val().phone,
-                    userId: snap.val().userId,
-                    verifiedPerson: snap.val().verifiedPerson,
-                };
-                _this.origin = snap.val().trips.origin[0];
-                _this.destination = snap.val().trips.destination[0];
-            }
-        });
-        this.latOr = this.navParams.get('latOr');
-        this.lngOr = this.navParams.get('lngOr');
-        this.latDest = this.navParams.get('latDest');
-        this.lngDest = this.navParams.get('lngDest');
-        this.pointsAlongRoute = this.navParams.get('pointsAlongRoute');
-        this.indexesOfPointsAlongRoute = this.navParams.get('indexesOfPointsAlongRoute');
     }
-    CreateCrewPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
+    HelpPage.prototype.suggestion = function () {
+        this.typeOfSituation = 'Sugerencia';
+        this.info = 'Amamos las sugerencias ya que nos permiten mejorar cada vez más la aplicación, ¡Gracias de parte de todo el equipo de Waypool!';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
     };
-    CreateCrewPage.prototype.setCrew = function () {
-        var _this = this;
-        if (this.startHour === undefined) {
-            var alert_1 = this.alertCtrl.create({
-                title: 'Por favor confirma la hora a la que iniciaría este viaje',
-                buttons: ['OK']
-            });
-            alert_1.present();
-        }
-        else {
-            //AQUI QUEDE
-            this.afDB.database.ref('/crewsTest/' + this.userId).push({
-                admin: this.admin,
-                startHour: this.startHour,
-                destination: {
-                    name: this.destination,
-                    coords: {
-                        lat: this.latDest,
-                        lng: this.lngDest
-                    }
-                },
-                origin: {
-                    name: this.origin,
-                    coords: {
-                        lat: this.latOr,
-                        lng: this.lngOr
-                    }
-                },
-            }).then(function (snap) {
-                var Key_Crew = snap.key;
-                _this.afDB.database.ref('/crewsTest/' + _this.userId + '/' + Key_Crew).update({
-                    crewId: Key_Crew
-                }).then(function () {
-                    _this.geofireServicesDr.setGeofireOrCrew(Key_Crew, _this.latOr, _this.lngOr);
-                    _this.afDB.database.ref('/geofireOrCrew/' + Key_Crew).update({
-                        adminId: _this.userId
-                    });
-                    console.log('executed geofire Or for crews');
-                    _this.geofireServicesDr.setGeofireDestCrew(Key_Crew, _this.latDest, _this.lngDest);
-                    _this.afDB.database.ref('/geofireDestCrew/' + Key_Crew).update({
-                        adminId: _this.userId
-                    });
-                    console.log('executed geofire dest');
-                    _this.indexesOfPointsAlongRoute.forEach(function (index) {
-                        _this.count++;
-                        var newKey = Key_Crew.concat(_this.count);
-                        _this.geofireServicesDr.setGeofireRouteCrew(newKey, _this.pointsAlongRoute[index].lat, _this.pointsAlongRoute[index].lng);
-                        _this.afDB.database.ref('/geofireRouteCrew/' + newKey).update({
-                            adminId: _this.userId,
-                            crewId: Key_Crew
-                        });
-                    });
-                });
-            }).then(function () {
-                var alert = _this.alertCtrl.create({
-                    title: 'Eres ahora administrador del crew que acabaste de crear',
-                    subTitle: 'Ve a "Mis Viajes" y revisa el estado de tu crew',
-                    buttons: ['OK']
-                });
-                alert.present();
-                _this.viewCtrl.dismiss();
-            });
-        }
+    HelpPage.prototype.myAccount = function () {
+        this.typeOfSituation = 'Mi Cuenta';
+        this.info = 'Escríbenos cualquier cosa relacionada con tu cuenta';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
     };
-    CreateCrewPage = __decorate([
+    HelpPage.prototype.trip = function () {
+        this.typeOfSituation = 'Viaje';
+        this.info = '¿Haz tenido algún problema en algún viaje? ¡coloca el ID de tu viaje al comenzar el mensaje y con gusto te ayudaremos! ';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    };
+    HelpPage.prototype.bug = function () {
+        this.typeOfSituation = 'Problema con la App';
+        this.info = ' Muchas gracias por informarnos de estos problemas que ayudan a mejorar la usabilidad de la App cada día mas';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    };
+    HelpPage.prototype.paymentProblem = function () {
+        this.typeOfSituation = 'Problema de Pago';
+        this.info = '¿Haz tenido algún tipo de problema relacionado con la tarjeta con tu tarjeta de crédito? Descríbenos con detalle y nos comunicamos contigo lo más pronto posible';
+        this.navCtrl.push('SupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    };
+    HelpPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-createcrew',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-createcrew/createcrew.html"*/'<ion-content>\n        <ion-card>\n                <img src="assets/imgs/picmodales.png" width="100px" style="display:inline-block" height="150px"/>\n                <ion-icon name="close-circle" class="close-icon text-white"  (click)="dismiss()"></ion-icon>\n    \n            <ion-card-content>\n                                <h2 text-center>Set the time this trip will start:</h2>\n                    <div style="    border-color: black;\n                    border-style: solid;">\n\n                    <ion-item>\n                        <ion-label>Time:</ion-label>\n                        <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>\n                    </ion-item>\n\n                </div>\n\n\n                <ion-row style="margin-top: 14px;    display: flex;\n                justify-content: center">\n                   \n                    <ion-col col-8>\n                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setCrew()">Create Crew</button>\n                    </ion-col>\n                </ion-row>\n                \n            </ion-card-content>\n        </ion-card>\n    </ion-content>\n    '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-createcrew/createcrew.html"*/
+            selector: 'page-help',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-help/help.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title>SOPORTE</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n    <p class="textHelp" padding>¡Escoje tu situación y escríbenos con mucho detalle para poder ayudarte lo más pronto posible!. También puedes escribirnos a waypooltec@gmail.com</p>\n    <ion-card (click)="suggestion()">\n        <ion-card-header>\n            <h1><strong>Sugerencia</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n            Ayúdanos a mejorar el servicio  \n        </ion-card-content>\n    </ion-card>\n    <ion-card (click)="trip()">\n        <ion-card-header>\n            <h1><strong>Viaje</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n            Escríbenos cualquier sugerencia/quejas con respecto a algún viaje\n        </ion-card-content>\n    </ion-card>\n    <ion-card (click)="bug()">\n        <ion-card-header>\n            <h1><strong>Problema con la App</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n        Escríbenos cualquier problema que tengas con la App \n        </ion-card-content>\n    </ion-card>\n    <ion-card (click)="myAccount()">\n        <ion-card-header>\n            <h1><strong>Mi Cuenta</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n        ¿Tienes alguna pregunta acerca de tu cuenta? ¡Escríbenos!.\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-help/help.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_9__services_d_geofire_services__["a" /* DriverGeofireService */]])
-    ], CreateCrewPage);
-    return CreateCrewPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]])
+    ], HelpPage);
+    return HelpPage;
 }());
 
-//# sourceMappingURL=createcrew.js.map
+//# sourceMappingURL=help.js.map
 
 /***/ })
 

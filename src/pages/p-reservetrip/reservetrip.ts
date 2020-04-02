@@ -275,6 +275,10 @@ enterChat(reserve) {
 
     }
 
+
+      seeGroup(){
+        this.navCtrl.push('GroupDetailPage')
+      }
 }
 
 

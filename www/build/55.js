@@ -1,14 +1,14 @@
 webpackJsonp([55],{
 
-/***/ 688:
+/***/ 650:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverCarRegistrationPageModule", function() { return DriverCarRegistrationPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverConfirmtripPageModule", function() { return DriverConfirmtripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__car_registration__ = __webpack_require__(881);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverConfirmtrip__ = __webpack_require__(843);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,45 +18,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverCarRegistrationPageModule = /** @class */ (function () {
-    function DriverCarRegistrationPageModule() {
+var DriverConfirmtripPageModule = /** @class */ (function () {
+    function DriverConfirmtripPageModule() {
     }
-    DriverCarRegistrationPageModule = __decorate([
+    DriverConfirmtripPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__car_registration__["a" /* DriverCarRegistrationPage */],
+                __WEBPACK_IMPORTED_MODULE_2__driverConfirmtrip__["a" /* DriverConfirmtripPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__car_registration__["a" /* DriverCarRegistrationPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverConfirmtrip__["a" /* DriverConfirmtripPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__car_registration__["a" /* DriverCarRegistrationPage */]
+                __WEBPACK_IMPORTED_MODULE_2__driverConfirmtrip__["a" /* DriverConfirmtripPage */]
             ]
         })
-    ], DriverCarRegistrationPageModule);
-    return DriverCarRegistrationPageModule;
+    ], DriverConfirmtripPageModule);
+    return DriverConfirmtripPageModule;
 }());
 
-//# sourceMappingURL=car-registration.module.js.map
+//# sourceMappingURL=driverConfirmtrip.module.js.map
 
 /***/ }),
 
-/***/ 881:
+/***/ 843:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverCarRegistrationPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverConfirmtripPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(360);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_sendCoords_service__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_sendUsers_service__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_trips_service__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_geofire_services__ = __webpack_require__(353);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -74,247 +76,83 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the CarRegistrationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var DriverCarRegistrationPage = /** @class */ (function () {
-    function DriverCarRegistrationPage(navCtrl, navParams, viewCtrl, camera, AngularFireauth, alertCtrl, SignUpService, loadingCtrl, app, afDB) {
+
+
+
+var DriverConfirmtripPage = /** @class */ (function () {
+    function DriverConfirmtripPage(navCtrl, SignUpServices, sendUsersService, TripsService, toastCtrl, viewCtrl, afDB, sendCoordsService, navParams, AngularFireAuth, instances, geofireServices) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
+        this.SignUpServices = SignUpServices;
+        this.sendUsersService = sendUsersService;
+        this.TripsService = TripsService;
+        this.toastCtrl = toastCtrl;
         this.viewCtrl = viewCtrl;
-        this.camera = camera;
-        this.AngularFireauth = AngularFireauth;
-        this.alertCtrl = alertCtrl;
-        this.SignUpService = SignUpService;
-        this.loadingCtrl = loadingCtrl;
-        this.app = app;
         this.afDB = afDB;
-        this.namePicture = "Licencia";
-        this.description = "Sube una foto clara de tu";
-        this.img1 = "Licencia";
-        this.img2 = "Cédula";
-        this.des1 = "Sube una foto clara de tu";
-        this.picToView = "assets/imgs/v2.png";
-        this.picToViewLicense = "assets/imgs/v2.png";
-        this.picToViewId = "assets/imgs/v4.png";
-        this.showLicense = true;
-        this.showId = false;
-        this.cameraPicLicense = false;
-        this.cameraPicId = false;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
-        this.options = {
-            quality: 100,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
-        };
-        this.driver = this.AngularFireauth.auth.currentUser.uid;
-        this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.driver).takeUntil(this.unsubscribe).subscribe(function (user) {
-            _this.driverInfo = user;
-            if (_this.driverInfo.documents) {
-                if (_this.driverInfo.documents.license == true) {
-                    _this.picToViewLicense = "assets/imgs/v2.3.png";
-                    _this.picToView = "assets/imgs/v2.3.png";
-                }
-                else if (_this.driverInfo.documents.id == true) {
-                    _this.picToViewId = "assets/imgs/_v4.3.png";
-                }
-                else if (_this.driverInfo.documents.license == false) {
-                    _this.picToViewLicense = "assets/imgs/v2.2.png";
-                    _this.picToView = "assets/imgs/v2.2.png";
-                }
-                else if (_this.driverInfo.documents.id == false) {
-                    _this.picToViewId = "assets/imgs/v4.2.png";
-                }
-                else if (_this.driverInfo.documents.license == undefined) {
-                    _this.picToViewLicense = "assets/imgs/v2.png";
-                    _this.picToView = "assets/imgs/v2.png";
-                }
-                else if (_this.driverInfo.documents.id == undefined) {
-                    _this.picToViewId = "assets/imgs/v4.png";
-                }
+        this.sendCoordsService = sendCoordsService;
+        this.navParams = navParams;
+        this.AngularFireAuth = AngularFireAuth;
+        this.instances = instances;
+        this.geofireServices = geofireServices;
+        this.user = {};
+        this.hideButton = true;
+        this.hideText = false;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_7_rxjs__["Subject"];
+        this.user = this.navParams.get('user');
+        this.keyTrip = this.navParams.get('keyTrip');
+        console.log(this.user);
+        this.SignUpServices.getMyInfo(this.SignUpServices.userPlace, this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (driverInfo) {
+            _this.driver = driverInfo;
+            console.log(_this.driver);
+        });
+        this.sendCoordsService.confirmIfUsersIsStillInLMU(this.SignUpServices.userPlace, this.userUid, this.keyTrip, this.user.userId).takeUntil(this.unsubscribe)
+            .subscribe(function (userInLMU) {
+            console.log(_this.driver);
+            _this.userInLMU = userInLMU;
+            console.log(_this.userInLMU);
+            if (_this.userInLMU === null || _this.userInLMU === undefined) {
+                _this.viewCtrl.dismiss();
             }
         });
     }
-    ;
-    DriverCarRegistrationPage.prototype.ionViewDidLeave = function () {
+    DriverConfirmtripPage.prototype.ionViewDidLeave = function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     };
-    DriverCarRegistrationPage.prototype.usageCameraLicense = function () {
-        var _this = this;
-        this.camera.getPicture(this.options).then(function (imageData) {
-            // imageData is either a base64 encoded string or a file URI
-            // If it's base64 (DATA_URL):
-            var loading = _this.loadingCtrl.create({
-                spinner: 'crescent',
-                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
-            });
-            loading.present();
-            var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_3_firebase__["storage"])().ref(_this.driverInfo.company + '/documentsDrivers/' + _this.driver + '/' + _this.data);
-            picturesDrivers.putString(base64Image, 'data_url').then(function () {
-                loading.dismiss();
-                var alert = _this.alertCtrl.create({
-                    title: '¡HECHO!',
-                    subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
-                    buttons: ['OK']
-                });
-                alert.present();
-            }).catch(function (error) {
-                loading.dismiss();
-                console.log(error);
-                var alert = _this.alertCtrl.create({
-                    title: 'hubo un error',
-                    subTitle: 'intenta subir el documento otra vez',
-                    buttons: ['OK']
-                });
-                alert.present();
-            });
-            _this.picToViewLicense = "assets/imgs/v2.2.png";
-            _this.picToView = "assets/imgs/v2.2.png";
-            _this.afDB.database.ref('allCities/' + _this.driverInfo.city + '/allPlaces/' + _this.driverInfo.company + '/zones').once('value').then(function (snap) {
-                var obj = snap.val();
-                Object.getOwnPropertyNames(obj).forEach(function (key) {
-                    if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                    }
-                    else {
-                        _this.SignUpService.pushDocsL(obj[key], _this.driver);
-                    }
-                });
-            });
-        }, function (err) {
-            console.log(err);
-            var alert = _this.alertCtrl.create({
-                title: 'hubo un error',
-                subTitle: 'intenta subir el documento otra vez',
-                buttons: ['OK']
-            });
-            alert.present();
-        });
+    DriverConfirmtripPage.prototype.rejectUser = function () {
+        //VIOLACION ABSOLUTA
+        this.TripsService.eliminateLastMinuteUser(this.SignUpServices.userPlace, this.userUid, this.keyTrip, this.user.userId);
+        console.log("nanai kukas");
+        this.geofireServices.deleteKeyUserLMU(this.SignUpServices.userPlace, this.user.userId);
+        this.geofireServices.setOntripFalseUserLMU(this.SignUpServices.userPlace, this.user.userId);
+        this.geofireServices.deleteDriverFromLMUofUser(this.SignUpServices.userPlace, this.user.userId, this.keyTrip);
+        this.TripsService.notifyLMUitsBeenRejected(this.SignUpServices.userPlace, this.user.userId);
+        this.dismiss();
     };
-    DriverCarRegistrationPage.prototype.usageCameraId = function () {
-        var _this = this;
-        this.camera.getPicture(this.options).then(function (imageData) {
-            // imageData is either a base64 encoded string or a file URI
-            // If it's base64 (DATA_URL):
-            var loading = _this.loadingCtrl.create({
-                spinner: 'crescent',
-                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
-            });
-            loading.present();
-            var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_3_firebase__["storage"])().ref(_this.driverInfo.company + '/documentsDrivers/' + _this.driver + '/' + _this.data);
-            picturesDrivers.putString(base64Image, 'data_url').then(function () {
-                loading.dismiss();
-                var alert = _this.alertCtrl.create({
-                    title: '¡HECHO!',
-                    subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
-                    buttons: ['OK']
-                });
-                alert.present();
-            }).catch(function (error) {
-                loading.dismiss();
-                console.log(error);
-                var alert = _this.alertCtrl.create({
-                    title: 'hubo un error',
-                    subTitle: 'intenta subir el documento otra vez',
-                    buttons: ['OK']
-                });
-                alert.present();
-            });
-            _this.picToViewId = "assets/imgs/v4.2.png";
-            _this.picToView = "assets/imgs/v4.2.png";
-            _this.afDB.database.ref('allCities/' + _this.driverInfo.city + '/allPlaces/' + _this.driverInfo.company + '/zones').once('value').then(function (snap) {
-                var obj = snap.val();
-                Object.getOwnPropertyNames(obj).forEach(function (key) {
-                    if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                    }
-                    else {
-                        _this.SignUpService.pushDocsId(obj[key], _this.driver);
-                    }
-                });
-            });
-        }, function (err) {
-            console.log(err);
-            var alert = _this.alertCtrl.create({
-                title: 'hubo un error',
-                subTitle: 'intenta subir el documento otra vez',
-                buttons: ['OK']
-            });
-            alert.present();
-        });
+    DriverConfirmtripPage.prototype.acceptUser = function () {
+        this.TripsService.acceptLastMinute(this.SignUpServices.userPlace, this.userUid, this.keyTrip, this.user);
+        this.TripsService.eliminateLastMinuteUser(this.SignUpServices.userPlace, this.userUid, this.keyTrip, this.user.userId);
+        console.log("bienvenido al combo");
+        this.dismiss();
     };
-    DriverCarRegistrationPage.prototype.changeNamePicture1 = function () {
-        if (this.driverInfo.documents) {
-            if (this.driverInfo.documents.license == undefined) {
-                this.picToViewLicense = "assets/imgs/v2.png";
-                this.picToView = "assets/imgs/v2.png";
-            }
-            else if (this.driverInfo.documents.license == false) {
-                this.picToViewLicense = "assets/imgs/v2.2.png";
-                this.picToView = "assets/imgs/v2.2.png";
-            }
-            else if (this.driverInfo.documents.license == true) {
-                this.picToViewLicense = "assets/imgs/v2.3.png";
-                this.picToView = "assets/imgs/v2.3.png";
-            }
-            else {
-                this.picToViewLicense = "assets/imgs/v2.png";
-                this.picToView = "assets/imgs/v2.png";
-                this.showLicense = true;
-            }
-        }
-        this.namePicture = this.img1;
-        this.description = this.des1;
-        this.data = "licencia";
-        this.showLicense = true;
-        this.showId = false;
+    DriverConfirmtripPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss(this.accepted);
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+        // this.navCtrl.pop();
     };
-    ;
-    DriverCarRegistrationPage.prototype.changeNamePicture2 = function () {
-        if (this.driverInfo.documents) {
-            if (this.driverInfo.documents.id == undefined) {
-                this.picToViewId = "assets/imgs/v4.png";
-                this.picToView = "assets/imgs/v4.png";
-            }
-            else if (this.driverInfo.documents.id == false) {
-                this.picToViewId = "assets/imgs/v4.2.png";
-                this.picToView = "assets/imgs/v4.2.png";
-            }
-            else if (this.driverInfo.documents.id == true) {
-                this.picToViewId = "assets/imgs/_v4.3.png";
-                this.picToView = "assets/imgs/_v4.3.png";
-            }
-            else {
-                this.picToViewId = "assets/imgs/v4.png";
-                this.picToView = "assets/imgs/v4.png";
-            }
-        }
-        this.namePicture = this.img2;
-        this.description = this.des1;
-        this.data = "cedula";
-        this.showId = true;
-        this.showLicense = false;
-    };
-    ;
-    DriverCarRegistrationPage.prototype.skip = function () {
-        this.app.getRootNav().push('TabsPage');
-    };
-    DriverCarRegistrationPage = __decorate([
+    DriverConfirmtripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-car-registration',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/car-registration/driver-car-registration.html"*/'<!--\n  Generated template for the CarRegistrationPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header class="bg-theme">\n    <ion-navbar >\n        <ion-title>SUBIR DOCUMENTOS\n            <!--           <ion-icon name="md-search" class="text-white" style="margin-left: auto;float: right;"></ion-icon>-->\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding-right padding-left>\n    <p text-center padding-top margin-top>{{description}}</p>\n    <h2 text-center>{{namePicture}}</h2>\n\n    <ion-row>\n        <ion-col col-4 text-center>\n            <img  [src]="picToViewLicense" (click)="changeNamePicture1()">\n        </ion-col>\n        <ion-col col-4 text-center>\n            <img   [src]="picToViewId" (click)="changeNamePicture2()">\n        </ion-col>\n    </ion-row>\n\n    <div text-center class="verifiy">\n        <img [src]="picToView">\n    </div>\n    <ion-row>\n        <ion-col>\n            <p padding-top class="btn-box" *ngIf = \'showLicense\'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraLicense()">Subir Foto de Licencia</button></p>\n            <p padding-top class="btn-box" *ngIf = \'showId\'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraId()">Subir Foto de Cédula</button></p>\n        </ion-col>\n    </ion-row>\n    <ion-row>\n            <p justify-content-center align-items-center class="skiptext"><strong  (click)="skip()">No lo quiero hacer ahora</strong></p>\n    </ion-row>\n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/car-registration/driver-car-registration.html"*/,
+            selector: 'driver-page-confirmtrip',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\findyourcrew\waypool_costumer\src\pages\confirmtrip\driverConfirmtrip.html"*/'<ion-content>\n\n  \n\n    <ion-card>\n\n            <img src="assets/imgs/merecoges.png" width="100px" style="display:inline-block" height="150px"/>\n\n\n\n        <!-- <h5 class="text-hot">Este usuario desea irse contigo</h5> -->\n\n        <ion-item>\n\n            <ion-avatar item-start>\n\n                <img src="assets/imgs/flame.png">\n\n            </ion-avatar>\n\n            <div class="name">\n\n                <h2>{{user.name|titlecase }} {{user.lastname|titlecase}}\n\n                    <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n\n                </h2>\n\n            </div>\n\n        </ion-item>\n\n        <ion-card-content>\n\n            <div class="ride-detail">\n\n                <p><small>Origen</small>\n\n                    <span class="icon-location bg-hot"></span>{{user.origin}}</p>\n\n                <p>\n\n                    <small>Destino del viaje</small>\n\n                    <span class="icon-location bg-yellow"></span>{{user.destination}}</p>\n\n            </div>\n\n        </ion-card-content>\n\n\n\n        <ion-card-content>\n\n            <div class="ride-detail no-before" >\n\n                <p><small>Nota:<span class="text-theme-driver" float-right></span></small>\n\n                    <ion-icon name="md-calendar" class="icon-location"></ion-icon>\n\n                   {{user.note}}</p>               \n\n            </div>\n\n        </ion-card-content>\n\n\n\n        <ion-card-content>\n\n            <ion-row>\n\n                <ion-col>\n\n                    <button class="btn bg-white text-hot rounded" (click)="rejectUser()"  style="width: 100%;margin-top: 14px;">Rechazar</button>\n\n\n\n                </ion-col>\n\n                <ion-col>\n\n                    <button class="btn bg-hot text-white rounded" (click)="acceptUser()"  style="width: 100%;margin-top: 14px;">Aceptar</button>\n\n                </ion-col>\n\n            </ion-row>\n\n           \n\n\n\n        </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\findyourcrew\waypool_costumer\src\pages\confirmtrip\driverConfirmtrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"]])
-    ], DriverCarRegistrationPage);
-    return DriverCarRegistrationPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_9__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_8__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_10__services_d_geofire_services__["a" /* DriverGeofireService */]])
+    ], DriverConfirmtripPage);
+    return DriverConfirmtripPage;
 }());
 
-//# sourceMappingURL=car-registration.js.map
+//# sourceMappingURL=driverConfirmtrip.js.map
 
 /***/ })
 

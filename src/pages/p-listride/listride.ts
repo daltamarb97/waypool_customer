@@ -30,6 +30,8 @@ export class ListridePage {
   unsubscribe = new Subject;
   pendingUsers:any = [];
   noReserve:boolean = false;
+  ride: string = "driver";
+
   constructor(public navCtrl: NavController,private app:App,public TripsService:TripsService,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService ) {
   console.log("AQUI EMPIEZA")
     this.SignUpService.getMyInfo(this.userUid, this.SignUpService.userPlace).takeUntil(this.unsubscribe).subscribe(user=>{
@@ -234,7 +236,9 @@ export class ListridePage {
    //IMPORTANTE QUE AL FINAL SE LE COLOQUE QUE SE QUITE CUANDO ACEPTE A ALGUIEN
    }
 
-
+   createGroup(){
+    this.navCtrl.push('CreateGroupPage',{origin:this.locationOriginUser,destination:this.locationDestinationUser})
+    }
 
 
 

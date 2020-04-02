@@ -1508,10 +1508,10 @@ listride(){
      this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
   }
-      goToBikeMode(){
+      goToGroup(){
         console.log(this.user);
         
-        this.navCtrl.push('BikeModePage',{user:this.user})
+        this.navCtrl.push('CreateGroupPage')
       }
 
 }

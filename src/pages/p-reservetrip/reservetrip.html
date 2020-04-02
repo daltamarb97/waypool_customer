@@ -63,7 +63,34 @@
             </ion-card-content>
         
 </ion-card>
+<ion-card >
+    <ion-item>
+        <ion-avatar item-start>
+            <img style="height:70px; width: 70px;" src="assets/imgs/carOrange.png">
+        </ion-avatar>
+        <div class="name">
+            <h2 style="font-size:1.8rem;">3 miembros
+                <ion-icon  name="ios-checkmark-circle" class="text-theme"></ion-icon>
+            </h2>
 
+
+        </div>
+        
+    </ion-item>
+    <ion-card-content>
+        <ion-row class="center-align">
+            <h2 class="text text-dark">
+                Hora: 15:05
+            </h2>
+            <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(group)">Chat</button>            
+            </ion-col>
+            <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="seeGroup()">Detalles</button>
+            </ion-col>
+        </ion-row>
+    </ion-card-content>
+</ion-card>
 </div>
 
 </ion-content>

@@ -1,14 +1,14 @@
 webpackJsonp([49],{
 
-/***/ 702:
+/***/ 703:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverFindridePageModule", function() { return DriverFindridePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FindridePassPageModule", function() { return FindridePassPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverFindride__ = __webpack_require__(895);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bikemode__ = __webpack_require__(900);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,47 +18,49 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverFindridePageModule = /** @class */ (function () {
-    function DriverFindridePageModule() {
+var FindridePassPageModule = /** @class */ (function () {
+    function FindridePassPageModule() {
     }
-    DriverFindridePageModule = __decorate([
+    FindridePassPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverFindride__["a" /* DriverFindridePage */],
+                __WEBPACK_IMPORTED_MODULE_2__bikemode__["a" /* BikeModePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverFindride__["a" /* DriverFindridePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__bikemode__["a" /* BikeModePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverFindride__["a" /* DriverFindridePage */]
+                __WEBPACK_IMPORTED_MODULE_2__bikemode__["a" /* BikeModePage */]
             ]
         })
-    ], DriverFindridePageModule);
-    return DriverFindridePageModule;
+    ], FindridePassPageModule);
+    return FindridePassPageModule;
 }());
 
-//# sourceMappingURL=driverFindride.module.js.map
+//# sourceMappingURL=bikemode.module.js.map
 
 /***/ }),
 
-/***/ 895:
+/***/ 900:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverFindridePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BikeModePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation___ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__ = __webpack_require__(350);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__ = __webpack_require__(355);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_d_instances_services__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_geofire___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_geofire__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_trips_service__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_instances_service__ = __webpack_require__(357);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__ = __webpack_require__(204);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -70,49 +72,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-
-
-// import { authenticationService } from '../../services/driverauthentication.service';
-
-// import { Geofence } from '@ionic-native/geofence';
 
 
 
@@ -121,55 +80,52 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var DriverFindridePage = /** @class */ (function () {
-    function DriverFindridePage(geofireService, TripsService, afDB, navCtrl, SignUpService, modalCtrl, authenticationService, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, toastCtrl, app, sendUsersService, instancesService, firebaseNative, platform, fcm, loadingCtrl, renderer) {
-        this.geofireService = geofireService;
-        this.TripsService = TripsService;
-        this.afDB = afDB;
+
+
+
+
+
+
+var BikeModePage = /** @class */ (function () {
+    function BikeModePage(navCtrl, navParams, geolocation, zone, sendCoordsService, AngularFireAuth, alertCtrl, geofireService, SignUpService, modalCtrl, app, afDB, TripsService, instanceService, platform, fcm, firebase, loadingCtrl, viewCtril) {
         this.navCtrl = navCtrl;
-        this.SignUpService = SignUpService;
-        this.modalCtrl = modalCtrl;
-        this.authenticationService = authenticationService;
+        this.navParams = navParams;
         this.geolocation = geolocation;
         this.zone = zone;
         this.sendCoordsService = sendCoordsService;
         this.AngularFireAuth = AngularFireAuth;
         this.alertCtrl = alertCtrl;
-        this.toastCtrl = toastCtrl;
+        this.geofireService = geofireService;
+        this.SignUpService = SignUpService;
+        this.modalCtrl = modalCtrl;
         this.app = app;
-        this.sendUsersService = sendUsersService;
-        this.instancesService = instancesService;
-        this.firebaseNative = firebaseNative;
+        this.afDB = afDB;
+        this.TripsService = TripsService;
+        this.instanceService = instanceService;
         this.platform = platform;
         this.fcm = fcm;
+        this.firebase = firebase;
         this.loadingCtrl = loadingCtrl;
-        this.renderer = renderer;
+        this.viewCtril = viewCtril;
         // waypoints variables
         this.directionsService = null;
         this.directionsDisplay = null;
         this.bounds = null;
         this.myLatLng = [];
-        //firebase 
-        this.trip = {};
         this.tripId = null;
-        this.user = this.AngularFireAuth.auth.currentUser.uid;
-        this.currentUser = this.AngularFireAuth.auth.currentUser;
-        this.driverInfo = {};
-        this.geoInfo1 = {};
-        this.geoInfo2 = {};
-        //variables for geofire reserves
-        this.reserves = [];
-        this.locationUniversity = {};
-        this.isConected = false;
-        this.schedules = [];
-        this.myReserves = [];
-        this.checked = false;
-        this.fullReserves = [];
-        this.multipleDestinations = [];
-        this.markersOr = [];
-        this.markersDest = [];
-        console.log(this.user);
-        console.log(this.currentUser);
+        this.locationPlace = {};
+        this.onTrip = false;
+        //variables for geoquery
+        this.geocoordinatesDest = {};
+        this.geocoordinatesOr = {};
+        this.geofireOriginConfirmed = false;
+        this.geofireDestinationConfirmed = false;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_10_rxjs__["Subject"];
+        this.usingGeolocation = false;
+        this.keyDetectedInGeofireOrigin = false;
+        this.keyDetectedInGeofireDestination = false;
+        this.user = this.navParams.get('user');
         this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
         this.geocoder = new google.maps.Geocoder;
         this.autocompleteMyPos = { input: '' };
@@ -182,297 +138,19 @@ var DriverFindridePage = /** @class */ (function () {
         });
         this.bounds = new google.maps.LatLngBounds();
         this.markers = [];
-        //meter datos por el id del firebase
+        // initialize the plugin
+        console.log(this.SignUpService.userPlace);
+        /// logica keyReserves para myreserves
     } // END OF CONSTRUCTOR
-    DriverFindridePage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.afDB.database.ref('allUsers/' + this.user).once('value').then(function (snap) {
-            if (snap.val().toggleOnline) {
-                _this.SignUpService.userPlace = snap.val().toggleOnline;
-                _this.afDB.database.ref('allCities/' + snap.val().city + '/allPlaces/' + snap.val().place).once('value').then(function (snapshot) {
-                    console.log(snapshot.val().multipleLocations);
-                    _this.zonesToIterate = snapshot.val().zones;
-                    _this.multipleDestinations = snapshot.val().location;
-                    console.log(_this.multipleDestinations);
-                    if (snapshot.val().multipleLocations === true) {
-                        _this.multipleLocations = true;
-                        //user get their check sign of verficiation here
-                        var objVerifiedPerson_1 = snapshot.val().zones;
-                        Object.getOwnPropertyNames(objVerifiedPerson_1).forEach(function (key) {
-                            if (objVerifiedPerson_1[key] === 2 || objVerifiedPerson_1[key] === 3 || objVerifiedPerson_1[key] === 4 || objVerifiedPerson_1[key] === 5 || objVerifiedPerson_1[key] === 6 || objVerifiedPerson_1[key] === 1 || objVerifiedPerson_1[key] === 7 || objVerifiedPerson_1[key] === 8 || objVerifiedPerson_1[key] === 9 || objVerifiedPerson_1[key] === 10) {
-                            }
-                            else {
-                                _this.instancesService.isVerifiedPerson(objVerifiedPerson_1[key], _this.user);
-                            }
-                        });
-                    }
-                    else {
-                        _this.multipleLocations = false;
-                        //user get their check sign of verficiation here
-                        _this.instancesService.isVerifiedPerson(_this.SignUpService.userPlace, _this.user);
-                    }
-                }).then(function () {
-                    console.log(_this.zonesToIterate);
-                    _this.platform.ready().then(function () {
-                        // this.getToken();
-                        console.log('aqui cogi el token');
-                        _this.token = _this.fcm.getToken().then(function (token) {
-                            console.log('this is the token ' + token);
-                            Object.getOwnPropertyNames(_this.zonesToIterate).forEach(function (key) {
-                                if (_this.zonesToIterate[key] === 2 || _this.zonesToIterate[key] === 3 || _this.zonesToIterate[key] === 4 || _this.zonesToIterate[key] === 5 || _this.zonesToIterate[key] === 6 || _this.zonesToIterate[key] === 1 || _this.zonesToIterate[key] === 7 || _this.zonesToIterate[key] === 8 || _this.zonesToIterate[key] === 9 || _this.zonesToIterate[key] === 10) {
-                                }
-                                else {
-                                    _this.afDB.database.ref(_this.zonesToIterate[key] + '/drivers/' + _this.user + '/devices/').update({
-                                        token: token
-                                    });
-                                }
-                            });
-                        });
-                    });
-                    console.log(_this.SignUpService.userPlace);
-                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/drivers/' + _this.user).once('value').then(function (snap) {
-                        _this.userInfo = snap.val();
-                        console.log(_this.userInfo);
-                        _this.autocompleteMyDest.input = _this.userInfo.fixedLocation.name;
-                        var lat = _this.userInfo.fixedLocation.coordinates.lat;
-                        console.log(_this.lat);
-                        var lng = _this.userInfo.fixedLocation.coordinates.lng;
-                        _this.positionDest = { lat: lat, lng: lng };
-                        console.log(_this.positionDest);
-                        var inputs2 = document.getElementById("input2").getElementsByTagName("INPUT");
-                        inputs2[0].disabled = true;
-                        if (_this.userInfo.toggleStatus === 'online') {
-                            // this.checked = true;
-                            _this.isConected = true;
-                            _this.isDisconected = false;
-                            _this.changeColorOnline();
-                            _this.disable();
-                        }
-                        else {
-                            _this.isConected = false;
-                            _this.isDisconected = true;
-                            _this.changeColorOffline();
-                            _this.enable();
-                        }
-                        if (_this.userInfo.houseAddress === undefined || _this.userInfo.houseAddress === null) {
-                            _this.pushOriginPage();
-                        }
-                        else {
-                            var latOr = _this.userInfo.houseAddress.coordinates.lat;
-                            var lngOr = _this.userInfo.houseAddress.coordinates.lng;
-                            _this.positionOr = { latOr: latOr, lngOr: lngOr };
-                            console.log(_this.positionOr);
-                            _this.LoadMapWithHouseAdress(_this.positionOr);
-                        }
-                    });
-                    //search keyTrip
-                    //search keyTrip
-                    _this.TripsService.getKeyTrip(_this.SignUpService.userPlace, _this.user)
-                        .subscribe(function (keyTrip) {
-                        _this.keyTrip = keyTrip;
-                        console.log(_this.user);
-                        console.log(_this.keyTrip);
-                        //if key its deleted don't show VIAJE EN CURSO  
-                        if (_this.keyTrip === undefined || _this.keyTrip === null) {
-                            _this.onTrip = false;
-                            //  this.TripsService.eraseKeyTrip(this.user);
-                            //  this.TripsService.setOnTripFalse(this.user);
-                            console.log("llegue adonde era");
-                        }
-                        else {
-                            //confirm that trip exist and get it
-                            _this.getTrip();
-                        }
-                    });
-                    console.log(_this.SignUpService.userPlace);
-                    _this.SignUpService.getMyInfo(_this.SignUpService.userPlace, _this.user).subscribe(function (user) {
-                        _this.userInfo = user;
-                        console.log(_this.userInfo);
-                    });
-                });
-            }
-            else {
-                _this.afDB.database.ref('allCities/' + snap.val().city + '/allPlaces/' + snap.val().place).once('value').then(function (snapshot) {
-                    console.log(snapshot.val().multipleLocations);
-                    _this.zonesToIterate = snapshot.val().zones;
-                    _this.multipleDestinations = snapshot.val().location;
-                    console.log(_this.multipleDestinations);
-                    if (snapshot.val().multipleLocations === true) {
-                        // temporary location until user chooses the right location of their company
-                        _this.SignUpService.userPlace = snapshot.val().zones[0];
-                        _this.multipleLocations = true;
-                        //user get their check sign of verficiation here
-                        var objVerifiedPerson_2 = snapshot.val().zones;
-                        Object.getOwnPropertyNames(objVerifiedPerson_2).forEach(function (key) {
-                            if (objVerifiedPerson_2[key] === 2 || objVerifiedPerson_2[key] === 3 || objVerifiedPerson_2[key] === 4 || objVerifiedPerson_2[key] === 5 || objVerifiedPerson_2[key] === 6 || objVerifiedPerson_2[key] === 1 || objVerifiedPerson_2[key] === 7 || objVerifiedPerson_2[key] === 8 || objVerifiedPerson_2[key] === 9 || objVerifiedPerson_2[key] === 10) {
-                            }
-                            else {
-                                _this.instancesService.isVerifiedPerson(objVerifiedPerson_2[key], _this.user);
-                            }
-                        });
-                    }
-                    else {
-                        _this.SignUpService.userPlace = snapshot.val().zones[0];
-                        _this.multipleLocations = false;
-                        //user get their check sign of verficiation here
-                        _this.instancesService.isVerifiedPerson(_this.SignUpService.userPlace, _this.user);
-                    }
-                    //logica de instrucciones 
-                    _this.afDB.database.ref(snapshot.val().zones[0] + '/drivers/' + _this.user).once('value').then(function (snapWalkthr) {
-                        if (snapWalkthr.val().shownInstructions === true) {
-                            console.log('ya lo mostre');
-                        }
-                        else {
-                            _this.app.getRootNav().push('DriverWalkthroughPage');
-                            Object.getOwnPropertyNames(_this.zonesToIterate).forEach(function (key) {
-                                if (_this.zonesToIterate[key] === 2 || _this.zonesToIterate[key] === 3 || _this.zonesToIterate[key] === 4 || _this.zonesToIterate[key] === 5 || _this.zonesToIterate[key] === 6 || _this.zonesToIterate[key] === 1 || _this.zonesToIterate[key] === 7 || _this.zonesToIterate[key] === 8 || _this.zonesToIterate[key] === 9 || _this.zonesToIterate[key] === 10) {
-                                }
-                                else {
-                                    _this.afDB.database.ref(_this.zonesToIterate[key] + '/drivers/' + _this.user).update({
-                                        shownInstructions: true
-                                    });
-                                }
-                            });
-                        }
-                    });
-                }).then(function () {
-                    console.log(_this.zonesToIterate);
-                    _this.platform.ready().then(function () {
-                        // this.getToken();
-                        console.log('aqui cogi el token');
-                        _this.token = _this.fcm.getToken().then(function (token) {
-                            console.log('this is the token ' + token);
-                            Object.getOwnPropertyNames(_this.zonesToIterate).forEach(function (key) {
-                                if (_this.zonesToIterate[key] === 2 || _this.zonesToIterate[key] === 3 || _this.zonesToIterate[key] === 4 || _this.zonesToIterate[key] === 5 || _this.zonesToIterate[key] === 6 || _this.zonesToIterate[key] === 1 || _this.zonesToIterate[key] === 7 || _this.zonesToIterate[key] === 8 || _this.zonesToIterate[key] === 9 || _this.zonesToIterate[key] === 10) {
-                                }
-                                else {
-                                    _this.afDB.database.ref(_this.zonesToIterate[key] + '/drivers/' + _this.user + '/devices/').update({
-                                        token: token
-                                    });
-                                }
-                            });
-                        });
-                    });
-                    console.log(_this.SignUpService.userPlace);
-                    _this.afDB.database.ref(_this.SignUpService.userPlace + '/drivers/' + _this.user).once('value').then(function (snap) {
-                        _this.userInfo = snap.val();
-                        console.log(_this.userInfo);
-                        _this.autocompleteMyDest.input = _this.userInfo.fixedLocation.name;
-                        var lat = _this.userInfo.fixedLocation.coordinates.lat;
-                        console.log(_this.lat);
-                        var lng = _this.userInfo.fixedLocation.coordinates.lng;
-                        _this.positionDest = { lat: lat, lng: lng };
-                        console.log(_this.positionDest);
-                        var inputs2 = document.getElementById("input2").getElementsByTagName("INPUT");
-                        inputs2[0].disabled = true;
-                        if (_this.userInfo.toggleStatus === 'online') {
-                            // this.checked = true;
-                            _this.isConected = true;
-                            _this.isDisconected = false;
-                            _this.changeColorOnline();
-                            _this.disable();
-                        }
-                        else {
-                            _this.isConected = false;
-                            _this.isDisconected = true;
-                            _this.changeColorOffline();
-                            _this.enable();
-                        }
-                        if (_this.userInfo.houseAddress === undefined || _this.userInfo.houseAddress === null) {
-                            _this.pushOriginPage();
-                        }
-                        else {
-                            var latOr = _this.userInfo.houseAddress.coordinates.lat;
-                            var lngOr = _this.userInfo.houseAddress.coordinates.lng;
-                            _this.positionOr = { latOr: latOr, lngOr: lngOr };
-                            console.log(_this.positionOr);
-                            _this.LoadMapWithHouseAdress(_this.positionOr);
-                        }
-                    });
-                    //search keyTrip
-                    //search keyTrip
-                    _this.TripsService.getKeyTrip(_this.SignUpService.userPlace, _this.user)
-                        .subscribe(function (keyTrip) {
-                        _this.keyTrip = keyTrip;
-                        console.log(_this.user);
-                        console.log(_this.keyTrip);
-                        //if key its deleted don't show VIAJE EN CURSO  
-                        if (_this.keyTrip === undefined || _this.keyTrip === null) {
-                            _this.onTrip = false;
-                            //  this.TripsService.eraseKeyTrip(this.user);
-                            //  this.TripsService.setOnTripFalse(this.user);
-                            console.log("llegue adonde era");
-                        }
-                        else {
-                            //confirm that trip exist and get it
-                            _this.getTrip();
-                        }
-                    });
-                    console.log(_this.SignUpService.userPlace);
-                    _this.SignUpService.getMyInfo(_this.SignUpService.userPlace, _this.user).subscribe(function (user) {
-                        _this.userInfo = user;
-                        console.log(_this.userInfo);
-                    });
-                });
-            }
-        });
+    // }
+    BikeModePage.prototype.ionViewDidLoad = function () {
+        this.loadMap();
     };
-    DriverFindridePage.prototype.getToken = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            var _a, _b;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        if (!this.platform.is('android')) return [3 /*break*/, 2];
-                        _a = this;
-                        return [4 /*yield*/, this.firebaseNative.getToken().then(function (token) {
-                                console.log('this is the token ' + token);
-                                Object.getOwnPropertyNames(_this.zonesToIterate).forEach(function (key) {
-                                    if (_this.zonesToIterate[key] === 2 || _this.zonesToIterate[key] === 3 || _this.zonesToIterate[key] === 4 || _this.zonesToIterate[key] === 5 || _this.zonesToIterate[key] === 6 || _this.zonesToIterate[key] === 1 || _this.zonesToIterate[key] === 7 || _this.zonesToIterate[key] === 8 || _this.zonesToIterate[key] === 9 || _this.zonesToIterate[key] === 10) {
-                                    }
-                                    else {
-                                        _this.afDB.database.ref(_this.zonesToIterate[key] + '/drivers/' + _this.user + '/devices/').update({
-                                            token: token
-                                        });
-                                    }
-                                });
-                            })];
-                    case 1:
-                        _a.token = _c.sent();
-                        _c.label = 2;
-                    case 2:
-                        if (!this.platform.is('ios')) return [3 /*break*/, 5];
-                        _b = this;
-                        return [4 /*yield*/, this.firebaseNative.getToken().then(function (token) {
-                                console.log('this is the token ' + token);
-                                Object.getOwnPropertyNames(_this.zonesToIterate).forEach(function (key) {
-                                    if (_this.zonesToIterate[key] === 2 || _this.zonesToIterate[key] === 3 || _this.zonesToIterate[key] === 4 || _this.zonesToIterate[key] === 5 || _this.zonesToIterate[key] === 6 || _this.zonesToIterate[key] === 1 || _this.zonesToIterate[key] === 7 || _this.zonesToIterate[key] === 8 || _this.zonesToIterate[key] === 9 || _this.zonesToIterate[key] === 10) {
-                                    }
-                                    else {
-                                        _this.afDB.database.ref(_this.zonesToIterate[key] + '/drivers/' + _this.user + '/devices/').update({
-                                            token: token
-                                        });
-                                    }
-                                });
-                            })];
-                    case 3:
-                        _b.token = _c.sent();
-                        return [4 /*yield*/, this.firebaseNative.grantPermission()];
-                    case 4:
-                        _c.sent();
-                        _c.label = 5;
-                    case 5: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    DriverFindridePage.prototype.LoadMapWithHouseAdress = function (positionOr) {
+    BikeModePage.prototype.loadMap = function () {
+        // this gets current position and set the camera of the map and put a marker in your location
         var _this = this;
         this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then(function (position) {
             var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            console.log(latLng);
-            _this.positionOrMarker = new google.maps.LatLng(positionOr.latOr, positionOr.lngOr);
             var mapOptions = {
                 center: latLng,
                 zoom: 17,
@@ -497,322 +175,33 @@ var DriverFindridePage = /** @class */ (function () {
             };
             //creates the map and give options
             _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
+            _this.myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+            _this.myLatLngOr = {
+                lat: _this.myLatLng.lat,
+                lng: _this.myLatLng.lng
+            };
+            _this.usingGeolocation = true;
             _this.markerGeolocation = new google.maps.Marker({
                 map: _this.map,
                 animation: google.maps.Animation.DROP,
-                position: _this.positionOrMarker,
+                position: latLng,
                 draggable: true,
-                icon: { url: "assets/imgs/house.png",
-                    scaledSize: new google.maps.Size(70, 70)
+                icon: { url: "assets/imgs/bicimarker.png",
+                    scaledSize: new google.maps.Size(90, 90)
                 }
             });
-            _this.markersOr.push(_this.markerGeolocation);
-            _this.geocoordinatesHouse = positionOr;
-            //allow the marker to be draged and changed the position
+            _this.markers.push(_this.markerGeolocation);
             _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
             //to reverse-geocode position
-            _this.geocodeLatLng(_this.positionOrMarker, _this.autocompleteMyPos);
-            console.log(_this.userInfo.fixedLocation.name);
-            _this.markerDest = new google.maps.Marker({
-                position: _this.positionDest,
-                map: _this.map,
-                animation: google.maps.Animation.DROP,
-                icon: { url: "assets/imgs/workbuilding.png",
-                    scaledSize: new google.maps.Size(250, 250)
-                }
-            });
-            _this.markersDest.push(_this.markerDest);
-            _this.positionDest = new google.maps.LatLng(_this.positionDest.lat, _this.positionDest.lng);
-            _this.calculateRoute(_this.positionOrMarker, _this.positionDest);
-            _this.directionsDisplay.setMap(_this.map);
+            _this.geocodeLatLng(latLng, _this.autocompleteMyPos);
         }, function (err) {
             console.log(err);
         });
     };
-    DriverFindridePage.prototype.conectDriver = function () {
-        var _this = this;
-        console.log(this.positionDest.lat);
-        this.showList = false;
-        if (this.userInfo.toggleStatus === 'online') {
-            var alert_1 = this.alertCtrl.create({
-                title: '¡Ya estas conectado!',
-                subTitle: 'Si deseas cambiar el precio de tus viajes, desconectate y vuelvete a conectar',
-                buttons: ['OK']
-            });
-            alert_1.present();
-        }
-        else {
-            this.isConected = true;
-            this.isDisconected = false;
-            if (this.currentUser.emailVerified == false) {
-                var alert_2 = this.alertCtrl.create({
-                    title: 'Oops!',
-                    subTitle: 'por favor verifica tu email',
-                    buttons: ['OK']
-                });
-                alert_2.present();
-                this.isConected = false;
-                this.isDisconected = true;
-                this.changeColorOffline();
-            }
-            else {
-                if (this.userInfo.documents) {
-                    if (this.userInfo.documents.license == true && this.userInfo.documents.id == true) {
-                        if (this.userInfo.schedule) {
-                            try {
-                                this.houseAddress = this.autocompleteMyPos.input;
-                                this.placeAddress = this.autocompleteMyDest.input;
-                                console.log(this.houseAddress);
-                                console.log(this.placeAddress);
-                                console.log(this.userInfo);
-                                // use the same format of coordinates as the beggining
-                                if (this.userInfo.fixedLocation.name[0] === this.placeAddress[0]) {
-                                    console.log('si se ejecuto lo que jd necesitaba');
-                                    this.positionDest = { lat: this.userInfo.fixedLocation.coordinates.lat, lng: this.userInfo.fixedLocation.coordinates.lng };
-                                }
-                                else {
-                                    console.log(this.geocoordinatesDest);
-                                }
-                                if (this.autocompleteMyPos.input == '' || this.autocompleteMyDest.input == '') {
-                                    this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tengas las dirección de tu casa y oficina sea correcta', 'Ok');
-                                    this.isConected = false;
-                                    this.isDisconected = true;
-                                    this.changeColorOffline();
-                                    // this.clearMarkers();
-                                    // this.directionsDisplay.setDirections({routes: []});
-                                    // this.loadMap();
-                                }
-                                else {
-                                    console.log(this.houseAddress[0]);
-                                    console.log(this.geocoordinatesHouse.latOr);
-                                    console.log(this.autocompleteMyPos.input);
-                                    //wait to get name and coordinates for confirmPricePage when the geofire starts
-                                    this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.user + '/houseAddress/').update({
-                                        name: this.houseAddress[0]
-                                    }).then(function (token) {
-                                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/drivers/' + _this.user + '/houseAddress/coordinates').update({
-                                            lat: _this.geocoordinatesHouse.latOr,
-                                            lng: _this.geocoordinatesHouse.lngOr
-                                        });
-                                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/drivers/' + _this.user + '/fixedLocation/coordinates').update({
-                                            lat: _this.positionDest.lat,
-                                            lng: _this.positionDest.lng
-                                        });
-                                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/drivers/' + _this.user + '/fixedLocation/').update({
-                                            name: _this.placeAddress
-                                        });
-                                    }).then(function (token) {
-                                        // start modal
-                                        var modal = _this.modalCtrl.create('DriverConfirmpricePage');
-                                        modal.onDidDismiss(function (accepted) {
-                                            if (accepted) {
-                                                _this.instancesService.ToggleStatusOnline(_this.SignUpService.userPlace, _this.user);
-                                                _this.changeColorOnline();
-                                                console.log("estoy true");
-                                                _this.disable();
-                                                console.log(_this.userInfo.fixedLocation.name);
-                                            }
-                                        });
-                                        modal.present();
-                                    });
-                                }
-                            }
-                            catch (error) {
-                                console.log(error);
-                            }
-                        }
-                        else {
-                            var alert_3 = this.alertCtrl.create({
-                                title: 'No tienes ningún horario',
-                                subTitle: 'Por favor arma tu horario o mandanos foto del horario',
-                                buttons: [{
-                                        text: 'Mandar mi horario',
-                                        handler: function () {
-                                            _this.navCtrl.push('DriverSchedulePage');
-                                        }
-                                    },
-                                    {
-                                        text: 'Cancelar',
-                                        role: 'cancel',
-                                        handler: function () {
-                                        }
-                                    }
-                                ],
-                                cssClass: 'alertDanger'
-                            });
-                            alert_3.present();
-                            this.isConected = false;
-                            this.isDisconected = true;
-                            this.changeColorOffline();
-                        }
-                    }
-                    else {
-                        var alert_4 = this.alertCtrl.create({
-                            title: '¡oh-uh!',
-                            subTitle: 'faltan documentos por subir, dirigete al menú, luego a tus documentos y completa el envío. Si ya los subiste, espera a que el equipo de Waypool te verifique.',
-                            buttons: [{
-                                    text: 'Subir mis documentos',
-                                    handler: function () {
-                                        _this.navCtrl.push('DriverCarRegistrationPage');
-                                    }
-                                },
-                                {
-                                    text: 'Cancelar',
-                                    role: 'cancel',
-                                    handler: function () {
-                                    }
-                                }
-                            ],
-                            cssClass: 'alertDanger'
-                        });
-                        alert_4.present();
-                    }
-                    this.isConected = false;
-                    this.isDisconected = true;
-                    this.changeColorOffline();
-                }
-                else {
-                    var alert_5 = this.alertCtrl.create({
-                        title: '¡oh-oh!',
-                        subTitle: 'faltan documentos por subir, dirigete al menú, luego a tus documentos y completa el envío. Si ya los subiste, espera a que el equipo de Waypool te verifique.',
-                        buttons: [{
-                                text: 'Subir mis documentos',
-                                handler: function () {
-                                    _this.navCtrl.push('DriverCarRegistrationPage');
-                                }
-                            },
-                            {
-                                text: 'Cancelar',
-                                role: 'cancel',
-                                handler: function () {
-                                }
-                            }
-                        ],
-                        cssClass: 'alertDanger'
-                    });
-                    alert_5.present();
-                    this.isConected = false;
-                    this.isDisconected = true;
-                    this.changeColorOffline();
-                }
-            }
-        }
-    };
-    DriverFindridePage.prototype.disconectDriver = function () {
-        var _this = this;
-        if (this.userInfo.toggleStatus === 'offline') {
-            //do nothing
-        }
-        else {
-            //get all reserves from driver
-            this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/' + this.user).once('value').then(function (snapReserve) {
-                _this.driverReserves = snapReserve.val();
-                console.log(_this.driverReserves);
-                //este if sirve para saber si si hay reservas y no crashear la app al desconectarse
-                if (snapReserve.val() === null || snapReserve.val() === undefined) {
-                    _this.isConected = false;
-                    _this.isDisconected = true;
-                    _this.changeColorOffline();
-                    _this.instancesService.ToggleStatusOffline(_this.SignUpService.userPlace, _this.user);
-                    _this.enable();
-                    // this.autocompleteMyDest.input = '';
-                }
-                else {
-                    var obj_1 = _this.driverReserves;
-                    Object.getOwnPropertyNames(obj_1).forEach(function (key) {
-                        console.log(obj_1[key]);
-                        //check if user have any user in their reserve
-                        console.log(obj_1[key].pendingUsers);
-                        if (obj_1[key].pendingUsers !== undefined) {
-                            _this.fullReserves.push(obj_1[key]);
-                        }
-                        else {
-                            //there is people in the drivers' reserve
-                            console.log("funciono");
-                        }
-                    });
-                }
-            }).then(function () {
-                //este if sirve para saber si si hay reservas y no crashear la app al desconectarse
-                if (_this.driverReserves === null || _this.driverReserves === undefined) {
-                    _this.isConected = false;
-                    _this.isDisconected = true;
-                    _this.changeColorOffline();
-                    _this.instancesService.ToggleStatusOffline(_this.SignUpService.userPlace, _this.user);
-                    _this.enable();
-                    // this.autocompleteMyDest.input = '';
-                }
-                else {
-                    if (_this.fullReserves.length === 0 || _this.fullReserves.length === undefined) {
-                        _this.isConected = false;
-                        _this.isDisconected = true;
-                        _this.changeColorOffline();
-                        // this.autocompleteMyDest.input = '';
-                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + _this.user).once('value').then(function (snap) {
-                            console.log(snap.val());
-                            var obj = snap.val();
-                            Object.getOwnPropertyNames(obj).forEach(function (key) {
-                                console.log(obj[key]);
-                                if (obj[key].type === 'origin') {
-                                    _this.geofireService.deleteUserGeofireOr(_this.SignUpService.userPlace, key);
-                                }
-                                else if (obj[key].type === 'destination') {
-                                    _this.geofireService.deleteUserGeofireDest(_this.SignUpService.userPlace, key);
-                                }
-                            });
-                        }).then(function () {
-                            _this.TripsService.deleteAllReserves(_this.SignUpService.userPlace, _this.user);
-                        });
-                        _this.instancesService.ToggleStatusOffline(_this.SignUpService.userPlace, _this.user);
-                        _this.enable();
-                        // this.autocompleteMyDest.input = '';
-                    }
-                    else {
-                        _this.alertOffline();
-                    }
-                }
-            });
-        }
-    };
-    DriverFindridePage.prototype.getTrip = function () {
-        var _this = this;
-        this.afDB.database.ref(this.SignUpService.userPlace + '/trips/' + this.user + '/' + this.keyTrip)
-            .once('value').then(function (snapshot) {
-            var trip = snapshot.val();
-            console.log(trip);
-            if (trip === null || trip === undefined) {
-                console.log("borre");
-                //  this.TripsService.eraseKeyTrip(this.user);
-                //  this.TripsService.setOnTripFalse(this.user);
-            }
-            else {
-                _this.getOnTrip();
-            }
-        });
-    };
-    DriverFindridePage.prototype.getOnTrip = function () {
-        var _this = this;
-        this.TripsService.getOnTrip(this.SignUpService.userPlace, this.user)
-            .subscribe(function (onTrip) {
-            _this.onTrip = onTrip;
-            console.log(_this.onTrip);
-        });
-    };
-    DriverFindridePage.prototype.goToTrip = function () {
-        if (this.onTrip === true) {
-            console.log('DISPARADOR');
-            var modal = this.modalCtrl.create('DriverMyridePage');
-            modal.present();
-        }
-        else {
-            this.presentAlert('Error en el viaje', 'Intenta entrar otra vez, si el error persiste hay un problema con el viaje, porfavor elimina el viaje en Mis reservas', 'OK');
-        }
-    };
-    DriverFindridePage.prototype.calculateRoute = function (positionOr, positionDest) {
-        var _this = this;
+    BikeModePage.prototype.calculateRoute = function (positionOr, positionDest) {
         //tutorial ngclassroom https://blog.ng-classroom.com/blog/ionic2/directions-google-js-ionic/
-        //calculate route between markers
-        console.log("LO LOGREEEEEEEEEEEE");
+        var _this = this;
+        this.bounds.extend(this.myLatLng);
         this.map.fitBounds(this.bounds);
         this.directionsService.route({
             origin: positionOr,
@@ -829,8 +218,15 @@ var DriverFindridePage = /** @class */ (function () {
             }
         });
     };
+    BikeModePage.prototype.calculateDistance = function (positionOr, positionDest) {
+        var _this = this;
+        this.distanceInMeters = google.maps.geometry.spherical.computeDistanceBetween(positionOr, positionDest);
+        setTimeout(function () {
+            console.log('the distance in meters is ' + _this.distanceInMeters);
+        }, 1000);
+    };
     //autocomplete of myPosition searchbar
-    DriverFindridePage.prototype.updateSearchResultsMyPos = function () {
+    BikeModePage.prototype.updateSearchResultsMyPos = function () {
         var _this = this;
         if (this.autocompleteMyPos.input == '') {
             this.autocompleteItems = [];
@@ -847,20 +243,30 @@ var DriverFindridePage = /** @class */ (function () {
             }
         });
     };
-    ////show destinations
-    DriverFindridePage.prototype.updateSearchResultsMyDest = function () {
-        if (this.userInfo.toggleStatus === 'online') {
-            this.presentAlert('No es posible cambiar tu lugar de trabajo mientras estás conectado.', '', 'OK');
+    ////autocomplete of my destination
+    BikeModePage.prototype.updateSearchResultsMyDest = function () {
+        var _this = this;
+        if (this.autocompleteMyDest.input == '') {
+            this.autocompleteItems2 = [];
+            return;
         }
-        else {
-            this.showList = true;
-        }
+        this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteMyDest.input, componentRestrictions: { country: 'co' } }, function (predictions, status) {
+            _this.autocompleteItems2 = [];
+            if (predictions) {
+                _this.zone.run(function () {
+                    predictions.forEach(function (prediction) {
+                        _this.autocompleteItems2.push(prediction);
+                    });
+                });
+            }
+        });
     };
     ////select result of my position searchbar
-    DriverFindridePage.prototype.selectSearchResultMyPos = function (item) {
+    BikeModePage.prototype.selectSearchResultMyPos = function (item) {
         var _this = this;
         this.autocompleteItems = [];
-        this.clearMarkersOr();
+        this.clearMarkers();
+        this.autocompleteMyDest.input = '';
         this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
             if (status === 'OK' && results[0]) {
                 // let position = {
@@ -871,97 +277,109 @@ var DriverFindridePage = /** @class */ (function () {
                     position: results[0].geometry.location,
                     map: _this.map,
                     draggable: true,
-                    icon: { url: "assets/imgs/house.png",
-                        scaledSize: new google.maps.Size(70, 70)
-                    },
                     animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/bicimarker.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    },
                 });
-                _this.positionOrMarker = results[0].geometry.location;
-                _this.geocoordinatesHouse = { latOr: results[0].geometry.location.lat(), lngOr: results[0].geometry.location.lng() };
-                console.log(_this.geocoordinatesHouse);
-                console.log(_this.positionDest);
                 _this.dragMarkerOr(_this.markerGeolocation, _this.autocompleteMyPos);
-                _this.markersOr.push(_this.markerGeolocation);
+                _this.markers.push(_this.markerGeolocation);
                 _this.map.setCenter(results[0].geometry.location);
-                console.log(results[0].geometry.location);
-                console.log(_this.positionDest);
                 _this.autocompleteMyPos.input = [item.description];
-                _this.calculateRoute(results[0].geometry.location, _this.positionDest);
-                // this.directionsDisplay.setMap(null)
-                // this.bounds.extend(this.geocoordinatesHouse);
-                // this.map.fitBounds(this.bounds);
+                _this.directionsDisplay.setMap(null);
+                _this.myLatLngOr = results[0].geometry.location;
+                _this.usingGeolocation = false;
+                console.log(_this.myLatLngOr);
             }
         });
     };
     ////select result of my destination searchbar
-    DriverFindridePage.prototype.selectSearchResultMyDest = function (item) {
-        if (this.userInfo.toggleStatus === 'online') {
-            this.presentAlert('Información', 'No se puede cambiar el lugar mientras estas conectado.', 'OK');
-        }
-        else {
-            this.clearMarkersDest();
-            this.positionDest = new google.maps.LatLng(item.lat, item.lng);
-            this.geocoordinatesDest = { lat: item.lat, lng: item.lng };
-            this.geocoordinatesDestName = item.name;
-            this.markerDest = new google.maps.Marker({
-                position: this.positionDest,
-                map: this.map,
-                animation: google.maps.Animation.DROP,
-                icon: { url: "assets/imgs/workbuilding.png",
-                    scaledSize: new google.maps.Size(250, 250)
-                }
-            });
-            this.markersDest.push(this.markerDest);
-            this.autocompleteMyDest.input = [item.name];
-            this.showList = false;
-            this.calculateRoute(this.positionOrMarker, this.positionDest);
-            this.directionsDisplay.setMap(this.map);
-            this.positionDest = { lat: item.lat, lng: item.lng };
-            this.SignUpService.userPlace = item.zone;
-        }
-    };
-    ////////Markers
-    DriverFindridePage.prototype.clearMarkersDest = function () {
-        for (var i = 0; i < this.markersDest.length; i++) {
-            this.markersDest[i].setMap(null);
-        }
-        this.markersDest = [];
-    };
-    DriverFindridePage.prototype.clearMarkersOr = function () {
-        for (var i = 0; i < this.markersOr.length; i++) {
-            this.markersOr[i].setMap(null);
-        }
-        this.markersOr = [];
-    };
-    DriverFindridePage.prototype.dragMarkerOr = function (marker, inputName) {
-        //if online the user does not have permision to move the marker
+    BikeModePage.prototype.selectSearchResultMyDest = function (item) {
         var _this = this;
-        google.maps.event.addListener(marker, 'dragend', function (evt) {
-            if (_this.userInfo.toggleStatus == 'online') {
-                _this.presentAlert('Error', 'No se puede mover el marcador mientras estas en modo ONLINE, recomendamos volver a iniciar la app para un mejor funcionamiento ', 'OK');
-            }
-            else if (_this.userInfo.toggleStatus == 'offline') {
-                //allow origin marker to be draged and calculate route with the new position
-                var lat = marker.getPosition().lat();
-                var lng = marker.getPosition().lng();
-                var latOr = marker.getPosition().lat();
-                var lngOr = marker.getPosition().lng();
-                var latLng = { lat: lat, lng: lng };
-                var latLngOr = { latOr: latOr, lngOr: lngOr };
-                console.log(latLng);
-                _this.geocodeLatLng(latLng, inputName);
-                console.log(_this.positionDest);
-                _this.calculateRoute(latLng, _this.positionDest);
-                _this.geocoordinatesHouse = latLngOr;
+        this.autocompleteItems2 = [];
+        if (this.markerDest !== undefined) {
+            this.markerDest.setMap(null);
+        }
+        this.geocoder.geocode({ 'placeId': item.place_id }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+                // let position = {
+                //   latitude: results[0].geometry.location.lat,
+                //   longitude: results[0].geometry.location.lng
+                // };
+                var position = new google.maps.LatLng(results[0].geometry.location.lat, results[0].geometry.location.lng);
+                console.log(position);
+                _this.markerDest = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: _this.map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    icon: { url: "assets/imgs/marker-destination2.png",
+                        scaledSize: new google.maps.Size(90, 90)
+                    }
+                });
+                console.log(position);
+                _this.map.fitBounds(_this.bounds);
+                _this.markers.push(_this.markerDest);
+                _this.map.setCenter(results[0].geometry.location);
+                console.log(results[0].geometry.location);
+                _this.autocompleteMyDest.input = [item.description];
+                _this.dragMarkerDest(_this.markerDest, _this.autocompleteMyDest);
+                _this.directionsDisplay.setMap(_this.map);
+                _this.myLatLngDest = results[0].geometry.location;
+                _this.calculateRoute(_this.markerGeolocation.position, results[0].geometry.location);
+                _this.calculateDistance(_this.markerGeolocation.position, results[0].geometry.location);
             }
         });
     };
-    DriverFindridePage.prototype.centerMap = function () {
+    ////////Markers
+    BikeModePage.prototype.clearMarkers = function () {
+        for (var i = 0; i < this.markers.length; i++) {
+            console.log(this.markers[i]);
+            this.markers[i].setMap(null);
+        }
+        this.markers = [];
     };
-    DriverFindridePage.prototype.geocodeLatLng = function (latLng, inputName) {
+    BikeModePage.prototype.dragMarkerDest = function (marker, inputName) {
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            _this.map.setCenter(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            _this.calculateRoute(_this.markerGeolocation.position, latLng);
+            console.log(latLng);
+            _this.calculateDistance(_this.markerGeolocation.position, new google.maps.LatLng({
+                lat: latLng.lat,
+                lng: latLng.lng
+            }));
+        });
+    };
+    BikeModePage.prototype.dragMarkerOr = function (marker, inputName) {
+        var _this = this;
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            var latLng = { lat: lat, lng: lng };
+            _this.map.setCenter(latLng);
+            _this.geocodeLatLng(latLng, inputName);
+            if (_this.autocompleteMyDest.input == undefined || _this.autocompleteMyDest.input == '') {
+                console.log("funciona");
+            }
+            else {
+                _this.calculateRoute(latLng, _this.markerDest.position);
+                _this.calculateDistance(new google.maps.LatLng({
+                    lat: latLng.lat,
+                    lng: latLng.lng
+                }), _this.markerDest.position);
+            }
+        });
+    };
+    BikeModePage.prototype.geocodeLatLng = function (latLng, inputName) {
         this.geocoder.geocode({ 'location': latLng }, function (results, status) {
             if (status === 'OK') {
                 if (results[0]) {
+                    console.log(results[0].formatted_address);
                     inputName.input = [results[0].formatted_address];
                 }
                 else {
@@ -973,7 +391,76 @@ var DriverFindridePage = /** @class */ (function () {
             }
         });
     };
-    DriverFindridePage.prototype.presentAlert = function (title, text, button) {
+    BikeModePage.prototype.listride = function () {
+        var _this = this;
+        this.loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: "\n        <div class=\"custom-spinner-container\">\n          <div class=\"custom-spinner-box\"></div>\n        </div>"
+        });
+        this.loading.present();
+        console.log(this.myLatLngOr);
+        console.log(this.usingGeolocation);
+        this.afDB.database.ref(this.SignUpService.userPlace + '/users/' + this.userUid).once('value').then(function (snapBlock) {
+            if (snapBlock.val().blockPayment === true) {
+                _this.loading.dismiss();
+                var alert_1 = _this.alertCtrl.create({
+                    title: 'Tienes un saldo pendiente por pagar',
+                    subTitle: 'Para seguir disfrutando de Waypool debes pagar el saldo pendiente de tus viajes pasados, estas perjudicando a varias personas de tu comunidad',
+                    buttons: [
+                        {
+                            text: 'No lo quiero hacer ahora',
+                            role: 'cancel',
+                        },
+                        {
+                            text: 'Ir a Mi Saldo',
+                            handler: function () {
+                                _this.app.getRootNav().push('WalletPage');
+                            }
+                        }
+                    ]
+                });
+                alert_1.present();
+            }
+            else {
+                _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + _this.userUid).once('value').then(function (snap) {
+                    var user = snap.val();
+                    console.log(user);
+                    // check if user is on trip
+                    if (user.onTrip == true) {
+                        _this.loading.dismiss();
+                        var alert_2 = _this.alertCtrl.create({
+                            title: 'Estas actualmente en un viaje',
+                            subTitle: 'No puedes pedir otro viaje ya que en este momento estas en un viaje',
+                            buttons: ['OK']
+                        });
+                        alert_2.present();
+                    }
+                    else {
+                        try {
+                            _this.desFirebase = _this.autocompleteMyDest.input;
+                            _this.orFirebase = _this.autocompleteMyPos.input;
+                            console.log(_this.desFirebase[0]);
+                            if (_this.autocompleteMyDest.input == '' || _this.autocompleteMyPos.input == '') {
+                                _this.loading.dismiss();
+                                _this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tu origen y destino sean correctos', 'Ok');
+                                _this.clearMarkers();
+                                _this.directionsDisplay.setDirections({ routes: [] });
+                            }
+                            else {
+                                //starts trip in bike-mode
+                                _this.navCtrl.push('TripbikePage', { user: user, origin: _this.autocompleteMyPos.input, destination: _this.autocompleteMyDest.input, orCoords: _this.myLatLngOr, destCoords: _this.myLatLngDest, distance: _this.distanceInMeters });
+                                _this.loading.dismiss();
+                            }
+                            //      
+                        }
+                        catch (error) {
+                        }
+                    }
+                });
+            }
+        });
+    };
+    BikeModePage.prototype.presentAlert = function (title, text, button) {
         var alert = this.alertCtrl.create({
             title: title,
             subTitle: text,
@@ -981,127 +468,58 @@ var DriverFindridePage = /** @class */ (function () {
         });
         alert.present();
     };
-    DriverFindridePage.prototype.confirmPrice = function (houseAddr, placeAddr) {
-        this.doGeoquery = false;
-        var modal = this.modalCtrl.create('DriverConfirmpricePage', { houseAddr: houseAddr, placeAddr: placeAddr });
-        modal.present();
+    BikeModePage.prototype.goToMyReserves = function () {
+        this.app.getRootNav().push('ReservetripPage');
     };
-    DriverFindridePage.prototype.help = function () {
-        var toast = this.toastCtrl.create({
-            message: 'En esta página podrás conectarte con compañeros de tu misma universidad que quieran compartir un viaje contigo.',
-            showCloseButton: true,
-            closeButtonText: 'OK',
-            position: 'top'
+    BikeModePage.prototype.goToTrip = function () {
+        // go to trip      
+        if (this.onTrip === true) {
+            console.log('DISPARADOR');
+            var modal = this.modalCtrl.create('MyridePage');
+            modal.present();
+        }
+        else {
+            console.log("es undefined");
+        }
+    };
+    // set geoquery that determines if the person is in place
+    BikeModePage.prototype.setGeofirePlaceWithDest = function (place, radius, lat, lng, userId) {
+        this.dbRef = this.afDB.database.ref(place + '/geofirePlace/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_8_geofire__(this.dbRef);
+        this.geoqueryU = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
         });
-        toast.present();
+        console.log('geoquery place added');
     };
-    DriverFindridePage.prototype.disable = function () {
-        var inputs = document.getElementById("input").getElementsByTagName("INPUT");
-        inputs[0].disabled = true;
-        // const inputs2: any = document.getElementById("input2").getElementsByTagName("INPUT");
-        // inputs2[0].disabled=true;
-    };
-    DriverFindridePage.prototype.enable = function () {
-        var inputs = document.getElementById("input").getElementsByTagName("INPUT");
-        inputs[0].disabled = false;
-        // const inputs2: any = document.getElementById("input2").getElementsByTagName("INPUT");
-        // inputs2[0].disabled=false;
-        //     }
-    };
-    DriverFindridePage.prototype.showPopup = function () {
-        var profileModal = this.modalCtrl.create('DriverSuccessNotificationPage');
-        profileModal.present();
-    };
-    DriverFindridePage.prototype.alertOffline = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: '¿Quieres desconectarte?',
-            message: 'Waypool te conectó con otra persona, si te desconectas, le cancelarás el viaje',
-            buttons: [
-                {
-                    text: 'Ir a Mis Viajes',
-                    handler: function () {
-                        _this.navCtrl.push('DriverReservetripPage');
-                    }
-                },
-                {
-                    text: 'Offline :(',
-                    handler: function () {
-                        _this.isConected = false;
-                        _this.isDisconected = true;
-                        _this.changeColorOffline();
-                        _this.autocompleteMyDest.input = '';
-                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + _this.user).once('value').then(function (snap) {
-                            console.log(snap.val());
-                            var obj = snap.val();
-                            Object.getOwnPropertyNames(obj).forEach(function (key) {
-                                console.log(obj[key]);
-                                if (obj[key].type === 'origin') {
-                                    _this.geofireService.deleteUserGeofireOr(_this.SignUpService.userPlace, key);
-                                }
-                                else if (obj[key].type === 'destination') {
-                                    _this.geofireService.deleteUserGeofireDest(_this.SignUpService.userPlace, key);
-                                }
-                            });
-                        }).then(function () {
-                            _this.TripsService.deleteAllReserves(_this.SignUpService.userPlace, _this.user);
-                        });
-                        _this.instancesService.ToggleStatusOffline(_this.SignUpService.userPlace, _this.user);
-                        _this.enable();
-                    }
-                }
-            ]
+    // set geoquery that determines if the person is in place
+    BikeModePage.prototype.setGeofirePlaceWithOr = function (place, radius, lat, lng, userId) {
+        this.dbRef = this.afDB.database.ref(place + '/geofirePlace/');
+        this.geoFire = new __WEBPACK_IMPORTED_MODULE_8_geofire__(this.dbRef);
+        this.geoqueryU = this.geoFire.query({
+            center: [lat, lng],
+            radius: radius
         });
-        alert.present();
+        console.log('geoquery place added');
     };
-    DriverFindridePage.prototype.changeColorOnline = function () {
-        this.renderer.setElementStyle(this.buttonConected.nativeElement, 'background-color', 'green');
-        this.renderer.setElementStyle(this.buttonConected.nativeElement, 'border-width', '2px');
-        this.renderer.setElementStyle(this.buttonConected.nativeElement, 'border-style', 'solid');
-        this.renderer.setElementStyle(this.buttonConected.nativeElement, 'border-color', 'green');
-        this.renderer.setElementStyle(this.buttonDisconected.nativeElement, 'border-width', '2px');
-        this.renderer.setElementStyle(this.buttonDisconected.nativeElement, 'border-style', 'solid');
-        this.renderer.setElementStyle(this.buttonDisconected.nativeElement, 'border-color', 'green');
-        this.renderer.setElementStyle(this.buttonDisconected.nativeElement, 'background-color', 'transparent');
-        this.renderer.setElementStyle(this.buttonDisconected.nativeElement, 'font-color', '#bfbfbf');
-        this.showPopup();
-    };
-    DriverFindridePage.prototype.changeColorOffline = function () {
-        this.renderer.setElementStyle(this.buttonDisconected.nativeElement, 'border-width', '2px');
-        this.renderer.setElementStyle(this.buttonDisconected.nativeElement, 'background-color', 'rgb(167, 23, 23)');
-        this.renderer.setElementStyle(this.buttonDisconected.nativeElement, 'border-style', 'solid');
-        this.renderer.setElementStyle(this.buttonDisconected.nativeElement, 'border-color', 'rgb(167, 23, 23)');
-        this.renderer.setElementStyle(this.buttonConected.nativeElement, 'border-width', '2px');
-        this.renderer.setElementStyle(this.buttonConected.nativeElement, 'border-style', 'solid');
-        this.renderer.setElementStyle(this.buttonConected.nativeElement, 'border-color', 'rgb(167, 23, 23)');
-        this.renderer.setElementStyle(this.buttonConected.nativeElement, 'background-color', 'transparent');
-        this.renderer.setElementStyle(this.buttonConected.nativeElement, 'font-color', '#bfbfbf');
-    };
-    DriverFindridePage.prototype.pushOriginPage = function () {
-        this.navCtrl.push('DriverSpecifyOriginPage');
+    BikeModePage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], DriverFindridePage.prototype, "mapElement", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('buttonConected', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", Object)
-    ], DriverFindridePage.prototype, "buttonConected", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('buttonDisconected', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", Object)
-    ], DriverFindridePage.prototype, "buttonDisconected", void 0);
-    DriverFindridePage = __decorate([
+    ], BikeModePage.prototype, "mapElement", void 0);
+    BikeModePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-findride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/findride/driverFindride.html"*/'<ion-header class="bg-theme-driver"  >\n    \n    <ion-navbar  >\n        <button ion-button menuToggle>\n            <ion-icon name="menu" style="color: white;"></ion-icon>\n          \n          </button>\n          <!-- <ion-avatar ion-button menuToggle>\n            <img style="height:100%; width:100%" src="assets/imgs/menu.png">\n        </ion-avatar> -->\n          <ion-buttons style="display: flex; justify-content: center;"> \n              <ion-item style="background-color: transparent;">\n                <!-- <ion-toggle [(ngModel)]="isConected" [checked]="isConected" (ionChange)="conectDriver()"></ion-toggle> -->\n\n                  <!-- <div><p class="text-white">Conectado</p></div> -->\n              \n                  <ion-row class="center-align row" style="margin-left: 16px; justify-content: flex-end;" >\n                    \n                      <button  #buttonDisconected class="btn rounded bg-red  text-white buttonDisconected" (click)="disconectDriver()" >Offline</button>\n                      <button #buttonConected  class="btn  text-white buttonConected" (click)="conectDriver()" >Online</button>\n                    \n                    \n                </ion-row>\n              </ion-item>\n\n           \n \n          </ion-buttons> \n       \n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n<ion-content  padding>\n\n      <ion-card class="search" >\n          <ion-card-content>\n              <span style=" z-index: 1;position: relative;" class="text-light search-text">Casa &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>\n\n              <span class="dot bg-theme-driver"></span>\n              <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" id="input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Cóloca la dirección de tu casa"></ion-searchbar>\n\n              <ion-list   [hidden]="autocompleteItems.length == 0">\n                  <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n                    {{ item.description }}\n                  </ion-item>\n                </ion-list>\n                <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n          </ion-card-content>\n\n          <ion-card-content>\n            <span style=" z-index: 1;position: relative;" class="text-light search-text">Oficina &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span>\n\n              <span class="dot bg-yellow"></span>           \n             <ion-searchbar  [(ngModel)]="autocompleteMyDest.input"  id="input2" (click)="updateSearchResultsMyDest()" placeholder="Cóloca tu destino"></ion-searchbar>\n  \n  \n              <ion-list   *ngIf="showList">\n              <ion-item class="item" *ngFor="let item of multipleDestinations" tappable (click)="selectSearchResultMyDest(item)">\n                {{ item.name }}\n              </ion-item>\n            </ion-list>\n  \n           </ion-card-content>\n           \n      </ion-card>\n      <!-- <ion-avatar item-end>\n          <img style="height: 15%; width: 15%;" src="assets/imgs/centermap.png" (click)="centerMap()">\n      </ion-avatar> -->\n  \n   <div #map id="map"></div>  \n     \n\n  \n            <div *ngIf="onTrip" >\n              <button class="btn rounded bg-theme-driver text-white animated infinite pulse" style=" width: 100% ;\n              position: fixed ;\n              bottom: 0px ;\n              left: 0px ;\n              height: 51px; \n              font-size: large;\n              \n          " (click)="goToTrip() " >VIAJE EN CURSO\n              </button>\n          </div>\n     \n  \n \n    \n   \n    \n\n\n \n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/findride/driverFindride.html"*/
+            selector: 'page-bikemode',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\findyourcrew\waypool_costumer\src\pages\p-bikemode\bikemode.html"*/'\n\n<ion-header  >\n\n  <ion-navbar class="bg-green" style="overflow: visible;" >\n\n      \n\n      <ion-title >MODO BICICLETA</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content  padding>\n\n   \n\n \n\n    <ion-card class="search">\n\n          \n\n        <ion-card-content>\n\n            <span class="dot bg-green"></span>\n\n            <ion-searchbar required [(ngModel)]="autocompleteMyPos.input" [animated]=true (ionInput)="updateSearchResultsMyPos()"  placeholder="Tu origen"></ion-searchbar>\n\n          \n\n            <ion-list   [hidden]="autocompleteItems.length == 0">\n\n                <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResultMyPos(item)">\n\n                  {{ item.description }}\n\n                </ion-item>\n\n              </ion-list>\n\n              <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->\n\n        </ion-card-content>\n\n        <ion-card-content>\n\n            <span class="dot bg-yellow"></span>           \n\n           <ion-searchbar required [(ngModel)]="autocompleteMyDest.input" (ionInput)="updateSearchResultsMyDest()" placeholder="Tu destino"></ion-searchbar>\n\n\n\n            <ion-list   [hidden]="autocompleteItems2.length == 0">\n\n            <ion-item class="item" *ngFor="let item of autocompleteItems2" tappable (click)="selectSearchResultMyDest(item)">\n\n              {{ item.description }}\n\n            </ion-item>\n\n          </ion-list>\n\n            <!-- <span class="text-light search-text">Office &nbsp;<ion-icon name="ios-arrow-down" class="text-light"></ion-icon></span> -->\n\n\n\n        </ion-card-content>\n\n        \n\n    </ion-card>\n\n  \n\n <div #map id="map"></div>  \n\n    \n\n    \n\n\n\n  \n\n      <button (click)="listride()" class="btn rounded bg-green text-white " style="width: 100%">INICIAR VIAJE</button>\n\n\n\n  \n\n \n\n \n\n<div *ngIf="onTrip" >\n\n    <button class="btn rounded bg-green text-white animated infinite pulse" style=" width: 100% ;\n\n     position:absolute;\n\n     bottom: 0px ;\n\n     left: 0px ;\n\n     height: 51px; \n\n     font-size: large;\n\n   " (click)="goToTrip() " >VIAJE EN CURSO\n\n    </button>\n\n</div>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\findyourcrew\waypool_costumer\src\pages\p-bikemode\bikemode.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_10__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_8__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation___["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_9__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_11__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */]])
-    ], DriverFindridePage);
-    return DriverFindridePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_3__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_9__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_11__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ViewController */]])
+    ], BikeModePage);
+    return BikeModePage;
 }());
 
-//# sourceMappingURL=driverFindride.js.map
+//# sourceMappingURL=bikemode.js.map
 
 /***/ })
 

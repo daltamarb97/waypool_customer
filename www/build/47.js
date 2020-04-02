@@ -1,14 +1,14 @@
 webpackJsonp([47],{
 
-/***/ 651:
+/***/ 654:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverLoginPageModule", function() { return DriverLoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeCarPageModule", function() { return ChangeCarPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverLogin__ = __webpack_require__(840);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__changecar__ = __webpack_require__(847);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,41 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverLoginPageModule = /** @class */ (function () {
-    function DriverLoginPageModule() {
+var ChangeCarPageModule = /** @class */ (function () {
+    function ChangeCarPageModule() {
     }
-    DriverLoginPageModule = __decorate([
+    ChangeCarPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverLogin__["a" /* DriverLoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__changecar__["a" /* ChangeCarPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverLogin__["a" /* DriverLoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__changecar__["a" /* ChangeCarPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverLogin__["a" /* DriverLoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__changecar__["a" /* ChangeCarPage */]
             ]
         })
-    ], DriverLoginPageModule);
-    return DriverLoginPageModule;
+    ], ChangeCarPageModule);
+    return ChangeCarPageModule;
 }());
 
-//# sourceMappingURL=driverLogin.module.js.map
+//# sourceMappingURL=changecar.module.js.map
 
 /***/ }),
 
-/***/ 840:
+/***/ 847:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverLoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangeCarPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_instances_services__ = __webpack_require__(351);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,129 +69,70 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import * as firebase from 'firebase';
-// import { SignUpService } from '../../services/signup.service';
-var DriverLoginPage = /** @class */ (function () {
-    // userFirebase = this.AngularFireAuth.auth.currentUser;
-    function DriverLoginPage(navCtrl, authenticationService, alertCtrl, AngularFireAuth, navParams, formBuilder, SignUpService, platform, loadingCtrl) {
-        var _this = this;
+var ChangeCarPage = /** @class */ (function () {
+    function ChangeCarPage(navCtrl, navParams, viewCtrl, renderer, alertCtrl, signUpService, angularFireAuth, instances, afDB) {
         this.navCtrl = navCtrl;
-        this.authenticationService = authenticationService;
-        this.alertCtrl = alertCtrl;
-        this.AngularFireAuth = AngularFireAuth;
         this.navParams = navParams;
-        this.formBuilder = formBuilder;
-        this.SignUpService = SignUpService;
-        this.platform = platform;
-        this.loadingCtrl = loadingCtrl;
-        this.email = '';
-        this.auth = this.AngularFireAuth.auth;
-        this.loginGroup = this.formBuilder.group({
-            email: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required],
-            password: ["", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* Validators */].required]
-        });
-        if (this.auth.currentUser) {
-            this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.auth.currentUser.uid).subscribe(function (driver) {
-                _this.driverInfo = driver;
-            });
-        }
+        this.viewCtrl = viewCtrl;
+        this.renderer = renderer;
+        this.alertCtrl = alertCtrl;
+        this.signUpService = signUpService;
+        this.angularFireAuth = angularFireAuth;
+        this.instances = instances;
+        this.afDB = afDB;
     }
-    DriverLoginPage.prototype.signup = function () {
-        this.navCtrl.push('DSignupPage');
+    ChangeCarPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss(this.accepted);
     };
-    ;
-    DriverLoginPage.prototype.resetPassword = function (email) {
-        if (this.loginGroup.controls['email'].value == '') {
-            var alert_1 = this.alertCtrl.create({
-                title: 'no hay ningun email',
-                subTitle: 'ingresa un email para resetear tu contraseña',
-                buttons: ['OK']
-            });
-            alert_1.present();
-            console.log("reset password email hasn't been sent");
+    ChangeCarPage.prototype.selectImageOtherCar = function () {
+        // this is just to change the css
+        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-width', '3px');
+        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-style', 'solid');
+        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-color', 'green');
+        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-width', '0px');
+        this.otherCar = true;
+        this.taxi = false;
+    };
+    ChangeCarPage.prototype.selectImageTaxi = function () {
+        // this is just to change the css
+        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-width', '3px');
+        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-style', 'solid');
+        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-color', 'green');
+        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-width', '0px');
+        this.otherCar = false;
+        this.taxi = true;
+    };
+    ChangeCarPage.prototype.confirm = function () {
+        if (this.otherCar === null || this.taxi === null) {
         }
         else {
-            this.auth.sendPasswordResetEmail(this.loginGroup.controls['email'].value);
-            var alert_2 = this.alertCtrl.create({
-                title: 'revisa tu email',
-                subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
-                buttons: ['OK']
-            });
-            alert_2.present();
-            console.log("reset password email has been sent");
+            if (this.otherCar === true) {
+                // if user select otherCar change information in firebase
+                //service that changes taxi information
+            }
+            else if (this.taxi === true) {
+                // if user select taxi change information in firebase
+            }
         }
-        ;
     };
-    ;
-    DriverLoginPage.prototype.logIn = function () {
-        var _this = this;
-        var loading = this.loadingCtrl.create({
-            spinner: 'crescent',
-            content: "\n              <div class=\"custom-spinner-container\">\n                <div class=\"custom-spinner-box\"></div>\n              </div>"
-        });
-        loading.present();
-        this.receivedUser = this.navParams.data;
-        var email = this.loginGroup.controls['email'].value;
-        var password = this.loginGroup.controls['password'].value;
-        this.authenticationService.loginWithEmail(email, password).then(function (data) {
-            console.log(data);
-            if (data.user.emailVerified == false) {
-                loading.dismiss();
-                var alert_3 = _this.alertCtrl.create({
-                    title: 'Oops!',
-                    subTitle: 'por favor verifica tu email',
-                    buttons: ['OK']
-                });
-                alert_3.present();
-            }
-            else {
-                // let metadata = this.auth.currentUser.metadata;
-                // if(metadata.creationTime === metadata.lastSignInTime){
-                //     console.log(metadata.creationTime);
-                //     console.log(metadata.lastSignInTime);
-                //     this.navCtrl.push('CarRegistrationLoginPage');
-                //     setTimeout(()=>{
-                //         if(this.navCtrl.getActive().id === 'LoginPage'){
-                //             this.navCtrl.push('CarRegistrationLoginPage');
-                //         }else{
-                //             console.log('actuo el abservable')
-                //         }
-                //     }, 500)
-                // }
-                setTimeout(function () {
-                    if (_this.navCtrl.getActive().id === 'DriverLoginPage') {
-                        loading.dismiss();
-                        _this.navCtrl.setRoot('DriverFindridePage');
-                    }
-                    else {
-                        loading.dismiss();
-                        console.log('actuo el abservable');
-                    }
-                }, 500);
-                _this.authenticationService.getStatus;
-            }
-            ;
-        }).catch(function (error) {
-            loading.dismiss();
-            var alert = _this.alertCtrl.create({
-                title: 'Oops!',
-                subTitle: 'El usuario o la contraseña están incorrectas',
-                buttons: ['OK']
-            });
-            alert.present();
-            console.log(error);
-        });
-    };
-    DriverLoginPage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('imageTaxi', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], ChangeCarPage.prototype, "imageTaxi", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('imageOtherCar', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], ChangeCarPage.prototype, "imageOtherCar", void 0);
+    ChangeCarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-login',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/login/driverLogin.html"*/'<ion-header class="transparent">\n    <ion-navbar hide-tabs>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="logo">\n        <img src="assets/imgs/logo waypool gris-01.png" alt="logo">\n    </div>\n\n<div class="bg-white login">\n    <div >\n     <div [formGroup]="loginGroup" >\n        <ion-list class="form">\n            <ion-item>\n                <ion-label></ion-label>\n                <ion-input type="email"  text-right  formControlName="email" placeholder= "email"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label></ion-label>\n                <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>\n            </ion-item>\n        </ion-list>\n    </div>\n    <button ion-button full class="bg-theme-driver text-white btn rounded" (click)="logIn()" [disabled]="!loginGroup.valid">ENTRAR</button>\n    <button ion-button full class="bg-darkblue text-white btn rounded" (click)="signup()" >REGÍSTRATE</button>\n\n\n            <ion-row style="padding-top: 8px;">\n                <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme-driver"> contraseña?</strong></small></ion-col>\n            </ion-row>\n\n\n        </div>\n\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/WAYPOOL_OFICIAL/waypool_costumer/src/pages/login/driverLogin.html"*/
+            selector: 'page-changecar',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\findyourcrew\waypool_costumer\src\pages\p-changecar\changecar.html"*/'<ion-content>\n\n\n\n\n\n    <ion-card>\n\n\n\n       \n\n\n\n    <h4  text-center style="margin: 5px;font-size: 2.0rem;font-weight: 600;">Escoge tu medio de transporte</h4>\n\n    <h6  text-center style="    margin: 15px;">Ambos metodos se encarga el creador de grupo en conseguir dicho transporte.</h6>\n\n\n\n      <ion-row  style="display: flex; flex-direction: row; justify-content: center;">\n\n            <ion-avatar  #house>\n\n                <p text-center class="texto1">Waypool,Indriver,Uber...</p>\n\n\n\n                    <img  #imageOtherCar class="house" style="border-radius: 15%;" src="assets/imgs/carfuture.png" (click)="selectImageOtherCar()"/>\n\n\n\n                </ion-avatar>\n\n\n\n                <ion-avatar  style="border-radius: 15%;" #work>\n\n                    <p text-center class="texto1">Taxi.</p>\n\n\n\n                        <img #imageTaxi src="assets/imgs/carOrange.png"  style="border-radius: 15%;" (click)="selectImageTaxi()"/>\n\n                 </ion-avatar>\n\n     \n\n      </ion-row>\n\n  \n\n        <ion-card-content>\n\n            <div class="seats">           \n\n                <ion-row style="margin-top: 14px;    display: flex;\n\n                justify-content: center">                \n\n                    <ion-col col-8>\n\n                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.25rem;" (click)="confirm()" navPop>Escoger</button>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\findyourcrew\waypool_costumer\src\pages\p-changecar\changecar.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
-    ], DriverLoginPage);
-    return DriverLoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_5__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"]])
+    ], ChangeCarPage);
+    return ChangeCarPage;
 }());
 
-//# sourceMappingURL=driverLogin.js.map
+//# sourceMappingURL=changecar.js.map
 
 /***/ })
 

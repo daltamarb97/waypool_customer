@@ -196,7 +196,9 @@ ionViewDidLeave(){
   this.unsubscribe.complete();
 
 }
-
+seeGroup(){
+  this.navCtrl.push('GroupDetailPage')
+}
 }
 
 

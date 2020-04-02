@@ -1,14 +1,14 @@
 webpackJsonp([48],{
 
-/***/ 651:
+/***/ 653:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverMorePageModule", function() { return DriverMorePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeCarPageModule", function() { return ChangeCarPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverMore__ = __webpack_require__(842);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__changecar__ = __webpack_require__(848);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,42 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverMorePageModule = /** @class */ (function () {
-    function DriverMorePageModule() {
+var ChangeCarPageModule = /** @class */ (function () {
+    function ChangeCarPageModule() {
     }
-    DriverMorePageModule = __decorate([
+    ChangeCarPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */],
+                __WEBPACK_IMPORTED_MODULE_2__changecar__["a" /* ChangeCarPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__changecar__["a" /* ChangeCarPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */]
+                __WEBPACK_IMPORTED_MODULE_2__changecar__["a" /* ChangeCarPage */]
             ]
         })
-    ], DriverMorePageModule);
-    return DriverMorePageModule;
+    ], ChangeCarPageModule);
+    return ChangeCarPageModule;
 }());
 
-//# sourceMappingURL=driverMore.module.js.map
+//# sourceMappingURL=changecar.module.js.map
 
 /***/ }),
 
-/***/ 842:
+/***/ 848:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverMorePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangeCarPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_instances_services__ = __webpack_require__(351);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,60 +65,74 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// import { UploadPage } from '../upload/upload';
 
 
 
 
-var DriverMorePage = /** @class */ (function () {
-    function DriverMorePage(navCtrl, modalCtrl, AngularFireAuth, authenticationService, SignupService, app) {
-        var _this = this;
+var ChangeCarPage = /** @class */ (function () {
+    function ChangeCarPage(navCtrl, navParams, viewCtrl, renderer, alertCtrl, signUpService, angularFireAuth, instances, afDB) {
         this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.authenticationService = authenticationService;
-        this.SignupService = SignupService;
-        this.app = app;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.user = {};
-        this.verified = false;
-        this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).subscribe(function (user) {
-            _this.user = user;
-            console.log(_this.user);
-            if (_this.user.verifiedPerson === true) {
-                _this.verified = true;
-            }
-        });
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.renderer = renderer;
+        this.alertCtrl = alertCtrl;
+        this.signUpService = signUpService;
+        this.angularFireAuth = angularFireAuth;
+        this.instances = instances;
+        this.afDB = afDB;
     }
-    DriverMorePage.prototype.profile = function () {
-        this.app.getRootNav().push('DriverProfilePage');
+    ChangeCarPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss(this.accepted);
     };
-    DriverMorePage.prototype.showInfoCars = function () {
-        var modal = this.modalCtrl.create('DriverShowInfoCarPage', { user: this.user });
-        modal.present();
+    ChangeCarPage.prototype.selectImageOtherCar = function () {
+        // this is just to change the css
+        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-width', '3px');
+        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-style', 'solid');
+        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-color', 'green');
+        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-width', '0px');
+        this.otherCar = true;
+        this.taxi = false;
     };
-    DriverMorePage.prototype.terms = function () {
-        this.navCtrl.push('DriverTermsPage');
+    ChangeCarPage.prototype.selectImageTaxi = function () {
+        // this is just to change the css
+        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-width', '3px');
+        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-style', 'solid');
+        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-color', 'green');
+        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-width', '0px');
+        this.otherCar = false;
+        this.taxi = true;
     };
-    DriverMorePage.prototype.help = function () {
-        this.navCtrl.push('DriverHelpPage');
+    ChangeCarPage.prototype.confirm = function () {
+        if (this.otherCar === null || this.taxi === null) {
+        }
+        else {
+            if (this.otherCar === true) {
+                // if user select otherCar change information in firebase
+                //service that changes taxi information
+            }
+            else if (this.taxi === true) {
+                // if user select taxi change information in firebase
+            }
+        }
     };
-    DriverMorePage.prototype.logout = function () {
-        this.authenticationService.logOut();
-        console.log(__WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]().currentUser);
-        this.SignupService.userPlace = undefined;
-        this.navCtrl.setRoot('LoginPage');
-    };
-    DriverMorePage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('imageTaxi', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], ChangeCarPage.prototype, "imageTaxi", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('imageOtherCar', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], ChangeCarPage.prototype, "imageOtherCar", void 0);
+    ChangeCarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-more',template:/*ion-inline-start:"C:\Users\danie\waypool_costumer\src\pages\more\driverMore.html"*/'<ion-header class="bg-theme-driver">\n\n    <ion-navbar>\n\n        <ion-title class="text-center">PERFIL</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bg-light" >\n\n    <ion-item>\n\n        \n\n                <ion-avatar item-start>\n\n                        <img src="assets/imgs/userPicture.png">\n\n                    </ion-avatar>\n\n                    <div class="name">\n\n                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n\n                            <ion-icon *ngIf = \'verified\' name="ios-checkmark-circle" class="text-theme-driver"></ion-icon>\n\n                        </h2>\n\n                        <p (click)="profile()">Editar Perfil</p>\n\n                    </div>\n\n        \n\n        \n\n        \n\n    </ion-item>\n\n\n\n    <ion-list no-lines>\n\n        <!-- <button ion-item (click)="reviews()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="ios-star"></ion-icon>\n\n            </ion-avatar>\n\n            Mis calificaciones (Próximamente)\n\n        </button> -->\n\n        <button ion-item (click)="showInfoCars()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="car"></ion-icon>\n\n            </ion-avatar>\n\n            Mis Vehículos        \n\n        </button>\n\n       \n\n        <!-- <button ion-item (click)="docs()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-paper"></ion-icon>\n\n            </ion-avatar>\n\n            Tus documentos\n\n        </button> -->\n\n        <!-- <button ion-item (click)="earn()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-share"></ion-icon>\n\n            </ion-avatar>\n\n            Refiérenos y Ganas (Próximamente)\n\n        </button>\n\n        <button ion-item (click)="ratevroom()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-thumbs-up"></ion-icon>\n\n            </ion-avatar>\n\n            Cálifica a Waypool (Próximamente)\n\n        </button> -->\n\n        <button ion-item (click)="help()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-alert"></ion-icon>\n\n            </ion-avatar>\n\n           Soporte \n\n        </button>\n\n        <button ion-item (click)="terms()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-paper"></ion-icon>\n\n            </ion-avatar>\n\n            Terminos y Condiciones\n\n        </button>\n\n    </ion-list>\n\n  \n\n    \n\n    <!-- <ion-list no-lines>\n\n        <button ion-item (click)="logout()" text-center><h2 class="text-theme"><strong>Salir de mi cuenta</strong></h2></button>\n\n\n\n    </ion-list> -->\n\n    <p class="love">Desarrollado con  <ion-icon name="heart"></ion-icon></p> \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\waypool_costumer\src\pages\more\driverMore.html"*/
+            selector: 'page-changecar',template:/*ion-inline-start:"C:\Users\danie\waypool_costumer\src\pages\p-changecar\changecar.html"*/'<ion-content>\n\n\n\n\n\n    <ion-card>\n\n\n\n       \n\n\n\n    <h4  text-center style="margin: 5px;font-size: 2.0rem;font-weight: 600;">Escoge tu medio de transporte</h4>\n\n    <h6  text-center style="    margin: 15px;">Ambos metodos se encarga el creador de grupo en conseguir dicho transporte.</h6>\n\n\n\n      <ion-row  style="display: flex; flex-direction: row; justify-content: center;">\n\n            <ion-avatar  #house>\n\n                <p text-center class="texto1">Waypool,Indriver,Uber...</p>\n\n\n\n                    <img  #imageOtherCar class="house" style="border-radius: 15%;" src="assets/imgs/carfuture.png" (click)="selectImageOtherCar()"/>\n\n\n\n                </ion-avatar>\n\n\n\n                <ion-avatar  style="border-radius: 15%;" #work>\n\n                    <p text-center class="texto1">Taxi.</p>\n\n\n\n                        <img #imageTaxi src="assets/imgs/carOrange.png"  style="border-radius: 15%;" (click)="selectImageTaxi()"/>\n\n                 </ion-avatar>\n\n     \n\n      </ion-row>\n\n  \n\n        <ion-card-content>\n\n            <div class="seats">           \n\n                <ion-row style="margin-top: 14px;    display: flex;\n\n                justify-content: center">                \n\n                    <ion-col col-8>\n\n                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.25rem;" (click)="confirm()" navPop>Escoger</button>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\waypool_costumer\src\pages\p-changecar\changecar.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
-    ], DriverMorePage);
-    return DriverMorePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_5__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"]])
+    ], ChangeCarPage);
+    return ChangeCarPage;
 }());
 
-//# sourceMappingURL=driverMore.js.map
+//# sourceMappingURL=changecar.js.map
 
 /***/ })
 

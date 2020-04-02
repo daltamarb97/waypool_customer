@@ -1,14 +1,14 @@
 webpackJsonp([52],{
 
-/***/ 649:
+/***/ 652:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverDetailsReservePagePageModule", function() { return DriverDetailsReservePagePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverMorePageModule", function() { return DriverMorePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverDetailsreserve__ = __webpack_require__(840);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverMore__ = __webpack_require__(847);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,46 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverDetailsReservePagePageModule = /** @class */ (function () {
-    function DriverDetailsReservePagePageModule() {
+var DriverMorePageModule = /** @class */ (function () {
+    function DriverMorePageModule() {
     }
-    DriverDetailsReservePagePageModule = __decorate([
+    DriverMorePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverDetailsreserve__["a" /* DriverDetailsReservePage */],
+                __WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverDetailsreserve__["a" /* DriverDetailsReservePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverDetailsreserve__["a" /* DriverDetailsReservePage */]
+                __WEBPACK_IMPORTED_MODULE_2__driverMore__["a" /* DriverMorePage */]
             ]
         })
-    ], DriverDetailsReservePagePageModule);
-    return DriverDetailsReservePagePageModule;
+    ], DriverMorePageModule);
+    return DriverMorePageModule;
 }());
 
-//# sourceMappingURL=driverDetailsreserve.module.js.map
+//# sourceMappingURL=driverMore.module.js.map
 
 /***/ }),
 
-/***/ 840:
+/***/ 847:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverDetailsReservePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverMorePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_geofire_services__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__ = __webpack_require__(353);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_trips_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -69,140 +65,60 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-// import { AngularFireDatabase } from 'angularfire2/database';
-
+// import { UploadPage } from '../upload/upload';
 
 
 
 
-
-
-var DriverDetailsReservePage = /** @class */ (function () {
-    function DriverDetailsReservePage(navCtrl, actionSheetCtrl, TripsService, SignUpService, sendCoordsService, modalCtrl, AngularFireAuth, viewCtrl, navParams, geoFireService, instances, toastCtrl, alertCtrl, app, afDB) {
+var DriverMorePage = /** @class */ (function () {
+    function DriverMorePage(navCtrl, modalCtrl, AngularFireAuth, authenticationService, SignupService, app) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.actionSheetCtrl = actionSheetCtrl;
-        this.TripsService = TripsService;
-        this.SignUpService = SignUpService;
-        this.sendCoordsService = sendCoordsService;
         this.modalCtrl = modalCtrl;
         this.AngularFireAuth = AngularFireAuth;
-        this.viewCtrl = viewCtrl;
-        this.navParams = navParams;
-        this.geoFireService = geoFireService;
-        this.instances = instances;
-        this.toastCtrl = toastCtrl;
-        this.alertCtrl = alertCtrl;
+        this.authenticationService = authenticationService;
+        this.SignupService = SignupService;
         this.app = app;
-        this.afDB = afDB;
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.infoUser = {};
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_7_rxjs__["Subject"];
-        this.reserves = [];
-        this.passengers = [];
-        this.reserveKey = this.navParams.get('reserveKey');
-        console.log(this.reserveKey);
-        this.sendCoordsService.getPendingUsers(this.SignUpService.userPlace, this.userUid, this.reserveKey).takeUntil(this.unsubscribe)
-            .subscribe(function (users) {
-            _this.passengers = users;
-            console.log(_this.passengers);
+        this.user = {};
+        this.verified = false;
+        this.SignupService.getMyInfoForProfile(this.SignupService.userPlace, this.userUid).subscribe(function (user) {
+            _this.user = user;
+            console.log(_this.user);
+            if (_this.user.verifiedPerson === true) {
+                _this.verified = true;
+            }
         });
     }
-    DriverDetailsReservePage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
+    DriverMorePage.prototype.profile = function () {
+        this.app.getRootNav().push('DriverProfilePage');
     };
-    DriverDetailsReservePage.prototype.showProfilePassegner = function (passenger) {
-        this.app.getRootNav().push('DriverPublicProfilePage', { passenger: passenger });
-        this.accepted = true;
-        this.dismiss();
+    DriverMorePage.prototype.showInfoCars = function () {
+        var modal = this.modalCtrl.create('DriverShowInfoCarPage', { user: this.user });
+        modal.present();
     };
-    DriverDetailsReservePage.prototype.cancelReserve = function () {
-        var _this = this;
-        this.geoFireService.deleteUserGeofireDest(this.SignUpService.userPlace, this.reserveKey);
-        this.geoFireService.deleteUserGeofireOr(this.SignUpService.userPlace, this.reserveKey);
-        this.passengers.forEach(function (user) {
-            _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + user.userId + '/myReserves/' + _this.reserveKey).update({
-                cancelReserve: true
-            });
-        });
-        this.TripsService.cancelReserve(this.SignUpService.userPlace, this.userUid, this.reserveKey);
-        this.dismiss();
+    DriverMorePage.prototype.terms = function () {
+        this.navCtrl.push('DriverTermsPage');
     };
-    DriverDetailsReservePage.prototype.presentActionSheet = function (userId, nameUser) {
-        var _this = this;
-        var actionSheet = this.actionSheetCtrl.create({
-            title: 'Opciones',
-            buttons: [
-                {
-                    text: 'Cancelar Usuario',
-                    role: 'destructive',
-                    handler: function () {
-                        _this.deleteUser(userId, nameUser);
-                    }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
-                }
-            ]
-        });
-        actionSheet.present();
+    DriverMorePage.prototype.help = function () {
+        this.navCtrl.push('DriverHelpPage');
     };
-    DriverDetailsReservePage.prototype.deleteUser = function (userId, nameUser) {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Eliminar Usuario',
-            message: "\u00BFEstas que deseas eliminar a este a " + nameUser + " de tu viaje?,borrar muchos usuarios por d\u00EDa/semana esta en contra de nuestras pol\u00EDticas",
-            buttons: [{
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: function () {
-                    }
-                },
-                {
-                    text: 'Eliminar',
-                    handler: function () {
-                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + userId + '/myReserves/' + _this.reserveKey).update({
-                            cancelReserve: true
-                        });
-                        _this.sendCoordsService.eraseUser(_this.SignUpService.userPlace, userId, _this.userUid, _this.reserveKey);
-                        _this.dismiss();
-                        _this.presentToast("Haz eliminado a " + nameUser + " de tu viaje", 3000, 'bottom');
-                    }
-                }
-            ]
-        });
-        alert.present();
+    DriverMorePage.prototype.logout = function () {
+        this.authenticationService.logOut();
+        console.log(__WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]().currentUser);
+        this.SignupService.userPlace = undefined;
+        this.navCtrl.setRoot('LoginPage');
     };
-    DriverDetailsReservePage.prototype.presentToast = function (message, duration, position) {
-        var toast = this.toastCtrl.create({
-            message: message,
-            duration: duration,
-            position: position
-        });
-        toast.present();
-    };
-    DriverDetailsReservePage.prototype.dismiss = function () {
-        console.log('deleted on click');
-        this.viewCtrl.dismiss(this.accepted);
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    };
-    DriverDetailsReservePage = __decorate([
+    DriverMorePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-detailsreserve',template:/*ion-inline-start:"C:\Users\danie\waypool_costumer\src\pages\detailsreserve\driverDetailsreserve.html"*/'<ion-header class="bg-theme-driver title">\n\n    <ion-navbar >\n\n        <ion-title >Tus compañeros\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n<div #map id="map"></div>  \n\n\n\n<ion-content  style="background-color: rgba(255, 255, 255, 0.959);">\n\n         <ion-card *ngFor = "let passenger of passengers">\n\n               <ion-item>\n\n                   <ion-avatar item-start style="border-radius: 0%;">\n\n                    <img  style="height:70px; width: 70px;" src="assets/imgs/userPicture.png">\n\n                </ion-avatar>\n\n                   <div class="name">\n\n                       <h2>{{passenger.name |titlecase}} {{passenger.lastname | titlecase}}.\n\n                         <ion-icon *ngIf=\'passenger.verifiedPerson\' name="ios-checkmark-circle" class="text-darkblue"></ion-icon>\n\n                       </h2>\n\n\n\n                         <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{passenger.company}}</ion-badge>\n\n                    </div>\n\n                   <div class="more" item-end>\n\n                           <ion-icon name="md-more"  (click)="presentActionSheet(passenger.userId,passenger.name)"></ion-icon>\n\n                   </div>\n\n               </ion-item>\n\n               <ion-card-content>\n\n                   <div class="ride-detail">\n\n                       <p><small></small>\n\n                           <span class="icon-location bg-theme-driver"></span>{{passenger.origin}}</p>\n\n                       <p><small></small>\n\n                           <span class="icon-location bg-yellow"></span>{{passenger.destination}}</p>\n\n                   </div>\n\n                   \n\n               </ion-card-content>         \n\n         \n\n\n\n           </ion-card>\n\n           <div style=" display: flex; justify-content: center;">\n\n            <button (click)="cancelReserve()" class="btn bg-theme-driver text-white rounded" > Cancelar Reserva </button>\n\n\n\n           </div>\n\n\n\n </ion-content>\n\n\n\n '/*ion-inline-end:"C:\Users\danie\waypool_costumer\src\pages\detailsreserve\driverDetailsreserve.html"*/
+            selector: 'driver-page-more',template:/*ion-inline-start:"C:\Users\danie\waypool_costumer\src\pages\more\driverMore.html"*/'<ion-header class="bg-theme-driver">\n\n    <ion-navbar>\n\n        <ion-title class="text-center">PERFIL</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bg-light" >\n\n    <ion-item>\n\n        \n\n                <ion-avatar item-start>\n\n                        <img src="assets/imgs/userPicture.png">\n\n                    </ion-avatar>\n\n                    <div class="name">\n\n                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n\n                            <ion-icon *ngIf = \'verified\' name="ios-checkmark-circle" class="text-theme-driver"></ion-icon>\n\n                        </h2>\n\n                        <p (click)="profile()">Editar Perfil</p>\n\n                    </div>\n\n        \n\n        \n\n        \n\n    </ion-item>\n\n\n\n    <ion-list no-lines>\n\n        <!-- <button ion-item (click)="reviews()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="ios-star"></ion-icon>\n\n            </ion-avatar>\n\n            Mis calificaciones (Próximamente)\n\n        </button> -->\n\n        <button ion-item (click)="showInfoCars()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="car"></ion-icon>\n\n            </ion-avatar>\n\n            Mis Vehículos        \n\n        </button>\n\n       \n\n        <!-- <button ion-item (click)="docs()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-paper"></ion-icon>\n\n            </ion-avatar>\n\n            Tus documentos\n\n        </button> -->\n\n        <!-- <button ion-item (click)="earn()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-share"></ion-icon>\n\n            </ion-avatar>\n\n            Refiérenos y Ganas (Próximamente)\n\n        </button>\n\n        <button ion-item (click)="ratevroom()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-thumbs-up"></ion-icon>\n\n            </ion-avatar>\n\n            Cálifica a Waypool (Próximamente)\n\n        </button> -->\n\n        <button ion-item (click)="help()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-alert"></ion-icon>\n\n            </ion-avatar>\n\n           Soporte \n\n        </button>\n\n        <button ion-item (click)="terms()">\n\n            <ion-avatar item-start>\n\n                <ion-icon name="md-paper"></ion-icon>\n\n            </ion-avatar>\n\n            Terminos y Condiciones\n\n        </button>\n\n    </ion-list>\n\n  \n\n    \n\n    <!-- <ion-list no-lines>\n\n        <button ion-item (click)="logout()" text-center><h2 class="text-theme"><strong>Salir de mi cuenta</strong></h2></button>\n\n\n\n    </ion-list> -->\n\n    <p class="love">Desarrollado con  <ion-icon name="heart"></ion-icon></p> \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\waypool_costumer\src\pages\more\driverMore.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_8__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_3__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__["AngularFireDatabase"]])
-    ], DriverDetailsReservePage);
-    return DriverDetailsReservePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
+    ], DriverMorePage);
+    return DriverMorePage;
 }());
 
-//# sourceMappingURL=driverDetailsreserve.js.map
+//# sourceMappingURL=driverMore.js.map
 
 /***/ })
 

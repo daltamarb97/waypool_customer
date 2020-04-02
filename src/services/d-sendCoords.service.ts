@@ -15,7 +15,9 @@ constructor(public afDB: AngularFireDatabase){
     public getPendingUsers(place, userUid,pushKey){
         return  this.afDB.list(place + '/reserves/'+ userUid +'/'+pushKey+'/pendingUsers').valueChanges();
     }
-
+    public getGroupPendingUsers( userUid,pushKey){
+        return  this.afDB.list( 'crewTest/'+ userUid +'/'+pushKey+'/pendingUsers').valueChanges();
+    }
 
     public confirmIfUsersIsStillInLMU(place, driverId, keyTrip, userId){
         return this.afDB.object(place + '/trips/' + driverId +'/'+keyTrip+ '/lastMinuteUsers/' + userId).valueChanges();

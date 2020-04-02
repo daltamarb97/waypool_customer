@@ -27,14 +27,8 @@ declare var google;
 export class FindridePassPage {
  
   @ViewChild('map') mapElement: ElementRef;
-  @ViewChild('carButton',{read:ElementRef}) carButton;
-  @ViewChild('passengerButton',{read:ElementRef}) passengerButton;
-  @ViewChild('bikeButton',{read:ElementRef}) bikeButton;
-  @ViewChild('iconCar',{read:ElementRef}) iconCar;
-
-  @ViewChild('iconPassenger',{read:ElementRef}) iconPassenger;
-
-  @ViewChild('iconBike',{read:ElementRef}) iconBike;
+ 
+ 
 
   map: any;
   markers: any;
@@ -1508,64 +1502,13 @@ listride(){
      this.afDB.database.ref(place + '/users/' + userId + '/availableReserves/' + key).remove()
    }.bind(this))
   }
-      goToBikeMode(){
-        // console.log(this.user);
+      goToGroup(){
+        console.log(this.user);
         
-        // this.navCtrl.push('BikeModePage',{user:this.user})
-        this.bikeMode = true;
-        this.carpoolMode = false;
-        this.passengerMode = false;
-        console.log(this.bikeMode);
-        console.log(this.passengerMode);
-        this.bikeModeIsSelected();
+        this.navCtrl.push('CreateGroupPage')
       }
-      goToCarpoolMode(){
-        this.bikeMode = false;
-        this.carpoolMode = true;
-        this.passengerMode = false;
-        this.carModeIsSelected();
-
-      }
-      goToPassengerMode(){
-        this.bikeMode = false;
-        this.carpoolMode = false;
-        this.passengerMode = true;
-        console.log(this.bikeMode);
-        console.log(this.passengerMode);
-        this.passengerModeIsSelected();
-
-      }
-      bikeModeIsSelected(){
-        this.renderer.setElementStyle(this.carButton.nativeElement,'background-color','#fff7f7')
-        this.renderer.setElementStyle(this.bikeButton.nativeElement,'background-color','#001127')
-        this.renderer.setElementStyle(this.passengerButton.nativeElement,'background-color','#fff7f7')
-      
-        this.renderer.setElementStyle(this.iconCar.nativeElement,'color','#001127')
-        this.renderer.setElementStyle(this.iconBike.nativeElement,'color','#ffffff')
-        this.renderer.setElementStyle(this.iconPassenger.nativeElement,'color','#001127')
-
-      
-      
-      }
-      passengerModeIsSelected(){
-        this.renderer.setElementStyle(this.carButton.nativeElement,'background-color','#fff7f7')
-        this.renderer.setElementStyle(this.passengerButton.nativeElement,'background-color','#001127')
-        this.renderer.setElementStyle(this.bikeButton.nativeElement,'background-color','#fff7f7')
-
-        this.renderer.setElementStyle(this.iconCar.nativeElement,'color','#001127')
-        this.renderer.setElementStyle(this.iconPassenger.nativeElement,'color','#ffffff')
-        this.renderer.setElementStyle(this.iconBike.nativeElement,'color','#001127')
-      }
-      carModeIsSelected(){
-        this.renderer.setElementStyle(this.bikeButton.nativeElement,'background-color','#fff7f7')
-        this.renderer.setElementStyle(this.carButton.nativeElement,'background-color','#001127')
-        this.renderer.setElementStyle(this.passengerButton.nativeElement,'background-color','#fff7f7')
-
-        this.renderer.setElementStyle(this.iconBike.nativeElement,'color','#001127')
-        this.renderer.setElementStyle(this.iconCar.nativeElement,'color','#ffffff')
-        this.renderer.setElementStyle(this.iconPassenger.nativeElement,'color','#001127')
-
-      }
+     
+     
 }
    
     

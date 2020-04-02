@@ -1,14 +1,14 @@
 webpackJsonp([58],{
 
-/***/ 688:
+/***/ 694:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverCarRegistrationPageModule", function() { return DriverCarRegistrationPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverConfirmpricePageModule", function() { return DriverConfirmpricePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__car_registration_login__ = __webpack_require__(883);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverConfirmprice__ = __webpack_require__(893);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,45 +18,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverCarRegistrationPageModule = /** @class */ (function () {
-    function DriverCarRegistrationPageModule() {
+var DriverConfirmpricePageModule = /** @class */ (function () {
+    function DriverConfirmpricePageModule() {
     }
-    DriverCarRegistrationPageModule = __decorate([
+    DriverConfirmpricePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__car_registration_login__["a" /* DriverCarRegistrationLoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__driverConfirmprice__["a" /* DriverConfirmpricePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__car_registration_login__["a" /* DriverCarRegistrationLoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverConfirmprice__["a" /* DriverConfirmpricePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__car_registration_login__["a" /* DriverCarRegistrationLoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__driverConfirmprice__["a" /* DriverConfirmpricePage */]
             ]
         })
-    ], DriverCarRegistrationPageModule);
-    return DriverCarRegistrationPageModule;
+    ], DriverConfirmpricePageModule);
+    return DriverConfirmpricePageModule;
 }());
 
-//# sourceMappingURL=car-registration-login.module.js.map
+//# sourceMappingURL=driverConfirmprice.module.js.map
 
 /***/ }),
 
-/***/ 883:
+/***/ 893:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverCarRegistrationLoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverConfirmpricePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(360);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_sendCoords_service__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_sendUsers_service__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_d_price_service__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_geofire_services__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_d_metrics_service__ = __webpack_require__(366);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -74,303 +76,167 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the CarRegistrationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var DriverCarRegistrationLoginPage = /** @class */ (function () {
-    function DriverCarRegistrationLoginPage(navCtrl, navParams, viewCtrl, camera, AngularFireauth, alertCtrl, SignUpService, loadingCtrl, app, afDB) {
+
+
+
+var DriverConfirmpricePage = /** @class */ (function () {
+    function DriverConfirmpricePage(navCtrl, appCtrl, MetricsService, PriceService, alertCtrl, afDB, sendUsersService, SignUpService, sendCoordsService, modalCtrl, AngularFireAuth, viewCtrl, navParams, geofireService) {
+        // this.afDB.database.ref(this.SignUpService.userPlace + '/reserves/' + this.userDriverUid).once('value').then((snap)=>{
+        //   console.log(snap.val());
         var _this = this;
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.camera = camera;
-        this.AngularFireauth = AngularFireauth;
+        this.appCtrl = appCtrl;
+        this.MetricsService = MetricsService;
+        this.PriceService = PriceService;
         this.alertCtrl = alertCtrl;
-        this.SignUpService = SignUpService;
-        this.loadingCtrl = loadingCtrl;
-        this.app = app;
         this.afDB = afDB;
-        this.namePicture = "Licencia";
-        this.description = "Sube una foto clara de tu";
-        this.img1 = "Licencia";
-        this.img2 = "Cédula";
-        this.des1 = "Sube una foto clara de tu";
-        this.picToView = "assets/imgs/v2.png";
-        this.picToViewLicense = "assets/imgs/v2.png";
-        this.picToViewId = "assets/imgs/v4.png";
-        this.showLicense = true;
-        this.showId = false;
-        this.cameraPicLicense = false;
-        this.cameraPicId = false;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
-        this.showContinue = false;
-        this.licenceWasUploaded = false;
-        this.idWasUploaded = false;
-        this.options = {
-            quality: 100,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
-        };
-        this.driver = this.AngularFireauth.auth.currentUser.uid;
-        this.defaultZone = navParams.get('defaultZone');
-        console.log(this.defaultZone);
-        this.SignUpService.userPlace = this.defaultZone;
-        this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.driver).takeUntil(this.unsubscribe).subscribe(function (user) {
-            _this.driverInfo = user;
-            if (_this.driverInfo.documents) {
-                if (_this.driverInfo.documents.license == true) {
-                    _this.picToViewLicense = "assets/imgs/v2.3.png";
-                    _this.picToView = "assets/imgs/v2.3.png";
-                }
-                else if (_this.driverInfo.documents.id == true) {
-                    _this.picToViewId = "assets/imgs/_v4.3.png";
-                }
-                else if (_this.driverInfo.documents.license == false) {
-                    _this.picToViewLicense = "assets/imgs/v2.2.png";
-                    _this.picToView = "assets/imgs/v2.2.png";
-                    _this.showContinue = true;
-                }
-                else if (_this.driverInfo.documents.id == false) {
-                    _this.picToViewId = "assets/imgs/v4.2.png";
-                    _this.showContinue = true;
-                }
-                else if (_this.driverInfo.documents.license == undefined) {
-                    _this.picToViewLicense = "assets/imgs/v2.png";
-                    _this.picToView = "assets/imgs/v2.png";
-                }
-                else if (_this.driverInfo.documents.id == undefined) {
-                    _this.picToViewId = "assets/imgs/v4.png";
-                }
-            }
+        this.sendUsersService = sendUsersService;
+        this.SignUpService = SignUpService;
+        this.sendCoordsService = sendCoordsService;
+        this.modalCtrl = modalCtrl;
+        this.AngularFireAuth = AngularFireAuth;
+        this.viewCtrl = viewCtrl;
+        this.navParams = navParams;
+        this.geofireService = geofireService;
+        this.userDriverUid = this.AngularFireAuth.auth.currentUser.uid;
+        //variable for get data in function
+        this.driver = {};
+        //variable to transfer data from driver to this one
+        this.driverInfo = {};
+        this.driverInfoNote = {};
+        this.buttonColor = '#0fc874';
+        this.buttonColor2 = '#0fc874';
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
+        this.carModelList = [];
+        this.nowHour = new Date();
+        this.geocoordinatesDest = {};
+        this.geocoordinatesOr = {};
+        this.schedules = [];
+        //   let obj = snap.val();
+        //   Object.getOwnPropertyNames(obj).forEach(key => {
+        //    console.log(obj[key]);
+        //   });
+        // })
+        //hay dos variables, driver y driver2 lo cual significa que debo llamar a la info del driver en dos ocasiones distintas, cuando hay nota y cuando no
+        this.SignUpService.getCar(this.SignUpService.userPlace, this.userDriverUid).takeUntil(this.unsubscribe)
+            .subscribe(function (car) {
+            //get cars registered
+            _this.carModelList = car;
+            console.log(_this.carModelList);
         });
+        this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.userDriverUid).takeUntil(this.unsubscribe).subscribe(function (driver) {
+            _this.driver = driver;
+            console.log(_this.driver);
+            _this.driverInfo.houseAddr = _this.driver.houseAddress.name;
+            _this.driverInfo.placeAddr = _this.driver.fixedLocation.name;
+            _this.driverInfo.name = _this.driver.name;
+            _this.driverInfo.lastname = _this.driver.lastname;
+            _this.driverInfo.phone = _this.driver.phone;
+            _this.driverInfo.userId = _this.driver.userId;
+            _this.driverInfo.verifiedPerson = _this.driver.verifiedPerson;
+            _this.driverInfo.place = _this.driver.place;
+            _this.driverInfo.company = _this.driver.company,
+                _this.driverInfo.city = _this.driver.city;
+            console.log('got info here');
+        });
+        this.geocoder = new google.maps.Geocoder;
     }
-    ;
-    DriverCarRegistrationLoginPage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
+    DriverConfirmpricePage.prototype.ionViewDidEnter = function () {
+        this.geofireService.cancelGeoqueryPlace();
     };
-    DriverCarRegistrationLoginPage.prototype.usageCameraLicense = function () {
+    DriverConfirmpricePage.prototype.setPriceDriver = function () {
         var _this = this;
-        this.camera.getPicture(this.options).then(function (imageData) {
-            // imageData is either a base64 encoded string or a file URI
-            // If it's base64 (DATA_URL):
-            var loading = _this.loadingCtrl.create({
-                spinner: 'crescent',
-                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
-            });
-            loading.present();
-            var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_3_firebase__["storage"])().ref(_this.driverInfo.company + '/documentsDrivers/' + _this.driver + '/' + _this.data);
-            picturesDrivers.putString(base64Image, 'data_url').then(function () {
-                loading.dismiss();
-                var alert = _this.alertCtrl.create({
-                    title: '¡HECHO!',
-                    subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
-                    buttons: ['OK']
-                });
-                alert.present();
-                _this.licenceWasUploaded = true;
-            }).catch(function (error) {
-                loading.dismiss();
-                console.log(error);
-                var alert = _this.alertCtrl.create({
-                    title: 'hubo un error',
-                    subTitle: 'intenta subir el documento otra vez',
-                    buttons: ['OK']
-                });
-                alert.present();
-            });
-            _this.picToViewLicense = "assets/imgs/v2.2.png";
-            _this.picToView = "assets/imgs/v2.2.png";
-            _this.afDB.database.ref('allCities/' + _this.driverInfo.city + '/allPlaces/' + _this.driverInfo.company + '/zones').once('value').then(function (snap) {
-                var obj = snap.val();
-                Object.getOwnPropertyNames(obj).forEach(function (key) {
-                    if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                    }
-                    else {
-                        _this.SignUpService.pushDocsL(obj[key], _this.driver);
-                    }
-                });
-            });
-        }, function (err) {
-            console.log(err);
-            var alert = _this.alertCtrl.create({
-                title: 'hubo un error',
-                subTitle: 'intenta subir el documento otra vez',
-                buttons: ['OK']
-            });
-            alert.present();
-        });
-    };
-    DriverCarRegistrationLoginPage.prototype.usageCameraId = function () {
-        var _this = this;
-        this.camera.getPicture(this.options).then(function (imageData) {
-            // imageData is either a base64 encoded string or a file URI
-            // If it's base64 (DATA_URL):
-            var loading = _this.loadingCtrl.create({
-                spinner: 'crescent',
-                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
-            });
-            loading.present();
-            var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_3_firebase__["storage"])().ref(_this.driverInfo.company + '/documentsDrivers/' + _this.driver + '/' + _this.data);
-            picturesDrivers.putString(base64Image, 'data_url').then(function () {
-                loading.dismiss();
-                var alert = _this.alertCtrl.create({
-                    title: '¡HECHO!',
-                    subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
-                    buttons: ['OK']
-                });
-                alert.present();
-                _this.idWasUploaded = true;
-            }).catch(function (error) {
-                loading.dismiss();
-                console.log(error);
-                var alert = _this.alertCtrl.create({
-                    title: 'hubo un error',
-                    subTitle: 'intenta subir el documento otra vez',
-                    buttons: ['OK']
-                });
-                alert.present();
-            });
-            _this.picToViewId = "assets/imgs/v4.2.png";
-            _this.picToView = "assets/imgs/v4.2.png";
-            _this.afDB.database.ref('allCities/' + _this.driverInfo.city + '/allPlaces/' + _this.driverInfo.company + '/zones').once('value').then(function (snap) {
-                var obj = snap.val();
-                Object.getOwnPropertyNames(obj).forEach(function (key) {
-                    if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                    }
-                    else {
-                        _this.SignUpService.pushDocsId(obj[key], _this.driver);
-                    }
-                });
-            });
-        }, function (err) {
-            console.log(err);
-            var alert = _this.alertCtrl.create({
-                title: 'hubo un error',
-                subTitle: 'intenta subir el documento otra vez',
-                buttons: ['OK']
-            });
-            alert.present();
-        });
-    };
-    DriverCarRegistrationLoginPage.prototype.changeNamePicture1 = function () {
-        if (this.driverInfo.documents) {
-            if (this.driverInfo.documents.license == undefined) {
-                this.picToViewLicense = "assets/imgs/v2.png";
-                this.picToView = "assets/imgs/v2.png";
-            }
-            else if (this.driverInfo.documents.license == false) {
-                this.picToViewLicense = "assets/imgs/v2.2.png";
-                this.picToView = "assets/imgs/v2.2.png";
-            }
-            else if (this.driverInfo.documents.license == true) {
-                this.picToViewLicense = "assets/imgs/v2.3.png";
-                this.picToView = "assets/imgs/v2.3.png";
-            }
-            else {
-                this.picToViewLicense = "assets/imgs/v2.png";
-                this.picToView = "assets/imgs/v2.png";
-                this.showLicense = true;
-            }
-        }
-        this.namePicture = this.img1;
-        this.description = this.des1;
-        this.data = "licencia";
-        this.showLicense = true;
-        this.showId = false;
-    };
-    ;
-    DriverCarRegistrationLoginPage.prototype.changeNamePicture2 = function () {
-        if (this.driverInfo.documents) {
-            if (this.driverInfo.documents.id == undefined) {
-                this.picToViewId = "assets/imgs/v4.png";
-                this.picToView = "assets/imgs/v4.png";
-            }
-            else if (this.driverInfo.documents.id == false) {
-                this.picToViewId = "assets/imgs/v4.2.png";
-                this.picToView = "assets/imgs/v4.2.png";
-            }
-            else if (this.driverInfo.documents.id == true) {
-                this.picToViewId = "assets/imgs/_v4.3.png";
-                this.picToView = "assets/imgs/_v4.3.png";
-            }
-            else {
-                this.picToViewId = "assets/imgs/v4.png";
-                this.picToView = "assets/imgs/v4.png";
-            }
-        }
-        this.namePicture = this.img2;
-        this.description = this.des1;
-        this.data = "cedula";
-        this.showId = true;
-        this.showLicense = false;
-    };
-    ;
-    DriverCarRegistrationLoginPage.prototype.skip = function () {
-        this.app.getRootNav().push('DriverSchedulePage', { defaultZone: this.defaultZone });
-    };
-    DriverCarRegistrationLoginPage.prototype.goSchedulePage = function () {
-        var _this = this;
-        if (this.licenceWasUploaded === false) {
+        if (this.precio == null || this.precio == '' || this.car == null || this.car == '') {
             var alert_1 = this.alertCtrl.create({
-                title: 'Puedes continuar pero aún te falta subir una foto de tu licencia',
-                subTitle: 'Puedes subir esta foto en otro momento, pero tardará más tu aprobación de documentos',
-                buttons: [
-                    {
-                        text: 'Subir Licencia',
-                        role: 'cancel'
-                    },
-                    {
-                        text: 'Hacer en otro momento',
-                        handler: function () {
-                            // alert.dismiss();
-                            _this.skip();
-                        }
-                    }
-                ]
+                title: 'Informacion Incompleta',
+                subTitle: 'No haz colocado el precio por el que estas dispuesto a compatir tu viaje o no haz especificado en que carro te moverás',
+                buttons: ['OK']
             });
             alert_1.present();
         }
-        else if (this.idWasUploaded === false) {
-            var alert_2 = this.alertCtrl.create({
-                title: 'Puedes continuar pero aún te falta subir una foto de tu cédula',
-                subTitle: 'Puedes subir esta foto en otro momento, pero tardará más tu aprobación de documentos',
-                buttons: [
-                    {
-                        text: 'Subir Cédula',
-                        role: 'cancel'
-                    },
-                    {
-                        text: 'Hacer en otro momento',
-                        handler: function () {
-                            // alert.dismiss();
-                            _this.skip();
-                        }
-                    }
-                ]
-            });
-            alert_2.present();
-        }
         else {
-            this.skip();
+            this.PriceService.setPrice(this.SignUpService.userPlace, this.userDriverUid, this.precio, this.car);
+            // HERE YOU ARE, DOUCHEBAG
+            this.afDB.database.ref(this.SignUpService.userPlace + '/drivers/' + this.userDriverUid + '/schedule/').once('value').then(function (snapSchedule) {
+                var obj = snapSchedule.val();
+                console.log(obj);
+                Object.getOwnPropertyNames(obj).forEach(function (key) {
+                    if (obj[key].type === 'origin') {
+                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + _this.userDriverUid).push({
+                            driver: _this.driverInfo,
+                            car: _this.car,
+                            houseAddr: _this.driver.houseAddress.name,
+                            placeAddr: _this.driverInfo.placeAddr,
+                            price: _this.precio,
+                            startHour: obj[key].hour,
+                            type: obj[key].type,
+                        }).then(function (snap1) {
+                            var key1 = snap1.key;
+                            // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.driverInfo,this.car,this.navParams.data.houseAddr[0],this.navParams.data.placeAddr,this.precio, sche.,this.typeOfReserve);
+                            // set geofireOrkey 
+                            _this.geofireService.setGeofireOrNEWTEST(_this.SignUpService.userPlace, key1, _this.driver.houseAddress.coordinates.lat, _this.driver.houseAddress.coordinates.lng);
+                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/geofireOr/' + key1).update({
+                                driverId: _this.driverInfo.userId
+                            });
+                            console.log('executed geofire Or');
+                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + _this.userDriverUid + '/' + key1).update({
+                                keyTrip: key1
+                            });
+                            _this.accepted = true;
+                            _this.unsubscribe.next();
+                            _this.unsubscribe.complete();
+                            _this.viewCtrl.dismiss(_this.accepted);
+                        });
+                    }
+                    else {
+                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + _this.userDriverUid).push({
+                            driver: _this.driverInfo,
+                            car: _this.driver.trips.car,
+                            houseAddr: _this.driver.houseAddress.name,
+                            placeAddr: _this.driverInfo.placeAddr,
+                            price: _this.precio,
+                            startHour: obj[key].hour,
+                            type: obj[key].type,
+                        }).then(function (snap2) {
+                            var key2 = snap2.key;
+                            // this.MetricsService.createdReserves(this.SignUpService.userPlace,this.driverInfo,this.car,this.navParams.data.houseAddr[0],this.navParams.data.placeAddr,this.precio, sche.,this.typeOfReserve);
+                            // set geofireOrkey 
+                            _this.geofireService.setGeofireDestNEWTEST(_this.SignUpService.userPlace, key2, _this.driver.houseAddress.coordinates.lat, _this.driver.houseAddress.coordinates.lng);
+                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/geofireDest/' + key2).update({
+                                driverId: _this.driverInfo.userId
+                            });
+                            console.log('executed geofire Dest');
+                            _this.afDB.database.ref(_this.SignUpService.userPlace + '/reserves/' + _this.userDriverUid + '/' + key2).update({
+                                keyTrip: key2
+                            });
+                            _this.accepted = true;
+                            _this.unsubscribe.next();
+                            _this.unsubscribe.complete();
+                            _this.viewCtrl.dismiss(_this.accepted);
+                        });
+                    }
+                });
+            });
         }
     };
-    DriverCarRegistrationLoginPage = __decorate([
+    ;
+    DriverConfirmpricePage.prototype.dismiss = function () {
+        // this.unsubscribe.next();
+        // this.unsubscribe.unsubscribe();
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+        this.viewCtrl.dismiss();
+    };
+    DriverConfirmpricePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-car-registration-login',template:/*ion-inline-start:"C:\Users\danie\waypool_costumer\src\pages\car-registration-login\driver-car-registration-login.html"*/'<!--\n\n  Generated template for the CarRegistrationPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header class="bg-theme">\n\n        <ion-navbar hideBackButton>\n\n            <ion-title>SUBIR DOCUMENTOS\n\n                <!--           <ion-icon name="md-search" class="text-white" style="margin-left: auto;float: right;"></ion-icon>-->\n\n            </ion-title>\n\n        </ion-navbar>\n\n    </ion-header>\n\n    \n\n    <ion-content padding-right padding-left>\n\n        <p text-center padding-top margin-top>{{description}}</p>\n\n        <h2 text-center>{{namePicture}}</h2>\n\n    \n\n        <ion-row>\n\n            <ion-col col-4 text-center>\n\n                <img  [src]="picToViewLicense" (click)="changeNamePicture1()">\n\n            </ion-col>\n\n            <ion-col col-4 text-center>\n\n                <img   [src]="picToViewId" (click)="changeNamePicture2()">\n\n            </ion-col>\n\n        </ion-row>\n\n    \n\n        <div text-center class="verifiy">\n\n            <img [src]="picToView">\n\n        </div>\n\n        <ion-row>\n\n            <ion-col>\n\n                <p padding-top class="btn-box" *ngIf = \'showLicense\'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraLicense()">Subir Foto de Licencia</button></p>\n\n                <p padding-top class="btn-box" *ngIf = \'showId\'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraId()">Subir Foto de Cédula</button></p>\n\n            </ion-col>\n\n        </ion-row>\n\n        <ion-row *ngIf= \'showContinue\'>\n\n                <ion-col>\n\n                    <p padding-top class="btn-box"><button class="btn text-white bg-yellow rounded" style="width: 80%;" (click)="goSchedulePage()">Continuar</button></p>\n\n                </ion-col>\n\n            </ion-row>\n\n        <ion-row>\n\n                <p justify-content-center align-items-center class="skiptext"><strong  (click)="skip()">No lo quiero terminar ahora</strong></p>\n\n        </ion-row>\n\n    </ion-content>\n\n    \n\n    '/*ion-inline-end:"C:\Users\danie\waypool_costumer\src\pages\car-registration-login\driver-car-registration-login.html"*/,
+            selector: 'driver-page-confirmprice',template:/*ion-inline-start:"C:\Users\danie\waypool_costumer\src\pages\confirmprice\driverConfirmprice.html"*/'<ion-content>\n\n    <ion-card>\n\n            <img src="assets/imgs/detallesviaje.png" width="100px" style="display:inline-block" height="150px"/>\n\n            <ion-icon name="close-circle" class="close-icon text-white"  (click)="dismiss()"></ion-icon>\n\n\n\n        <ion-card-content>\n\n            <div class="ride-detail">\n\n                    <p> Este valor se replicará en todos los viajes en tu horario </p>\n\n\n\n                <ion-item class="form">\n\n                    <ion-label floating>Precio Por Persona</ion-label>\n\n                    <ion-input type="number" [(ngModel)]="precio"></ion-input>\n\n                  </ion-item>                \n\n            </div>\n\n        </ion-card-content>\n\n\n\n        <ion-card-content>\n\n            <!-- <div class="ride-detail no-before">\n\n                <p><small>Recuerda:</small>\n\n                    <ion-icon name="md-calendar" class="icon-location"></ion-icon>\n\n                  - Precio Recomendado: 2500 </p>\n\n        \n\n                <p>- Tus compañeros te pagarán en efectivo, evita colocar precios que requieran mucho vuelto, lleva dinero suficiente para dar vueltas.</p>\n\n            </div> -->\n\n        </ion-card-content>\n\n        <ion-card-content>\n\n                <ion-row style="margin-top: 14px;    display: flex;\n\n                justify-content: center">\n\n                   <ion-list>\n\n                        <ion-item>\n\n                          <ion-label>Escoge el carro:</ion-label>\n\n                          <ion-select [(ngModel)]="car">\n\n                                <ion-option *ngFor="let car of carModelList" >{{car.carModel}} | {{car.plateNumber}} | {{car.color}}</ion-option>\n\n                       \n\n                          </ion-select>\n\n                        </ion-item>\n\n                      </ion-list>\n\n                </ion-row>\n\n                \n\n               \n\n       \n\n            <div class="seats">\n\n                \n\n                <ion-row style="margin-top: 14px;    display: flex;\n\n                justify-content: center">\n\n                   \n\n                    <ion-col col-8>\n\n                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setPriceDriver()">Conectarme</button>\n\n                    </ion-col>\n\n                </ion-row>\n\n               \n\n\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\waypool_costumer\src\pages\confirmprice\driverConfirmprice.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"]])
-    ], DriverCarRegistrationLoginPage);
-    return DriverCarRegistrationLoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_10__services_d_metrics_service__["a" /* DriverMetricsService */], __WEBPACK_IMPORTED_MODULE_7__services_d_price_service__["a" /* DriverPriceService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_6__services_d_sendUsers_service__["a" /* DriverSendUsersService */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_8__services_d_geofire_services__["a" /* DriverGeofireService */]])
+    ], DriverConfirmpricePage);
+    return DriverConfirmpricePage;
 }());
 
-//# sourceMappingURL=car-registration-login.js.map
+//# sourceMappingURL=driverConfirmprice.js.map
 
 /***/ })
 

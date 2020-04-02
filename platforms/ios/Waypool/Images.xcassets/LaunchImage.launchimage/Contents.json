@@ -136,6 +136,7 @@
       "scale" : "1x"
     },
     {
+<<<<<<< HEAD
       "orientation" : "landscape",
       "idiom" : "ipad",
       "filename": "Default-Landscape~ipad.png",
@@ -143,6 +144,8 @@
       "scale" : "1x"
     },
     {
+=======
+>>>>>>> origin/findyourcrew
       "orientation" : "portrait",
       "idiom" : "ipad",
       "extent" : "to-status-bar",

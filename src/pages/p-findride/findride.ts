@@ -1164,7 +1164,7 @@ keyEnteredOr(radiusDest, latDest, lngDest,  userId ){
                               driverId: this.driverOnNodeDest.driverId
                   
                           })  
-                      })
+                      }) 
                      })
                   }
                 })
@@ -1337,13 +1337,10 @@ keyEnteredOr(radiusDest, latDest, lngDest,  userId ){
           }
         })
         .then(()=>{
-          console.log(this.keyTripForGeofireInRouteDest);
-           
-          console.log('ahora si aqui te encuentro 1');
+ 
           
           if(this.keysIdentifiedInOriginRoute !== 0){
-            console.log('ahora si aqui te encuentro 2');
-            
+
             for(let element of this.keysIdentifiedInOriginRoute){
               if(element.keyTrip === this.keyTripForGeofireInRouteDest){
                 this.geofireDestinationConfirmedOnRoute = true;

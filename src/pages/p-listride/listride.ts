@@ -242,7 +242,7 @@ export class ListridePage {
         
         setTimeout(() => {
           if(this.geoquery1){
-            this.geoquery1.cancel();
+            this.geoquery1.cancel(); 
           }
           if(this.geoquery2){
             this.geoquery2.cancel();

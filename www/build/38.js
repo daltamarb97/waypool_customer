@@ -1,14 +1,14 @@
 webpackJsonp([38],{
 
-/***/ 668:
+/***/ 666:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MembersGroupPageModule", function() { return MembersGroupPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__membersgroup__ = __webpack_require__(864);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(861);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,46 +18,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MembersGroupPageModule = /** @class */ (function () {
-    function MembersGroupPageModule() {
+var LoginPageModule = /** @class */ (function () {
+    function LoginPageModule() {
     }
-    MembersGroupPageModule = __decorate([
+    LoginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__membersgroup__["a" /* MembersGroupPage */],
+                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__membersgroup__["a" /* MembersGroupPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__membersgroup__["a" /* MembersGroupPage */]
+                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]
             ]
         })
-    ], MembersGroupPageModule);
-    return MembersGroupPageModule;
+    ], LoginPageModule);
+    return LoginPageModule;
 }());
 
-//# sourceMappingURL=membersgroup.module.js.map
+//# sourceMappingURL=login.module.js.map
 
 /***/ }),
 
-/***/ 864:
+/***/ 861:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MembersGroupPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_geofire_services__ = __webpack_require__(350);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_d_trips_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,138 +65,130 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import { AngularFireDatabase } from 'angularfire2/database';
 
 
 
-
-
-
-
-var MembersGroupPage = /** @class */ (function () {
-    function MembersGroupPage(navCtrl, actionSheetCtrl, TripsService, SignUpService, sendCoordsService, modalCtrl, AngularFireAuth, viewCtrl, navParams, geoFireService, instances, toastCtrl, alertCtrl, app, afDB) {
+var LoginPage = /** @class */ (function () {
+    function LoginPage(navCtrl, authenticationService, alertCtrl, AngularFireAuth, NavParams, SignUpService, formBuilder, platform, toastCtrl, loadingCtrl) {
         this.navCtrl = navCtrl;
-        this.actionSheetCtrl = actionSheetCtrl;
-        this.TripsService = TripsService;
-        this.SignUpService = SignUpService;
-        this.sendCoordsService = sendCoordsService;
-        this.modalCtrl = modalCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.viewCtrl = viewCtrl;
-        this.navParams = navParams;
-        this.geoFireService = geoFireService;
-        this.instances = instances;
-        this.toastCtrl = toastCtrl;
+        this.authenticationService = authenticationService;
         this.alertCtrl = alertCtrl;
-        this.app = app;
-        this.afDB = afDB;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.infoUser = {};
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_7_rxjs__["Subject"];
-        this.groups = [];
-        this.passengers = [];
-        this.group = this.navParams.get('group');
-        console.log(this.groupKey);
-        //   this.sendCoordsService.getGroupPendingUsers( this.userUid,this.groupKey).takeUntil(this.unsubscribe)
-        //     .subscribe( users => {
-        // 		this.passengers = users;			
-        // 		console.log(this.passengers);
-        // 	})	
+        this.AngularFireAuth = AngularFireAuth;
+        this.NavParams = NavParams;
+        this.SignUpService = SignUpService;
+        this.formBuilder = formBuilder;
+        this.platform = platform;
+        this.toastCtrl = toastCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.email = '';
+        this.auth = this.AngularFireAuth.auth;
+        this.loginGroup = this.formBuilder.group({
+            email: ["", __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            password: ["", __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required]
+        });
     }
-    MembersGroupPage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
+    LoginPage.prototype.signup = function () {
+        this.navCtrl.push('TypeOfLoginPage');
     };
-    MembersGroupPage.prototype.showProfilePassegner = function (passenger) {
-        this.app.getRootNav().push('DriverPublicProfilePage', { passenger: passenger });
-        this.accepted = true;
-        this.dismiss();
-    };
-    MembersGroupPage.prototype.cancelgroup = function () {
-        var _this = this;
-        this.geoFireService.deleteUserGeofireDest(this.SignUpService.userPlace, this.groupKey);
-        this.geoFireService.deleteUserGeofireOr(this.SignUpService.userPlace, this.groupKey);
-        this.passengers.forEach(function (user) {
-            _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + user.userId + '/mygroups/' + _this.groupKey).update({
-                cancelgroup: true
+    ;
+    LoginPage.prototype.resetPassword = function (email) {
+        if (this.loginGroup.controls['email'].value == '') {
+            var alert_1 = this.alertCtrl.create({
+                title: 'no hay ningun email',
+                subTitle: 'ingresa un email para resetear tu contraseña',
+                buttons: ['OK']
             });
-        });
-        // this.TripsService.cancelgroup(this.SignUpService.userPlace, this.userUid,this.groupKey);
-        this.dismiss();
+            alert_1.present();
+            console.log("reset password email hasn't been sent");
+        }
+        else {
+            this.auth.sendPasswordResetEmail(this.loginGroup.controls['email'].value);
+            var alert_2 = this.alertCtrl.create({
+                title: 'revisa tu email',
+                subTitle: 'un correo te ha sido enviado para resetear tu contraseña',
+                buttons: ['OK']
+            });
+            alert_2.present();
+            console.log("reset password email has been sent");
+        }
+        ;
     };
-    MembersGroupPage.prototype.presentActionSheet = function (userId, nameUser) {
+    ;
+    LoginPage.prototype.logIn = function () {
         var _this = this;
-        var actionSheet = this.actionSheetCtrl.create({
-            title: 'Opciones',
-            buttons: [
-                {
-                    text: 'Cancelar Usuario',
-                    role: 'destructive',
-                    handler: function () {
-                        _this.deleteUser(userId, nameUser);
-                    }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
+        var loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: "\n              <div class=\"custom-spinner-container\">\n                <div class=\"custom-spinner-box\"></div>\n              </div>"
+        });
+        loading.present();
+        this.receivedUser = this.NavParams.data;
+        var email = this.loginGroup.controls['email'].value;
+        var password = this.loginGroup.controls['password'].value;
+        this.authenticationService.loginWithEmail(email, password).then(function (data) {
+            console.log(data);
+            if (data.user.emailVerified == false) {
+                loading.dismiss();
+                var alert_3 = _this.alertCtrl.create({
+                    title: 'Oops!',
+                    subTitle: 'por favor verifica tu email',
+                    buttons: ['OK']
+                });
+                alert_3.present();
+            }
+            else {
+                var metadata = _this.auth.currentUser.metadata;
+                if (metadata.creationTime === metadata.lastSignInTime) {
+                    console.log(metadata.creationTime);
+                    console.log(metadata.lastSignInTime);
+                    // this.navCtrl.setRoot('TabsPage');
+                    setTimeout(function () {
+                        if (_this.navCtrl.getActive().id === 'LoginPage') {
+                            loading.dismiss();
+                            _this.navCtrl.setRoot('FindridePassPage');
+                        }
+                        else {
+                            loading.dismiss();
+                            console.log('actuo el abservable');
+                        }
+                    }, 500);
                 }
-            ]
-        });
-        actionSheet.present();
-    };
-    MembersGroupPage.prototype.deleteUser = function (userId, nameUser) {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Eliminar Usuario',
-            message: "\u00BFEstas que deseas eliminar a este a " + nameUser + " de tu viaje?,borrar muchos usuarios por d\u00EDa/semana esta en contra de nuestras pol\u00EDticas",
-            buttons: [{
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: function () {
-                    }
-                },
-                {
-                    text: 'Eliminar',
-                    handler: function () {
-                        _this.afDB.database.ref(_this.SignUpService.userPlace + '/users/' + userId + '/mygroups/' + _this.groupKey).update({
-                            cancelgroup: true
-                        });
-                        _this.sendCoordsService.eraseUser(_this.SignUpService.userPlace, userId, _this.userUid, _this.groupKey);
-                        _this.dismiss();
-                        _this.presentToast("Haz eliminado a " + nameUser + " de tu viaje", 3000, 'bottom');
-                    }
+                else {
+                    setTimeout(function () {
+                        if (_this.navCtrl.getActive().id === 'LoginPage') {
+                            _this.navCtrl.setRoot('FindridePassPage');
+                            loading.dismiss();
+                        }
+                        else {
+                            loading.dismiss();
+                            console.log('actuo el abservable');
+                        }
+                    }, 500);
                 }
-            ]
+                _this.authenticationService.getStatus;
+            }
+            ;
+        }).catch(function (error) {
+            loading.dismiss();
+            var alert = _this.alertCtrl.create({
+                title: 'Oops!',
+                subTitle: 'El usuario o la contraseña están incorrectas',
+                buttons: ['OK']
+            });
+            alert.present();
+            console.log(error);
         });
-        alert.present();
+        localStorage.setItem('currentUser', 'user');
     };
-    MembersGroupPage.prototype.presentToast = function (message, duration, position) {
-        var toast = this.toastCtrl.create({
-            message: message,
-            duration: duration,
-            position: position
-        });
-        toast.present();
-    };
-    MembersGroupPage.prototype.dismiss = function () {
-        console.log('deleted on click');
-        this.viewCtrl.dismiss(this.accepted);
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    };
-    MembersGroupPage = __decorate([
+    LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-membersgroup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-membersgroup/membersgroup.html"*/'<ion-header class="bg-theme-driver title">\n    <ion-navbar >\n        <ion-title >Tus compañeros\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content  style="background-color: rgba(255, 255, 255, 0.959);">\n    <button (click)="showRoute()" class="btn bg-theme-driver text-white rounded" > Ver Ruta</button>\n\n         <ion-card *ngFor = "let passenger of passengers">\n               <ion-item>\n                   <ion-avatar item-start style="border-radius: 0%;">\n                    <img  style="height:70px; width: 70px;" src="assets/imgs/userPicture.png">\n                </ion-avatar>\n                   <div class="name">\n                       <h2>{{passenger.name |titlecase}} {{passenger.lastname | titlecase}}.\n                         <ion-icon *ngIf=\'passenger.verifiedPerson\' name="ios-checkmark-circle" class="text-darkblue"></ion-icon>\n                       </h2>\n\n                         <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{passenger.company}}</ion-badge>\n                    </div>\n                   <div class="more" item-end>\n                           <ion-icon name="md-more"  (click)="presentActionSheet(passenger.userId,passenger.name)"></ion-icon>\n                   </div>\n               </ion-item>\n               <ion-card-content>\n                   <div class="ride-detail">\n                       <p><small></small>\n                           <span class="icon-location bg-theme-driver"></span>{{passenger.origin.name}}</p>\n                       <p><small></small>\n                           <span class="icon-location bg-yellow"></span>{{passenger.destination.name}}</p>\n                   </div>\n                   \n               </ion-card-content>         \n         \n\n           </ion-card>\n           <div style=" display: flex; justify-content: center;">\n            <button (click)="cancelReserve()" class="btn bg-theme-driver text-white rounded" > Cancelar Reserva </button>\n\n           </div>\n\n </ion-content>\n\n '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-membersgroup/membersgroup.html"*/
+            selector: 'page-login',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-login/login.html"*/'<ion-header class="transparent">\n    <ion-navbar>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="logo">\n        <img src="assets/imgs/logo waypool-01.png" alt="logo">\n    </div>\n\n    <div class="bg-white login">\n        <div class="">\n         <form [formGroup]="loginGroup" (ngSubmit)="logIn()">\n            <ion-list class="form">\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="email"  text-right  formControlName="email" placeholder= "email"></ion-input>\n                </ion-item>\n                <ion-item> \n                    <ion-label></ion-label>\n                    <ion-input type="password" text-right  formControlName="password" placeholder= "Tú contraseña"></ion-input>\n                </ion-item>\n            </ion-list>\n            <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!loginGroup.valid">ENTRAR</button>\n\n            <br>\n         </form>\n         <button ion-button full class="bg-darkblue text-white btn rounded" (click)="signup()" >REGÍSTRATE</button>\n\n\n            <ion-row style="padding-top: 30px;">\n                <ion-col text-right (click)="resetPassword(email)"><small>Olvidaste tu <strong class="text-theme">contraseña?</strong></small></ion-col>\n            </ion-row>\n           \n\n        </div>\n    </div>\n</ion-content>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-login/login.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_8__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_3__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5__services_d_geofire_services__["a" /* DriverGeofireService */], __WEBPACK_IMPORTED_MODULE_6__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__["AngularFireDatabase"]])
-    ], MembersGroupPage);
-    return MembersGroupPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
+    ], LoginPage);
+    return LoginPage;
 }());
 
-//# sourceMappingURL=membersgroup.js.map
+//# sourceMappingURL=login.js.map
 
 /***/ })
 

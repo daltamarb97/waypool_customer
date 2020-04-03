@@ -60,10 +60,10 @@ ionViewDidLeave(){
  		}
   
 		 cancelgroup(){
-			this.geoFireService.deleteUserGeofireDest(this.SignUpService.userPlace, this.groupKey);
-			this.geoFireService.deleteUserGeofireOr(this.SignUpService.userPlace, this.groupKey);
+			this.geoFireService.deleteUserGeofireDest( this.groupKey);
+			this.geoFireService.deleteUserGeofireOr( this.groupKey);
 			this.passengers.forEach(user => {
-				this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+user.userId+'/mygroups/'+ this.groupKey).update({
+				this.afDB.database.ref( '/usersTest/'+user.userId+'/mygroups/'+ this.groupKey).update({
 					cancelgroup:true
 				});
 			});
@@ -112,10 +112,10 @@ ionViewDidLeave(){
 					{
 						text: 'Eliminar',
 						handler: () => {
-							this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+userId+'/mygroups/'+ this.groupKey).update({
+							this.afDB.database.ref( '/usersTest/'+userId+'/mygroups/'+ this.groupKey).update({
 								cancelgroup:true
 							});
-							this.sendCoordsService.eraseUser(this.SignUpService.userPlace, userId,this.userUid,this.groupKey );
+							this.sendCoordsService.eraseUser(userId,this.userUid,this.groupKey );
 							
 							this.dismiss();
 							this.presentToast(`Haz eliminado a ${nameUser} de tu viaje`, 3000, 'bottom')

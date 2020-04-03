@@ -1,4 +1,4 @@
-webpackJsonp([66],{
+webpackJsonp([65],{
 
 /***/ 200:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -272,84 +272,84 @@ webpackEmptyAsyncContext.id = 239;
 
 var map = {
 	"../pages/add-schedule/add-schedule.module": [
-		648,
-		65
-	],
-	"../pages/canceltrip/driverCanceltrip.module": [
 		645,
 		64
 	],
-	"../pages/car-registration-login/car-registration-login.module": [
-		695,
+	"../pages/canceltrip/driverCanceltrip.module": [
+		646,
 		63
 	],
-	"../pages/car-registration/car-registration.module": [
-		696,
+	"../pages/car-registration-login/car-registration-login.module": [
+		695,
 		62
 	],
-	"../pages/chats/driverChats.module": [
-		646,
+	"../pages/car-registration/car-registration.module": [
+		694,
 		61
 	],
-	"../pages/chatting/driverChatting.module": [
+	"../pages/chats/driverChats.module": [
 		647,
 		60
 	],
-	"../pages/confirmprice/driverConfirmprice.module": [
-		650,
+	"../pages/chatting/driverChatting.module": [
+		648,
 		59
 	],
-	"../pages/confirmtrip/driverConfirmtrip.module": [
+	"../pages/confirmprice/driverConfirmprice.module": [
 		649,
 		58
 	],
+	"../pages/confirmtrip/driverConfirmtrip.module": [
+		650,
+		57
+	],
 	"../pages/detailsreserve/driverDetailsreserve.module": [
 		651,
-		57
+		56
 	],
 	"../pages/earn/earn.module": [
 		652,
-		56
+		55
 	],
 	"../pages/findride/driverFindride.module": [
-		708,
-		55
+		707,
+		54
 	],
 	"../pages/help/driverHelp.module": [
 		653,
-		54
+		53
 	],
 	"../pages/more/driverMore.module": [
 		654,
-		53
+		52
 	],
 	"../pages/myride/driverMyride.module": [
-		703,
+		701,
 		5
 	],
 	"../pages/onetripprice/onetripprice.module": [
 		655,
-		52
+		51
 	],
 	"../pages/p-bikemode/bikemode.module": [
-		704,
-		51
+		702,
+		50
 	],
 	"../pages/p-canceltrip/canceltrip.module": [
 		656,
-		50
+		49
 	],
 	"../pages/p-changecar/changecar.module": [
 		657,
-		49
+		48
 	],
 	"../pages/p-chatting/chatting.module": [
 		658,
-		48
+		47
 	],
 	"../pages/p-confirm-reservation/confirm-reservation.module": [
 		659,
-		47
+		46
 	],
 	"../pages/p-confirmnote/confirmnote.module": [
 		660,
@@ -357,170 +357,166 @@ var map = {
 	],
 	"../pages/p-confirmpopup/confirmpopup.module": [
 		661,
-		46
+		45
 	],
 	"../pages/p-confirmtrip/confirmtrip.module": [
 		662,
-		45
-	],
-	"../pages/p-createcrew/createcrew.module": [
-		663,
 		44
 	],
-	"../pages/p-creategroup/creategroup.module": [
-		664,
+	"../pages/p-createcrew/createcrew.module": [
+		703,
 		43
 	],
+	"../pages/p-creategroup/creategroup.module": [
+		663,
+		42
+	],
 	"../pages/p-findride/findride.module": [
-		710,
+		709,
 		3
 	],
 	"../pages/p-groupdetail/groupdetail.module": [
-		666,
-		42
+		664,
+		41
 	],
 	"../pages/p-help/help.module": [
 		665,
-		41
-	],
-	"../pages/p-listride/listride.module": [
-		709,
 		40
 	],
-	"../pages/p-login/login.module": [
-		667,
+	"../pages/p-listride/listride.module": [
+		708,
 		39
 	],
-	"../pages/p-membersgroup/membersgroup.module": [
-		668,
+	"../pages/p-login/login.module": [
+		666,
 		38
 	],
-	"../pages/p-more/more.module": [
-		669,
+	"../pages/p-membersgroup/membersgroup.module": [
+		667,
 		37
 	],
-	"../pages/p-myride/myride.module": [
-		697,
+	"../pages/p-more/more.module": [
+		668,
 		36
 	],
-	"../pages/p-profile/profile.module": [
-		670,
+	"../pages/p-myride/myride.module": [
+		696,
 		35
 	],
-	"../pages/p-public-profile/public-profile.module": [
-		671,
+	"../pages/p-profile/profile.module": [
+		669,
 		34
 	],
-	"../pages/p-ratetrip/ratetrip.module": [
-		672,
+	"../pages/p-public-profile/public-profile.module": [
+		670,
 		33
 	],
-	"../pages/p-reserveinfo/reserveinfo.module": [
-		673,
+	"../pages/p-ratetrip/ratetrip.module": [
+		671,
 		32
 	],
-	"../pages/p-reservetrip/reservetrip.module": [
-		674,
+	"../pages/p-reserveinfo/reserveinfo.module": [
+		672,
 		31
 	],
-	"../pages/p-signup/signup.module": [
-		705,
+	"../pages/p-reservetrip/reservetrip.module": [
+		673,
 		30
 	],
-	"../pages/p-support/support.module": [
-		675,
+	"../pages/p-signup/signup.module": [
+		704,
 		29
 	],
-	"../pages/p-terms/terms.module": [
-		676,
+	"../pages/p-support/support.module": [
+		674,
 		28
 	],
+	"../pages/p-terms/terms.module": [
+		675,
+		27
+	],
 	"../pages/p-tripbike/tripbike.module": [
-		698,
+		697,
 		2
 	],
 	"../pages/p-verification-images/verification-images.module": [
-		678,
-		27
+		676,
+		26
 	],
 	"../pages/p-verification-number/verification-number.module": [
 		677,
-		26
-	],
-	"../pages/p-walkthrough/walkthrough.module": [
-		679,
 		25
 	],
-	"../pages/p-wallet/wallet.module": [
-		680,
+	"../pages/p-walkthrough/walkthrough.module": [
+		678,
 		24
 	],
-	"../pages/payments-info/payments-info.module": [
-		681,
+	"../pages/p-wallet/wallet.module": [
+		679,
 		23
 	],
+	"../pages/payments-info/payments-info.module": [
+		680,
+		22
+	],
 	"../pages/pickup/pickup.module": [
-		706,
+		705,
 		1
 	],
 	"../pages/profile/driverProfile.module": [
-		683,
-		22
+		681,
+		21
 	],
 	"../pages/public-profile/driver-public-profile.module": [
 		682,
-		21
-	],
-	"../pages/ratetrip/driverRatetrip.module": [
-		684,
 		20
 	],
-	"../pages/remove-schedule/remove-schedule.module": [
-		685,
+	"../pages/ratetrip/driverRatetrip.module": [
+		683,
 		19
 	],
+	"../pages/remove-schedule/remove-schedule.module": [
+		684,
+		18
+	],
 	"../pages/reservetrip/driverReservetrip.module": [
-		699,
+		698,
 		0
 	],
 	"../pages/schedule/schedule.module": [
-		707,
-		18
-	],
-	"../pages/showinfocar/showinfocar.module": [
-		686,
+		706,
 		17
 	],
-	"../pages/signup/driverSignup.module": [
-		700,
+	"../pages/showinfocar/showinfocar.module": [
+		685,
 		16
 	],
 	"../pages/specifyorigin/specifyorigin.module": [
-		702,
+		699,
 		15
 	],
 	"../pages/specifyroute/specifyroute.module": [
-		701,
+		700,
 		14
 	],
 	"../pages/successnotification/successnotification.module": [
-		687,
+		686,
 		6
 	],
 	"../pages/support/driverSupport.module": [
-		688,
+		687,
 		13
 	],
 	"../pages/terms/driverTerms.module": [
-		689,
+		688,
 		12
 	],
 	"../pages/type-of-login/type-of-login.module": [
-		690,
+		689,
 		11
 	],
 	"../pages/verification-images/driver-verification-images.module": [
-		692,
+		690,
 		10
 	],
 	"../pages/verification-number/driver-verification-number.module": [
@@ -528,11 +524,11 @@ var map = {
 		9
 	],
 	"../pages/walkthrough/driverWalkthrough.module": [
-		693,
+		692,
 		8
 	],
 	"../pages/wallet/driverWallet.module": [
-		694,
+		693,
 		7
 	]
 };
@@ -1383,125 +1379,6 @@ var DriverGeofireService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSendUsersService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-// import { UrlSerializer } from "ionic-angular";
-// import { useAnimation } from "@angular/core/src/animation/dsl";
-// import * as firebase from 'firebase';
-// import { AngularFireAuth } from "angularfire2/auth";
-var DriverSendUsersService = /** @class */ (function () {
-    function DriverSendUsersService(afDB) {
-        this.afDB = afDB;
-    }
-    DriverSendUsersService.prototype.getUsersOnListRide = function (userUid) {
-        // Get all the students from the usersListRide
-        return this.afDB.list('/driversTest/' + userUid + '/tripsTest/usersListRide').valueChanges();
-    };
-    DriverSendUsersService.prototype.getTripsOfReserves = function (userUid) {
-        // Get all the trips the driver have reserve
-        return this.afDB.list('/reservesTest/' + userUid).valueChanges();
-    };
-    DriverSendUsersService.prototype.getUsersOnTrip = function (userUid) {
-        // Get all the students the driver acepts in myListRidePage to be send to the students
-        return this.afDB.list('/driversTest/' + userUid + '/tripsTest/pickingUsers').valueChanges();
-    };
-    DriverSendUsersService.prototype.getPickUpUsers = function (userUid) {
-        //get all the users from the pickUpUsers []
-        return this.afDB.list('/driversTest/' + userUid + '/tripsTest/pickedUpUsers').valueChanges();
-    };
-    DriverSendUsersService.prototype.removeReserve = function (driverId, keyReserve) {
-        //remove the reserve done
-        this.afDB.database.ref('/reservesTest/' + driverId + '/' + keyReserve).remove();
-    };
-    DriverSendUsersService.prototype.removeUsersOnListRideTotal = function (userUid) {
-        //send the information of every student the driver acepts in myRide
-        this.afDB.database.ref('/driversTest/' + userUid + '/tripsTest/usersListRide/').remove();
-    };
-    DriverSendUsersService.prototype.removeUsersOnPickingUsers = function (userUid, userId) {
-        //send the information of every student the driver acepts in myRide
-        this.afDB.database.ref('/driversTest/' + userUid + '/tripsTest/pickingUsers/' + userId).remove();
-        this.afDB.database.ref('/usersTest/' + userId + '/tripsTest/pickingUsers/driver/' + userUid).remove();
-    };
-    DriverSendUsersService.prototype.pushPickingUpUsersOnDrivers = function (userUid, userId, origin, destination, name, lastname, phone, about) {
-        //send the information of every student the driver acepts in myRide
-        this.afDB.database.ref('/driversTest/' + userUid + '/tripsTest/pickingUsers/' + userId).update({
-            origin: origin,
-            destination: destination,
-            name: name,
-            lastname: lastname,
-            phone: phone,
-            userId: userId,
-            about: about
-        });
-    };
-    DriverSendUsersService.prototype.pushDriverOnUsers = function (userUid, userId, origin, destination, name, lastname, phone, price, car, about) {
-        //send the driver information to the students
-        this.afDB.database.ref('/usersTest/' + userId + '/tripsTest/pickingUsers/driver/' + userUid).update({
-            origin: origin,
-            destination: destination,
-            name: name,
-            lastname: lastname,
-            phone: phone,
-            userId: userUid,
-            car: car,
-            price: price,
-            about: about
-        });
-    };
-    DriverSendUsersService.prototype.pushTripOnRecordDriver = function (userUid) {
-        //historial
-        this.afDB.database.ref('/driversTest/' + userUid + '/trips').push();
-    };
-    DriverSendUsersService.prototype.getRecordTrips = function (userUid) {
-        return this.afDB.list('/driversTest/' + userUid + '/recordTrips/').valueChanges();
-    };
-    DriverSendUsersService.prototype.badgeTrue = function (userUid) {
-        this.afDB.database.ref('/driversTest/' + userUid).update({
-            badgePicking: true
-        });
-    };
-    DriverSendUsersService.prototype.badgeFalse = function (userUid) {
-        this.afDB.database.ref('/driversTest/' + userUid).update({
-            badgePicking: false
-        });
-    };
-    DriverSendUsersService.prototype.badgeTrueOntrip = function (userUid) {
-        this.afDB.database.ref('/driversTest/' + userUid).update({
-            badgeOntrip: true
-        });
-    };
-    DriverSendUsersService.prototype.badgeFalseOntrip = function (userUid) {
-        this.afDB.database.ref('/driversTest/' + userUid).update({
-            badgeOntrip: false
-        });
-    };
-    DriverSendUsersService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
-    ], DriverSendUsersService);
-    return DriverSendUsersService;
-}());
-
-//# sourceMappingURL=d-sendUsers.service.js.map
-
-/***/ }),
-
-/***/ 352:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverInstancesService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
@@ -1629,18 +1506,13 @@ var DriverInstancesService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 353:
+/***/ 352:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverAuthenticationService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSendUsersService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1652,63 +1524,108 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-var DriverAuthenticationService = /** @class */ (function () {
-    function DriverAuthenticationService(angularFireAuth, afDB) {
-        this.angularFireAuth = angularFireAuth;
+// import { UrlSerializer } from "ionic-angular";
+// import { useAnimation } from "@angular/core/src/animation/dsl";
+// import * as firebase from 'firebase';
+// import { AngularFireAuth } from "angularfire2/auth";
+var DriverSendUsersService = /** @class */ (function () {
+    function DriverSendUsersService(afDB) {
         this.afDB = afDB;
     }
-    DriverAuthenticationService.prototype.loginWithEmail = function (email, password) {
-        return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
+    DriverSendUsersService.prototype.getUsersOnListRide = function (userUid) {
+        // Get all the students from the usersListRide
+        return this.afDB.list('/driversTest/' + userUid + '/tripsTest/usersListRide').valueChanges();
     };
-    DriverAuthenticationService.prototype.sendVerificationCodeToFirebase = function (userId, code) {
-        this.afDB.database.ref('/driversTest/' + userId).update({
-            verificationCode: code
+    DriverSendUsersService.prototype.getTripsOfReserves = function (userUid) {
+        // Get all the trips the driver have reserve
+        return this.afDB.list('/reservesTest/' + userUid).valueChanges();
+    };
+    DriverSendUsersService.prototype.getUsersOnTrip = function (userUid) {
+        // Get all the students the driver acepts in myListRidePage to be send to the students
+        return this.afDB.list('/driversTest/' + userUid + '/tripsTest/pickingUsers').valueChanges();
+    };
+    DriverSendUsersService.prototype.getPickUpUsers = function (userUid) {
+        //get all the users from the pickUpUsers []
+        return this.afDB.list('/driversTest/' + userUid + '/tripsTest/pickedUpUsers').valueChanges();
+    };
+    DriverSendUsersService.prototype.removeReserve = function (driverId, keyReserve) {
+        //remove the reserve done
+        this.afDB.database.ref('/reservesTest/' + driverId + '/' + keyReserve).remove();
+    };
+    DriverSendUsersService.prototype.removeUsersOnListRideTotal = function (userUid) {
+        //send the information of every student the driver acepts in myRide
+        this.afDB.database.ref('/driversTest/' + userUid + '/tripsTest/usersListRide/').remove();
+    };
+    DriverSendUsersService.prototype.removeUsersOnPickingUsers = function (userUid, userId) {
+        //send the information of every student the driver acepts in myRide
+        this.afDB.database.ref('/driversTest/' + userUid + '/tripsTest/pickingUsers/' + userId).remove();
+        this.afDB.database.ref('/usersTest/' + userId + '/tripsTest/pickingUsers/driver/' + userUid).remove();
+    };
+    DriverSendUsersService.prototype.pushPickingUpUsersOnDrivers = function (userUid, userId, origin, destination, name, lastname, phone, about) {
+        //send the information of every student the driver acepts in myRide
+        this.afDB.database.ref('/driversTest/' + userUid + '/tripsTest/pickingUsers/' + userId).update({
+            origin: origin,
+            destination: destination,
+            name: name,
+            lastname: lastname,
+            phone: phone,
+            userId: userId,
+            about: about
         });
     };
-    DriverAuthenticationService.prototype.deleteVerificationCode = function (userId) {
-        this.afDB.database.ref('/driversTest/' + userId + '/verificationCode/').remove();
-    };
-    DriverAuthenticationService.prototype.resendVerificationCode = function (userId) {
-        this.afDB.database.ref('/driversTest/' + userId).update({
-            resendVerificationCode: true
+    DriverSendUsersService.prototype.pushDriverOnUsers = function (userUid, userId, origin, destination, name, lastname, phone, price, car, about) {
+        //send the driver information to the students
+        this.afDB.database.ref('/usersTest/' + userId + '/tripsTest/pickingUsers/driver/' + userUid).update({
+            origin: origin,
+            destination: destination,
+            name: name,
+            lastname: lastname,
+            phone: phone,
+            userId: userUid,
+            car: car,
+            price: price,
+            about: about
         });
     };
-    DriverAuthenticationService.prototype.deleteverificationCodeApproval = function (userId) {
-        this.afDB.database.ref('/driversTest/' + userId + '/verificationCodeApproval/').remove();
+    DriverSendUsersService.prototype.pushTripOnRecordDriver = function (userUid) {
+        //historial
+        this.afDB.database.ref('/driversTest/' + userUid + '/trips').push();
     };
-    DriverAuthenticationService.prototype.deleteResendCode = function (userId) {
-        this.afDB.database.ref('/driversTest/' + userId + '/resendVerificationCode/').remove();
+    DriverSendUsersService.prototype.getRecordTrips = function (userUid) {
+        return this.afDB.list('/driversTest/' + userUid + '/recordTrips/').valueChanges();
     };
-    DriverAuthenticationService.prototype.registerWithEmail = function (email, password) {
-        return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password);
+    DriverSendUsersService.prototype.badgeTrue = function (userUid) {
+        this.afDB.database.ref('/driversTest/' + userUid).update({
+            badgePicking: true
+        });
     };
-    DriverAuthenticationService.prototype.getStatus = function () {
-        return this.angularFireAuth.authState;
+    DriverSendUsersService.prototype.badgeFalse = function (userUid) {
+        this.afDB.database.ref('/driversTest/' + userUid).update({
+            badgePicking: false
+        });
     };
-    DriverAuthenticationService.prototype.logOut = function () {
-        return this.angularFireAuth.auth.signOut();
+    DriverSendUsersService.prototype.badgeTrueOntrip = function (userUid) {
+        this.afDB.database.ref('/driversTest/' + userUid).update({
+            badgeOntrip: true
+        });
     };
-    DriverAuthenticationService.prototype.resetPassword = function (email) {
-        var auth = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]();
-        return auth.sendPasswordResetEmail(email)
-            .then(function () { return console.log("email sent"); })
-            .catch(function (error) { return console.log(error); });
+    DriverSendUsersService.prototype.badgeFalseOntrip = function (userUid) {
+        this.afDB.database.ref('/driversTest/' + userUid).update({
+            badgeOntrip: false
+        });
     };
-    ;
-    DriverAuthenticationService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"]])
-    ], DriverAuthenticationService);
-    return DriverAuthenticationService;
+    DriverSendUsersService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
+    ], DriverSendUsersService);
+    return DriverSendUsersService;
 }());
 
-//# sourceMappingURL=d-driverauthentication.service.js.map
+//# sourceMappingURL=d-sendUsers.service.js.map
 
 /***/ }),
 
-/***/ 354:
+/***/ 353:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1968,6 +1885,85 @@ var DriverTripsService = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=d-trips.service.js.map
+
+/***/ }),
+
+/***/ 354:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverAuthenticationService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var DriverAuthenticationService = /** @class */ (function () {
+    function DriverAuthenticationService(angularFireAuth, afDB) {
+        this.angularFireAuth = angularFireAuth;
+        this.afDB = afDB;
+    }
+    DriverAuthenticationService.prototype.loginWithEmail = function (email, password) {
+        return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
+    };
+    DriverAuthenticationService.prototype.sendVerificationCodeToFirebase = function (userId, code) {
+        this.afDB.database.ref('/driversTest/' + userId).update({
+            verificationCode: code
+        });
+    };
+    DriverAuthenticationService.prototype.deleteVerificationCode = function (userId) {
+        this.afDB.database.ref('/driversTest/' + userId + '/verificationCode/').remove();
+    };
+    DriverAuthenticationService.prototype.resendVerificationCode = function (userId) {
+        this.afDB.database.ref('/driversTest/' + userId).update({
+            resendVerificationCode: true
+        });
+    };
+    DriverAuthenticationService.prototype.deleteverificationCodeApproval = function (userId) {
+        this.afDB.database.ref('/driversTest/' + userId + '/verificationCodeApproval/').remove();
+    };
+    DriverAuthenticationService.prototype.deleteResendCode = function (userId) {
+        this.afDB.database.ref('/driversTest/' + userId + '/resendVerificationCode/').remove();
+    };
+    DriverAuthenticationService.prototype.registerWithEmail = function (email, password) {
+        return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password);
+    };
+    DriverAuthenticationService.prototype.getStatus = function () {
+        return this.angularFireAuth.authState;
+    };
+    DriverAuthenticationService.prototype.logOut = function () {
+        return this.angularFireAuth.auth.signOut();
+    };
+    DriverAuthenticationService.prototype.resetPassword = function (email) {
+        var auth = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]();
+        return auth.sendPasswordResetEmail(email)
+            .then(function () { return console.log("email sent"); })
+            .catch(function (error) { return console.log(error); });
+    };
+    ;
+    DriverAuthenticationService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"]])
+    ], DriverAuthenticationService);
+    return DriverAuthenticationService;
+}());
+
+//# sourceMappingURL=d-driverauthentication.service.js.map
 
 /***/ }),
 
@@ -3197,42 +3193,9 @@ var noteService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverWindowService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var DriverWindowService = /** @class */ (function () {
-    function DriverWindowService() {
-    }
-    Object.defineProperty(DriverWindowService.prototype, "windowRef", {
-        get: function () {
-            return window;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    DriverWindowService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
-    ], DriverWindowService);
-    return DriverWindowService;
-}());
-
-//# sourceMappingURL=d-window.service.js.map
-
-/***/ }),
-
-/***/ 374:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(375);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(495);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(494);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -3240,7 +3203,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 495:
+/***/ 494:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3249,13 +3212,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(638);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(637);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_maps__ = __webpack_require__(639);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_maps__ = __webpack_require__(638);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_fire_auth__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_fire_auth__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_userauthentication_service__ = __webpack_require__(359);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_firebase__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geolocation__ = __webpack_require__(201);
@@ -3267,30 +3230,30 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_common__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_instances_service__ = __webpack_require__(357);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_signup_services__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_native_geocoder_ngx__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_native_geocoder_ngx__ = __webpack_require__(641);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_email_composer_ngx__ = __webpack_require__(371);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_sendFeedback_service__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_chat_service__ = __webpack_require__(369);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_reserves_service__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_trips_service__ = __webpack_require__(358);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_environment_service__ = __webpack_require__(643);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_location_accuracy__ = __webpack_require__(644);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_environment_service__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_location_accuracy__ = __webpack_require__(643);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__services_metrics_service__ = __webpack_require__(360);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_camera___ = __webpack_require__(361);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__ionic_native_fcm__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__ionic_native_clipboard___ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__services_d_chat_service__ = __webpack_require__(367);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__services_d_driverauthentication_service__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__services_d_driverauthentication_service__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__services_d_geofire_services__ = __webpack_require__(350);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__services_d_instances_services__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__services_d_instances_services__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__services_d_metrics_service__ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__services_d_price_service__ = __webpack_require__(365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_d_sendCoords_service__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_d_sendFeedback_service__ = __webpack_require__(364);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__services_d_sendUsers_service__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__services_d_sendUsers_service__ = __webpack_require__(352);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__services_d_trips_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__services_d_window_service__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__services_d_trips_service__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__services_d_window_service__ = __webpack_require__(644);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_social_sharing__ = __webpack_require__(368);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3365,12 +3328,12 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
+                        { loadChildren: '../pages/add-schedule/add-schedule.module#DriverAddSchedulePageModule', name: 'DriverAddSchedulePage', segment: 'add-schedule', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/canceltrip/driverCanceltrip.module#DriverCanceltripPageModule', name: 'DriverCanceltripPage', segment: 'driverCanceltrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chats/driverChats.module#DriverChatsPageModule', name: 'DriverChatsPage', segment: 'driverChats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chatting/driverChatting.module#DriverChattingPageModule', name: 'DriverChattingPage', segment: 'driverChatting', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/add-schedule/add-schedule.module#DriverAddSchedulePageModule', name: 'DriverAddSchedulePage', segment: 'add-schedule', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/confirmtrip/driverConfirmtrip.module#DriverConfirmtripPageModule', name: 'DriverConfirmtripPage', segment: 'driverConfirmtrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmprice/driverConfirmprice.module#DriverConfirmpricePageModule', name: 'DriverConfirmpricePage', segment: 'driverConfirmprice', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmtrip/driverConfirmtrip.module#DriverConfirmtripPageModule', name: 'DriverConfirmtripPage', segment: 'driverConfirmtrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/detailsreserve/driverDetailsreserve.module#DriverDetailsReservePagePageModule', name: 'DriverDetailsReservePage', segment: 'driverDetailsreserve', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/earn/earn.module#ReferalPageModule', name: 'ReferalPage', segment: 'earn', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/driverHelp.module#DriverHelpPageModule', name: 'DriverHelpPage', segment: 'driverHelp', priority: 'low', defaultHistory: [] },
@@ -3383,10 +3346,9 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-createcrew/createcrew.module#CreateCrewPageModule', name: 'CreateCrewPage', segment: 'createcrew', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-creategroup/creategroup.module#CreateGroupPageModule', name: 'CreateGroupPage', segment: 'creategroup', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-groupdetail/groupdetail.module#GroupDetailPageModule', name: 'GroupDetailPage', segment: 'groupdetail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-membersgroup/membersgroup.module#MembersGroupPageModule', name: 'MembersGroupPage', segment: 'membersgroup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
@@ -3397,13 +3359,13 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-verification-images/verification-images.module#VerificationImagesPageModule', name: 'VerificationImagesPage', segment: 'verification-images', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-walkthrough/walkthrough.module#WalkthroughPageModule', name: 'WalkthroughPage', segment: 'walkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/payments-info/payments-info.module#DriverPaymentsInfoPageModule', name: 'DriverPaymentsInfoPage', segment: 'payments-info', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/public-profile/driver-public-profile.module#DriverPublicProfilePageModule', name: 'DriverPublicProfilePage', segment: 'driver-public-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/driverProfile.module#DriverProfilePageModule', name: 'DriverProfilePage', segment: 'driverProfile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/public-profile/driver-public-profile.module#DriverPublicProfilePageModule', name: 'DriverPublicProfilePage', segment: 'driver-public-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ratetrip/driverRatetrip.module#DriverRatetripPageModule', name: 'DriverRatetripPage', segment: 'driverRatetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/remove-schedule/remove-schedule.module#DriverRemoveSchedulePageModule', name: 'DriverRemoveSchedulePage', segment: 'remove-schedule', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/showinfocar/showinfocar.module#DriverShowInfoCarPageModule', name: 'DriverShowInfoCarPage', segment: 'showinfocar', priority: 'low', defaultHistory: [] },
@@ -3411,20 +3373,20 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/support/driverSupport.module#DriverSupportPageModule', name: 'DriverSupportPage', segment: 'driverSupport', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms/driverTerms.module#DriverTermsPageModule', name: 'DriverTermsPage', segment: 'driverTerms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/type-of-login/type-of-login.module#TypeOfLoginPageModule', name: 'TypeOfLoginPage', segment: 'type-of-login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/verification-number/driver-verification-number.module#DrverVerificationNumberPageModule', name: 'DrverVerificationNumberPage', segment: 'driver-verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-images/driver-verification-images.module#DriverVerificationImagesPageModule', name: 'DriverVerificationImagesPage', segment: 'driver-verification-images', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/verification-number/driver-verification-number.module#DrverVerificationNumberPageModule', name: 'DrverVerificationNumberPage', segment: 'driver-verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/walkthrough/driverWalkthrough.module#DriverWalkthroughPageModule', name: 'DriverWalkthroughPage', segment: 'driverWalkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/driverWallet.module#DriverWalletPageModule', name: 'DriverWalletPage', segment: 'driverWallet', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/car-registration-login/car-registration-login.module#DriverCarRegistrationPageModule', name: 'DriverCarRegistrationLoginPage', segment: 'car-registration-login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/car-registration/car-registration.module#DriverUserVerificationPageModule', name: 'DriverUserVerificationPage', segment: 'car-registration', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/car-registration-login/car-registration-login.module#DriverCarRegistrationPageModule', name: 'DriverCarRegistrationLoginPage', segment: 'car-registration-login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-tripbike/tripbike.module#TripbikePageModule', name: 'TripbikePage', segment: 'tripbike', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reservetrip/driverReservetrip.module#DriverReservetripPageModule', name: 'DriverReservetripPage', segment: 'driverReservetrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/signup/driverSignup.module#DriverSignupPageModule', name: 'DriverSignupPage', segment: 'driverSignup', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/specifyroute/specifyroute.module#DriverSpecifyRoutePageModule', name: 'DriverSpecifyRoutePage', segment: 'specifyroute', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/specifyorigin/specifyorigin.module#DriverSpecifyOriginPageModule', name: 'DriverSpecifyOriginPage', segment: 'specifyorigin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/specifyroute/specifyroute.module#DriverSpecifyRoutePageModule', name: 'DriverSpecifyRoutePage', segment: 'specifyroute', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/myride/driverMyride.module#DriverMyridePageModule', name: 'DriverMyridePage', segment: 'driverMyride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-bikemode/bikemode.module#FindridePassPageModule', name: 'BikeModePage', segment: 'bikemode', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-createcrew/createcrew.module#CreateCrewPageModule', name: 'CreateCrewPage', segment: 'createcrew', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pickup/pickup.module#DriverPickupPageModule', name: 'DriverPickupPage', segment: 'pickup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/schedule/schedule.module#DriverSchedulePageModule', name: 'DriverSchedulePage', segment: 'schedule', priority: 'low', defaultHistory: [] },
@@ -3493,7 +3455,7 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 638:
+/***/ 637:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3713,22 +3675,21 @@ var MyApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/app/app.html"*/'<ion-menu [content]="content" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content>\n    <!-- user -->\n    <ion-list *ngIf=\'showUser === true\'>\n      <button menuClose ion-item *ngFor="let p of pagesUser" (click)="openPage(p)">\n        <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n          {{p.title}}                \n        </button>\n      <img src="assets/imgs/wanttodrive.png"  *ngFor="let p of wanttodrive" (click)="openPage(p)" alt="">\n      </ion-list>\n\n    <!-- driver -->\n    <ion-list *ngIf=\'showUser === false\'>\n        <button menuClose ion-item *ngFor="let p of pagesDriver" (click)="openPage(p)">\n          <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n          {{p.title}}                \n        </button>\n      \n      </ion-list>\n  </ion-content>\n</ion-menu>\n\n<!-- <ion-menu [content]="content" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pagesDriver" (click)="openPage(p)">\n        <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n        {{p.title}}                \n      </button>\n    \n    </ion-list>\n  </ion-content>\n</ion-menu> -->\n\n<ion-nav  #content [root]="rootPage"></ion-nav>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/app/app.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__["a" /* FCM */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__["a" /* FCM */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_firebase__["a" /* Firebase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_firebase__["a" /* Firebase */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__["AngularFireDatabase"]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _l || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
     ], MyApp);
     return MyApp;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 }());
 
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
 
-/***/ 643:
+/***/ 642:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3762,7 +3723,40 @@ var environmentService = /** @class */ (function () {
 
 //# sourceMappingURL=environment.service.js.map
 
+/***/ }),
+
+/***/ 644:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverWindowService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var DriverWindowService = /** @class */ (function () {
+    function DriverWindowService() {
+    }
+    Object.defineProperty(DriverWindowService.prototype, "windowRef", {
+        get: function () {
+            return window;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    DriverWindowService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
+    ], DriverWindowService);
+    return DriverWindowService;
+}());
+
+//# sourceMappingURL=d-window.service.js.map
+
 /***/ })
 
-},[374]);
+},[373]);
 //# sourceMappingURL=main.js.map

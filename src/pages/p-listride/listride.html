@@ -21,7 +21,7 @@
     
 </ion-header>
 
- <div [ngSwitch]="ride">
+ <!-- <div [ngSwitch]="ride">
             <ng-container *ngSwitchCase="'driver'">
     <ion-card >
         <ion-item>
@@ -31,7 +31,7 @@
             <div class="name">
                 <h2>Daniel Altamar
                     <ion-icon  name="ios-checkmark-circle" class="text-theme"></ion-icon>
-                    <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> Bancolombia</ion-badge>
+                    <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> Bancolombia</ion-badge> -->
 
 <ion-content class="bg-light" class="hideLongText" style="        background-color: rgba(255, 255, 255, 0.959);">
         
@@ -40,9 +40,13 @@
                         
                             <div [ngSwitch]="noCrew">
 
-                <p>Mazda | KHX089 | Plateado</p>
+                <!-- <p>Mazda | KHX089 | Plateado</p> -->
 
                                     <div *ngSwitchCase=true >
+                                            <ion-row style="padding-bottom: 60px">
+                                                    <button ion-button full class="bg-darkblue text-white btn rounded" (click)="createCrew()" >CREATE CREW</button>
+                
+                                            </ion-row>
                                             <img src="assets/imgs/noreserveavailable.png">
                                             <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
                                                 <ion-refresher-content

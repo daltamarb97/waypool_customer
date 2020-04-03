@@ -1,14 +1,14 @@
 webpackJsonp([44],{
 
-/***/ 663:
+/***/ 662:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateCrewPageModule", function() { return CreateCrewPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmtripPageModule", function() { return ConfirmtripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createcrew__ = __webpack_require__(859);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmtrip__ = __webpack_require__(857);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CreateCrewPageModule = /** @class */ (function () {
-    function CreateCrewPageModule() {
+var ConfirmtripPageModule = /** @class */ (function () {
+    function ConfirmtripPageModule() {
     }
-    CreateCrewPageModule = __decorate([
+    ConfirmtripPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__createcrew__["a" /* CreateCrewPage */],
+                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__createcrew__["a" /* CreateCrewPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__createcrew__["a" /* CreateCrewPage */]
+                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]
             ]
         })
-    ], CreateCrewPageModule);
-    return CreateCrewPageModule;
+    ], ConfirmtripPageModule);
+    return ConfirmtripPageModule;
 }());
 
-//# sourceMappingURL=createcrew.module.js.map
+//# sourceMappingURL=confirmtrip.module.js.map
 
 /***/ }),
 
-/***/ 859:
+/***/ 857:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateCrewPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmtripPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(123);
@@ -57,7 +57,9 @@ var CreateCrewPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_instances_service__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_geofire_services__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_trips_service__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__ = __webpack_require__(202);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -77,11 +79,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var CreateCrewPage = /** @class */ (function () {
-    function CreateCrewPage(navCtrl, sendUsersService, toastCtrl, viewCtrl, afDB, SignUpService, sendCoordsService, navParams, AngularFireAuth, geoFireService, instances, alertCtrl, geofireServicesDr) {
+
+
+var ConfirmtripPage = /** @class */ (function () {
+    function ConfirmtripPage(navCtrl, reservesService, sendUsersService, TripsService, toastCtrl, viewCtrl, afDB, SignUpService, sendCoordsService, navParams, AngularFireAuth, geoFireService, instances, alertCtrl) {
         var _this = this;
         this.navCtrl = navCtrl;
+        this.reservesService = reservesService;
         this.sendUsersService = sendUsersService;
+        this.TripsService = TripsService;
         this.toastCtrl = toastCtrl;
         this.viewCtrl = viewCtrl;
         this.afDB = afDB;
@@ -92,112 +98,91 @@ var CreateCrewPage = /** @class */ (function () {
         this.geoFireService = geoFireService;
         this.instances = instances;
         this.alertCtrl = alertCtrl;
-        this.geofireServicesDr = geofireServicesDr;
-        this.admin = {};
-        this.pointsAlongRoute = [];
-        this.indexesOfPointsAlongRoute = [];
-        this.count = 0;
-        this.userId = this.AngularFireAuth.auth.currentUser.uid;
-        // Getting info for creating crew in DB
-        this.afDB.database.ref('/usersTest/' + this.userId).once('value').then(function (snap) {
-            if (snap.val()) {
-                _this.admin = {
-                    city: snap.val().city,
-                    company: snap.val().company,
-                    name: snap.val().name,
-                    lastname: snap.val().lastname,
-                    phone: snap.val().phone,
-                    userId: snap.val().userId,
-                    verifiedPerson: snap.val().verifiedPerson,
-                };
-                _this.origin = snap.val().trips.origin[0];
-                _this.destination = snap.val().trips.destination[0];
-            }
-        });
-        this.latOr = this.navParams.get('latOr');
-        this.lngOr = this.navParams.get('lngOr');
-        this.latDest = this.navParams.get('latDest');
-        this.lngDest = this.navParams.get('lngDest');
-        this.pointsAlongRoute = this.navParams.get('pointsAlongRoute');
-        this.indexesOfPointsAlongRoute = this.navParams.get('indexesOfPointsAlongRoute');
-    }
-    CreateCrewPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    CreateCrewPage.prototype.setCrew = function () {
-        var _this = this;
-        if (this.startHour === undefined) {
-            var alert_1 = this.alertCtrl.create({
-                title: 'Por favor confirma la hora a la que iniciaría este viaje',
-                buttons: ['OK']
-            });
-            alert_1.present();
-        }
-        else {
-            //AQUI QUEDE
-            this.afDB.database.ref('/crewsTest/' + this.userId).push({
-                admin: this.admin,
-                startHour: this.startHour,
-                destination: {
-                    name: this.destination,
-                    coords: {
-                        lat: this.latDest,
-                        lng: this.lngDest
-                    }
-                },
-                origin: {
-                    name: this.origin,
-                    coords: {
-                        lat: this.latOr,
-                        lng: this.lngOr
-                    }
-                },
-            }).then(function (snap) {
-                var Key_Crew = snap.key;
-                _this.afDB.database.ref('/crewsTest/' + _this.userId + '/' + Key_Crew).update({
-                    crewId: Key_Crew
-                }).then(function () {
-                    _this.geofireServicesDr.setGeofireOrCrew(Key_Crew, _this.latOr, _this.lngOr);
-                    _this.afDB.database.ref('/geofireOrCrew/' + Key_Crew).update({
-                        adminId: _this.userId
-                    });
-                    console.log('executed geofire Or for crews');
-                    _this.geofireServicesDr.setGeofireDestCrew(Key_Crew, _this.latDest, _this.lngDest);
-                    _this.afDB.database.ref('/geofireDestCrew/' + Key_Crew).update({
-                        adminId: _this.userId
-                    });
-                    console.log('executed geofire dest');
-                    _this.indexesOfPointsAlongRoute.forEach(function (index) {
-                        _this.count++;
-                        var newKey = Key_Crew.concat(_this.count);
-                        _this.geofireServicesDr.setGeofireRouteCrew(newKey, _this.pointsAlongRoute[index].lat, _this.pointsAlongRoute[index].lng);
-                        _this.afDB.database.ref('/geofireRouteCrew/' + newKey).update({
-                            adminId: _this.userId,
-                            crewId: Key_Crew
-                        });
-                    });
-                });
-            }).then(function () {
-                var alert = _this.alertCtrl.create({
-                    title: 'Eres ahora administrador del crew que acabaste de crear',
-                    subTitle: 'Ve a "Mis Viajes" y revisa el estado de tu crew',
+        this.user = {};
+        this.button = true;
+        this.text = false;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
+        this.myRideActivation = false;
+        this.trip = this.navParams.get('trip');
+        console.log(this.reserve);
+        //get the info of the driver 
+        this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (myUserInfo) {
+            _this.user = myUserInfo;
+            console.log(_this.user);
+            if (_this.user.cancelModalLMU === true) {
+                _this.dismiss();
+                var alert_1 = _this.alertCtrl.create({
+                    title: 'Escoge otro viaje',
                     buttons: ['OK']
                 });
-                alert.present();
-                _this.viewCtrl.dismiss();
+                alert_1.present();
+            }
+        });
+        this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip).takeUntil(this.unsubscribe)
+            .subscribe(function (usersInPendingusers) {
+            _this.usersInPending = usersInPendingusers;
+            _this.usersInPending.forEach(function (user) {
+                if (user.userId === _this.userUid) {
+                    _this.accepted = true;
+                    _this.dismiss();
+                }
             });
+        });
+    }
+    ConfirmtripPage.prototype.goToRide = function () {
+        this.geoFireService.saveKey(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
+        this.reservesService.setOnTrip(this.userUid);
+        this.TripsService.joinTrip(this.trip.keyTrip, this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.verifiedPerson, this.user.trips.distanceToGoInKM);
+        // this.geoFireService.removeKeyGeofire(this.userUid);
+        //OLD
+        // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
+        // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
+        this.button = false;
+        this.text = true;
+    };
+    ConfirmtripPage.prototype.dismissX = function () {
+        var _this = this;
+        this.viewCtrl.dismiss();
+        this.geoFireService.deleteKey(this.userUid);
+        this.geoFireService.deleteDriverFromLMU(this.userUid, this.trip.keyTrip);
+        this.afDB.database.ref('/usersTest/' + this.userUid).once('value').then(function (snap) {
+            if (snap.val().onTrip) {
+                _this.geoFireService.setOntripFalse(_this.userUid);
+            }
+            else {
+            }
+        });
+        this.TripsService.getOutFromLMU(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
+    };
+    ConfirmtripPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss(this.accepted);
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+        if (this.trip.type === 'origin') {
+            this.geoFireService.cancelGeofireOr();
+            this.geoFireService.cancelGeofireOrLMU();
+        }
+        else if (this.trip.type === 'destination') {
+            this.geoFireService.cancelGeofireDest();
+            this.geoFireService.cancelGeofireDestLMU();
         }
     };
-    CreateCrewPage = __decorate([
+    ConfirmtripPage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    };
+    ConfirmtripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-createcrew',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-createcrew/createcrew.html"*/'<ion-content>\n        <ion-card>\n                <img src="assets/imgs/picmodales.png" width="100px" style="display:inline-block" height="150px"/>\n                <ion-icon name="close-circle" class="close-icon text-white"  (click)="dismiss()"></ion-icon>\n    \n            <ion-card-content>\n                                <h2 text-center>Set the time this trip will start:</h2>\n                    <div style="    border-color: black;\n                    border-style: solid;">\n\n                    <ion-item>\n                        <ion-label>Time:</ion-label>\n                        <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>\n                    </ion-item>\n\n                </div>\n\n\n                <ion-row style="margin-top: 14px;    display: flex;\n                justify-content: center">\n                   \n                    <ion-col col-8>\n                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.2rem;" (click)="setCrew()">Create Crew</button>\n                    </ion-col>\n                </ion-row>\n                \n            </ion-card-content>\n        </ion-card>\n    </ion-content>\n    '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-createcrew/createcrew.html"*/
+            selector: 'page-confirmtrip',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmtrip/confirmtrip.html"*/'<ion-content>\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>\n    <ion-card>\n        <h6 class="text-hot hot">Viaje Iniciado </h6>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/userPicture.png">\n            </ion-avatar>\n            <div class="name">\n                <h2>{{trip.driver.name|titlecase }} {{trip.driver.lastname|titlecase }}\n                    <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n                </h2>\n                <p>{{trip.car}}</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen del viaje</small>\n                    <span class="icon-location bg-hot"></span>{{trip.houseAddr}}</p>\n                <p>\n                    <small>Destino del viaje</small>\n                    <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n            </div>\n        </ion-card-content>\n\n        \n\n        <ion-card-content>\n            <div class="seats">\n                <ion-row class="center">\n                    <div class="rate"> $ {{trip.price}}</div>\n                        \n                   \n                    \n                </ion-row>\n            </div>\n                <button class="btn bg-hot text-white rounded" (click)="goToRide()" *ngIf="button" style="width: 100%;margin-top: 14px;">Enviar Solicitud </button>\n                <p  text-center *ngIf="text">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-confirmtrip/confirmtrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_9__services_d_geofire_services__["a" /* DriverGeofireService */]])
-    ], CreateCrewPage);
-    return CreateCrewPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_10__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendCoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+    ], ConfirmtripPage);
+    return ConfirmtripPage;
 }());
 
-//# sourceMappingURL=createcrew.js.map
+//# sourceMappingURL=confirmtrip.js.map
 
 /***/ })
 

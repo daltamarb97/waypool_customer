@@ -27,12 +27,16 @@ export class ConfirmpopupPage {
   unsubscribe = new Subject;
   reservesWhereIam:any;
   freeRidesCompany:boolean = false;
+  orCoords:any;
+  destCoords:any;
   constructor(public navCtrl: NavController, public sendUsersService:sendUsersService,public toastCtrl: ToastController,public viewCtrl: ViewController,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public navParams: NavParams,public AngularFireAuth: AngularFireAuth, private geoFireService: geofireService, public instances: instancesService, public alertCtrl: AlertController) {
     
     this.reserve= this.navParams.get('reserve') 
     console.log(this.reserve)
 
-    
+    this.orCoords = this.navParams.get('orCoords');
+    this.destCoords = this.navParams.get('destCoords');
+      
         
        //get the info of the driver 
        this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
@@ -82,7 +86,7 @@ export class ConfirmpopupPage {
           text: 'OK',
           handler: ()=>{ 
             console.log(this.reserve.keyTrip )
-            this.geoFireService.joinReserve( this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
+            this.geoFireService.joinReserve( this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson, this.orCoords, this.destCoords);
             this.geoFireService.pushToMyReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
             this.hideButton = !this.hideButton;
             this.hideText = !this.hideText;
@@ -100,7 +104,7 @@ export class ConfirmpopupPage {
       alert.present();
     }else{
       console.log(this.reserve.keyTrip )
-      this.geoFireService.joinReserve( this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson);
+      this.geoFireService.joinReserve( this.user.company, this.reserve.keyTrip,this.reserve.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.trips.distanceToGoInKM, this.user.verifiedPerson, this.orCoords, this.destCoords);
       this.geoFireService.pushToMyReserve(this.reserve.keyTrip,this.reserve.driver.userId, this.userUid);
       this.hideButton = !this.hideButton;
       this.hideText = !this.hideText;

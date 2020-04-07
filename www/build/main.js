@@ -1,4 +1,4 @@
-webpackJsonp([65],{
+webpackJsonp([64],{
 
 /***/ 200:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -273,55 +273,55 @@ webpackEmptyAsyncContext.id = 239;
 var map = {
 	"../pages/add-schedule/add-schedule.module": [
 		645,
-		64
+		63
 	],
 	"../pages/canceltrip/driverCanceltrip.module": [
 		646,
-		63
-	],
-	"../pages/car-registration-login/car-registration-login.module": [
-		695,
 		62
 	],
-	"../pages/car-registration/car-registration.module": [
+	"../pages/car-registration-login/car-registration-login.module": [
 		694,
 		61
 	],
+	"../pages/car-registration/car-registration.module": [
+		693,
+		60
+	],
 	"../pages/chats/driverChats.module": [
 		647,
-		60
+		59
 	],
 	"../pages/chatting/driverChatting.module": [
 		648,
-		59
-	],
-	"../pages/confirmprice/driverConfirmprice.module": [
-		649,
 		58
 	],
-	"../pages/confirmtrip/driverConfirmtrip.module": [
+	"../pages/confirmprice/driverConfirmprice.module": [
 		650,
 		57
 	],
+	"../pages/confirmtrip/driverConfirmtrip.module": [
+		649,
+		56
+	],
 	"../pages/detailsreserve/driverDetailsreserve.module": [
 		651,
-		56
+		55
 	],
 	"../pages/earn/earn.module": [
 		652,
-		55
+		54
 	],
 	"../pages/findride/driverFindride.module": [
-		707,
-		54
+		706,
+		53
 	],
 	"../pages/help/driverHelp.module": [
 		653,
-		53
+		52
 	],
 	"../pages/more/driverMore.module": [
 		654,
-		52
+		51
 	],
 	"../pages/myride/driverMyride.module": [
 		701,
@@ -329,62 +329,58 @@ var map = {
 	],
 	"../pages/onetripprice/onetripprice.module": [
 		655,
-		51
+		50
 	],
 	"../pages/p-bikemode/bikemode.module": [
 		702,
-		50
+		49
 	],
 	"../pages/p-canceltrip/canceltrip.module": [
 		656,
-		49
+		48
 	],
 	"../pages/p-changecar/changecar.module": [
 		657,
-		48
+		47
 	],
 	"../pages/p-chatting/chatting.module": [
 		658,
-		47
-	],
-	"../pages/p-confirm-reservation/confirm-reservation.module": [
-		659,
 		46
 	],
-	"../pages/p-confirmnote/confirmnote.module": [
+	"../pages/p-confirm-reservation/confirm-reservation.module": [
 		660,
+		45
+	],
+	"../pages/p-confirmnote/confirmnote.module": [
+		661,
 		4
 	],
 	"../pages/p-confirmpopup/confirmpopup.module": [
-		661,
-		45
+		659,
+		44
 	],
 	"../pages/p-confirmtrip/confirmtrip.module": [
 		662,
-		44
-	],
-	"../pages/p-createcrew/createcrew.module": [
-		703,
 		43
 	],
 	"../pages/p-creategroup/creategroup.module": [
-		663,
+		700,
 		42
 	],
 	"../pages/p-findride/findride.module": [
-		709,
+		708,
 		3
 	],
 	"../pages/p-groupdetail/groupdetail.module": [
-		664,
+		663,
 		41
 	],
 	"../pages/p-help/help.module": [
-		665,
+		664,
 		40
 	],
 	"../pages/p-listride/listride.module": [
-		708,
+		707,
 		39
 	],
 	"../pages/p-login/login.module": [
@@ -392,15 +388,15 @@ var map = {
 		38
 	],
 	"../pages/p-membersgroup/membersgroup.module": [
-		667,
+		665,
 		37
 	],
 	"../pages/p-more/more.module": [
-		668,
+		667,
 		36
 	],
 	"../pages/p-myride/myride.module": [
-		696,
+		695,
 		35
 	],
 	"../pages/p-profile/profile.module": [
@@ -408,7 +404,7 @@ var map = {
 		34
 	],
 	"../pages/p-public-profile/public-profile.module": [
-		670,
+		668,
 		33
 	],
 	"../pages/p-ratetrip/ratetrip.module": [
@@ -416,15 +412,15 @@ var map = {
 		32
 	],
 	"../pages/p-reserveinfo/reserveinfo.module": [
-		672,
+		670,
 		31
 	],
 	"../pages/p-reservetrip/reservetrip.module": [
-		673,
+		672,
 		30
 	],
 	"../pages/p-signup/signup.module": [
-		704,
+		703,
 		29
 	],
 	"../pages/p-support/support.module": [
@@ -432,95 +428,95 @@ var map = {
 		28
 	],
 	"../pages/p-terms/terms.module": [
-		675,
+		673,
 		27
 	],
 	"../pages/p-tripbike/tripbike.module": [
-		697,
+		696,
 		2
 	],
 	"../pages/p-verification-images/verification-images.module": [
-		676,
+		675,
 		26
 	],
 	"../pages/p-verification-number/verification-number.module": [
-		677,
+		676,
 		25
 	],
 	"../pages/p-walkthrough/walkthrough.module": [
-		678,
+		677,
 		24
 	],
 	"../pages/p-wallet/wallet.module": [
-		679,
+		678,
 		23
 	],
 	"../pages/payments-info/payments-info.module": [
-		680,
+		679,
 		22
 	],
 	"../pages/pickup/pickup.module": [
-		705,
+		704,
 		1
 	],
 	"../pages/profile/driverProfile.module": [
-		681,
+		680,
 		21
 	],
 	"../pages/public-profile/driver-public-profile.module": [
-		682,
+		681,
 		20
 	],
 	"../pages/ratetrip/driverRatetrip.module": [
-		683,
+		682,
 		19
 	],
 	"../pages/remove-schedule/remove-schedule.module": [
-		684,
+		683,
 		18
 	],
 	"../pages/reservetrip/driverReservetrip.module": [
-		698,
+		697,
 		0
 	],
 	"../pages/schedule/schedule.module": [
-		706,
+		705,
 		17
 	],
 	"../pages/showinfocar/showinfocar.module": [
-		685,
+		684,
 		16
 	],
 	"../pages/specifyorigin/specifyorigin.module": [
-		699,
+		698,
 		15
 	],
 	"../pages/specifyroute/specifyroute.module": [
-		700,
+		699,
 		14
 	],
 	"../pages/successnotification/successnotification.module": [
-		686,
+		685,
 		6
 	],
 	"../pages/support/driverSupport.module": [
-		687,
+		688,
 		13
 	],
 	"../pages/terms/driverTerms.module": [
-		688,
+		686,
 		12
 	],
 	"../pages/type-of-login/type-of-login.module": [
-		689,
+		687,
 		11
 	],
 	"../pages/verification-images/driver-verification-images.module": [
-		690,
+		689,
 		10
 	],
 	"../pages/verification-number/driver-verification-number.module": [
-		691,
+		690,
 		9
 	],
 	"../pages/walkthrough/driverWalkthrough.module": [
@@ -528,7 +524,7 @@ var map = {
 		8
 	],
 	"../pages/wallet/driverWallet.module": [
-		693,
+		691,
 		7
 	]
 };
@@ -973,73 +969,6 @@ var DriverSendCoordsService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return sendCoordsService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var sendCoordsService = /** @class */ (function () {
-    function sendCoordsService(afDB) {
-        this.afDB = afDB;
-    }
-    //cant use this because it gets your same adress
-    sendCoordsService.prototype.getDestination = function (user) {
-        return this.afDB.list('/driversTest/' + user + '/tripsTest/destination').valueChanges();
-    };
-    sendCoordsService.prototype.getPendingUsers = function (driverUid, pushKey) {
-        return this.afDB.list('/reservesTest/' + driverUid + '/' + pushKey + '/pendingUsers').valueChanges();
-    };
-    sendCoordsService.prototype.getPendingUsersInTrips = function (driverUid, pushKey) {
-        return this.afDB.list('/tripsTest/' + driverUid + '/' + pushKey + '/pendingUsers').valueChanges();
-    };
-    sendCoordsService.prototype.getOrigin = function (user) {
-        return this.afDB.list('/driversTest/' + user + '/tripsTest/origin').valueChanges();
-    };
-    sendCoordsService.prototype.getOriginUser = function (user) {
-        return this.afDB.list('/usersTest/' + user + '/tripsTest/origin').valueChanges();
-    };
-    sendCoordsService.prototype.getDestinationUser = function (user) {
-        return this.afDB.list('/usersTest/' + user + '/tripsTest/destination').valueChanges();
-    };
-    sendCoordsService.prototype.pushCoordinatesUsers = function (user, dest, or) {
-        this.afDB.database.ref('/usersTest/' + user + '/trips').update({
-            origin: or,
-            destination: dest,
-        });
-    };
-    sendCoordsService.prototype.pushCoordinatesOnBikeMode = function (user, dest, or) {
-        this.afDB.database.ref('/usersTest/' + user + '/tripsTest/bikeMode').update({
-            origin: or,
-            destination: dest,
-        });
-    };
-    sendCoordsService.prototype.deleteOnTripFinal = function (userId) {
-        this.afDB.database.ref('/usersTest/' + userId + '/onTripFinal').remove();
-    };
-    sendCoordsService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
-    ], sendCoordsService);
-    return sendCoordsService;
-}());
-
-//# sourceMappingURL=sendCoords.service.js.map
-
-/***/ }),
-
-/***/ 350:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverGeofireService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
@@ -1372,6 +1301,73 @@ var DriverGeofireService = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=d-geofire.services.js.map
+
+/***/ }),
+
+/***/ 350:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return sendCoordsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var sendCoordsService = /** @class */ (function () {
+    function sendCoordsService(afDB) {
+        this.afDB = afDB;
+    }
+    //cant use this because it gets your same adress
+    sendCoordsService.prototype.getDestination = function (user) {
+        return this.afDB.list('/driversTest/' + user + '/tripsTest/destination').valueChanges();
+    };
+    sendCoordsService.prototype.getPendingUsers = function (driverUid, pushKey) {
+        return this.afDB.list('/reservesTest/' + driverUid + '/' + pushKey + '/pendingUsers').valueChanges();
+    };
+    sendCoordsService.prototype.getPendingUsersInTrips = function (driverUid, pushKey) {
+        return this.afDB.list('/tripsTest/' + driverUid + '/' + pushKey + '/pendingUsers').valueChanges();
+    };
+    sendCoordsService.prototype.getOrigin = function (user) {
+        return this.afDB.list('/driversTest/' + user + '/tripsTest/origin').valueChanges();
+    };
+    sendCoordsService.prototype.getOriginUser = function (user) {
+        return this.afDB.list('/usersTest/' + user + '/tripsTest/origin').valueChanges();
+    };
+    sendCoordsService.prototype.getDestinationUser = function (user) {
+        return this.afDB.list('/usersTest/' + user + '/tripsTest/destination').valueChanges();
+    };
+    sendCoordsService.prototype.pushCoordinatesUsers = function (user, dest, or) {
+        this.afDB.database.ref('/usersTest/' + user + '/trips').update({
+            origin: or,
+            destination: dest,
+        });
+    };
+    sendCoordsService.prototype.pushCoordinatesOnBikeMode = function (user, dest, or) {
+        this.afDB.database.ref('/usersTest/' + user + '/tripsTest/bikeMode').update({
+            origin: or,
+            destination: dest,
+        });
+    };
+    sendCoordsService.prototype.deleteOnTripFinal = function (userId) {
+        this.afDB.database.ref('/usersTest/' + userId + '/onTripFinal').remove();
+    };
+    sendCoordsService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
+    ], sendCoordsService);
+    return sendCoordsService;
+}());
+
+//# sourceMappingURL=sendCoords.service.js.map
 
 /***/ }),
 
@@ -2222,10 +2218,22 @@ var geofireService = /** @class */ (function () {
             onTrip: false
         });
     };
-    geofireService.prototype.joinReserve = function (company, keyReserve, driverId, userId, origin, destination, name, lastname, phone, distance, verifiedPerson) {
+    geofireService.prototype.joinReserve = function (company, keyReserve, driverId, userId, origin, destination, name, lastname, phone, distance, verifiedPerson, orCoords, destCoords) {
         this.afDB.database.ref('/reservesTest/' + driverId + '/' + keyReserve + '/pendingUsers/' + userId).update({
-            origin: origin,
-            destination: destination,
+            origin: {
+                name: origin[0],
+                coords: {
+                    lat: orCoords.lat,
+                    lng: orCoords.lng
+                }
+            },
+            destination: {
+                name: destination[0],
+                coords: {
+                    lat: destCoords.lat,
+                    lng: destCoords.lng
+                }
+            },
             name: name,
             lastname: lastname,
             phone: phone,
@@ -2300,9 +2308,10 @@ var geofireService = /** @class */ (function () {
     };
     geofireService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_5__signup_services__["a" /* SignUpService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__reserves_service__["a" /* reservesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__reserves_service__["a" /* reservesService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__signup_services__["a" /* SignUpService */]) === "function" && _d || Object])
     ], geofireService);
     return geofireService;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=geoFire.service.js.map
@@ -3222,7 +3231,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_userauthentication_service__ = __webpack_require__(359);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_firebase__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geolocation__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_sendCoords_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_sendCoords_service__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_sendUsers_service__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_note_service__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_call_number__ = __webpack_require__(363);
@@ -3244,7 +3253,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__ionic_native_clipboard___ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__services_d_chat_service__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__services_d_driverauthentication_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__services_d_geofire_services__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__services_d_geofire_services__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__services_d_instances_services__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__services_d_metrics_service__ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__services_d_price_service__ = __webpack_require__(365);
@@ -3332,8 +3341,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/canceltrip/driverCanceltrip.module#DriverCanceltripPageModule', name: 'DriverCanceltripPage', segment: 'driverCanceltrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chats/driverChats.module#DriverChatsPageModule', name: 'DriverChatsPage', segment: 'driverChats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chatting/driverChatting.module#DriverChattingPageModule', name: 'DriverChattingPage', segment: 'driverChatting', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/confirmprice/driverConfirmprice.module#DriverConfirmpricePageModule', name: 'DriverConfirmpricePage', segment: 'driverConfirmprice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmtrip/driverConfirmtrip.module#DriverConfirmtripPageModule', name: 'DriverConfirmtripPage', segment: 'driverConfirmtrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmprice/driverConfirmprice.module#DriverConfirmpricePageModule', name: 'DriverConfirmpricePage', segment: 'driverConfirmprice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/detailsreserve/driverDetailsreserve.module#DriverDetailsReservePagePageModule', name: 'DriverDetailsReservePage', segment: 'driverDetailsreserve', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/earn/earn.module#ReferalPageModule', name: 'ReferalPage', segment: 'earn', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/driverHelp.module#DriverHelpPageModule', name: 'DriverHelpPage', segment: 'driverHelp', priority: 'low', defaultHistory: [] },
@@ -3342,23 +3351,22 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/p-canceltrip/canceltrip.module#CanceltripPageModule', name: 'CanceltripPage', segment: 'canceltrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-changecar/changecar.module#ChangeCarPageModule', name: 'ChangeCarPage', segment: 'changecar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule', name: 'ConfirmReservationPage', segment: 'confirm-reservation', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-creategroup/creategroup.module#CreateGroupPageModule', name: 'CreateGroupPage', segment: 'creategroup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-groupdetail/groupdetail.module#GroupDetailPageModule', name: 'GroupDetailPage', segment: 'groupdetail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-membersgroup/membersgroup.module#MembersGroupPageModule', name: 'MembersGroupPage', segment: 'membersgroup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-public-profile/public-profile.module#PublicProfilePageModule', name: 'PublicProfilePage', segment: 'public-profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-reserveinfo/reserveinfo.module#ConfirmreservationPageModule', name: 'ReserveinfoPage', segment: 'reserveinfo', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-ratetrip/ratetrip.module#RatetripPageModule', name: 'RatetripPage', segment: 'ratetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-reservetrip/reservetrip.module#ReservetripPageModule', name: 'ReservetripPage', segment: 'reservetrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-terms/terms.module#TermsPageModule', name: 'TermsPage', segment: 'terms', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-verification-images/verification-images.module#VerificationImagesPageModule', name: 'VerificationImagesPage', segment: 'verification-images', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-verification-number/verification-number.module#VerificationNumberPageModule', name: 'VerificationNumberPage', segment: 'verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-walkthrough/walkthrough.module#WalkthroughPageModule', name: 'WalkthroughPage', segment: 'walkthrough', priority: 'low', defaultHistory: [] },
@@ -3370,13 +3378,13 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/remove-schedule/remove-schedule.module#DriverRemoveSchedulePageModule', name: 'DriverRemoveSchedulePage', segment: 'remove-schedule', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/showinfocar/showinfocar.module#DriverShowInfoCarPageModule', name: 'DriverShowInfoCarPage', segment: 'showinfocar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/successnotification/successnotification.module#DriverSuccessNotificationPageModule', name: 'DriverSuccessNotificationPage', segment: 'successnotification', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/support/driverSupport.module#DriverSupportPageModule', name: 'DriverSupportPage', segment: 'driverSupport', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms/driverTerms.module#DriverTermsPageModule', name: 'DriverTermsPage', segment: 'driverTerms', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/type-of-login/type-of-login.module#TypeOfLoginPageModule', name: 'TypeOfLoginPage', segment: 'type-of-login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/support/driverSupport.module#DriverSupportPageModule', name: 'DriverSupportPage', segment: 'driverSupport', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-images/driver-verification-images.module#DriverVerificationImagesPageModule', name: 'DriverVerificationImagesPage', segment: 'driver-verification-images', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/verification-number/driver-verification-number.module#DrverVerificationNumberPageModule', name: 'DrverVerificationNumberPage', segment: 'driver-verification-number', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/walkthrough/driverWalkthrough.module#DriverWalkthroughPageModule', name: 'DriverWalkthroughPage', segment: 'driverWalkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/driverWallet.module#DriverWalletPageModule', name: 'DriverWalletPage', segment: 'driverWallet', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/walkthrough/driverWalkthrough.module#DriverWalkthroughPageModule', name: 'DriverWalkthroughPage', segment: 'driverWalkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/car-registration/car-registration.module#DriverUserVerificationPageModule', name: 'DriverUserVerificationPage', segment: 'car-registration', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/car-registration-login/car-registration-login.module#DriverCarRegistrationPageModule', name: 'DriverCarRegistrationLoginPage', segment: 'car-registration-login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
@@ -3384,9 +3392,9 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/reservetrip/driverReservetrip.module#DriverReservetripPageModule', name: 'DriverReservetripPage', segment: 'driverReservetrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/specifyorigin/specifyorigin.module#DriverSpecifyOriginPageModule', name: 'DriverSpecifyOriginPage', segment: 'specifyorigin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/specifyroute/specifyroute.module#DriverSpecifyRoutePageModule', name: 'DriverSpecifyRoutePage', segment: 'specifyroute', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-creategroup/creategroup.module#CreateGroupPageModule', name: 'CreateGroupPage', segment: 'creategroup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/myride/driverMyride.module#DriverMyridePageModule', name: 'DriverMyridePage', segment: 'driverMyride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-bikemode/bikemode.module#FindridePassPageModule', name: 'BikeModePage', segment: 'bikemode', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-createcrew/createcrew.module#CreateCrewPageModule', name: 'CreateCrewPage', segment: 'createcrew', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pickup/pickup.module#DriverPickupPageModule', name: 'DriverPickupPage', segment: 'pickup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/schedule/schedule.module#DriverSchedulePageModule', name: 'DriverSchedulePage', segment: 'schedule', priority: 'low', defaultHistory: [] },

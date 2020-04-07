@@ -35,18 +35,17 @@
 
 <ion-content class="bg-light" class="hideLongText" style="        background-color: rgba(255, 255, 255, 0.959);">
         
-      
+   <!-- MOSTRAR OPCIONES GRUPOS  -->
+
                 <ng-container *ngIf='showCrew'>
                         
                             <div [ngSwitch]="noCrew">
 
-                <!-- <p>Mazda | KHX089 | Plateado</p> -->
-
                                     <div *ngSwitchCase=true >
-                                            <ion-row style="padding-bottom: 60px">
-                                                    <button ion-button full class="bg-darkblue text-white btn rounded" (click)="createCrew()" >CREATE CREW</button>
-                
-                                            </ion-row>
+                                        <div style="display: flex; justify-content: center; margin-top: 15px;">  
+                                            <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="createGroup()">Crear grupo</button>
+                                      </div>
+
                                             <img src="assets/imgs/noreserveavailable.png">
                                             <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
                                                 <ion-refresher-content
@@ -60,17 +59,12 @@
     
                                     <div *ngSwitchCase=false>
     
-                                            <div style="display: flex;flex-direction: column;padding-top: 60px;" >
-                                                    <ion-row style="padding-bottom: 60px">
-                                                            <button ion-button full class="bg-darkblue text-white btn rounded" (click)="createCrew()" >CREATE CREW</button>
                         
-                                                    </ion-row>
+                                                <div style="display: flex; justify-content: center; margin-top: 15px;">  
+                                                    <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="createGroup()">Crear grupo</button>
+                                              </div>
                         
-                                                    
-                                                        <ion-row>
-                                                                <h4 class="center-align">GRUPOS DISPONIBLES</h4>
-                        
-                                                        </ion-row>
+                                              <H2 style="margin-left: 12px;"> Grupos disponibles</H2>
                         
                                                         <ion-row class="center-align bg-theme flow-ride">
                                                                 <ion-segment [(ngModel)]="segmentCrew" class="bg-theme-driver">
@@ -88,110 +82,73 @@
                         
                                                         </ion-row>
     
-    
-                                                        <div style="display: flex;flex-direction: column;" *ngIf='showNearbyCrew'>
-                            
-                                                                <ion-card *ngFor = "let crew of crewsAvailable">
-                                                                        <ion-item>
-                                                                            <ion-avatar item-start>
-                                                                                <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
-                                                                            </ion-avatar>                   
-                                                                            <div class="name">                      
-                                                                                <h2>{{crew.admin.name| titlecase}} {{crew.admin.lastname| titlecase }} 
-                                                                                    <ion-icon  *ngIf='crew.admin.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
-                                                                                    <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{crew.admin.company}}</ion-badge>
-                                                        
-                                                                                </h2>
-                                                        
-                                                                                <!-- <p>{{reserve.car}}</p>  -->
-                                                                                
-                                                                            </div>
-                                                                            <!-- <div class="more">
-                                                                                <h2 class="text text-theme">                        
-                                                                                    $ {{reserve.price}}                         
-                                                                                </h2>
-                                                          
-                                                                            </div> -->
-                                                                        </ion-item>
-                                                                        <ion-card-content>                  
-                                                                            <ion-row class="center-align">  
-                                                                                        <h2 class="text text-dark">                        
-                                                                                            Hora: {{crew.startHour}}
-                                                                                         
-                                                                                        </h2>                    
-                                                                                <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                                                                    <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="joinCrew(crew)">Unirme al Grupo</button>
-                                                                                </ion-col>
-                                                                            </ion-row>
-                                                                        </ion-card-content>
-                                                                    </ion-card>
+                                                        <div  *ngIf='showNearbyCrew'>
+                                                            <ion-card *ngFor = "let crew of crewsAvailable">
+                                                               <ion-item>
+                                                                   <ion-avatar item-start>
+                                                                       <img style="height:70px; width: 70px;" src="assets/imgs/carOrange.png">
+                                                                   </ion-avatar>
+                                                                   <div class="name">
+                                                                       <h2 style="font-size:1.8rem;">3 miembros
+                                                                           <ion-icon  name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                                                                       </h2>
+                                                       
+                                                       
+                                                                   </div>
+                                                                   
+                                                               </ion-item>
+                                                               <ion-card-content>
+                                                                   <ion-row class="center-align">
+                                                                       <h2 class="text text-dark">
+                                                                           Hora: {{crew.startHour}}
+                                                                       </h2>
+                                                                       <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                                                                           <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="joinCrew(crew)">Unirme</button>
+                                                                       </ion-col>
+                                                                   </ion-row>
+                                                               </ion-card-content>
+                                                           </ion-card>
+                                        
                             
                                                          </div>
-    
-    
-                                                         <div style="display: flex;flex-direction: column;" *ngIf= 'showRouteCrew'>
-                            
-                            
-                                                                <ion-card *ngFor = "let crew of routeCrews">
-                            
-                                                                        <ion-item>
-                                                                                <ion-avatar item-start>
-                                                                                    <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
-                                                                                </ion-avatar>                   
-                                                                                <div class="name">                      
-                                                                                    <h2>{{crew.admin.name| titlecase}} {{crew.admin.lastname| titlecase }} 
-                                                                                        <ion-icon  *ngIf='crew.admin.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
-                                                                                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{crew.admin.company}}</ion-badge>
-                                                            
-                                                                                    </h2>
-                                                            
-                                                                                    <!-- <p>{{trip.car}}</p>  -->
-                                                                                    
-                                                                                </div>
-                                                                                <!-- <div class="more">
-                                                                                    <h2 class="text text-theme">                        
-                                                                                        $ {{trip.price}}                         
-                                                                                    </h2>
-                                                              
-                                                                                </div> -->
-                                                                            </ion-item>
-                                                                            <ion-card-content>                  
-                                                                                <ion-row class="center-align">
-                                                                                    <ion-col>
-                                
-                                                                                            <h3 class="text text-dark">                        
-                                                                                                    Hora: {{crew.startHour}} 
-                                                                                                           
-                                                                                                </h3>
-                                                                                    </ion-col> 
-                                                                                    
-                                                                                    <ion-col>
-                                
-                                                                                            <h3 class="text text-dark">                        
-                                                                                                    El pooler está a {{crew.distance | number }} metros de ti.                    
-                                                                                                </h3>
-                                                                                    </ion-col> 
-                                                                                                                
-                                                                                    <!-- <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                                                                        <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Join Me</button>
-                                                                                    </ion-col> -->
-                                                                                </ion-row>
-                                                                            </ion-card-content>
-                                
-                                                                    </ion-card>
-                            
-                                                         </div>
-    
-                                                   
-                        
-                                                </div>
-                        
-    
-                                    </div>
-                            </div>    
-             
 
+
+    
+                                                         <div  *ngIf= 'showRouteCrew'>
+                                                            
+                                                            <ion-card *ngFor = "let crew of routeCrews">
+                                                                <ion-item>
+                                                                    <ion-avatar item-start>
+                                                                        <img style="height:70px; width: 70px;" src="assets/imgs/carOrange.png">
+                                                                    </ion-avatar>
+                                                                    <div class="name">
+                                                                        <h2 style="font-size:1.8rem;">3 miembros
+                                                                            <ion-icon  name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                                                                        </h2>
+                                                        
+                                                        
+                                                                    </div>
+                                                                    
+                                                                </ion-item>
+                                                                <ion-card-content>
+                                                                    <ion-row class="center-align">
+                                                                        <h2 class="text text-dark">
+                                                                            Hora: {{crew.startHour}}
+                                                                        </h2>
+                                                                        <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                                                                            <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="joinCrew(crew)">Unirme</button>
+                                                                        </ion-col>
+                                                                    </ion-row>
+                                                                </ion-card-content>
+                                                            </ion-card>
+                            
+                                                </div>
+                                    </div>
+                            </div>                
                  </ng-container>
+
+
+                <!-- MOSTRAR OPCIONES CARPOOLING  -->
 
                  <ng-container *ngIf='showCarpool'>
            
@@ -232,93 +189,82 @@
                                               
                             
                                                          <div style="display: flex;flex-direction: column;" *ngIf='showNearby'>
-                            
-                                                                <ion-card *ngFor = "let reserve of reservesAvailable">
+                                                                    <ion-card *ngFor = "let reserve of reservesAvailable">
                                                                         <ion-item>
                                                                             <ion-avatar item-start>
-                                                                                <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
-                                                                            </ion-avatar>                   
-                                                                            <div class="name">                      
-                                                                                <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase }} 
-                                                                                    <ion-icon  *ngIf='reserve.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
-                                                                                    <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{reserve.driver.company}}</ion-badge>
-                                                        
+                                                                                <img style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
+                                                                            </ion-avatar>
+                                                                            <div class="name">
+                                                                                <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase }}
+                                                                                    <ion-icon *ngIf='reserve.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                                                                                    <ion-badge class="bg-yellow" style="margin:0px 3px 13px;">  {{reserve.driver.company}}</ion-badge>
+                                                                
                                                                                 </h2>
-                                                        
-                                                                                <p>{{reserve.car}}</p> 
-                                                                                
+                                                                
+                                                                                <p>{{reserve.car}}</p>
+                                                                
                                                                             </div>
                                                                             <div class="more">
-                                                                                <h2 class="text text-theme">                        
-                                                                                    $ {{reserve.price}}                         
+                                                                                <h2 class="text text-theme">
+                                                                                    $ {{reserve.price}}
                                                                                 </h2>
-                                                          
+                                                                
                                                                             </div>
                                                                         </ion-item>
-                                                                        <ion-card-content>                  
-                                                                            <ion-row class="center-align">  
-                                                                                        <h2 class="text text-dark">                        
-                                                                                            <!-- Hora: {{reserve.startHour}}                              -->
-                                                                                            trip starts at: 3:00pm
-                                                                                        </h2>                    
+                                                                        <ion-card-content>
+                                                                            <ion-row class="center-align">
+                                                                                <h2 class="text text-dark">
+                                                                                    Hora: {{reserve.startHour}} 
+                                                                                </h2>
                                                                                 <ion-col center text-center col-4 text-right style="margin-left: auto;">
                                                                                     <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Unirme</button>
                                                                                 </ion-col>
                                                                             </ion-row>
                                                                         </ion-card-content>
                                                                     </ion-card>
-                            
+                                                                
+     
                                                          </div>
                             
                                                          <div style="display: flex;flex-direction: column;" *ngIf= 'showRoute'>
-                            
-                            
-                                                                <ion-card *ngFor = "let trip of routeTrips">
-                            
+                                                                    <ion-card *ngFor = "let trip of routeTrips">
                                                                         <ion-item>
-                                                                                <ion-avatar item-start>
-                                                                                    <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
-                                                                                </ion-avatar>                   
-                                                                                <div class="name">                      
-                                                                                    <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase }} 
-                                                                                        <ion-icon  *ngIf='trip.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
-                                                                                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>
-                                                            
-                                                                                    </h2>
-                                                            
-                                                                                    <p>{{trip.car}}</p> 
-                                                                                    
-                                                                                </div>
-                                                                                <div class="more">
-                                                                                    <h2 class="text text-theme">                        
-                                                                                        $ {{trip.price}}                         
-                                                                                    </h2>
-                                                              
-                                                                                </div>
-                                                                            </ion-item>
-                                                                            <ion-card-content>                  
-                                                                                <ion-row class="center-align">
-                                                                                    <ion-col>
+                                                                            <ion-avatar item-start>
+                                                                                <img style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
+                                                                            </ion-avatar>
+                                                                            <div class="name">
+                                                                                <h2>{{trip.driver.name| titlecase}} {{trip.driver.lastname| titlecase }}
+                                                                                    <ion-icon *ngIf='trip.driver.verifiedPerson' name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                                                                                    <ion-badge class="bg-yellow" style="margin:0px 3px 13px;">  {{trip.driver.company}}</ion-badge>
+                                                                
+                                                                                </h2>
+                                                                
+                                                                                <p>{{trip.car}}</p>
+                                                                
+                                                                            </div>
+                                                                            <div class="more">
+                                                                                <h2 class="text text-theme">
+                                                                                    $ {{trip.price}}
+                                                                                </h2>
+                                                                
+                                                                            </div>
+                                                                        </ion-item>
+                                                                        <ion-card-content>
+                                                                            <ion-row class="center-align">
+                                                                                <h2 class="text text-dark">
+                                                                                    Hora: {{trip.startHour}}
+                                                                                </h2>
+                                                                                <ion-col>
                                 
-                                                                                            <h3 class="text text-dark">                        
-                                                                                                    <!-- Hora: {{trip.startHour}}--> 
-                                                                                                    This trip starts at: 3:00 pm                          
-                                                                                                </h3>
-                                                                                    </ion-col> 
-                                                                                    
-                                                                                    <ion-col>
-                                
-                                                                                            <h3 class="text text-dark">                        
-                                                                                                    El pooler está a {{trip.distance | number }} metros de ti.                    
-                                                                                                </h3>
-                                                                                    </ion-col> 
-                                                                                                                
-                                                                                    <ion-col center text-center col-4 text-right style="margin-left: auto;">
-                                                                                        <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Join Me</button>
-                                                                                    </ion-col>
-                                                                                </ion-row>
-                                                                            </ion-card-content>
-                                
+                                                                                    <h3 class="text text-dark">                        
+                                                                                            Distancia de ti: {{trip.distance | number }}                    
+                                                                                        </h3>
+                                                                            </ion-col> 
+                                                                                <ion-col center text-center col-4 text-right style="margin-left: auto;">
+                                                                                    <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="confirmpopup(reserve)">Unirme</button>
+                                                                                </ion-col>
+                                                                            </ion-row>
+                                                                        </ion-card-content>
                                                                     </ion-card>
                             
                                                          </div>

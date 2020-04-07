@@ -709,12 +709,8 @@ centerMap(){
                   
                   this.afDB.database.ref('/reservesTest/'+ this.user).push({
                     driver: this.userInfo,
-                    // car:this.userInfo.cars,
                     origin: this.orFirebase,
                     destination: this.desFirebase,
-                    // price:this.precio,
-                    // startHour: obj[key].hour,
-                    // type: obj[key].type,
                   }).then((snap1)=>{
                     const key1 = snap1.key;
                           this.MetricsService.createdInstantRoutes(this.user,this.desFirebase, this.orFirebase );

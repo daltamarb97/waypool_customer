@@ -3,7 +3,7 @@ import * as admin from  'firebase-admin';
 admin.initializeApp(functions.config().firebase);
 
 
-exports.newMessageInReserveUser = functions.database.ref(`/{university}/reserves/{userId}/{reserveKey}/chat/messages/{messageId}`).onCreate((snap, context) =>{
+exports.newMessageInReserveUser = functions.database.ref(`/reserves/{userId}/{reserveKey}/chat/messages/{messageId}`).onCreate((snap, context) =>{
     const university = context.params.university;
     const userId = context.params.userId;
 
@@ -29,7 +29,7 @@ exports.newMessageInReserveUser = functions.database.ref(`/{university}/reserves
 
 
 
-exports.newMessageInTripsUser = functions.database.ref(`/{university}/tripsTest/{userId}/{reserveKey}/chat/messages/{messageId}`).onCreate((snap, context) =>{
+exports.newMessageInTripsUser = functions.database.ref(`/trips/{userId}/{reserveKey}/chat/messages/{messageId}`).onCreate((snap, context) =>{
     const university = context.params.university;
     const userId = context.params.userId;
 
@@ -54,7 +54,7 @@ exports.newMessageInTripsUser = functions.database.ref(`/{university}/tripsTest/
 })
 
 
-exports.onTripMessage = functions.database.ref(`/{university}/users/{userId}/onTrip/`).onCreate((snap, context) =>{
+exports.onTripMessage = functions.database.ref(`/users/{userId}/onTrip/`).onCreate((snap, context) =>{
     const university = context.params.university;
     const userId = context.params.userId;
 
@@ -79,5 +79,26 @@ exports.onTripMessage = functions.database.ref(`/{university}/users/{userId}/onT
 })
 
 
+exports.newCrewNotification = functions.database.ref(`/drivers/{driverId}/matchingCrews/{crewId}`).onCreate((snap, context) =>{
+  
+    const driverId = context.params.driverId;
+
+    return admin.database().ref(`/drivers/${driverId}/devices/token`).once('value').then(snapshot => snapshot.val()).then(device => {
+         const deviceToken = device
+         console.log(deviceToken)
+
+ 
+         const notificationContent = {
+            notification: {
+                title: '¡Hay un grupo de pasajeros que hicieron match con uno de tus horaros!',
+                body: `Si quieres transportar a este grupo, entra ya y confirmales`
+            }
+        }
+ 
+         return admin.messaging().sendToDevice(deviceToken, notificationContent)
+ 
+ 
+     })
 
 
+})

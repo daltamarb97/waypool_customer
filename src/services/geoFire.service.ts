@@ -335,10 +335,26 @@ keyEnteredDest( userId ){
         })
     }
 
-    joinReserve( company, keyReserve,driverId, userId, origin, destination, name, lastname, phone, distance, verifiedPerson){
+    joinReserve( company, keyReserve,driverId, userId, origin, destination, name, lastname, phone, distance, verifiedPerson, orCoords, destCoords){
         this.afDB.database.ref( '/reservesTest/' + driverId +'/'+keyReserve+ '/pendingUsers/' + userId).update({
-             origin: origin,
-             destination: destination,
+     
+             origin:{
+                name: origin[0],
+                coords: {
+                    lat: orCoords.lat,
+                    lng: orCoords.lng
+                }
+             
+             },
+             destination:{
+                name: destination[0],
+                coords: {
+                    lat: destCoords.lat,
+                lng: destCoords.lng
+                }
+                
+             },
+
              name: name,
              lastname: lastname,
              phone: phone,

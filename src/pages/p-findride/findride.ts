@@ -810,9 +810,9 @@ listride(){
 
 
                     if(this.usingGeolocation === true){
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute, nameOr: this.orFirebase, nameDest: this.desFirebase});
                     }else{
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
 
                     }
                     
@@ -859,9 +859,9 @@ listride(){
 
        
                     if(this.usingGeolocation === true){
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
                     }else{
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
 
                     }
                     this.loading.dismiss();
@@ -913,9 +913,9 @@ listride(){
 
                     
                     if(this.usingGeolocation === true){
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
                     }else{
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
 
                     }
                     this.loading.dismiss();

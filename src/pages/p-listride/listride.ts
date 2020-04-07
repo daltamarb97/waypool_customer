@@ -22,8 +22,8 @@ export class ListridePage {
   crewsAvailable:any = [];
   routeTrips:any = [];
   routeCrews:any = [];
-  locationDestinationUser:any =[];
-  locationOriginUser:any =[];
+  locationDestinationUser:any;
+  locationOriginUser:any;
   user:any;
   userUid=this.AngularFireAuth.auth.currentUser.uid;
   test:any;
@@ -68,6 +68,11 @@ export class ListridePage {
   loading:any;
   showNearbyCrew:boolean = true;
   showRouteCrew:boolean = false;
+  orCoords:any;
+  destCoords:any;
+  nameOr:any;
+  nameDest:any;
+
   
   constructor(public navParams: NavParams, public navCtrl: NavController,private app:App,public TripsService:TripsService,public loadingCtrl: LoadingController,public toastCtrl: ToastController,public reservesService:reservesService,  private AngularFireAuth: AngularFireAuth,private afDB: AngularFireDatabase, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private geoFireService: geofireService, public alertCtrl: AlertController ) {
   console.log("AQUI EMPIEZA")
@@ -92,8 +97,21 @@ export class ListridePage {
     this.lngOr = this.navParams.get('lngOr');
     this.latDest = this.navParams.get('latDest');
     this.lngDest = this.navParams.get('lngDest');
+    this.nameOr = this.navParams.get('nameOr');
+    this.nameDest = this.navParams.get('nameDest')
     this.pointsAlongRoute = this.navParams.get('pointsAlongRoute');
     this.indexesOfPointsAlongRoute = this.navParams.get('indexesOfPointsAlongRoute');
+
+
+    this.orCoords = ({
+      lat: this.latOr,
+      lng: this.lngOr
+    });
+
+    this.destCoords = ({
+      lat:this.latDest,
+      lng: this.lngDest
+    })
   
 
 
@@ -400,14 +418,6 @@ this.CrewsGeofire.forEach(crewGeofire => {
     this.showRoute = true;
   }
 
-  createCrew(){
-    console.log('te clickie');
-    
-    let modal = this.modalCtrl.create('CreateCrewPage', {latOr: this.latOr, lngOr: this.lngOr, latDest: this.latDest, lngDest: this.lngDest, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute, pointsAlongRoute: this.pointsAlongRoute});
-
-    modal.present();
-
-  }
 
 
   nearbyCrew(){
@@ -435,7 +445,7 @@ this.CrewsGeofire.forEach(crewGeofire => {
     })
     if( this.pendingUsers === undefined||this.pendingUsers === null){
       //there is no one in the trip
-      let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve});
+      let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve, orCoords: this.orCoords, destCoords: this.destCoords});
     modal.onDidDismiss(accepted => {
         if(accepted){
           this.unSubscribeServices();
@@ -469,7 +479,7 @@ this.CrewsGeofire.forEach(crewGeofire => {
     }else{
       console.log(this.pendingUsers.length)
       //its less of 4 people
-      let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve});
+      let modal = this.modalCtrl.create('ConfirmpopupPage',{reserve:reserve, orCoords: this.orCoords, destCoords: this.destCoords});
     modal.onDidDismiss(accepted => {
         if(accepted){
           this.unSubscribeServices();
@@ -520,8 +530,22 @@ this.CrewsGeofire.forEach(crewGeofire => {
    }
 
    createGroup(){
-    this.navCtrl.push('CreateGroupPage',{origin:this.locationOriginUser,destination:this.locationDestinationUser})
-    }
+    
+    this.locationOriginUser = ({
+      lat: this.latOr,
+      lng: this.lngOr
+    })
+    
+    
+    this.locationDestinationUser = ({
+      lat: this.latDest,
+      lng: this.lngDest
+    })
+
+    let modal = this.modalCtrl.create('CreateGroupPage', {origin:this.locationOriginUser,destination:this.locationDestinationUser, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute, pointsAlongRoute: this.pointsAlongRoute});
+
+    modal.present();
+  }
 
 
 
@@ -554,7 +578,24 @@ this.CrewsGeofire.forEach(crewGeofire => {
       lastname: this.user.lastname,
       phone: this.user.phone,
       userId: this.user.userId,
-      verifiedPerson: this.user.verifiedPerson
+      verifiedPerson: this.user.verifiedPerson,
+      origin: {
+        name: this.nameOr,
+        coords: {
+        lat: this.latOr,
+        lng: this.lngOr
+        }
+      },
+
+      destination: {
+        name: this.nameDest, 
+        coords: {
+          lat: this.latDest,
+          lng: this.lngDest
+        }
+        
+      }
+
     }
     this.afDB.database.ref('/crewsTest/' + crew.admin.userId + '/' + crew.crewId + '/members').push(userToCrew)
       .then((snap)=>{

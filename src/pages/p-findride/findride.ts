@@ -709,6 +709,26 @@ listride(){
         ]
       });
       alert.present();
+    }else if(snapBlock.val().documents.carne === false || snapBlock.val().documents.id === false ){
+
+      let alert = this.alertCtrl.create({
+        title: 'Debes enviar foto de tu identificación y carné empresarial',
+        subTitle: 'Es necesaria esta medida de seguridad para aquellos usuarios registrados con correo personal',
+        buttons: [
+          {
+            text: 'No lo quiero hacer ahora',
+            role: 'cancel',
+          },
+          {
+            text: 'Enviar Documentos',
+            handler: () => {
+              this.navCtrl.push('DriverUserVerificationPage');
+            }
+          }
+        ]
+      });
+      alert.present();
+
     }else{
       
         if(this.user.onTrip == true){

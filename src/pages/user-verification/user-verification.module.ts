@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { DriverUserVerificationPage } from './car-registration';
+import { DriverUserVerificationPage } from './user-verification';
  
 @NgModule({
   declarations: [

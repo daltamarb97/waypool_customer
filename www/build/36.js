@@ -1,14 +1,14 @@
 webpackJsonp([36],{
 
-/***/ 666:
+/***/ 693:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MorePageModule", function() { return MorePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyridePageModule", function() { return MyridePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__more__ = __webpack_require__(860);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myride__ = __webpack_require__(890);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,43 +18,48 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MorePageModule = /** @class */ (function () {
-    function MorePageModule() {
+var MyridePageModule = /** @class */ (function () {
+    function MyridePageModule() {
     }
-    MorePageModule = __decorate([
+    MyridePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__more__["a" /* MorePage */],
+                __WEBPACK_IMPORTED_MODULE_2__myride__["a" /* MyridePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__more__["a" /* MorePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__myride__["a" /* MyridePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__more__["a" /* MorePage */]
+                __WEBPACK_IMPORTED_MODULE_2__myride__["a" /* MyridePage */]
             ]
         })
-    ], MorePageModule);
-    return MorePageModule;
+    ], MyridePageModule);
+    return MyridePageModule;
 }());
 
-//# sourceMappingURL=more.module.js.map
+//# sourceMappingURL=myride.module.js.map
 
 /***/ }),
 
-/***/ 860:
+/***/ 890:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MorePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyridePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__ = __webpack_require__(359);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_signup_services__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sendUsers_service__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_trips_service__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_reserves_service__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_metrics_service__ = __webpack_require__(360);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -71,55 +76,200 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var MorePage = /** @class */ (function () {
-    function MorePage(navCtrl, AngularFireAuth, authenticationService, SignupService, app, alertCtrl) {
+
+
+
+
+
+var MyridePage = /** @class */ (function () {
+    function MyridePage(navCtrl, modalCtrl, MetricsService, alertCtrl, TripsService, toastCtrl, SignUpService, geolocation, navParams, AngularFireAuth, callNumber, sendUsersService, app, reservesService, afDB) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.authenticationService = authenticationService;
-        this.SignupService = SignupService;
-        this.app = app;
+        this.modalCtrl = modalCtrl;
+        this.MetricsService = MetricsService;
         this.alertCtrl = alertCtrl;
+        this.TripsService = TripsService;
+        this.toastCtrl = toastCtrl;
+        this.SignUpService = SignUpService;
+        this.geolocation = geolocation;
+        this.navParams = navParams;
+        this.AngularFireAuth = AngularFireAuth;
+        this.callNumber = callNumber;
+        this.sendUsersService = sendUsersService;
+        this.app = app;
+        this.reservesService = reservesService;
+        this.afDB = afDB;
+        this.pendingUsers = [];
+        this.pickedUpUsers = [];
+        this.driverOnTrip = [];
+        this.myReservesId = [];
         this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.user = {};
-        this.verified = false;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
-        this.SignupService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(function (user) {
-            _this.user = user;
-            console.log(_this.user);
-            if (_this.user.verifiedPerson === true) {
-                _this.verified = true;
+        this.cancelReserves = [];
+        this.cancelUsers = [];
+        this.driverExist = false;
+        this.onTrip = false;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_8_rxjs__["Subject"];
+        this.TripsService.getKeyTrip(this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (keys) {
+            // console.log(this.SignUpService.userPlace);
+            _this.keyTrip = keys;
+            console.log(_this.keyTrip.keyTrip);
+            if (_this.keyTrip === undefined || _this.keyTrip === null) {
+                _this.unSubscribeServices();
+                console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                _this.driverExist = false;
+                _this.onTrip = false;
+                _this.navCtrl.pop();
+            }
+            else {
+                _this.getTrip(_this.keyTrip.keyTrip, _this.keyTrip.driverId);
+            }
+        });
+        this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (info) {
+            _this.user = info;
+            // here starts the conditionals for the trip
+            if (_this.user.cancelTrip === undefined || _this.user.cancelTrip === null) {
+            }
+            else if (_this.user.cancelTrip == true) {
+                _this.unSubscribeServices();
+                _this.TripsService.eliminateAvailableReserves(_this.userUid);
+                _this.navCtrl.pop();
+                var modal = _this.modalCtrl.create('CanceltripPage');
+                modal.present();
+                _this.TripsService.eliminatingCancelTrip(_this.userUid);
+                _this.MetricsService.cancelReserves(_this.userUid, _this.trip);
+            }
+            //save trip
+            console.log(_this.user.saveTrip);
+            if (_this.user.saveTrip === undefined || _this.user.saveTrip === null) {
+                console.log(_this.user.saveTrip);
+            }
+            else if (_this.user.saveTrip == true) {
+                console.log(_this.user.saveTrip);
+                console.log('RATETRIPPPPPPPPPPPPPPPPPPPPP');
+                _this.unSubscribeServices();
+                _this.navCtrl.setRoot('RatetripPage', { trip: _this.trip });
+                _this.TripsService.eliminateAvailableReserves(_this.userUid);
+                _this.TripsService.eliminatingSaveTrip(_this.userUid);
             }
         });
     }
-    MorePage.prototype.profile = function () {
-        this.app.getRootNav().push('ProfilePage');
+    MyridePage.prototype.getTrip = function (keyTrip, driverId) {
+        var _this = this;
+        console.log(this.trip);
+        // this.getTripState(keyTrip,driverId);
+        console.log(this.keyTrip);
+        this.TripsService.getTrip(keyTrip, driverId).takeUntil(this.unsubscribe)
+            .subscribe(function (info) {
+            //check if the info of the reserve is null  
+            if (_this.keyTrip.keyTrip === undefined || _this.keyTrip.keyTrip === null) {
+                _this.driverExist = false;
+                _this.onTrip = false;
+                console.log("ME ACTIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                console.log("existo");
+            }
+            else {
+                _this.trip = info;
+                console.log(_this.trip);
+                _this.getPendingAndPickedUpUsers(keyTrip, driverId);
+                _this.driverExist = true;
+                _this.onTrip = true;
+            }
+        });
     };
-    MorePage.prototype.terms = function () {
-        this.navCtrl.push('TermsPage');
+    MyridePage.prototype.unSubscribeServices = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     };
-    //      help(){
-    // this.navCtrl.push('HelpPage');
-    // }
-    MorePage.prototype.logOut = function () {
+    MyridePage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    };
+    MyridePage.prototype.getPendingAndPickedUpUsers = function (keyTrip, driverId) {
+        var _this = this;
+        this.TripsService.getPendingUsers(keyTrip, driverId).takeUntil(this.unsubscribe)
+            .subscribe(function (user) {
+            _this.pendingUsers = user;
+            console.log(_this.pendingUsers);
+        });
+        this.TripsService.getPickedUpUsers(keyTrip, driverId).takeUntil(this.unsubscribe)
+            .subscribe(function (user) {
+            _this.pickedUpUsers = user;
+            console.log(_this.pickedUpUsers);
+        });
+    };
+    MyridePage.prototype.enterChat = function () {
+        //send isTrip=true for the chat to know if its a reserve or a trip
+        var isTrip = true;
+        var modal = this.modalCtrl.create('ChattingPage', {
+            reserve: this.trip,
+            isTrip: isTrip
+        });
+        modal.present();
+    };
+    MyridePage.prototype.callUser = function (number) {
+        var _this = this;
+        console.log(number);
+        this.callNumber.callNumber(number, true)
+            .then(function (res) { return console.log('Launched dialer!', res); })
+            .catch(function (err) {
+            var alert = _this.alertCtrl.create({
+                title: 'Error de llamada',
+                subTitle: 'Hubo un error en la llamada, si persiste el problema envianos un correo a waypooltec@gmail.com',
+                buttons: ['OK']
+            });
+            alert.present();
+            console.log('Error launching dialer', err);
+        });
+    };
+    MyridePage.prototype.cancelTrip = function () {
         var _this = this;
         var alert = this.alertCtrl.create({
-            title: '¿estás seguro de querer cerrar sesión?',
+            title: 'Cancelar Viaje',
+            message: "\u00BFEstas seguro que deseas cancelar?",
             buttons: [
                 {
-                    text: 'Cancel',
+                    text: 'No',
                     role: 'cancel',
                     handler: function () {
-                        console.log('Cancel clicked');
+                        //do nothing
                     }
                 },
                 {
-                    text: 'cerrar sesión',
+                    text: 'Si',
                     handler: function () {
-                        _this.authenticationService.logOut().then(function () {
-                            console.log(__WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]().currentUser);
-                            // this.SignupService.userPlace = undefined;
-                            _this.navCtrl.setRoot('LoginPage');
+                        if (_this.pickedUpUsers.length === 0 || _this.pickedUpUsers === undefined || _this.pickedUpUsers === null) {
+                            _this.unSubscribeServices();
+                            _this.MetricsService.cancelReserves(_this.userUid, _this.trip);
+                            _this.TripsService.cancelTrip(_this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
+                            _this.TripsService.eliminateKeyTrip(_this.userUid);
+                            _this.TripsService.eliminatingOnTrip(_this.userUid);
+                            _this.TripsService.eliminateAvailableReserves(_this.userUid);
+                            _this.navCtrl.pop();
+                        }
+                        _this.reservesService.confirmMyExistenceInPickedupUsers(_this.trip.driver.userId, _this.trip.keyTrip, _this.userUid).takeUntil(_this.unsubscribe)
+                            .subscribe(function (pickedUp) {
+                            _this.pickedUp = pickedUp;
+                            console.log(_this.pickedUp);
+                            console.log(pickedUp);
+                            if (_this.pickedUp === undefined || _this.pickedUp === null) {
+                                _this.MetricsService.cancelReserves(_this.userUid, _this.trip);
+                                _this.TripsService.cancelTrip(_this.userUid, _this.trip.driver.userId, _this.trip.keyTrip);
+                                _this.TripsService.eliminateKeyTrip(_this.userUid);
+                                _this.TripsService.eliminateAvailableReserves(_this.userUid);
+                                console.log(_this.trip.keyTrip);
+                                _this.navCtrl.pop();
+                            }
+                            else {
+                                //don't cancel
+                                var toast = _this.toastCtrl.create({
+                                    message: _this.pickedUp.name + " : No puedes cancelar ya que tu compa\u00F1ero ya te recogi\u00F3, si esto no es verdad, por favor saca un screenshot de Mi Viaje y m\u00E1ndalo al correo waypooltec@gmail.com",
+                                    showCloseButton: true,
+                                    closeButtonText: 'Ok'
+                                });
+                                toast.present();
+                            }
                         });
                     }
                 }
@@ -127,20 +277,16 @@ var MorePage = /** @class */ (function () {
         });
         alert.present();
     };
-    MorePage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    };
-    MorePage = __decorate([
+    MyridePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-more',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-more/more.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title class="text-center">PERFIL</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light" >\n    <ion-item>\n        \n                <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}\n                            <ion-icon *ngIf = \'verified\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                        </h2>\n                        <p (click)="profile()">Editar Perfil</p>\n                    </div>\n        \n        \n        \n    </ion-item>\n\n    <ion-list no-lines>\n        <!-- <button ion-item (click)="reviews()">\n            <ion-avatar item-start>\n                <ion-icon name="ios-star"></ion-icon>\n            </ion-avatar>\n            Mis calificaciones (Próximamente)\n        </button>\n        <button ion-item (click)="notification()">\n            <ion-avatar item-start>\n                <ion-icon name="md-notifications"></ion-icon>\n            </ion-avatar>\n            Notificaciones (Próximamente)\n        </button> -->\n        <button ion-item (click)="terms()">\n            <ion-avatar item-start>\n                <ion-icon name="md-paper"></ion-icon>\n            </ion-avatar>\n            Terminos y Condiciones\n        </button>\n        <!-- <button ion-item (click)="earn()">\n            <ion-avatar item-start>\n                <ion-icon name="md-share"></ion-icon>\n            </ion-avatar>\n            Refiérenos y Ganas (Próximamente)\n        </button>\n        <button ion-item (click)="ratevroom()">\n            <ion-avatar item-start>\n                <ion-icon name="md-thumbs-up"></ion-icon>\n            </ion-avatar>\n            Cálifica a Waypool (Próximamente)\n        </button> -->\n        <!-- <button ion-item (click)="help()">\n            <ion-avatar item-start>\n                <ion-icon name="md-alert"></ion-icon>\n            </ion-avatar>\n           Soporte \n        </button> -->\n    </ion-list>\n  \n    \n    <ion-list no-lines>\n        <button ion-item (click)="logOut()" text-center><h2 class="text-theme"><strong>Salir de mi cuenta</strong></h2></button>\n\n    </ion-list>\n    <p class="love">Desarrollado con Amor <ion-icon name="heart"></ion-icon></p> \n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-more/more.html"*/
+            selector: 'page-myride',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-myride/myride.html"*/'<ion-header class="bg-theme">\n    <ion-navbar hideBackButton="true">\n        <ion-title class="text-center">ON TRIP</ion-title>\n    </ion-navbar>\n    \n</ion-header>\n\n<ion-content class="bg-light">\n    <p class="important">¡IMPORTANTE!: Después del viaje NO hay intercambio de efectivo.</p> \n    <div #map id="map"></div>  \n\n    <div>\n        <ion-list>\n            <ion-card *ngFor = "let user of pendingUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock"> Yo\n                            <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                        </h2>\n                        <ng-template #itsNotMeBlock >\n                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}\n                                <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                            </h2>\n                            <p>{{user.company}}</p>\n\n                        </ng-template>\n                        \n                    </div>                   \n                    <div class="more">\n                        <ion-badge class="bg-yellow">WAITING</ion-badge>\n                    </div>\n                </ion-item>\n                \n            </ion-card>\n            <ion-card *ngFor = "let user of pickedUpUsers">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2 *ngIf="user.userId === userUid; else itsNotMeBlock " style="font-size:1.5rem; "> Me\n                            <ion-icon name="ios-checkmark-circle" class="text-green"></ion-icon>\n                        </h2>\n                        <ng-template #itsNotMeBlock >\n                            <h2 >{{user.name | titlecase}} {{user.lastname |titlecase}}\n                                <ion-icon *ngIf=\'user.verifiedPerson\' name="ios-checkmark-circle" class="text-green"></ion-icon>                           \n                            </h2>\n                            <p>{{user.company}}</p>\n\n                        </ng-template>\n                        \n                    </div>\n                    <div class="more">\n                        <ion-badge class="bg-green">PICKED UP</ion-badge>  \n                    </div>\n                   \n                </ion-item>\n                \n            </ion-card>\n\n            <!-- repilica -->\n            <ion-card *ngIf="driverExist">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{trip.driver.name|titlecase}} {{trip.driver.lastname |titlecase }}\n                            <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                        </h2>\n                        \n                        <p>{{trip.car}}</p>\n                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{trip.driver.company}}</ion-badge>\n\n                    </div>\n                    <div class="more">\n                        <h2 class="text-theme" class="priceDriver">$ {{trip.price}}\n                        </h2>\n                    </div>                \n                   \n                </ion-item>\n                <ion-card-content>\n                    <!-- <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme"></span>{{trip.origin[0]}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>\n                    </div> -->\n                    <ion-row>\n                      \n                            <!-- <h2 class="text text-theme" style=" display: flex; align-items: center; font-weight:600">                        \n                                Hora de partida: {{trip.startHour}}                          \n                                \n                            </h2>                     -->\n\n                            <ion-col>\n                                <div class="ride-detail">\n                                    <p>\n                                        <span class="icon-location bg-theme"></span>{{trip.origin[0]}}</p>\n                                    <p>\n                                        <span class="icon-location bg-yellow"></span>{{trip.destination[0]}}</p>\n                                </div>\n                            </ion-col>\n                          \n                       \n                            <ion-col class="detail-text">\n                                <button class="btn bg-green rounded full text-white" style="    width: 44px;\n                                font-size: 21px;" (click)="callUser(trip.driver.phone)"><ion-icon name="ios-call" class="text-white"></ion-icon></button>\n\n                            </ion-col>\n                      \n                   \n                    </ion-row>\n                </ion-card-content>\n            </ion-card>    \n            <ion-row class="rowOfButtons" >                                 \n                \n                <ion-col class="detail-text">\n                    <button class="btn bg-darkblue rounded full text-white" style="width: 90%;margin-top: 14px;margin-left: 9px;" (click)="enterChat()">Chat</button>\n                </ion-col>\n                <ion-col class="detail-text">\n                    <button  class="btn bg-theme text-white rounded" *ngIf="onTrip"  (click)="cancelTrip()"style="width: 90%;margin-top: 14px;margin-left: 9px; margin-right:9px;">Cancel Trip</button>\n                </ion-col>\n           \n            </ion-row>\n\n        </ion-list>\n\n        <!-- <div *ngSwitchCase="\'map\'">\n           <div #map id="map" ></div>\n        </div> -->\n             \n\n        \n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-myride/myride.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_2__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_4__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
-    ], MorePage);
-    return MorePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_11__services_metrics_service__["a" /* MetricsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_7__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_6__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_2__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_9__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_10_angularfire2_database__["AngularFireDatabase"]])
+    ], MyridePage);
+    return MyridePage;
 }());
 
-//# sourceMappingURL=more.js.map
+//# sourceMappingURL=myride.js.map
 
 /***/ })
 

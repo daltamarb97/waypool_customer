@@ -26666,128 +26666,6 @@ driver-page-canceltrip .text {
   font-size: 1.5rem;
 }
 
-driver-page-user-verification p {
-  font-weight: 600;
-  font-size: 1.3rem;
-  margin-top: 3rem !important;
-}
-
-driver-page-user-verification h2 {
-  margin-top: 0;
-  font-weight: 600;
-  position: relative;
-  padding-bottom: 15px;
-  margin-bottom: 70px;
-}
-
-driver-page-user-verification h2::before {
-  content: '';
-  width: 131px;
-  height: 3px;
-  margin: 0 auto;
-  background: #0fc874;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-driver-page-user-verification img {
-  width: 70%;
-}
-
-driver-page-user-verification .verifiy {
-  margin-top: 60px;
-}
-
-driver-page-user-verification .verifiy img {
-  width: 50%;
-}
-
-driver-page-user-verification .btn-box {
-  position: inherit;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-}
-
-driver-page-user-verification .btn-box button {
-  margin: 0 auto;
-}
-
-driver-page-user-verification .buttonLight {
-  color: light;
-}
-
-driver-page-user-verification .skiptext {
-  color: red;
-  font-size: 10px;
-  margin-left: 95px;
-}
-
-driver-page-car-registration-login p {
-  font-weight: 600;
-  font-size: 1.3rem;
-  margin-top: 3rem !important;
-}
-
-driver-page-car-registration-login h2 {
-  margin-top: 0;
-  font-weight: 600;
-  position: relative;
-  padding-bottom: 15px;
-  margin-bottom: 70px;
-}
-
-driver-page-car-registration-login h2::before {
-  content: '';
-  width: 131px;
-  height: 3px;
-  margin: 0 auto;
-  background: #0fc874;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-driver-page-car-registration-login img {
-  width: 70%;
-}
-
-driver-page-car-registration-login .verifiy {
-  margin-top: 60px;
-}
-
-driver-page-car-registration-login .verifiy img {
-  width: 50%;
-}
-
-driver-page-car-registration-login .btn-box {
-  position: inherit;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-}
-
-driver-page-car-registration-login .btn-box button {
-  margin: 0 auto;
-}
-
-driver-page-car-registration-login .buttonLight {
-  color: light;
-}
-
-driver-page-car-registration-login .skiptext {
-  color: red;
-  font-size: 10px;
-  margin-left: 95px;
-}
-
 driver-page-chats ion-title ion-icon {
   margin-left: auto;
   float: right;
@@ -37407,6 +37285,67 @@ driver-page-terms .text-theme3 {
 
 driver-page-terms .text-dark2 {
   font-weight: bold;
+}
+
+driver-page-user-verification p {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-top: 3rem !important;
+}
+
+driver-page-user-verification h2 {
+  margin-top: 0;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 70px;
+}
+
+driver-page-user-verification h2::before {
+  content: '';
+  width: 131px;
+  height: 3px;
+  margin: 0 auto;
+  background: #0fc874;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+driver-page-user-verification img {
+  width: 70%;
+}
+
+driver-page-user-verification .verifiy {
+  margin-top: 60px;
+}
+
+driver-page-user-verification .verifiy img {
+  width: 50%;
+}
+
+driver-page-user-verification .btn-box {
+  position: inherit;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+driver-page-user-verification .btn-box button {
+  margin: 0 auto;
+}
+
+driver-page-user-verification .buttonLight {
+  color: light;
+}
+
+driver-page-user-verification .skiptext {
+  color: red;
+  font-size: 10px;
+  margin-left: 95px;
 }
 
 driver-page-verification-images p {

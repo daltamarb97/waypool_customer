@@ -150,7 +150,9 @@ export class DriverFindridePage {
    
   }) 
 
-    this.afDB.database.ref('allUsers/' + this.user).once('value').then((snap)=>{
+
+    /// MODIFICAR ESTO
+    this.afDB.database.ref('driversTest/' + this.user).once('value').then((snap)=>{
       if(snap.val().toggleOnline){
             //user get their check sign of verficiation here
         this.instancesService.isVerifiedPerson( this.user);
@@ -690,7 +692,31 @@ centerMap(){
         });
         alert.present();  
       }else{
-       
+
+        this.afDB.database.ref('/driversTest/' + this.user ).once('value').then((snapUser)=>{
+          console.log(snapUser.val().documents);
+          
+          if(snapUser.val().documents.carne === false || snapUser.val().documents.id === false){
+            let alert = this.alertCtrl.create({
+              title: 'Debes enviar foto de tu identificación y carné empresarial',
+              subTitle: 'Es necesaria esta medida de seguridad para aquellos usuarios registrados con correo personal',
+              buttons: [
+                {
+                  text: 'No lo quiero hacer ahora',
+                  role: 'cancel',
+                },
+                {
+                  text: 'Enviar Documentos',
+                  handler: () => {
+                    this.navCtrl.push('DriverUserVerificationPage');
+                  }
+                }
+              ]
+            });
+            alert.present();
+          }else{
+
+
             try {
               this.orFirebase=[this.autocompleteMyPos.input]
               this.desFirebase=[this.autocompleteMyDest.input]   
@@ -782,6 +808,11 @@ centerMap(){
    
               console.log(this.orFirebase);
           }
+          
+          }
+        })
+       
+           
         
       }
     

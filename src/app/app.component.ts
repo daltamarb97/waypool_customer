@@ -158,7 +158,7 @@ export class MyApp {
     firebaseFirst.auth().onAuthStateChanged((user)=>{
       if(user){
         this.userId = user.uid;
-        this.afDB.database.ref('allUsers/' + user.uid + '/appStatus/').once('value').then(snap =>{
+        this.afDB.database.ref('usersTest/' + user.uid + '/appStatus/').once('value').then(snap =>{
           if(snap.val()=== 'user'){
             this.showUser = true;
             if(user.emailVerified == false){
@@ -203,22 +203,28 @@ export class MyApp {
     if(page.component === 'DriverFindridePage'){
         
         this.nav.setRoot('DriverFindridePage').then(()=>{
-            this.afDB.database.ref('allUsers/' + this.userId).update({
+            this.afDB.database.ref('usersTest/' + this.userId).update({
               appStatus: 'driver'
             }).then(()=>{
               this.showUser = false;
-          }) 
+              this.afDB.database.ref('driversTest/' + this.userId).update({
+                appStatus: 'driver'
+              });
+            })
         })
         
     }else if(page.component === 'FindridePassPage'){
       
       
       this.nav.setRoot('FindridePassPage').then(()=>{
-        this.afDB.database.ref('allUsers/' + this.userId).update({
+        this.afDB.database.ref('usersTest/' + this.userId).update({
           appStatus: 'user'
         }).then(()=>{
           this.showUser = true;
           // this.showDriver = false;
+          this.afDB.database.ref('driversTest/' + this.userId).update({
+            appStatus: 'user'
+          });
         })
       })
       

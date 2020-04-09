@@ -41,6 +41,7 @@ export class SignupPage {
     cities = [];
     arrayEmails = [];
     email:any;
+
     // noShowButton:boolean = false;
     geocoder: any
     corpEmailDetected:boolean = false;
@@ -52,8 +53,12 @@ export class SignupPage {
     rightEmailOnDatabase:any;
     zones = [];
     typeOfSignUp:any;
+    caracteresPassword:string = '';
+    passwordNg:string = '';
+    css:any;
   constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private app: App, public loadingCtrl: LoadingController) {
      
+    
     this.typeOfSignUp = this.navParams.get('typeOfSignUp');
     console.log(this.typeOfSignUp);
     
@@ -66,6 +71,7 @@ export class SignupPage {
         passwordconf: ["", Validators.required],
         phone: ["", Validators.required], 
         city: ["", Validators.required],
+        company: ["", Validators.required],
         isChecked:[true, Validators.required]
         
     })
@@ -79,7 +85,72 @@ export class SignupPage {
         console.log(this.cities);
     })
 
+   
+    
+    
+    
 
+
+
+  }
+
+
+ 
+
+
+  onChangePass(){
+      console.log('cambio password');
+    
+    if(this.passwordNg.length === 0){
+        this.css={
+            'font-weight': 'bold',
+            'color': 'red'
+        }
+        this.caracteresPassword = 'mínimo 6 caracteres'
+    }else if(this.passwordNg.length === 1){
+        this.css={
+            'font-weight': 'bold',
+            'color': 'red'
+        }
+        this.caracteresPassword = 'contraseña débil'
+    }else if(this.passwordNg.length === 2){
+        this.css={
+            'font-weight': 'bold',
+            'color': 'red'
+        }
+        this.caracteresPassword = 'contraseña débil'
+    }else if(this.passwordNg.length === 3){
+        this.css={
+            'font-weight': 'bold',
+            'color': '#E3D245'
+        }
+        this.caracteresPassword = 'contraseña media'
+    }else if(this.passwordNg.length === 4){
+        this.css={
+            'font-weight': 'bold',
+            'color': '#E3D245'
+        }
+        this.caracteresPassword = 'contraseña media'
+    }else if(this.passwordNg.length === 5){
+        this.css={
+            'font-weight': 'bold',
+            'color': '#E3D245'
+        }
+        this.caracteresPassword = 'contraseña media'
+    }else if(this.passwordNg.length === 6){
+        this.css={
+            'font-weight': 'bold',
+            'color': 'green'
+        }
+        this.caracteresPassword = 'contraseña óptima'
+    }else{
+        this.css={
+            'font-weight': 'bold',
+            'color': 'green'
+        }
+        this.caracteresPassword = 'contraseña óptima'
+    }
+      
   }
 
  onChange(){

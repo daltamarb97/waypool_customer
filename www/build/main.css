@@ -25746,6 +25746,13 @@ li,
   background: #001127;
 }
 
+.bg-background-img {
+  background: url(../assets/imgs/background.png) no-repeat;
+  background-size: cover;
+  width: 100%;
+  background-position: center;
+}
+
 .bg-darkblue {
   background: #0081ad;
 }
@@ -33528,8 +33535,17 @@ page-reservetrip .item-md ion-avatar ion-img, page-reservetrip .item-md ion-avat
   height: 70px;
 }
 
+page-signup .close-icon {
+  font-size: 3rem;
+  left: 20px;
+  top: 25px;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
 page-signup .login {
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
   bottom: 0px;
   width: 100%;
   padding: 25px;
@@ -33539,17 +33555,25 @@ page-signup .login {
 
 page-signup .logo {
   margin: 0% auto;
-  height: calc(50vh - 70px);
-  position: relative;
+  height: calc(28vh - 70px);
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 page-signup .logo img {
   position: absolute;
   width: 144px;
-  height: 144px;
-  margin: auto;
-  top: 0;
-  left: 0;
+  height: 111px;
+  top: 6px;
+  left: -3px;
+  bottom: 0;
+  right: 0;
+}
+
+page-signup .logo h1 {
+  position: absolute;
+  top: 90px;
+  left: 27px;
   bottom: 0;
   right: 0;
 }
@@ -33592,10 +33616,6 @@ page-signup .name-fild {
 
 page-signup .col {
   width: 2px;
-}
-
-page-signup .login {
-  padding: 7px;
 }
 
 page-support .card {

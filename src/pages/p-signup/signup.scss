@@ -1,23 +1,38 @@
 page-signup {
+    .close-icon {
+        font-size: 3rem;
+        left: 20px;
+        top: 25px;
+        position: sticky;
+    }
+
     .login {
-        position: fixed;
+        position: sticky;
         bottom: 0px;
         width: 100%;
         padding: 25px;
         padding-bottom: 0;
         height: 615px;
     }
-    .logo {
+    .logo { 
         margin: 0% auto;
-        height: calc(50vh - 70px);
-        position: relative;
+        height: calc(28vh - 70px);
+        position: sticky;
         img {
             position: absolute;
             width: 144px;
-            height: 144px;
-            margin: auto;
-            top: 0;
-            left: 0;
+            height: 111px;
+            // margin: auto;
+            top: 6px;
+            left: -3px;
+            bottom: 0;
+            right: 0;
+        }
+        h1{
+            
+            position: absolute; 
+            top: 90px;
+            left: 27px;
             bottom: 0;
             right: 0;
         }
@@ -58,7 +73,8 @@ page-signup {
         width: 2px;
         
     }
-     .login{
-        padding: 7px;
-    }
+  
+
+ 
+
 }

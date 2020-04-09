@@ -1,73 +1,84 @@
-<ion-header class="bg-theme">
+<ion-header>
     <ion-navbar>
-        <ion-title><span>REGÍSTRATE</span></ion-title>
+        <ion-icon name="md-close" class="close-icon" (click)="login()"></ion-icon>
     </ion-navbar>
 </ion-header>
 
 
 
 <ion-content>
+    
+     <div class="logo">
+        <img src="assets/imgs/logo waypool W-01.png" alt="logo">
+        
+        <h1 class="text-theme">Bienvenido a Waypool</h1>
+    </div>
+    
+
     <form [formGroup]="signupGroup" (ngSubmit)="verification()">
-    <div>
-        <div class="">
-                <ion-row>
-                        <ion-col class="name-fild">
-                            <ion-list class="form" style="margin-bottom: 0">
-                                <ion-item>
-                                    <ion-label></ion-label>
-                                    <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>
-                                </ion-item>
-                        
-                                <ion-item>
-                                    <ion-label></ion-label>
-                                    <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>
-                                </ion-item>
+        <div class="bg-white login">
+            <div>
+   
+            <ion-list class="form">
+                <ion-item>
+                    <ion-label></ion-label>
+                    <ion-input class="color-bottom"  type="text"  text-right formControlName="name" placeholder= "Tú nombre" ></ion-input>
+                </ion-item>
+             
             
-                                <ion-item>
-                                    <ion-label  text-right >selecciona tu ciudad</ion-label>
-                                        <ion-select (ionChange)="onChange()" [(ngModel)]="cityVar" formControlName="city">
-                                            <ion-option *ngFor="let city of cities">{{city.name}}</ion-option>
-                                        </ion-select>
-                                </ion-item>
-                            </ion-list>
-                        </ion-col>
-                    </ion-row>
-
-                    <div>   
-                                <ion-row>
-                                        <ion-col class="name-fild-2">
-                                            <ion-list class="form">
-                                                <ion-item class="editable-email">
-                                                    <ion-label  fixed></ion-label>
-                                                            <ion-input type="text" text-right [(ngModel)]='email' formControlName="email" placeholder= "email"></ion-input>
-                                                        </ion-item>
-                                                </ion-list>
-                                        </ion-col>
-                                    </ion-row>
-                    </div>
-
-            <ion-list class="form" style="margin-bottom: 0">
-                <ion-item>
-                    <ion-label  fixed><span style="font-weight: bold; color: red;">(mínimo 6 caracteres)</span></ion-label>
-                    <ion-input type="password"  text-right formControlName="password" placeholder= "crea tu contraseña" minlength="6"></ion-input>
-                </ion-item>
                 <ion-item>
                     <ion-label></ion-label>
-                    <ion-input type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>
+                    <ion-input class="color-bottom"  type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido" ></ion-input>
                 </ion-item>
+            
+            
+                <ion-item class="editable-email">
+                    <ion-label  fixed></ion-label>
+                    <ion-input class="color-bottom"  type="text" text-right [(ngModel)]='email' formControlName="email" placeholder= "email" ></ion-input>
+                </ion-item>
+            
+            
+                <ion-item class="editable-email">
+                    <ion-label  fixed></ion-label>
+                    <ion-input class="color-bottom"  type="text" text-right [(ngModel)]='company' formControlName="company" placeholder= "Tú empresa"></ion-input>
+                </ion-item>
+            
+            
+                <ion-item>
+                    <ion-label  text-right >selecciona tu ciudad</ion-label>
+                    <ion-select class="color-bottom" (ionChange)="onChange()" [(ngModel)]="cityVar" formControlName="city">
+                        <ion-option *ngFor="let city of cities">{{city.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            
+            
+                <ion-item>
+                    <ion-label  fixed><span [ngStyle]="css">{{caracteresPassword}}</span></ion-label>
+                    <ion-input class="color-bottom"  type="password"  text-right formControlName="password" [(ngModel)]="passwordNg" (ngModelChange)="onChangePass()"placeholder= "crea tu contraseña" minlength="6"></ion-input>
+                </ion-item>
+            
+            
                 <ion-item>
                     <ion-label></ion-label>
-                    <ion-input type="number" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>
+                    <ion-input class="color-bottom"  type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>
                 </ion-item>
+            
+            
                 <ion-item>
-                    <ion-label>Por favor lee y acepta nuestros términos y condiciones</ion-label>
+                    <ion-label></ion-label>
+                    <ion-input class="color-bottom"  type="number" text-right formControlName="phone" placeholder= "Tú número de celular" ></ion-input>
+                </ion-item>
+            
+            
+                <ion-item>
+                    <ion-label class="color-bottom" >Por favor lee y acepta nuestros términos y condiciones</ion-label>
                     <ion-checkbox formControlName="isChecked" ></ion-checkbox>
                 </ion-item>
+            
+            
                 <ion-item>
                     <p>Ver <a href="https://waypooltech.wordpress.com/">términos y condiciones</a></p>
                 </ion-item>
-                
-
             </ion-list>
             <div class="footer-signup">
                     <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>

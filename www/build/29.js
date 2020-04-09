@@ -1,6 +1,6 @@
 webpackJsonp([29],{
 
-/***/ 703:
+/***/ 706:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupPageModule", function() { return SignupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(901);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(904);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var SignupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 901:
+/***/ 904:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,6 +98,8 @@ var SignupPage = /** @class */ (function () {
         this.successfulRegister = false;
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_7_rxjs__["Subject"];
         this.zones = [];
+        this.caracteresPassword = '';
+        this.passwordNg = '';
         this.typeOfSignUp = this.navParams.get('typeOfSignUp');
         console.log(this.typeOfSignUp);
         this.signupGroup = this.formBuilder.group({
@@ -108,6 +110,7 @@ var SignupPage = /** @class */ (function () {
             passwordconf: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
             phone: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
             city: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
+            company: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
             isChecked: [true, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required]
         });
         this.geocoder = new google.maps.Geocoder;
@@ -116,6 +119,65 @@ var SignupPage = /** @class */ (function () {
             console.log(_this.cities);
         });
     }
+    SignupPage.prototype.onChangePass = function () {
+        console.log('cambio password');
+        if (this.passwordNg.length === 0) {
+            this.css = {
+                'font-weight': 'bold',
+                'color': 'red'
+            };
+            this.caracteresPassword = 'mínimo 6 caracteres';
+        }
+        else if (this.passwordNg.length === 1) {
+            this.css = {
+                'font-weight': 'bold',
+                'color': 'red'
+            };
+            this.caracteresPassword = 'contraseña débil';
+        }
+        else if (this.passwordNg.length === 2) {
+            this.css = {
+                'font-weight': 'bold',
+                'color': 'red'
+            };
+            this.caracteresPassword = 'contraseña débil';
+        }
+        else if (this.passwordNg.length === 3) {
+            this.css = {
+                'font-weight': 'bold',
+                'color': '#E3D245'
+            };
+            this.caracteresPassword = 'contraseña media';
+        }
+        else if (this.passwordNg.length === 4) {
+            this.css = {
+                'font-weight': 'bold',
+                'color': '#E3D245'
+            };
+            this.caracteresPassword = 'contraseña media';
+        }
+        else if (this.passwordNg.length === 5) {
+            this.css = {
+                'font-weight': 'bold',
+                'color': '#E3D245'
+            };
+            this.caracteresPassword = 'contraseña media';
+        }
+        else if (this.passwordNg.length === 6) {
+            this.css = {
+                'font-weight': 'bold',
+                'color': 'green'
+            };
+            this.caracteresPassword = 'contraseña óptima';
+        }
+        else {
+            this.css = {
+                'font-weight': 'bold',
+                'color': 'green'
+            };
+            this.caracteresPassword = 'contraseña óptima';
+        }
+    };
     SignupPage.prototype.onChange = function () {
         this.arrayEmails = [];
         // this.afDB.database.ref('allCities/' + this.cityVar + '/allPlaces').once('value').then((snap)=>{
@@ -170,12 +232,12 @@ var SignupPage = /** @class */ (function () {
                     if (this.typeOfSignUp === 'personal') {
                         if (!this.signupGroup.controls['isChecked'].value === true) {
                             loading.dismiss();
-                            var alert_1 = this.alertCtrl.create({
+                            var alert = this.alertCtrl.create({
                                 title: 'No aceptaste nuestros términos y condiciones',
                                 subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
                                 buttons: ['OK']
                             });
-                            alert_1.present();
+                            alert.present();
                         }
                         else {
                             //creating user on firebase
@@ -243,7 +305,7 @@ var SignupPage = /** @class */ (function () {
                                             if (user.emailVerified == false) {
                                                 user.sendEmailVerification();
                                                 loading.dismiss();
-                                                var alert_2 = _this.alertCtrl.create({
+                                                var alert = _this.alertCtrl.create({
                                                     title: '¡REGISTRO EXITOSO!',
                                                     subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
                                                     buttons: [
@@ -256,7 +318,7 @@ var SignupPage = /** @class */ (function () {
                                                     ]
                                                 });
                                                 _this.successfulRegister = true;
-                                                alert_2.present();
+                                                alert.present();
                                                 console.log("verification email has been sent");
                                             }
                                             else {
@@ -271,34 +333,34 @@ var SignupPage = /** @class */ (function () {
                                     loading.dismiss();
                                     console.log(error);
                                     if (error.code === "auth/email-already-in-use") {
-                                        var alert_3 = _this.alertCtrl.create({
+                                        var alert = _this.alertCtrl.create({
                                             title: 'ya existe una cuenta con este correo',
                                             subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
                                             buttons: ['OK']
                                         });
-                                        alert_3.present();
+                                        alert.present();
                                     }
                                 });
                             }
                             else {
                                 loading.dismiss();
-                                var alert_4 = this.alertCtrl.create({
+                                var alert = this.alertCtrl.create({
                                     title: 'Oops!',
                                     subTitle: 'las contraseñas no coinciden, intenta de nuevo',
                                     buttons: ['OK']
                                 });
-                                alert_4.present();
+                                alert.present();
                             }
                         }
                     }
                     else {
                         loading.dismiss();
-                        var alert_5 = this.alertCtrl.create({
+                        var alert = this.alertCtrl.create({
                             title: 'El correo que ingresaste no corresponde a un correo corporativo',
                             subTitle: 'Regístrate con la opción "registro con correo personal" si tu empresa no cuenta con correo corporativo',
                             buttons: ['OK']
                         });
-                        alert_5.present();
+                        alert.present();
                     }
                 }
                 else {
@@ -306,12 +368,12 @@ var SignupPage = /** @class */ (function () {
                     if (this.typeOfSignUp === 'corp') {
                         if (!this.signupGroup.controls['isChecked'].value === true) {
                             loading.dismiss();
-                            var alert_6 = this.alertCtrl.create({
+                            var alert = this.alertCtrl.create({
                                 title: 'No aceptaste nuestros términos y condiciones',
                                 subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
                                 buttons: ['OK']
                             });
-                            alert_6.present();
+                            alert.present();
                         }
                         else {
                             //creating user on firebase
@@ -379,7 +441,7 @@ var SignupPage = /** @class */ (function () {
                                             if (user.emailVerified == false) {
                                                 user.sendEmailVerification();
                                                 loading.dismiss();
-                                                var alert_7 = _this.alertCtrl.create({
+                                                var alert = _this.alertCtrl.create({
                                                     title: '¡REGISTRO EXITOSO!',
                                                     subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
                                                     buttons: [
@@ -391,7 +453,7 @@ var SignupPage = /** @class */ (function () {
                                                         }
                                                     ]
                                                 });
-                                                alert_7.present();
+                                                alert.present();
                                                 _this.successfulRegister = true;
                                                 console.log("verification email has been sent");
                                             }
@@ -407,35 +469,35 @@ var SignupPage = /** @class */ (function () {
                                     loading.dismiss();
                                     console.log(error);
                                     if (error.code === "auth/email-already-in-use") {
-                                        var alert_8 = _this.alertCtrl.create({
+                                        var alert = _this.alertCtrl.create({
                                             title: 'ya existe una cuenta con este correo',
                                             subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
                                             buttons: ['OK']
                                         });
-                                        alert_8.present();
+                                        alert.present();
                                     }
                                 });
                             }
                             else {
                                 loading.dismiss();
-                                var alert_9 = this.alertCtrl.create({
+                                var alert = this.alertCtrl.create({
                                     title: 'Oops!',
                                     subTitle: 'las contraseñas no coinciden, intenta de nuevo',
                                     buttons: ['OK']
                                 });
-                                alert_9.present();
+                                alert.present();
                             }
                         }
                     }
                     else {
                         this.corpEmailDetected = true;
                         loading.dismiss();
-                        var alert_10 = this.alertCtrl.create({
+                        var alert = this.alertCtrl.create({
                             title: 'El correo que ingresaste parece ser un correo corporativo',
                             subTitle: 'Regístrate con la opción "registro con correo corporativo" si cuentas con un correo corporativo',
                             buttons: ['OK']
                         });
-                        alert_10.present();
+                        alert.present();
                     }
                 }
                 loading.dismiss();
@@ -454,15 +516,16 @@ var SignupPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]) === "function" && _a || Object)
     ], SignupPage.prototype, "content", void 0);
     SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-signup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-signup/signup.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title><span>REGÍSTRATE</span></ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n\n<ion-content>\n    <form [formGroup]="signupGroup" (ngSubmit)="verification()">\n    <div>\n        <div class="">\n                <ion-row>\n                        <ion-col class="name-fild">\n                            <ion-list class="form" style="margin-bottom: 0">\n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>\n                                </ion-item>\n                        \n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>\n                                </ion-item>\n            \n                                <ion-item>\n                                    <ion-label  text-right >selecciona tu ciudad</ion-label>\n                                        <ion-select (ionChange)="onChange()" [(ngModel)]="cityVar" formControlName="city">\n                                            <ion-option *ngFor="let city of cities">{{city.name}}</ion-option>\n                                        </ion-select>\n                                </ion-item>\n                            </ion-list>\n                        </ion-col>\n                    </ion-row>\n\n                    <div>   \n                                <ion-row>\n                                        <ion-col class="name-fild-2">\n                                            <ion-list class="form">\n                                                <ion-item class="editable-email">\n                                                    <ion-label  fixed></ion-label>\n                                                            <ion-input type="text" text-right [(ngModel)]=\'email\' formControlName="email" placeholder= "email"></ion-input>\n                                                        </ion-item>\n                                                </ion-list>\n                                        </ion-col>\n                                    </ion-row>\n                    </div>\n\n            <ion-list class="form" style="margin-bottom: 0">\n                <ion-item>\n                    <ion-label  fixed><span style="font-weight: bold; color: red;">(mínimo 6 caracteres)</span></ion-label>\n                    <ion-input type="password"  text-right formControlName="password" placeholder= "crea tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="number" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label>Por favor lee y acepta nuestros términos y condiciones</ion-label>\n                    <ion-checkbox formControlName="isChecked" ></ion-checkbox>\n                </ion-item>\n                <ion-item>\n                    <p>Ver <a href="https://waypooltech.wordpress.com/">términos y condiciones</a></p>\n                </ion-item>\n                \n\n            </ion-list>\n            <div class="footer-signup">\n                    <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>\n                    <p text-center>¿ya estas registrado? <strong class="text-theme" (click)="login()">Inicia sesión</strong></p>\n            </div>\n        </div>\n    </div>\n</form>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-signup/signup.html"*/
+            selector: 'page-signup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-signup/signup.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-icon name="md-close" class="close-icon" (click)="login()"></ion-icon>\n    </ion-navbar>\n</ion-header>\n\n\n\n<ion-content>\n    \n     <div class="logo">\n        <img src="assets/imgs/logo waypool W-01.png" alt="logo">\n        \n        <h1 class="text-theme">Bienvenido a Waypool</h1>\n    </div>\n    \n\n    <form [formGroup]="signupGroup" (ngSubmit)="verification()">\n        <div class="bg-white login">\n            <div>\n   \n            <ion-list class="form">\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input class="color-bottom"  type="text"  text-right formControlName="name" placeholder= "Tú nombre" ></ion-input>\n                </ion-item>\n             \n            \n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input class="color-bottom"  type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido" ></ion-input>\n                </ion-item>\n            \n            \n                <ion-item class="editable-email">\n                    <ion-label  fixed></ion-label>\n                    <ion-input class="color-bottom"  type="text" text-right [(ngModel)]=\'email\' formControlName="email" placeholder= "email" ></ion-input>\n                </ion-item>\n            \n            \n                <ion-item class="editable-email">\n                    <ion-label  fixed></ion-label>\n                    <ion-input class="color-bottom"  type="text" text-right [(ngModel)]=\'company\' formControlName="company" placeholder= "Tú empresa"></ion-input>\n                </ion-item>\n            \n            \n                <ion-item>\n                    <ion-label  text-right >selecciona tu ciudad</ion-label>\n                    <ion-select class="color-bottom" (ionChange)="onChange()" [(ngModel)]="cityVar" formControlName="city">\n                        <ion-option *ngFor="let city of cities">{{city.name}}</ion-option>\n                    </ion-select>\n                </ion-item>\n            \n            \n                <ion-item>\n                    <ion-label  fixed><span [ngStyle]="css">{{caracteresPassword}}</span></ion-label>\n                    <ion-input class="color-bottom"  type="password"  text-right formControlName="password" [(ngModel)]="passwordNg" (ngModelChange)="onChangePass()"placeholder= "crea tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n            \n            \n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input class="color-bottom"  type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n            \n            \n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input class="color-bottom"  type="number" text-right formControlName="phone" placeholder= "Tú número de celular" ></ion-input>\n                </ion-item>\n            \n            \n                <ion-item>\n                    <ion-label class="color-bottom" >Por favor lee y acepta nuestros términos y condiciones</ion-label>\n                    <ion-checkbox formControlName="isChecked" ></ion-checkbox>\n                </ion-item>\n            \n            \n                <ion-item>\n                    <p>Ver <a href="https://waypooltech.wordpress.com/">términos y condiciones</a></p>\n                </ion-item>\n            </ion-list>\n            <div class="footer-signup">\n                    <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>\n                    <p text-center>¿ya estas registrado? <strong class="text-theme" (click)="login()">Inicia sesión</strong></p>\n            </div>\n        </div>\n    </div>\n</form>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-signup/signup.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["AngularFireDatabase"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__["a" /* authenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__["a" /* authenticationService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["AngularFireAuth"]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _l || Object])
     ], SignupPage);
     return SignupPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 }());
 
 //# sourceMappingURL=signup.js.map

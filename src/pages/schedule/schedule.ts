@@ -324,17 +324,20 @@ export class DriverSchedulePage {
                     
                               } else {
 
-                                      let modal = this.modalCtrl.create('DriverConfirmpricePage');
-                                      modal.onDidDismiss(accepted => {
-                                          if (accepted) {
+                                //CREAR NUEVO MODAL SLO PA ACTIVAR HORARIOS
+
+                                
+                                      // let modal = this.modalCtrl.create('DriverConfirmpricePage');
+                                      // modal.onDidDismiss(accepted => {
+                                      //     if (accepted) {
  
-                                              this.instancesService.ToggleStatusOnline( this.userId);
-                                              console.log("estoy true")
-                                              console.log(this.userInfo.fixedLocation.name);
-                                          } 
+                                      //         this.instancesService.ToggleStatusOnline( this.userId);
+                                      //         console.log("estoy true")
+                                      //         console.log(this.userInfo.fixedLocation.name);
+                                      //     } 
                            
-                                      })
-                                      modal.present();
+                                      // })
+                                      // modal.present();
     
                                   }
                                 

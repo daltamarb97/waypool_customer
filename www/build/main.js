@@ -284,23 +284,23 @@ var map = {
 		60
 	],
 	"../pages/chatting/driverChatting.module": [
-		692,
+		648,
 		59
 	],
 	"../pages/confirmprice/driverConfirmprice.module": [
-		648,
+		649,
 		58
 	],
 	"../pages/confirmtrip/driverConfirmtrip.module": [
-		649,
+		650,
 		57
 	],
 	"../pages/detailsreserve/driverDetailsreserve.module": [
-		650,
+		651,
 		56
 	],
 	"../pages/earn/earn.module": [
-		651,
+		652,
 		55
 	],
 	"../pages/findride/driverFindride.module": [
@@ -308,11 +308,11 @@ var map = {
 		54
 	],
 	"../pages/help/driverHelp.module": [
-		652,
+		653,
 		53
 	],
 	"../pages/more/driverMore.module": [
-		653,
+		654,
 		52
 	],
 	"../pages/myride/driverMyride.module": [
@@ -320,7 +320,7 @@ var map = {
 		5
 	],
 	"../pages/onetripprice/onetripprice.module": [
-		654,
+		655,
 		51
 	],
 	"../pages/p-bikemode/bikemode.module": [
@@ -328,11 +328,11 @@ var map = {
 		50
 	],
 	"../pages/p-canceltrip/canceltrip.module": [
-		655,
+		656,
 		49
 	],
 	"../pages/p-changecar/changecar.module": [
-		656,
+		657,
 		48
 	],
 	"../pages/p-chatting/chatting.module": [
@@ -340,19 +340,19 @@ var map = {
 		47
 	],
 	"../pages/p-confirm-reservation/confirm-reservation.module": [
-		657,
+		659,
 		46
 	],
 	"../pages/p-confirmnote/confirmnote.module": [
-		659,
+		660,
 		4
 	],
 	"../pages/p-confirmpopup/confirmpopup.module": [
-		660,
+		661,
 		45
 	],
 	"../pages/p-confirmtrip/confirmtrip.module": [
-		661,
+		662,
 		44
 	],
 	"../pages/p-creategroup/creategroup.module": [
@@ -368,7 +368,7 @@ var map = {
 		42
 	],
 	"../pages/p-help/help.module": [
-		662,
+		664,
 		41
 	],
 	"../pages/p-listride/listride.module": [
@@ -376,15 +376,15 @@ var map = {
 		40
 	],
 	"../pages/p-login/login.module": [
-		664,
+		665,
 		39
 	],
 	"../pages/p-membersgroup/membersgroup.module": [
-		665,
+		666,
 		38
 	],
 	"../pages/p-more/more.module": [
-		666,
+		667,
 		37
 	],
 	"../pages/p-myride/myride.module": [
@@ -392,23 +392,23 @@ var map = {
 		36
 	],
 	"../pages/p-profile/profile.module": [
-		667,
+		668,
 		35
 	],
 	"../pages/p-public-profile/public-profile.module": [
-		668,
+		669,
 		34
 	],
 	"../pages/p-ratetrip/ratetrip.module": [
-		669,
+		670,
 		33
 	],
 	"../pages/p-reserveinfo/reserveinfo.module": [
-		670,
+		671,
 		32
 	],
 	"../pages/p-reservetrip/reservetrip.module": [
-		671,
+		672,
 		31
 	],
 	"../pages/p-signup/signup.module": [
@@ -416,11 +416,11 @@ var map = {
 		30
 	],
 	"../pages/p-support/support.module": [
-		672,
+		673,
 		29
 	],
 	"../pages/p-terms/terms.module": [
-		673,
+		674,
 		28
 	],
 	"../pages/p-tripbike/tripbike.module": [
@@ -428,23 +428,23 @@ var map = {
 		2
 	],
 	"../pages/p-verification-images/verification-images.module": [
-		674,
+		675,
 		27
 	],
 	"../pages/p-verification-number/verification-number.module": [
-		675,
+		676,
 		26
 	],
 	"../pages/p-walkthrough/walkthrough.module": [
-		676,
+		677,
 		25
 	],
 	"../pages/p-wallet/wallet.module": [
-		677,
+		678,
 		24
 	],
 	"../pages/payments-info/payments-info.module": [
-		678,
+		679,
 		23
 	],
 	"../pages/pickup/pickup.module": [
@@ -452,19 +452,19 @@ var map = {
 		1
 	],
 	"../pages/profile/driverProfile.module": [
-		679,
+		680,
 		22
 	],
 	"../pages/public-profile/driver-public-profile.module": [
-		680,
+		681,
 		21
 	],
 	"../pages/ratetrip/driverRatetrip.module": [
-		681,
+		682,
 		20
 	],
 	"../pages/remove-schedule/remove-schedule.module": [
-		682,
+		683,
 		19
 	],
 	"../pages/reservetrip/driverReservetrip.module": [
@@ -476,7 +476,7 @@ var map = {
 		18
 	],
 	"../pages/showinfocar/showinfocar.module": [
-		683,
+		684,
 		17
 	],
 	"../pages/specifyorigin/specifyorigin.module": [
@@ -488,19 +488,19 @@ var map = {
 		15
 	],
 	"../pages/successnotification/successnotification.module": [
-		684,
+		685,
 		6
 	],
 	"../pages/support/driverSupport.module": [
-		685,
+		686,
 		14
 	],
 	"../pages/terms/driverTerms.module": [
-		686,
+		687,
 		13
 	],
 	"../pages/type-of-login/type-of-login.module": [
-		687,
+		688,
 		12
 	],
 	"../pages/user-verification/user-verification.module": [
@@ -508,19 +508,19 @@ var map = {
 		11
 	],
 	"../pages/verification-images/driver-verification-images.module": [
-		688,
+		689,
 		10
 	],
 	"../pages/verification-number/driver-verification-number.module": [
-		689,
+		690,
 		9
 	],
 	"../pages/walkthrough/driverWalkthrough.module": [
-		690,
+		691,
 		8
 	],
 	"../pages/wallet/driverWallet.module": [
-		691,
+		692,
 		7
 	]
 };
@@ -605,7 +605,7 @@ var DriverSignUpService = /** @class */ (function () {
         return this.afDB.object('/usersTest/' + userId).valueChanges();
     };
     DriverSignUpService.prototype.getToggleStatus = function (userId) {
-        return this.afDB.object('/driversTest/' + userId + '/toggleStatus/').valueChanges();
+        return this.afDB.object('/driversTest/' + userId + '/toggleOnline/').valueChanges();
     };
     DriverSignUpService.prototype.getMyOriginAndDestination = function (userId) {
         return this.afDB.object('/driversTest/' + userId + '/trips/').valueChanges();
@@ -757,9 +757,10 @@ var DriverSignUpService = /** @class */ (function () {
     };
     DriverSignUpService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]) === "function" && _b || Object])
     ], DriverSignUpService);
     return DriverSignUpService;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=d-signup.service.js.map
@@ -1478,20 +1479,21 @@ var DriverInstancesService = /** @class */ (function () {
     };
     DriverInstancesService.prototype.ToggleStatusOnline = function (userId) {
         this.afDB.database.ref('/driversTest/' + userId).update({
-            toggleStatus: 'online'
+            toggleOnline: true
         });
     };
     DriverInstancesService.prototype.ToggleStatusOffline = function (userId) {
         this.afDB.database.ref('/driversTest/' + userId).update({
-            toggleStatus: 'offline'
+            toggleOnline: false
         });
         this.afDB.database.ref('allUsers/' + userId + '/toggleOnline/').remove();
     };
     DriverInstancesService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"]) === "function" && _a || Object])
     ], DriverInstancesService);
     return DriverInstancesService;
+    var _a;
 }());
 
 //# sourceMappingURL=d-instances.services.js.map
@@ -2833,6 +2835,58 @@ var DriverMetricsService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSendFeedbackService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(59);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var DriverSendFeedbackService = /** @class */ (function () {
+    function DriverSendFeedbackService(afDB, alertCtrl) {
+        this.afDB = afDB;
+        this.alertCtrl = alertCtrl;
+    }
+    DriverSendFeedbackService.prototype.sendFeedback = function (title, info, name, lastname, number, userId) {
+        var _this = this;
+        this.afDB.database.ref('/feedback/' + title + '/drivers/' + userId).set({
+            info: info,
+            name: name,
+            lastname: lastname,
+            number: number
+        }).then(function () {
+            var alert = _this.alertCtrl.create({
+                title: 'Hemos recibido tu mensaje',
+                subTitle: 'Revisaremos tu inquietud y nos pondremos en contácto contigo lo antes posible',
+                buttons: ['OK'],
+            });
+            alert.present();
+        });
+    };
+    DriverSendFeedbackService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]])
+    ], DriverSendFeedbackService);
+    return DriverSendFeedbackService;
+}());
+
+//# sourceMappingURL=d-sendFeedback.service.js.map
+
+/***/ }),
+
+/***/ 365:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverPriceService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
@@ -2933,7 +2987,7 @@ var DriverPriceService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 365:
+/***/ 366:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2974,165 +3028,7 @@ var sendFeedbackService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 366:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverSendFeedbackService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(59);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var DriverSendFeedbackService = /** @class */ (function () {
-    function DriverSendFeedbackService(afDB, alertCtrl) {
-        this.afDB = afDB;
-        this.alertCtrl = alertCtrl;
-    }
-    DriverSendFeedbackService.prototype.sendFeedback = function (title, info, name, lastname, number, userId) {
-        var _this = this;
-        this.afDB.database.ref('/feedback/' + title + '/drivers/' + userId).set({
-            info: info,
-            name: name,
-            lastname: lastname,
-            number: number
-        }).then(function () {
-            var alert = _this.alertCtrl.create({
-                title: 'Hemos recibido tu mensaje',
-                subTitle: 'Revisaremos tu inquietud y nos pondremos en contácto contigo lo antes posible',
-                buttons: ['OK'],
-            });
-            alert.present();
-        });
-    };
-    DriverSendFeedbackService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]])
-    ], DriverSendFeedbackService);
-    return DriverSendFeedbackService;
-}());
-
-//# sourceMappingURL=d-sendFeedback.service.js.map
-
-/***/ }),
-
-/***/ 368:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return chatsService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var chatsService = /** @class */ (function () {
-    function chatsService(afDB, AngularFireAuth) {
-        this.afDB = afDB;
-        this.AngularFireAuth = AngularFireAuth;
-    }
-    chatsService.prototype.getChatsFromReserve = function (reserveKey, driverUid) {
-        //trae todos los chats del usuario
-        return this.afDB.list('/reservesTest/' + driverUid + '/' + reserveKey + '/chat/messages/').valueChanges();
-    };
-    chatsService.prototype.getChatsFromTrip = function (reserveKey, driverUid) {
-        //trae todos los chats del usuario
-        return this.afDB.list('/tripsTest/' + driverUid + '/' + reserveKey + '/chat/messages/').valueChanges();
-    };
-    chatsService.prototype.pushMessageUserInReserve = function (reserveKey, driverUid, userUid, message, name) {
-        //envía todos los chats del usuario
-        this.afDB.database.ref('/reservesTest/' + driverUid + '/' + reserveKey + '/chat/messages/').push({
-            message: message,
-            uid: userUid,
-            name: name
-        });
-    };
-    chatsService.prototype.pushMessageUserInTrip = function (reserveKey, driverUid, userUid, message, name) {
-        //envía todos los chats del usuario
-        this.afDB.database.ref('/tripsTest/' + driverUid + '/' + reserveKey + '/chat/messages/').push({
-            message: message,
-            uid: userUid,
-            name: name
-        });
-    };
-    chatsService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
-    ], chatsService);
-    return chatsService;
-}());
-
-//# sourceMappingURL=chat.service.js.map
-
-/***/ }),
-
-/***/ 369:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return noteService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var noteService = /** @class */ (function () {
-    function noteService(afDB, AngularFireAuth) {
-        this.afDB = afDB;
-        this.AngularFireAuth = AngularFireAuth;
-    }
-    noteService.prototype.setNote = function (user, note) {
-        __WEBPACK_IMPORTED_MODULE_3_firebase__["database"]().ref('/usersTest/' + user + '/trips').update({
-            note: note
-        });
-    };
-    noteService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
-    ], noteService);
-    return noteService;
-}());
-
-//# sourceMappingURL=note.service.js.map
-
-/***/ }),
-
-/***/ 372:
+/***/ 367:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3193,6 +3089,112 @@ var DriverChatsService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 369:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return chatsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var chatsService = /** @class */ (function () {
+    function chatsService(afDB, AngularFireAuth) {
+        this.afDB = afDB;
+        this.AngularFireAuth = AngularFireAuth;
+    }
+    chatsService.prototype.getChatsFromReserve = function (reserveKey, driverUid) {
+        //trae todos los chats del usuario
+        return this.afDB.list('/reservesTest/' + driverUid + '/' + reserveKey + '/chat/messages/').valueChanges();
+    };
+    chatsService.prototype.getChatsFromTrip = function (reserveKey, driverUid) {
+        //trae todos los chats del usuario
+        return this.afDB.list('/tripsTest/' + driverUid + '/' + reserveKey + '/chat/messages/').valueChanges();
+    };
+    chatsService.prototype.pushMessageUserInReserve = function (reserveKey, driverUid, userUid, message, name) {
+        //envía todos los chats del usuario
+        this.afDB.database.ref('/reservesTest/' + driverUid + '/' + reserveKey + '/chat/messages/').push({
+            message: message,
+            uid: userUid,
+            name: name
+        });
+    };
+    chatsService.prototype.pushMessageUserInTrip = function (reserveKey, driverUid, userUid, message, name) {
+        //envía todos los chats del usuario
+        this.afDB.database.ref('/tripsTest/' + driverUid + '/' + reserveKey + '/chat/messages/').push({
+            message: message,
+            uid: userUid,
+            name: name
+        });
+    };
+    chatsService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
+    ], chatsService);
+    return chatsService;
+}());
+
+//# sourceMappingURL=chat.service.js.map
+
+/***/ }),
+
+/***/ 370:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return noteService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_database__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var noteService = /** @class */ (function () {
+    function noteService(afDB, AngularFireAuth) {
+        this.afDB = afDB;
+        this.AngularFireAuth = AngularFireAuth;
+    }
+    noteService.prototype.setNote = function (user, note) {
+        __WEBPACK_IMPORTED_MODULE_3_firebase__["database"]().ref('/usersTest/' + user + '/trips').update({
+            note: note
+        });
+    };
+    noteService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
+    ], noteService);
+    return noteService;
+}());
+
+//# sourceMappingURL=note.service.js.map
+
+/***/ }),
+
 /***/ 373:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3228,16 +3230,16 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geolocation__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_sendCoords_service__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_sendUsers_service__ = __webpack_require__(356);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_note_service__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_note_service__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_call_number__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_geoFire_service__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_common__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_instances_service__ = __webpack_require__(357);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_signup_services__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_native_geocoder_ngx__ = __webpack_require__(641);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_email_composer_ngx__ = __webpack_require__(370);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_sendFeedback_service__ = __webpack_require__(365);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_chat_service__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_email_composer_ngx__ = __webpack_require__(371);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_sendFeedback_service__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_chat_service__ = __webpack_require__(369);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_reserves_service__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_trips_service__ = __webpack_require__(358);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_environment_service__ = __webpack_require__(642);
@@ -3245,20 +3247,20 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__services_metrics_service__ = __webpack_require__(360);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_camera___ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__ionic_native_fcm__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__ionic_native_clipboard___ = __webpack_require__(371);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__services_d_chat_service__ = __webpack_require__(372);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__ionic_native_clipboard___ = __webpack_require__(372);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__services_d_chat_service__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__services_d_driverauthentication_service__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__services_d_geofire_services__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__services_d_instances_services__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__services_d_metrics_service__ = __webpack_require__(361);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__services_d_price_service__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__services_d_price_service__ = __webpack_require__(365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_d_sendCoords_service__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_d_sendFeedback_service__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_d_sendFeedback_service__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__services_d_sendUsers_service__ = __webpack_require__(352);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__services_d_signup_service__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__services_d_trips_service__ = __webpack_require__(353);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__services_d_window_service__ = __webpack_require__(644);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_social_sharing__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_social_sharing__ = __webpack_require__(368);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3335,6 +3337,7 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/add-schedule/add-schedule.module#DriverAddSchedulePageModule', name: 'DriverAddSchedulePage', segment: 'add-schedule', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/canceltrip/driverCanceltrip.module#DriverCanceltripPageModule', name: 'DriverCanceltripPage', segment: 'driverCanceltrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chats/driverChats.module#DriverChatsPageModule', name: 'DriverChatsPage', segment: 'driverChats', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/chatting/driverChatting.module#DriverChattingPageModule', name: 'DriverChattingPage', segment: 'driverChatting', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmprice/driverConfirmprice.module#DriverConfirmpricePageModule', name: 'DriverConfirmpricePage', segment: 'driverConfirmprice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirmtrip/driverConfirmtrip.module#DriverConfirmtripPageModule', name: 'DriverConfirmtripPage', segment: 'driverConfirmtrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/detailsreserve/driverDetailsreserve.module#DriverDetailsReservePagePageModule', name: 'DriverDetailsReservePage', segment: 'driverDetailsreserve', priority: 'low', defaultHistory: [] },
@@ -3344,13 +3347,13 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/onetripprice/onetripprice.module#oneTripPricePageModule', name: 'oneTripPricePage', segment: 'onetripprice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-canceltrip/canceltrip.module#CanceltripPageModule', name: 'CanceltripPage', segment: 'canceltrip', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-changecar/changecar.module#ChangeCarPageModule', name: 'ChangeCarPage', segment: 'changecar', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule', name: 'ConfirmReservationPage', segment: 'confirm-reservation', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-chatting/chatting.module#ChattingPageModule', name: 'ChattingPage', segment: 'chatting', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule', name: 'ConfirmReservationPage', segment: 'confirm-reservation', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmnote/confirmnote.module#ConfirmNotePageModule', name: 'ConfirmNotePage', segment: 'confirmnote', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmpopup/confirmpopup.module#ConfirmpopupPageModule', name: 'ConfirmpopupPage', segment: 'confirmpopup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-confirmtrip/confirmtrip.module#ConfirmtripPageModule', name: 'ConfirmtripPage', segment: 'confirmtrip', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-groupdetail/groupdetail.module#GroupDetailPageModule', name: 'GroupDetailPage', segment: 'groupdetail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/p-help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-membersgroup/membersgroup.module#MembersGroupPageModule', name: 'MembersGroupPage', segment: 'membersgroup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-more/more.module#MorePageModule', name: 'MorePage', segment: 'more', priority: 'low', defaultHistory: [] },
@@ -3379,7 +3382,6 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/verification-number/driver-verification-number.module#DrverVerificationNumberPageModule', name: 'DrverVerificationNumberPage', segment: 'driver-verification-number', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/walkthrough/driverWalkthrough.module#DriverWalkthroughPageModule', name: 'DriverWalkthroughPage', segment: 'driverWalkthrough', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/wallet/driverWallet.module#DriverWalletPageModule', name: 'DriverWalletPage', segment: 'driverWallet', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/chatting/driverChatting.module#DriverChattingPageModule', name: 'DriverChattingPage', segment: 'driverChatting', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-myride/myride.module#MyridePageModule', name: 'MyridePage', segment: 'myride', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/p-tripbike/tripbike.module#TripbikePageModule', name: 'TripbikePage', segment: 'tripbike', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reservetrip/driverReservetrip.module#DriverReservetripPageModule', name: 'DriverReservetripPage', segment: 'driverReservetrip', priority: 'low', defaultHistory: [] },
@@ -3683,15 +3685,14 @@ var MyApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/app/app.html"*/'<ion-menu [content]="content" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content>\n    <!-- user -->\n    <ion-list *ngIf=\'showUser === true\'>\n      <button menuClose ion-item *ngFor="let p of pagesUser" (click)="openPage(p)">\n        <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n          {{p.title}}                \n        </button>\n      <img src="assets/imgs/wanttodrive.png"  *ngFor="let p of wanttodrive" (click)="openPage(p)" alt="">\n      </ion-list>\n\n    <!-- driver -->\n    <ion-list *ngIf=\'showUser === false\'>\n        <button menuClose ion-item *ngFor="let p of pagesDriver" (click)="openPage(p)">\n          <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n          {{p.title}}                \n        </button>\n      \n      </ion-list>\n  </ion-content>\n</ion-menu>\n\n<!-- <ion-menu [content]="content" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pagesDriver" (click)="openPage(p)">\n        <ion-icon style="margin-right: 10px; font-size: 26px;" name={{p.icon}}></ion-icon>      \n\n        {{p.title}}                \n      </button>\n    \n    </ion-list>\n  </ion-content>\n</ion-menu> -->\n\n<ion-nav  #content [root]="rootPage"></ion-nav>'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/app/app.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__["a" /* FCM */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__["a" /* FCM */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_firebase__["a" /* Firebase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_firebase__["a" /* Firebase */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__["AngularFireDatabase"]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _l || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__["a" /* FCM */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_firebase__["a" /* Firebase */], __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
     ], MyApp);
     return MyApp;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 }());
 
 //# sourceMappingURL=app.component.js.map

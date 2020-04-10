@@ -34,10 +34,6 @@ export class DriverSchedulePage {
   showButtonWorkSchedule:boolean = false;
   userInfo:any;
   defaultZone:any;
-  autocompleteMyPos;
-  autocompleteMyDest; 
-  GoogleAutocomplete: any;
-  GooglePlaces: any;
   geocoder: any
   autocompleteItems:any;
   autocompleteItems2:any;
@@ -60,22 +56,18 @@ export class DriverSchedulePage {
   origin: any;
   destination: any;
   SignUpService: any;
-  toggleStatus: any;
-
+  toggleOnline: any;
+  houseAddress:any;
+  workAddress:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public DriverSignUpService:DriverSignUpService,public instancesService: DriverInstancesService ,public modalCtrl: ModalController, public signUpService: DriverSignUpService, private angularFireAuth: AngularFireAuth, public app: App, public alertCtrl: AlertController, private camera: Camera, public loadingCtrl: LoadingController, private instances: DriverInstancesService, private afDB: AngularFireDatabase) {
     this.defaultZone = this.navParams.get('defaultZone');
     console.log(this.defaultZone);
-    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-    this.geocoder = new google.maps.Geocoder;
-
-    this.autocompleteMyPos = { input: '' };
-    this.autocompleteMyDest = { input: '' };
-
-    this.autocompleteItems = [];
-    this.autocompleteItems2 = [];
-
     this.userId = this.angularFireAuth.auth.currentUser.uid;
+
+
+    this.houseAddress = { input: '' };
+    this.workAddress = { input: '' };
 
     if(this.defaultZone){
       // this.signUpService.userPlace = this.defaultZone;
@@ -83,37 +75,42 @@ export class DriverSchedulePage {
       
     }
     this.DriverSignUpService.getToggleStatus( this.userId)
-    .subscribe(  toggleStatus => { 
+    .subscribe(  toggleOnline => { 
       
-      this.toggleStatus = toggleStatus; 
-      console.log(toggleStatus );
+      this.toggleOnline = toggleOnline; 
+      console.log(toggleOnline );
       console.log(this.userId);
       
-      if(this.toggleStatus === 'online'){
+      if(this.toggleOnline === true){
         this.showConectedButton = true;
         console.log("estoy online");
         
       }else{
         this.showConectedButton = false;
         console.log("estoy offline");
+      } 
+    });
 
-      }
-    
-    })
-    this.signUpService.getMyOriginAndDestination( this.userId)
+
+    this.signUpService.getMyInfo( this.userId)
     .subscribe(  tripsInfo => { 
-      console.log(tripsInfo);
-      
-      this.tripsInfo = tripsInfo; 
-      this.autocompleteMyPos.input = this.tripsInfo.origin.name;
-          this.autocompleteMyDest.input = this.tripsInfo.destination.name;
-    
-    })
-        this.afDB.database.ref( '/driversTest/' + this.userId).once('value').then((snap)=>{
-          this.userInfo = snap.val();
-         
+      this.tripsInfo = tripsInfo;
+      if(this.tripsInfo.workAddress && this.tripsInfo.houseAddress){
 
-        });
+        this.workAddress.input = this.tripsInfo.workAddress.name; 
+        this.workAddress.input = this.tripsInfo.houseAddress.name;
+      }else{
+        console.log('aun no ha puesto ningunas direcciones para schedule');
+        
+      }
+      
+    });
+
+
+
+    this.afDB.database.ref( '/driversTest/' + this.userId).once('value').then((snap)=>{
+      this.userInfo = snap.val();        
+    });
 
 
         this.signUpService.getSchedule( this.userId).subscribe(hour => {
@@ -296,11 +293,11 @@ export class DriverSchedulePage {
      });
   }
 
+
+
+
   conectDriver() {
-
-
-    
-      if (this.toggleStatus === 'online') {
+      if (this.toggleOnline === true) {
           const alert = this.alertCtrl.create({
               title: '¡Ya estas conectado!',
               subTitle: 'Si deseas cambiar el precio de tus viajes, desconectate y vuelvete a conectar',
@@ -319,26 +316,18 @@ export class DriverSchedulePage {
           } else {
     
               if (this.userInfo.documents) {
-                  if (this.userInfo.documents.license == true && this.userInfo.documents.id == true) {
+                  if (this.userInfo.documents.carne == true && this.userInfo.documents.id == true) {
                       if (this.userInfo.schedule) {
                           try {
-    
-                            
-                           
-                              if (this.autocompleteMyPos.input == '' || this.autocompleteMyDest.input == '' ) {
+                              if (this.houseAddress == null || this.workAddress == null  || this.houseAddress == undefined || this.workAddress == undefined ) {
                                   this.presentAlert('No tienes toda la informacion', 'Por favor asegura que tengas las dirección de tu casa y oficina sea correcta', 'Ok');
-                                 
-                                  // this.clearMarkers();
-                                  // this.directionsDisplay.setDirections({routes: []});
-                                  // this.loadMap();
+                    
                               } else {
-                                  
-                                  
+
                                       let modal = this.modalCtrl.create('DriverConfirmpricePage');
                                       modal.onDidDismiss(accepted => {
                                           if (accepted) {
-                                           
-                                            
+ 
                                               this.instancesService.ToggleStatusOnline( this.userId);
                                               console.log("estoy true")
                                               console.log(this.userInfo.fixedLocation.name);
@@ -358,20 +347,7 @@ export class DriverSchedulePage {
                           let alert = this.alertCtrl.create({
                               title: 'No tienes ningún horario',
                               subTitle: 'Por favor arma tu horario o mandanos foto del horario',
-                              buttons: [{
-                                      text: 'Mandar mi horario',
-                                      handler: () => {
-                                          this.navCtrl.push('DriverSchedulePage');
-                                      }
-                                  },
-                                  {
-                                      text: 'Cancelar',
-                                      role: 'cancel',
-                                      handler: () => {
-    
-                                      }
-                                  }
-                              ],
+                              buttons: ['OK'],
                               cssClass: 'alertDanger'
                           });
                           alert.present();
@@ -386,7 +362,7 @@ export class DriverSchedulePage {
                           buttons: [{
                                   text: 'Subir mis documentos',
                                   handler: () => {
-                                      this.navCtrl.push('DriverCarRegistrationPage');
+                                      this.navCtrl.push('DriverUserVerificationPage');
                                   }
                               },
                               {
@@ -408,7 +384,7 @@ export class DriverSchedulePage {
                       buttons: [{
                               text: 'Subir mis documentos',
                               handler: () => {
-                                  this.navCtrl.push('DriverCarRegistrationPage');
+                                  this.navCtrl.push('DriverUserVerificationPage');
                               }
                           },
                           {
@@ -437,7 +413,7 @@ export class DriverSchedulePage {
     
     
     disconectDriver(){
-      if(this.toggleStatus === 'offline'){ 
+      if(this.toggleOnline === false){ 
         //do nothing
         console.log("offline");
         
@@ -527,8 +503,13 @@ export class DriverSchedulePage {
 
   }
   createRoute(){
-    this.navCtrl.push('DriverSpecifyRoutePage',)
+    this.navCtrl.push('DriverSpecifyRoutePage')
   }
+
+
+
+
+
   ionViewDidLeave(){
     this.unsubscribe.next();
     this.unsubscribe.complete();
@@ -542,3 +523,4 @@ export class DriverSchedulePage {
     alert.present();
   }
 }
+ 

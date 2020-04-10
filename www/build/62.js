@@ -85,6 +85,7 @@ var DriverAddSchedulePage = /** @class */ (function () {
         this.imageWorkToHouse = false;
         this.button1WasntTapped = true;
         this.button2WasntTapped = true;
+        console.log('ADDSCHEDULE');
         this.userId = this.angularFireAuth.auth.currentUser.uid;
         this.afDB.database.ref('/driversTest/' + this.userId).once('value').then(function (snap) {
             _this.userInfo = snap.val();
@@ -123,44 +124,29 @@ var DriverAddSchedulePage = /** @class */ (function () {
         console.log(this.imageWorkToHouse);
         if (this.imageHouseToWork === true || this.imageWorkToHouse === true) {
             if (this.startHour === undefined || this.startHour === null) {
-                var alert_1 = this.alertCtrl.create({
+                var alert = this.alertCtrl.create({
                     title: 'Debes seleccionar una hora de partida',
                     subTitle: '¿A qué hora sales del trabajo o de tu casa?',
                     buttons: ['OK']
                 });
-                alert_1.present();
+                alert.present();
             }
             else {
-                var alert_2 = this.alertCtrl.create({
+                var alert = this.alertCtrl.create({
                     title: '¿vas a tu ' + this.textMessage + ' a las ' + this.startHour + '?',
                     buttons: [
                         {
                             text: 'Confirmo este horario',
                             handler: function () {
-                                _this.afDB.database.ref('allCities/' + _this.userInfo.city + '/allPlaces/' + _this.userInfo.company + '/zones').once('value').then(function (snap) {
-                                    var obj = snap.val();
-                                    _this.afDB.database.ref('allSchedules/' + _this.userId).push({
-                                        hour: _this.startHour,
-                                        type: _this.geofireType,
-                                        description: _this.textMessage,
-                                        image: _this.imageURL
-                                    }).then(function (snap1) {
-                                        _this.afDB.database.ref('allSchedules/' + _this.userId + '/' + snap1.key).update({
-                                            key: snap1.key
-                                        });
-                                        Object.getOwnPropertyNames(obj).forEach(function (keyZ) {
-                                            if (obj[keyZ] === 2 || obj[keyZ] === 3 || obj[keyZ] === 4 || obj[keyZ] === 5 || obj[keyZ] === 6 || obj[keyZ] === 1 || obj[keyZ] === 7 || obj[keyZ] === 8 || obj[keyZ] === 9 || obj[keyZ] === 10) {
-                                            }
-                                            else {
-                                                _this.afDB.database.ref(obj[keyZ] + '/drivers/' + _this.userId + '/schedule/' + snap1.key).update({
-                                                    hour: _this.startHour,
-                                                    type: _this.geofireType,
-                                                    description: _this.textMessage,
-                                                    image: _this.imageURL,
-                                                    key: snap1.key
-                                                });
-                                            }
-                                        });
+                                _this.afDB.database.ref('/driversTest/' + _this.userId + '/schedule/').push({
+                                    hour: _this.startHour,
+                                    type: _this.geofireType,
+                                    description: _this.textMessage,
+                                    image: _this.imageURL,
+                                }).then(function (key) {
+                                    var pushKey = key.key;
+                                    _this.afDB.database.ref('/driversTest/' + _this.userId + '/schedule/' + pushKey).update({
+                                        key: pushKey
                                     });
                                 }).then(function () {
                                     _this.viewCtrl.dismiss();
@@ -169,16 +155,16 @@ var DriverAddSchedulePage = /** @class */ (function () {
                         }
                     ]
                 });
-                alert_2.present();
+                alert.present();
             }
         }
         else {
-            var alert_3 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'Debes seleccionar una opción',
                 subTitle: '¿a esta hora vas a tu casa o a tu trabajo?',
                 buttons: ['OK']
             });
-            alert_3.present();
+            alert.present();
         }
     };
     __decorate([
@@ -193,9 +179,10 @@ var DriverAddSchedulePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'driver-page-add-schedule',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/add-schedule/driver-add-schedule.html"*/'<ion-content>\n\n\n    <ion-card>\n\n        <ion-card-content>\n                <ion-icon name="close-circle" class="close-icon text-theme-driver"  (click)="dismiss()"></ion-icon>\n                <h2 text-center class="text-theme-driver">AÑADE UN HORARIO</h2>\n\n            <ion-row style="margin-top: 14px;    display: flex;\n            justify-content: center">\n                <ion-list>\n             <h2 text-center>Coloca la hora a la que te vas:</h2>\n                    <div style="    border-color: black;\n                    border-style: solid;">\n\n                    <ion-item>\n                        <ion-label>Hora:</ion-label>\n                <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>\n                </ion-item>\n\n                </div>\n                    \n                </ion-list>                    \n            </ion-row>\n    </ion-card-content>\n\n    <br>\n    <h2 style="margin-bottom: 20px;" text-center>¿Vas al trabajo o la casa?</h2>\n      <ion-row  style="display: flex; flex-direction: row;">\n            <ion-avatar style="border-radius: 15%;" #house>\n                <p text-center class="texto1">A la casa</p>\n\n                    <img class="house" style="width: 138px;" src="assets/imgs/workToHouse.png" (click)="selectImageHouse()"/>\n\n                </ion-avatar>\n\n                <ion-avatar  style="border-radius: 15%;" #work>\n                    <p text-center class="texto1">Al Trabajo</p>\n\n                        <img src="assets/imgs/houseToWork.png" style="width: 138px;" (click)="selectImageWork()"/>\n                 </ion-avatar>\n     \n      </ion-row>\n  \n        <ion-card-content>\n            <div class="seats">           \n                <ion-row style="margin-top: 14px;    display: flex;\n                justify-content: center">\n                   \n                    <ion-col col-8>\n                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.25rem;" (click)="confirm()">Confirmar</button>\n                    </ion-col>\n                </ion-row>\n            </div>\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/add-schedule/driver-add-schedule.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_5__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__services_d_instances_services__["a" /* DriverInstancesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_d_instances_services__["a" /* DriverInstancesService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"]) === "function" && _j || Object])
     ], DriverAddSchedulePage);
     return DriverAddSchedulePage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=add-schedule.js.map

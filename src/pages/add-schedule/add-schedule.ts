@@ -27,7 +27,9 @@ export class DriverAddSchedulePage {
   imageURL:any;
   userInfo:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,public renderer: Renderer ,public alertCtrl: AlertController, public signUpService: DriverSignUpService, public angularFireAuth: AngularFireAuth, private instances: DriverInstancesService, private afDB: AngularFireDatabase) {
-  
+    
+    console.log('ADDSCHEDULE');
+    
     this.userId = this.angularFireAuth.auth.currentUser.uid;
 
     this.afDB.database.ref( '/driversTest/' + this.userId).once('value').then((snap)=>{
@@ -93,37 +95,23 @@ export class DriverAddSchedulePage {
                 {
                   text: 'Confirmo este horario',
                   handler: () => {
-                    this.afDB.database.ref('allCities/' + this.userInfo.city + '/allPlaces/' + this.userInfo.company + '/zones').once('value').then((snap)=>{
-                      let obj = snap.val();
+                    
 
-                      this.afDB.database.ref('allSchedules/' +this.userId).push({
-                        hour: this.startHour, 
-                        type: this.geofireType,
-                        description: this.textMessage,
-                        image: this.imageURL
-                    }).then((snap1)=>{
-                        this.afDB.database.ref('allSchedules/' +this.userId + '/' + snap1.key).update({
-                            key: snap1.key                              
-                        })
-                         
-                      Object.getOwnPropertyNames(obj).forEach((keyZ)=>{
-
-                          if(obj[keyZ] === 2 || obj[keyZ] === 3 || obj[keyZ] === 4 || obj[keyZ] === 5 || obj[keyZ] === 6 || obj[keyZ] === 1 || obj[keyZ] === 7 || obj[keyZ] === 8 || obj[keyZ] === 9 || obj[keyZ] === 10){
-
-                          }else{
-                            this.afDB.database.ref(obj[keyZ] + '/drivers/'+this.userId+'/schedule/' + snap1.key).update({
+                            this.afDB.database.ref( '/driversTest/'+this.userId+'/schedule/').push({
                               hour: this.startHour, 
                               type: this.geofireType,
                               description: this.textMessage,
                               image: this.imageURL,
-                              key: snap1.key
+                              
+                          }).then((key)=>{
+                              let pushKey = key.key
+                              this.afDB.database.ref( '/driversTest/'+this.userId+'/schedule/' + pushKey).update({
+                                key: pushKey
+                              })
+
+                          }).then(()=>{
+                            this.viewCtrl.dismiss();
                           })
-                          }              
-                        })
-                      })
-                    }).then(()=>{
-                      this.viewCtrl.dismiss();
-                    })
                   }
                 }
               ]

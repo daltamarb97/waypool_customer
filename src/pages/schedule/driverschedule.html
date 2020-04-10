@@ -44,7 +44,7 @@
             <ion-card-content>
   
                 <span class="dot bg-theme-driver"></span>
-                <ion-searchbar placeholder="Cóloca tu origen"  [(ngModel)]="autocompleteMyPos.input" (click)="createRoute()"></ion-searchbar>
+                <ion-searchbar required [(ngModel)]="houseAddress.input" placeholder="Coloca dirección de tu casa"   (click)="createRoute()"></ion-searchbar>
   
               
                   <!-- <ion-icon name="md-locate" (click)="getPositionAndMarker()" class="text-black"></ion-icon> -->
@@ -53,7 +53,7 @@
             <ion-card-content>
   
                 <span class="dot bg-yellow"></span>           
-               <ion-searchbar  [(ngModel)]="autocompleteMyDest.input"  id="input2" (click)="createRoute()" placeholder="Cóloca tu destino"></ion-searchbar>
+               <ion-searchbar  required [(ngModel)]="workAddress.input"  id="input2" (click)="createRoute()" placeholder="Coloca dirección de tu trabajo"></ion-searchbar>
               
              </ion-card-content>
              

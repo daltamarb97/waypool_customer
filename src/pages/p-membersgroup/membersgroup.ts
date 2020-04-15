@@ -31,6 +31,8 @@ export class MembersGroupPage {
 	members: any =[];
 	crew:any;
 	isAdmin:boolean;
+	groupKey: any;
+	passengers: any = [];
   constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController,public TripsService:DriverTripsService, public SignUpService: DriverSignUpService, public sendCoordsService: DriverSendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams, public geoFireService: DriverGeofireService, public instances: DriverInstancesService, public toastCtrl: ToastController, public alertCtrl: AlertController, public app: App, private afDB: AngularFireDatabase ) {
 	
 	  this.members= this.navParams.get('members');
@@ -59,13 +61,13 @@ ionViewDidLeave(){
  		}
   
 		 cancelgroup(){
-			// this.geoFireService.deleteUserGeofireDest(this.SignUpService.userPlace, this.groupKey);
-			// this.geoFireService.deleteUserGeofireOr(this.SignUpService.userPlace, this.groupKey);
-			// this.passengers.forEach(user => {
-			// 	this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+user.userId+'/mygroups/'+ this.groupKey).update({
-			// 		cancelgroup:true
-			// 	});
-			// });
+			this.geoFireService.deleteUserGeofireDest( this.groupKey);
+			this.geoFireService.deleteUserGeofireOr( this.groupKey);
+			this.passengers.forEach(user => {
+				this.afDB.database.ref( '/usersTest/'+user.userId+'/mygroups/'+ this.groupKey).update({
+					cancelgroup:true
+				});
+			});
 
 			// this.TripsService.cancelgroup(this.SignUpService.userPlace, this.userUid,this.groupKey);
 			this.dismiss();
@@ -98,32 +100,32 @@ ionViewDidLeave(){
 
 		  deleteUser(userId, nameUser) {
 
-			// let alert = this.alertCtrl.create({
-			// 	title: 'Eliminar Usuario',
-			// 	message: `¿Estas que deseas eliminar a este a ${nameUser} de tu viaje?,borrar muchos usuarios por día/semana esta en contra de nuestras políticas`,
-			// 	buttons: [{
-			// 			text: 'Cancelar',
-			// 			role: 'cancel',
-			// 			handler: () => {
+			let alert = this.alertCtrl.create({
+				title: 'Eliminar Usuario',
+				message: `¿Estas que deseas eliminar a este a ${nameUser} de tu viaje?,borrar muchos usuarios por día/semana esta en contra de nuestras políticas`,
+				buttons: [{
+						text: 'Cancelar',
+						role: 'cancel',
+						handler: () => {
 	
-			// 			}
-			// 		},
-			// 		{
-			// 			text: 'Eliminar',
-			// 			handler: () => {
-			// 				this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+userId+'/mygroups/'+ this.groupKey).update({
-			// 					cancelgroup:true
-			// 				});
-			// 				this.sendCoordsService.eraseUser(this.SignUpService.userPlace, userId,this.userUid,this.groupKey );
+						}
+				},
+					{
+						text: 'Eliminar',
+						handler: () => {
+							this.afDB.database.ref( '/usersTest/'+userId+'/mygroups/'+ this.groupKey).update({
+								cancelgroup:true
+							});
+							this.sendCoordsService.eraseUser(userId,this.userUid,this.groupKey );
 							
-			// 				this.dismiss();
-			// 				this.presentToast(`Haz eliminado a ${nameUser} de tu viaje`, 3000, 'bottom')
+							this.dismiss();
+							this.presentToast(`Haz eliminado a ${nameUser} de tu viaje`, 3000, 'bottom')
 						 
-			// 			}
-			// 		}
-			// 	]
-			// });
-			// alert.present();
+						}
+					}
+				]
+			});
+			alert.present();
 		}
 		presentToast(message: string, duration, position: string) {
 			const toast = this.toastCtrl.create({
@@ -139,6 +141,6 @@ ionViewDidLeave(){
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
 	}
-	seeRoute
 
+					
 }

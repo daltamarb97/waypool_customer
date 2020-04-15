@@ -1,14 +1,14 @@
 webpackJsonp([42],{
 
-/***/ 665:
+/***/ 664:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateGroupPageModule", function() { return CreateGroupPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GroupDetailPageModule", function() { return GroupDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__creategroup__ = __webpack_require__(859);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__groupdetail__ = __webpack_require__(857);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CreateGroupPageModule = /** @class */ (function () {
-    function CreateGroupPageModule() {
+var GroupDetailPageModule = /** @class */ (function () {
+    function GroupDetailPageModule() {
     }
-    CreateGroupPageModule = __decorate([
+    GroupDetailPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__creategroup__["a" /* CreateGroupPage */],
+                __WEBPACK_IMPORTED_MODULE_2__groupdetail__["a" /* GroupDetailPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__creategroup__["a" /* CreateGroupPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__groupdetail__["a" /* GroupDetailPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__creategroup__["a" /* CreateGroupPage */]
+                __WEBPACK_IMPORTED_MODULE_2__groupdetail__["a" /* GroupDetailPage */]
             ]
         })
-    ], CreateGroupPageModule);
-    return CreateGroupPageModule;
+    ], GroupDetailPageModule);
+    return GroupDetailPageModule;
 }());
 
-//# sourceMappingURL=creategroup.module.js.map
+//# sourceMappingURL=groupdetail.module.js.map
 
 /***/ }),
 
-/***/ 859:
+/***/ 857:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateGroupPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GroupDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_groups_service__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,61 +63,81 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var CreateGroupPage = /** @class */ (function () {
-    function CreateGroupPage(navCtrl, modalCtrl, navParams, renderer) {
+
+
+
+var GroupDetailPage = /** @class */ (function () {
+    function GroupDetailPage(navCtrl, modalCtrl, navParams, GroupsService, AngularFireAuth) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.modalCtrl = modalCtrl;
         this.navParams = navParams;
-        this.renderer = renderer;
-        this.origin = this.navParams.get('origin');
-        this.destination = this.navParams.get('destination');
+        this.GroupsService = GroupsService;
+        this.AngularFireAuth = AngularFireAuth;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_4_rxjs__["Subject"];
+        this.disable = false;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.members = [];
+        this.crew = this.navParams.get('crew');
+        this.GroupsService.getSpecificCrew(this.userUid, this.crew).takeUntil(this.unsubscribe)
+            .subscribe(function (crew) {
+            _this.crew = crew;
+            if (_this.crew.transport === undefined || _this.crew.transport === null) {
+            }
+            else if (_this.crew.transport == 'taxi') {
+                _this.imageUrl = 'assets/imgs/carOrange.png';
+            }
+            else if (_this.crew.transport == 'otherCar') {
+                _this.imageUrl = 'assets/imgs/carfuture.png';
+            }
+        });
+        this.GroupsService.getMembersCrew(this.userUid, this.crew).takeUntil(this.unsubscribe)
+            .subscribe(function (members) {
+            _this.members = members;
+            console.log(_this.members);
+            if (_this.members === undefined || _this.members.length === 0) {
+                // disable button because there is no one in the trip
+                _this.disable = true;
+                console.log("estoy disable");
+            }
+            else {
+                _this.disable = false;
+                console.log("no estoy disable");
+            }
+        });
     }
+    GroupDetailPage.prototype.seeMembers = function (crew) {
+        this.navCtrl.push('MembersGroupPage', { members: this.members, crew: crew });
+    };
     //  confirmpopup(){
     //     let modal = this.modalCtrl.create(ConfirmpopupPage);
     //     modal.present();
     //  }
-    CreateGroupPage.prototype.selectImageOtherCar = function () {
-        // this is just to change the css
-        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-width', '3px');
-        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-style', 'solid');
-        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-color', 'green');
-        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-width', '0px');
-        this.otherCar = true;
-        this.taxi = false;
+    GroupDetailPage.prototype.changeTransportation = function (crew) {
+        var modal = this.modalCtrl.create('ChangeCarPage', { crew: crew });
+        modal.onDidDismiss(function (accepted) {
+            if (accepted) {
+            }
+        });
+        modal.present();
     };
-    CreateGroupPage.prototype.selectImageTaxi = function () {
-        // this is just to change the css
-        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-width', '3px');
-        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-style', 'solid');
-        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-color', 'green');
-        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-width', '0px');
-        this.otherCar = false;
-        this.taxi = true;
+    GroupDetailPage.prototype.searchFindDrivers = function () {
+        this.navCtrl.push('MembersGroupPage');
     };
-    CreateGroupPage.prototype.createGroup = function () {
-        if (this.startHour === null || this.startHour === undefined || this.otherCar === undefined || this.taxi === undefined) {
-            //create service for group
-            this.navCtrl.push('ReservetripPage');
-        }
+    GroupDetailPage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('imageTaxi', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", Object)
-    ], CreateGroupPage.prototype, "imageTaxi", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('imageOtherCar', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", Object)
-    ], CreateGroupPage.prototype, "imageOtherCar", void 0);
-    CreateGroupPage = __decorate([
+    GroupDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-creategroup',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-creategroup\creategroup.html"*/'<ion-header class="bg-theme">\n\n    <ion-navbar>\n\n        <ion-title>crea grupo</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bh-light">\n\n    <H2 style="margin-left: 12px;">Encuentra personas con quién irte</H2>\n\n\n\n    <ion-card>\n\n        <ion-item>\n\n            <ion-avatar item-start>\n\n                <img src="assets/imgs/face-1.jpg">\n\n            </ion-avatar>\n\n\n\n            <div class="name">\n\n                <h2> Admin del grupo: David Johnson\n\n                    <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                </h2>\n\n                <p>Bancolombia</p>\n\n            </div>\n\n        </ion-item>\n\n        <ion-card-content>\n\n            <div class="ride-detail">\n\n                <p><small>Origen</small>\n\n                    <span class="icon-location bg-theme"></span>Villa Campestre</p>\n\n                <p>\n\n                    <small>Destino</small>\n\n                    <span class="icon-location bg-yellow"></span>Bancolombia Calle 51B</p>\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n    <ion-card>\n\n        <ion-card-content>\n\n            <ion-row  style="display: flex; flex-direction: row;">\n\n                <ion-avatar style="border-radius: 15%;" #imageTaxi>\n\n                    <p text-center class="texto1">Taxi</p>\n\n    \n\n                        <img class="house"  src="assets/imgs/carOrange.png" (click)="selectImageTaxi()"/>\n\n    \n\n                    </ion-avatar>\n\n    \n\n                    <ion-avatar  style="border-radius: 15%;" #imageOtherCar>\n\n                        <p text-center class="texto1">Indriver, Uber, Beat. etc...</p>\n\n    \n\n                            <img src="assets/imgs/carBlue.png"  (click)="selectImageOtherCar()"/>\n\n                     </ion-avatar>\n\n         \n\n          </ion-row>\n\n        </ion-card-content>\n\n    </ion-card>\n\n    <ion-card>\n\n        <ion-card-content>\n\n            <div class="ride-detail no-before">\n\n                <h6 class="text-theme">Detalles</h6>\n\n                \n\n                <ion-row >\n\n                <ion-list>\n\n                    \n\n                    <div style="    border-color: black;\n\n                    border-style: solid; border-width: 1px;">\n\n\n\n                    <ion-item>\n\n                        <ion-label>      \n\n                    <ion-icon name="md-calendar" class="icon-location"></ion-icon> Hora:</ion-label>\n\n\n\n                <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>\n\n                </ion-item>\n\n\n\n                </div>\n\n                <ion-item>\n\n                    <h2 text-left> <ion-icon name="md-create"></ion-icon> Nota:</h2>\n\n\n\n                    <div class="form">\n\n                        <ion-list no-lines>\n\n                            <ion-item>\n\n                                <ion-textarea [(ngModel)]="note" type="text" placeholder="Deja una nota para tus compañeros" ></ion-textarea>\n\n                            </ion-item>\n\n                        </ion-list>\n\n                    </div>\n\n                  </ion-item>\n\n                </ion-list>                    \n\n            </ion-row>\n\n                    \n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n    <ion-card>\n\n        <ion-card-content>\n\n            <div class="seats">\n\n                <h6 class="text-theme"></h6>\n\n                <ion-item>\n\n                    <ion-label>Asientos Disponibles</ion-label>\n\n                    <ion-select [(ngModel)]="gender">\n\n                      <ion-option value=1>1</ion-option>\n\n                      <ion-option value=2>2</ion-option>\n\n                      <ion-option value=3>3</ion-option>\n\n\n\n                      <ion-option value=4>4</ion-option>\n\n\n\n                    </ion-select>\n\n                  </ion-item>\n\n                <button class="btn bg-theme text-white rounded" (click)="confirmpopup()" style="width: 100%;margin-top: 16px;">CREAR GRUPO</button>\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-creategroup\creategroup.html"*/
+            selector: 'page-groupdetail',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-groupdetail\groupdetail.html"*/'<ion-header class="bg-theme">\n\n    <ion-navbar>\n\n        <ion-title>MI VIAJE</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bh-light">\n\n    <ion-card>\n\n        <ion-item>\n\n            <ion-avatar item-start>\n\n                <img src="assets/imgs/face-1.jpg">\n\n            </ion-avatar>\n\n            <div class="name">\n\n                <h2>Creador: {{crew.admin.name| titlecase}} {{crew.admin.lastname| titlecase  }}\n\n                    <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                </h2>\n\n                <p class="company">Bancolombia</p>\n\n            </div>\n\n        </ion-item>\n\n        <ion-card-content>\n\n            <div class="ride-detail">\n\n                <p><small>Origen</small>\n\n                    <span class="icon-location bg-theme"></span>{{crew.origin.name}}</p>\n\n                <p>\n\n                    <small>Destino</small>\n\n                    <span class="icon-location bg-yellow"></span>{{crew.destination.name}}</p>\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n    <ion-card>\n\n        <ion-card-content>\n\n            <div class="seats">\n\n                <h6 class="text-theme">Conductor</h6>\n\n                <ion-row style="display: flex;flex-direction: row;">\n\n                 \n\n                    <ion-col style="display: flex;flex-direction: column;" col-3>\n\n                        <ion-avatar style="border-radius: 15%;" #imageTaxi>\n\n                            <p text-center class="texto1">{{car}}</p>   \n\n                                <img class="house"  src="{{imageUrl}}" (click)="selectImageTaxi()"/>       \n\n                        </ion-avatar>\n\n                        <button class="btn bg-theme text-white rounded" (click)="changeTransportation(crew)" style="width: 100%; font-size: 10px;\n\n                        height: 23px;">Cambiar</button>\n\n\n\n                    </ion-col>\n\n                    <ion-col style="display: flex;flex-direction: column;margin-left: 30px;" col-7>\n\n                        <button class="btn bg-theme text-white rounded" (click)="seeMembers(crew)" style="width: 100%;margin-top: 16px;">Buscar Conductor</button>\n\n                        <button class="btn bg-theme text-white rounded" (click)="seeMembers(crew)" style="width: 100%;margin-top: 16px;" [disabled]="disable">Ver compañeros de viaje</button>                       \n\n               \n\n                    </ion-col>\n\n                  </ion-row>\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n    <ion-card>\n\n        <ion-card-content>\n\n            <div class="ride-detail no-before">\n\n                <h6 class="text-theme">Detalles</h6>\n\n                \n\n                <p><small>Hora de salida:</small>\n\n                    <ion-icon name="md-time" class="icon-location"></ion-icon>\n\n                    {{crew.startHour}} </p>\n\n                    <p><small>Nota</small>\n\n                        <ion-icon name="md-create" class="icon-location"></ion-icon>\n\n                        Dinero exacto por favor\n\n                    <p>\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n    <ion-card>\n\n        <ion-card-content>\n\n            <div class="ride-detail no-before">\n\n                <h6 class="text-theme">¿Ya tienes que almorzar?<ion-badge class="bg-yellow" >Patrocinado</ion-badge>\n\n                </h6>\n\n                \n\n                <p><small>Hora de salida:</small>\n\n                    <ion-icon name="md-time" class="icon-location"></ion-icon>\n\n                     12:30pm</p>\n\n                    <p><small>Nota<ion-icon name="md-create"></ion-icon></small>\n\n                        Dinero exacto por favor\n\n                    <p>\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n    \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-groupdetail\groupdetail.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */]])
-    ], CreateGroupPage);
-    return CreateGroupPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__services_groups_service__["a" /* GroupsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]])
+    ], GroupDetailPage);
+    return GroupDetailPage;
 }());
 
-//# sourceMappingURL=creategroup.js.map
+//# sourceMappingURL=groupdetail.js.map
 
 /***/ })
 

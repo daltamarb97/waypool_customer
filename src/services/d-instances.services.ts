@@ -107,14 +107,14 @@ public isVerifiedPerson ( userId){
 
 public ToggleStatusOnline ( userId){
     this.afDB.database.ref(  '/driversTest/' + userId).update({
-        toggleStatus: 'online'
+        toggleOnline: true
     })
 
 }
 
 public ToggleStatusOffline ( userId){
     this.afDB.database.ref( '/driversTest/' + userId).update({
-        toggleStatus: 'offline'
+        toggleOnline: false
     })
 
     this.afDB.database.ref('allUsers/' + userId + '/toggleOnline/').remove();

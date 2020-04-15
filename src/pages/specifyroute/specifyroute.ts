@@ -6,7 +6,7 @@ import { Component, ViewChild, ElementRef,NgZone, Renderer } from '@angular/core
 // import { TabsPage } from '../tabs/tabs';
 // import { Geofence } from '@ionic-native/geofence';
 import { Geolocation } from '@ionic-native/geolocation/';
-import { NavController, Platform, ViewController, AlertController, ModalController, ToastController, IonicPage, App, LoadingController } from 'ionic-angular';
+import { NavController, Platform, ViewController, AlertController, ModalController, ToastController, IonicPage, App, LoadingController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { DriverSendCoordsService } from '../../services/d-sendCoords.service';
 
@@ -109,9 +109,11 @@ export class DriverSpecifyRoutePage {
   origin:any;
   myLatLngOr: any;
   destination: any;
-  constructor( private geofireService: DriverGeofireService,public TripsService:DriverTripsService,public viewCtrl: ViewController, public afDB: AngularFireDatabase, public navCtrl: NavController,public SignUpService:DriverSignUpService,public modalCtrl: ModalController,private authenticationService: DriverAuthenticationService, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: DriverSendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private toastCtrl: ToastController, private app: App, private sendUsersService: DriverSendUsersService, public instancesService: DriverInstancesService, public firebaseNative: Firebase, private platform: Platform, private fcm: FCM, public loadingCtrl: LoadingController, public renderer: Renderer ) {
-
-
+  indexesOfPointsAlongRoute = [];
+  pointsAlongRoute = [];
+  pointsToSaveRoute = [];
+  constructor( public navParams: NavParams, private geofireService: DriverGeofireService,public TripsService:DriverTripsService,public viewCtrl: ViewController, public afDB: AngularFireDatabase, public navCtrl: NavController,public SignUpService:DriverSignUpService,public modalCtrl: ModalController,private authenticationService: DriverAuthenticationService, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: DriverSendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private toastCtrl: ToastController, private app: App, private sendUsersService: DriverSendUsersService, public instancesService: DriverInstancesService, public firebaseNative: Firebase, private platform: Platform, private fcm: FCM, public loadingCtrl: LoadingController, public renderer: Renderer ) {
+    console.log('specifyorigin');
     
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.geocoder = new google.maps.Geocoder;
@@ -362,6 +364,52 @@ updateSearchResultsMyPos(){
         travelMode: google.maps.TravelMode.DRIVING,
         avoidTolls: true
       }, (response, status)=> {
+
+
+        let pointArray = response.routes[0].overview_path;
+
+
+      this.pointsAlongRoute = [];
+      pointArray.forEach(location => {
+        
+        this.pointsAlongRoute.push({
+          lat:location.lat(),
+          lng: location.lng()
+        })
+
+      });
+      
+      console.log(this.pointsAlongRoute);
+      let NumberPointsToDrawDivision = this.pointsAlongRoute.length / 10;
+      console.log(NumberPointsToDrawDivision);
+
+      this.indexesOfPointsAlongRoute = [
+        Math.floor(NumberPointsToDrawDivision),
+        Math.floor(NumberPointsToDrawDivision*2),
+        Math.floor(NumberPointsToDrawDivision*3),
+        Math.floor(NumberPointsToDrawDivision*4),
+        Math.floor(NumberPointsToDrawDivision*5),
+        Math.floor(NumberPointsToDrawDivision*6),
+        Math.floor(NumberPointsToDrawDivision*7),
+        Math.floor(NumberPointsToDrawDivision*8),
+        Math.floor(NumberPointsToDrawDivision*9),
+    ]
+
+
+    console.log(this.indexesOfPointsAlongRoute);
+
+
+    for (let index of this.indexesOfPointsAlongRoute){
+      this.pointsToSaveRoute.push({
+        lat: this.pointsAlongRoute[index].lat,
+        lng: this.pointsAlongRoute[index].lng
+      })
+    }
+
+
+    console.log(this.pointsToSaveRoute);
+    
+
         //render
         if(status === google.maps.DirectionsStatus.OK) {
           this.directionsDisplay.setDirections(response);
@@ -436,6 +484,11 @@ geocodeLatLng(latLng,inputName) {
   });
 }
 
+
+
+
+/////////////////////
+
 sendLocation(){
   console.log(  this.myLatLngDest
     );
@@ -444,38 +497,31 @@ sendLocation(){
   
   this.origin = this.autocompleteMyPos.input;
   this.destination = this.autocompleteMyDest.input;
-  this.afDB.database.ref('allCities/' + this.city + '/allPlaces/' + this.company + '/zones').once('value').then((snap)=>{
-    let obj = snap.val();
-    console.log(obj);
-    Object.getOwnPropertyNames(obj).forEach((key)=>{
-        if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
-
-        }else{
-          this.afDB.database.ref(obj[key] + '/drivers/' + this.user + '/houseAddress/').update({
-            name: this.origin[0]
-          }).then((data)=>{
-            this.afDB.database.ref(obj[key] + '/drivers/' + this.user + '/houseAddress/coordinates').update({
-              lat:this.myLatLngOr.lat,
-              lng:this.myLatLngOr.lng
-             });
-             this.afDB.database.ref(obj[key] + '/drivers/' + this.user + '/fixedLocation/').update({
-              name: this.destination[0]
-            });
-             this.afDB.database.ref(obj[key] + '/drivers/' + this.user + '/fixedLocation/coordinates').update({
-              lat:this.myLatLngDest.lat,
-              lng:this.myLatLngDest.lng
-             });
-           
-           })
-        }
-    })
-    
-  }).then(()=>{
-    
-    this.navCtrl.pop(); 
-    })
   
- }
+          this.afDB.database.ref( '/geofireSchedule/' + this.user).update({
+            pointsRoute: this.pointsToSaveRoute
+          });
+          this.afDB.database.ref( '/driversTest/' + this.user + '/houseAddress/').update({
+            name: this.origin[0]
+          });
+          this.afDB.database.ref( '/driversTest/' + this.user + '/houseAddress/coordinates').update({
+            lat:this.myLatLngOr.lat,
+            lng:this.myLatLngOr.lng
+          });
+          this.afDB.database.ref( '/driversTest/' + this.user + '/workAddress/').update({
+            name: this.destination[0]
+          });
+          this.afDB.database.ref( '/driversTest/' + this.user + '/workAddress/coordinates').update({
+            lat:this.myLatLngDest.lat,
+            lng:this.myLatLngDest.lng
+          }).then(()=>{
+
+            this.navCtrl.pop();
+
+
+             })
+             
+      }
 
 } 
 

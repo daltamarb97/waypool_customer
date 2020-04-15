@@ -2,7 +2,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 
-import { NavController, NavParams, IonicPage, App, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, App, LoadingController, ViewController } from 'ionic-angular';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -41,6 +41,7 @@ export class SignupPage {
     cities = [];
     arrayEmails = [];
     email:any;
+
     // noShowButton:boolean = false;
     geocoder: any
     corpEmailDetected:boolean = false;
@@ -52,8 +53,14 @@ export class SignupPage {
     rightEmailOnDatabase:any;
     zones = [];
     typeOfSignUp:any;
-  constructor(public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private app: App, public loadingCtrl: LoadingController) {
+    caracteresPassword:string = '';
+    passwordNg:string = '';
+    css:any;
+    loginGreenFlag:boolean;
+
+  constructor(public viewCtrl: ViewController, public navCtrl: NavController, private afDB: AngularFireDatabase, private formBuilder: FormBuilder, private authenticationService: authenticationService, private SignUpService: SignUpService, public  alertCtrl: AlertController, private AngularFireAuth: AngularFireAuth, public navParams: NavParams, private app: App, public loadingCtrl: LoadingController) {
      
+    
     this.typeOfSignUp = this.navParams.get('typeOfSignUp');
     console.log(this.typeOfSignUp);
     
@@ -66,6 +73,7 @@ export class SignupPage {
         passwordconf: ["", Validators.required],
         phone: ["", Validators.required], 
         city: ["", Validators.required],
+        company: ["", Validators.required],
         isChecked:[true, Validators.required]
         
     })
@@ -79,7 +87,72 @@ export class SignupPage {
         console.log(this.cities);
     })
 
+   
+    
+    
+    
 
+
+
+  }
+
+
+ 
+
+
+  onChangePass(){
+      console.log('cambio password');
+    
+    if(this.passwordNg.length === 0){
+        this.css={
+            'font-weight': 'bold',
+            'color': 'red'
+        }
+        this.caracteresPassword = 'mínimo 6 caracteres'
+    }else if(this.passwordNg.length === 1){
+        this.css={
+            'font-weight': 'bold',
+            'color': 'red'
+        }
+        this.caracteresPassword = 'contraseña débil'
+    }else if(this.passwordNg.length === 2){
+        this.css={
+            'font-weight': 'bold',
+            'color': 'red'
+        }
+        this.caracteresPassword = 'contraseña débil'
+    }else if(this.passwordNg.length === 3){
+        this.css={
+            'font-weight': 'bold',
+            'color': '#E3D245'
+        }
+        this.caracteresPassword = 'contraseña media'
+    }else if(this.passwordNg.length === 4){
+        this.css={
+            'font-weight': 'bold',
+            'color': '#E3D245'
+        }
+        this.caracteresPassword = 'contraseña media'
+    }else if(this.passwordNg.length === 5){
+        this.css={
+            'font-weight': 'bold',
+            'color': '#E3D245'
+        }
+        this.caracteresPassword = 'contraseña media'
+    }else if(this.passwordNg.length === 6){
+        this.css={
+            'font-weight': 'bold',
+            'color': 'green'
+        }
+        this.caracteresPassword = 'contraseña óptima'
+    }else{
+        this.css={
+            'font-weight': 'bold',
+            'color': 'green'
+        }
+        this.caracteresPassword = 'contraseña óptima'
+    }
+      
   }
 
  onChange(){
@@ -101,22 +174,6 @@ export class SignupPage {
      }
 
 
-        // noCompanyIdentified(numberToExecute){
-        //     ++this.forLoopsCompleted;
-        //     if(this.forLoopsCompleted === numberToExecute){
-        //         if(this.companyIdentified === false){
-        //             const alert = this.alertCtrl.create({
-        //                 title: 'El correo que ingresaste no concuerda con el de ninguna empresa de la red de Waypool',
-        //                 subTitle: 'Revisa si escribiste el correo bien o si tu empresa no está en Waypool, envianos un correo a waypooltec@gmail.com',
-        //                 buttons: ['OK']
-        //               });
-        //               alert.present(); 
-        //         }
-                
-        //     }
-        // }
-    
-
 
     scrolling(){
         this.content.scrollTo(30, 0);
@@ -124,7 +181,7 @@ export class SignupPage {
 
 
     login(){
-        this.navCtrl.setRoot('LoginPage');
+        this.viewCtrl.dismiss(this.loginGreenFlag = true);
     }
      
     verification(){
@@ -167,6 +224,7 @@ export class SignupPage {
                             let userEmail = this.signupGroup.controls['email'].value 
                             let userPassword = this.signupGroup.controls['password'].value;
                             let userPhone = this.signupGroup.controls['phone'].value;
+                            let userComapny = this.signupGroup.controls['company'].value;
                         
                     // saving data in variable
                    
@@ -177,13 +235,14 @@ export class SignupPage {
                             phone: '+57'+userPhone,
                             createdBy: 'costumer',
                             // PREGUNTARLE SOBRE QUÉ EMPRESA TRABAJA MÁS ADELANTE
-                            // company: this.company,
+                            company: userComapny,
                             city: this.cityVar,
                             //this sets documents true by default//
                             documents:{
-                                license: true,
-                                id: true
-                            }
+                                carne: false,
+                                id: false
+                            },
+                            appStatus: 'user'
                         };
                     
 
@@ -209,22 +268,11 @@ export class SignupPage {
                                                     //CAMBIAR  EN PRODUCCION - REGLAS DE SEGURIDAD
                                                     this.SignUpService.saveUserTest(this.user);
                                                     //no se si esto es necesario - REVISAR
-                                                    this.SignUpService.saveUserInAllUsers( user.uid, this.cityVar);
+                                                    // this.SignUpService.saveUserInAllUsers( user.uid, this.cityVar);
 
                                                 // })
 
-                                                // this.afDB.database.ref('allCities/'+ this.cityVar + '/allPlaces/' + this.company + '/location').once('value').then((snap)=>{
-                                                //     console.log(snap.val());
-                                                    
-                                                //     snap.val().forEach(location => {
-                                                //         this.SignUpService.setFixedLocationCoordinates(location.zone, this.user.userId, location.lat, location.lng );
-                                                //         this.SignUpService.setFixedLocationName(location.zone, this.user.userId, location.name);   
-                                                //         this.SignUpService.addPlaceZone(location.zone, this.user.userId);  
-                                                //     })
-
-                                                // }).then(()=>{
-                                                //     this.SignUpService.saveUserInAllUsers(this.company, user.uid, this.cityVar);
-                                                // })
+                                
 
                                                 //send text message with code
                                                 // this.sendVerificationCode(this.user.userId);
@@ -248,8 +296,10 @@ export class SignupPage {
                                                         {
                                                             text: 'OK',
                                                             handler: () => {
-                    
-                                                                    this.navCtrl.setRoot('DriverUserVerificationPage');        
+
+                                                                    this.loginGreenFlag = false;
+                                                                    // this.navCtrl.setRoot('DriverUserVerificationPage'); 
+                                                                    this.viewCtrl.dismiss()       
                                                             }
                                                         }
                                                     ]
@@ -321,7 +371,8 @@ export class SignupPage {
                             let userEmail = this.signupGroup.controls['email'].value 
                             let userPassword = this.signupGroup.controls['password'].value;
                             let userPhone = this.signupGroup.controls['phone'].value;
-                        
+                            let userComapny = this.signupGroup.controls['company'].value;
+
                     // saving data in variable
                    
                         this.user = {
@@ -330,14 +381,13 @@ export class SignupPage {
                             email: userEmail,
                             phone: '+57'+userPhone,
                             createdBy: 'costumer',
-                            // PREGUNTARLE SOBRE QUÉ EMPRESA TRABAJA MÁS ADELANTE
-                            // company: this.company,
+                            company: userComapny,
                             city: this.cityVar,
-                            //this sets documents true by default//
                             documents:{
-                                license: true,
+                                carne: true,
                                 id: true
-                            }
+                            },
+                            appStatus: 'user'
                         };
                     
 
@@ -363,22 +413,11 @@ export class SignupPage {
                                                     //CAMBIAR  EN PRODUCCION - REGLAS DE SEGURIDAD
                                                     this.SignUpService.saveUserTest(this.user);
                                                     //no se si esto es necesario - REVISAR
-                                                    this.SignUpService.saveUserInAllUsers( user.uid, this.cityVar);
+                                                    // this.SignUpService.saveUserInAllUsers( user.uid, this.cityVar);
 
                                                 // })
 
-                                                // this.afDB.database.ref('allCities/'+ this.cityVar + '/allPlaces/' + this.company + '/location').once('value').then((snap)=>{
-                                                //     console.log(snap.val());
-                                                    
-                                                //     snap.val().forEach(location => {
-                                                //         this.SignUpService.setFixedLocationCoordinates(location.zone, this.user.userId, location.lat, location.lng );
-                                                //         this.SignUpService.setFixedLocationName(location.zone, this.user.userId, location.name);   
-                                                //         this.SignUpService.addPlaceZone(location.zone, this.user.userId);  
-                                                //     })
-
-                                                // }).then(()=>{
-                                                //     this.SignUpService.saveUserInAllUsers(this.company, user.uid, this.cityVar);
-                                                // })
+                     
 
                                                 //send text message with code
                                                 // this.sendVerificationCode(this.user.userId);
@@ -402,8 +441,10 @@ export class SignupPage {
                                                         {
                                                             text: 'OK',
                                                             handler: () => {
-                    
-                                                                    this.navCtrl.setRoot('LoginPage');        
+                                                                
+                                                                    this.loginGreenFlag = true;
+                                                                    // this.navCtrl.setRoot('LoginPage');   
+                                                                    this.viewCtrl.dismiss();     
                                                             }
                                                         }
                                                     ]

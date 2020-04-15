@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 
 /**
  * Generated class for the TypeOfLoginPage page.
@@ -15,7 +15,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class TypeOfLoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -25,8 +25,19 @@ export class TypeOfLoginPage {
 
   goSignUpCorp(){
 
-    this.navCtrl.push('SignupPage', {typeOfSignUp: 'corp'});
+    let modal = this.modalCtrl.create('SignupPage', {typeOfSignUp: 'corp'});
+    modal.onDidDismiss((loginGreenFlag)=>{
+      if(loginGreenFlag === true){
+        this.navCtrl.setRoot('LoginPage');   
+      }else{
+        this.navCtrl.setRoot('DriverUserVerificationPage'); 
+      }
+      
+    })
+    modal.present();
   }
+
+
 
   goSignUpPersonal(){
     const alert = this.alertCtrl.create({
@@ -37,7 +48,17 @@ export class TypeOfLoginPage {
               text: 'Estoy Seguro',
               handler: () => {
 
-                this.navCtrl.push('SignupPage', {typeOfSignUp: 'personal'});       
+                                
+                let modal = this.modalCtrl.create('SignupPage', {typeOfSignUp: 'personal'});
+                modal.onDidDismiss((loginGreenFlag)=>{
+                  if(loginGreenFlag === true){
+                    this.navCtrl.setRoot('LoginPage');   
+                  }else{
+                    this.navCtrl.setRoot('DriverUserVerificationPage'); 
+                  }
+                  
+                })
+                modal.present();
               }
           },
           {

@@ -709,6 +709,26 @@ listride(){
         ]
       });
       alert.present();
+    }else if(snapBlock.val().documents.carne === false || snapBlock.val().documents.id === false ){
+
+      let alert = this.alertCtrl.create({
+        title: 'Debes enviar foto de tu identificación y carné empresarial',
+        subTitle: 'Es necesaria esta medida de seguridad para aquellos usuarios registrados con correo personal',
+        buttons: [
+          {
+            text: 'No lo quiero hacer ahora',
+            role: 'cancel',
+          },
+          {
+            text: 'Enviar Documentos',
+            handler: () => {
+              this.navCtrl.push('DriverUserVerificationPage');
+            }
+          }
+        ]
+      });
+      alert.present();
+
     }else{
       
         if(this.user.onTrip == true){
@@ -810,9 +830,9 @@ listride(){
 
 
                     if(this.usingGeolocation === true){
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute, nameOr: this.orFirebase, nameDest: this.desFirebase});
                     }else{
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
 
                     }
                     
@@ -859,9 +879,9 @@ listride(){
 
        
                     if(this.usingGeolocation === true){
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
                     }else{
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
 
                     }
                     this.loading.dismiss();
@@ -913,9 +933,9 @@ listride(){
 
                     
                     if(this.usingGeolocation === true){
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat, lngOr: this.myLatLngOr.lng, latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
                     }else{
-                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute});
+                      this.navCtrl.push('ListridePage', {latOr: this.myLatLngOr.lat(), lngOr: this.myLatLngOr.lng(), latDest: this.myLatLngDest.lat(), lngDest: this.myLatLngDest.lng(), pointsAlongRoute: this.pointsAlongRoute, indexesOfPointsAlongRoute: this.indexesOfPointsAlongRoute,  nameOr: this.orFirebase, nameDest: this.desFirebase});
 
                     }
                     this.loading.dismiss();
@@ -1164,7 +1184,7 @@ keyEnteredOr(radiusDest, latDest, lngDest,  userId ){
                               driverId: this.driverOnNodeDest.driverId
                   
                           })  
-                      })
+                      }) 
                      })
                   }
                 })
@@ -1337,13 +1357,10 @@ keyEnteredOr(radiusDest, latDest, lngDest,  userId ){
           }
         })
         .then(()=>{
-          console.log(this.keyTripForGeofireInRouteDest);
-           
-          console.log('ahora si aqui te encuentro 1');
+ 
           
           if(this.keysIdentifiedInOriginRoute !== 0){
-            console.log('ahora si aqui te encuentro 2');
-            
+
             for(let element of this.keysIdentifiedInOriginRoute){
               if(element.keyTrip === this.keyTripForGeofireInRouteDest){
                 this.geofireDestinationConfirmedOnRoute = true;

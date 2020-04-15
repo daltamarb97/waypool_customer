@@ -191,7 +191,7 @@ export class DriverReservetripPage{
                    Object.getOwnPropertyNames(obj).forEach((key)=>{
                      if(obj[key].keyTrip === tripKeyTrip){
                       this.geofireService.deleteUserGeofireRoute(key)
-                      
+                        
                       
                      }
                    })

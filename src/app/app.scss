@@ -64,6 +64,13 @@ li,
     background: #001127;
 }
 
+.bg-background-img {
+    background: url(../assets/imgs/background.png) no-repeat;
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+}
+
 .bg-darkblue{
     background: #0081ad;
 }
@@ -173,6 +180,7 @@ li,
     ion-item {
         padding: 0;
         background: transparent !important;
+       
         &:last-child {
             border-bottom: none !important;
             .item-inner {
@@ -194,6 +202,7 @@ li,
                 }
             }
         }
+       
     }
     .input-has-focus {
         box-shadow: none !important;

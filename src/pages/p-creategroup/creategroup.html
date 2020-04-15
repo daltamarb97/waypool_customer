@@ -14,19 +14,19 @@
             </ion-avatar>
 
             <div class="name">
-                <h2> Admin del grupo: David Johnson
-                    <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                <h2 > Admin del grupo: {{admin.name}}{{admin.lastname}}
+                    <ion-icon *ngIf="admin.verifiedPerson" name="ios-checkmark-circle" class="text-theme"></ion-icon>
                 </h2>
-                <p>Bancolombia</p>
+                <p>{{admin.company}}</p>
             </div>
         </ion-item>
         <ion-card-content>
             <div class="ride-detail">
                 <p><small>Origen</small>
-                    <span class="icon-location bg-theme"></span>Villa Campestre</p>
+                    <span class="icon-location bg-theme"></span>{{origin}}</p>
                 <p>
                     <small>Destino</small>
-                    <span class="icon-location bg-yellow"></span>Bancolombia Calle 51B</p>
+                    <span class="icon-location bg-yellow"></span>{{destination}}</p>
             </div>
         </ion-card-content>
     </ion-card>
@@ -91,7 +91,7 @@
                 <h6 class="text-theme"></h6>
                 <ion-item>
                     <ion-label>Asientos Disponibles</ion-label>
-                    <ion-select [(ngModel)]="gender">
+                    <ion-select [(ngModel)]="seats">
                       <ion-option value=1>1</ion-option>
                       <ion-option value=2>2</ion-option>
                       <ion-option value=3>3</ion-option>
@@ -100,7 +100,7 @@
 
                     </ion-select>
                   </ion-item>
-                <button class="btn bg-theme text-white rounded" (click)="confirmpopup()" style="width: 100%;margin-top: 16px;">CREAR GRUPO</button>
+                <button class="btn bg-theme text-white rounded" (click)="createGroup()" style="width: 100%;margin-top: 16px;">CREAR GRUPO</button>
             </div>
         </ion-card-content>
     </ion-card>

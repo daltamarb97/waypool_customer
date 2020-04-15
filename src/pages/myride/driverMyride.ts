@@ -176,9 +176,9 @@ biciMarkers:any = []
 					console.log("WAYPOINTS ENTRING");
 
 					this.PendingUsersForWaypoints.forEach(user => {
-						this.waypoints.push({location:user.orCoords,stopover:true});
+						this.waypoints.push({location:user.origin.coords,stopover:true});
 						this.directionsDisplay.setMap(this.map);
-						this.calculateRoute("markerForWaypointsUsers");
+ 						this.calculateRoute("markerForWaypointsUsers");
 					
 						//To change the color of the line for each Waypoint (later)
 					// 	var polyline = new google.maps.Polyline({
@@ -207,7 +207,7 @@ biciMarkers:any = []
 					this.waypoints=[];
 					this.pickedUpUsersForWaypoints.forEach(user => {
 
-						this.waypoints.push({location:user.destCoords,stopover:true});
+						this.waypoints.push({location:user.destination.coords,stopover:true});
 						this.directionsDisplay.setMap(this.map);
 						this.calculateRoute("markerForWaypointsOffices");
 					});
@@ -272,8 +272,8 @@ biciMarkers:any = []
 		});
 	
 		this.map.fitBounds(this.bounds);
-	console.log(JSON.stringify(this.trip.origin.name));
-	console.log(JSON.stringify(this.trip.destination.name));
+		console.log(JSON.stringify(this.trip.origin.name));
+		console.log(JSON.stringify(this.trip.destination.name));
 	
 		this.directionsService.route({
 		  origin:JSON.stringify(this.trip.origin.name),
@@ -364,6 +364,15 @@ biciMarkers:any = []
 			keyTrip: this.userDriver.keyTrip
 		});
 	}
+	pickUpPassenger(user){
+		this.TripsService.pickUp( this.userDriver.keyTrip,this.driverUid,user.userId,user);
+		this.presentToast(`Acabas de recoger a ${user.name}, ¡Salúdalo por nosotros!`,4000,'top');
+
+		this.TripsService.eliminatePendingUsers( this.userDriver.keyTrip,this.driverUid,user.userId);
+
+	}
+
+	
 	
 	endTrip() {
 

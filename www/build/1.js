@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 706:
+/***/ 705:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverPickupPageModule", function() { return DriverPickupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pickup__ = __webpack_require__(906);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pickup__ = __webpack_require__(903);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 711:
+/***/ 710:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var require;//! moment.js
@@ -1896,7 +1896,7 @@ var DriverPickupPageModule = /** @class */ (function () {
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(840)("./" + name);
+                __webpack_require__(839)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -4647,17 +4647,17 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(839)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(838)(module)))
 
 /***/ }),
 
-/***/ 712:
+/***/ 711:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4729,13 +4729,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 713:
+/***/ 712:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4869,13 +4869,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 714:
+/***/ 713:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4933,13 +4933,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 715:
+/***/ 714:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -4997,13 +4997,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 716:
+/***/ 715:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5124,13 +5124,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 717:
+/***/ 716:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5188,13 +5188,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 718:
+/***/ 717:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5297,13 +5297,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 719:
+/***/ 718:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5361,13 +5361,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 720:
+/***/ 719:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5471,13 +5471,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 721:
+/***/ 720:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5608,13 +5608,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 722:
+/***/ 721:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5703,13 +5703,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 723:
+/***/ 722:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5766,13 +5766,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 724:
+/***/ 723:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -5890,13 +5890,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 725:
+/***/ 724:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6014,13 +6014,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 726:
+/***/ 725:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6127,13 +6127,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 727:
+/***/ 726:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6283,13 +6283,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 728:
+/***/ 727:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6376,13 +6376,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 729:
+/***/ 728:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6553,13 +6553,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 730:
+/***/ 729:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6621,13 +6621,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 731:
+/***/ 730:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6706,13 +6706,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 732:
+/***/ 731:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6771,13 +6771,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 733:
+/***/ 732:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6852,13 +6852,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 734:
+/***/ 733:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -6933,13 +6933,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 735:
+/***/ 734:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7014,13 +7014,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 736:
+/***/ 735:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7118,13 +7118,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 737:
+/***/ 736:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7223,13 +7223,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 738:
+/***/ 737:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7295,13 +7295,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 739:
+/***/ 738:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7367,13 +7367,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 740:
+/***/ 739:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7435,13 +7435,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 741:
+/***/ 740:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7507,13 +7507,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 742:
+/***/ 741:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7579,13 +7579,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 743:
+/***/ 742:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7646,13 +7646,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 744:
+/***/ 743:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7718,13 +7718,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 745:
+/***/ 744:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7794,13 +7794,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 746:
+/***/ 745:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7891,13 +7891,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 747:
+/***/ 746:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -7988,13 +7988,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 748:
+/***/ 747:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8085,13 +8085,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 749:
+/***/ 748:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8170,13 +8170,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 750:
+/***/ 749:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8241,13 +8241,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 751:
+/***/ 750:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8352,13 +8352,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 752:
+/***/ 751:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8466,13 +8466,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 753:
+/***/ 752:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8531,13 +8531,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 754:
+/***/ 753:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8619,13 +8619,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 755:
+/***/ 754:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8698,13 +8698,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 756:
+/***/ 755:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8781,13 +8781,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 757:
+/***/ 756:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8861,13 +8861,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 758:
+/***/ 757:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -8943,13 +8943,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 759:
+/***/ 758:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9024,13 +9024,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 760:
+/***/ 759:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9106,13 +9106,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 761:
+/***/ 760:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9234,13 +9234,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 762:
+/***/ 761:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9363,13 +9363,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 763:
+/***/ 762:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9465,13 +9465,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 764:
+/***/ 763:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9594,13 +9594,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 765:
+/***/ 764:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9753,13 +9753,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 766:
+/***/ 765:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9868,13 +9868,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 767:
+/***/ 766:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -9968,13 +9968,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 768:
+/***/ 767:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10055,13 +10055,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 769:
+/***/ 768:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10192,13 +10192,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 769:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10266,13 +10266,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 771:
+/***/ 770:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10340,13 +10340,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 771:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10437,13 +10437,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 773:
+/***/ 772:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10524,13 +10524,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 774:
+/***/ 773:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10618,13 +10618,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 775:
+/***/ 774:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10710,13 +10710,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 776:
+/***/ 775:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10825,13 +10825,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 777:
+/***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -10956,13 +10956,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 778:
+/***/ 777:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11042,13 +11042,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 779:
+/***/ 778:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11166,13 +11166,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 780:
+/***/ 779:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11258,13 +11258,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 781:
+/***/ 780:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11399,13 +11399,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 782:
+/***/ 781:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11474,13 +11474,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 783:
+/***/ 782:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11597,13 +11597,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 784:
+/***/ 783:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11699,13 +11699,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 785:
+/***/ 784:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11816,13 +11816,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 786:
+/***/ 785:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11885,13 +11885,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 787:
+/***/ 786:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -11980,13 +11980,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 788:
+/***/ 787:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12066,13 +12066,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 789:
+/***/ 788:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12175,13 +12175,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 790:
+/***/ 789:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12340,13 +12340,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 791:
+/***/ 790:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12427,13 +12427,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 792:
+/***/ 791:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12514,13 +12514,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 793:
+/***/ 792:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12579,13 +12579,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 794:
+/***/ 793:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12677,13 +12677,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 795:
+/***/ 794:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12744,13 +12744,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 796:
+/***/ 795:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12872,13 +12872,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 797:
+/***/ 796:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -12964,13 +12964,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 798:
+/***/ 797:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13056,13 +13056,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 799:
+/***/ 798:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13121,13 +13121,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 800:
+/***/ 799:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13250,13 +13250,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 801:
+/***/ 800:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13381,13 +13381,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 802:
+/***/ 801:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13451,13 +13451,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 803:
+/***/ 802:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13517,13 +13517,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 804:
+/***/ 803:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13597,13 +13597,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 805:
+/***/ 804:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13784,13 +13784,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 806:
+/***/ 805:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13887,13 +13887,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 807:
+/***/ 806:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -13952,13 +13952,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 808:
+/***/ 807:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14028,13 +14028,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 809:
+/***/ 808:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14189,13 +14189,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 810:
+/***/ 809:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14367,13 +14367,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 811:
+/***/ 810:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14440,13 +14440,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 812:
+/***/ 811:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14556,13 +14556,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 813:
+/***/ 812:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14672,13 +14672,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 814:
+/***/ 813:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14765,13 +14765,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 815:
+/***/ 814:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14839,13 +14839,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 816:
+/***/ 815:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -14903,13 +14903,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 817:
+/***/ 816:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15037,13 +15037,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 818:
+/***/ 817:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15131,13 +15131,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 819:
+/***/ 818:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15203,13 +15203,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 820:
+/***/ 819:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15324,13 +15324,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 821:
+/***/ 820:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15396,13 +15396,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 822:
+/***/ 821:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15463,13 +15463,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 823:
+/***/ 822:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15590,12 +15590,12 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 824:
+/***/ 823:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15689,13 +15689,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 825:
+/***/ 824:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15785,13 +15785,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 826:
+/***/ 825:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15848,13 +15848,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 827:
+/***/ 826:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -15911,13 +15911,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 828:
+/***/ 827:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js language configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16035,13 +16035,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 829:
+/***/ 828:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16194,13 +16194,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 830:
+/***/ 829:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16297,13 +16297,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 831:
+/***/ 830:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16360,13 +16360,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 832:
+/***/ 831:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16423,13 +16423,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 833:
+/***/ 832:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16507,13 +16507,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 834:
+/***/ 833:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16580,13 +16580,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 835:
+/***/ 834:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16645,13 +16645,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 836:
+/***/ 835:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16760,13 +16760,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 837:
+/***/ 836:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16868,13 +16868,13 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 838:
+/***/ 837:
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
 
 ;(function (global, factory) {
-    true ? factory(__webpack_require__(711)) :
+    true ? factory(__webpack_require__(710)) :
    typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
@@ -16976,7 +16976,7 @@ var DriverPickupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 839:
+/***/ 838:
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17005,264 +17005,264 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 840:
+/***/ 839:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 712,
-	"./af.js": 712,
-	"./ar": 713,
-	"./ar-dz": 714,
-	"./ar-dz.js": 714,
-	"./ar-kw": 715,
-	"./ar-kw.js": 715,
-	"./ar-ly": 716,
-	"./ar-ly.js": 716,
-	"./ar-ma": 717,
-	"./ar-ma.js": 717,
-	"./ar-sa": 718,
-	"./ar-sa.js": 718,
-	"./ar-tn": 719,
-	"./ar-tn.js": 719,
-	"./ar.js": 713,
-	"./az": 720,
-	"./az.js": 720,
-	"./be": 721,
-	"./be.js": 721,
-	"./bg": 722,
-	"./bg.js": 722,
-	"./bm": 723,
-	"./bm.js": 723,
-	"./bn": 724,
-	"./bn.js": 724,
-	"./bo": 725,
-	"./bo.js": 725,
-	"./br": 726,
-	"./br.js": 726,
-	"./bs": 727,
-	"./bs.js": 727,
-	"./ca": 728,
-	"./ca.js": 728,
-	"./cs": 729,
-	"./cs.js": 729,
-	"./cv": 730,
-	"./cv.js": 730,
-	"./cy": 731,
-	"./cy.js": 731,
-	"./da": 732,
-	"./da.js": 732,
-	"./de": 733,
-	"./de-at": 734,
-	"./de-at.js": 734,
-	"./de-ch": 735,
-	"./de-ch.js": 735,
-	"./de.js": 733,
-	"./dv": 736,
-	"./dv.js": 736,
-	"./el": 737,
-	"./el.js": 737,
-	"./en-SG": 738,
-	"./en-SG.js": 738,
-	"./en-au": 739,
-	"./en-au.js": 739,
-	"./en-ca": 740,
-	"./en-ca.js": 740,
-	"./en-gb": 741,
-	"./en-gb.js": 741,
-	"./en-ie": 742,
-	"./en-ie.js": 742,
-	"./en-il": 743,
-	"./en-il.js": 743,
-	"./en-nz": 744,
-	"./en-nz.js": 744,
-	"./eo": 745,
-	"./eo.js": 745,
-	"./es": 746,
-	"./es-do": 747,
-	"./es-do.js": 747,
-	"./es-us": 748,
-	"./es-us.js": 748,
-	"./es.js": 746,
-	"./et": 749,
-	"./et.js": 749,
-	"./eu": 750,
-	"./eu.js": 750,
-	"./fa": 751,
-	"./fa.js": 751,
-	"./fi": 752,
-	"./fi.js": 752,
-	"./fo": 753,
-	"./fo.js": 753,
-	"./fr": 754,
-	"./fr-ca": 755,
-	"./fr-ca.js": 755,
-	"./fr-ch": 756,
-	"./fr-ch.js": 756,
-	"./fr.js": 754,
-	"./fy": 757,
-	"./fy.js": 757,
-	"./ga": 758,
-	"./ga.js": 758,
-	"./gd": 759,
-	"./gd.js": 759,
-	"./gl": 760,
-	"./gl.js": 760,
-	"./gom-latn": 761,
-	"./gom-latn.js": 761,
-	"./gu": 762,
-	"./gu.js": 762,
-	"./he": 763,
-	"./he.js": 763,
-	"./hi": 764,
-	"./hi.js": 764,
-	"./hr": 765,
-	"./hr.js": 765,
-	"./hu": 766,
-	"./hu.js": 766,
-	"./hy-am": 767,
-	"./hy-am.js": 767,
-	"./id": 768,
-	"./id.js": 768,
-	"./is": 769,
-	"./is.js": 769,
-	"./it": 770,
-	"./it-ch": 771,
-	"./it-ch.js": 771,
-	"./it.js": 770,
-	"./ja": 772,
-	"./ja.js": 772,
-	"./jv": 773,
-	"./jv.js": 773,
-	"./ka": 774,
-	"./ka.js": 774,
-	"./kk": 775,
-	"./kk.js": 775,
-	"./km": 776,
-	"./km.js": 776,
-	"./kn": 777,
-	"./kn.js": 777,
-	"./ko": 778,
-	"./ko.js": 778,
-	"./ku": 779,
-	"./ku.js": 779,
-	"./ky": 780,
-	"./ky.js": 780,
-	"./lb": 781,
-	"./lb.js": 781,
-	"./lo": 782,
-	"./lo.js": 782,
-	"./lt": 783,
-	"./lt.js": 783,
-	"./lv": 784,
-	"./lv.js": 784,
-	"./me": 785,
-	"./me.js": 785,
-	"./mi": 786,
-	"./mi.js": 786,
-	"./mk": 787,
-	"./mk.js": 787,
-	"./ml": 788,
-	"./ml.js": 788,
-	"./mn": 789,
-	"./mn.js": 789,
-	"./mr": 790,
-	"./mr.js": 790,
-	"./ms": 791,
-	"./ms-my": 792,
-	"./ms-my.js": 792,
-	"./ms.js": 791,
-	"./mt": 793,
-	"./mt.js": 793,
-	"./my": 794,
-	"./my.js": 794,
-	"./nb": 795,
-	"./nb.js": 795,
-	"./ne": 796,
-	"./ne.js": 796,
-	"./nl": 797,
-	"./nl-be": 798,
-	"./nl-be.js": 798,
-	"./nl.js": 797,
-	"./nn": 799,
-	"./nn.js": 799,
-	"./pa-in": 800,
-	"./pa-in.js": 800,
-	"./pl": 801,
-	"./pl.js": 801,
-	"./pt": 802,
-	"./pt-br": 803,
-	"./pt-br.js": 803,
-	"./pt.js": 802,
-	"./ro": 804,
-	"./ro.js": 804,
-	"./ru": 805,
-	"./ru.js": 805,
-	"./sd": 806,
-	"./sd.js": 806,
-	"./se": 807,
-	"./se.js": 807,
-	"./si": 808,
-	"./si.js": 808,
-	"./sk": 809,
-	"./sk.js": 809,
-	"./sl": 810,
-	"./sl.js": 810,
-	"./sq": 811,
-	"./sq.js": 811,
-	"./sr": 812,
-	"./sr-cyrl": 813,
-	"./sr-cyrl.js": 813,
-	"./sr.js": 812,
-	"./ss": 814,
-	"./ss.js": 814,
-	"./sv": 815,
-	"./sv.js": 815,
-	"./sw": 816,
-	"./sw.js": 816,
-	"./ta": 817,
-	"./ta.js": 817,
-	"./te": 818,
-	"./te.js": 818,
-	"./tet": 819,
-	"./tet.js": 819,
-	"./tg": 820,
-	"./tg.js": 820,
-	"./th": 821,
-	"./th.js": 821,
-	"./tl-ph": 822,
-	"./tl-ph.js": 822,
-	"./tlh": 823,
-	"./tlh.js": 823,
-	"./tr": 824,
-	"./tr.js": 824,
-	"./tzl": 825,
-	"./tzl.js": 825,
-	"./tzm": 826,
-	"./tzm-latn": 827,
-	"./tzm-latn.js": 827,
-	"./tzm.js": 826,
-	"./ug-cn": 828,
-	"./ug-cn.js": 828,
-	"./uk": 829,
-	"./uk.js": 829,
-	"./ur": 830,
-	"./ur.js": 830,
-	"./uz": 831,
-	"./uz-latn": 832,
-	"./uz-latn.js": 832,
-	"./uz.js": 831,
-	"./vi": 833,
-	"./vi.js": 833,
-	"./x-pseudo": 834,
-	"./x-pseudo.js": 834,
-	"./yo": 835,
-	"./yo.js": 835,
-	"./zh-cn": 836,
-	"./zh-cn.js": 836,
-	"./zh-hk": 837,
-	"./zh-hk.js": 837,
-	"./zh-tw": 838,
-	"./zh-tw.js": 838
+	"./af": 711,
+	"./af.js": 711,
+	"./ar": 712,
+	"./ar-dz": 713,
+	"./ar-dz.js": 713,
+	"./ar-kw": 714,
+	"./ar-kw.js": 714,
+	"./ar-ly": 715,
+	"./ar-ly.js": 715,
+	"./ar-ma": 716,
+	"./ar-ma.js": 716,
+	"./ar-sa": 717,
+	"./ar-sa.js": 717,
+	"./ar-tn": 718,
+	"./ar-tn.js": 718,
+	"./ar.js": 712,
+	"./az": 719,
+	"./az.js": 719,
+	"./be": 720,
+	"./be.js": 720,
+	"./bg": 721,
+	"./bg.js": 721,
+	"./bm": 722,
+	"./bm.js": 722,
+	"./bn": 723,
+	"./bn.js": 723,
+	"./bo": 724,
+	"./bo.js": 724,
+	"./br": 725,
+	"./br.js": 725,
+	"./bs": 726,
+	"./bs.js": 726,
+	"./ca": 727,
+	"./ca.js": 727,
+	"./cs": 728,
+	"./cs.js": 728,
+	"./cv": 729,
+	"./cv.js": 729,
+	"./cy": 730,
+	"./cy.js": 730,
+	"./da": 731,
+	"./da.js": 731,
+	"./de": 732,
+	"./de-at": 733,
+	"./de-at.js": 733,
+	"./de-ch": 734,
+	"./de-ch.js": 734,
+	"./de.js": 732,
+	"./dv": 735,
+	"./dv.js": 735,
+	"./el": 736,
+	"./el.js": 736,
+	"./en-SG": 737,
+	"./en-SG.js": 737,
+	"./en-au": 738,
+	"./en-au.js": 738,
+	"./en-ca": 739,
+	"./en-ca.js": 739,
+	"./en-gb": 740,
+	"./en-gb.js": 740,
+	"./en-ie": 741,
+	"./en-ie.js": 741,
+	"./en-il": 742,
+	"./en-il.js": 742,
+	"./en-nz": 743,
+	"./en-nz.js": 743,
+	"./eo": 744,
+	"./eo.js": 744,
+	"./es": 745,
+	"./es-do": 746,
+	"./es-do.js": 746,
+	"./es-us": 747,
+	"./es-us.js": 747,
+	"./es.js": 745,
+	"./et": 748,
+	"./et.js": 748,
+	"./eu": 749,
+	"./eu.js": 749,
+	"./fa": 750,
+	"./fa.js": 750,
+	"./fi": 751,
+	"./fi.js": 751,
+	"./fo": 752,
+	"./fo.js": 752,
+	"./fr": 753,
+	"./fr-ca": 754,
+	"./fr-ca.js": 754,
+	"./fr-ch": 755,
+	"./fr-ch.js": 755,
+	"./fr.js": 753,
+	"./fy": 756,
+	"./fy.js": 756,
+	"./ga": 757,
+	"./ga.js": 757,
+	"./gd": 758,
+	"./gd.js": 758,
+	"./gl": 759,
+	"./gl.js": 759,
+	"./gom-latn": 760,
+	"./gom-latn.js": 760,
+	"./gu": 761,
+	"./gu.js": 761,
+	"./he": 762,
+	"./he.js": 762,
+	"./hi": 763,
+	"./hi.js": 763,
+	"./hr": 764,
+	"./hr.js": 764,
+	"./hu": 765,
+	"./hu.js": 765,
+	"./hy-am": 766,
+	"./hy-am.js": 766,
+	"./id": 767,
+	"./id.js": 767,
+	"./is": 768,
+	"./is.js": 768,
+	"./it": 769,
+	"./it-ch": 770,
+	"./it-ch.js": 770,
+	"./it.js": 769,
+	"./ja": 771,
+	"./ja.js": 771,
+	"./jv": 772,
+	"./jv.js": 772,
+	"./ka": 773,
+	"./ka.js": 773,
+	"./kk": 774,
+	"./kk.js": 774,
+	"./km": 775,
+	"./km.js": 775,
+	"./kn": 776,
+	"./kn.js": 776,
+	"./ko": 777,
+	"./ko.js": 777,
+	"./ku": 778,
+	"./ku.js": 778,
+	"./ky": 779,
+	"./ky.js": 779,
+	"./lb": 780,
+	"./lb.js": 780,
+	"./lo": 781,
+	"./lo.js": 781,
+	"./lt": 782,
+	"./lt.js": 782,
+	"./lv": 783,
+	"./lv.js": 783,
+	"./me": 784,
+	"./me.js": 784,
+	"./mi": 785,
+	"./mi.js": 785,
+	"./mk": 786,
+	"./mk.js": 786,
+	"./ml": 787,
+	"./ml.js": 787,
+	"./mn": 788,
+	"./mn.js": 788,
+	"./mr": 789,
+	"./mr.js": 789,
+	"./ms": 790,
+	"./ms-my": 791,
+	"./ms-my.js": 791,
+	"./ms.js": 790,
+	"./mt": 792,
+	"./mt.js": 792,
+	"./my": 793,
+	"./my.js": 793,
+	"./nb": 794,
+	"./nb.js": 794,
+	"./ne": 795,
+	"./ne.js": 795,
+	"./nl": 796,
+	"./nl-be": 797,
+	"./nl-be.js": 797,
+	"./nl.js": 796,
+	"./nn": 798,
+	"./nn.js": 798,
+	"./pa-in": 799,
+	"./pa-in.js": 799,
+	"./pl": 800,
+	"./pl.js": 800,
+	"./pt": 801,
+	"./pt-br": 802,
+	"./pt-br.js": 802,
+	"./pt.js": 801,
+	"./ro": 803,
+	"./ro.js": 803,
+	"./ru": 804,
+	"./ru.js": 804,
+	"./sd": 805,
+	"./sd.js": 805,
+	"./se": 806,
+	"./se.js": 806,
+	"./si": 807,
+	"./si.js": 807,
+	"./sk": 808,
+	"./sk.js": 808,
+	"./sl": 809,
+	"./sl.js": 809,
+	"./sq": 810,
+	"./sq.js": 810,
+	"./sr": 811,
+	"./sr-cyrl": 812,
+	"./sr-cyrl.js": 812,
+	"./sr.js": 811,
+	"./ss": 813,
+	"./ss.js": 813,
+	"./sv": 814,
+	"./sv.js": 814,
+	"./sw": 815,
+	"./sw.js": 815,
+	"./ta": 816,
+	"./ta.js": 816,
+	"./te": 817,
+	"./te.js": 817,
+	"./tet": 818,
+	"./tet.js": 818,
+	"./tg": 819,
+	"./tg.js": 819,
+	"./th": 820,
+	"./th.js": 820,
+	"./tl-ph": 821,
+	"./tl-ph.js": 821,
+	"./tlh": 822,
+	"./tlh.js": 822,
+	"./tr": 823,
+	"./tr.js": 823,
+	"./tzl": 824,
+	"./tzl.js": 824,
+	"./tzm": 825,
+	"./tzm-latn": 826,
+	"./tzm-latn.js": 826,
+	"./tzm.js": 825,
+	"./ug-cn": 827,
+	"./ug-cn.js": 827,
+	"./uk": 828,
+	"./uk.js": 828,
+	"./ur": 829,
+	"./ur.js": 829,
+	"./uz": 830,
+	"./uz-latn": 831,
+	"./uz-latn.js": 831,
+	"./uz.js": 830,
+	"./vi": 832,
+	"./vi.js": 832,
+	"./x-pseudo": 833,
+	"./x-pseudo.js": 833,
+	"./yo": 834,
+	"./yo.js": 834,
+	"./zh-cn": 835,
+	"./zh-cn.js": 835,
+	"./zh-hk": 836,
+	"./zh-hk.js": 836,
+	"./zh-tw": 837,
+	"./zh-tw.js": 837
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -17278,11 +17278,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 840;
+webpackContext.id = 839;
 
 /***/ }),
 
-/***/ 906:
+/***/ 903:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17293,12 +17293,12 @@ webpackContext.id = 840;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_driverauthentication_service__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_driverauthentication_service__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_geolocation___ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_call_number__ = __webpack_require__(363);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment__ = __webpack_require__(710);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_trips_service__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_d_trips_service__ = __webpack_require__(353);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_database__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_angularfire2_database__);
@@ -17723,7 +17723,7 @@ var DriverPickupPage = /** @class */ (function () {
     ], DriverPickupPage.prototype, "mapElement", void 0);
     DriverPickupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-pickup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/pickup/driverPickup.html"*/'<ion-header class="bg-theme-driver">\n    <ion-navbar>\n        <ion-title>Pick Up / Drop Off\n                <ion-icon name="help-circle-outline" class="text-white" (click)="help() " style="margin-left: auto;float: right;"></ion-icon> \n\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n        <ion-card class="cardOnTrip">\n                <ion-item>\n                    <ion-avatar item-start>\n                        <img src="assets/imgs/userPicture.png">\n                    </ion-avatar>\n                    <div class="name">\n                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}.\n                        </h2>\n                       \n                    </div>\n                    <div class="more">\n                        <h2 class="text-theme-driver">\n                            <!-- <ion-icon name="md-more"></ion-icon> -->\n                        </h2>\n                    </div>\n                </ion-item>\n                <ion-card-content>\n                    <div class="ride-detail">\n                        <p>\n                            <span class="icon-location bg-theme-driver"></span>{{addressOrigin}}</p>\n                        <p>\n                            <span class="icon-location bg-yellow"></span>{{user.origin}}</p>\n                    </div>\n                    <ion-row>\n                           <!-- <div text-left>\n                                <button class="btn bg-theme rounded full text-white" (click)="goToWaze(user.origin)">waze</button>                               \n                            </div>  -->                      \n                                <!-- <button class="btn bg-yellow rounded full text-white"><ion-icon name="chatboxes" class="text-white"></ion-icon></button> -->\n                                <button (click)="callUser()" class="btn bg-yellow rounded full text-white"><ion-icon name="ios-call" class="text-white"></ion-icon></button>\n                                \n                            <button navPop class="btn bg-theme-driver rounded full text-white" (click)="PickUp()">¡DONE!</button>                      \n                    </ion-row>\n                </ion-card-content>             \n            </ion-card>\n    <div #map id="map"></div>   \n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/pickup/driverPickup.html"*/
+            selector: 'driver-page-pickup',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\pickup\driverPickup.html"*/'<ion-header class="bg-theme-driver">\n\n    <ion-navbar>\n\n        <ion-title>Pick Up / Drop Off\n\n                <ion-icon name="help-circle-outline" class="text-white" (click)="help() " style="margin-left: auto;float: right;"></ion-icon> \n\n\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="bg-light">\n\n        <ion-card class="cardOnTrip">\n\n                <ion-item>\n\n                    <ion-avatar item-start>\n\n                        <img src="assets/imgs/userPicture.png">\n\n                    </ion-avatar>\n\n                    <div class="name">\n\n                        <h2>{{user.name |titlecase}} {{user.lastname |titlecase}}.\n\n                        </h2>\n\n                       \n\n                    </div>\n\n                    <div class="more">\n\n                        <h2 class="text-theme-driver">\n\n                            <!-- <ion-icon name="md-more"></ion-icon> -->\n\n                        </h2>\n\n                    </div>\n\n                </ion-item>\n\n                <ion-card-content>\n\n                    <div class="ride-detail">\n\n                        <p>\n\n                            <span class="icon-location bg-theme-driver"></span>{{addressOrigin}}</p>\n\n                        <p>\n\n                            <span class="icon-location bg-yellow"></span>{{user.origin}}</p>\n\n                    </div>\n\n                    <ion-row>\n\n                           <!-- <div text-left>\n\n                                <button class="btn bg-theme rounded full text-white" (click)="goToWaze(user.origin)">waze</button>                               \n\n                            </div>  -->                      \n\n                                <!-- <button class="btn bg-yellow rounded full text-white"><ion-icon name="chatboxes" class="text-white"></ion-icon></button> -->\n\n                                <button (click)="callUser()" class="btn bg-yellow rounded full text-white"><ion-icon name="ios-call" class="text-white"></ion-icon></button>\n\n                                \n\n                            <button navPop class="btn bg-theme-driver rounded full text-white" (click)="PickUp()">¡DONE!</button>                      \n\n                    </ion-row>\n\n                </ion-card-content>             \n\n            </ion-card>\n\n    <div #map id="map"></div>   \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\pickup\driverPickup.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_9__services_d_trips_service__["a" /* DriverTripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_5__services_d_driverauthentication_service__["a" /* DriverAuthenticationService */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_geolocation___["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_2__services_d_sendCoords_service__["a" /* DriverSendCoordsService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_11_angularfire2_database__["AngularFireDatabase"]])
     ], DriverPickupPage);

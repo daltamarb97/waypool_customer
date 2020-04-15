@@ -14,7 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { authenticationService } from '../services/userauthentication.service';
 import { Firebase } from '@ionic-native/firebase';
 import { Geolocation } from '@ionic-native/geolocation';
-import { sendCoordsService } from '../services/sendCoords.service';
+import { sendCoordsService } from '../services/sendcoords.service';
 import { sendUsersService } from '../services/sendUsers.service';
 import { noteService } from '../services/note.service';
 import { CallNumber } from '@ionic-native/call-number';
@@ -52,6 +52,7 @@ import { DriverSignUpService } from '../services/d-signup.service';
 import { DriverTripsService } from '../services/d-trips.service';
 import { DriverWindowService } from '../services/d-window.service';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { GroupsService } from '../services/groups.service';
 
 
 export const firebaseConfig = {
@@ -124,6 +125,7 @@ export const firebaseConfig = {
     DriverSendUsersService,
     DriverSignUpService,
     DriverTripsService,
+    GroupsService,
     DriverWindowService,
     LocationAccuracy,
     MetricsService,

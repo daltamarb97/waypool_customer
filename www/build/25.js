@@ -5,10 +5,10 @@ webpackJsonp([25],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WalkthroughPageModule", function() { return WalkthroughPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VerificationNumberPageModule", function() { return VerificationNumberPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__walkthrough__ = __webpack_require__(875);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verification_number__ = __webpack_require__(873);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var WalkthroughPageModule = /** @class */ (function () {
-    function WalkthroughPageModule() {
+var VerificationNumberPageModule = /** @class */ (function () {
+    function VerificationNumberPageModule() {
     }
-    WalkthroughPageModule = __decorate([
+    VerificationNumberPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__walkthrough__["a" /* WalkthroughPage */],
+                __WEBPACK_IMPORTED_MODULE_2__verification_number__["a" /* VerificationNumberPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__walkthrough__["a" /* WalkthroughPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__verification_number__["a" /* VerificationNumberPage */]),
             ],
+            exports: [
+                __WEBPACK_IMPORTED_MODULE_2__verification_number__["a" /* VerificationNumberPage */]
+            ]
         })
-    ], WalkthroughPageModule);
-    return WalkthroughPageModule;
+    ], VerificationNumberPageModule);
+    return VerificationNumberPageModule;
 }());
 
-//# sourceMappingURL=walkthrough.module.js.map
+//# sourceMappingURL=verification-number.module.js.map
 
 /***/ }),
 
-/***/ 875:
+/***/ 873:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WalkthroughPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerificationNumberPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,43 +64,68 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the WalkthroughPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var WalkthroughPage = /** @class */ (function () {
-    function WalkthroughPage(navCtrl, navParams, viewCtrl, menuCtrl) {
+
+
+
+
+var VerificationNumberPage = /** @class */ (function () {
+    function VerificationNumberPage(navCtrl, navParams, modalCtrl, authenticationService, alertCtrl, AngularFireAuth, signUpService, app) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.menuCtrl = menuCtrl;
-        this.animationSpeed = 1;
+        this.modalCtrl = modalCtrl;
+        this.authenticationService = authenticationService;
+        this.alertCtrl = alertCtrl;
+        this.AngularFireAuth = AngularFireAuth;
+        this.signUpService = signUpService;
+        this.app = app;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["Subject"];
+        this.userId = this.navParams.get('userId');
+        console.log(this.userId);
+        this.signUpService.getMyInfo(this.userId).takeUntil(this.unsubscribe).subscribe(function (user) {
+            _this.userInfo = user;
+            console.log(_this.userInfo);
+        });
     }
-    WalkthroughPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad WalkthroughPage');
+    VerificationNumberPage.prototype.code = function () {
+        this.authenticationService.deleteResendCode(this.userId);
+        this.authenticationService.sendVerificationCodeToFirebase(this.userId, this.confText);
+        // this.signUpService.getMyInfo( this.userId).subscribe(user => {
+        //   this.userInfo = user;
+        //   console.log(this.userInfo);
+        if (this.userInfo.verificationCodeApproval === true) {
+            this.app.getRootNav().push('LoginPage');
+            this.authenticationService.deleteVerificationCode(this.userId);
+        }
+        else if (this.userInfo.verificationCodeApproval === false) {
+            this.authenticationService.deleteVerificationCode(this.userId);
+            var alert_1 = this.alertCtrl.create({
+                title: 'Código Errado',
+                subTitle: 'el código de verificacón está errado',
+                buttons: ['OK']
+            });
+            alert_1.present();
+        }
+        // })
     };
-    WalkthroughPage.prototype.handleAnimation = function (anim) {
-        this.anim = anim;
+    VerificationNumberPage.prototype.resendCode = function () {
+        this.authenticationService.deleteverificationCodeApproval(this.userId);
+        this.authenticationService.resendVerificationCode(this.userId);
     };
-    WalkthroughPage.prototype.goLogin = function () {
-        var _this = this;
-        this.animate = "animated bounceOutRight";
-        setTimeout(function () {
-            _this.navCtrl.pop();
-        }, 1000);
+    VerificationNumberPage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     };
-    WalkthroughPage = __decorate([
+    VerificationNumberPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-walkthrough',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-walkthrough/walkthrough.html"*/'<!--\n  Generated template for the WalkthroughPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>walkthrough</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n\n<ion-content style="background-color: #001127">\n    <ion-slides pager>\n        <ion-slide>\n            <div class="logoholderm" text-center>\n                <img src="./assets/imgs/connectemployees.png" alt="">\n                \n                <h2>¡Viaja con tus compañeros!</h2>\n                <p>\n                    De tu empresa o de otras empresas\n                </p> \n                </div>\n          \n        </ion-slide>\n    \n        <ion-slide>\n            <div class="logoholderm" text-center>\n                <img src="./assets/imgs/typesoftrips.png" alt="">\n                \n                <h2>Tipos de viaje</h2>\n                <p>\n                    Programados: podrás reservar un viaje a cualquier hora durante el día.\n                </p> \n                <p>\n                    En curso: Son viajes iniciados por poolers que ya están recogiendo a otros pasajeros y pueden recogerte en ese momento.\n                </p>\n                </div>\n          \n        </ion-slide>\n        <ion-slide>\n            <div class="logoholderm" text-center>\n                <img src="./assets/imgs/morethanonetrip.png"  alt="">\n                \n                <h2>Puedes entrar en más de 1 viaje programado </h2>\n                <p>\n                    También escribir por chat para saludar a tus compañeros. \n                </p> \n                </div>         \n        </ion-slide>\n        <ion-slide>\n            <div class="logoholderm" text-center>\n                <img src="./assets/imgs/nocash.png"  alt="">\n                \n                <h2>No se maneja efectivo en el viaje</h2>\n                <p>\n                  Los viajes que haz hecho se cobran una sola vez cada semana mediante un link de la pasarela MercadoPago que te enviaremos en la App. Ahí podrás pagar con TC, efecty o Baloto. \n                </p> \n                </div>         \n        </ion-slide>\n            <ion-slide>\n                <div class="logoholderm" text-center>\n                    <img src="./assets/imgs/lowprices.png"  alt="">\n                    \n                    <h2>Precios bajos</h2>\n                    <p>\n                        Al viajar con tus compañeros aportas una pequeña contribución a los gastos de su viaje.\n                    </p> \n                    </div>         \n            </ion-slide>\n            \n        <ion-slide> \n            <div class="logoholderm"  text-center>\n                <img [ngClass]="animate" src="assets/imgs/blueCarWalkthrough.png" style="height: 20%; width: 20%;" alt="">\n                \n                <h2>Listo</h2>\n                <p>\n                   Gracias por ayudarnos a construir esta red de transporte inteligente\n                </p> \n\n                <div text-center>\n                    <button  class="btn bg-light text-theme rounded"  (click)="goLogin()">SALIR</button>\n                  </div>\n                </div>               \n        </ion-slide>\n      </ion-slides>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-walkthrough/walkthrough.html"*/,
+            selector: 'page-verification-number',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-verification-number\verification-number.html"*/'<ion-header class="transparent">\n\n    <ion-navbar>\n\n        <ion-title><span class="text-white">verification</span></ion-title>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  \n\n  <ion-content class="bg-background-img">\n\n    <div class="logo">\n\n        <img src="assets/imgs/logo waypool gris-01.png" alt="logo">\n\n    </div>\n\n    <div class="bg-white login">\n\n        <div class="">\n\n            <p padding text-center>Ingresa el código de confirmación<br>enviado a tu SMS!</p>\n\n            <br>\n\n            <ion-list class="form" text-center>\n\n                <ion-item>\n\n                    <ion-input type="text" [(ngModel)]=\'confText\' text-right></ion-input>\n\n                </ion-item>\n\n            </ion-list>\n\n            <button ion-button full class="bg-theme text-white btn rounded" (click)="code()">Next</button>\n\n            <br>\n\n            <p padding text-center class="resendingButton" (click)= "resendCode()">Reenviar código de verificación</p>      \n\n          </div>\n\n    </div>\n\n  </ion-content>'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-verification-number\verification-number.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* MenuController */]])
-    ], WalkthroughPage);
-    return WalkthroughPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
+    ], VerificationNumberPage);
+    return VerificationNumberPage;
 }());
 
-//# sourceMappingURL=walkthrough.js.map
+//# sourceMappingURL=verification-number.js.map
 
 /***/ })
 

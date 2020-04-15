@@ -11,7 +11,7 @@
                 <img src="assets/imgs/face-1.jpg">
             </ion-avatar>
             <div class="name">
-                <h2>Creador: David Johnson
+                <h2>Creador: {{crew.admin.name| titlecase}} {{crew.admin.lastname| titlecase  }}
                     <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
                 </h2>
                 <p class="company">Bancolombia</p>
@@ -20,10 +20,10 @@
         <ion-card-content>
             <div class="ride-detail">
                 <p><small>Origen</small>
-                    <span class="icon-location bg-theme"></span>Villa Campestre</p>
+                    <span class="icon-location bg-theme"></span>{{crew.origin.name}}</p>
                 <p>
                     <small>Destino</small>
-                    <span class="icon-location bg-yellow"></span>Bancolombia Calle 51B</p>
+                    <span class="icon-location bg-yellow"></span>{{crew.destination.name}}</p>
             </div>
         </ion-card-content>
     </ion-card>
@@ -35,16 +35,16 @@
                  
                     <ion-col style="display: flex;flex-direction: column;" col-3>
                         <ion-avatar style="border-radius: 15%;" #imageTaxi>
-                            <p text-center class="texto1">Taxi</p>   
-                                <img class="house"  src="assets/imgs/carfuture.png" (click)="selectImageTaxi()"/>       
+                            <p text-center class="texto1">{{car}}</p>   
+                                <img class="house"  src="{{imageUrl}}" (click)="selectImageTaxi()"/>       
                         </ion-avatar>
-                        <button class="btn bg-theme text-white rounded" (click)="changeTransportation()" style="width: 100%; font-size: 10px;
+                        <button class="btn bg-theme text-white rounded" (click)="changeTransportation(crew)" style="width: 100%; font-size: 10px;
                         height: 23px;">Cambiar</button>
 
                     </ion-col>
                     <ion-col style="display: flex;flex-direction: column;margin-left: 30px;" col-7>
-                        <button class="btn bg-theme text-white rounded" (click)="seeMembers()" style="width: 100%;margin-top: 16px;">Buscar Conductor</button>
-                        <button class="btn bg-theme text-white rounded" (click)="seeMembers()" style="width: 100%;margin-top: 16px;">Ver compañeros de viaje</button>                       
+                        <button class="btn bg-theme text-white rounded" (click)="seeMembers(crew)" style="width: 100%;margin-top: 16px;">Buscar Conductor</button>
+                        <button class="btn bg-theme text-white rounded" (click)="seeMembers(crew)" style="width: 100%;margin-top: 16px;" [disabled]="disable">Ver compañeros de viaje</button>                       
                
                     </ion-col>
                   </ion-row>
@@ -58,7 +58,7 @@
                 
                 <p><small>Hora de salida:</small>
                     <ion-icon name="md-time" class="icon-location"></ion-icon>
-                     12:30pm</p>
+                    {{crew.startHour}} </p>
                     <p><small>Nota</small>
                         <ion-icon name="md-create" class="icon-location"></ion-icon>
                         Dinero exacto por favor

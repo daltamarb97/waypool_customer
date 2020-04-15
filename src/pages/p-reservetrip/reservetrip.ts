@@ -4,7 +4,7 @@ import { NavController, ModalController, AlertController, ToastController, Ionic
 // import { RiderprofilePage } from '../riderprofile/riderprofile';
 // import { Observable } from 'rxjs';
 // import { AngularFireDatabase} from 'angularfire2/database';
-import { sendCoordsService } from '../../services/sendCoords.service';
+import { sendCoordsService } from '../../services/sendcoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 // import * as firebase from 'firebase';
 // import { sendUsersService } from '../../services/sendUsers.service';
@@ -20,6 +20,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { geofireService } from '../../services/geoFire.service';
 import { take } from 'rxjs/operators';
+import { GroupsService } from '../../services/groups.service';
 
 @IonicPage()
 @Component({
@@ -39,6 +40,7 @@ export class ReservetripPage{
   myReservesId:any=[];
   myReserves:any =[];
   reserve:any;
+  crew:any;
   pendingUsers:any = [];
   onTrip:any;
   unsubscribe = new Subject;
@@ -47,11 +49,11 @@ export class ReservetripPage{
   segment:any;
   showCarpool:boolean;
   showCrew:boolean;
-  myCrews = [];
-  myCrewsMember = [];
-  myCrewsMemberKeys = [];
+  myCrewsAsAdmin = [];
+  myCrewsKeys = [];
+  myCrewsIJoined = [];
 
-  constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService,public loadingCtrl: LoadingController, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
+  constructor(public navCtrl: NavController,public app:App,public reservesService:reservesService, public GroupsService:GroupsService,public loadingCtrl: LoadingController, public SignUpService: SignUpService, public sendCoordsService: sendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, public afDB: AngularFireDatabase, public instances: instancesService, public sendUsersService: sendUsersService, public toastCtrl: ToastController, private geofireService: geofireService) {   
     
 
     this.reservesService.getOnTrip( this.userUid).takeUntil(this.unsubscribe)
@@ -74,8 +76,46 @@ export class ReservetripPage{
    
     })
     
-    
-    
+    this.GroupsService.getMyCrews( this.userUid).takeUntil(this.unsubscribe)
+    .subscribe( myCrews => {
+      console.log(this.myCrewsAsAdmin);
+
+      //get all crews i have created
+      this.myCrewsAsAdmin = myCrews;
+      console.log(this.myCrewsAsAdmin);
+
+    }) 
+
+    this.GroupsService.getCrewsIJoinedId( this.userUid).takeUntil(this.unsubscribe)
+    .subscribe( myCrewsKeys => {
+      console.log(this.myCrewsKeys);
+      //get all crews i joined
+      this.myCrewsKeys = myCrewsKeys;
+      console.log(this.myCrewsKeys);
+      this.myCrewsIJoined = [];
+      if(this.myCrewsKeys.length === 0){
+        //there are no reserves to show
+        this.presentLoadingCustom();   
+      }else{
+        //there are reserves
+          this.noCrew = false;
+          //check if driver have cancel me from reserve
+          this.myCrewsKeys.forEach(crew => {
+            if (crew.cancelCrew == true) {
+              this.unSubscribeServices();
+              this.navCtrl.pop();
+              let modal = this.modalCtrl.create('CanceltripPage');
+              modal.present();
+              this.GroupsService.eliminateCrewUser( this.userUid,crew.crewId);
+              
+
+            }
+          });
+          this.getCrewsIJoined();
+          
+      }
+
+    }) 
     this.reservesService.getMyReservesUser( this.userUid).takeUntil(this.unsubscribe)
     .subscribe( myReservesId => {
       console.log(this.myReserves);
@@ -107,69 +147,17 @@ export class ReservetripPage{
 
     }) 
 
-
-    this.afDB.database.ref('crewsTest/' + this.userUid).once('value').then((snap)=>{
-
-      let obj = snap.val();
-      if(obj){
-        this.noCrew = false;
-        Object.getOwnPropertyNames(obj).forEach((key)=>{
-          this.myCrews.push(obj[key]);
-        })
-
-      }else{
-        this.noCrew = true;
-      }
-      
-    }).then(()=>{
-      console.log(this.myCrews);
-      
-    })
-
-
-    this.afDB.database.ref('usersTest/' + this.userUid + '/crewsInside/').once('value').then((snap)=>{
-
-      let obj = snap.val();
-      if(obj){
-        this.noCrew = false;
-        Object.getOwnPropertyNames(obj).forEach((key)=>{
-          this.myCrewsMemberKeys.push(obj[key]);
-        })
-
-      }else{
-        this.noCrew = true;
-      }
-      
-    }).then(()=>{
-      this.getInfoFromCrews()
-      
-    })
-
   }
 
 
 
-  getInfoFromCrews(){
-    for(let key of this.myCrewsMemberKeys){
-
-      this.afDB.database.ref('crewsTest/' + key.adminId + '/' + key.crewId).once('value')
-        .then((snap)=>{
-          this.myCrewsMember.push(snap.val())
-        })
-    }
-  }
 
 
-  enterChatCrew(crew){
-    console.log('quiero chat, el crew es: ' + crew);
-    
-  }
+
+ 
 
 
-  crewDetails(){
-    console.log('quiero ver los detalles del crew');
-    
-  }
+
 
   carpool(){
     this.showCrew = false;
@@ -178,7 +166,7 @@ export class ReservetripPage{
   }
 
 
-  crew(){
+  group(){
 
     this.showCarpool= false;
     this.showCrew= true;
@@ -210,7 +198,27 @@ export class ReservetripPage{
         })
     })
 }
+getCrewsIJoined() {
+  this.myCrewsIJoined = []; //erase all of reserves 
+  
+  //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
+  this.myCrewsKeys.forEach(crew => {
 
+      this.afDB.database.ref( '/crewsTest/'+ crew.adminId +'/'+ crew.crewId).once('value').then((snapCrew)=>{
+        this.crew = snapCrew.val();
+        console.log(this.crew);          
+        if(this.crew === undefined || this.crew === null){
+         
+        }else{
+
+          this.myCrewsIJoined.push(this.crew);
+          console.log(this.myCrewsIJoined);
+          
+        }
+        
+      })
+  })
+}
 tripDetails(keyTrip, driverUid) {
     let modal = this.modalCtrl.create('ReserveinfoPage', {
         reserveKey: keyTrip,
@@ -227,7 +235,10 @@ enterChat(reserve) {
   modal.present();
 }
 
+crewDetails(crew){
+  this.navCtrl.push('GroupDetailPage',{crew:crew})
 
+}
 
       unSubscribeServices(){
         this.unsubscribe.next();
@@ -276,9 +287,7 @@ enterChat(reserve) {
     }
 
 
-      seeGroup(){
-        this.navCtrl.push('GroupDetailPage')
-      }
+     
 }
 
 

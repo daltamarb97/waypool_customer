@@ -10,7 +10,7 @@
                   Carpooling
                 </ion-segment-button>
                 
-                <ion-segment-button value="crew" (ionSelect)="crew()">
+                <ion-segment-button value="group" (ionSelect)="group()">
                   Your crews
 
                 </ion-segment-button>
@@ -54,9 +54,9 @@
                         <ion-card-content>
                             <div class="ride-detail">
                                 <p  >
-                                    <span class="icon-location bg-theme"></span>{{reserve.origin[0]}}</p>
+                                    <span class="icon-location bg-theme"></span>{{reserve.origin.name}}</p>
                                 <p > 
-                                    <span class="icon-location bg-yellow"></span>{{reserve.destination[0]}}</p>
+                                    <span class="icon-location bg-yellow"></span>{{reserve.destination.name}}</p>
                             </div>
                             <ion-row class="center-align">
                                 <!-- <ion-col col-3 class="detail-text text-theme">
@@ -89,7 +89,7 @@
 
     <img *ngIf="noCrew" src="assets/imgs/noreserve.png">
 
-    <ion-card *ngFor = "let crew of myCrews">  
+    <ion-card *ngFor = "let crew of myCrewsAsAdmin">  
         <ion-item> 
                 <ion-avatar item-start>
                         <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
@@ -112,7 +112,7 @@
             <ion-card-content>
                 <div class="ride-detail">
                     <p  >
-                        <span class="icon-location bg-theme"></span>{{crew.origin.name}}</p>
+                        <span class="icon-location bg-theme"></span> </p>
                     <p > 
                         <span class="icon-location bg-yellow"></span>{{crew.destination.name}}</p>
                 </div>
@@ -129,7 +129,10 @@
                         <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChatCrew(crew)">Chat</button>            
                     </ion-col>
                     <ion-col center text-center col-4 text-right >
-                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="crewDetails()">Detalles</button>
+                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="crewDetails(crew)">Detalles</button>
+                    </ion-col> 
+                    <ion-col center text-center col-4 text-right >
+                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="crewDetails(crew)">Iniciar Viaje</button>
                     </ion-col> 
                 </ion-row>
             </ion-card-content>
@@ -137,7 +140,7 @@
 </ion-card>
 
 
-<ion-card *ngFor = "let crew of myCrewsMember">  
+<ion-card *ngFor = "let crew of myCrewsIJoined">  
         <ion-item> 
                 <ion-avatar item-start>
                         <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">
@@ -169,7 +172,7 @@
                     <ion-col col-4  >
         
                             <h2 style="font-size: 1.8rem;
-                            font-weight: 600;" >Hora {{crew.startHour |titlecase}} 
+                            font-weight: 600;" >Hora: {{crew.startHour |titlecase}} 
                             </h2>
                             
                     </ion-col>
@@ -177,7 +180,7 @@
                         <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChatCrew(crew)">Chat</button>            
                     </ion-col>
                     <ion-col center text-center col-4 text-right >
-                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="crewDetails()">Detalles</button>
+                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="crewDetails(crew)">Detalles</button>
                     </ion-col> 
                 </ion-row>
             </ion-card-content>
@@ -187,7 +190,7 @@
 
 
 
-<!-- <ion-card *ngFor = "let crew of myCrewsMember">
+ <ion-card *ngFor = "let crew of myCrewsMember">
     <ion-item>
         <ion-avatar item-start>
             <img style="height:70px; width: 70px;" src="assets/imgs/carOrange.png">
@@ -214,7 +217,7 @@
             </ion-col>
         </ion-row>
     </ion-card-content>
-</ion-card> -->
+</ion-card> 
 </div>
 
 </ion-content>

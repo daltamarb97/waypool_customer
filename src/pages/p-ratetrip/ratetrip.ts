@@ -6,7 +6,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { sendFeedbackService } from '../../services/sendFeedback.service';
 import { SignUpService } from '../../services/signup.services';
 import { sendUsersService } from '../../services/sendUsers.service';
-import { sendCoordsService } from '../../services/sendCoords.service';
+import { sendCoordsService } from '../../services/sendcoords.service';
 import { Subject } from 'rxjs';
 @IonicPage()
 

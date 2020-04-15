@@ -3,7 +3,7 @@ import { NavController, ViewController, ModalController, NavParams, Tabs, AlertC
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SignUpService } from '../../services/signup.services';
-import { sendCoordsService } from '../../services/sendCoords.service';
+import { sendCoordsService } from '../../services/sendcoords.service';
 
 import { sendUsersService } from '../../services/sendUsers.service';
 

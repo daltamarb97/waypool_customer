@@ -1,6 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 690:
+/***/ 689:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TypeOfLoginPageModule", function() { return TypeOfLoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__type_of_login__ = __webpack_require__(890);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__type_of_login__ = __webpack_require__(887);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var TypeOfLoginPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 890:
+/***/ 887:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -96,7 +96,7 @@ var TypeOfLoginPage = /** @class */ (function () {
     };
     TypeOfLoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-type-of-login',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/type-of-login/type-of-login.html"*/'<!--\n  Generated template for the TypeOfLoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header class="bg-theme">\n\n  <ion-navbar>\n    <ion-title><span>TIPO DE REGISTRO</span></ion-title>\n</ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="card-background-page">\n\n  <ion-card (click)=\'goSignUpCorp()\'>\n    <img src="assets/imgs/fondo_login_corp.png"/>\n    <!-- <div class="card-title">REGISTRO CON CORREO CORPORATIVO</div> -->\n  </ion-card>\n\n  <ion-card (click) = \'goSignUpPersonal()\'>\n    <img src="assets/imgs/fondo_login_personal.png"/>\n    <!-- <div class="card-title">RESGISTRO CON CORREO PERSONAL</div>\n    <div class="card-subtitle">64 Listings</div> -->\n  </ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/type-of-login/type-of-login.html"*/,
+            selector: 'page-type-of-login',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\type-of-login\type-of-login.html"*/'<!--\n\n  Generated template for the TypeOfLoginPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header class="bg-theme">\n\n\n\n  <ion-navbar>\n\n    <ion-title><span>TIPO DE REGISTRO</span></ion-title>\n\n</ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content class="card-background-page">\n\n\n\n  <ion-card (click)=\'goSignUpCorp()\'>\n\n    <img src="assets/imgs/fondo_login_corp.png"/>\n\n    <!-- <div class="card-title">REGISTRO CON CORREO CORPORATIVO</div> -->\n\n  </ion-card>\n\n\n\n  <ion-card (click) = \'goSignUpPersonal()\'>\n\n    <img src="assets/imgs/fondo_login_personal.png"/>\n\n    <!-- <div class="card-title">RESGISTRO CON CORREO PERSONAL</div>\n\n    <div class="card-subtitle">64 Listings</div> -->\n\n  </ion-card>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\type-of-login\type-of-login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
     ], TypeOfLoginPage);

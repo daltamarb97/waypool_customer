@@ -1,14 +1,14 @@
 webpackJsonp([30],{
 
-/***/ 705:
+/***/ 697:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupPageModule", function() { return SignupPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReservetripPageModule", function() { return ReservetripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(905);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reservetrip__ = __webpack_require__(895);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,43 +18,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SignupPageModule = /** @class */ (function () {
-    function SignupPageModule() {
+var ReservetripPageModule = /** @class */ (function () {
+    function ReservetripPageModule() {
     }
-    SignupPageModule = __decorate([
+    ReservetripPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__signup__["a" /* SignupPage */],
+                __WEBPACK_IMPORTED_MODULE_2__reservetrip__["a" /* ReservetripPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__signup__["a" /* SignupPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__reservetrip__["a" /* ReservetripPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__signup__["a" /* SignupPage */]
+                __WEBPACK_IMPORTED_MODULE_2__reservetrip__["a" /* ReservetripPage */]
             ]
         })
-    ], SignupPageModule);
-    return SignupPageModule;
+    ], ReservetripPageModule);
+    return ReservetripPageModule;
 }());
 
-//# sourceMappingURL=signup.module.js.map
+//# sourceMappingURL=reservetrip.module.js.map
 
 /***/ }),
 
-/***/ 905:
+/***/ 895:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReservetripPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__ = __webpack_require__(359);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_signup_services__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sendcoords_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_instances_service__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_groups_service__ = __webpack_require__(366);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,6 +70,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+// import { RiderprofilePage } from '../riderprofile/riderprofile';
+// import { Observable } from 'rxjs';
+// import { AngularFireDatabase} from 'angularfire2/database';
+
+
+// import * as firebase from 'firebase';
+// import { sendUsersService } from '../../services/sendUsers.service';
+// import { Geofence } from '@ionic-native/geofence';
 
 
 
@@ -74,398 +86,215 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var SignupPage = /** @class */ (function () {
-    function SignupPage(navCtrl, afDB, formBuilder, authenticationService, SignUpService, alertCtrl, AngularFireAuth, navParams, app, loadingCtrl) {
+var ReservetripPage = /** @class */ (function () {
+    function ReservetripPage(navCtrl, app, reservesService, GroupsService, loadingCtrl, SignUpService, sendCoordsService, modalCtrl, AngularFireAuth, alertCtrl, afDB, instances, sendUsersService, toastCtrl, geofireService) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.afDB = afDB;
-        this.formBuilder = formBuilder;
-        this.authenticationService = authenticationService;
-        this.SignUpService = SignUpService;
-        this.alertCtrl = alertCtrl;
-        this.AngularFireAuth = AngularFireAuth;
-        this.navParams = navParams;
         this.app = app;
+        this.reservesService = reservesService;
+        this.GroupsService = GroupsService;
         this.loadingCtrl = loadingCtrl;
-        this.user = {};
-        this.tokenId = '';
-        this.userId = '';
-        this.isReadonly = true;
-        this.cities = [];
-        this.arrayEmails = [];
-        this.corpEmailDetected = false;
-        this.emailIdentified = false;
-        this.successfulRegister = false;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_7_rxjs__["Subject"];
-        this.zones = [];
-        this.typeOfSignUp = this.navParams.get('typeOfSignUp');
-        console.log(this.typeOfSignUp);
-        this.signupGroup = this.formBuilder.group({
-            name: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
-            lastname: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
-            email: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
-            password: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
-            passwordconf: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
-            phone: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
-            city: ["", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
-            isChecked: [true, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required]
-        });
-        this.geocoder = new google.maps.Geocoder;
-        this.SignUpService.getAllCities().takeUntil(this.unsubscribe).subscribe(function (cities) {
-            _this.cities = cities;
-            console.log(_this.cities);
-        });
-    }
-    SignupPage.prototype.onChange = function () {
-        this.arrayEmails = [];
-        // this.afDB.database.ref('allCities/' + this.cityVar + '/allPlaces').once('value').then((snap)=>{
-        //     let obj = snap.val();
-        //     Object.getOwnPropertyNames(obj).forEach((key)=>{
-        //         this.arrayEmails.push(obj[key].email);
-        //         console.log(this.arrayEmails);
-        //     })
-        // })  
-        this.arrayEmails.push('@gmail.com', '@hotmail.com', '@yahoo.com');
-    };
-    // noCompanyIdentified(numberToExecute){
-    //     ++this.forLoopsCompleted;
-    //     if(this.forLoopsCompleted === numberToExecute){
-    //         if(this.companyIdentified === false){
-    //             const alert = this.alertCtrl.create({
-    //                 title: 'El correo que ingresaste no concuerda con el de ninguna empresa de la red de Waypool',
-    //                 subTitle: 'Revisa si escribiste el correo bien o si tu empresa no está en Waypool, envianos un correo a waypooltec@gmail.com',
-    //                 buttons: ['OK']
-    //               });
-    //               alert.present(); 
-    //         }
-    //     }
-    // }
-    SignupPage.prototype.scrolling = function () {
-        this.content.scrollTo(30, 0);
-    };
-    ;
-    SignupPage.prototype.login = function () {
-        this.navCtrl.setRoot('LoginPage');
-    };
-    SignupPage.prototype.verification = function () {
-        var _this = this;
-        this.emailIdentified = false;
-        this.corpEmailDetected = false;
-        this.successfulRegister = false;
-        var loading = this.loadingCtrl.create({
-            spinner: 'crescent',
-            content: "\n              <div class=\"custom-spinner-container\">\n                <div class=\"custom-spinner-box\"></div>\n              </div>"
-        });
-        loading.present();
-        // this.forLoopsCompleted = 0;
-        // this.companyIdentified = false;
-        console.log(this.arrayEmails.length);
-        var count = this.arrayEmails.length;
-        for (var i = 0; i < count; i++) {
-            if (this.emailIdentified === false && this.corpEmailDetected === false && this.successfulRegister === false) {
-                this.emailStringVerification = this.email.indexOf(this.arrayEmails[i]);
-                console.log(this.emailStringVerification);
-                if (this.emailStringVerification > -1) {
-                    this.emailIdentified = true;
-                    if (this.typeOfSignUp === 'personal') {
-                        if (!this.signupGroup.controls['isChecked'].value === true) {
-                            loading.dismiss();
-                            var alert_1 = this.alertCtrl.create({
-                                title: 'No aceptaste nuestros términos y condiciones',
-                                subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
-                                buttons: ['OK']
-                            });
-                            alert_1.present();
-                        }
-                        else {
-                            //creating user on firebase
-                            var userName = this.signupGroup.controls['name'].value;
-                            var userLastName = this.signupGroup.controls['lastname'].value;
-                            var userEmail = this.signupGroup.controls['email'].value;
-                            var userPassword = this.signupGroup.controls['password'].value;
-                            var userPhone = this.signupGroup.controls['phone'].value;
-                            // saving data in variable
-                            this.user = {
-                                name: userName,
-                                lastname: userLastName,
-                                email: userEmail,
-                                phone: '+57' + userPhone,
-                                createdBy: 'costumer',
-                                // PREGUNTARLE SOBRE QUÉ EMPRESA TRABAJA MÁS ADELANTE
-                                // company: this.company,
-                                city: this.cityVar,
-                                //this sets documents true by default//
-                                documents: {
-                                    license: true,
-                                    id: true
-                                }
-                            };
-                            // this.SignUpService.userPlace = userPlace;
-                            if (this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value) {
-                                this.authenticationService.registerWithEmail(userEmail, userPassword).then(function () {
-                                    if (!_this.user.userId) {
-                                        _this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
-                                            if (user) {
-                                                user.getIdToken().then(function (token) {
-                                                    _this.user.tokenId = token;
-                                                });
-                                                if (!_this.user.userId) {
-                                                    _this.user.userId = user.uid;
-                                                }
-                                                // this.zones.forEach(zone => {
-                                                //CAMBIAR  EN PRODUCCION - REGLAS DE SEGURIDAD
-                                                _this.SignUpService.saveUserTest(_this.user);
-                                                //no se si esto es necesario - REVISAR
-                                                _this.SignUpService.saveUserInAllUsers(user.uid, _this.cityVar);
-                                                // })
-                                                // this.afDB.database.ref('allCities/'+ this.cityVar + '/allPlaces/' + this.company + '/location').once('value').then((snap)=>{
-                                                //     console.log(snap.val());
-                                                //     snap.val().forEach(location => {
-                                                //         this.SignUpService.setFixedLocationCoordinates(location.zone, this.user.userId, location.lat, location.lng );
-                                                //         this.SignUpService.setFixedLocationName(location.zone, this.user.userId, location.name);   
-                                                //         this.SignUpService.addPlaceZone(location.zone, this.user.userId);  
-                                                //     })
-                                                // }).then(()=>{
-                                                //     this.SignUpService.saveUserInAllUsers(this.company, user.uid, this.cityVar);
-                                                // })
-                                                //send text message with code
-                                                // this.sendVerificationCode(this.user.userId);
-                                            }
-                                            else {
-                                                console.log('there is no user');
-                                            }
-                                        });
-                                    }
-                                    ;
-                                    // sending email verification and verifying whether email is verified or not
-                                    _this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
-                                        if (user) {
-                                            if (user.emailVerified == false) {
-                                                user.sendEmailVerification();
-                                                loading.dismiss();
-                                                var alert_2 = _this.alertCtrl.create({
-                                                    title: '¡REGISTRO EXITOSO!',
-                                                    subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
-                                                    buttons: [
-                                                        {
-                                                            text: 'OK',
-                                                            handler: function () {
-                                                                _this.navCtrl.setRoot('DriverUserVerificationPage');
-                                                            }
-                                                        }
-                                                    ]
-                                                });
-                                                _this.successfulRegister = true;
-                                                alert_2.present();
-                                                console.log("verification email has been sent");
-                                            }
-                                            else {
-                                                console.log("verification email has not been sent or the email is already verified");
-                                            }
-                                        }
-                                        else {
-                                            console.log('there is no user');
-                                        }
-                                    });
-                                }).catch(function (error) {
-                                    loading.dismiss();
-                                    console.log(error);
-                                    if (error.code === "auth/email-already-in-use") {
-                                        var alert_3 = _this.alertCtrl.create({
-                                            title: 'ya existe una cuenta con este correo',
-                                            subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
-                                            buttons: ['OK']
-                                        });
-                                        alert_3.present();
-                                    }
-                                });
-                            }
-                            else {
-                                loading.dismiss();
-                                var alert_4 = this.alertCtrl.create({
-                                    title: 'Oops!',
-                                    subTitle: 'las contraseñas no coinciden, intenta de nuevo',
-                                    buttons: ['OK']
-                                });
-                                alert_4.present();
-                            }
-                        }
-                    }
-                    else {
-                        loading.dismiss();
-                        var alert_5 = this.alertCtrl.create({
-                            title: 'El correo que ingresaste no corresponde a un correo corporativo',
-                            subTitle: 'Regístrate con la opción "registro con correo personal" si tu empresa no cuenta con correo corporativo',
-                            buttons: ['OK']
-                        });
-                        alert_5.present();
-                    }
-                }
-                else {
-                    this.corpEmailDetected = true;
-                    if (this.typeOfSignUp === 'corp') {
-                        if (!this.signupGroup.controls['isChecked'].value === true) {
-                            loading.dismiss();
-                            var alert_6 = this.alertCtrl.create({
-                                title: 'No aceptaste nuestros términos y condiciones',
-                                subTitle: 'Debes estar de acuerdo con nustros términos y condiciones para usar Waypool',
-                                buttons: ['OK']
-                            });
-                            alert_6.present();
-                        }
-                        else {
-                            //creating user on firebase
-                            var userName = this.signupGroup.controls['name'].value;
-                            var userLastName = this.signupGroup.controls['lastname'].value;
-                            var userEmail = this.signupGroup.controls['email'].value;
-                            var userPassword = this.signupGroup.controls['password'].value;
-                            var userPhone = this.signupGroup.controls['phone'].value;
-                            // saving data in variable
-                            this.user = {
-                                name: userName,
-                                lastname: userLastName,
-                                email: userEmail,
-                                phone: '+57' + userPhone,
-                                createdBy: 'costumer',
-                                // PREGUNTARLE SOBRE QUÉ EMPRESA TRABAJA MÁS ADELANTE
-                                // company: this.company,
-                                city: this.cityVar,
-                                //this sets documents true by default//
-                                documents: {
-                                    license: true,
-                                    id: true
-                                }
-                            };
-                            // this.SignUpService.userPlace = userPlace;
-                            if (this.signupGroup.controls['password'].value === this.signupGroup.controls['passwordconf'].value) {
-                                this.authenticationService.registerWithEmail(userEmail, userPassword).then(function () {
-                                    if (!_this.user.userId) {
-                                        _this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
-                                            if (user) {
-                                                user.getIdToken().then(function (token) {
-                                                    _this.user.tokenId = token;
-                                                });
-                                                if (!_this.user.userId) {
-                                                    _this.user.userId = user.uid;
-                                                }
-                                                // this.zones.forEach(zone => {
-                                                //CAMBIAR  EN PRODUCCION - REGLAS DE SEGURIDAD
-                                                _this.SignUpService.saveUserTest(_this.user);
-                                                //no se si esto es necesario - REVISAR
-                                                _this.SignUpService.saveUserInAllUsers(user.uid, _this.cityVar);
-                                                // })
-                                                // this.afDB.database.ref('allCities/'+ this.cityVar + '/allPlaces/' + this.company + '/location').once('value').then((snap)=>{
-                                                //     console.log(snap.val());
-                                                //     snap.val().forEach(location => {
-                                                //         this.SignUpService.setFixedLocationCoordinates(location.zone, this.user.userId, location.lat, location.lng );
-                                                //         this.SignUpService.setFixedLocationName(location.zone, this.user.userId, location.name);   
-                                                //         this.SignUpService.addPlaceZone(location.zone, this.user.userId);  
-                                                //     })
-                                                // }).then(()=>{
-                                                //     this.SignUpService.saveUserInAllUsers(this.company, user.uid, this.cityVar);
-                                                // })
-                                                //send text message with code
-                                                // this.sendVerificationCode(this.user.userId);
-                                            }
-                                            else {
-                                                console.log('there is no user');
-                                            }
-                                        });
-                                    }
-                                    ;
-                                    // sending email verification and verifying whether email is verified or not
-                                    _this.AngularFireAuth.auth.onAuthStateChanged(function (user) {
-                                        if (user) {
-                                            if (user.emailVerified == false) {
-                                                user.sendEmailVerification();
-                                                loading.dismiss();
-                                                var alert_7 = _this.alertCtrl.create({
-                                                    title: '¡REGISTRO EXITOSO!',
-                                                    subTitle: 'En los próximos minutos te enviaremos un link de verificación a tu email',
-                                                    buttons: [
-                                                        {
-                                                            text: 'OK',
-                                                            handler: function () {
-                                                                _this.navCtrl.setRoot('LoginPage');
-                                                            }
-                                                        }
-                                                    ]
-                                                });
-                                                alert_7.present();
-                                                _this.successfulRegister = true;
-                                                console.log("verification email has been sent");
-                                            }
-                                            else {
-                                                console.log("verification email has not been sent or the email is already verified");
-                                            }
-                                        }
-                                        else {
-                                            console.log('there is no user');
-                                        }
-                                    });
-                                }).catch(function (error) {
-                                    loading.dismiss();
-                                    console.log(error);
-                                    if (error.code === "auth/email-already-in-use") {
-                                        var alert_8 = _this.alertCtrl.create({
-                                            title: 'ya existe una cuenta con este correo',
-                                            subTitle: 'Si ya te registraste en WAYPOOL, sólo debes iniciar sesión con los datos con los que te registraste. También puedes estar registrandote con un correo ya existente',
-                                            buttons: ['OK']
-                                        });
-                                        alert_8.present();
-                                    }
-                                });
-                            }
-                            else {
-                                loading.dismiss();
-                                var alert_9 = this.alertCtrl.create({
-                                    title: 'Oops!',
-                                    subTitle: 'las contraseñas no coinciden, intenta de nuevo',
-                                    buttons: ['OK']
-                                });
-                                alert_9.present();
-                            }
-                        }
-                    }
-                    else {
-                        this.corpEmailDetected = true;
-                        loading.dismiss();
-                        var alert_10 = this.alertCtrl.create({
-                            title: 'El correo que ingresaste parece ser un correo corporativo',
-                            subTitle: 'Regístrate con la opción "registro con correo corporativo" si cuentas con un correo corporativo',
-                            buttons: ['OK']
-                        });
-                        alert_10.present();
-                    }
-                }
-                loading.dismiss();
-                // this.noCompanyIdentified(count);
+        this.SignUpService = SignUpService;
+        this.sendCoordsService = sendCoordsService;
+        this.modalCtrl = modalCtrl;
+        this.AngularFireAuth = AngularFireAuth;
+        this.alertCtrl = alertCtrl;
+        this.afDB = afDB;
+        this.instances = instances;
+        this.sendUsersService = sendUsersService;
+        this.toastCtrl = toastCtrl;
+        this.geofireService = geofireService;
+        this.locationOrigin = [];
+        this.locationDestination = [];
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.usersFindingTrip = [];
+        this.usersOnListRide = [];
+        this.text = 'Aceptar viaje';
+        this.myReservesId = [];
+        this.myReserves = [];
+        this.pendingUsers = [];
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_4_rxjs__["Subject"];
+        this.myCrewsAsAdmin = [];
+        this.myCrewsKeys = [];
+        this.myCrewsIJoined = [];
+        this.reservesService.getOnTrip(this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (onTrip) {
+            _this.onTrip = onTrip;
+            console.log(_this.onTrip);
+            console.log('fue aqui 2');
+            if (_this.onTrip === true) {
+                _this.unSubscribeServices();
+                _this.navCtrl.pop();
+                console.log("repetire");
+                _this.navCtrl.push('MyridePage');
             }
             else {
             }
-        }
+        });
+        this.GroupsService.getMyCrews(this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (myCrews) {
+            console.log(_this.myCrewsAsAdmin);
+            //get all crews i have created
+            _this.myCrewsAsAdmin = myCrews;
+            console.log(_this.myCrewsAsAdmin);
+        });
+        this.GroupsService.getCrewsIJoinedId(this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (myCrewsKeys) {
+            console.log(_this.myCrewsKeys);
+            //get all crews i joined
+            _this.myCrewsKeys = myCrewsKeys;
+            console.log(_this.myCrewsKeys);
+            _this.myCrewsIJoined = [];
+            if (_this.myCrewsKeys.length === 0) {
+                //there are no reserves to show
+                _this.presentLoadingCustom();
+            }
+            else {
+                //there are reserves
+                _this.noCrew = false;
+                //check if driver have cancel me from reserve
+                _this.myCrewsKeys.forEach(function (crew) {
+                    if (crew.cancelCrew == true) {
+                        _this.unSubscribeServices();
+                        _this.navCtrl.pop();
+                        var modal = _this.modalCtrl.create('CanceltripPage');
+                        modal.present();
+                        _this.GroupsService.eliminateCrewUser(_this.userUid, crew.crewId);
+                    }
+                });
+                _this.getCrewsIJoined();
+            }
+        });
+        this.reservesService.getMyReservesUser(this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (myReservesId) {
+            console.log(_this.myReserves);
+            //get all reserves id (reserve push key, driverUid) of my user node
+            _this.myReservesId = myReservesId;
+            console.log(_this.myReservesId);
+            _this.myReserves = [];
+            if (_this.myReservesId.length === 0) {
+                //there are no reserves to show
+                _this.presentLoadingCustom();
+            }
+            else {
+                //there are reserves
+                _this.noReserve = false;
+                //check if driver have cancel me from reserve
+                _this.myReservesId.forEach(function (reserve) {
+                    if (reserve.cancelReserve == true) {
+                        _this.unSubscribeServices();
+                        _this.navCtrl.pop();
+                        var modal = _this.modalCtrl.create('CanceltripPage');
+                        modal.present();
+                        _this.reservesService.eliminateKeyUser(_this.userUid, reserve.keyReserve);
+                    }
+                });
+                _this.getReserves();
+            }
+        });
+    }
+    ReservetripPage.prototype.carpool = function () {
+        this.showCrew = false;
+        this.showCarpool = true;
+        this.noCrew = false;
     };
-    SignupPage.prototype.sendVerificationCode = function (userId) {
-        this.navCtrl.push('VerificationNumberPage', { userId: userId });
+    ReservetripPage.prototype.group = function () {
+        this.showCarpool = false;
+        this.showCrew = true;
+        this.noReserve = false;
     };
-    SignupPage.prototype.ionViewDidLeave = function () {
+    ReservetripPage.prototype.getReserves = function () {
+        var _this = this;
+        this.myReserves = []; //erase all of reserves 
+        console.log('aqui necesito verte');
+        console.log(this.myReservesId);
+        //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
+        this.myReservesId.forEach(function (reserve) {
+            _this.afDB.database.ref('/reservesTest/' + reserve.driverId + '/' + reserve.keyReserve).once('value').then(function (snapReserve) {
+                _this.reserve = snapReserve.val();
+                console.log(_this.reserve);
+                if (reserve === undefined || reserve === null) {
+                }
+                else {
+                    _this.myReserves.push(_this.reserve);
+                    console.log(_this.myReserves);
+                }
+            });
+        });
+    };
+    ReservetripPage.prototype.getCrewsIJoined = function () {
+        var _this = this;
+        this.myCrewsIJoined = []; //erase all of reserves 
+        //after getting reserve id and driverUid from my own user node, we used them to access the reserve information in the node reserves
+        this.myCrewsKeys.forEach(function (crew) {
+            _this.afDB.database.ref('/crewsTest/' + crew.adminId + '/' + crew.crewId).once('value').then(function (snapCrew) {
+                _this.crew = snapCrew.val();
+                console.log(_this.crew);
+                if (_this.crew === undefined || _this.crew === null) {
+                }
+                else {
+                    _this.myCrewsIJoined.push(_this.crew);
+                    console.log(_this.myCrewsIJoined);
+                }
+            });
+        });
+    };
+    ReservetripPage.prototype.tripDetails = function (keyTrip, driverUid) {
+        var modal = this.modalCtrl.create('ReserveinfoPage', {
+            reserveKey: keyTrip,
+            driverUid: driverUid
+        });
+        modal.present();
+    };
+    ReservetripPage.prototype.enterChat = function (reserve) {
+        var modal = this.modalCtrl.create('ChattingPage', {
+            reserve: reserve,
+            isTrip: false
+        });
+        modal.present();
+    };
+    ReservetripPage.prototype.crewDetails = function (crew) {
+        this.navCtrl.push('GroupDetailPage', { crew: crew });
+    };
+    ReservetripPage.prototype.unSubscribeServices = function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
-    ], SignupPage.prototype, "content", void 0);
-    SignupPage = __decorate([
+    ReservetripPage.prototype.help = function () {
+        var toast = this.toastCtrl.create({
+            message: 'Aquí te saldrán las personas que quieren irse contigo',
+            showCloseButton: true,
+            closeButtonText: 'OK',
+            position: 'top'
+        });
+        toast.present();
+    };
+    ReservetripPage.prototype.presentLoadingCustom = function () {
+        var _this = this;
+        var loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: "\n            <div class=\"custom-spinner-container\">\n              <div class=\"custom-spinner-box\"></div>\n            </div>",
+            duration: 250
+        });
+        loading.onDidDismiss(function () {
+            _this.noReserve = true;
+        });
+        loading.present();
+    };
+    ReservetripPage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    };
+    ReservetripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-signup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-signup/signup.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title><span>REGÍSTRATE</span></ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n\n<ion-content>\n    <form [formGroup]="signupGroup" (ngSubmit)="verification()">\n    <div>\n        <div class="">\n                <ion-row>\n                        <ion-col class="name-fild">\n                            <ion-list class="form" style="margin-bottom: 0">\n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input  type="text"  text-right formControlName="name" placeholder= "Tú nombre"></ion-input>\n                                </ion-item>\n                        \n                                <ion-item>\n                                    <ion-label></ion-label>\n                                    <ion-input type="text"  text-right  formControlName="lastname" placeholder= "Tú apellido"></ion-input>\n                                </ion-item>\n            \n                                <ion-item>\n                                    <ion-label  text-right >selecciona tu ciudad</ion-label>\n                                        <ion-select (ionChange)="onChange()" [(ngModel)]="cityVar" formControlName="city">\n                                            <ion-option *ngFor="let city of cities">{{city.name}}</ion-option>\n                                        </ion-select>\n                                </ion-item>\n                            </ion-list>\n                        </ion-col>\n                    </ion-row>\n\n                    <div>   \n                                <ion-row>\n                                        <ion-col class="name-fild-2">\n                                            <ion-list class="form">\n                                                <ion-item class="editable-email">\n                                                    <ion-label  fixed></ion-label>\n                                                            <ion-input type="text" text-right [(ngModel)]=\'email\' formControlName="email" placeholder= "email"></ion-input>\n                                                        </ion-item>\n                                                </ion-list>\n                                        </ion-col>\n                                    </ion-row>\n                    </div>\n\n            <ion-list class="form" style="margin-bottom: 0">\n                <ion-item>\n                    <ion-label  fixed><span style="font-weight: bold; color: red;">(mínimo 6 caracteres)</span></ion-label>\n                    <ion-input type="password"  text-right formControlName="password" placeholder= "crea tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="password"  text-right formControlName="passwordconf" placeholder= "confirma tu contraseña" minlength="6"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label></ion-label>\n                    <ion-input type="number" text-right formControlName="phone" placeholder= "Tú número de celular"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label>Por favor lee y acepta nuestros términos y condiciones</ion-label>\n                    <ion-checkbox formControlName="isChecked" ></ion-checkbox>\n                </ion-item>\n                <ion-item>\n                    <p>Ver <a href="https://waypooltech.wordpress.com/">términos y condiciones</a></p>\n                </ion-item>\n                \n\n            </ion-list>\n            <div class="footer-signup">\n                    <button ion-button full class="bg-theme text-white btn rounded" type="submit" [disabled]="!signupGroup.valid">¡Únete ya!</button>\n                    <p text-center>¿ya estas registrado? <strong class="text-theme" (click)="login()">Inicia sesión</strong></p>\n            </div>\n        </div>\n    </div>\n</form>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-signup/signup.html"*/
+            selector: 'page-reservetrip',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-reservetrip\reservetrip.html"*/'<ion-header class="bg-theme title">\n\n    <ion-navbar >\n\n        <ion-title >Mis Reservas\n\n        </ion-title>\n\n    </ion-navbar>\n\n\n\n    <ion-row class="center-align bg-theme flow-ride">\n\n        <ion-segment [(ngModel)]="segment">\n\n                <ion-segment-button value="carpool" (ionSelect)="carpool()">\n\n                  Carpooling\n\n                </ion-segment-button>\n\n                \n\n                <ion-segment-button value="group" (ionSelect)="group()">\n\n                  Your crews\n\n\n\n                </ion-segment-button>\n\n         </ion-segment>\n\n</ion-row>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content class="bg-light" class="hideLongText">\n\n\n\n\n\n    \n\n\n\n\n\n\n\n<div *ngIf = \'showCarpool\'>\n\n\n\n    <img *ngIf="noReserve" src="assets/imgs/noreserve.png">\n\n\n\n    <div style="display: flex;flex-direction: column; width: 96%" >\n\n\n\n            <ion-card *ngFor = "let reserve of myReserves">  \n\n                    <ion-item> \n\n                            <ion-avatar item-start>\n\n                                    <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n\n                                </ion-avatar>\n\n                            <div class="name">\n\n                               \n\n                                <h2>{{reserve.driver.name| titlecase}} {{reserve.driver.lastname| titlecase  }}\n\n                                    <ion-icon *ngIf=\'reserve.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                                </h2>\n\n                            </div>\n\n            \n\n                            <div class="more"> \n\n                                    <h2 class="text text-theme">                        \n\n                                            $ {{reserve.price}}                          \n\n                                        </h2> \n\n                            </div>\n\n                        </ion-item>\n\n                        <ion-card-content>\n\n                            <div class="ride-detail">\n\n                                <p  >\n\n                                    <span class="icon-location bg-theme"></span>{{reserve.origin.name}}</p>\n\n                                <p > \n\n                                    <span class="icon-location bg-yellow"></span>{{reserve.destination.name}}</p>\n\n                            </div>\n\n                            <ion-row class="center-align">\n\n                                <!-- <ion-col col-3 class="detail-text text-theme">\n\n                                    3 seats\n\n                                </ion-col> -->\n\n                                \n\n                                <ion-col col-4  >\n\n                    \n\n                                        <h2 style="font-size: 1.8rem;\n\n                                        font-weight: 600;" >Hora {{reserve.startHour |titlecase}} \n\n                                        </h2>\n\n                                        \n\n                                </ion-col>\n\n                                <ion-col center text-center col-4 text-right style="margin-left: auto;">\n\n                                    <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(reserve)">Chat</button>            \n\n                                </ion-col>\n\n                                <ion-col center text-center col-4 text-right >\n\n                                    <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="tripDetails(reserve.keyTrip,reserve.driver.userId)">Detalles</button>\n\n                                </ion-col> \n\n                            </ion-row>\n\n                        </ion-card-content>\n\n                    \n\n            </ion-card>\n\n    </div>\n\n    \n\n\n\n</div>\n\n\n\n<div *ngIf= \'showCrew\'>\n\n\n\n    <img *ngIf="noCrew" src="assets/imgs/noreserve.png">\n\n\n\n    <ion-card *ngFor = "let crew of myCrewsAsAdmin">  \n\n        <ion-item> \n\n                <ion-avatar item-start>\n\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n\n                    </ion-avatar>\n\n                <div class="name">\n\n                   \n\n                    <h2>{{crew.admin.name| titlecase}} {{crew.admin.lastname| titlecase  }}\n\n                        <ion-icon *ngIf=\'crew.admin.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> Administrador</ion-badge>\n\n\n\n                    </h2>\n\n                </div>\n\n\n\n                <!-- <div class="more"> \n\n                        <h2 class="text text-theme">                        \n\n                                $ {{reserve.price}}                          \n\n                            </h2>  -->\n\n                <!-- </div> -->\n\n            </ion-item>\n\n            <ion-card-content>\n\n                <div class="ride-detail">\n\n                    <p  >\n\n                        <span class="icon-location bg-theme"></span> </p>\n\n                    <p > \n\n                        <span class="icon-location bg-yellow"></span>{{crew.destination.name}}</p>\n\n                </div>\n\n                <ion-row class="center-align">\n\n   \n\n                    <ion-col col-4  >\n\n        \n\n                            <h2 style="font-size: 1.8rem;\n\n                            font-weight: 600;" >Hora {{crew.startHour |titlecase}} \n\n                            </h2>\n\n                            \n\n                    </ion-col>\n\n                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n\n                        <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChatCrew(crew)">Chat</button>            \n\n                    </ion-col>\n\n                    <ion-col center text-center col-4 text-right >\n\n                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="crewDetails(crew)">Detalles</button>\n\n                    </ion-col> \n\n                    <ion-col center text-center col-4 text-right >\n\n                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="crewDetails(crew)">Iniciar Viaje</button>\n\n                    </ion-col> \n\n                </ion-row>\n\n            </ion-card-content>\n\n        \n\n</ion-card>\n\n\n\n\n\n<ion-card *ngFor = "let crew of myCrewsIJoined">  \n\n        <ion-item> \n\n                <ion-avatar item-start>\n\n                        <img  style="height:70px; width: 70px;" src="assets/imgs/carBlue.png">\n\n                    </ion-avatar>\n\n                <div class="name">\n\n                   \n\n                    <h2>{{crew.admin.name| titlecase}} {{crew.admin.lastname| titlecase  }}\n\n                        <ion-icon *ngIf=\'crew.admin.verifiedPerson\' name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n                        <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> Miembro </ion-badge>\n\n\n\n                    </h2>\n\n                </div>\n\n\n\n                <!-- <div class="more"> \n\n                        <h2 class="text text-theme">                        \n\n                                $ {{reserve.price}}                          \n\n                            </h2>  -->\n\n                <!-- </div> -->\n\n            </ion-item>\n\n            <ion-card-content>\n\n                <div class="ride-detail">\n\n                    <p  >\n\n                        <span class="icon-location bg-theme"></span>{{crew.origin.name}}</p>\n\n                    <p > \n\n                        <span class="icon-location bg-yellow"></span>{{crew.destination.name}}</p>\n\n                </div>\n\n                <ion-row class="center-align">\n\n   \n\n                    <ion-col col-4  >\n\n        \n\n                            <h2 style="font-size: 1.8rem;\n\n                            font-weight: 600;" >Hora: {{crew.startHour |titlecase}} \n\n                            </h2>\n\n                            \n\n                    </ion-col>\n\n                    <ion-col center text-center col-4 text-right style="margin-left: auto;">\n\n                        <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChatCrew(crew)">Chat</button>            \n\n                    </ion-col>\n\n                    <ion-col center text-center col-4 text-right >\n\n                        <button class="btn bg-darkblue rounded full text-white" style="margin-left: 9px;" (click)="crewDetails(crew)">Detalles</button>\n\n                    </ion-col> \n\n                </ion-row>\n\n            </ion-card-content>\n\n        \n\n</ion-card>\n\n\n\n\n\n\n\n\n\n <ion-card *ngFor = "let crew of myCrewsMember">\n\n    <ion-item>\n\n        <ion-avatar item-start>\n\n            <img style="height:70px; width: 70px;" src="assets/imgs/carOrange.png">\n\n        </ion-avatar>\n\n        <div class="name">\n\n            <h2 style="font-size:1.8rem;">3 miembros\n\n                <ion-icon  name="ios-checkmark-circle" class="text-theme"></ion-icon>\n\n            </h2>\n\n\n\n\n\n        </div>\n\n        \n\n    </ion-item>\n\n    <ion-card-content>\n\n        <ion-row class="center-align">\n\n            <h2 class="text text-dark">\n\n                Hora: 15:05\n\n            </h2>\n\n            <ion-col center text-center col-4 text-right style="margin-left: auto;">\n\n                <button class="btn bg-theme rounded full text-white" style="width: 80%" (click)="enterChat(group)">Chat</button>            \n\n            </ion-col>\n\n            <ion-col center text-center col-4 text-right style="margin-left: auto;">\n\n                <button class="btn bg-theme rounded full text-white" style="font-size: 1.5rem;" (click)="seeGroup()">Detalles</button>\n\n            </ion-col>\n\n        </ion-row>\n\n    </ion-card-content>\n\n</ion-card> \n\n</div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-reservetrip\reservetrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__services_userauthentication_service__["a" /* authenticationService */], __WEBPACK_IMPORTED_MODULE_5__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
-    ], SignupPage);
-    return SignupPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_8__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_11__services_groups_service__["a" /* GroupsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_9__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_2__services_sendcoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__angular_fire_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_6__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_7__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_10__services_geoFire_service__["a" /* geofireService */]])
+    ], ReservetripPage);
+    return ReservetripPage;
 }());
 
-//# sourceMappingURL=signup.js.map
+//# sourceMappingURL=reservetrip.js.map
 
 /***/ })
 

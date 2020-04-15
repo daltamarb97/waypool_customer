@@ -6,30 +6,29 @@
 </ion-header>
 
 <ion-content  style="background-color: rgba(255, 255, 255, 0.959);">
-    <button (click)="showRoute()" class="btn bg-theme-driver text-white rounded" > Ver Ruta</button>
 
-         <ion-card *ngFor = "let passenger of passengers">
+         <ion-card *ngFor = "let member of members">
                <ion-item>
                    <ion-avatar item-start style="border-radius: 0%;">
                     <img  style="height:70px; width: 70px;" src="assets/imgs/userPicture.png">
                 </ion-avatar>
                    <div class="name">
-                       <h2>{{passenger.name |titlecase}} {{passenger.lastname | titlecase}}.
-                         <ion-icon *ngIf='passenger.verifiedPerson' name="ios-checkmark-circle" class="text-darkblue"></ion-icon>
+                       <h2>{{member.name |titlecase}} {{member.lastname | titlecase}}.
+                         <ion-icon  name="ios-checkmark-circle" class="text-darkblue"></ion-icon>
                        </h2>
 
-                         <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{passenger.company}}</ion-badge>
+                         <ion-badge class="bg-yellow" style="margin:0px 3px 13px;"> {{member.company}}</ion-badge>
                     </div>
                    <div class="more" item-end>
-                           <ion-icon name="md-more"  (click)="presentActionSheet(passenger.userId,passenger.name)"></ion-icon>
+                           <ion-icon name="md-more" *ngIf="isAdmin" (click)="presentActionSheet(member.userId,member.name)"></ion-icon>
                    </div>
                </ion-item>
                <ion-card-content>
                    <div class="ride-detail">
                        <p><small></small>
-                           <span class="icon-location bg-theme-driver"></span>{{passenger.origin.name}}</p>
+                           <span class="icon-location bg-theme-driver"></span>{{member.origin.name}}</p>
                        <p><small></small>
-                           <span class="icon-location bg-yellow"></span>{{passenger.destination.name}}</p>
+                           <span class="icon-location bg-yellow"></span>{{member.destination.name}}</p>
                    </div>
                    
                </ion-card-content>         
@@ -37,7 +36,7 @@
 
            </ion-card>
            <div style=" display: flex; justify-content: center;">
-            <button (click)="cancelReserve()" class="btn bg-theme-driver text-white rounded" > Cancelar Reserva </button>
+            <button (click)="cancelReserve()" *ngIf="isAdmin" class="btn bg-theme-driver text-white rounded" > Eliminar Reserva </button>
 
            </div>
 

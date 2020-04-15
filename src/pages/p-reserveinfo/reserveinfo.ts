@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { NavController, ViewController, ModalController, NavParams, ToastController, IonicPage, AlertController, App} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 // import { AngularFireDatabase } from 'angularfire2/database';
-import { sendCoordsService } from '../../services/sendCoords.service';
+import { sendCoordsService } from '../../services/sendcoords.service';
 // import { RidetodayPage } from '../ridetoday/ridetoday';
 // import { MyridePage } from '../myride/myride';
 // import { TabsPage } from '../tabs/tabs';

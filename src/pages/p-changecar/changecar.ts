@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { DriverSignUpService } from '../../services/d-signup.service';
 import { DriverInstancesService } from '../../services/d-instances.services';
+import { GroupsService } from '../../services/groups.service';
 
  
 
@@ -18,12 +19,12 @@ export class ChangeCarPage {
   @ViewChild('imageOtherCar',{read:ElementRef}) imageOtherCar;
   otherCar:boolean;
   taxi:boolean;
-  
+  crew:any;
+  crewNavParams:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,public renderer: Renderer ,public alertCtrl: AlertController, public signUpService: DriverSignUpService, public angularFireAuth: AngularFireAuth, private instances: DriverInstancesService, private afDB: AngularFireDatabase) {
-  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public GroupsService:GroupsService, public viewCtrl: ViewController,public renderer: Renderer ,public alertCtrl: AlertController, public signUpService: DriverSignUpService, public angularFireAuth: AngularFireAuth, private instances: DriverInstancesService, private afDB: AngularFireDatabase) {
+    this.crew= this.navParams.get('crew'); 
 
-  
   }
 
 
@@ -56,17 +57,26 @@ export class ChangeCarPage {
 
   confirm(){
     if(this.otherCar === null || this.taxi === null){
-
+      let alert = this.alertCtrl.create({
+        title: 'información incompleta',
+        subTitle: 'Selecciona algún tipo de transporte.',
+        buttons: ['OK']
+      });
+      alert.present();
     }else{
       if(this.otherCar === true){
         // if user select otherCar change information in firebase
-        //service that changes taxi information
-        
+        this.GroupsService.chooseOtherCar(this.crew);
+        this.dismiss();
+        console.log("escogí otro carro");
+
       } else if (this.taxi === true){
         // if user select taxi change information in firebase
-  
+        this.GroupsService.chooseTaxi(this.crew);        
+        this.dismiss();
+        console.log("escogi taxi");
+
       }
     }
-  
   }
 }

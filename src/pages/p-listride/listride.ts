@@ -3,7 +3,7 @@ import { NavController, ModalController, ToastController, IonicPage, App, Loadin
 import * as GeoFire from 'geofire';
 
 import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import { sendCoordsService } from '../../services/sendCoords.service';
+import { sendCoordsService } from '../../services/sendcoords.service';
 import { SignUpService } from '../../services/signup.services';
 import { geofireService } from '../../services/geoFire.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -521,6 +521,7 @@ this.CrewsGeofire.forEach(crewGeofire => {
 
    createGroup(){
     this.navCtrl.push('CreateGroupPage',{origin:this.locationOriginUser,destination:this.locationDestinationUser})
+
     }
 
 
@@ -546,7 +547,13 @@ this.CrewsGeofire.forEach(crewGeofire => {
 
 
   joinCrew(crew){
+    let latLngOr = {lat: this.latOr,lng:this.lngOr}
+    let latLngDest = {lat:this.latDest,lng:this.lngDest}
+    let origin = {name:this.user.trips.origin[0],coords:latLngOr}
+    let destination = {name:this.user.trips.destination[0],coords:latLngDest}
     let userToCrew = {
+      origin: origin,
+      destination: destination,
       city: this.user.city,
       company: this.user.company,
       email: this.user.email,
@@ -560,7 +567,7 @@ this.CrewsGeofire.forEach(crewGeofire => {
       .then((snap)=>{
         const keyPushCrew = snap.key
 
-        this.afDB.database.ref('/usersTest/' + this.userUid + '/crewsInside/' + keyPushCrew )
+        this.afDB.database.ref('/usersTest/' + this.userUid + '/crewsIJoined/' + keyPushCrew )
           .update({
             adminId: crew.admin.userId,
             crewId: crew.crewId

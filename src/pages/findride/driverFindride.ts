@@ -17,6 +17,7 @@ import { FCM } from '@ionic-native/fcm';
 import { Firebase } from '@ionic-native/firebase';
 import { MetricsService } from '../../services/metrics.service';
 import { DriverMetricsService } from '../../services/d-metrics.service';
+import { VariableAst } from '@angular/compiler';
  
 declare var google;
 @IonicPage()
@@ -112,7 +113,12 @@ export class DriverFindridePage {
   pointsAlongRoute = [];
   indexesOfPointsAlongRoute = [];
   usingGeolocation:boolean = false;
-
+  originName:any;
+  originCoords:any;
+  destinationName:any;
+  destinationCoords:any;
+  originInfo:any;
+  destinationInfo:any;
   constructor( private geofireService: DriverGeofireService,public TripsService:DriverTripsService, public afDB: AngularFireDatabase, public navCtrl: NavController,public SignUpService:DriverSignUpService,public modalCtrl: ModalController,private authenticationService: DriverAuthenticationService, public geolocation: Geolocation,public zone: NgZone, public sendCoordsService: DriverSendCoordsService, private AngularFireAuth: AngularFireAuth, public alertCtrl: AlertController, private toastCtrl: ToastController, private app: App, private sendUsersService: DriverSendUsersService, public instancesService: DriverInstancesService, public firebaseNative: Firebase, private platform: Platform, private fcm: FCM, public loadingCtrl: LoadingController, public renderer: Renderer, private MetricsService: MetricsService, private DriverMetricsService: DriverMetricsService ) {
 
     console.log(this.user);
@@ -296,7 +302,9 @@ loadMap(){
      this.geolocation.getCurrentPosition({enableHighAccuracy: true}).then((position) => {
  
        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  
+       this.originCoords = {lat:position.coords.latitude,lng:position.coords.longitude};
+       console.log(this.originCoords);
+       
        let mapOptions = {
            center: latLng,
            zoom: 17,
@@ -336,6 +344,7 @@ loadMap(){
        this.markers.push(this.markerGeolocation);
        //allow the marker to be draged and changed the position
        this.dragMarkerOr(this.markerGeolocation,this.autocompleteMyPos)
+       
        //to reverse-geocode position
        this.geocodeLatLng(latLng,this.autocompleteMyPos)
   
@@ -489,7 +498,8 @@ loadMap(){
        this.usingGeolocation = false;
        this.autocompleteMyPos.input=[item.description]
        this.autocompleteMyDest.input=''
-       this.directionsDisplay.setMap(null)
+       this.originName =item.description;
+       this.originCoords = {lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng()};
      }
    })
    
@@ -527,11 +537,13 @@ loadMap(){
        this.map.fitBounds(this.bounds);     
        this.markers.push(this.markerDest);
        this.map.setCenter(results[0].geometry.location);
-       console.log(results[0].geometry.location)
+       console.log(results[0].geometry.location.lat())
        this.autocompleteMyDest.input=[item.description]
        this.dragMarkerDest(this.markerDest,this.autocompleteMyDest)
        this.directionsDisplay.setMap(this.map);
        this.myLatLngDest= results[0].geometry.location;
+       this.destinationName =item.description;
+       this.destinationCoords = {lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng()};
        this.calculateRoute(this.markerGeolocation.position,results[0].geometry.location);
       
       
@@ -585,7 +597,10 @@ loadMap(){
    this.geocoder.geocode({'location': latLng}, (results, status) => {
      if (status === 'OK') {
        if (results[0]) {
-          inputName.input=[results[0].formatted_address]
+          inputName.input=[results[0].formatted_address];
+
+          this.originName = results[0].formatted_address;
+          
        } else {
         alert('No results found');
        }
@@ -702,19 +717,17 @@ centerMap(){
                   this.directionsDisplay.setDirections({routes: []});
                   // this.loadMap();
                  } else {
-                   
+                  
                   this.sendCoordsService.pushcoordinatesDrivers( this.user,this.desFirebase,this.orFirebase)
                   
-
+                  this.originInfo = {coords:this.originCoords,name:this.originName};
+                  this.destinationInfo = {coords:this.destinationCoords,name:this.destinationName};
                   
                   this.afDB.database.ref('/reservesTest/'+ this.user).push({
                     driver: this.userInfo,
-                    // car:this.userInfo.cars,
-                    origin: this.orFirebase,
-                    destination: this.desFirebase,
-                    // price:this.precio,
-                    // startHour: obj[key].hour,
-                    // type: obj[key].type,
+                    origin: this.originInfo,
+                    destination: this.destinationInfo,
+                    
                   }).then((snap1)=>{
                     const key1 = snap1.key;
                           this.MetricsService.createdInstantRoutes(this.user,this.desFirebase, this.orFirebase );

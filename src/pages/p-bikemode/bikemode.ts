@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef,NgZone } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NavController, Platform, ViewController, AlertController, ModalController, IonicPage, App, ToastController, LoadingController, NavParams } from 'ionic-angular';
-import { sendCoordsService } from '../../services/sendCoords.service';
+import { sendCoordsService } from '../../services/sendcoords.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { geofireService } from '../../services/geoFire.service';
 import { SignUpService } from '../../services/signup.services';

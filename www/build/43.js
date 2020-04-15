@@ -1,14 +1,14 @@
 webpackJsonp([43],{
 
-/***/ 664:
+/***/ 662:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateGroupPageModule", function() { return CreateGroupPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmtripPageModule", function() { return ConfirmtripPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__creategroup__ = __webpack_require__(860);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmtrip__ = __webpack_require__(856);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,48 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CreateGroupPageModule = /** @class */ (function () {
-    function CreateGroupPageModule() {
+var ConfirmtripPageModule = /** @class */ (function () {
+    function ConfirmtripPageModule() {
     }
-    CreateGroupPageModule = __decorate([
+    ConfirmtripPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__creategroup__["a" /* CreateGroupPage */],
+                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__creategroup__["a" /* CreateGroupPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__creategroup__["a" /* CreateGroupPage */]
+                __WEBPACK_IMPORTED_MODULE_2__confirmtrip__["a" /* ConfirmtripPage */]
             ]
         })
-    ], CreateGroupPageModule);
-    return CreateGroupPageModule;
+    ], ConfirmtripPageModule);
+    return ConfirmtripPageModule;
 }());
 
-//# sourceMappingURL=creategroup.module.js.map
+//# sourceMappingURL=confirmtrip.module.js.map
 
 /***/ }),
 
-/***/ 860:
+/***/ 856:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateGroupPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmtripPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_signup_services__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_sendcoords_service__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_instances_service__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_trips_service__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__ = __webpack_require__(202);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,61 +71,118 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var CreateGroupPage = /** @class */ (function () {
-    function CreateGroupPage(navCtrl, modalCtrl, navParams, renderer) {
+
+
+
+
+
+
+
+
+
+
+var ConfirmtripPage = /** @class */ (function () {
+    function ConfirmtripPage(navCtrl, reservesService, sendUsersService, TripsService, toastCtrl, viewCtrl, afDB, SignUpService, sendCoordsService, navParams, AngularFireAuth, geoFireService, instances, alertCtrl) {
+        var _this = this;
         this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
+        this.reservesService = reservesService;
+        this.sendUsersService = sendUsersService;
+        this.TripsService = TripsService;
+        this.toastCtrl = toastCtrl;
+        this.viewCtrl = viewCtrl;
+        this.afDB = afDB;
+        this.SignUpService = SignUpService;
+        this.sendCoordsService = sendCoordsService;
         this.navParams = navParams;
-        this.renderer = renderer;
-        this.origin = this.navParams.get('origin');
-        this.destination = this.navParams.get('destination');
+        this.AngularFireAuth = AngularFireAuth;
+        this.geoFireService = geoFireService;
+        this.instances = instances;
+        this.alertCtrl = alertCtrl;
+        this.user = {};
+        this.button = true;
+        this.text = false;
+        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
+        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_9_rxjs__["Subject"];
+        this.myRideActivation = false;
+        this.trip = this.navParams.get('trip');
+        console.log(this.reserve);
+        //get the info of the driver 
+        this.SignUpService.getMyInfo(this.userUid).takeUntil(this.unsubscribe)
+            .subscribe(function (myUserInfo) {
+            _this.user = myUserInfo;
+            console.log(_this.user);
+            if (_this.user.cancelModalLMU === true) {
+                _this.dismiss();
+                var alert_1 = _this.alertCtrl.create({
+                    title: 'Escoge otro viaje',
+                    buttons: ['OK']
+                });
+                alert_1.present();
+            }
+        });
+        this.sendCoordsService.getPendingUsersInTrips(this.trip.driver.userId, this.trip.keyTrip).takeUntil(this.unsubscribe)
+            .subscribe(function (usersInPendingusers) {
+            _this.usersInPending = usersInPendingusers;
+            _this.usersInPending.forEach(function (user) {
+                if (user.userId === _this.userUid) {
+                    _this.accepted = true;
+                    _this.dismiss();
+                }
+            });
+        });
     }
-    //  confirmpopup(){
-    //     let modal = this.modalCtrl.create(ConfirmpopupPage);
-    //     modal.present();
-    //  }
-    CreateGroupPage.prototype.selectImageOtherCar = function () {
-        // this is just to change the css
-        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-width', '3px');
-        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-style', 'solid');
-        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-color', 'green');
-        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-width', '0px');
-        this.otherCar = true;
-        this.taxi = false;
+    ConfirmtripPage.prototype.goToRide = function () {
+        this.geoFireService.saveKey(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
+        this.reservesService.setOnTrip(this.userUid);
+        this.TripsService.joinTrip(this.trip.keyTrip, this.trip.driver.userId, this.userUid, this.user.trips.origin, this.user.trips.destination, this.user.name, this.user.lastname, this.user.phone, this.user.verifiedPerson, this.user.trips.distanceToGoInKM);
+        // this.geoFireService.removeKeyGeofire(this.userUid);
+        //OLD
+        // NEXT: PASAR LOS KEYTRIP DE LAS RESERVAS PARA ACCEDER A ELLOS EN MIS RESERVAS, Y CAMBIARLE EL NOMBRE  A KEYRESERVES
+        // this.geoFireService.deleteDriverListRide(this.userUid, this.driver.userId); 
+        this.button = false;
+        this.text = true;
     };
-    CreateGroupPage.prototype.selectImageTaxi = function () {
-        // this is just to change the css
-        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-width', '3px');
-        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-style', 'solid');
-        this.renderer.setElementStyle(this.imageTaxi.nativeElement, 'border-color', 'green');
-        this.renderer.setElementStyle(this.imageOtherCar.nativeElement, 'border-width', '0px');
-        this.otherCar = false;
-        this.taxi = true;
+    ConfirmtripPage.prototype.dismissX = function () {
+        var _this = this;
+        this.viewCtrl.dismiss();
+        this.geoFireService.deleteKey(this.userUid);
+        this.geoFireService.deleteDriverFromLMU(this.userUid, this.trip.keyTrip);
+        this.afDB.database.ref('/usersTest/' + this.userUid).once('value').then(function (snap) {
+            if (snap.val().onTrip) {
+                _this.geoFireService.setOntripFalse(_this.userUid);
+            }
+            else {
+            }
+        });
+        this.TripsService.getOutFromLMU(this.trip.keyTrip, this.trip.driver.userId, this.userUid);
     };
-    CreateGroupPage.prototype.createGroup = function () {
-        if (this.startHour === null || this.startHour === undefined || this.otherCar === undefined || this.taxi === undefined) {
-            //create service for group
-            this.navCtrl.push('ReservetripPage');
+    ConfirmtripPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss(this.accepted);
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+        if (this.trip.type === 'origin') {
+            this.geoFireService.cancelGeofireOr();
+            this.geoFireService.cancelGeofireOrLMU();
+        }
+        else if (this.trip.type === 'destination') {
+            this.geoFireService.cancelGeofireDest();
+            this.geoFireService.cancelGeofireDestLMU();
         }
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('imageTaxi', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", Object)
-    ], CreateGroupPage.prototype, "imageTaxi", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('imageOtherCar', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", Object)
-    ], CreateGroupPage.prototype, "imageOtherCar", void 0);
-    CreateGroupPage = __decorate([
+    ConfirmtripPage.prototype.ionViewDidLeave = function () {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
+    };
+    ConfirmtripPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-creategroup',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-creategroup/creategroup.html"*/'<ion-header class="bg-theme">\n    <ion-navbar>\n        <ion-title>crea grupo</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bh-light">\n    <H2 style="margin-left: 12px;">Encuentra personas con quién irte</H2>\n\n    <ion-card>\n        <ion-item>\n            <ion-avatar item-start>\n                <img src="assets/imgs/face-1.jpg">\n            </ion-avatar>\n\n            <div class="name">\n                <h2> Admin del grupo: David Johnson\n                    <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>\n                </h2>\n                <p>Bancolombia</p>\n            </div>\n        </ion-item>\n        <ion-card-content>\n            <div class="ride-detail">\n                <p><small>Origen</small>\n                    <span class="icon-location bg-theme"></span>Villa Campestre</p>\n                <p>\n                    <small>Destino</small>\n                    <span class="icon-location bg-yellow"></span>Bancolombia Calle 51B</p>\n            </div>\n        </ion-card-content>\n    </ion-card>\n    <ion-card>\n        <ion-card-content>\n            <ion-row  style="display: flex; flex-direction: row;">\n                <ion-avatar style="border-radius: 15%;" #imageTaxi>\n                    <p text-center class="texto1">Taxi</p>\n    \n                        <img class="house"  src="assets/imgs/carOrange.png" (click)="selectImageTaxi()"/>\n    \n                    </ion-avatar>\n    \n                    <ion-avatar  style="border-radius: 15%;" #imageOtherCar>\n                        <p text-center class="texto1">Indriver, Uber, Beat. etc...</p>\n    \n                            <img src="assets/imgs/carBlue.png"  (click)="selectImageOtherCar()"/>\n                     </ion-avatar>\n         \n          </ion-row>\n        </ion-card-content>\n    </ion-card>\n    <ion-card>\n        <ion-card-content>\n            <div class="ride-detail no-before">\n                <h6 class="text-theme">Detalles</h6>\n                \n                <ion-row >\n                <ion-list>\n                    \n                    <div style="    border-color: black;\n                    border-style: solid; border-width: 1px;">\n\n                    <ion-item>\n                        <ion-label>      \n                    <ion-icon name="md-calendar" class="icon-location"></ion-icon> Hora:</ion-label>\n\n                <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>\n                </ion-item>\n\n                </div>\n                <ion-item>\n                    <h2 text-left> <ion-icon name="md-create"></ion-icon> Nota:</h2>\n\n                    <div class="form">\n                        <ion-list no-lines>\n                            <ion-item>\n                                <ion-textarea [(ngModel)]="note" type="text" placeholder="Deja una nota para tus compañeros" ></ion-textarea>\n                            </ion-item>\n                        </ion-list>\n                    </div>\n                  </ion-item>\n                </ion-list>                    \n            </ion-row>\n                    \n            </div>\n        </ion-card-content>\n    </ion-card>\n    <ion-card>\n        <ion-card-content>\n            <div class="seats">\n                <h6 class="text-theme"></h6>\n                <ion-item>\n                    <ion-label>Asientos Disponibles</ion-label>\n                    <ion-select [(ngModel)]="gender">\n                      <ion-option value=1>1</ion-option>\n                      <ion-option value=2>2</ion-option>\n                      <ion-option value=3>3</ion-option>\n\n                      <ion-option value=4>4</ion-option>\n\n                    </ion-select>\n                  </ion-item>\n                <button class="btn bg-theme text-white rounded" (click)="confirmpopup()" style="width: 100%;margin-top: 16px;">CREAR GRUPO</button>\n            </div>\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/p-creategroup/creategroup.html"*/
+            selector: 'page-confirmtrip',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-confirmtrip\confirmtrip.html"*/'<ion-content>\n\n    <ion-icon name="md-close" class="close-icon text-white" (click)="dismissX()"></ion-icon>\n\n    <ion-card>\n\n        <h6 class="text-hot hot">Viaje Iniciado </h6>\n\n        <ion-item>\n\n            <ion-avatar item-start>\n\n                <img src="assets/imgs/userPicture.png">\n\n            </ion-avatar>\n\n            <div class="name">\n\n                <h2>{{trip.driver.name|titlecase }} {{trip.driver.lastname|titlecase }}\n\n                    <ion-icon *ngIf=\'trip.driver.verifiedPerson\' name="ios-checkmark-circle" class="text-hot"></ion-icon>\n\n                </h2>\n\n                <p>{{trip.car}}</p>\n\n            </div>\n\n        </ion-item>\n\n        <ion-card-content>\n\n            <div class="ride-detail">\n\n                <p><small>Origen del viaje</small>\n\n                    <span class="icon-location bg-hot"></span>{{trip.houseAddr}}</p>\n\n                <p>\n\n                    <small>Destino del viaje</small>\n\n                    <span class="icon-location bg-yellow"></span>{{trip.placeAddr}}</p>\n\n            </div>\n\n        </ion-card-content>\n\n\n\n        \n\n\n\n        <ion-card-content>\n\n            <div class="seats">\n\n                <ion-row class="center">\n\n                    <div class="rate"> $ {{trip.price}}</div>\n\n                        \n\n                   \n\n                    \n\n                </ion-row>\n\n            </div>\n\n                <button class="btn bg-hot text-white rounded" (click)="goToRide()" *ngIf="button" style="width: 100%;margin-top: 14px;">Enviar Solicitud </button>\n\n                <p  text-center *ngIf="text">espera que tu compañero te acepte, si demora mucho presiona la X y escoje otro driver...</p> \n\n        </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\p-confirmtrip\confirmtrip.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */]])
-    ], CreateGroupPage);
-    return CreateGroupPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_11__services_reserves_service__["a" /* reservesService */], __WEBPACK_IMPORTED_MODULE_6__services_sendUsers_service__["a" /* sendUsersService */], __WEBPACK_IMPORTED_MODULE_10__services_trips_service__["a" /* TripsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3__services_signup_services__["a" /* SignUpService */], __WEBPACK_IMPORTED_MODULE_4__services_sendcoords_service__["a" /* sendCoordsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7__services_geoFire_service__["a" /* geofireService */], __WEBPACK_IMPORTED_MODULE_8__services_instances_service__["a" /* instancesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+    ], ConfirmtripPage);
+    return ConfirmtripPage;
 }());
 
-//# sourceMappingURL=creategroup.js.map
+//# sourceMappingURL=confirmtrip.js.map
 
 /***/ })
 

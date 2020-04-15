@@ -2,11 +2,14 @@
 
 
     <ion-card>
+        
 
        
-
+    <ion-row>
+        <ion-icon name="close-circle" class="close-icon text-theme"  (click)="dismiss()"></ion-icon>
+    </ion-row>
     <h4  text-center style="margin: 5px;font-size: 2.0rem;font-weight: 600;">Escoge tu medio de transporte</h4>
-    <h6  text-center style="    margin: 15px;">Ambos metodos se encarga el creador de grupo en conseguir dicho transporte.</h6>
+    <h6  text-center style="margin: 15px;">Ambos metodos se encarga el creador de grupo en conseguir dicho transporte.</h6>
 
       <ion-row  style="display: flex; flex-direction: row; justify-content: center;">
             <ion-avatar  #house>
@@ -29,7 +32,7 @@
                 <ion-row style="margin-top: 14px;    display: flex;
                 justify-content: center">                
                     <ion-col col-8>
-                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.25rem;" (click)="confirm()" navPop>Escoger</button>
+                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.25rem;" (click)="confirm()" >Escoger</button>
                     </ion-col>
                 </ion-row>
             </div>

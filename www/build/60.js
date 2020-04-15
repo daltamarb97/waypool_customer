@@ -1,14 +1,14 @@
 webpackJsonp([60],{
 
-/***/ 647:
+/***/ 694:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverChattingPageModule", function() { return DriverChattingPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverUserVerificationPageModule", function() { return DriverUserVerificationPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverChatting__ = __webpack_require__(843);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__car_registration__ = __webpack_require__(892);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,42 +18,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverChattingPageModule = /** @class */ (function () {
-    function DriverChattingPageModule() {
+var DriverUserVerificationPageModule = /** @class */ (function () {
+    function DriverUserVerificationPageModule() {
     }
-    DriverChattingPageModule = __decorate([
+    DriverUserVerificationPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverChatting__["a" /* DriverChattingPage */],
+                __WEBPACK_IMPORTED_MODULE_2__car_registration__["a" /* DriverUserVerificationPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverChatting__["a" /* DriverChattingPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__car_registration__["a" /* DriverUserVerificationPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverChatting__["a" /* DriverChattingPage */]
+                __WEBPACK_IMPORTED_MODULE_2__car_registration__["a" /* DriverUserVerificationPage */]
             ]
         })
-    ], DriverChattingPageModule);
-    return DriverChattingPageModule;
+    ], DriverUserVerificationPageModule);
+    return DriverUserVerificationPageModule;
 }());
 
-//# sourceMappingURL=driverChatting.module.js.map
+//# sourceMappingURL=car-registration.module.js.map
 
 /***/ }),
 
-/***/ 843:
+/***/ 892:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverChattingPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverUserVerificationPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_d_chat_service__ = __webpack_require__(367);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_sendFeedback_service__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,162 +73,301 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var DriverChattingPage = /** @class */ (function () {
-    function DriverChattingPage(navCtrl, sendFeedbackService, toastCtrl, SignUpService, alertCtrl, actionSheetCtrl, chatsService, navParams, AngularFireAuth) {
+
+/**
+ * Generated class for the CarRegistrationPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var DriverUserVerificationPage = /** @class */ (function () {
+    function DriverUserVerificationPage(navCtrl, navParams, viewCtrl, camera, AngularFireauth, alertCtrl, SignUpService, loadingCtrl, app, afDB) {
         var _this = this;
         this.navCtrl = navCtrl;
-        this.sendFeedbackService = sendFeedbackService;
-        this.toastCtrl = toastCtrl;
-        this.SignUpService = SignUpService;
-        this.alertCtrl = alertCtrl;
-        this.actionSheetCtrl = actionSheetCtrl;
-        this.chatsService = chatsService;
         this.navParams = navParams;
-        this.AngularFireAuth = AngularFireAuth;
-        this.userUid = this.AngularFireAuth.auth.currentUser.uid;
-        this.chats = [];
+        this.viewCtrl = viewCtrl;
+        this.camera = camera;
+        this.AngularFireauth = AngularFireauth;
+        this.alertCtrl = alertCtrl;
+        this.SignUpService = SignUpService;
+        this.loadingCtrl = loadingCtrl;
+        this.app = app;
+        this.afDB = afDB;
+        this.namePicture = "Carné del trabajo";
+        this.description = "Sube una foto clara de tu";
+        this.img1 = "Carné del trabajo";
+        this.img2 = "Cédula";
+        this.des1 = "Sube una foto clara de tu";
+        this.picToView = "assets/imgs/v2.png";
+        this.picToViewCarne = "assets/imgs/v2.png";
+        this.picToViewId = "assets/imgs/v4.png";
+        this.showCarne = true;
+        this.showId = false;
+        this.cameraPicCarne = false;
+        this.cameraPicId = false;
         this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
-        this.reserve = this.navParams.get('reserve');
-        this.isTrip = this.navParams.get('isTrip');
-        console.log(this.reserve.driver.userId);
-        this.SignUpService.getMyInfoForProfile(this.userUid).takeUntil(this.unsubscribe).subscribe(function (info) {
-            _this.driver = info;
-            console.log(_this.driver);
-        });
-        if (this.isTrip === true) {
-            this.getChatFromTrip();
-        }
-        else {
-            this.getChatFromReserve();
-        }
-    }
-    DriverChattingPage.prototype.getChatFromTrip = function () {
-        var _this = this;
-        this.chatsService.getChatsFromTrip(this.reserve.keyTrip, this.reserve.driver.userId)
-            .takeUntil(this.unsubscribe).subscribe(function (chat) {
-            _this.chats = chat;
-            console.log(_this.chats);
-            _this.scrollToBottom();
-        });
-    };
-    DriverChattingPage.prototype.getChatFromReserve = function () {
-        var _this = this;
-        this.chatsService.getChatsFromReserve(this.reserve.keyTrip, this.reserve.driver.userId)
-            .takeUntil(this.unsubscribe).subscribe(function (chat) {
-            _this.chats = chat;
-            console.log(_this.chats);
-            _this.scrollToBottom();
-        });
-    };
-    DriverChattingPage.prototype.scrollToBottom = function () {
-        var _this = this;
-        setTimeout(function () {
-            if (_this.content.scrollToBottom) {
-                _this.content.scrollToBottom();
-            }
-        }, 400);
-    };
-    DriverChattingPage.prototype.more = function () {
-        var _this = this;
-        var actionSheet = this.actionSheetCtrl.create({
-            title: 'Opciones',
-            buttons: [
-                {
-                    text: 'Reportar Chat',
-                    role: 'destructive',
-                    handler: function () {
-                        _this.reportChat();
-                    }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
+        this.carneWasUploaded = false;
+        this.idWasUploaded = false;
+        this.showContinue = false;
+        this.options = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+        };
+        this.driver = this.AngularFireauth.auth.currentUser.uid;
+        this.SignUpService.getMyInfo(this.driver).takeUntil(this.unsubscribe).subscribe(function (user) {
+            _this.driverInfo = user;
+            if (_this.driverInfo.documents) {
+                if (_this.driverInfo.documents.carne == true) {
+                    _this.picToViewCarne = "assets/imgs/v2.3.png";
+                    _this.picToView = "assets/imgs/v2.3.png";
                 }
-            ]
+                else if (_this.driverInfo.documents.idVerification == true) {
+                    _this.picToViewId = "assets/imgs/_v4.3.png";
+                }
+                else if (_this.driverInfo.documents.carne == false) {
+                    _this.picToViewCarne = "assets/imgs/v2.2.png";
+                    _this.picToView = "assets/imgs/v2.2.png";
+                    _this.showContinue = true;
+                }
+                else if (_this.driverInfo.documents.idVerification == false) {
+                    _this.picToViewId = "assets/imgs/v4.2.png";
+                    _this.showContinue = true;
+                }
+                else if (_this.driverInfo.documents.carne == undefined) {
+                    _this.picToViewCarne = "assets/imgs/v2.png";
+                    _this.picToView = "assets/imgs/v2.png";
+                }
+                else if (_this.driverInfo.documents.idVerification == undefined) {
+                    _this.picToViewId = "assets/imgs/v4.png";
+                }
+            }
         });
-        actionSheet.present();
-    };
-    DriverChattingPage.prototype.ionViewDidLeave = function () {
+    }
+    ;
+    DriverUserVerificationPage.prototype.ionViewDidLeave = function () {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     };
-    DriverChattingPage.prototype.reportChat = function () {
+    DriverUserVerificationPage.prototype.usageCameraCarne = function () {
         var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Reportar',
-            message: 'Reportar este chat es completamente anónimo a tus compañeros y lo revisaremos de inmediato.',
-            buttons: [
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
-                },
-                {
-                    text: 'Reportar',
-                    handler: function () {
-                        _this.sendFeedbackService.sendFeedback('Reporte_de_chat', _this.chats, _this.driver.name, _this.driver.lastname, _this.driver.phone, _this.userUid);
-                        var toast = _this.toastCtrl.create({
-                            message: 'Haz reportado este chat',
-                            showCloseButton: true,
-                            closeButtonText: 'OK',
-                            position: 'top'
-                        });
-                        toast.present();
-                    }
-                }
-            ]
-        });
-        alert.present();
-    };
-    DriverChattingPage.prototype.sendMessage = function () {
-        if (this.message === undefined || this.message === null) {
-            var toast = this.toastCtrl.create({
-                message: 'No puedes enviar un mensaje vacío',
-                showCloseButton: true,
-                closeButtonText: 'OK',
-                position: 'top'
+        this.camera.getPicture(this.options).then(function (imageData) {
+            // imageData is either a base64 encoded string or a file URI
+            // If it's base64 (DATA_URL):
+            var loading = _this.loadingCtrl.create({
+                spinner: 'crescent',
+                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
             });
-            toast.present();
-        }
-        else {
-            if (this.isTrip === true) {
-                this.sendMessageForTrip();
+            loading.present();
+            var base64Image = 'data:image/jpeg;base64,' + imageData;
+            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_3_firebase__["storage"])().ref(_this.driverInfo.company + '/documentsDrivers/' + _this.driver + '/' + _this.data);
+            picturesDrivers.putString(base64Image, 'data_url').then(function () {
+                loading.dismiss();
+                var alert = _this.alertCtrl.create({
+                    title: '¡HECHO!',
+                    subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
+                    buttons: ['OK']
+                });
+                alert.present();
+                _this.carneWasUploaded = true;
+            }).catch(function (error) {
+                loading.dismiss();
+                console.log(error);
+                var alert = _this.alertCtrl.create({
+                    title: 'hubo un error',
+                    subTitle: 'intenta subir el documento otra vez',
+                    buttons: ['OK']
+                });
+                alert.present();
+            });
+            _this.picToViewCarne = "assets/imgs/v2.2.png";
+            _this.picToView = "assets/imgs/v2.2.png";
+            _this.SignUpService.pushDocsCarne(_this.driver);
+            // this.afDB.database.ref('allCities/' + this.driverInfo.city + '/allPlaces/' + this.driverInfo.company + '/zones').once('value').then((snap)=>{
+            //   let obj = snap.val();
+            //   Object.getOwnPropertyNames(obj).forEach((key)=>{
+            //     if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
+            //     }else{
+            //       this.SignUpService.pushDocsL(obj[key], this.driver);
+            //     }
+            //   })
+            // })
+        }, function (err) {
+            console.log(err);
+            var alert = _this.alertCtrl.create({
+                title: 'hubo un error',
+                subTitle: 'intenta subir el documento otra vez',
+                buttons: ['OK']
+            });
+            alert.present();
+        });
+    };
+    DriverUserVerificationPage.prototype.usageCameraId = function () {
+        var _this = this;
+        this.camera.getPicture(this.options).then(function (imageData) {
+            // imageData is either a base64 encoded string or a file URI
+            // If it's base64 (DATA_URL):
+            var loading = _this.loadingCtrl.create({
+                spinner: 'crescent',
+                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
+            });
+            loading.present();
+            var base64Image = 'data:image/jpeg;base64,' + imageData;
+            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_3_firebase__["storage"])().ref(_this.driverInfo.company + '/documentsDrivers/' + _this.driver + '/' + _this.data);
+            picturesDrivers.putString(base64Image, 'data_url').then(function () {
+                loading.dismiss();
+                var alert = _this.alertCtrl.create({
+                    title: '¡HECHO!',
+                    subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
+                    buttons: ['OK']
+                });
+                alert.present();
+                _this.idWasUploaded = true;
+            }).catch(function (error) {
+                loading.dismiss();
+                console.log(error);
+                var alert = _this.alertCtrl.create({
+                    title: 'hubo un error',
+                    subTitle: 'intenta subir el documento otra vez',
+                    buttons: ['OK']
+                });
+                alert.present();
+            });
+            _this.picToViewId = "assets/imgs/v4.2.png";
+            _this.picToView = "assets/imgs/v4.2.png";
+            _this.SignUpService.pushDocsId(_this.driver);
+            // this.afDB.database.ref('allCities/' + this.driverInfo.city + '/allPlaces/' + this.driverInfo.company + '/zones').once('value').then((snap)=>{
+            //   let obj = snap.val();
+            //   Object.getOwnPropertyNames(obj).forEach((key)=>{
+            //     if(obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10){
+            //     }else{
+            //       this.SignUpService.pushDocsId(obj[key], this.driver);
+            //     }
+            //   })
+            // })      
+        }, function (err) {
+            console.log(err);
+            var alert = _this.alertCtrl.create({
+                title: 'hubo un error',
+                subTitle: 'intenta subir el documento otra vez',
+                buttons: ['OK']
+            });
+            alert.present();
+        });
+    };
+    DriverUserVerificationPage.prototype.changeNamePicture1 = function () {
+        if (this.driverInfo.documents) {
+            if (this.driverInfo.documents.carne == undefined) {
+                this.picToViewCarne = "assets/imgs/v2.png";
+                this.picToView = "assets/imgs/v2.png";
+            }
+            else if (this.driverInfo.documents.carne == false) {
+                this.picToViewCarne = "assets/imgs/v2.2.png";
+                this.picToView = "assets/imgs/v2.2.png";
+            }
+            else if (this.driverInfo.documents.carne == true) {
+                this.picToViewCarne = "assets/imgs/v2.3.png";
+                this.picToView = "assets/imgs/v2.3.png";
             }
             else {
-                this.sendMessageForReserve();
+                this.picToViewCarne = "assets/imgs/v2.png";
+                this.picToView = "assets/imgs/v2.png";
+                this.showCarne = true;
             }
         }
+        this.namePicture = this.img1;
+        this.description = this.des1;
+        this.data = "Carné del trabajo";
+        this.showCarne = true;
+        this.showId = false;
     };
-    DriverChattingPage.prototype.sendMessageForTrip = function () {
-        console.log(this.isTrip);
-        this.chatsService.pushMessageUserInTrip(this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.driver.name);
-        this.message = '';
-        this.scrollToBottom();
+    ;
+    DriverUserVerificationPage.prototype.changeNamePicture2 = function () {
+        if (this.driverInfo.documents) {
+            if (this.driverInfo.documents.idVerification == undefined) {
+                this.picToViewId = "assets/imgs/v4.png";
+                this.picToView = "assets/imgs/v4.png";
+            }
+            else if (this.driverInfo.documents.idVerification == false) {
+                this.picToViewId = "assets/imgs/v4.2.png";
+                this.picToView = "assets/imgs/v4.2.png";
+            }
+            else if (this.driverInfo.documents.idVerification == true) {
+                this.picToViewId = "assets/imgs/_v4.3.png";
+                this.picToView = "assets/imgs/_v4.3.png";
+            }
+            else {
+                this.picToViewId = "assets/imgs/v4.png";
+                this.picToView = "assets/imgs/v4.png";
+            }
+        }
+        this.namePicture = this.img2;
+        this.description = this.des1;
+        this.data = "cedula";
+        this.showId = true;
+        this.showCarne = false;
     };
-    DriverChattingPage.prototype.sendMessageForReserve = function () {
-        this.chatsService.pushMessageUserInReserve(this.reserve.keyTrip, this.reserve.driver.userId, this.userUid, this.message, this.driver.name);
-        this.message = '';
-        this.scrollToBottom();
+    ;
+    DriverUserVerificationPage.prototype.skip = function () {
+        this.navCtrl.setRoot('FindridePassPage');
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
-    ], DriverChattingPage.prototype, "content", void 0);
-    DriverChattingPage = __decorate([
+    DriverUserVerificationPage.prototype.goFindRidePage = function () {
+        var _this = this;
+        if (this.carneWasUploaded === false) {
+            var alert_1 = this.alertCtrl.create({
+                title: 'Puedes continuar pero aún te falta subir una foto de tu Carné empresarial',
+                subTitle: 'Puedes subir esta foto en otro momento, pero tardará más tu aprobación de documentos',
+                buttons: [
+                    {
+                        text: 'Subir Carné',
+                        role: 'cancel'
+                    },
+                    {
+                        text: 'Hacer en otro momento',
+                        handler: function () {
+                            // alert.dismiss();
+                            _this.skip();
+                        }
+                    }
+                ]
+            });
+            alert_1.present();
+        }
+        else if (this.idWasUploaded === false) {
+            var alert_2 = this.alertCtrl.create({
+                title: 'Puedes continuar pero aún te falta subir una foto de tu cédula',
+                subTitle: 'Puedes subir esta foto en otro momento, pero tardará más tu aprobación de documentos',
+                buttons: [
+                    {
+                        text: 'Subir Cédula',
+                        role: 'cancel'
+                    },
+                    {
+                        text: 'Hacer en otro momento',
+                        handler: function () {
+                            // alert.dismiss();
+                            _this.skip();
+                        }
+                    }
+                ]
+            });
+            alert_2.present();
+        }
+        else {
+            this.skip();
+        }
+    };
+    DriverUserVerificationPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-chatting',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/chatting/driverChatting.html"*/'<ion-header class="bg-theme-driver">\n    <ion-navbar >\n        <ion-item style="display: flex !important;">                \n            <ion-icon name="arrow-back" style="font-size: 33px"  class="text-white" end-item navPop></ion-icon>\n            <ion-title class="text-white">CHAT GRUPAL</ion-title>\n            <ion-icon name="more" (click)="more()" end-item item-end class="text-white"></ion-icon>\n\n\n        </ion-item>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding class="chat-bg">\n    <div class="chatbox"*ngFor="let chat of chats">\n            <div  class="cb" >        \n                    <div>                        \n                         <div *ngIf="userUid === chat.uid" class="chat chat-left bg-theme-driver text-white"  text-left padding float-right style="max-width: 70%;text-align: left">\n                            <!-- its driver message -->\n                             <p>{{chat.message}}</p>       \n                       </div>                       \n                   </div>                    \n                </div>\n                <div class="cb">            \n                    <div>  \n                            <div *ngIf="chat.uid !== userUid" class="chat chat-right bg-white text-dark" style="max-width: 70%;text-align: left" text-right padding float-left>  \n                                <!-- its user message --> \n                                    <h6 class="driverText" style="display: flex; color:#4BB543;">{{chat.name | titlecase}}</h6>                         \n                                    <p>{{chat.message}}</p>                            \n                                </div>                \n                    </div>                  \n                </div>\n               \n    </div>\n   \n   \n</ion-content>\n<ion-footer class="fixed-bottom">\n        \n                <ion-list inset>\n                    <ion-item>\n                        <ion-input type="text" placeholder="Escribe tu mensaje" [(ngModel)]="message" autofocus (keyup.enter)="sendMessage()"></ion-input>\n                  \n                       <button class="text-theme-driver" item-right (click)="sendMessage()"> <ion-icon name="md-send" ></ion-icon></button>\n                    </ion-item>\n                </ion-list>\n            \n      \n  \n</ion-footer> '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/chatting/driverChatting.html"*/
+            selector: 'driver-page-user-verification',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\car-registration\driver-user-verification.html"*/'<!--\n\n  Generated template for the CarRegistrationPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header class="bg-theme">\n\n    <ion-navbar >\n\n        <ion-title>SUBIR DOCUMENTOS\n\n            <!--           <ion-icon name="md-search" class="text-white" style="margin-left: auto;float: right;"></ion-icon>-->\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding-right padding-left>\n\n    <p text-center padding-top margin-top>{{description}}</p>\n\n    <h2 text-center>{{namePicture}}</h2>\n\n\n\n    <ion-row>\n\n        <ion-col col-4 text-center>\n\n            <img  [src]="picToViewCarne" (click)="changeNamePicture1()">\n\n        </ion-col>\n\n        <ion-col col-4 text-center>\n\n            <img   [src]="picToViewId" (click)="changeNamePicture2()">\n\n        </ion-col>\n\n    </ion-row>\n\n\n\n    <div text-center class="verifiy">\n\n        <img [src]="picToView">\n\n    </div>\n\n    <ion-row>\n\n        <ion-col>\n\n            <p padding-top class="btn-box" *ngIf = \'showCarne\'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraCarne()">Subir Foto de Carné empresarial</button></p>\n\n            <p padding-top class="btn-box" *ngIf = \'showId\'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraId()">Subir Foto de Cédula</button></p>\n\n        </ion-col>\n\n    </ion-row>\n\n    <ion-row *ngIf= \'showContinue\'>\n\n        <ion-col>\n\n            <p padding-top class="btn-box"><button class="btn text-white bg-yellow rounded" style="width: 80%;" (click)="goFindRidePage()">Continuar</button></p>\n\n        </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n            <p justify-content-center align-items-center class="skiptext"><strong  (click)="skip()">No lo quiero hacer ahora</strong></p>\n\n    </ion-row>\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\car-registration\driver-user-verification.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__services_d_sendFeedback_service__["a" /* DriverSendFeedbackService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_3__services_d_chat_service__["a" /* DriverChatsService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
-    ], DriverChattingPage);
-    return DriverChattingPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"]])
+    ], DriverUserVerificationPage);
+    return DriverUserVerificationPage;
 }());
 
-//# sourceMappingURL=driverChatting.js.map
+//# sourceMappingURL=car-registration.js.map
 
 /***/ })
 

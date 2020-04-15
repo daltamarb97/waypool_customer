@@ -22,29 +22,28 @@ import { AngularFireDatabase } from 'angularfire2/database';
 	templateUrl: 'membersgroup.html'
 })
 export class MembersGroupPage {
-  
- 
-	groupKey:any;
-	group:any;
   	userDriver:any ;
   	userUid=this.AngularFireAuth.auth.currentUser.uid
 	accepted: boolean;
 	infoUser:any = {};
 	unsubscribe = new Subject;
 	groups:any = [];
-	passengers: any =[];
+	members: any =[];
+	crew:any;
+	isAdmin:boolean;
   constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController,public TripsService:DriverTripsService, public SignUpService: DriverSignUpService, public sendCoordsService: DriverSendCoordsService,public modalCtrl: ModalController, private AngularFireAuth: AngularFireAuth, public viewCtrl:ViewController,public navParams: NavParams, public geoFireService: DriverGeofireService, public instances: DriverInstancesService, public toastCtrl: ToastController, public alertCtrl: AlertController, public app: App, private afDB: AngularFireDatabase ) {
 	
-      this.group= this.navParams.get('group') 
-console.log(this.groupKey)
+	  this.members= this.navParams.get('members');
+	  this.crew= this.navParams.get('crew'); 
+	  console.log(this.crew);
+	  if(this.crew.admin.userId === this.userUid){
+		console.log('i am admin');
+		this.isAdmin = true;
+	  }
 
   
 
-    //   this.sendCoordsService.getGroupPendingUsers( this.userUid,this.groupKey).takeUntil(this.unsubscribe)
-    //     .subscribe( users => {
-	// 		this.passengers = users;			
-	// 		console.log(this.passengers);
-	// 	})	
+      	
    
 }
 ionViewDidLeave(){
@@ -60,13 +59,13 @@ ionViewDidLeave(){
  		}
   
 		 cancelgroup(){
-			this.geoFireService.deleteUserGeofireDest(this.SignUpService.userPlace, this.groupKey);
-			this.geoFireService.deleteUserGeofireOr(this.SignUpService.userPlace, this.groupKey);
-			this.passengers.forEach(user => {
-				this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+user.userId+'/mygroups/'+ this.groupKey).update({
-					cancelgroup:true
-				});
-			});
+			// this.geoFireService.deleteUserGeofireDest(this.SignUpService.userPlace, this.groupKey);
+			// this.geoFireService.deleteUserGeofireOr(this.SignUpService.userPlace, this.groupKey);
+			// this.passengers.forEach(user => {
+			// 	this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+user.userId+'/mygroups/'+ this.groupKey).update({
+			// 		cancelgroup:true
+			// 	});
+			// });
 
 			// this.TripsService.cancelgroup(this.SignUpService.userPlace, this.userUid,this.groupKey);
 			this.dismiss();
@@ -99,32 +98,32 @@ ionViewDidLeave(){
 
 		  deleteUser(userId, nameUser) {
 
-			let alert = this.alertCtrl.create({
-				title: 'Eliminar Usuario',
-				message: `¿Estas que deseas eliminar a este a ${nameUser} de tu viaje?,borrar muchos usuarios por día/semana esta en contra de nuestras políticas`,
-				buttons: [{
-						text: 'Cancelar',
-						role: 'cancel',
-						handler: () => {
+			// let alert = this.alertCtrl.create({
+			// 	title: 'Eliminar Usuario',
+			// 	message: `¿Estas que deseas eliminar a este a ${nameUser} de tu viaje?,borrar muchos usuarios por día/semana esta en contra de nuestras políticas`,
+			// 	buttons: [{
+			// 			text: 'Cancelar',
+			// 			role: 'cancel',
+			// 			handler: () => {
 	
-						}
-					},
-					{
-						text: 'Eliminar',
-						handler: () => {
-							this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+userId+'/mygroups/'+ this.groupKey).update({
-								cancelgroup:true
-							});
-							this.sendCoordsService.eraseUser(this.SignUpService.userPlace, userId,this.userUid,this.groupKey );
+			// 			}
+			// 		},
+			// 		{
+			// 			text: 'Eliminar',
+			// 			handler: () => {
+			// 				this.afDB.database.ref(this.SignUpService.userPlace + '/users/'+userId+'/mygroups/'+ this.groupKey).update({
+			// 					cancelgroup:true
+			// 				});
+			// 				this.sendCoordsService.eraseUser(this.SignUpService.userPlace, userId,this.userUid,this.groupKey );
 							
-							this.dismiss();
-							this.presentToast(`Haz eliminado a ${nameUser} de tu viaje`, 3000, 'bottom')
+			// 				this.dismiss();
+			// 				this.presentToast(`Haz eliminado a ${nameUser} de tu viaje`, 3000, 'bottom')
 						 
-						}
-					}
-				]
-			});
-			alert.present();
+			// 			}
+			// 		}
+			// 	]
+			// });
+			// alert.present();
 		}
 		presentToast(message: string, duration, position: string) {
 			const toast = this.toastCtrl.create({

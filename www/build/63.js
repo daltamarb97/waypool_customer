@@ -1,14 +1,14 @@
 webpackJsonp([63],{
 
-/***/ 695:
+/***/ 646:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverCarRegistrationPageModule", function() { return DriverCarRegistrationPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverAddSchedulePageModule", function() { return DriverAddSchedulePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__car_registration_login__ = __webpack_require__(895);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_schedule__ = __webpack_require__(840);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,45 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverCarRegistrationPageModule = /** @class */ (function () {
-    function DriverCarRegistrationPageModule() {
+var DriverAddSchedulePageModule = /** @class */ (function () {
+    function DriverAddSchedulePageModule() {
     }
-    DriverCarRegistrationPageModule = __decorate([
+    DriverAddSchedulePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__car_registration_login__["a" /* DriverCarRegistrationLoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__add_schedule__["a" /* DriverAddSchedulePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__car_registration_login__["a" /* DriverCarRegistrationLoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_schedule__["a" /* DriverAddSchedulePage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__car_registration_login__["a" /* DriverCarRegistrationLoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__add_schedule__["a" /* DriverAddSchedulePage */]
             ]
         })
-    ], DriverCarRegistrationPageModule);
-    return DriverCarRegistrationPageModule;
+    ], DriverAddSchedulePageModule);
+    return DriverAddSchedulePageModule;
 }());
 
-//# sourceMappingURL=car-registration-login.module.js.map
+//# sourceMappingURL=add-schedule.module.js.map
 
 /***/ }),
 
-/***/ 895:
+/***/ 840:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverCarRegistrationLoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverAddSchedulePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(361);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_database__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_d_instances_services__ = __webpack_require__(350);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -72,299 +69,136 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-/**
- * Generated class for the CarRegistrationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var DriverCarRegistrationLoginPage = /** @class */ (function () {
-    function DriverCarRegistrationLoginPage(navCtrl, navParams, viewCtrl, camera, AngularFireauth, alertCtrl, SignUpService, loadingCtrl, app, afDB) {
+var DriverAddSchedulePage = /** @class */ (function () {
+    function DriverAddSchedulePage(navCtrl, navParams, viewCtrl, renderer, alertCtrl, signUpService, angularFireAuth, instances, afDB) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
-        this.camera = camera;
-        this.AngularFireauth = AngularFireauth;
+        this.renderer = renderer;
         this.alertCtrl = alertCtrl;
-        this.SignUpService = SignUpService;
-        this.loadingCtrl = loadingCtrl;
-        this.app = app;
+        this.signUpService = signUpService;
+        this.angularFireAuth = angularFireAuth;
+        this.instances = instances;
         this.afDB = afDB;
-        this.namePicture = "Licencia";
-        this.description = "Sube una foto clara de tu";
-        this.img1 = "Licencia";
-        this.img2 = "Cédula";
-        this.des1 = "Sube una foto clara de tu";
-        this.picToView = "assets/imgs/v2.png";
-        this.picToViewLicense = "assets/imgs/v2.png";
-        this.picToViewId = "assets/imgs/v4.png";
-        this.showLicense = true;
-        this.showId = false;
-        this.cameraPicLicense = false;
-        this.cameraPicId = false;
-        this.unsubscribe = new __WEBPACK_IMPORTED_MODULE_6_rxjs__["Subject"];
-        this.showContinue = false;
-        this.licenceWasUploaded = false;
-        this.idWasUploaded = false;
-        this.options = {
-            quality: 100,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
-        };
-        this.driver = this.AngularFireauth.auth.currentUser.uid;
-        this.defaultZone = navParams.get('defaultZone');
-        console.log(this.defaultZone);
-        // this.SignUpService.userPlace = this.defaultZone;
-        // this.SignUpService.getMyInfo(this.SignUpService.userPlace, this.driver).takeUntil(this.unsubscribe).subscribe(user=>{
-        //   this.driverInfo = user
-        //   if(this.driverInfo.documents){
-        //     if(this.driverInfo.documents.license == true ){
-        //       this.picToViewLicense = "assets/imgs/v2.3.png";
-        //       this.picToView =  "assets/imgs/v2.3.png";
-        //     }else if(this.driverInfo.documents.id == true ){
-        //       this.picToViewId = "assets/imgs/_v4.3.png";
-        //     }else if(this.driverInfo.documents.license == false){
-        //       this.picToViewLicense = "assets/imgs/v2.2.png";
-        //       this.picToView =  "assets/imgs/v2.2.png";
-        //       this.showContinue = true;
-        //     }else if(this.driverInfo.documents.id == false ){
-        //       this.picToViewId = "assets/imgs/v4.2.png";
-        //       this.showContinue = true;
-        //     }else if(this.driverInfo.documents.license == undefined ){
-        //       this.picToViewLicense = "assets/imgs/v2.png";
-        //       this.picToView =  "assets/imgs/v2.png";
-        //     }else if(this.driverInfo.documents.id == undefined ){
-        //       this.picToViewId = "assets/imgs/v4.png";
-        //     }
-        //   }
-        // })
+        this.imageHouseToWork = false;
+        this.imageWorkToHouse = false;
+        this.button1WasntTapped = true;
+        this.button2WasntTapped = true;
+        this.userId = this.angularFireAuth.auth.currentUser.uid;
+        this.afDB.database.ref('/driversTest/' + this.userId).once('value').then(function (snap) {
+            _this.userInfo = snap.val();
+        });
     }
-    ;
-    DriverCarRegistrationLoginPage.prototype.ionViewDidLeave = function () {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
+    DriverAddSchedulePage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss(this.accepted);
     };
-    DriverCarRegistrationLoginPage.prototype.usageCameraLicense = function () {
+    DriverAddSchedulePage.prototype.selectImageHouse = function () {
+        // this is just to change the css
+        this.renderer.setElementStyle(this.house.nativeElement, 'border-width', '3px');
+        this.renderer.setElementStyle(this.house.nativeElement, 'border-style', 'solid');
+        this.renderer.setElementStyle(this.house.nativeElement, 'border-color', 'green');
+        this.renderer.setElementStyle(this.work.nativeElement, 'border-width', '0px');
+        this.imageURL = 'assets/imgs/workToHouse.png';
+        this.textMessage = 'Casa';
+        this.geofireType = 'destination';
+        this.imageHouseToWork = true;
+        this.imageWorkToHouse = false;
+    };
+    DriverAddSchedulePage.prototype.selectImageWork = function () {
+        // this is just to change the css
+        this.renderer.setElementStyle(this.work.nativeElement, 'border-width', '3px');
+        this.renderer.setElementStyle(this.work.nativeElement, 'border-style', 'solid');
+        this.renderer.setElementStyle(this.work.nativeElement, 'border-color', 'green');
+        this.renderer.setElementStyle(this.house.nativeElement, 'border-width', '0px');
+        this.textMessage = 'Trabajo';
+        this.geofireType = 'origin';
+        this.imageURL = 'assets/imgs/houseToWork.png';
+        this.imageHouseToWork = false;
+        this.imageWorkToHouse = true;
+    };
+    DriverAddSchedulePage.prototype.confirm = function () {
         var _this = this;
-        this.camera.getPicture(this.options).then(function (imageData) {
-            // imageData is either a base64 encoded string or a file URI
-            // If it's base64 (DATA_URL):
-            var loading = _this.loadingCtrl.create({
-                spinner: 'crescent',
-                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
-            });
-            loading.present();
-            var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_3_firebase__["storage"])().ref(_this.driverInfo.company + '/documentsDrivers/' + _this.driver + '/' + _this.data);
-            picturesDrivers.putString(base64Image, 'data_url').then(function () {
-                loading.dismiss();
-                var alert = _this.alertCtrl.create({
-                    title: '¡HECHO!',
-                    subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
+        console.log(this.imageHouseToWork);
+        console.log(this.imageWorkToHouse);
+        if (this.imageHouseToWork === true || this.imageWorkToHouse === true) {
+            if (this.startHour === undefined || this.startHour === null) {
+                var alert_1 = this.alertCtrl.create({
+                    title: 'Debes seleccionar una hora de partida',
+                    subTitle: '¿A qué hora sales del trabajo o de tu casa?',
                     buttons: ['OK']
                 });
-                alert.present();
-                _this.licenceWasUploaded = true;
-            }).catch(function (error) {
-                loading.dismiss();
-                console.log(error);
-                var alert = _this.alertCtrl.create({
-                    title: 'hubo un error',
-                    subTitle: 'intenta subir el documento otra vez',
-                    buttons: ['OK']
-                });
-                alert.present();
-            });
-            _this.picToViewLicense = "assets/imgs/v2.2.png";
-            _this.picToView = "assets/imgs/v2.2.png";
-            _this.afDB.database.ref('allCities/' + _this.driverInfo.city + '/allPlaces/' + _this.driverInfo.company + '/zones').once('value').then(function (snap) {
-                var obj = snap.val();
-                Object.getOwnPropertyNames(obj).forEach(function (key) {
-                    if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                    }
-                    else {
-                        // this.SignUpService.pushDocsL(obj[key], this.driver);
-                    }
-                });
-            });
-        }, function (err) {
-            console.log(err);
-            var alert = _this.alertCtrl.create({
-                title: 'hubo un error',
-                subTitle: 'intenta subir el documento otra vez',
-                buttons: ['OK']
-            });
-            alert.present();
-        });
-    };
-    DriverCarRegistrationLoginPage.prototype.usageCameraId = function () {
-        var _this = this;
-        this.camera.getPicture(this.options).then(function (imageData) {
-            // imageData is either a base64 encoded string or a file URI
-            // If it's base64 (DATA_URL):
-            var loading = _this.loadingCtrl.create({
-                spinner: 'crescent',
-                content: "\n          <div class=\"custom-spinner-container\">\n            <div class=\"custom-spinner-box\"></div>\n          </div>"
-            });
-            loading.present();
-            var base64Image = 'data:image/jpeg;base64,' + imageData;
-            var picturesDrivers = Object(__WEBPACK_IMPORTED_MODULE_3_firebase__["storage"])().ref(_this.driverInfo.company + '/documentsDrivers/' + _this.driver + '/' + _this.data);
-            picturesDrivers.putString(base64Image, 'data_url').then(function () {
-                loading.dismiss();
-                var alert = _this.alertCtrl.create({
-                    title: '¡HECHO!',
-                    subTitle: 'ya tenemos tu documento, lo verificaremos en las proximas 24 horas y te enviaremos un correo cuando todo este listo',
-                    buttons: ['OK']
-                });
-                alert.present();
-                _this.idWasUploaded = true;
-            }).catch(function (error) {
-                loading.dismiss();
-                console.log(error);
-                var alert = _this.alertCtrl.create({
-                    title: 'hubo un error',
-                    subTitle: 'intenta subir el documento otra vez',
-                    buttons: ['OK']
-                });
-                alert.present();
-            });
-            _this.picToViewId = "assets/imgs/v4.2.png";
-            _this.picToView = "assets/imgs/v4.2.png";
-            _this.afDB.database.ref('allCities/' + _this.driverInfo.city + '/allPlaces/' + _this.driverInfo.company + '/zones').once('value').then(function (snap) {
-                var obj = snap.val();
-                Object.getOwnPropertyNames(obj).forEach(function (key) {
-                    if (obj[key] === 2 || obj[key] === 3 || obj[key] === 4 || obj[key] === 5 || obj[key] === 6 || obj[key] === 1 || obj[key] === 7 || obj[key] === 8 || obj[key] === 9 || obj[key] === 10) {
-                    }
-                    else {
-                        // this.SignUpService.pushDocsId(obj[key], this.driver);
-                    }
-                });
-            });
-        }, function (err) {
-            console.log(err);
-            var alert = _this.alertCtrl.create({
-                title: 'hubo un error',
-                subTitle: 'intenta subir el documento otra vez',
-                buttons: ['OK']
-            });
-            alert.present();
-        });
-    };
-    DriverCarRegistrationLoginPage.prototype.changeNamePicture1 = function () {
-        if (this.driverInfo.documents) {
-            if (this.driverInfo.documents.license == undefined) {
-                this.picToViewLicense = "assets/imgs/v2.png";
-                this.picToView = "assets/imgs/v2.png";
-            }
-            else if (this.driverInfo.documents.license == false) {
-                this.picToViewLicense = "assets/imgs/v2.2.png";
-                this.picToView = "assets/imgs/v2.2.png";
-            }
-            else if (this.driverInfo.documents.license == true) {
-                this.picToViewLicense = "assets/imgs/v2.3.png";
-                this.picToView = "assets/imgs/v2.3.png";
+                alert_1.present();
             }
             else {
-                this.picToViewLicense = "assets/imgs/v2.png";
-                this.picToView = "assets/imgs/v2.png";
-                this.showLicense = true;
-            }
-        }
-        this.namePicture = this.img1;
-        this.description = this.des1;
-        this.data = "licencia";
-        this.showLicense = true;
-        this.showId = false;
-    };
-    ;
-    DriverCarRegistrationLoginPage.prototype.changeNamePicture2 = function () {
-        if (this.driverInfo.documents) {
-            if (this.driverInfo.documents.id == undefined) {
-                this.picToViewId = "assets/imgs/v4.png";
-                this.picToView = "assets/imgs/v4.png";
-            }
-            else if (this.driverInfo.documents.id == false) {
-                this.picToViewId = "assets/imgs/v4.2.png";
-                this.picToView = "assets/imgs/v4.2.png";
-            }
-            else if (this.driverInfo.documents.id == true) {
-                this.picToViewId = "assets/imgs/_v4.3.png";
-                this.picToView = "assets/imgs/_v4.3.png";
-            }
-            else {
-                this.picToViewId = "assets/imgs/v4.png";
-                this.picToView = "assets/imgs/v4.png";
-            }
-        }
-        this.namePicture = this.img2;
-        this.description = this.des1;
-        this.data = "cedula";
-        this.showId = true;
-        this.showLicense = false;
-    };
-    ;
-    DriverCarRegistrationLoginPage.prototype.skip = function () {
-        this.app.getRootNav().push('DriverSchedulePage', { defaultZone: this.defaultZone });
-    };
-    DriverCarRegistrationLoginPage.prototype.goSchedulePage = function () {
-        var _this = this;
-        if (this.licenceWasUploaded === false) {
-            var alert_1 = this.alertCtrl.create({
-                title: 'Puedes continuar pero aún te falta subir una foto de tu licencia',
-                subTitle: 'Puedes subir esta foto en otro momento, pero tardará más tu aprobación de documentos',
-                buttons: [
-                    {
-                        text: 'Subir Licencia',
-                        role: 'cancel'
-                    },
-                    {
-                        text: 'Hacer en otro momento',
-                        handler: function () {
-                            // alert.dismiss();
-                            _this.skip();
+                var alert_2 = this.alertCtrl.create({
+                    title: '¿vas a tu ' + this.textMessage + ' a las ' + this.startHour + '?',
+                    buttons: [
+                        {
+                            text: 'Confirmo este horario',
+                            handler: function () {
+                                _this.afDB.database.ref('allCities/' + _this.userInfo.city + '/allPlaces/' + _this.userInfo.company + '/zones').once('value').then(function (snap) {
+                                    var obj = snap.val();
+                                    _this.afDB.database.ref('allSchedules/' + _this.userId).push({
+                                        hour: _this.startHour,
+                                        type: _this.geofireType,
+                                        description: _this.textMessage,
+                                        image: _this.imageURL
+                                    }).then(function (snap1) {
+                                        _this.afDB.database.ref('allSchedules/' + _this.userId + '/' + snap1.key).update({
+                                            key: snap1.key
+                                        });
+                                        Object.getOwnPropertyNames(obj).forEach(function (keyZ) {
+                                            if (obj[keyZ] === 2 || obj[keyZ] === 3 || obj[keyZ] === 4 || obj[keyZ] === 5 || obj[keyZ] === 6 || obj[keyZ] === 1 || obj[keyZ] === 7 || obj[keyZ] === 8 || obj[keyZ] === 9 || obj[keyZ] === 10) {
+                                            }
+                                            else {
+                                                _this.afDB.database.ref(obj[keyZ] + '/drivers/' + _this.userId + '/schedule/' + snap1.key).update({
+                                                    hour: _this.startHour,
+                                                    type: _this.geofireType,
+                                                    description: _this.textMessage,
+                                                    image: _this.imageURL,
+                                                    key: snap1.key
+                                                });
+                                            }
+                                        });
+                                    });
+                                }).then(function () {
+                                    _this.viewCtrl.dismiss();
+                                });
+                            }
                         }
-                    }
-                ]
-            });
-            alert_1.present();
-        }
-        else if (this.idWasUploaded === false) {
-            var alert_2 = this.alertCtrl.create({
-                title: 'Puedes continuar pero aún te falta subir una foto de tu cédula',
-                subTitle: 'Puedes subir esta foto en otro momento, pero tardará más tu aprobación de documentos',
-                buttons: [
-                    {
-                        text: 'Subir Cédula',
-                        role: 'cancel'
-                    },
-                    {
-                        text: 'Hacer en otro momento',
-                        handler: function () {
-                            // alert.dismiss();
-                            _this.skip();
-                        }
-                    }
-                ]
-            });
-            alert_2.present();
+                    ]
+                });
+                alert_2.present();
+            }
         }
         else {
-            this.skip();
+            var alert_3 = this.alertCtrl.create({
+                title: 'Debes seleccionar una opción',
+                subTitle: '¿a esta hora vas a tu casa o a tu trabajo?',
+                buttons: ['OK']
+            });
+            alert_3.present();
         }
     };
-    DriverCarRegistrationLoginPage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('house', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], DriverAddSchedulePage.prototype, "house", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('work', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] }),
+        __metadata("design:type", Object)
+    ], DriverAddSchedulePage.prototype, "work", void 0);
+    DriverAddSchedulePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-car-registration-login',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/car-registration-login/driver-car-registration-login.html"*/'<!--\n  Generated template for the CarRegistrationPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header class="bg-theme">\n        <ion-navbar hideBackButton>\n            <ion-title>SUBIR DOCUMENTOS\n                <!--           <ion-icon name="md-search" class="text-white" style="margin-left: auto;float: right;"></ion-icon>-->\n            </ion-title>\n        </ion-navbar>\n    </ion-header>\n    \n    <ion-content padding-right padding-left>\n        <p text-center padding-top margin-top>{{description}}</p>\n        <h2 text-center>{{namePicture}}</h2>\n    \n        <ion-row>\n            <ion-col col-4 text-center>\n                <img  [src]="picToViewLicense" (click)="changeNamePicture1()">\n            </ion-col>\n            <ion-col col-4 text-center>\n                <img   [src]="picToViewId" (click)="changeNamePicture2()">\n            </ion-col>\n        </ion-row>\n    \n        <div text-center class="verifiy">\n            <img [src]="picToView">\n        </div>\n        <ion-row>\n            <ion-col>\n                <p padding-top class="btn-box" *ngIf = \'showLicense\'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraLicense()">Subir Foto de Licencia</button></p>\n                <p padding-top class="btn-box" *ngIf = \'showId\'><button class="btn text-white bg-theme rounded" style="width: 80%;" (click)="usageCameraId()">Subir Foto de Cédula</button></p>\n            </ion-col>\n        </ion-row>\n        <ion-row *ngIf= \'showContinue\'>\n                <ion-col>\n                    <p padding-top class="btn-box"><button class="btn text-white bg-yellow rounded" style="width: 80%;" (click)="goSchedulePage()">Continuar</button></p>\n                </ion-col>\n            </ion-row>\n        <ion-row>\n                <p justify-content-center align-items-center class="skiptext"><strong  (click)="skip()">No lo quiero terminar ahora</strong></p>\n        </ion-row>\n    </ion-content>\n    \n    '/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/car-registration-login/driver-car-registration-login.html"*/,
+            selector: 'driver-page-add-schedule',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\add-schedule\driver-add-schedule.html"*/'<ion-content>\n\n\n\n\n\n    <ion-card>\n\n\n\n        <ion-card-content>\n\n                <ion-icon name="close-circle" class="close-icon text-theme-driver"  (click)="dismiss()"></ion-icon>\n\n                <h2 text-center class="text-theme-driver">AÑADE UN HORARIO</h2>\n\n\n\n            <ion-row style="margin-top: 14px;    display: flex;\n\n            justify-content: center">\n\n                <ion-list>\n\n             <h2 text-center>Coloca la hora a la que te vas:</h2>\n\n                    <div style="    border-color: black;\n\n                    border-style: solid;">\n\n\n\n                    <ion-item>\n\n                        <ion-label>Hora:</ion-label>\n\n                <ion-datetime  displayFormat="hh:mm A" pickerFormat="hh:mm A" [(ngModel)]="startHour" ></ion-datetime>\n\n                </ion-item>\n\n\n\n                </div>\n\n                    \n\n                </ion-list>                    \n\n            </ion-row>\n\n    </ion-card-content>\n\n\n\n    <br>\n\n    <h2 style="margin-bottom: 20px;" text-center>¿Vas al trabajo o la casa?</h2>\n\n      <ion-row  style="display: flex; flex-direction: row;">\n\n            <ion-avatar style="border-radius: 15%;" #house>\n\n                <p text-center class="texto1">A la casa</p>\n\n\n\n                    <img class="house" style="width: 138px;" src="assets/imgs/workToHouse.png" (click)="selectImageHouse()"/>\n\n\n\n                </ion-avatar>\n\n\n\n                <ion-avatar  style="border-radius: 15%;" #work>\n\n                    <p text-center class="texto1">Al Trabajo</p>\n\n\n\n                        <img src="assets/imgs/houseToWork.png" style="width: 138px;" (click)="selectImageWork()"/>\n\n                 </ion-avatar>\n\n     \n\n      </ion-row>\n\n  \n\n        <ion-card-content>\n\n            <div class="seats">           \n\n                <ion-row style="margin-top: 14px;    display: flex;\n\n                justify-content: center">\n\n                   \n\n                    <ion-col col-8>\n\n                        <button class="btn bg-theme-driver text-white rounded" style="width: 100%;font-size: 1.25rem;" (click)="confirm()">Confirmar</button>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </div>\n\n        </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\add-schedule\driver-add-schedule.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"]])
-    ], DriverCarRegistrationLoginPage);
-    return DriverCarRegistrationLoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__services_d_signup_service__["a" /* DriverSignUpService */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_5__services_d_instances_services__["a" /* DriverInstancesService */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["AngularFireDatabase"]])
+    ], DriverAddSchedulePage);
+    return DriverAddSchedulePage;
 }());
 
-//# sourceMappingURL=car-registration-login.js.map
+//# sourceMappingURL=add-schedule.js.map
 
 /***/ })
 

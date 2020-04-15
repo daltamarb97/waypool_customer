@@ -5,10 +5,10 @@ webpackJsonp([54],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DriverHelpPageModule", function() { return DriverHelpPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReferalPageModule", function() { return ReferalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__driverHelp__ = __webpack_require__(849);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__earn__ = __webpack_require__(847);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DriverHelpPageModule = /** @class */ (function () {
-    function DriverHelpPageModule() {
+var ReferalPageModule = /** @class */ (function () {
+    function ReferalPageModule() {
     }
-    DriverHelpPageModule = __decorate([
+    ReferalPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__driverHelp__["a" /* DriverHelpPage */],
+                __WEBPACK_IMPORTED_MODULE_2__earn__["a" /* ReferalPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__driverHelp__["a" /* DriverHelpPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__earn__["a" /* ReferalPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__driverHelp__["a" /* DriverHelpPage */]
+                __WEBPACK_IMPORTED_MODULE_2__earn__["a" /* ReferalPage */]
             ]
         })
-    ], DriverHelpPageModule);
-    return DriverHelpPageModule;
+    ], ReferalPageModule);
+    return ReferalPageModule;
 }());
 
-//# sourceMappingURL=driverHelp.module.js.map
+//# sourceMappingURL=earn.module.js.map
 
 /***/ }),
 
-/***/ 849:
+/***/ 847:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverHelpPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReferalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__ = __webpack_require__(369);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,45 +60,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var DriverHelpPage = /** @class */ (function () {
-    function DriverHelpPage(navCtrl) {
+
+var ReferalPage = /** @class */ (function () {
+    function ReferalPage(navCtrl, socialSharing) {
         this.navCtrl = navCtrl;
+        this.socialSharing = socialSharing;
     }
-    DriverHelpPage.prototype.suggestion = function () {
-        this.typeOfSituation = 'Sugerencia';
-        this.info = 'Amamos las sugerencias ya que nos permiten mejorar cada vez más la aplicación, ¡Gracias de parte de todo el equipo de Waypool!';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
+    ReferalPage.prototype.shareWhatsapp = function () {
+        // Check if sharing via email is supported
+        // Share via email
+        this.socialSharing.shareViaWhatsApp('Comparte tu viaje al trabajo, ahorra dinero y ayuda al medio ambiente', null, 'www.waypooltech.com').then(function () {
+            // Success!
+        }).catch(function (error) {
+            // Error!
+            console.log(error);
+        });
     };
-    DriverHelpPage.prototype.myAccount = function () {
-        this.typeOfSituation = 'Mi Cuenta';
-        this.info = 'Escríbenos cualquier cosa relacionada con tu cuenta';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
-    };
-    DriverHelpPage.prototype.trip = function () {
-        this.typeOfSituation = 'Viaje';
-        this.info = '¿Haz tenido algún problema en algún viaje? ¡coloca el ID de tu viaje al comenzar el mensaje y con gusto te ayudaremos! ';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
-    };
-    DriverHelpPage.prototype.bug = function () {
-        this.typeOfSituation = 'Problema con la App';
-        this.info = ' Muchas gracias por informarnos de estos problemas que ayudan a mejorar la usabilidad de la App cada día mas';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
-    };
-    DriverHelpPage.prototype.paymentProblem = function () {
-        this.typeOfSituation = 'Problema de Pago';
-        this.info = '¿Haz tenido algún tipo de problema relacionado con la tarjeta con tu tarjeta de crédito? Descríbenos con detalle y nos comunicamos contigo lo más pronto posible';
-        this.navCtrl.push('DriverSupportPage', { typeOfSituation: this.typeOfSituation, info: this.info });
-    };
-    DriverHelpPage = __decorate([
+    ReferalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'driver-page-help',template:/*ion-inline-start:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/help/driverHelp.html"*/'<ion-header class="bg-theme-driver">\n    <ion-navbar>\n        <ion-title>Soporte</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="bg-light">\n    <p class="textHelp" padding>¡Escoje tu situación y escríbenos con mucho detalle para poder ayudarte lo más pronto posible!. También puedes escribirnos a team@waypooltech.com</p>\n    <ion-card (click)="suggestion()">\n        <ion-card-header>\n            <h1><strong>Sugerencia</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n            Ayúdanos a mejorar el servicio  \n        </ion-card-content>\n    </ion-card>\n    <ion-card (click)="trip()">\n        <ion-card-header>\n            <h1><strong>Viaje</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n            Escríbenos cualquier sugerencia/quejas con respecto a algún viaje\n        </ion-card-content>\n    </ion-card>\n    <ion-card (click)="bug()">\n        <ion-card-header>\n            <h1><strong>Problema con la App</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text-light"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n        Escríbenos cualquier problema que tengas con la App \n        </ion-card-content>\n    </ion-card>\n    <ion-card (click)="myAccount()">\n        <ion-card-header>\n            <h1><strong>Mi Cuenta</strong>\n                <ion-icon name="ios-arrow-down-outline" class="text"></ion-icon>\n            </h1>\n        </ion-card-header>\n        <ion-card-content class="text">\n        ¿Tienes alguna pregunta acerca de tu cuenta? ¡Escríbenos!.\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n\n'/*ion-inline-end:"/Users/juandavidjaramillo/Documents/waypool_costumer/src/pages/help/driverHelp.html"*/
+            selector: 'page-earn',template:/*ion-inline-start:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\earn\earn.html"*/'<ion-header class="transparent">\n\n    <ion-navbar>\n\n        <ion-title><span class="text-white"></span></ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <img src="assets/imgs/menu-bg2.jpg">\n\n    <div padding-left padding-right>\n\n        <ion-card class="bg-theme">\n\n            <ion-card-content text-center>\n\n                <p class="text-white">Your Referral Code</p>\n\n                <h6 class="text-white">532461</h6>\n\n            </ion-card-content>\n\n        </ion-card>\n\n        <div padding-left padding-right padding-top padding>\n\n            <br>\n\n            <h4 class="text-theme">Refer and earn</h4>\n\n            <p class="text-drack">Share the referral code with your friends and family members and get 30% off on cab fare</p>\n\n        </div>\n\n        <ion-row>\n\n            <ion-col col-3 text-center padding>\n\n                <img src="assets/imgs/fb.png">\n\n            </ion-col>\n\n            <ion-col col-3 text-center padding padding>\n\n                <img (click)="shareWhatsapp()" src="assets/imgs/wpp.png">\n\n            </ion-col>\n\n            <ion-col col-3 text-center padding>\n\n                <img src="assets/imgs/tw.png">\n\n            </ion-col>\n\n            <ion-col col-3 text-center padding>\n\n                <img   src="assets/imgs/more.png">\n\n            </ion-col>\n\n        </ion-row>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\danie\Documents\waypool\prod\latest\waypool_costumer\src\pages\earn\earn.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]])
-    ], DriverHelpPage);
-    return DriverHelpPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */]])
+    ], ReferalPage);
+    return ReferalPage;
 }());
 
-//# sourceMappingURL=driverHelp.js.map
+//# sourceMappingURL=earn.js.map
 
 /***/ })
 
